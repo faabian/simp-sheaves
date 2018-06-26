@@ -1,0 +1,192 @@
+\documentclass[a4paper]{article}
+% \usepackage[left=3cm,right=3cm,top=3cm,bottom=2cm]{geometry} % page settings
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{etoolbox}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+
+
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{kor}[theorem]{Korollar}
+\newtheorem{satz}[theorem]{Satz}
+\newtheorem{defn}[theorem]{Definition}
+
+\DeclareMathOperator{\Cat}{Cat}
+\DeclareMathOperator{\poset}{poset}
+\DeclareMathOperator{\EnsX}{Ens_{/X}}
+\DeclareMathOperator{\pEnsX}{pEns_{/X}}
+\DeclareMathOperator{\AbX}{Ab_{/X}}
+\DeclareMathOperator{\pAbX}{pAb_{/X}}
+\DeclareMathOperator{\OffX}{Off_X}
+\DeclareMathOperator{\Ens}{Ens}
+
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\iso}{\xrightarrow{\sim}}
+\newcommand{\open}{\subset\kern-0.58em\circ}  % only possible in math mode
+
+\begin{document}
+
+\title{Simpliziale Garben}
+\author{Fabian Glöckle}
+\date{\today}
+% \maketitle
+
+\section{Simplizialkomplexe von Garben}
+
+\begin{defn}
+  Ein Simplizialkomplex ist eine Menge $E$, genannt die Ecken des
+  Simplizialkomplexes, samt einem System $ \mathcal{K} \subset
+  \mathcal{P}(E) $ von nichtleeren endlichen Teilmengen von $E$,
+  genannt die Simplizes des Simplizialkomplexes, derart, dass gilt:
+  \begin{itemize}
+  \item Jede einelementige Menge ist ein Simplex (d.h. $\{e\} \in
+    \mathcal{K} \text{ für alle } e \in E$) und
+  \item ist $L \in \mathcal{K}$ ein Simplex, $K \subset L$ nichtleere
+    Teilmenge, so $K \in \mathcal{K}$.
+  \end{itemize}
+\end{defn}
+
+Ein Simplizialkomplex ist somit insbesondere eine halbgeordnete Menge
+mit der Mengeninklusion als Halbordnung.
+
+Wir erinnern an die Interpretation von halbgeordneten Mengen als
+Kategorien. Gegeben eine halbgeordnete Menge $X$ definiere die
+Kategorie $C_X$ bestehend aus Objekten $Ob(C_X) = X$ mit einem
+eindeutigen Morphismus $a \leftarrow b$ genau dann, wenn $a \leq b$ bezüglich
+der Halbordnung. Wir erhalten:
+
+\begin{lemma}
+  Obige Konstruktion liefert eine volltreue Einbettung
+  \begin{align*}
+    \poset &\to \Cat, \\
+    X &\mapsto C_X.    
+  \end{align*}
+\end{lemma}
+
+
+Hierbei bezeichnet $\Cat$ die Kategorie der kleinen Kategorien,
+d.h. der Kategorien $C$, für die $Ob(C)$ eine Menge ist und $\poset$
+die Kategorie der halbgeordneten Mengen mit monotonen Abbildungen als
+Morphismen.
+
+\begin{proof}
+  Offenbar ist $C_X$ tatsächlich eine kleine Kategorie. Funktoren $C_X
+  \to C_Y$ sind Abbildungen $f$ auf Objekten, mit der Eigenschaft,
+  dass es einen Morphismus $f(a) \leftarrow f(b)$ in $C_Y$ gibt, wann immer
+  $a \leftarrow b$ in $C_X$. Das ist aber gerade die Eigenschaft einer
+  monotonen Abbildung.
+\end{proof}
+
+Nun können wir Simplizialkomplexe von Garben definieren.
+
+\begin{defn}
+  Sei $C$ eine Kategorie, $\mathcal{K}$ ein Simplizialkomplex
+  aufgefasst als Kategorie. Wir nennen einen Funktor $\mathcal{K}^\op \to
+  C$ einen Simplizialkomplex in $C$ der Form $\mathcal{K}$.
+\end{defn}
+
+Die Simplizialkomplexe in $C$ bilden wie jede Funktorenkategorie eine
+Kategorie (Beweis einfach, vgl. ??). Wir notieren die Kategorie der
+Funktoren $F: A \to B$ häufig mit $B^A$ oder auch $[A, B]$.
+
+Allgemeiner nennen wir Funktorkategorien der Form $[C^\op, \Ens]$ auch
+Prägarben auf $C$.
+
+Insbesondere ist ein Simplizialkomplex in der terminalen Kategorie
+dasselbe wie ein gewöhnlicher Simplizialkomplex. Im Folgenden
+interessieren wir uns besonders für die Fälle von Garben- und
+Prägarbenkategorien $C = \EnsX$ bzw. $C = \pEnsX$ für $X$ einen
+topologischen Raum.
+
+\begin{lemma}
+  Wir haben einen Isomorphismus von Kategorien
+  \[
+    [\mathcal{K}^\op, \pEnsX] \iso [(\mathcal{K} \times \OffX)^\op, \Ens]
+  \]    
+  zwischen den Simplizialkomplexen von Prägarben auf $X$ und den
+  Prägarben auf $\mathcal{K} \times \OffX$.
+\end{lemma}
+
+Hierbei bezeichnet $\OffX$ die durch Mengeninklusion halbgeordnete
+Menge der offenen Mengen in $X$.
+
+\begin{proof}
+  Das folgt direkt aus $\pEnsX = [\OffX^\op, \Ens]$ und dem
+  Exponentialgesetz für Kategorien:
+  \[ [A, [B, C]] \iso [A \times B, C]. \]
+\end{proof}
+
+Unser Ziel wäre es nun, $\mathcal{K} \times \OffX$ wieder als
+Kategorie von offenen Mengen eines topologischen Raums zu realisieren,
+der funktoriell von $\mathcal{K}$ und $X$ abhängt. Das ist aber
+natürlich im Allgemeinen nicht möglich. (Beweis??) Allerdings können
+wir $\mathcal{K} \times \OffX$ recht leicht zur Basis einer Topologie
+von $\mathcal{K} \times X$ machen.
+
+\begin{defn}
+  Die Ordnungstopologie auf einer halbgeordneten Menge $X$ hat als
+  abgeschlossene Mengen alle ``nach unten abgeschlossenen'' Mengen,
+  d.h. Mengen $A \subset X$ mit der Eigenschaft, dass falls $b \in A$
+  und $a \leq b$, so auch $a \in A$.
+\end{defn}
+
+Wir schreiben $\geq \sigma$ ... offene ...
+
+\begin{lemma}
+  Die Ordnungstopologie auf $X$ ist eine Topologie.
+\end{lemma}
+
+\begin{proof}
+  ... schnittstabil ...
+\end{proof}
+
+Damit haben wir insbesondere auch Simplizialkomplexe mit einer
+Ordnungstopologie versehen. Bezeichne dazu $\mathcal{B}$ die Basis der
+Produkttopologie von $\mathcal{K} \times X$ bestehend aus
+Produktmengen der Form $(\geq \sigma) \times U$ mit $\sigma \in
+\mathcal{K}, U \open X$. Präziser ist der Funktor
+  
+\begin{align*}
+  \mathcal{K} \times \OffX &\to \mathcal{B}, \\
+  (\sigma, U) &\mapsto (\geq \sigma) \times U
+\end{align*}
+
+ein Isomorphismus von Kategorien, da auch der Begriff einer Inklusion
+in beiden Katgeorien derselbe ist.
+
+Es gibt zu viele offene Mengen in $\mathcal{K} \times X$ für eine
+Aussage der Art
+\[
+  [\mathcal{K}^\op, \pEnsX] \iso \mathrm{pEns}_{/\mathcal{K} \times X}.
+\]
+Allerdings können wir beim Isomorphismus
+\[
+  [\mathcal{K}^\op, \pEnsX] \iso [(\mathcal{K} \times \OffX)^\op, \Ens] \iso [B^\op, \Ens]
+\]
+die rechte Seite als eine Garbenkategorie verstehen, wenn in dieser
+Objekte schon auf einer Basis der Topologie eindeutig festgelegt
+sind. Das ist natürlich nicht der Fall für $\pEnsX$, wohl aber durch
+die Verklebungseigenschaft von Garben für $\EnsX$.
+
+\begin{satz}
+  Der Funktor
+  \[
+  [\mathcal{K}^\op, \EnsX] \to [B^\op, \Ens] \to \EnsX
+  \]
+  ist eine Äquivalenz von Kategorien.
+\end{satz}
+\begin{proof}
+  Wir müssen nur noch zeigen, dass der hintere Funktor eine Äquivalenz
+  von Kategorien ist.
+
+  
+\end{proof}
+
+\end{document}
