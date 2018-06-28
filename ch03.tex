@@ -1,0 +1,241 @@
+\documentclass[a4paper]{article}
+% \usepackage[left=3cm,right=3cm,top=3cm,bottom=2cm]{geometry} % page settings
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[textsize=small]{todonotes}
+% \usepackage{etoolbox}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+% \usepackage{framed}
+% \usepackage{fancyhdr}
+% \usepackage{tikz}
+
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+
+% \newcounter{satz}
+
+\newtheorem{satz}{Satz}[section]
+\newtheorem{defn}[satz]{Definition}
+\newtheorem{theorem}[satz]{Theorem}
+\newtheorem{prop}[satz]{Proposition}
+\newtheorem{cor}[satz]{Korollar}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\op}{^{op}}
+\newcommand{\del}{\partial}
+\newcommand{\et}{\acute{e}t}
+
+% \makeatletter
+% \@addtoreset{satz}{section}% Reset satz counter with every section
+% \@addtoreset{theorem}{subsection}
+% \@addtoreset{theorem}{subsubsection}
+%% \newcommand{\theoremprefix}{}
+%% \let\thetheoremsaved\thetheorem
+%% \renewcommand{\thetheorem}{\theoremprefix\thetheoremsaved}
+%% \let\sectionsaved\section
+%% \patchcmd{\@startsection}{\par}{\renewcommand{\theoremprefix}{\csname the#1\endcsname.}}{}{}
+%% \makeatother
+
+
+%% \pagestyle{fancy}
+%% \lhead{
+%%     \begin{tabular}{ll}
+%%     Proseminar Endliche Spiegelungsgruppen \\
+%%     Prof. Dr. Katrin Wendland \\
+%%     PD Dr. Emanuel Scheidegger
+%%   \end{tabular}
+%% }
+%% \chead{}
+%% \rhead{
+%%   \begin{tabular}{ll}
+%%     Fabian Glöckle \\
+%%     24.01.2017
+%%   \end{tabular}
+%% }
+%% \lfoot{}
+%% \cfoot{}
+%% \rfoot{} 
+
+
+\begin{document}
+
+\section{Diagramme in der Kategorie der Garben}
+
+\begin{defn}
+  Sei $I$ eine kleine Kategorie. Unter einem Diagramm der Form $I$ in
+  $Ab/X$ bzw. einem $I$-System in $Ab/X$ verstehen wir einen Funktor $I
+  \to Ab/X$.
+\end{defn}
+
+Sind $i \to j$ Objekte mit einem Morphismus in $I$, so notieren wir
+für sein Bild in $Ab/X$ häufig $F_i \to F_j$.
+
+Es bezeichne $\Delta$ die Kategorie der endlichen nichtleeren
+Ordinalzahlen mit monotonen Abbildungen als Morphismen. Wir notieren
+die $(n+1)$-elementige Ordinalzahl der Dimension ihrer zugehörigen
+geometrischen Realisierung gemäß mit $[n]$.
+
+Wie jede partiell geordnete Menge, kann ein Objekt $X$ von $\Delta$
+eingebettet werden in die Kategorie der kleinen Kategorien $Cat$:
+wähle dazu als Objektmenge $X$ selbst und statte mit einem einzigen
+Morphismus $x \to y$ aus, wann immer $x \leq y$ in $X$. Wir notieren
+diese Kategorie mit $i(X)$.
+
+Eine simpliziale Menge $X$ ist ein Funktor $\Delta\op \to Ens$,
+d.h. für jedes $n \in \N$ eine Menge $X_n$, mit Rand- und
+Degenerationsabbildungen (denn solche Abbildungen erzeugen die
+monotonen Abbildungen).
+
+\begin{defn}
+  Wir bezeichnen mit dem Nerv einer kleinen Kategorie $I$ das Bild von
+  $I$ unter dem Funktor $N: Cat \to [\Delta]\op, Ens]$ von der
+    Kategorie der kleinen Kategorien in die Kategorie der simplizialen
+    Mengen, der gegeben ist durch $$N(I)([n]) = [i([n]), I]$$ für alle
+    $I \in Cat$ und $[n] \in \Delta$.
+\end{defn}
+
+Hierbei steht $[A, B]$ für die Kategorie der Funktoren $A \to B$ mit
+Transformationen als Morphismen.
+
+Ausgeschrieben bedeutet diese Definition, dass der Nerv von $I$ die
+simpliziale Menge ist, deren $n$-Simplizes Diagramme in $I$ der Form
+$A_0 \to A_1 \to \dots \to A_n$ sind, mit Degenerationsabbildungen dem
+Einfügen der Identität an der Stelle $A_i$ und Randabbildungen der
+Komposition der in $A_i$ ein- und auslaufenden Abbildung
+(bzw. Weglassen von $A_0$ oder $A_n$).
+
+Wir erinnern an die Definition des geometrischen Standard-$n$-Simplex
+$$ \Delta^n = \{(x_0, \dots, x_n) \in \R^{n+1} | x_i \geq 0 \forall
+i \in \{0, \dots, n\}, \sum x_i = 1\} $$ und seine Degenerations- und
+Seitenabbildungen $d_i$ und $s_i$. \todo{präzisieren}
+
+Sind $\del_i$ und $\sigma_i$ die Degenerations- bzw. Seitenabbildungen
+einer simplizialen Menge $X$, so erhalten wir eine geometrische
+Realisierung von $X$ mittels
+
+$$ |X| = \coprod_n X_n \times \Delta_n / \sim ,$$
+
+wobei $\sim$ die Äquivalenzrelation beschreibt, die von $(s, d_i p) \sim
+(\del_i s, p)$ und $(s, s_i p) \sim (\sigma_i s, p)$ erzeugt ist.
+
+Ziel dieses Abschnitts ist nun, zu einem $I$-System von Garben auf
+einem topologischen Raum $X$ eine Garbe über $X \times |N(I)|$ zu
+finden, die diese auf eine ``möglichst natürliche'' Weise
+repräsentiert.
+
+Wir werden geometrisch vorgehen und die zu den Garben $F_i$ gehörigen
+étalen Räume konstant auf Teilmengen der geometrischen Realisierung
+des Nervs von $I$ erweitern, disjunkt vereinigen und mit einer
+geeigneten Topologie verkleben.
+
+Betrachte dazu die folgende ``geordnete Zerlegung des
+Standard-$n$-Simplex''
+
+$$\Delta^n = \coprod_{i=0}^n M_i ,$$
+
+wobei
+
+$$M_i = \{(x_0, \dots, x_n) \in \Delta^n | x_j = 0 \text{für} j < i,
+x_i \neq 0 \} . $$
+
+\todo{Bildchen}
+
+Ist nun $F_0 \to F_1 \to \dots \to F_n$ ein $n$-Simplex in $N(I)$, so
+ziehen wir $F_i$ längs der Projektion $X \times M_i \to X$ zurück und
+erhalten als étalen Raum das Produkt $\et(F_i) \times M_i$. Wir setzen
+
+$$E = \coprod \et(F_i) \times M_i ,$$
+
+wobei über alle $n \in \N$ und alle $n$-Simplizes $F_0 \to F_1 \to
+\dots \to F_n$ in $N(I)_n$ vereinigt wird und $\Delta^n$ wie oben
+zerlegt wird.
+
+\todo{passt das auch mit degenerierten?}
+
+Zur Konstruktion der Topologie auf $E$ zunächst eine Definition.
+
+\begin{defn}
+  Ist $F_i$ ein $I$-System von Garben auf einem topologischen Raum
+  $X$, so heiße $I$-Schnitt über eine offene Menge $U \subset X$ ein
+  Tupel $(s_i)_{i \in J \subset I}$ von Schnitten $s_i \in F_i(U)$
+  derart, dass $s_i \mapsto s_j$ unter $F_i(U) \to F_j(U)$, wann immer
+  $i \to j$ in einer vollen Unterkategorie $J$ von $I$.
+
+  \todo{J \emph{volle} Unterkategorie?}
+\end{defn}
+
+Ist $s$ ein $I$-Schnitt, so erhalten wir wie bei der Konstruktion des
+étalen Raums zu einer einzelnen Garbe eine Abbildung $\overline{s}: X
+\times |N(I)| \to E, (x, p) \mapsto (s_i)_x$ falls $p \in M_i$ und die
+zu $M_i$ gehörige Garbe in der obigen Konstruktion von $E$ $F_i$ ist.
+
+Damit können wir die folgende Topologie auf $E$ definieren.
+
+\begin{defn}
+  Wir bezeichnen die oben konstruierte Menge $E$ mit der
+  Finaltopologie bezüglich allen $\overline{s}$ für einen $I$-Schnitt
+  $s$ den étalen Raum des I-Systems von Garben $F_i$.
+\end{defn}
+
+Beachte dabei, dass insbesondere alle in $\et(F_i) \times M_i$ offenen
+Mengen wieder offen sind. \todo{stimmt vmtl. nicht, wenn J voll}
+
+Ist allgemein $i \to j, j \to k, i \to k$ ein nicht notwendigerweise
+kommutatives Dreieck in $I$, so haben wir zwei Verklebungen $F_i \to
+F_k$ und $F_i \to F_j \to F_k$. Das Entscheidende an der Konstruktion
+über den Nerv ist nun, dass gerade nur solche Dreiecke in $I$
+2-Simplizes sind, bei denen beide übereinstimmen, d.h. die Komposition
+der ersten Abbildungen gerade die letzte ist bzw. das Dreieck
+kommutiert. So können die étalen Räume auch geometrisch
+verkleben. \todo{besser erklären}
+
+Dass es sich bei diesem topologischen Raum tatsächlich um den étalen
+Raum einer Garbe auf $X \times |N(I)|$ handelt, zeigt der folgende
+Satz.
+
+\begin{satz}
+  Die Abbildung $E \to X \times |N(I)|, (s_x, p) \mapsto (x, p)$ ist
+  étale.
+\end{satz}
+
+\begin{proof}
+  Folgt. \todo{...} Idee: um die offene Umgebung für den lokalen
+  Homöomorphismus zu konstruieren, müssen wir im Wesentlichen diesen
+  Halm in $E$ zu einem $I$-Schnitt fortsetzen. Das ist aber nicht
+  schwer, denn dazu müssen wir nur den Schnitt $s_i \in F_i(U)$, der
+  unseren Halm darstellt, mit den Nerv-Simplex-Abbildungen $F_i \to
+  F_{i+1} \to \dots$ abbilden.
+\end{proof}
+
+Inwiefern diese Konstruktion die gewünschten Eigenschaften einer
+geometrsichen Realisierung von Diagrammen von Garben hat, soll im Rest
+dieses Abschnitts untersucht werden. Es stellen sich folgende Fragen:
+
+\begin{enumerate}
+\item Ist diese Abbildung $[I, Ab/X] \to Ab/(X \times |N(I)|)$
+  funktoriell?
+\item Wie lässt sich das wesentliche Bild charakterisieren?
+\item Kann ein Umkehrfunktor konstruiert werden, d.h. gibt es eine
+  Äquivalenz von Kategorien von $[I, Ab/X]$ zu einer Unterkategorie
+  von $Ab/(X \times |N(I)|)$?
+\item Wie verhält sich diese Äquivalenz bei Übergang zur derivierten
+  Kategorie der Abelschen Garben auf $X$?
+\end{enumerate}
+
+Meine Antworten bisher:
+
+\begin{enumerate}
+\item Ja.
+\item Etwas kompliziert, da die geordnete Zerlegung der Simplizes dann
+  auch ``geordnet simplizial konstante Garben'' ergibt; weiter fordert
+  die Art der Verklebung automatisch bestimmte
+  Fortsetzungseigenschaften von Schnitten.
+\item Ja, die komplizierten Bedingungen machen diesen dafür einfach.
+\item ???
+\end{enumerate}
+
+\end{document}
