@@ -27,7 +27,7 @@
 \DeclareMathOperator{\OffX}{Off_X}
 \DeclareMathOperator{\Ens}{Ens}
 
-\newcommand{\op}{\mathrm{op}}
+\newcommand{\op}{^\mathrm{op}}
 \newcommand{\iso}{\xrightarrow{\sim}}
 \newcommand{\open}{\subset\kern-0.58em\circ}  % only possible in math mode
 
@@ -79,16 +79,16 @@ Morphismen.
 \begin{proof}
   Offenbar ist $C_X$ tatsächlich eine kleine Kategorie. Funktoren $C_X
   \to C_Y$ sind Abbildungen $f$ auf Objekten, mit der Eigenschaft,
-  dass es einen Morphismus $f(a) \leftarrow f(b)$ in $C_Y$ gibt, wann immer
-  $a \leftarrow b$ in $C_X$. Das ist aber gerade die Eigenschaft einer
-  monotonen Abbildung.
+  dass es einen Morphismus $f(a) \leftarrow f(b)$ in $C_Y$ gibt, wann
+  immer $a \leftarrow b$ in $C_X$. Das ist aber gerade die Eigenschaft
+  einer monotonen Abbildung.
 \end{proof}
 
 Nun können wir Simplizialkomplexe von Garben definieren.
 
 \begin{defn}
   Sei $C$ eine Kategorie, $\mathcal{K}$ ein Simplizialkomplex
-  aufgefasst als Kategorie. Wir nennen einen Funktor $\mathcal{K}^\op \to
+  aufgefasst als Kategorie. Wir nennen einen Funktor $\mathcal{K} \to
   C$ einen Simplizialkomplex in $C$ der Form $\mathcal{K}$.
 \end{defn}
 
@@ -96,7 +96,7 @@ Die Simplizialkomplexe in $C$ bilden wie jede Funktorenkategorie eine
 Kategorie (Beweis einfach, vgl. ??). Wir notieren die Kategorie der
 Funktoren $F: A \to B$ häufig mit $B^A$ oder auch $[A, B]$.
 
-Allgemeiner nennen wir Funktorkategorien der Form $[C^\op, \Ens]$ auch
+Allgemeiner nennen wir Funktorkategorien der Form $[C\op, \Ens]$ auch
 Prägarben auf $C$.
 
 Insbesondere ist ein Simplizialkomplex in der terminalen Kategorie
@@ -108,17 +108,17 @@ topologischen Raum.
 \begin{lemma}
   Wir haben einen Isomorphismus von Kategorien
   \[
-    [\mathcal{K}^\op, \pEnsX] \iso [(\mathcal{K} \times \OffX)^\op, \Ens]
+    [\mathcal{K}, \pEnsX] \iso [\mathcal{K} \times \OffX\op, \Ens]
   \]    
   zwischen den Simplizialkomplexen von Prägarben auf $X$ und den
-  Prägarben auf $\mathcal{K} \times \OffX$.
+  Prägarben auf $\mathcal{K}\op \times \OffX$.
 \end{lemma}
 
 Hierbei bezeichnet $\OffX$ die durch Mengeninklusion halbgeordnete
 Menge der offenen Mengen in $X$.
 
 \begin{proof}
-  Das folgt direkt aus $\pEnsX = [\OffX^\op, \Ens]$ und dem
+  Das folgt direkt aus $\pEnsX = [\OffX\op, \Ens]$ und dem
   Exponentialgesetz für Kategorien:
   \[ [A, [B, C]] \iso [A \times B, C]. \]
 \end{proof}
@@ -130,61 +130,92 @@ natürlich im Allgemeinen nicht möglich. (Beweis??) Allerdings können
 wir $\mathcal{K} \times \OffX$ recht leicht zur Basis einer Topologie
 von $\mathcal{K} \times X$ machen.
 
+%% \begin{defn}
+%%   Die Ordnungstopologie auf einer halbgeordneten Menge $X$ hat als
+%%   abgeschlossene Mengen alle ``nach unten abgeschlossenen'' Mengen,
+%%   d.h. Mengen $A \subset X$ mit der Eigenschaft, dass falls $b \in A$
+%%   und $a \leq b$, so auch $a \in A$.
+%% \end{defn}
+
 \begin{defn}
-  Die Ordnungstopologie auf einer halbgeordneten Menge $X$ hat als
-  abgeschlossene Mengen alle ``nach unten abgeschlossenen'' Mengen,
-  d.h. Mengen $A \subset X$ mit der Eigenschaft, dass falls $b \in A$
-  und $a \leq b$, so auch $a \in A$.
+  Sei $(X, \leq)$ eine halbgeordnete Menge.  Wir bezeichnen die von
+  den Mengen der Form $(\geq \sigma) = \{\tau \in X | \tau \geq
+  \sigma\}$ (für $\sigma \in X$) erzeugte Topologie als die
+  Ordnungstopologie auf $X$.
 \end{defn}
 
-Wir schreiben $\geq \sigma$ ... offene ...
+Für $X = \mathcal{K}$ einen Simplizialkomplex gilt sogar:
 
 \begin{lemma}
-  Die Ordnungstopologie auf $X$ ist eine Topologie.
+  Das System der $(\geq \sigma)$ ist eine Basis der
+  Ordnungstopologie.
 \end{lemma}
 
 \begin{proof}
-  ... schnittstabil ...
+  $\mathcal{K}$ wird überdeckt durch Mengen aus dem System, da $\sigma
+  \in (\geq \sigma)$. Das System ist schnittstabil, da für einen
+  Simplizialkomplex gilt:
+
+  \[(\geq \sigma) \cap (\geq \tau) = (\geq (\sigma \cup \tau)) \text{ oder } (\geq \sigma) \cap (\geq \tau) = \emptyset. \]
 \end{proof}
 
-Damit haben wir insbesondere auch Simplizialkomplexe mit einer
-Ordnungstopologie versehen. Bezeichne dazu $\mathcal{B}$ die Basis der
-Produkttopologie von $\mathcal{K} \times X$ bestehend aus
-Produktmengen der Form $(\geq \sigma) \times U$ mit $\sigma \in
-\mathcal{K}, U \open X$. Präziser ist der Funktor
+Im folgenden verstehen wir einen Simplizialkomplex $\mathcal{K}$ stets
+mit der Ordnungstopologie versehen als topologischen Raum.
+
+Bezeichne nun $\mathcal{B}$ die Basis der Produkttopologie von
+$\mathcal{K} \times X$ bestehend aus Produktmengen der Form $(\geq
+\sigma) \times U$ mit $\sigma \in \mathcal{K}, U \open X$. Präziser
+ist der Funktor
   
 \begin{align*}
-  \mathcal{K} \times \OffX &\to \mathcal{B}, \\
+  \mathcal{K}\op \times \OffX &\to \mathcal{B}, \\
   (\sigma, U) &\mapsto (\geq \sigma) \times U
 \end{align*}
 
-ein Isomorphismus von Kategorien, da auch der Begriff einer Inklusion
-in beiden Katgeorien derselbe ist.
+ein Isomorphismus von Kategorien, denn ein Umkehrfunktor wird durch
+die Projektionen einer Produktmenge auf ihre Faktoren und Wahl des
+eindeutigen minimalen Elements im ersten Faktor gegeben. Die Inklusion
+ist in beiden Kategorien dieselbe, da $\sigma \geq \tau$ genau dann,
+wenn $(\geq \sigma) \subset (\geq \tau)$ gilt.
 
 Es gibt zu viele offene Mengen in $\mathcal{K} \times X$ für eine
 Aussage der Art
 \[
-  [\mathcal{K}^\op, \pEnsX] \iso \mathrm{pEns}_{/\mathcal{K} \times X}.
+  [\mathcal{K}\op, \pEnsX] \iso \mathrm{pEns}_{/\mathcal{K} \times X}.
 \]
 Allerdings können wir beim Isomorphismus
 \[
-  [\mathcal{K}^\op, \pEnsX] \iso [(\mathcal{K} \times \OffX)^\op, \Ens] \iso [B^\op, \Ens]
+  [\mathcal{K}, \pEnsX] \iso [\mathcal{K} \times \OffX\op, \Ens] \iso [\mathcal{B}\op, \Ens]
 \]
 die rechte Seite als eine Garbenkategorie verstehen, wenn in dieser
 Objekte schon auf einer Basis der Topologie eindeutig festgelegt
-sind. Das ist natürlich nicht der Fall für $\pEnsX$, wohl aber durch
-die Verklebungseigenschaft von Garben für $\EnsX$.
+sind. Das ist natürlich nicht der Fall für Prägarben, wohl aber durch
+die Verklebungseigenschaft für Garben.
+
+\begin{satz}
+  Sei $X$ ein topologischer Raum mit Basis $\mathcal{B}$. Dann gibt es
+  eine Äquivalenz von Kategorien
+
+  \[ \EnsX \to [\mathcal{B}\op, \Ens ] \]
+
+  gegeben durch den Vergissfunktor $\EnsX \to \pEnsX$ und die
+  Einschränkung auf $\mathcal{B} \subset \OffX$.
+\end{satz}
+\begin{proof}
+  
+\end{proof}
+
+
 
 \begin{satz}
   Der Funktor
   \[
-  [\mathcal{K}^\op, \EnsX] \to [B^\op, \Ens] \to \EnsX
+  [\mathcal{K}\op, \EnsX] \to [\mathcal{B}\op, \Ens] \to \Ens_{/\mathcal{K} \times X}
   \]
   ist eine Äquivalenz von Kategorien.
 \end{satz}
 \begin{proof}
-  Wir müssen nur noch zeigen, dass der hintere Funktor eine Äquivalenz
-  von Kategorien ist.
+  ...
 
   
 \end{proof}
