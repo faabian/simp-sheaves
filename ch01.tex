@@ -27,8 +27,12 @@
 \DeclareMathOperator{\OffX}{Off_X}
 \DeclareMathOperator{\Ens}{Ens}
 
+\DeclareMathOperator{\EnsB}{Ens_{/\B}}
+
+\newcommand{\B}{\mathcal{B}}
 \newcommand{\op}{^\mathrm{op}}
 \newcommand{\iso}{\xrightarrow{\sim}}
+\newcommand{\qiso}{\xrightarrow{\approx}}
 \newcommand{\open}{\subset\kern-0.58em\circ}  % only possible in math mode
 
 \begin{document}
@@ -162,13 +166,13 @@ Für $X = \mathcal{K}$ einen Simplizialkomplex gilt sogar:
 Im folgenden verstehen wir einen Simplizialkomplex $\mathcal{K}$ stets
 mit der Ordnungstopologie versehen als topologischen Raum.
 
-Bezeichne nun $\mathcal{B}$ die Basis der Produkttopologie von
+Bezeichne nun $\B$ die Basis der Produkttopologie von
 $\mathcal{K} \times X$ bestehend aus Produktmengen der Form $(\geq
 \sigma) \times U$ mit $\sigma \in \mathcal{K}, U \open X$. Präziser
 ist der Funktor
   
 \begin{align*}
-  \mathcal{K}\op \times \OffX &\to \mathcal{B}, \\
+  \mathcal{K}\op \times \OffX &\to \B, \\
   (\sigma, U) &\mapsto (\geq \sigma) \times U
 \end{align*}
 
@@ -185,38 +189,117 @@ Aussage der Art
 \]
 Allerdings können wir beim Isomorphismus
 \[
-  [\mathcal{K}, \pEnsX] \iso [\mathcal{K} \times \OffX\op, \Ens] \iso [\mathcal{B}\op, \Ens]
+  [\mathcal{K}, \pEnsX] \iso [\mathcal{K} \times \OffX\op, \Ens] \iso [\B\op, \Ens]
 \]
 die rechte Seite als eine Garbenkategorie verstehen, wenn in dieser
 Objekte schon auf einer Basis der Topologie eindeutig festgelegt
 sind. Das ist natürlich nicht der Fall für Prägarben, wohl aber durch
 die Verklebungseigenschaft für Garben.
 
+\begin{defn}
+  Sei $\B$ eine Basis eines topologischen Raumes $X$.  Wir
+  bezeichnen die volle Unterkategorie der Prägarben auf $\B$,
+  die die Verklebungseigenschaft von Garben für Überdeckungen in
+  $\B$ erfüllen, als die Kategorie der Garben auf
+  $\B$ und notieren sie mit $\EnsB$.
+\end{defn}
+
+Konkret erfüllen Garben $F \in \EnsB$ also die folgende
+Eigenschaft:
+
+\begin{quote}
+  Ist $U = \bigcup_{i \in I} V_i$ eine Vereinigung mit $U, V_i \in
+  \B$ und sind $s_i \in F(V_i)$ Schnitte mit
+  übereinstimmenden Restriktionen $s_i |_{V_i \cap V_j} = s_j |_{V_i
+    \cap V_j}$ für alle $i, j$, so gibt es genau einen Schnitt $s \in
+  F(U)$ mit $s |_{V_i} = s_i$.
+\end{quote}
+
+Oder äquivalent:
+
+\[ F(U) = \lim F(V_i) . \]
+
 \begin{satz}
-  Sei $X$ ein topologischer Raum mit Basis $\mathcal{B}$. Dann gibt es
+  Sei $X$ ein topologischer Raum mit Basis $\B$. Dann gibt es
   eine Äquivalenz von Kategorien
 
-  \[ \EnsX \to [\mathcal{B}\op, \Ens ] \]
+  \[ \EnsX \qiso \EnsB \]
 
-  gegeben durch den Vergissfunktor $\EnsX \to \pEnsX$ und die
-  Einschränkung auf $\mathcal{B} \subset \OffX$.
+  gegeben durch die Einschränkung auf $\B \subset \OffX$.
 \end{satz}
 \begin{proof}
+  Wir konstruieren einen Quasi-Inversen: Sei dazu $F \in \EnsB$ und $U
+  = \bigcup_{i \in I} U_i$ eine Vereinigung von Mengen $U_i \in
+  \B$. Wir setzen $\hat{F}(U) = \lim F(U_i)$ und prüfen die
+  Wohldefiniertheit. Sei $U = \bigcup_{j \in J} V_j$ eine weitere
+  Überdeckung von $U$ durch Basismengen $V_j \in \B$.
+
+  %% Durch Übergang zu einer gemeinsamen Verfeinerung $(U_i \cap
+  %% V_j)_{i,j}$ können wir annehmen, dass $(V_j)_{j \in J}$ eine
+  %% Verfeinerung von $(U_i)_{i \in I}$ ist.
+  %% Restriktionen liefern einen Morphismus von Systemen $(F(U_i))_{i \in
+  %%   I} \to (F(V_j))_{j \in J}$ und somit auch in den Limites: $\lim
+  %% F(U_i) \to \lim F(V_j)$. Diese Abbildung ist bijektiv, da ein
+  %% verträgliches Tupel von Schnitten $s_j \in F(V_j)$ nach der
+  %% Garbenbedingung auf Basismengen wegen $U_i = \bigcup_{j \in J} (U_i
+  %% \cap V_j)$ ein eindeutiges verträgliches Tupel von Schnitten über
+  %% $U_i$ definiert. Somit ist der Quasi-Inverse tatsächlich eine
+  %% wohldefinierte Zuordnung $F \mapsto \hat{F}$.
+
+  Nun gilt nach der Garbeneigenschaft auf den Basismengen
+
+  \[ \lim_i F(U_i)
+  \iso \lim_i \lim_j F(U_i \cap V_j)
+  \iso \lim_j \lim_i F(U_i \cap V_j)
+  \iso \lim_j F(V_j) .\]
+
+  Unsere Zurdnung $F \mapsto \hat{F}$ ist also wohldefiniert. Das Bild
+  $\hat{F}$ ist tatsächlich eine Garbe, denn falls $U = \bigcup_{i \in
+    I} U_i$ eine beliebige Überdeckung durch offene Mengen und $U_i =
+  \bigcup_{j} V_{ij}$ jeweils eine Übderdeckung durch Basismengen
+  $V_{ij} \in \B$ ist, so gilt
+
+  \[ \hat{F}(U) = \lim_{i.j} F(V_{ij}) = \lim_i F(U_i) \]
+
+  zuerst nach Definition und dann wieder nach der Transitivität von
+  Limites und der Garbenbedingung für Basismengen.
   
+  Die Funktorialität unserer Zuordnung folgt direkt aus der
+  Funktorialität des Limes. Da für eine Basismenge $U \in \B$ mit der
+  offensichtlichen Überdeckung natürlich $\hat{F}(U) = \lim F(U) =
+  F(U) $ gilt, handelt es sich tatsächlich um einen Quasi-Inversen.
 \end{proof}
-
-
 
 \begin{satz}
   Der Funktor
   \[
-  [\mathcal{K}\op, \EnsX] \to [\mathcal{B}\op, \Ens] \to \Ens_{/\mathcal{K} \times X}
+  [\mathcal{K}\op, \EnsX] \to \EnsB \qiso \Ens_{/\mathcal{K} \times X}
   \]
   ist eine Äquivalenz von Kategorien.
 \end{satz}
 \begin{proof}
-  ...
+  Wir haben schon den Isomorphismus auf den Prägarbenkategorien
 
+  \[ [\mathcal{K}\op, \pEnsX] \iso [\B\op, \Ens] \]
+
+  und müssen nur noch zeigen, dass $[\mathcal{K}\op, \EnsX]$ und
+  $\EnsB$ durch äquivalente Bedingungen definierte volle
+  Unterkategorien sind.
+
+  In $[\mathcal{K}\op, \pEnsX]$ wird die Untekategorie der
+  Simplizialkomplexe von Garben dadurch definiert, dass für festes
+  $\sigma \in \mathcal{K}$ die Garbenbedingung für die $U \open X$
+  erfüllt sein muss, während in $[\B\op, \Ens]$ die Garbenbedingung
+  für beliebige Basismengen $(\geq \sigma) \times U$ gefordert
+  wird. Tatsächlich sind aber beide äquivalent, da im Fall einer
+  Überdeckung $\mathcal{U}$ einer Basismenge $(\geq \sigma) \times U$
+  durch Basismengen $(\geq \tau_i) \times U_i$ eine Teilüberdeckung
+  $\mathcal{V} \subset \mathcal{U}$ aus Produktmengen mit $\tau_i =
+  \sigma$ gewählt werden kann. Ein verträgliches Tupel aus Schnitten
+  über Mengen aus $\mathcal{U}$ entspricht dann einem verträglichem
+  Tupel aus Schnitten über Mengen aus $\mathcal{V}$ und die
+  Garbenbedingung für Basismengen folgt aus der für festes
+  $\sigma \in \mathcal{K}$.
   
 \end{proof}
 
