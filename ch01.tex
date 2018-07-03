@@ -26,6 +26,7 @@
 \DeclareMathOperator{\pAbX}{pAb_{/X}}
 \DeclareMathOperator{\OffX}{Off_X}
 \DeclareMathOperator{\Ens}{Ens}
+\DeclareMathOperator{\Ob}{Ob}
 
 \DeclareMathOperator{\EnsB}{Ens_{/\B}}
 
@@ -62,8 +63,8 @@ mit der Mengeninklusion als Halbordnung.
 
 Wir erinnern an die Interpretation von halbgeordneten Mengen als
 Kategorien. Gegeben eine halbgeordnete Menge $X$ definiere die
-Kategorie $C_X$ bestehend aus Objekten $Ob(C_X) = X$ mit einem
-eindeutigen Morphismus $a \leftarrow b$ genau dann, wenn $a \leq b$ bezüglich
+Kategorie $C_X$ bestehend aus Objekten $\Ob(C_X) = X$ mit einem
+eindeutigen Morphismus $a \to b$ genau dann, wenn $a \leq b$ bezüglich
 der Halbordnung. Wir erhalten:
 
 \begin{lemma}
@@ -76,7 +77,7 @@ der Halbordnung. Wir erhalten:
 
 
 Hierbei bezeichnet $\Cat$ die Kategorie der kleinen Kategorien,
-d.h. der Kategorien $C$, für die $Ob(C)$ eine Menge ist und $\poset$
+d.h. der Kategorien $C$, für die $\Ob(C)$ eine Menge ist und $\poset$
 die Kategorie der halbgeordneten Mengen mit monotonen Abbildungen als
 Morphismen.
 
@@ -130,9 +131,10 @@ Menge der offenen Mengen in $X$.
 Unser Ziel wäre es nun, $\mathcal{K} \times \OffX$ wieder als
 Kategorie von offenen Mengen eines topologischen Raums zu realisieren,
 der funktoriell von $\mathcal{K}$ und $X$ abhängt. Das ist aber
-natürlich im Allgemeinen nicht möglich. (Beweis??) Allerdings können
-wir $\mathcal{K} \times \OffX$ recht leicht zur Basis einer Topologie
-von $\mathcal{K} \times X$ machen.
+natürlich im Allgemeinen nicht möglich, da bereits in $\mathcal{K}$
+die Vereinigungseigenschaft von Topologien in der Regel verletzt
+ist. Allerdings können wir $\mathcal{K} \times \OffX$ recht leicht zur
+Basis einer Topologie von $\mathcal{K} \times X$ machen.
 
 %% \begin{defn}
 %%   Die Ordnungstopologie auf einer halbgeordneten Menge $X$ hat als
@@ -160,7 +162,9 @@ Für $X = \mathcal{K}$ einen Simplizialkomplex gilt sogar:
   \in (\geq \sigma)$. Das System ist schnittstabil, da für einen
   Simplizialkomplex gilt:
 
-  \[(\geq \sigma) \cap (\geq \tau) = (\geq (\sigma \cup \tau)) \text{ oder } (\geq \sigma) \cap (\geq \tau) = \emptyset. \]
+  \[(\geq \sigma) \cap (\geq \tau) = (\geq (\sigma \cup \tau))
+  \text{ oder }
+  (\geq \sigma) \cap (\geq \tau) = \emptyset. \]
 \end{proof}
 
 Im folgenden verstehen wir einen Simplizialkomplex $\mathcal{K}$ stets
@@ -182,10 +186,10 @@ eindeutigen minimalen Elements im ersten Faktor gegeben. Die Inklusion
 ist in beiden Kategorien dieselbe, da $\sigma \geq \tau$ genau dann,
 wenn $(\geq \sigma) \subset (\geq \tau)$ gilt.
 
-Es gibt zu viele offene Mengen in $\mathcal{K} \times X$ für eine
+Nun gibt es zu viele offene Mengen in $\mathcal{K} \times X$ für eine
 Aussage der Art
 \[
-  [\mathcal{K}\op, \pEnsX] \iso \mathrm{pEns}_{/\mathcal{K} \times X}.
+  [\mathcal{K}, \pEnsX] \iso \mathrm{pEns}_{/\mathcal{K} \times X}.
 \]
 Allerdings können wir beim Isomorphismus
 \[
@@ -215,13 +219,15 @@ Eigenschaft:
   F(U)$ mit $s |_{V_i} = s_i$.
 \end{quote}
 
-Oder äquivalent:
+Oder äquivalent, falls wir für $(V_i)_{i \in I}$ eine unter endlichen
+Schnitten stabile Überdeckung und als Systemmorphismen die
+Restriktionen wählen:
 
-\[ F(U) = \lim F(V_i) . \]
+\[ F(U) = \lim_{i \in I} F(V_i) . \]
 
 \begin{satz}
-  Sei $X$ ein topologischer Raum mit Basis $\B$. Dann gibt es
-  eine Äquivalenz von Kategorien
+  Sei $X$ ein topologischer Raum mit Basis $\B$. Dann gibt es eine
+  Äquivalenz von Kategorien
 
   \[ \EnsX \qiso \EnsB \]
 
@@ -229,24 +235,12 @@ Oder äquivalent:
 \end{satz}
 \begin{proof}
   Wir konstruieren einen Quasi-Inversen: Sei dazu $F \in \EnsB$ und $U
-  = \bigcup_{i \in I} U_i$ eine Vereinigung von Mengen $U_i \in
-  \B$. Wir setzen $\hat{F}(U) = \lim F(U_i)$ und prüfen die
+  = \bigcup_{i \in I} U_i$ eine unter endlichen Schnitten stabile
+  Überdeckung von $U \open X$ durch Basismengen $U_i \in \B$. Wir
+  setzen $\hat{F}(U) = \lim F(U_i)$ und prüfen die
   Wohldefiniertheit. Sei $U = \bigcup_{j \in J} V_j$ eine weitere
-  Überdeckung von $U$ durch Basismengen $V_j \in \B$.
-
-  %% Durch Übergang zu einer gemeinsamen Verfeinerung $(U_i \cap
-  %% V_j)_{i,j}$ können wir annehmen, dass $(V_j)_{j \in J}$ eine
-  %% Verfeinerung von $(U_i)_{i \in I}$ ist.
-  %% Restriktionen liefern einen Morphismus von Systemen $(F(U_i))_{i \in
-  %%   I} \to (F(V_j))_{j \in J}$ und somit auch in den Limites: $\lim
-  %% F(U_i) \to \lim F(V_j)$. Diese Abbildung ist bijektiv, da ein
-  %% verträgliches Tupel von Schnitten $s_j \in F(V_j)$ nach der
-  %% Garbenbedingung auf Basismengen wegen $U_i = \bigcup_{j \in J} (U_i
-  %% \cap V_j)$ ein eindeutiges verträgliches Tupel von Schnitten über
-  %% $U_i$ definiert. Somit ist der Quasi-Inverse tatsächlich eine
-  %% wohldefinierte Zuordnung $F \mapsto \hat{F}$.
-
-  Nun gilt nach der Garbeneigenschaft auf den Basismengen
+  solche Überdeckung von $U$ durch Basismengen $V_j \in \B$. Nun gilt
+  nach der Garbeneigenschaft auf den Basismengen:
 
   \[ \lim_i F(U_i)
   \iso \lim_i \lim_j F(U_i \cap V_j)
@@ -255,14 +249,15 @@ Oder äquivalent:
 
   Unsere Zurdnung $F \mapsto \hat{F}$ ist also wohldefiniert. Das Bild
   $\hat{F}$ ist tatsächlich eine Garbe, denn falls $U = \bigcup_{i \in
-    I} U_i$ eine beliebige Überdeckung durch offene Mengen und $U_i =
-  \bigcup_{j} V_{ij}$ jeweils eine Übderdeckung durch Basismengen
-  $V_{ij} \in \B$ ist, so gilt
+    I} U_i$ eine unter endlichen Schnitten stabile Überdeckung durch
+  offene Mengen und $U_i = \bigcup_{j} V_{ij}$ jeweils eine unter endlichen
+  Schnitten stabile Überdeckung durch Basismengen $V_{ij} \in \B$ ist,
+  so gilt
 
-  \[ \hat{F}(U) = \lim_{i.j} F(V_{ij}) = \lim_i F(U_i) \]
+  \[ \hat{F}(U) = \lim_{i,j} F(V_{ij}) \iso \lim_i \hat{F}(U_i) \]
 
-  zuerst nach Definition und dann wieder nach der Transitivität von
-  Limites und der Garbenbedingung für Basismengen.
+  zuerst nach der Definition von $\hat{F}(U)$ und dann wieder nach der
+  Transitivität von Limites und der Definition der $\hat{F}(U_i)$.
   
   Die Funktorialität unserer Zuordnung folgt direkt aus der
   Funktorialität des Limes. Da für eine Basismenge $U \in \B$ mit der
@@ -273,14 +268,14 @@ Oder äquivalent:
 \begin{satz}
   Der Funktor
   \[
-  [\mathcal{K}\op, \EnsX] \to \EnsB \qiso \Ens_{/\mathcal{K} \times X}
+  [\mathcal{K}, \EnsX] \to \EnsB \qiso \Ens_{/\mathcal{K} \times X}
   \]
   ist eine Äquivalenz von Kategorien.
 \end{satz}
 \begin{proof}
   Wir haben schon den Isomorphismus auf den Prägarbenkategorien
 
-  \[ [\mathcal{K}\op, \pEnsX] \iso [\B\op, \Ens] \]
+  \[ [\mathcal{K}, \pEnsX] \iso [\B\op, \Ens] \]
 
   und müssen nur noch zeigen, dass $[\mathcal{K}\op, \EnsX]$ und
   $\EnsB$ durch äquivalente Bedingungen definierte volle
