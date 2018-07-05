@@ -1,0 +1,72 @@
+% include latex header (\usepackage, \newcommand etc.) 
+\input{header.tex}
+
+\begin{document}
+
+\title{Simpliziale Garben}
+\author{Fabian Glöckle}
+\date{\today}
+% \maketitle
+
+\section{Schwach konstruierbare Garben auf Simplizialkomplexen}
+
+In diesem Abschnitt bezeichne $\mathcal{K}$ einen lokal-endlichen
+Simplizialkomplex und $|\mathcal{K}|$ seine geometrische
+Realisierung. Wir erhalten eine stetige Abbildung
+
+\[ p: |\mathcal{K}| \to \mathcal{K}, \]
+
+genannt Simplexanzeiger oder Indikatorabbildung, der einem Punkt $x
+\in |\mathcal{K}|$ in der geometrischen Realisierung den eindeutigen
+Simplex $\sigma \in \mathcal{K}$ mit $x \in |\sigma|$ zuordnet.
+
+% TODO: def geom Realisierung wie in KS mit |\sigma|
+% TODO: Stetigkeit von p bzgl Ordnungstopologie
+% TODO: wo benötigen wir lok endl?
+
+\begin{defn}
+  Eine Garbe $F \in \AbKr$ heißt schwach $\Kreal$-konstruierbar (oder
+  kurz: schwach konstruierbar), falls für alle $\sigma \in \K$, die
+  Einschränkungen $F|_{|\sigma|}$ konstante Garben sind. Wir
+  bezeichnen die volle Unterkategorie der schwach konstruierbaren
+  Garben in $\AbKr$ mit $\sKonsK$.
+
+  Eine derivierte Garbe $F \in \DerAbK$ heißt schwach
+  $\Kreal$-konstruierbar, falls für alle $j \in \Z$ die
+  Kohomologiegarben $H^j(F)$ schwach konstruierbar sind. Wir
+  bezeichnen die volle Unterkategorie der schwach konstruierbaren
+  derivierten Garben in $\DerAbK$ mit $\DerskK$.
+\end{defn}
+
+
+
+\begin{prop}
+  Für $F \in \DerAbK$ sind äquivalent:
+  \begin{enumerate}
+  \item F ist schwach $\Kreal$-konstruierbar
+  \item Die Koeinheit der Adjunktion ist auf $F$ ein Isomorphismus
+    $p^*p_*F \iso F$.
+  \end{enumerate}
+\end{prop}
+\begin{proof}
+  % TODO
+\end{proof}
+
+\begin{lemma}
+  Die Kategorie $\sKonsK$ ist abelsch.
+\end{lemma}
+\begin{proof}
+  Durch den offensichtlichen Isomorphismus zur Kategorie der abelschen
+  Gruppen (durch den Funktor der globalen Schnitte) ist die Kategorie
+  der konstanten abelschen Garben auf einem topologischen Raum $X$
+  eine abelsche Kategorie. Nun folgt die Aussage aus der Exaktheit des
+  Pullbacks $i_{\sigma}^*$ entlang den Inklusionen $i_{\sigma}:
+  |\sigma| \xhookrightarrow{} \Kreal$.
+\end{proof}
+
+\begin{prop}
+  Sei $F \in \Ket^+(\AbKr)$ aus S-azyklischen mit schwach konstruierbaren Kohomologiegarben. Dann ist die Koeinheit ein Quasiisomorphismus. (???)
+\end{prop}
+
+
+\end{document}
