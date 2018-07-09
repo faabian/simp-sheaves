@@ -10,6 +10,10 @@
 
 \section{Schwach konstruierbare Garben auf Simplizialkomplexen}
 
+Ziel dieses Abschnitts ist die Charakterisierung schwach
+konstruierbarer Garben auf Simplizialkomplexen und ihrer derivierten
+Kategorie. Die Darstellung folgt Kashiwara-Schapira.
+
 In diesem Abschnitt bezeichne $\mathcal{K}$ einen lokal-endlichen
 Simplizialkomplex und $|\mathcal{K}|$ seine geometrische
 Realisierung. Wir erhalten eine stetige Abbildung
@@ -38,19 +42,7 @@ Simplex $\sigma \in \mathcal{K}$ mit $x \in |\sigma|$ zuordnet.
   derivierten Garben in $\DerAbK$ mit $\DerskK$.
 \end{defn}
 
-
-
-\begin{prop}
-  Für $F \in \DerAbK$ sind äquivalent:
-  \begin{enumerate}
-  \item F ist schwach $\Kreal$-konstruierbar
-  \item Die Koeinheit der Adjunktion ist auf $F$ ein Isomorphismus
-    $p^*p_*F \iso F$.
-  \end{enumerate}
-\end{prop}
-\begin{proof}
-  % TODO
-\end{proof}
+Wir bemerken zunächst:
 
 \begin{lemma}
   Die Kategorie $\sKonsK$ ist abelsch.
@@ -64,9 +56,72 @@ Simplex $\sigma \in \mathcal{K}$ mit $x \in |\sigma|$ zuordnet.
   |\sigma| \xhookrightarrow{} \Kreal$.
 \end{proof}
 
-\begin{prop}
-  Sei $F \in \Ket^+(\AbKr)$ aus S-azyklischen mit schwach konstruierbaren Kohomologiegarben. Dann ist die Koeinheit ein Quasiisomorphismus. (???)
-\end{prop}
+Entscheidend ist die folgende Charakterisierung schwach
+$\Kreal$-konstruierbarer derivierter Garben:
 
+\begin{prop}
+  Für $F \in \DerAbK$ sind äquivalent:
+  %  TODO: oder F \in \AbKr?
+  \begin{enumerate}
+  \item F ist schwach $\Kreal$-konstruierbar
+  \item Die Koeinheit der Adjunktion ist auf $F$ ein Isomorphismus
+    $p^*p_*F \iso F$.
+  \end{enumerate}
+\end{prop}
+\begin{proof}
+  % TODO
+\end{proof}
+
+% beta-azyklisch
+
+Wir bezeichnen den Funktor $p^*p_*: \AbX \to \sKons$ kurz mit $\beta$
+und bemerken, dass er nach obiger Proposition ein Rechtsadjungierter
+zur Inklusion $\iota: \sKons \to \AbKr$ ist:
+
+% TODO: wie?
+
+Als Komposition zweier linksexakter Funktoren ist $\beta$ natürlich
+wieder linksexakt. 
+
+\begin{prop}
+  Sei $F \in \Ket^+(\AbKr)$ ein gegen die Richtung der Pfeile
+  beschränkter Kettenkomplex aus $\beta$-azyklischen Garben mit
+  ebenfalls schwach $\Kreal$-konstruierbaren Kohomologiegarben
+  $H^q(F)$. Dann ist $\beta F \to F$ ein Quasi-Isomorphismus.
+\end{prop}
+\begin{proof}
+  Wir schneiden aus dem Kettenkomplex $(F^n, d^n)$ kurze exakte
+  Sequenzen aus:
+  
+  \begin{alignat*}{4}
+    H^0 = \ker d^0 \inj F^0 \surj &\im d^0 & & \\
+    &\im d^0& {} \inj {} &\ker d^1& {}\surj {} &H^1& \\
+    && &\ker d^1& {} \inj {} &F^1& {} \surj {} \im d^1 \\
+    \vdots
+  \end{alignat*}
+  
+  Sind in einer kurzen exakten Sequenz zwei der drei Objekte
+  azyklisch, so nach dem Fünferlemma auch das dritte. Da nach
+  Voraussetzung $F^q$ und $H^q$ $\beta$-azyklisch sind, sind alle oben
+  betrachteten Objekte $\beta$-azyklisch und die kurzen exakten
+  Sequenzen bleiben exakt nach Anwendung von $\beta$. Es folgt
+  $H^q(\beta F) \iso \beta (H^q F)$ und weiter $\beta (H^q F) \iso H^q
+  F$ nach der schwachen Konstruierbarkeit von $H^q F$.
+\end{proof}
+
+Damit ist der entscheidende Schritt für unser Ziel gezeigt. Wir
+erhalten:
+
+\begin{theorem}
+  $\K$ lokal endlicher Simplizialkomplex beschränkter Dimension ??
+
+  Die oben definierten Funktoren $\iota, \beta$ induzieren auf den
+  derivierten Kategorien eine Äquivalenz
+
+  \[ \Der^b(\sKons(\K)) \mathrel{\mathop{\rightleftarrows}^{\iota}_{R \beta}} \DerbskK. \]
+\end{theorem}
+\begin{proof}
+  
+\end{proof}
 
 \end{document}
