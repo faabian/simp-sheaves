@@ -11,12 +11,18 @@
 \setlength{\parskip}{\medskipamount}
 \setlength{\parindent}{0pt}
 
+\theoremstyle{plain}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{prop}[theorem]{Proposition}
 \newtheorem{kor}[theorem]{Korollar}
 \newtheorem{satz}[theorem]{Satz}
+
+\theoremstyle{definition}
 \newtheorem{defn}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{bem}[theorem]{Bemerkung}
 
 \DeclareMathOperator{\Cat}{Cat}
 \DeclareMathOperator{\poset}{poset}
@@ -33,6 +39,7 @@
 \DeclareMathOperator{\Ket}{Ket}
 \DeclareMathOperator{\EnsB}{Ens_{/\B}}
 \DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Id}{Id}
 
 \newcommand{\B}{\mathcal{B}}
 \newcommand{\op}{^\mathrm{op}}
@@ -40,12 +47,12 @@
 \newcommand{\qiso}{\xrightarrow{\approx}}
 \newcommand{\open}{\subset\kern-0.58em\circ}  % only possible in math mode
 \newcommand{\K}{\mathcal{K}}
-\newcommand{\Kreal}{|\K|}
 \newcommand{\Z}{\mathbb{Z}}
-\newcommand{\DerAbK}{\Der(\Ab_{/\Kreal})}
-\newcommand{\DerskK}{\Der_{\mathrm{sk}}(\Kreal)}
-\newcommand{\DerbskK}{\Der_{\mathrm{sk}}(\Kreal)}
-\newcommand{\AbKr}{\Ab_{/\Kreal}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\DerAbK}{\Der(\Ab_{/|\K|})}
+\newcommand{\DerskK}{\Der_{\mathrm{sk}}(|\K|)}
+\newcommand{\DerpskK}{\Der^+_{\mathrm{sk}}(|\K|)}
+\newcommand{\AbKr}{\Ab_{/|\K|}}
 \newcommand{\sKonsK}{\sKons(\K)}
 \newcommand{\inj}{\hookrightarrow}
 \newcommand{\surj}{\twoheadrightarrow}

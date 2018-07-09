@@ -14,9 +14,22 @@ Ziel dieses Abschnitts ist die Charakterisierung schwach
 konstruierbarer Garben auf Simplizialkomplexen und ihrer derivierten
 Kategorie. Die Darstellung folgt Kashiwara-Schapira.
 
-In diesem Abschnitt bezeichne $\mathcal{K}$ einen lokal-endlichen
-Simplizialkomplex und $|\mathcal{K}|$ seine geometrische
-Realisierung. Wir erhalten eine stetige Abbildung
+In diesem Abschnitt bezeichne $(V, \K)$ einen lokal-endlichen
+Simplizialkomplex mit Eckenmenge $V$. Für einen Simplex $\sigma \in
+\K$ definieren wir seine geometrische Realisierung $|\sigma| \subset
+\R^V = \Ens(V, \R)$:
+
+\[ |\sigma| = \{ x \in \R^V | x(p) = 0 \text{ für } p \notin \sigma,
+x(p) > 0 \text{ für } p \in \sigma,
+\sum_{p \in V} x(p) = 1 \}, \]
+
+sowie die geometrische Realisierung $|\K| \subset \R^V$ von $\K$
+
+\[ \bigcup_{\sigma \in \K} |\sigma|, \]
+
+jeweils versehen mit der induzierten Topologie von $\R^V$.
+
+Wir erhalten eine Abbildung
 
 \[ p: |\mathcal{K}| \to \mathcal{K}, \]
 
@@ -24,19 +37,29 @@ genannt Simplexanzeiger oder Indikatorabbildung, der einem Punkt $x
 \in |\mathcal{K}|$ in der geometrischen Realisierung den eindeutigen
 Simplex $\sigma \in \mathcal{K}$ mit $x \in |\sigma|$ zuordnet.
 
-% TODO: def geom Realisierung wie in KS mit |\sigma|
-% TODO: Stetigkeit von p bzgl Ordnungstopologie
+\begin{lemma}
+  Der Simplexanzeiger $p: |\K| \to \K$ ist stetig.
+\end{lemma}
+\begin{proof}
+  Das Urbild einer Basismenge $(\geq \sigma)$ ist
+
+  \[ p^{-1}((\geq \sigma)) = |\K| \cap \{x \in \R^V | x(p) > 0 \text{ für }
+  p \in \sigma \}, \]
+
+  der offene Stern um $\sigma$, den wir auch als $U(\sigma)$ notieren.
+\end{proof}
+
 % TODO: wo benötigen wir lok endl?
 
 \begin{defn}
-  Eine Garbe $F \in \AbKr$ heißt schwach $\Kreal$-konstruierbar (oder
+  Eine Garbe $F \in \AbKr$ heißt schwach $|\K|$-konstruierbar (oder
   kurz: schwach konstruierbar), falls für alle $\sigma \in \K$, die
   Einschränkungen $F|_{|\sigma|}$ konstante Garben sind. Wir
   bezeichnen die volle Unterkategorie der schwach konstruierbaren
   Garben in $\AbKr$ mit $\sKonsK$.
 
   Eine derivierte Garbe $F \in \DerAbK$ heißt schwach
-  $\Kreal$-konstruierbar, falls für alle $j \in \Z$ die
+  $|\K|$-konstruierbar, falls für alle $j \in \Z$ die
   Kohomologiegarben $H^j(F)$ schwach konstruierbar sind. Wir
   bezeichnen die volle Unterkategorie der schwach konstruierbaren
   derivierten Garben in $\DerAbK$ mit $\DerskK$.
@@ -53,17 +76,16 @@ Wir bemerken zunächst:
   der konstanten abelschen Garben auf einem topologischen Raum $X$
   eine abelsche Kategorie. Nun folgt die Aussage aus der Exaktheit des
   Pullbacks $i_{\sigma}^*$ entlang den Inklusionen $i_{\sigma}:
-  |\sigma| \xhookrightarrow{} \Kreal$.
+  |\sigma| \xhookrightarrow{} |\K|$.
 \end{proof}
 
 Entscheidend ist die folgende Charakterisierung schwach
-$\Kreal$-konstruierbarer derivierter Garben:
+$|\K|$-konstruierbarer derivierter Garben:
 
 \begin{prop}
-  Für $F \in \DerAbK$ sind äquivalent:
-  %  TODO: oder F \in \AbKr?
+  Für $F \in \AbKr$ sind äquivalent:
   \begin{enumerate}
-  \item F ist schwach $\Kreal$-konstruierbar
+  \item F ist schwach $|\K|$-konstruierbar
   \item Die Koeinheit der Adjunktion ist auf $F$ ein Isomorphismus
     $p^*p_*F \iso F$.
   \end{enumerate}
@@ -72,8 +94,6 @@ $\Kreal$-konstruierbarer derivierter Garben:
   % TODO
 \end{proof}
 
-% beta-azyklisch
-
 Wir bezeichnen den Funktor $p^*p_*: \AbX \to \sKons$ kurz mit $\beta$
 und bemerken, dass er nach obiger Proposition ein Rechtsadjungierter
 zur Inklusion $\iota: \sKons \to \AbKr$ ist:
@@ -81,13 +101,43 @@ zur Inklusion $\iota: \sKons \to \AbKr$ ist:
 % TODO: wie?
 
 Als Komposition zweier linksexakter Funktoren ist $\beta$ natürlich
-wieder linksexakt. 
+wieder linksexakt.
+
+Der allgemeinen Terminologie folgend bezeichnen wir eine Garbe $F \in
+\AbKr$ $\beta$-azyklisch, falls sie keine höheren direkten Bilder hat,
+also falls
+
+\[ R^k\beta F = 0 \text{ für alle } k > 0.  \]
+
+Später benötigen wir die folgende Charakterisierung
+$\beta$-azyklischer Garben:
+
+\begin{prop} \label{sk-ist-azyk}
+  Eine Garbe $F \in \AbKr$ ist $\beta$-azyklisch genau dann, wenn
+  $H^k(U(\sigma); F) = 0$ für alle $\sigma \in \K, k >
+  0$. Insbesondere gilt:
+  \begin{enumerate}
+  \item Schwach $|\K|$-konstruierbare Garben sind $\beta$-azyklisch.
+  \item Welke Garben sind $\beta$-azyklisch.
+  \end{enumerate}  
+\end{prop}
+\begin{proof}
+  Nach der Charakterisierung höherer direkter Bilder ist $R^q \beta F
+  = p^* R^q p_* F$ für $F \in \AbKr$ isomorph zur Garbifizierung der
+  Prägarbe
+
+  \[ (\geq \sigma) \mapsto H^q(p^{-1}((\geq \sigma)); F) = H^q(p^{-1}(U(\sigma)); F). \]
+
+  ...
+\end{proof}
+
+% Garbifizierung der Kohomologie-von-U-Prägarbe
 
 \begin{prop}
   Sei $F \in \Ket^+(\AbKr)$ ein gegen die Richtung der Pfeile
-  beschränkter Kettenkomplex aus $\beta$-azyklischen Garben mit
-  ebenfalls schwach $\Kreal$-konstruierbaren Kohomologiegarben
-  $H^q(F)$. Dann ist $\beta F \to F$ ein Quasi-Isomorphismus.
+  beschränkter Kettenkomplex aus $\beta$-azy\-klischen Garben mit
+  schwach $|\K|$-kon\-stru\-ier\-bar\-en Kohomologiegarben $H^q(F)$. Dann
+  ist $\beta F \to F$ ein Quasi-Iso\-mor\-phis\-mus.
 \end{prop}
 \begin{proof}
   Wir schneiden aus dem Kettenkomplex $(F^n, d^n)$ kurze exakte
@@ -102,26 +152,43 @@ wieder linksexakt.
   
   Sind in einer kurzen exakten Sequenz zwei der drei Objekte
   azyklisch, so nach dem Fünferlemma auch das dritte. Da nach
-  Voraussetzung $F^q$ und $H^q$ $\beta$-azyklisch sind, sind alle oben
-  betrachteten Objekte $\beta$-azyklisch und die kurzen exakten
-  Sequenzen bleiben exakt nach Anwendung von $\beta$. Es folgt
-  $H^q(\beta F) \iso \beta (H^q F)$ und weiter $\beta (H^q F) \iso H^q
-  F$ nach der schwachen Konstruierbarkeit von $H^q F$.
+  Voraussetzung und \ref{sk-ist-azyk} $F^q$ und $H^q$
+  $\beta$-azyklisch sind, sind alle oben betrachteten Objekte
+  $\beta$-azyklisch und die kurzen exakten Sequenzen bleiben exakt
+  nach Anwendung von $\beta$. Es folgt $H^q(\beta F) \iso \beta (H^q
+  F)$ und weiter $\beta (H^q F) \iso H^q F$ nach der schwachen
+  Konstruierbarkeit von $H^q F$.
 \end{proof}
 
 Damit ist der entscheidende Schritt für unser Ziel gezeigt. Wir
 erhalten:
 
 \begin{theorem}
-  $\K$ lokal endlicher Simplizialkomplex beschränkter Dimension ??
+  Sei $\K$ ein lokal-endlicher Simplizialkomplex. % ???
 
   Die oben definierten Funktoren $\iota, \beta$ induzieren auf den
   derivierten Kategorien eine Äquivalenz
 
-  \[ \Der^b(\sKons(\K)) \mathrel{\mathop{\rightleftarrows}^{\iota}_{R \beta}} \DerbskK. \]
+  \[ \Der^+(\sKons(\K)) \mathrel{\mathop{\rightleftarrows}^{\iota}_{R \beta}} \DerpskK. \]
 \end{theorem}
 \begin{proof}
-  
+  Die Kategorien $\Der^+(\sKons(\K))$ und $\DerpskK$ haben genug
+  Injektive.  Mit der Grothendieck-Spektralsequenz für derivierte
+  Kategorien (\cite{TD}, 3.4.18) erhalten wir somit
+
+  \[ R\beta \circ R\iota \iso R(\beta \circ \iota) \iso R \Id = \Id, \]
+
+  da welke Garben $\beta$-azyklisch sind, sowie
+
+  \[ \iota \circ R \beta \iso \Id \]
+
+  nach der vorangegangenen Proposition.
 \end{proof}
+\begin{bem}
+  Kashiwara und Schapira beschränken sich auf die Äquivalenz der
+  beschränkten derivierten Kategorien, allerdings mit der gleichen
+  Argumentation. In \cite{KS} 1.7.12 wird eine allgemeine Aussage für
+  solche Situationen gezeigt, die hier aber m.E. nicht benötigt wird.
+\end{bem}
 
 \end{document}
