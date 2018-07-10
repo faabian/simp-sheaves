@@ -12,16 +12,16 @@
 
 Ziel dieses Abschnitts ist die Charakterisierung schwach
 konstruierbarer Garben auf Simplizialkomplexen und ihrer derivierten
-Kategorie. Die Darstellung folgt Kashiwara-Schapira.
+Kategorie. Die Darstellung folgt im Wesentlichen \cite{KS} und \cite{WS}.
 
 In diesem Abschnitt bezeichne $(V, \K)$ einen lokal-endlichen
 Simplizialkomplex mit Eckenmenge $V$. Für einen Simplex $\sigma \in
 \K$ definieren wir seine geometrische Realisierung $|\sigma| \subset
 \R^V = \Ens(V, \R)$:
 
-\[ |\sigma| = \{ x \in \R^V | x(p) = 0 \text{ für } p \notin \sigma,
-x(p) > 0 \text{ für } p \in \sigma,
-\sum_{p \in V} x(p) = 1 \}, \]
+\[ |\sigma| = \{ x \in \R^V | x(v) = 0 \text{ für } v \notin \sigma,
+x(v) > 0 \text{ für } v \in \sigma,
+\sum_{v \in V} x(v) = 1 \}, \]
 
 sowie die geometrische Realisierung $|\K| \subset \R^V$ von $\K$
 
@@ -43,8 +43,8 @@ Simplex $\sigma \in \mathcal{K}$ mit $x \in |\sigma|$ zuordnet.
 \begin{proof}
   Das Urbild einer Basismenge $(\geq \sigma)$ ist
 
-  \[ p^{-1}((\geq \sigma)) = |\K| \cap \{x \in \R^V | x(p) > 0 \text{ für }
-  p \in \sigma \}, \]
+  \[ p^{-1}((\geq \sigma)) = |\K| \cap \{x \in \R^V | x(v) > 0 \text{ für }
+  v \in \sigma \}, \]
 
   der offene Stern um $\sigma$, den wir auch als $U(\sigma)$ notieren.
 \end{proof}
@@ -82,12 +82,13 @@ Wir bemerken zunächst:
 Entscheidend ist die folgende Charakterisierung schwach
 $|\K|$-konstruierbarer derivierter Garben:
 
-\begin{prop}
+\begin{prop} \cite{WS}
   Für $F \in \AbKr$ sind äquivalent:
   \begin{enumerate}
-  \item F ist schwach $|\K|$-konstruierbar
+  \item $F$ ist schwach $|\K|$-konstruierbar
   \item Die Koeinheit der Adjunktion ist auf $F$ ein Isomorphismus
     $p^*p_*F \iso F$.
+  \item $F$ liegt im wesentlichen Bild des Rückzugs $p^*$.
   \end{enumerate}
 \end{prop}
 \begin{proof}
@@ -101,11 +102,9 @@ zur Inklusion $\iota: \sKons \to \AbKr$ ist:
 % TODO: wie?
 
 Als Komposition zweier linksexakter Funktoren ist $\beta$ natürlich
-wieder linksexakt.
-
-Der allgemeinen Terminologie folgend bezeichnen wir eine Garbe $F \in
-\AbKr$ $\beta$-azyklisch, falls sie keine höheren direkten Bilder hat,
-also falls
+wieder linksexakt. Der allgemeinen Terminologie folgend bezeichnen wir
+eine Garbe $F \in \AbKr$ $\beta$-azyklisch, falls sie keine höheren
+direkten Bilder hat, also falls
 
 \[ R^k\beta F = 0 \text{ für alle } k > 0.  \]
 
@@ -115,7 +114,9 @@ $\beta$-azyklischer Garben:
 \begin{prop} \label{sk-ist-azyk}
   Eine Garbe $F \in \AbKr$ ist $\beta$-azyklisch genau dann, wenn
   $H^k(U(\sigma); F) = 0$ für alle $\sigma \in \K, k >
-  0$. Insbesondere gilt:
+  0$.
+
+  Insbesondere gilt:
   \begin{enumerate}
   \item Schwach $|\K|$-konstruierbare Garben sind $\beta$-azyklisch.
   \item Welke Garben sind $\beta$-azyklisch.
@@ -174,15 +175,16 @@ erhalten:
 \begin{proof}
   Die Kategorien $\Der^+(\sKons(\K))$ und $\DerpskK$ haben genug
   Injektive.  Mit der Grothendieck-Spektralsequenz für derivierte
-  Kategorien (\cite{TD}, 3.4.18) erhalten wir somit
+  Kategorien (\cite{TD}, 3.4.18) und der Exaktheit von $\iota$
+  erhalten wir somit
 
-  \[ R\beta \circ R\iota \iso R(\beta \circ \iota) \iso R \Id = \Id, \]
+  \[ R\beta \circ R\iota \iso R(\beta \circ \iota) \iso R \Id = \Id \]
 
-  da welke Garben $\beta$-azyklisch sind, sowie
+  auf $\Der^+(\sKons(\K))$, da welke Garben $\beta$-azyklisch sind, sowie
 
   \[ \iota \circ R \beta \iso \Id \]
 
-  nach der vorangegangenen Proposition.
+  auf $\DerpskK$ nach der vorangegangenen Proposition.
 \end{proof}
 \begin{bem}
   Kashiwara und Schapira beschränken sich auf die Äquivalenz der

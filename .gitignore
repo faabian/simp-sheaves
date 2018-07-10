@@ -1,6 +1,9 @@
 ## Emacs autosave files
 *~
 
+## Emacs TeX files
+_TZ*
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
