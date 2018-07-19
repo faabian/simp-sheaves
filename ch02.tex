@@ -82,17 +82,48 @@ Wir bemerken zunächst:
 Entscheidend ist die folgende Charakterisierung schwach
 $|\K|$-konstruierbarer derivierter Garben:
 
-\begin{prop} \cite{WS}
+\begin{prop}[\cite{WS}]
   Für $F \in \AbKr$ sind äquivalent:
   \begin{enumerate}
   \item $F$ ist schwach $|\K|$-konstruierbar
   \item Die Koeinheit der Adjunktion ist auf $F$ ein Isomorphismus
     $p^*p_*F \iso F$.
   \item $F$ liegt im wesentlichen Bild des Rückzugs $p^*$.
+  \item Die Restriktion $F(U(\sigma)) \to F_x$ ist für alle $\sigma
+    \in \K$ und $x \in |\sigma|$ ein Isomorphismus.
   \end{enumerate}
 \end{prop}
 \begin{proof}
-  % TODO
+  Die Äquivalenz $(2) \Iff (3)$ ist allgemein kategorientheoretischer
+  Natur. Dabei ist $(3) \Implies (2)$ offensichtlich (nimm $p_* F$)
+  und $(2) \Implies (3)$ folgt aus den Dreiecksidentitäten.
+
+  Die Äquivalenz $(2) \Iff (4)$ folgt aus der Bestimmung der Halme von
+  $p^*p_* F$. Zunächst bemerken wir, dass in $\K$ die Menge $(\geq
+  \sigma)$ die kleinste offene Umgebung von $\sigma$ ist, und wir also
+  $p_*F((\geq \sigma)) \iso (p_*F)_{\sigma}$ erhalten. Somit gilt für
+  $x \in |\sigma|$:
+  \[ (p^*p_*F)_x \iso (p_*F)_{\sigma} \iso p_*F((\geq \sigma) \iso F(U(\sigma)). \]
+  Dabei wurde die Beschreibung der Halme des Rückzugs (mit $p(x) =
+  \sigma$), obige Darstellung der Halme auf $\K$ und die Definition
+  des Vorschubs (mit $p^{-1}((\geq \sigma)) = U(\sigma)$ verwendet.
+
+  % TODO (3) \Iff (4)
+\end{proof}
+
+Wir tragen das benötigte Lemma nach.
+
+\begin{lemma}[\cite{TG}, 2.1.41]
+  Sei $X$ ein topologischer Raum, $F \in \EnsX$ eine Garbe auf $X$,
+  für die die Restriktion $\Gamma F \iso F_x$ für alle $x \in X$
+  bijektiv ist. Dann ist $F$ eine konstante Garbe auf $X$ mit Halm
+  $\Gamma F$.
+\end{lemma}
+\begin{proof}
+  Bezeichne $c: X \to \mathrm{top}$ die konstante Abbildung. Die
+  Koeinheit der Adjunktion $c^* c_* F \to F$ induziert auf den Halmen
+  gerade die vorausgesetzten Bijektionen, ist also ein
+  Garben-Isomorphismus.
 \end{proof}
 
 Wir bezeichnen den Funktor $p^*p_*: \AbX \to \sKons$ kurz mit $\beta$
@@ -103,8 +134,8 @@ zur Inklusion $\iota: \sKons \to \AbKr$ ist:
 
 Als Komposition zweier linksexakter Funktoren ist $\beta$ natürlich
 wieder linksexakt. Der allgemeinen Terminologie folgend bezeichnen wir
-eine Garbe $F \in \AbKr$ $\beta$-azyklisch, falls sie keine höheren
-direkten Bilder hat, also falls
+eine Garbe $F \in \AbKr$ $\beta$-azyklisch, falls ihre höheren
+Derivierten von $\beta$ verschwinden, also falls
 
 \[ R^k\beta F = 0 \text{ für alle } k > 0.  \]
 
