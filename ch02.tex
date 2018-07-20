@@ -103,10 +103,10 @@ $|\K|$-konstruierbarer derivierter Garben:
   \sigma)$ die kleinste offene Umgebung von $\sigma$ ist, und wir also
   $p_*F((\geq \sigma)) \iso (p_*F)_{\sigma}$ erhalten. Somit gilt für
   $x \in |\sigma|$:
-  \[ (p^*p_*F)_x \iso (p_*F)_{\sigma} \iso p_*F((\geq \sigma) \iso F(U(\sigma)). \]
+  \[ (p^*p_*F)_x \iso (p_*F)_{\sigma} \iso p_*F((\geq \sigma)) \iso F(U(\sigma)). \]
   Dabei wurde die Beschreibung der Halme des Rückzugs (mit $p(x) =
   \sigma$), obige Darstellung der Halme auf $\K$ und die Definition
-  des Vorschubs (mit $p^{-1}((\geq \sigma)) = U(\sigma)$ verwendet.
+  des Vorschubs (mit $p^{-1}((\geq \sigma)) = U(\sigma)$) verwendet.
 
   Die Implikation $(4) \Implies (1)$ folgt direkt aus dem
   nachgestellten Lemma, angewandt auf die Einschränkung von $F$ auf
@@ -115,18 +115,36 @@ $|\K|$-konstruierbarer derivierter Garben:
 
   Für die umgekehrte Richtung reicht es, die Aussage für die
   Einschränkung von $F$ auf $U(\sigma)$ zu zeigen. Wir betrachten für
-  $x \in |\sigma|$ und $t \in (0, 1]$ die Zusammenziehung
+  $x \in |\sigma|$ die Zusammenziehung
   \begin{align*}
-    h: U(\sigma) &\to U(\sigma), \\
-    y &\mapsto h_t(y) = t y + (1 - t) x.
+    h: (0, 1] \times U(\sigma) &\to U(\sigma), \\
+    (t, y) &\mapsto h(t, y) = t y + (1 - t) x.
   \end{align*}
   
-  Die Mengen $h_t(U(\sigma))$ bilden für $t \in (0, 1]$ eine
-    Umgebungsbasis von $x$. 
+  Die Mengen $h(\{t\} \times U(\sigma))$ bilden für $t \in (0, 1]$
+    eine Umgebungsbasis von $x$, wir müssen also nur noch den Kolimes
+    der Schnitte über diese Mengen bestimmen. Bezeichne $\pi: (0, 1]
+      \times U(\sigma) \to U(\sigma)$ die Projektion auf den zweiten
+      Faktor. Nach der simplizialen Konstanz von $F$ und wegen $h(t,
+      y) \in |\tau| \Iff y \in |\tau|$ ist der Rückzug $h^* F$
+      konstant auf den Fasern von $\pi$ und lässt sich somit nach dem
+      zweiten nachgestellten Lemma schreiben als $h^* F \iso \pi^*
+      \pi_* h^* F$. Damit erhalten wir wie gewünscht
+      
+      \[ F_x
+      \iso \colf_{t \in (0, 1]} F(h(\{t\} \times U(\sigma)))
+        \iso \colf_t \Gamma \iota_t^* h^* F
+        \iso \colf_t \Gamma \iota_t^* \pi^* pi_* h^* F
+        \iso \Gamma \id^* \pi_* h^* F
+        \iso \Gamma h^* F
+        \iso \Gamma F = F(U(\sigma)),
+        \]
+
+        im letzten Schritt nach der Surjektivität von $h$.
 
 \end{proof}
 
-Wir tragen das benötigte Lemma nach.
+Wir tragen die benötigten Lemmata nach.
 
 \begin{lemma}[\cite{TG}, 2.1.41]
   Sei $X$ ein topologischer Raum, $F \in \EnsX$ eine Garbe auf $X$,
@@ -140,6 +158,11 @@ Wir tragen das benötigte Lemma nach.
   gerade die vorausgesetzten Bijektionen, ist also ein
   Garben-Isomorphismus.
 \end{proof}
+
+\begin{lemma}
+  q^*q_* Iso falls q surjektiv, Garbe konstant auf Halmen und ex. stetiger Schnitt der abg einbettung ist
+  bew: brauche GK 4.3.19
+\end{lemma}
 
 Wir bezeichnen den Funktor $p^*p_*: \AbX \to \sKons$ kurz mit $\beta$
 und bemerken, dass er nach obiger Proposition ein Rechtsadjungierter
