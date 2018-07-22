@@ -80,7 +80,7 @@ Wir bemerken zunächst:
 \end{proof}
 
 Entscheidend ist die folgende Charakterisierung schwach
-$|\K|$-konstruierbarer derivierter Garben:
+$|\K|$-konstruierbarer Garben:
 
 \begin{prop}[\cite{WS}]
   Für $F \in \AbKr$ sind äquivalent:
@@ -90,7 +90,7 @@ $|\K|$-konstruierbarer derivierter Garben:
     $p^*p_*F \iso F$.
   \item $F$ liegt im wesentlichen Bild des Rückzugs $p^*$.
   \item Die Restriktion $F(U(\sigma)) \to F_x$ ist für alle $\sigma
-    \in \K$ und $x \in |\sigma|$ ein Isomorphismus.
+    \in \K$ und alle $x \in |\sigma|$ ein Isomorphismus.
   \end{enumerate}
 \end{prop}
 \begin{proof}
@@ -131,14 +131,14 @@ $|\K|$-konstruierbarer derivierter Garben:
       zweiten nachgestellten Lemma schreiben als $h^* F \iso \pi^*
       \pi_* h^* F$. Damit erhalten wir wie gewünscht
       
-      \[ F_x
-      \iso \colf_{t \in (0, 1]} F(h(\{t\} \times U(\sigma)))
-        \iso \colf_t \Gamma \iota_t^* h^* F
-        \iso \colf_t \Gamma \iota_t^* \pi^* pi_* h^* F
-        \iso \Gamma \id^* \pi_* h^* F
-        \iso \Gamma h^* F
-        \iso \Gamma F = F(U(\sigma)),
-        \]
+      \begin{align*}
+      F_x &\iso \colf\limits_{t \in (0, 1]} F(h(\{t\} \times U(\sigma))) \\
+        &\iso \colf\limits_{t \in (0, 1]} \Gamma \iota_t^* h^* F \\
+        &\iso \colf\limits_{t \in (0, 1]} \Gamma \iota_t^* \pi^* \pi_* h^* F \\
+        &\iso \Gamma \id^* \pi_* h^* F \\
+        &\iso \Gamma h^* F \\
+        &\iso \Gamma F = F(U(\sigma)),
+      \end{align*}
 
         im letzten Schritt nach der Surjektivität von $h$.
 
@@ -160,9 +160,20 @@ Wir tragen die benötigten Lemmata nach.
 \end{proof}
 
 \begin{lemma}
-  q^*q_* Iso falls q surjektiv, Garbe konstant auf Halmen und ex. stetiger Schnitt der abg einbettung ist
-  bew: brauche GK 4.3.19
+  Sei $X$ ein topologischer Raum, $F \in \EnsX$ eine Garbe auf $X$ und
+  $\pi: X \to Y$ stetig mit zusammenhängenden Fasern. Ist $F$ konstant
+  auf den Fasern von $\pi$, so ist die Koeinheit der Adjunktion auf
+  $F$ ein Isomorphismus $\pi^* \pi_* F \iso F$.
 \end{lemma}
+\begin{proof}
+  Es reicht, den Isomorphismus auf den Halmen zu zeigen. Die benötigte
+  Aussage
+  \[ \colf\limits_{U \ni \pi(x)} F(\pi^{-1}(U))
+  \iso \colf\limits_{V \ni x} F(V) \]
+  folgt dabei aus dem Fortsetzungsresultat, das die Konstanz von $F$
+  auf den Fasern von $\pi$ impliziert:
+  \[ F(\pi^{-1}(\pi(U))) \iso F(U) \quad \text{für alle} U \open X. \]
+\end{proof}
 
 Wir bezeichnen den Funktor $p^*p_*: \AbX \to \sKons$ kurz mit $\beta$
 und bemerken, dass er nach obiger Proposition ein Rechtsadjungierter
