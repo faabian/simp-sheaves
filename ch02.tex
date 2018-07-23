@@ -113,10 +113,23 @@ $|\K|$-konstruierbarer Garben:
   $U(\sigma)$, und der Tatsache, dass beliebige Einschränkungen
   konstanter Garben wieder konstant sind.
 
-  Für die umgekehrte Richtung reicht es, die Aussage für die
-  Einschränkung von $F$ auf $U(\sigma)$ zu zeigen. Wir betrachten für
+  %% Für die umgekehrte Richtung betrachten wir die Restriktion
+  %% $\Gamma(U(\sigma), F) \to F_x$. Diese ist bijektiv, falls wir jeden
+  %% Keim $s \in F_x$, repräsentiert durch $s \in F(V)$ für eine
+  %% o. E. zusammenhängende offene Teilmenge $V$ von $|\K|$, eindeutig zu
+  %% einem Schnitt über $U(\sigma)$ fortsetzen können. Klar ist, dass für
+  %% jedes $\tau \geq \sigma$ die Mengen $V \cap |\tau|$ zusammenhängende
+  %% offene nichtleere Teilmengen von $|\tau|$ sind und wir nach der
+  %% simplizialen Konstanz von $F$ die Einschränkungen $s|_{V \cap
+  %%   |\tau|}$ zu einem Schnitt über ganz $|\tau|$ fortsetzen
+  %% können. Entscheidend ist nun, dass die Fortsetzungen auch
+  %% untereinander verträglich sind und einen stetigen Schnitt über
+  %% $U(\sigma)$ definieren.
+  
+    Für die umgekehrte Richtung reicht es, die Aussage für die
+  Einschränkung von $F$ auf $U(\sigma)$ zu zeigen.  Wir betrachten für
   $x \in |\sigma|$ die Zusammenziehung
-  \begin{align*}
+    \begin{align*}
     h: (0, 1] \times U(\sigma) &\to U(\sigma), \\
     (t, y) &\mapsto h(t, y) = t y + (1 - t) x.
   \end{align*}
@@ -159,20 +172,15 @@ Wir tragen die benötigten Lemmata nach.
   Garben-Isomorphismus.
 \end{proof}
 
-\begin{lemma}
-  Sei $X$ ein topologischer Raum, $F \in \EnsX$ eine Garbe auf $X$ und
-  $\pi: X \to Y$ stetig mit zusammenhängenden Fasern. Ist $F$ konstant
-  auf den Fasern von $\pi$, so ist die Koeinheit der Adjunktion auf
-  $F$ ein Isomorphismus $\pi^* \pi_* F \iso F$.
+\begin{lemma}[\cite{TG}, 6.4.17]
+  Sei $X$ ein topologischer Raum, $I \subset \R$ ein nichtleeres
+  Intervall, $F \in \Ens_{/X \times I}$ eine Garbe und $\pi: X \times
+  I \to X$ die Projektion auf den ersten Faktor. Ist $F$ konstant auf
+  den Fasern von $\pi$, so ist die Koeinheit der Adjunktion auf $F$
+  ein Isomorphismus $\pi^* \pi_* F \iso F$.
 \end{lemma}
 \begin{proof}
-  Es reicht, den Isomorphismus auf den Halmen zu zeigen. Die benötigte
-  Aussage
-  \[ \colf\limits_{U \ni \pi(x)} F(\pi^{-1}(U))
-  \iso \colf\limits_{V \ni x} F(V) \]
-  folgt dabei aus dem Fortsetzungsresultat, das die Konstanz von $F$
-  auf den Fasern von $\pi$ impliziert:
-  \[ F(\pi^{-1}(\pi(U))) \iso F(U) \quad \text{für alle} U \open X. \]
+  
 \end{proof}
 
 Wir bezeichnen den Funktor $p^*p_*: \AbX \to \sKons$ kurz mit $\beta$
