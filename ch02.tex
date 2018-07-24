@@ -18,21 +18,15 @@ In diesem Abschnitt bezeichne $(V, \K)$ einen lokal-endlichen
 Simplizialkomplex mit Eckenmenge $V$. Für einen Simplex $\sigma \in
 \K$ definieren wir seine geometrische Realisierung $|\sigma| \subset
 \R^V = \Ens(V, \R)$:
-
 \[ |\sigma| = \{ x \in \R^V | x(v) = 0 \text{ für } v \notin \sigma,
-x(v) > 0 \text{ für } v \in \sigma,
-\sum_{v \in V} x(v) = 1 \}, \]
-
+   x(v) > 0 \text{ für } v \in \sigma,
+   \sum_{v \in V} x(v) = 1 \}, \]
 sowie die geometrische Realisierung $|\K| \subset \R^V$ von $\K$
-
 \[ \bigcup_{\sigma \in \K} |\sigma|, \]
-
 jeweils versehen mit der induzierten Topologie von $\R^V$.
 
 Wir erhalten eine Abbildung
-
 \[ p: |\mathcal{K}| \to \mathcal{K}, \]
-
 genannt Simplexanzeiger oder Indikatorabbildung, der einem Punkt $x
 \in |\mathcal{K}|$ in der geometrischen Realisierung den eindeutigen
 Simplex $\sigma \in \mathcal{K}$ mit $x \in |\sigma|$ zuordnet.
@@ -42,10 +36,8 @@ Simplex $\sigma \in \mathcal{K}$ mit $x \in |\sigma|$ zuordnet.
 \end{lemma}
 \begin{proof}
   Das Urbild einer Basismenge $(\geq \sigma)$ ist
-
   \[ p^{-1}((\geq \sigma)) = |\K| \cap \{x \in \R^V | x(v) > 0 \text{ für }
   v \in \sigma \}, \]
-
   der offene Stern um $\sigma$, den wir auch als $U(\sigma)$ notieren.
 \end{proof}
 
@@ -67,7 +59,7 @@ Simplex $\sigma \in \mathcal{K}$ mit $x \in |\sigma|$ zuordnet.
 
 Wir bemerken zunächst:
 
-\begin{lemma}
+\begin{lemma}[\cite{KS}, 8.1.3] \label{skons-abelian}
   Die Kategorie $\sKonsK$ ist abelsch.
 \end{lemma}
 \begin{proof}
@@ -82,49 +74,44 @@ Wir bemerken zunächst:
 Entscheidend ist die folgende Charakterisierung schwach
 $|\K|$-konstruierbarer Garben:
 
-\begin{prop}[\cite{WS}]
+\begin{prop}[\cite{WS}, 8.4.6.3] \label{sk-char}
   Für $F \in \AbKr$ sind äquivalent:
-  \begin{enumerate}
-  \item $F$ ist schwach $|\K|$-konstruierbar
-  \item Die Koeinheit der Adjunktion ist auf $F$ ein Isomorphismus
-    $p^*p_*F \iso F$.
-  \item $F$ liegt im wesentlichen Bild des Rückzugs $p^*$.
-  \item Die Restriktion $F(U(\sigma)) \to F_x$ ist für alle $\sigma
-    \in \K$ und alle $x \in |\sigma|$ ein Isomorphismus.
+  \begin{enumerate}[label=(\arabic*)]
+  \item \label{itm:sk-char-sk} $F$ ist schwach $|\K|$-konstruierbar
+  \item \label{itm:sk-char-counit} Die Koeinheit der Adjunktion ist
+    auf $F$ ein Isomorphismus $p^*p_*F \iso F$.
+  \item \label{itm:sk-char-essim} $F$ liegt im wesentlichen Bild des
+    Rückzugs $p^*$.
+  \item \label{itm:sk-char-res} Die Restriktion $F(U(\sigma)) \to F_x$
+    ist für alle $\sigma \in \K$ und alle $x \in |\sigma|$ ein
+    Isomorphismus.
   \end{enumerate}
 \end{prop}
 \begin{proof}
-  Die Äquivalenz $(2) \Iff (3)$ ist allgemein kategorientheoretischer
-  Natur. Dabei ist $(3) \Implies (2)$ offensichtlich (nimm $p_* F$)
-  und $(2) \Implies (3)$ folgt aus den Dreiecksidentitäten.
+  Die Äquivalenz $\ref{itm:sk-char-counit} \Iff
+  \ref{itm:sk-char-essim}$ ist allgemein kategorientheoretischer
+  Natur. Dabei ist $\ref{itm:sk-char-counit} \Implies
+  \ref{itm:sk-char-essim}$ offensichtlich (nimm $p_* F$) und
+  $\ref{itm:sk-char-essim} \Implies \ref{itm:sk-char-counit}$ folgt
+  aus den Dreiecksidentitäten.
 
-  Die Äquivalenz $(2) \Iff (4)$ folgt aus der Bestimmung der Halme von
-  $p^*p_* F$. Zunächst bemerken wir, dass in $\K$ die Menge $(\geq
-  \sigma)$ die kleinste offene Umgebung von $\sigma$ ist, und wir also
-  $p_*F((\geq \sigma)) \iso (p_*F)_{\sigma}$ erhalten. Somit gilt für
-  $x \in |\sigma|$:
-  \[ (p^*p_*F)_x \iso (p_*F)_{\sigma} \iso p_*F((\geq \sigma)) \iso F(U(\sigma)). \]
+  Die Äquivalenz $\ref{itm:sk-char-counit} \Iff \ref{itm:sk-char-res}$
+  folgt aus der Bestimmung der Halme von $p^*p_* F$. Zunächst bemerken
+  wir, dass in $\K$ die Menge $(\geq \sigma)$ die kleinste offene
+  Umgebung von $\sigma$ ist, und wir also $p_*F((\geq \sigma)) \iso
+  (p_*F)_{\sigma}$ erhalten. Somit gilt für $x \in |\sigma|$:
+  \begin{equation}\label{eq:counit-sect}
+    (p^*p_*F)_x \iso (p_*F)_{\sigma} \iso p_*F((\geq \sigma)) \iso F(U(\sigma)).  
+  \end{equation}  
   Dabei wurde die Beschreibung der Halme des Rückzugs (mit $p(x) =
   \sigma$), obige Darstellung der Halme auf $\K$ und die Definition
   des Vorschubs (mit $p^{-1}((\geq \sigma)) = U(\sigma)$) verwendet.
 
-  Die Implikation $(4) \Implies (1)$ folgt direkt aus dem
-  nachgestellten Lemma, angewandt auf die Einschränkung von $F$ auf
-  $U(\sigma)$, und der Tatsache, dass beliebige Einschränkungen
-  konstanter Garben wieder konstant sind.
-
-  %% Für die umgekehrte Richtung betrachten wir die Restriktion
-  %% $\Gamma(U(\sigma), F) \to F_x$. Diese ist bijektiv, falls wir jeden
-  %% Keim $s \in F_x$, repräsentiert durch $s \in F(V)$ für eine
-  %% o. E. zusammenhängende offene Teilmenge $V$ von $|\K|$, eindeutig zu
-  %% einem Schnitt über $U(\sigma)$ fortsetzen können. Klar ist, dass für
-  %% jedes $\tau \geq \sigma$ die Mengen $V \cap |\tau|$ zusammenhängende
-  %% offene nichtleere Teilmengen von $|\tau|$ sind und wir nach der
-  %% simplizialen Konstanz von $F$ die Einschränkungen $s|_{V \cap
-  %%   |\tau|}$ zu einem Schnitt über ganz $|\tau|$ fortsetzen
-  %% können. Entscheidend ist nun, dass die Fortsetzungen auch
-  %% untereinander verträglich sind und einen stetigen Schnitt über
-  %% $U(\sigma)$ definieren.
+  Die Implikation $\ref{itm:sk-char-res} \Implies
+  \ref{itm:sk-char-sk}$ folgt direkt aus dem nachgestellten Lemma,
+  angewandt auf die Einschränkung von $F$ auf $U(\sigma)$, und der
+  Tatsache, dass beliebige Einschränkungen konstanter Garben wieder
+  konstant sind.
 
   Für die umgekehrte Richtung reicht es, die Aussage für die
   Einschränkung von $F$ auf $U(\sigma)$ zu zeigen.  Wir betrachten für
@@ -146,19 +133,21 @@ $|\K|$-konstruierbarer Garben:
       (0, 1] \times U(\sigma)$ die Inklusion. Dann erhalten wir wie
         gewünscht mit der Funktorialität des Rückzugs, $\pi \circ
         \iota_t = \id_{U(\sigma)}$ sowie $\Gamma \pi_* = \Gamma$
-      
-      \begin{align*}
-      F_x &\iso \colf\limits_{t \in (0, 1]} F(h(\{t\} \times U(\sigma))) \\
-        &\iso \colf\limits_{t \in (0, 1]} \Gamma \iota_t^* h^* F \\
-        &\iso \colf\limits_{t \in (0, 1]} \Gamma \iota_t^* \pi^* \pi_* h^* F \\
-        &\iso \Gamma \id^* \pi_* h^* F \\
-        &\iso \Gamma h^* F \\
-        &\iso \Gamma F = F(U(\sigma)),
-      \end{align*}
-
-      im letzten Schritt nach der Surjektivität von $h$.
-
+   \begin{align*}
+     F_x &\iso \colf\limits_{t \in (0, 1]} F(h(\{t\} \times U(\sigma))) \\
+         &\iso \colf\limits_{t \in (0, 1]} \Gamma \iota_t^* h^* F \\
+         &\iso \colf\limits_{t \in (0, 1]} \Gamma \iota_t^* \pi^* \pi_* h^* F \\
+         &\iso \Gamma \id^* \pi_* h^* F \\
+         &\iso \Gamma h^* F \\
+         &\iso \Gamma F = F(U(\sigma)),
+   \end{align*}
+   im letzten Schritt nach der Surjektivität von $h$.
 \end{proof}
+\begin{bem} \label{beta-sect}
+  Aus \autoref{eq:counit-sect} und \ref{itm:sk-char-res} folgt
+  insbesondere auch $(p^* p_* F)(U(\sigma)) \iso F(U(\sigma))$ für
+  alle $F \in \AbKr$ und alle $\sigma \in \K$.
+\end{bem}
 
 Wir tragen die benötigten Lemmata nach.
 
@@ -184,13 +173,11 @@ Wir tragen die benötigten Lemmata nach.
 \end{lemma}
 \begin{proof}
   Die Aussage ist äquivalent zum folgenden Fortsetzungsresultat:
-
   \begin{quote}
     Für alle $U \open X$ und $t \in I$ ist die Restriktion ein
     Isomorphismus
     \[ \Gamma(U \times I, F) \iso \Gamma(U \times \{t\}, F). \]
   \end{quote}
-
   Denn ist die Koeinheit der Adjunktion ein Isomorphismus $\pi^* \pi_*
   F \iso F$, so bestimmen wir die Schnitte über $U \times \{t\}$ wie
   folgt: Sei $\iota: U \times \{t\} \inj X \times I$ die Inklusion. Wir
@@ -212,9 +199,8 @@ Wir tragen die benötigten Lemmata nach.
     &\iso \colf\limits_{V \ni (x, t)} F(V) \\
     &= F_{(x, t)}.
   \end{align*}
-  Dabei erhalten wir die Surjektivität von
-  $F(V) \to \Gamma(U \times \{t\}, F)$ aus der Bijektivität der
-  Verknüpfung
+  Dabei erhalten wir die Surjektivität von $F(V) \to \Gamma(U \times
+  \{t\}, F)$ aus der Bijektivität der Verknüpfung
   \[ \Gamma(U \times I, F) \to F(V) \to \Gamma(U \times \{t\}, F) \]
   und die Injektivität aus der Eigenschaft, dass bereits die faserweise
   stetige Fortsetzung eindeutig ist nach der Konstantheit der
@@ -252,34 +238,54 @@ Als Komposition zweier linksexakter Funktoren ist $\beta$ natürlich
 wieder linksexakt. Der allgemeinen Terminologie folgend bezeichnen wir
 eine Garbe $F \in \AbKr$ $\beta$-azyklisch, falls ihre höheren
 Derivierten von $\beta$ verschwinden, also falls
-
 \[ R^k\beta F = 0 \text{ für alle } k > 0.  \]
 
 Später benötigen wir die folgende Charakterisierung
 $\beta$-azyklischer Garben:
 
-\begin{prop} \label{sk-ist-azyk}
-  Eine Garbe $F \in \AbKr$ ist $\beta$-azyklisch genau dann, wenn
-  $H^k(U(\sigma); F) = 0$ für alle $\sigma \in \K, k >
-  0$.
-
-  Insbesondere gilt:
-  \begin{enumerate}
-  \item Schwach $|\K|$-konstruierbare Garben sind $\beta$-azyklisch.
-  \item Welke Garben sind $\beta$-azyklisch.
-  \end{enumerate}  
+\begin{prop}[\cite{KS}, 8.1.8] \label{sk-ist-azyk}
+  Sei $F \in \AbKr$. Dann gilt:
+  \begin{enumerate}[label=(\roman*)]
+  \item \label{itm:sect-comp} $\Gamma(U(\sigma), R^k\beta F) \iso
+    H^k(U(\sigma); F)$ für alle $\sigma \in \K, k \geq 0$.
+  \item \label{itm:char-acyc} $F$ ist $\beta$-azyklisch genau dann,
+    wenn $H^k(U(\sigma); F) = 0$ für alle $\sigma \in \K, k > 0$.
+  \end{enumerate}
+  Insbesondere sind schwach $|\K|$-konstruierbare Garben und welke
+  Garben $\beta$-azyklisch.
 \end{prop}
+\begin{bem}
+  Man beachte, dass Aussage \ref{itm:char-acyc} eine allgemeine
+  Verbesserung unserer allgemeinen Charakterisierung höherer direkter
+  Bilder als Garbifizierungen der Prägarben der Kohomologien der
+  Fasern ist für den Fall, dass die Schnittfunktoren
+  $\Gamma(\pi^{-1}(U), \cdot)$ exakt sind.
+  %% Nach der Charakterisierung höherer direkter Bilder ist $R^q \beta F
+  %% = p^* R^q p_* F$ für $F \in \AbKr$ isomorph zur Garbifizierung der
+  %% Prägarbe
+  %% \[ (\geq \sigma) \mapsto H^q(p^{-1}((\geq \sigma)); F)
+  %%    = H^q(p^{-1}(U(\sigma)); F). \]  
+\end{bem}
 \begin{proof}
-  Nach der Charakterisierung höherer direkter Bilder ist $R^q \beta F
-  = p^* R^q p_* F$ für $F \in \AbKr$ isomorph zur Garbifizierung der
-  Prägarbe
-
-  \[ (\geq \sigma) \mapsto H^q(p^{-1}((\geq \sigma)); F) = H^q(p^{-1}(U(\sigma)); F). \]
-
-  ...
+  \ref{itm:char-acyc} folgt direkt aus \ref{itm:sect-comp} mit
+  $R^k\beta F \in \sKonsK$ (vgl. \ref{skons-abelian}) und unserer
+  Aussage über die Halme \ref{sk-char} \ref{itm:sk-char-res}.
+  
+  Mit der Exaktheit von Halmfunktoren $F \mapsto F_x$ und
+  \ref{sk-char} \ref{itm:sk-char-res} sind die Funktoren
+  $\Gamma(U(\sigma), \cdot)$ auf schwach $|\K|$-konstruierbaren Garben
+  exakt und vertauschen folglich bei einem Komplex mit der Bildung der
+  Kohomologie. Wir erhalten für $F \inj I\cc$ eine injektive Auflösung
+  somit
+  \[ \Gamma(U(\sigma), R^k\beta F)
+  = \Gamma(U(\sigma), H^k(\beta I\cc))
+  \iso H^k(\Gamma(U(\sigma), \beta I\cc))
+  \iso H^k(\Gamma(U(\sigma), I\cc))
+  = H^k(U(\sigma), F), \]
+  wobei wir im dritten Schritt \ref{beta-sect} verwendet haben.
 \end{proof}
 
-% Garbifizierung der Kohomologie-von-U-Prägarbe
+% TODO überleiten
 
 \begin{prop}
   Sei $F \in \Ket^+(\AbKr)$ ein gegen die Richtung der Pfeile
@@ -287,10 +293,10 @@ $\beta$-azyklischer Garben:
   schwach $|\K|$-kon\-stru\-ier\-bar\-en Kohomologiegarben $H^q(F)$. Dann
   ist $\beta F \to F$ ein Quasi-Iso\-mor\-phis\-mus.
 \end{prop}
+
 \begin{proof}
   Wir schneiden aus dem Kettenkomplex $(F^n, d^n)$ kurze exakte
   Sequenzen aus:
-  
   \begin{alignat*}{4}
     H^0 = \ker d^0 \inj F^0 \surj &\im d^0 & & \\
     &\im d^0& {} \inj {} &\ker d^1& {}\surj {} &H^1& \\
