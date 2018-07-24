@@ -80,7 +80,7 @@ Wir bemerken zunächst:
 \end{proof}
 
 Entscheidend ist die folgende Charakterisierung schwach
-$|\K|$-konstruierbarer derivierter Garben:
+$|\K|$-konstruierbarer Garben:
 
 \begin{prop}[\cite{WS}]
   Für $F \in \AbKr$ sind äquivalent:
@@ -90,7 +90,7 @@ $|\K|$-konstruierbarer derivierter Garben:
     $p^*p_*F \iso F$.
   \item $F$ liegt im wesentlichen Bild des Rückzugs $p^*$.
   \item Die Restriktion $F(U(\sigma)) \to F_x$ ist für alle $\sigma
-    \in \K$ und $x \in |\sigma|$ ein Isomorphismus.
+    \in \K$ und alle $x \in |\sigma|$ ein Isomorphismus.
   \end{enumerate}
 \end{prop}
 \begin{proof}
@@ -113,10 +113,23 @@ $|\K|$-konstruierbarer derivierter Garben:
   $U(\sigma)$, und der Tatsache, dass beliebige Einschränkungen
   konstanter Garben wieder konstant sind.
 
-  Für die umgekehrte Richtung reicht es, die Aussage für die
-  Einschränkung von $F$ auf $U(\sigma)$ zu zeigen. Wir betrachten für
+  %% Für die umgekehrte Richtung betrachten wir die Restriktion
+  %% $\Gamma(U(\sigma), F) \to F_x$. Diese ist bijektiv, falls wir jeden
+  %% Keim $s \in F_x$, repräsentiert durch $s \in F(V)$ für eine
+  %% o. E. zusammenhängende offene Teilmenge $V$ von $|\K|$, eindeutig zu
+  %% einem Schnitt über $U(\sigma)$ fortsetzen können. Klar ist, dass für
+  %% jedes $\tau \geq \sigma$ die Mengen $V \cap |\tau|$ zusammenhängende
+  %% offene nichtleere Teilmengen von $|\tau|$ sind und wir nach der
+  %% simplizialen Konstanz von $F$ die Einschränkungen $s|_{V \cap
+  %%   |\tau|}$ zu einem Schnitt über ganz $|\tau|$ fortsetzen
+  %% können. Entscheidend ist nun, dass die Fortsetzungen auch
+  %% untereinander verträglich sind und einen stetigen Schnitt über
+  %% $U(\sigma)$ definieren.
+  
+    Für die umgekehrte Richtung reicht es, die Aussage für die
+  Einschränkung von $F$ auf $U(\sigma)$ zu zeigen.  Wir betrachten für
   $x \in |\sigma|$ die Zusammenziehung
-  \begin{align*}
+    \begin{align*}
     h: (0, 1] \times U(\sigma) &\to U(\sigma), \\
     (t, y) &\mapsto h(t, y) = t y + (1 - t) x.
   \end{align*}
@@ -131,14 +144,14 @@ $|\K|$-konstruierbarer derivierter Garben:
       zweiten nachgestellten Lemma schreiben als $h^* F \iso \pi^*
       \pi_* h^* F$. Damit erhalten wir wie gewünscht
       
-      \[ F_x
-      \iso \colf_{t \in (0, 1]} F(h(\{t\} \times U(\sigma)))
-        \iso \colf_t \Gamma \iota_t^* h^* F
-        \iso \colf_t \Gamma \iota_t^* \pi^* pi_* h^* F
-        \iso \Gamma \id^* \pi_* h^* F
-        \iso \Gamma h^* F
-        \iso \Gamma F = F(U(\sigma)),
-        \]
+      \begin{align*}
+      F_x &\iso \colf\limits_{t \in (0, 1]} F(h(\{t\} \times U(\sigma))) \\
+        &\iso \colf\limits_{t \in (0, 1]} \Gamma \iota_t^* h^* F \\
+        &\iso \colf\limits_{t \in (0, 1]} \Gamma \iota_t^* \pi^* \pi_* h^* F \\
+        &\iso \Gamma \id^* \pi_* h^* F \\
+        &\iso \Gamma h^* F \\
+        &\iso \Gamma F = F(U(\sigma)),
+      \end{align*}
 
         im letzten Schritt nach der Surjektivität von $h$.
 
@@ -159,10 +172,16 @@ Wir tragen die benötigten Lemmata nach.
   Garben-Isomorphismus.
 \end{proof}
 
-\begin{lemma}
-  q^*q_* Iso falls q surjektiv, Garbe konstant auf Halmen und ex. stetiger Schnitt der abg einbettung ist
-  bew: brauche GK 4.3.19
+\begin{lemma}[\cite{TG}, 6.4.17]
+  Sei $X$ ein topologischer Raum, $I \subset \R$ ein nichtleeres
+  Intervall, $F \in \Ens_{/X \times I}$ eine Garbe und $\pi: X \times
+  I \to X$ die Projektion auf den ersten Faktor. Ist $F$ konstant auf
+  den Fasern von $\pi$, so ist die Koeinheit der Adjunktion auf $F$
+  ein Isomorphismus $\pi^* \pi_* F \iso F$.
 \end{lemma}
+\begin{proof}
+  
+\end{proof}
 
 Wir bezeichnen den Funktor $p^*p_*: \AbX \to \sKons$ kurz mit $\beta$
 und bemerken, dass er nach obiger Proposition ein Rechtsadjungierter
