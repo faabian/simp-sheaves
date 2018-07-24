@@ -22,3 +22,41 @@ da welke Garben $\beta$-azyklisch sind, sowie
 \[ \iota \circle R \beta \cong R(\iota \circle \beta) \cong id \]
 
 nach der vorangegangenen Proposition.
+
+--------------------------------------------------------------------------------
+
+Die Aussage ist äquivalent zum folgenden Fortsetzungsresultat: Für
+alle $U \open X$ ist die Restriktion ein Isomorphismus
+
+\[ \Gamma(U \times I, F) \iso \Gamma(U \times \{t\}, F). \]
+
+Denn ist die Koeinheit der Adjunktion ein Isomorphismus $\pi^* \pi_*
+F \iso F$, so bestimmen wir die Schnitte über $U \times \{t\}$ wie
+folgt: Sei $\iota: U \times \{t\} \inj X \times I$ die Inklusion. Wir
+bemerken, dass $\pi \circ \iota$ die Inklusion von $U$ nach $X$ ist
+und erhalten:
+
+\[ \Gamma(U \times \{t\}, F)
+   = \Gamma \iota^* F
+   \iso \Gamma \iota^* \pi^* \pi_* F
+   = \Gamma(U, \pi_* F)
+   = \Gamma(U \times I, F). \]
+
+Andersherum folgt die Bijektivität der Koeinheit der Adjunktion aber
+auch aus dem Fortsetzungsresultat, denn wir können sofort den
+Isomorphismus auf den Halmen über $(x, t) \in X \times I$ zeigen:
+
+\[ (\pi^* \pi_* F)_{(x,t)}
+   \iso (\pi_* F)_x
+   = \colf\limits_{U \ni x} \Gamma(U \times I, F)
+   \iso \colf\limits_{U \ni x} \Gamma(U \times \{t\}, F)
+   \iso \colf\limits_{V \ni (x, t)} F(V)
+   = F_{(x, t)}. \]
+
+Dabei erhalten wir die Surjektivität von
+$F(V) \to \Gamma(U \times \{t\}, F)$ aus der Bijektivität der
+Verknüpfung
+\[ \Gamma(U \times I, F) \to F(V) \to \Gamma(U \times \{t\}, F) \]
+und die Injektivität aus der Eigenschaft, dass bereits die faserweise
+stetige Fortsetzung eindeutig ist nach der Konstantheit der
+Einschränkungen von $F$ auf die Fasern von $\pi$.
