@@ -10,11 +10,15 @@
 
 \section{Schwach konstruierbare Garben auf Simplizialkomplexen}
 
-Ziel dieses Abschnitts ist die Charakterisierung schwach
-konstruierbarer Garben auf Simplizialkomplexen und ihrer derivierten
-Kategorie. Die Darstellung folgt im Wesentlichen \cite{KS} und \cite{WS}.
+Ziel dieses Abschnitts ist es, eine geometrischere Charakterisierung
+von Garben auf einem Simplizialkomplex $\K$ zu geben. Wir werden
+sehen, dass sie sich als simplizial konstante Garben auf der
+geometrischen Realisierung von $\K$ auffassen lassen. Anschließend
+wollen wir die Ergebnisse auch auf die derivierte Kategorie der Garben
+auf $\K$ übertragen. Die Darstellung folgt im Wesentlichen \cite{KS}
+und \cite{WS}.
 
-In diesem Abschnitt bezeichne $(V, \K)$ einen lokal-endlichen
+In diesem Abschnitt bezeichne $(V, \K)$ stets einen lokal-endlichen
 Simplizialkomplex mit Eckenmenge $V$. Für einen Simplex $\sigma \in
 \K$ definieren wir seine geometrische Realisierung $|\sigma| \subset
 \R^V = \Ens(V, \R)$:
@@ -66,9 +70,9 @@ Wir bemerken zunächst:
   Durch den offensichtlichen Isomorphismus zur Kategorie der abelschen
   Gruppen (durch den Funktor der globalen Schnitte) ist die Kategorie
   der konstanten abelschen Garben auf einem topologischen Raum $X$
-  eine abelsche Kategorie. Nun folgt die Aussage aus der Exaktheit des
-  Pullbacks $i_{\sigma}^*$ entlang den Inklusionen $i_{\sigma}:
-  |\sigma| \xhookrightarrow{} |\K|$.
+  eine abelsche Kategorie. Nun folgt die Aussage aus der Exaktheit und
+  Additivität des Pullbacks $i_{\sigma}^*$ entlang den Inklusionen
+  $i_{\sigma}: |\sigma| \xhookrightarrow{} |\K|$.
 \end{proof}
 
 Entscheidend ist die folgende Charakterisierung schwach
@@ -228,11 +232,21 @@ Wir tragen die benötigten Lemmata nach.
   \end{align*}
 \end{proof}
 
-Wir bezeichnen den Funktor $p^*p_*: \AbX \to \sKons$ kurz mit $\beta$
-und bemerken, dass er nach obiger Proposition ein Rechtsadjungierter
-zur Inklusion $\iota: \sKons \to \AbKr$ ist:
-
-% TODO: wie?
+Wir bezeichnen den Funktor $p^*p_*: \AbKr \to \sKons(\K)$ kurz mit
+$\beta$ und bemerken, dass er nach obiger Proposition ein
+Rechtsadjungierter zur Inklusion $\iota: \sKons(\K) \to \AbKr$
+ist. Für $S \in \sKons(\K)$ und $F \in \AbKr$ gilt:
+\begin{align*}
+  & \sKons(\K)(W, \beta F) \\
+  \iso & \sKons(\K)(\beta W, \beta F) \\
+  \iso & \AbKr(p_* W, p_* p^* p_* F) \\
+  \iso & \AbKr(p_* W, p_* F) \\
+  \iso & \AbKr(\beta W, F) \\
+  \iso & \AbKr(W, F).
+\end{align*}
+Dabei wurde die bekannte Adjunktion $(p^*, p_*)$ sowie im dritten
+Schritt ``finaler Rückzug mit zusammenhängenden Fasern'' (\cite{TG},
+4.3.22) benutzt.
 
 Als Komposition zweier linksexakter Funktoren ist $\beta$ natürlich
 wieder linksexakt. Der allgemeinen Terminologie folgend bezeichnen wir
@@ -318,7 +332,7 @@ Damit ist der entscheidende Schritt für unser Ziel gezeigt. Wir
 erhalten:
 
 \begin{theorem}
-  Sei $\K$ ein lokal-endlicher Simplizialkomplex. % ???
+  Sei $\K$ ein lokal endlicher Simplizialkomplex.
 
   Die oben definierten Funktoren $\iota, \beta$ induzieren auf den
   derivierten Kategorien eine Äquivalenz
@@ -326,7 +340,13 @@ erhalten:
   \[ \Der^+(\sKons(\K)) \mathrel{\mathop{\rightleftarrows}^{\iota}_{R \beta}} \DerpskK. \]
 \end{theorem}
 \begin{proof}
-  Die Kategorien $\Der^+(\sKons(\K))$ und $\DerpskK$ haben genug
+  % benötigen wir lok endl für endl homolog Dim und Definiertheit der
+  % Derivierten?
+
+  % TD 3.4.18 funktioniert nur für derivierte Kategorien von
+  % Kategorien mit genug Injektiven, DerpskK ist aber a priori keine
+  % solche...
+  Die Kategorien $\sKons(\K)$ und $\DerpskK$ haben genug
   Injektive.  Mit der Grothendieck-Spektralsequenz für derivierte
   Kategorien (\cite{TD}, 3.4.18) und der Exaktheit von $\iota$
   erhalten wir somit
