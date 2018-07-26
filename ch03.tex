@@ -39,6 +39,23 @@ Für $C$ die Kategorien der Mengen oder der abelschen Gruppen ist diese
 Definition äquivalent zur bekannten Definition über die eindeutige
 Verklebbarkeit von verträglichen Schnitten.
 
+Wir prüfen, dass wir so insbesondere ``garbenwertige Garben'' definieren
+können:
+\begin{lemma}
+  Die Kategorien $\EnsX$ und $\AbX$ der (abelschen) Garben auf einem
+  topologischen Raum $X$ sind vollständig.
+\end{lemma}
+\begin{proof}
+  Die Kategorien der Mengen $\Ens$ ist vollständig. Somit ist auch die
+  Kategorie der Prägarben auf $X$ $[\OffX\op, \Ens]$ vollständig nach
+  der Beschreibung von Limites in Funktorkategorien als objektweisen
+  Limites. Tatsächlich ist aber in $\EnsX$ die Limes-Prägarbe eines
+  Systems von Garben bereits eine Garbe nach unserer Fromulierung der
+  Garbenbedingung als Limes und der Kommutativität von
+  Limites. Derselbe Beweis gilt für $\AbX$ unter Verwendung der
+  Vollständigkeit der abelschen Gruppen.
+\end{proof}
+
 Bezeichne wieder $\B$ die Kategorie der Basis der Topologie auf einem
 Produkt topologischer Räume $X \times Y$ mit Inklusionen als
 Morphismen.
@@ -51,8 +68,9 @@ Morphismen.
     U \times V &\mapsto (F(V))(U) \quad
     \text{für } F \in (\EnsX)_{/Y} \text{ und} \\
      U \times V &\mapsto F(U \times V) \quad
-     \text{die Restriktion für } F \in \Ens_{/X \times Y}.
+     \text{die Restriktion für } F \in \Ens_{/X \times Y}
   \end{align*}
+  für $U \open X$ und $V \open Y$.
 \end{satz}
 \begin{proof}
   Die zweite Äquivalenz ist \ref{sheaf-on-basis}. Für die erste
@@ -81,15 +99,25 @@ sind, es also ein $G \in \AbX$ gibt mit
 \[ F|_{|\sigma| \times X} \iso \pi^* G \]
 für $\pi: |\sigma| \times X \to X$ die Projektion.
 
-Wir könnten nun für diese Definition dieselben Aussagen wie im
-vorangegangen Abschnitt mit denselben Argumenten erneut
-beweisen. Unsere obige Charakterisierung ermöglicht uns aber ein
-einfacheres Vorgehen. Wir bemerken, dass im vorangegangenen Abschnitt
-lediglich die Struktur von $AbKreal$ als
+Wir könnten nun für diesen Begriff dieselben Aussagen wie im
+vorangegangen Abschnitt mit vollkommen analogen Argumenten erneut
+beweisen. Ein bisschen Kategorientheorie und unsere obige
+Charakterisierung ermöglichen uns aber ein einfacheres Vorgehen. Wir
+bemerken, dass für die Konstruktion unserer Kategorienbifaserung
+$\Ab_{/\Top} \to \Top$ mitsamt ihren bekannten Eigenschaften und die
+darauf aufbauende Argumentation im vorangegangenen Abschnitt der
+Umstand keine Rolle gespielt hat, dass unsere Garben Werte in den
+abelschen Gruppen annnehmen. Dieselben Konstruktionen funktionieren
+für $\mathcal{A}_{/\Top}$ eine Garbenkategorie mit Werten in einer
+beliebigen vollständigen abelschen Kategorie. Davon überzeugt man sich
+im Zweifel auch explizit zunächst durch Übertragung auf
+Garbenkategorien mit Werten in $R$-Linksmoduln und dann durch den
+Einbettungssatz von Mitchell auf beliebige abelsche Kategorien.
 
-??? ab. Kat mit Bifaserung ???
-
-verwendet wurde und können so ...
-
+Wir erhalten:
+\begin{thm}
+  % Formulierung des Theorems in ch02 in seiner endgültigen Form,
+  % übertragen auf den relativen Fall
+\end{thm}
 
 \end{document}
