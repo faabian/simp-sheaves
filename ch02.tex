@@ -257,19 +257,19 @@ Derivierten von $\beta$ verschwinden, also falls
 Später benötigen wir die folgende Charakterisierung
 $\beta$-azyklischer Garben:
 
-\begin{prop}[\cite{KS}, 8.1.8] \label{sk-ist-azyk}
+\begin{prop}[\cite{KS}, 8.1.8] \label{sk-is-acyc}
   Sei $F \in \AbKr$. Dann gilt:
   \begin{enumerate}[label=(\roman*)]
-  \item \label{itm:sect-comp} $\Gamma(U(\sigma), R^k\beta F) \iso
-    H^k(U(\sigma); F)$ für alle $\sigma \in \K, k \geq 0$.
-  \item \label{itm:char-acyc} $F$ ist $\beta$-azyklisch genau dann,
+  \item \label{itm:sk-is-acyc-comp} $\Gamma(U(\sigma), R^k\beta F)
+    \iso H^k(U(\sigma); F)$ für alle $\sigma \in \K, k \geq 0$.
+  \item \label{itm:sk-is-acyc-beta} $F$ ist $\beta$-azyklisch genau dann,
     wenn $H^k(U(\sigma); F) = 0$ für alle $\sigma \in \K, k > 0$.
   \end{enumerate}
   Insbesondere sind schwach $|\K|$-konstruierbare Garben und welke
   Garben $\beta$-azyklisch.
 \end{prop}
 \begin{bem}
-  Man beachte, dass Aussage \ref{itm:char-acyc} eine allgemeine
+  Man beachte, dass Aussage \ref{itm:sk-is-acyc-beta} eine allgemeine
   Verbesserung unserer allgemeinen Charakterisierung höherer direkter
   Bilder als Garbifizierungen der Prägarben der Kohomologien der
   Fasern ist für den Fall, dass die Schnittfunktoren
@@ -281,7 +281,7 @@ $\beta$-azyklischer Garben:
   %%    = H^q(p^{-1}(U(\sigma)); F). \]  
 \end{bem}
 \begin{proof}
-  \ref{itm:char-acyc} folgt direkt aus \ref{itm:sect-comp} mit
+  \ref{itm:sk-is-acyc-beta} folgt direkt aus \ref{itm:sk-is-acyc-comp} mit
   $R^k\beta F \in \sKonsK$ (vgl. \ref{skons-abelian}) und unserer
   Aussage über die Halme \ref{sk-char} \ref{itm:sk-char-res}.
   
@@ -299,7 +299,7 @@ $\beta$-azyklischer Garben:
   wobei wir im dritten Schritt \ref{beta-sect} verwendet haben.
 \end{proof}
 
-% TODO überleiten
+Damit können wir uns nun den derivierten Kategorien zuwenden.
 
 \begin{prop}
   Sei $F \in \Ket^+(\AbKr)$ ein gegen die Richtung der Pfeile
@@ -307,7 +307,6 @@ $\beta$-azyklischer Garben:
   schwach $|\K|$-kon\-stru\-ier\-bar\-en Kohomologiegarben $H^q(F)$. Dann
   ist $\beta F \to F$ ein Quasi-Iso\-mor\-phis\-mus.
 \end{prop}
-
 \begin{proof}
   Wir schneiden aus dem Kettenkomplex $(F^n, d^n)$ kurze exakte
   Sequenzen aus:
@@ -320,12 +319,45 @@ $\beta$-azyklischer Garben:
   
   Sind in einer kurzen exakten Sequenz zwei der drei Objekte
   azyklisch, so nach dem Fünferlemma auch das dritte. Da nach
-  Voraussetzung und \ref{sk-ist-azyk} $F^q$ und $H^q$
+  Voraussetzung und \ref{sk-is-acyc} $F^q$ und $H^q$
   $\beta$-azyklisch sind, sind alle oben betrachteten Objekte
   $\beta$-azyklisch und die kurzen exakten Sequenzen bleiben exakt
   nach Anwendung von $\beta$. Es folgt $H^q(\beta F) \iso \beta (H^q
   F)$ und weiter $\beta (H^q F) \iso H^q F$ nach der schwachen
   Konstruierbarkeit von $H^q F$.
+\end{proof}
+
+Wir haben soeben die anschauliche Variante für in eine Richtung
+beschränkte Komplexe bewiesen und versuchen uns nun an der
+unbeschränkten Aussage.
+
+\begin{satz}
+  Sei $F \in \Ket^(\AbKr)$ ein Kettenkomplex aus $\beta$-azy\-klischen
+  Garben mit schwach $|\K|$-kon\-stru\-ier\-bar\-en Kohomologiegarben
+  $H^q(F)$. Dann ist $\beta F \to F$ ein Quasi-Iso\-mor\-phis\-mus.
+\end{satz}
+\begin{proof}
+  %% was bringt eig. homotopieinjektiv? erst später benötigen wir:
+
+  %% Mit \cite{TD}, 3.6.10, finden wir eine homotopieinjektive Auflösung
+  %% von $F$ durch injektive, also inbesondere $\beta$-azyklische Garben
+  %% (vgl. \ref{sk-is-acyc}).
+
+  %% benötigen wir F aus beta-azyklischen überhaupt?
+  %% benötigen \Gamma(U(\sigma), \cdot) exakt sogar nur auf \sKons(\K) ?
+
+  %% geht das so einfach?????
+  
+  Für unseren Quasi-Isomorphismus $H^q(\beta F) \iso H^q(F)$ reicht es
+  nach dem Halmkriterium und \ref{sk-char} \ref{itm:sk-char-res}, dass
+  auf den Schnitten über $U(\sigma)$ Isomorphismen $H^q(\beta
+  F)(U(\sigma)) \iso H^q(F)(U(\sigma))$ induziert werden für alle
+  $\sigma \in \K$. Nun ist aber nach \ref{sk-is-acyc}
+  \ref{itm:sk-is-acyc-beta} der Funktor $\Gamma(U(\sigma), \cdot)$
+  exakt auf der vollen Unterkategorie der $\beta$-azyklischen Garben
+  auf $|\K|$ und vertauscht somit mit dem Bilden der Kohomologie. Wir
+  sind also fertig, falls $H^q(\Gamma(U(\sigma), \beta F)) \iso
+  H^q(\Gamma(U(\sigma), F))$, das ist aber gerade \ref{beta-sect}.
 \end{proof}
 
 Damit ist der entscheidende Schritt für unser Ziel gezeigt. Wir
