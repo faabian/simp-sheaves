@@ -82,15 +82,37 @@ Morphismen.
   für ``Produkt-Überdeckungen'' von Basismengen fordert, d.~h. für
   Überdeckungen der Form $U \times V = \bigcup_{i,j} U_i \times V_j$
   für $U = \bigcup_i U_i$ eine Überdeckung von $U$ und $V = \bigcup_j
-  V_j$ eine Überdeckung von $V$.
+  V_j$ eine Überdeckung von $V$. Wir rechnen dies nach:
+  \begin{align*}
+    (F(V))(U)
+    &= (\lim_j F(V_j))(U) \\
+    &= \lim_j F(V_j)(U) \\
+    &= \lim_j \lim_i F(V_j)(U_i)
+  \end{align*}
+  wobei im ersten Schritt die Garbenbedingung von $F \in
+  (\EnsX)_{/Y}$, und im dritten die von $F(V_j) \in \EnsX$ verwendet
+  wurde. Der zweite Schritt ist die Beschreibung von Limites in
+  Funktorkategorien als objektweise Limites.
 
-  Beide Bedingungen sind aber äquivalent, da eine beliebige
+  %% Im zweiten Schritt benutzen wir, dass für $\EnsX$
+  %% Schnittfunktoren $\Gamma(U, \cdot) = \Ens_X(\point_U, \cdot)$
+  %% darstellbar sind für $\point_U$ die Einschränkung auf $U$ der
+  %% konstanten einpunktigen Garbe auf $X$ und somit mit Limites
+  %% vertauschen.
+
+  Beide Verklebungsbedingungen sind aber äquivalent, da eine beliebige
   Überdeckung von $U \times V$ natürlich mit den Projektionen auf $X$
   und $Y$ Überdeckungen von $U$ und $V$ induziert und die
   Verträglichkeitsvoraussetzung für die Garbenbedingung von
   $\Ens_{/\B}$ bezüglich der Produktüberdeckung genau dann erfüllt
   ist, wenn sie für die ursprüngliche Überdeckung erfüllt ist.
 \end{proof}
+\begin{bem}
+  Für abelsche Garben erhalten wir die analoge Aussage $(\AbX)_{/Y}
+  \qiso \Ab_{/X \times Y}$.
+  %% da auch die Schnittfunktoren $\Gamma(U, \cdot) = \AbX(\Z_U, \cdot)$
+  %% darstellbar sind
+\end{bem}
 
 Wir bezeichnen als eine relativ zu $X$ schwach $|\K|$-konstruierbare
 Garbe eine Garbe $F \in \Ab_{|\K| \times X}$, für die die
