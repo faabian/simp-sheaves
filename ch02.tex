@@ -331,22 +331,16 @@ Wir haben soeben die anschauliche Variante für in eine Richtung
 beschränkte Komplexe bewiesen und versuchen uns nun an der
 unbeschränkten Aussage.
 
-\begin{satz}
-  Sei $F \in \Ket^(\AbKr)$ ein Kettenkomplex aus $\beta$-azy\-klischen
+\begin{satz} \label{beta-qi}
+  Sei $F \in \Ket(\AbKr)$ ein Kettenkomplex aus $\beta$-azy\-klischen
   Garben mit schwach $|\K|$-kon\-stru\-ier\-bar\-en Kohomologiegarben
   $H^q(F)$. Dann ist $\beta F \to F$ ein Quasi-Iso\-mor\-phis\-mus.
 \end{satz}
 \begin{proof}
-  %% was bringt eig. homotopieinjektiv? erst später benötigen wir:
-
-  %% Mit \cite{TD}, 3.6.10, finden wir eine homotopieinjektive Auflösung
-  %% von $F$ durch injektive, also inbesondere $\beta$-azyklische Garben
-  %% (vgl. \ref{sk-is-acyc}).
-
   %% benötigen wir F aus beta-azyklischen überhaupt?
   %% benötigen \Gamma(U(\sigma), \cdot) exakt sogar nur auf \sKons(\K) ?
 
-  %% geht das so einfach?????
+  %% geht das so einfach??
   
   Für unseren Quasi-Isomorphismus $H^q(\beta F) \iso H^q(F)$ reicht es
   nach dem Halmkriterium und \ref{sk-char} \ref{itm:sk-char-res}, dass
@@ -363,39 +357,63 @@ unbeschränkten Aussage.
 Damit ist der entscheidende Schritt für unser Ziel gezeigt. Wir
 erhalten:
 
-\begin{theorem}
-  Sei $\K$ ein lokal endlicher Simplizialkomplex.
+%% \begin{theorem}
+%%   Sei $\K$ ein lokal endlicher Simplizialkomplex. Die oben definierten
+%%   Funktoren $\iota, \beta$ induzieren auf den derivierten Kategorien
+%%   eine Äquivalenz  
+%%   \[ \Der^+(\sKons(\K))
+%%   \mathrel{\mathop{\rightleftarrows}^{\iota}_{R \beta}}
+%%   \DerpskK. \]
+%% \end{theorem}
+%% \begin{proof}
+%%   % benötigen wir lok endl für endl homolog Dim und Definiertheit der
+%%   % Derivierten?
 
-  Die oben definierten Funktoren $\iota, \beta$ induzieren auf den
-  derivierten Kategorien eine Äquivalenz
+%%   % TD 3.4.18 funktioniert nur für derivierte Kategorien von
+%%   % Kategorien mit genug Injektiven, DerpskK ist aber a priori keine
+%%   % solche...
+%%   Die Kategorien $\sKons(\K)$ und $\DerpskK$ haben genug
+%%   Injektive.  Mit der Grothendieck-Spektralsequenz für derivierte
+%%   Kategorien (\cite{TD}, 3.4.18) und der Exaktheit von $\iota$
+%%   erhalten wir somit
 
-  \[ \Der^+(\sKons(\K)) \mathrel{\mathop{\rightleftarrows}^{\iota}_{R \beta}} \DerpskK. \]
-\end{theorem}
-\begin{proof}
-  % benötigen wir lok endl für endl homolog Dim und Definiertheit der
-  % Derivierten?
+%%   \[ R\beta \circ R\iota \iso R(\beta \circ \iota) \iso R \Id = \Id \]
 
-  % TD 3.4.18 funktioniert nur für derivierte Kategorien von
-  % Kategorien mit genug Injektiven, DerpskK ist aber a priori keine
-  % solche...
-  Die Kategorien $\sKons(\K)$ und $\DerpskK$ haben genug
-  Injektive.  Mit der Grothendieck-Spektralsequenz für derivierte
-  Kategorien (\cite{TD}, 3.4.18) und der Exaktheit von $\iota$
-  erhalten wir somit
+%%   auf $\Der^+(\sKons(\K))$, da welke Garben $\beta$-azyklisch sind, sowie
 
-  \[ R\beta \circ R\iota \iso R(\beta \circ \iota) \iso R \Id = \Id \]
+%%   \[ \iota \circ R \beta \iso \Id \]
 
-  auf $\Der^+(\sKons(\K))$, da welke Garben $\beta$-azyklisch sind, sowie
-
-  \[ \iota \circ R \beta \iso \Id \]
-
-  auf $\DerpskK$ nach der vorangegangenen Proposition.
-\end{proof}
+%%   auf $\DerpskK$ nach der vorangegangenen Proposition.
+%% \end{proof}
 \begin{bem}
   Kashiwara und Schapira beschränken sich auf die Äquivalenz der
   beschränkten derivierten Kategorien, allerdings mit der gleichen
   Argumentation. In \cite{KS} 1.7.12 wird eine allgemeine Aussage für
   solche Situationen gezeigt, die hier aber m.E. nicht benötigt wird.
 \end{bem}
+
+\begin{theorem}
+  Sei $\K$ ein (lokal endlicher?) Simplizialkomplex. Die oben definierten
+  Funktoren $\iota, \beta$ induzieren auf den derivierten Kategorien
+  eine Äquivalenz  
+  \[ \Der(\sKons(\K))
+  \mathrel{\mathop{\rightleftarrows}^{\iota}_{R \beta}}
+  \DerskK. \]
+\end{theorem}
+\begin{proof}
+  Mit \cite{TD}, 3.6.10, finden wir für $F \in \Ket(\AbKr)$ eine
+  homotopieinjektive Auflösung $F \qiso I$ durch injektive Garben. Ist
+  $F \in \sKons(\K)$, so können wir $R\beta \circ \iota$ auf $F$ mit
+  $I$ berechnen und erhalten
+  \[ R\beta \, \iota F \iso \beta I \iso I \qiso F \]
+  nach ???.
+
+  Umgekehrt berechnen wir für $F \in Ket(\AbKr)$ schwach
+  $|\K|$-konstruierbar
+  \[ \iota R\beta F \iso \beta I \qiso I \qiso F \]
+  nach \ref{beta-qi} und der $\beta$-Azyklizität injektiver Garben
+  \ref{sk-is-acyc} \ref{itm:sk-is-acyc-beta}.
+\end{proof}
+
 
 \end{document}
