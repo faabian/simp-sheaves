@@ -11,9 +11,10 @@
 \section{Schwach konstruierbare Garben auf Simplizialkomplexen, relative Version}
 
 In diesem Abschnitt sollen die Beobachtungen der letzten beiden
-Abschnitte vereint werden. Nach Abschnitt \autoref{sec:simp-comp-sheaf}
-sind Garben auf einem Simplizialkomplex $\K$ nichts anderes als ein
-Simplizialkomplex von Garben über dem einpunktigen Raum. In Abschnitt
+Abschnitte vereint werden. Nach
+Abschnitt \autoref{sec:simp-comp-sheaf} sind Garben auf einem
+Simplizialkomplex $\K$ nichts anderes als ein Simplizialkomplex von
+Garben über dem einpunktigen Raum. In Abschnitt
 \autoref{sec:sk-pt} haben wir diese Garben auf $\K$ geometrisch
 charakterisiert als die simplizial konstanten Garben auf der
 geometrischen Realisierung $|\K|$ von $\K$. Wir erwarten daher auch
@@ -21,39 +22,68 @@ eine relative Version dieser Aussage über einem beliebigen
 topologischen Raum $X$, die die Simplizialkomplexe von Garben auf $X$
 alias Garben auf $\K \times X$ geometrisch beschreibt.
 
-Wir geben zunächst eine leichte Verallgemeinerung der Aussage von \autoref{sec:simp-comp-sheaf} an.
+Wir geben zunächst eine leichte Verallgemeinerung der Aussage von
+\autoref{sec:simp-comp-sheaf} an.
 
 Wir definieren Garben mit Werten in beliebigen Kategorien $C$ mit der
 schon in \autoref{sec:simp-comp-sheaf} verwandten allgemeinen
 Abstiegsbedingung.
 \begin{defn}[\cite{TG}, 2.1.5]
-  Sei $C$ eine vollständige Kategorie und $X$ ein topologischer
-  Raum. Eine $C$-wertige Prägarbe $F \in [\OffX\op, C]$ auf $X$ heißt
-  $C$-wertige Garbe auf $X$, falls sie die Abstiegsbedingung erfüllt:
+  Sei $C$ eine Kategorie und $X$ ein topologischer Raum. Eine
+  $C$-wertige Prägarbe $F \in [\OffX\op, C]$ auf $X$ heißt $C$-wertige
+  Garbe auf $X$, falls sie die Abstiegsbedingung erfüllt:
   \begin{quote}
     Für alle unter endlichen Schnitten stabilen offenen Überdeckungen
     $U = \bigcup_i U_i$ gilt $F(U) = \lim_i F(U_i)$.
   \end{quote}
 \end{defn}
-Für $C$ die Kategorien der Mengen oder der abelschen Gruppen ist diese
+Wir notieren die Kategorie der $C$-wertigen Prägarben auf $X$ mit $\p
+C_{/X}$ und die der $C$-wertigen Garben auf $X$ mit $C_{/X}$.
+
+Für $C$ die Kategorien der Mengen oder der abelschen Gruppen ist obige
 Definition äquivalent zur bekannten Definition über die eindeutige
 Verklebbarkeit von verträglichen Schnitten.
 
-Wir prüfen, dass wir so insbesondere ``garbenwertige Garben'' definieren
-können:
+Auch das Konzept der Garbifizierung können wir auf $C$-wertige
+Prägarben verallgemeinern.
+\begin{satz}
+  Sei $C$ eine vollständige und kovollständige Kategorie. Dann hat der
+  Vergissfunktor $C_{/X} \to \p C_{/X}$ einen Linksadjungierten,
+  genannt (verallgemeinerte) Garbifizierung.
+\end{satz}
+\begin{proof}
+  Sei $F \in \p C_{/X}$. Wir behaupten, dass $F^+(U) :=
+  \colf\limits_{\mathcal{U}} \lim_i F(U_i)$ eine Garbe ist und die
+  Adjunktionseigenschaft erfüllt. Der Kolimes wird dabei über das
+  filtrierende System aller gesättigten Überdeckungen $U =
+  \bigcup_{U_i \in \mathcal{U}} U_i$ gebildet. Die Konstruktion ist
+  funktoriell.
+
+  % ...
+\end{proof}
+
+
+Wir prüfen, dass wir so insbesondere eine Garbifizierung zu
+``garbenwertigen Garben'' erhalten.
 \begin{lemma}
   Die Kategorien $\EnsX$ und $\AbX$ der (abelschen) Garben auf einem
-  topologischen Raum $X$ sind vollständig.
+  topologischen Raum $X$ sind vollständig und kovollständig.
 \end{lemma}
 \begin{proof}
-  Die Kategorien der Mengen $\Ens$ ist vollständig. Somit ist auch die
-  Kategorie der Prägarben auf $X$ $[\OffX\op, \Ens]$ vollständig nach
-  der Beschreibung von Limites in Funktorkategorien als objektweisen
+  Die Kategorien der Mengen $\Ens$ ist vollständig und
+  kovollständig. Somit ist auch die Kategorie der Prägarben auf $X$
+  $[\OffX\op, \Ens]$ vollständig und kovollständig nach der
+  Beschreibung von Limites in Funktorkategorien als objektweise
   Limites. Tatsächlich ist aber in $\EnsX$ die Limes-Prägarbe eines
   Systems von Garben bereits eine Garbe nach unserer Fromulierung der
-  Garbenbedingung als Limes und der Kommutativität von
-  Limites. Derselbe Beweis gilt für $\AbX$ unter Verwendung der
-  Vollständigkeit der abelschen Gruppen.
+  Garbenbedingung als Limes und der Kommutativität von Limites. Für
+  die Kovollständigkeit behaupten wir, dass die Garbifizierung der
+  Kolimes-Prägarbe die universelle Eigenschaft des Kolimes in der
+  Kategorie $\EnsX$ erfüllt. In der Tat folgt das direkt aus der
+  universellen Eigenschaft des Kolimes in der Prägarbenkategorie und
+  der universellen Eigenschaft der Garbifizierung.  Derselbe Beweis
+  gilt für $\AbX$ unter Verwendung der Vollständigkeit und
+  Kovollständigkeit der abelschen Gruppen.
 \end{proof}
 
 Bezeichne wieder $\B$ die Kategorie der Basis der Topologie auf einem
@@ -113,6 +143,14 @@ Morphismen.
   %% da auch die Schnittfunktoren $\Gamma(U, \cdot) = \AbX(\Z_U, \cdot)$
   %% darstellbar sind
 \end{bem}
+
+Verallgemeinerte Garbifizierung
+
+\subsection{Exkurs: Überlagerungen von Produkträumen}
+
+% ...
+
+\subsection{Anwendung auf relativ schwach konstruierbare Garben} 
 
 Wir bezeichnen als eine relativ zu $X$ schwach $|\K|$-konstruierbare
 Garbe eine Garbe $F \in \Ab_{|\K| \times X}$, für die die

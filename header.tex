@@ -14,8 +14,10 @@
 \setlength{\parskip}{\medskipamount}
 \setlength{\parindent}{0pt}
 
+\mathtoolsset{centercolon}  % for correct ':='
+
 \theoremstyle{plain}
-\newtheorem{theorem}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{prop}[theorem]{Proposition}
 \newtheorem{kor}[theorem]{Korollar}
@@ -52,6 +54,7 @@
 \DeclareMathOperator{\limf}{limf}
 \DeclareMathOperator{\Top}{Top}
 \DeclareMathOperator{\point}{pt}
+\DeclareMathOperator{\p}{p}
 
 \newcommand{\etalespace}[1]{\overline{#1}}
 \newcommand{\B}{\mathcal{B}}
