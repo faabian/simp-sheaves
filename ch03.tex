@@ -52,16 +52,56 @@ Prägarben verallgemeinern.
   genannt (verallgemeinerte) Garbifizierung.
 \end{satz}
 \begin{proof}
-  Sei $F \in \p C_{/X}$. Wir behaupten, dass $F^+(U) :=
-  \colf\limits_{\mathcal{U}} \lim_i F(U_i)$ eine Garbe ist und die
-  Adjunktionseigenschaft erfüllt. Der Kolimes wird dabei über das
-  filtrierende System aller gesättigten Überdeckungen $U =
-  \bigcup_{U_i \in \mathcal{U}} U_i$ gebildet. Die Konstruktion ist
-  funktoriell.
+  Sei $F \in \p C_{/X}$. Wir behaupten, dass die Prägarbe
+  \[ F^+(U) :=   \colf\limits_{\mathcal{U}/U} \lim_j F(U_j) \]
+  mit den induzierten Restriktionen eine Garbe ist und die
+  Adjunktionseigenschaft erfüllt. Dabei steht $\mathcal{U}/U$ für das
+  filtrierende System aller gesättigten Überdeckungen $\mathcal{U}$
+  von $U$. Die Konstruktion ist funktoriell.
 
-  % ...
+  Für die Garbeneigenschaft konstruieren wir für eine gesättigte
+  offene Überdeckung $U = \bigcup U_i$ inverse Morphismen
+  \[ \colf\limits_{\mathcal{U}/U} \lim_{V \in \mathcal{U}} F(V)
+  \mathrel{\mathop{\rightleftarrows}}
+  \lim_i \colf\limits_{\mathcal{U}_i/U_i} \lim_{V \in \mathcal{U}_i} F(V). \]
+  Diese erhalten wir einerseits aus den natürlichen Projektionen des
+  Limes und Inklusionen des Kolimes und andererseits aus der
+  Konstruktion verträglicher Familien von Abbildungen, deren
+  Verträglichkeit sich jeweils sofort aus der Eindeutigkeit der
+  Restriktionen ergibt. Dabei werden einer Überdeckung in
+  $\mathcal{U}/U$ die Überdeckungen in $\mathcal{U}_i/U_i$ zugeordnet,
+  die sich durch Schneiden mit $U_i$ ergeben, und umgekehrt Familien
+  von Überdeckungen der $U_i$ die ihrer Vereinigung zugeordnete
+  gesättigte Überdeckung von $U$. Dass beide Morphismen invers
+  zueinander sind, ergibt sich erneut aus der Eindeutigkeit der
+  Restriktionen.
+
+  Auch für die Adjunktionseigenschaft gehen wir wie bei mengenwertigen
+  Garben vor und erhalten zunächst den natürlichen Prägarbenmorphismus
+  $F \to F^+$, der zur einelementigen Überdeckung von $U$ gehört. Wir
+  möchten nun zeigen, dass jeder Prägarbenmorphismus $F \to G$ in eine
+  Garbe $G$ eindeutig über unseren natürlichen Morphismus $F \to F^+$
+  faktorisiert. Die Morphismen unseres Prägarbenmorphismus $F(V) \to
+  G(V)$ induzieren nun nach der Restriktionsverträglichkeit Morphismen
+  auf den Limites, und somit auch im Kolimes Morphismen in
+  \[ C(F^+(U), G(U) =
+     C(\colf\limits_{\mathcal{U}/U} \lim_{V \in \mathcal{U}} F(V),
+     \lim_{V \in \mathcal{U}} G(V)) \iso
+     \colf\limits_{\mathcal{U}/U}
+     C(\lim_{V \in \mathcal{U}} F(V), \lim_{V \in \mathcal{U}} G(V)), \]
+  für alle $U \open X$, die ebenfalls mit den Restriktionen kompatibel
+  sind.
+
+  Dass $F \to G$ nun mittels dieses Morphismus $F^+ \to G$ über $F \to
+  F^+$ faktorisiert, folgt nun aber direkt, da der Morphismus für
+  einelementige Überdeckungen der aus dem Prägarbenmorpismus ist.
+
+  Zur Eindeutigkeit dieser Faktorisierung halten wir fest, dass der
+  Morphismus $F^+ \to G$ auf einelementigen Überdeckungen schon
+  aufgrund der Faktorisierungseigenschaft und dann auf größeren
+  Überdeckung durch die Garbeneigenschaften von $F^+$ und $G$
+  eindeutig festgelegt ist.
 \end{proof}
-
 
 Wir prüfen, dass wir so insbesondere eine Garbifizierung zu
 ``garbenwertigen Garben'' erhalten.
