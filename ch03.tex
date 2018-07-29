@@ -62,7 +62,7 @@ Prägarben verallgemeinern.
   Für die Garbeneigenschaft konstruieren wir für eine gesättigte
   offene Überdeckung $U = \bigcup U_i$ inverse Morphismen
   \[ \colf\limits_{\mathcal{U}/U} \lim_{V \in \mathcal{U}} F(V)
-  \mathrel{\mathop{\rightleftarrows}}
+  \rightleftarrows
   \lim_i \colf\limits_{\mathcal{U}_i/U_i} \lim_{V \in \mathcal{U}_i} F(V). \]
   Diese erhalten wir einerseits aus den natürlichen Projektionen des
   Limes und Inklusionen des Kolimes und andererseits aus der
@@ -186,7 +186,40 @@ Morphismen.
 
 \subsection{Exkurs: Überlagerungen von Produkträumen}
 
-% ...
+Nachdem der vorangegangene Satz die étalen Räume über einem
+Produktraum $X \times Y$ beschreibt, möchten wir nun die
+Überlagerungen eines solchen Produktraums beschreiben. Wir können die
+Frage in unserer allgemeineren Terminologie formulieren.
+\begin{prop}
+  Die Äquivalenz von Kategorien
+  \[ \EnsX \rightleftarrows \etTop_X \]
+  induziert eine Äquivalenz der vollen Unterkategorien
+  \[ \EnsX^{\lk} \rightleftarrows \Ub_X, \]
+  wobei $\EnsX^{\lk}$ die lokal konstanten Garben auf $X$ bezeichnet.
+\end{prop}
+\begin{proof}
+  Die Äquivalenz induziert zunächst die Äquivalenz der vollen
+  Unterkategorien der konstanten Garben und der trivialen
+  Überlagerungen und dann bei lokaler Forderung der jeweiligen
+  Eigenschaften die Aussage des Satzes.
+\end{proof}
+
+\begin{satz}
+  Seien $X$ und $Y$ topologische Räume, $Y$ einfach
+  zusammenhängend. Bezeichne $\pi: X \times Y \to X$ die
+  Projektion. Dann induzieren die Funktoren
+  \[ \EnsX^{\lk}
+  \mathrel{\mathop{\rightleftarrows}^{\pi^*}_{\pi_*}}
+  \Ens_{/X \times Y}^{\lk} \]
+  eine Äquivalenz von Kategorien.
+\end{satz}
+\begin{proof}
+  % gilt einf zushgd \Implies zushgd?
+
+  
+\end{proof}
+
+
 
 \subsection{Anwendung auf relativ schwach konstruierbare Garben} 
 
