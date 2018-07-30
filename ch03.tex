@@ -204,22 +204,39 @@ Frage in unserer allgemeineren Terminologie formulieren.
   Eigenschaften die Aussage des Satzes.
 \end{proof}
 
+Wir erinnern an die überlagerungstheoretische Definition einfachen
+Zusammenhangs in der Sprache von Garben.
+\begin{defn}
+  Ein topologischer Raum $Y$ heißt einfach zusammenhängend, falls jede
+  lokal konstante Garbe auf $Y$ konstant ist.
+\end{defn}
+Einfach zusammenhängende Räume sind somit insbesondere
+zusammenhängend, da wir sonst auf den Zusammenhangskomponenten
+triviale Überlagerungen wählen können, deren Fasern verschiedene
+Kardinalitäten haben.
+
 \begin{satz}
   Seien $X$ und $Y$ topologische Räume, $Y$ einfach
   zusammenhängend. Bezeichne $\pi: X \times Y \to X$ die
-  Projektion. Dann induzieren die Funktoren
+  Projektion. Dann induzieren die Funktoren  
   \[ \EnsX^{\lk}
   \mathrel{\mathop{\rightleftarrows}^{\pi^*}_{\pi_*}}
   \Ens_{/X \times Y}^{\lk} \]
   eine Äquivalenz von Kategorien.
 \end{satz}
 \begin{proof}
-  % gilt einf zushgd \Implies zushgd?
+  Der Isomorphismus $F \iso \pi_* \pi^* F$ für $F \in \EnsX^{\lk}$ ist
+  gerade die Aussage zu finalem Rückzug mit zusammenhängender
+  Faser \ref{??}, da $Y$ zusammenhängend ist als einfach
+  zusammenhängender Raum.
 
-  
+  Der Isomorphismus $\pi^* \pi_* F \iso F$ für $F \in \Ens_{/X \times
+  Y}^{\lk}$ folgt aus der Aussage zu faserkonstanten Garben \ref{??},
+  falls wir zeigen können, dass $F$ konstant ist auf den Fasern von
+  $\pi$. Tatsächlich ist aber $F|_{\pi^{-1}(x)}$ eine lokal konstante
+  Garbe auf $Y$ und mithin konstant wegen des einfachen Zusammenhangs
+  von $Y$. 
 \end{proof}
-
-
 
 \subsection{Anwendung auf relativ schwach konstruierbare Garben} 
 
