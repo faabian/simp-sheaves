@@ -460,17 +460,39 @@ erhalten:
   $|\K|$-konstruierbar und wir bestimmen für $x \in |\sigma|$ die
   Halme mittels
   \[ (R^k \beta F)_x \iso (R^k \beta F)(U(\sigma)) \iso H^k(U(\sigma); F) \]
-  unter Verwendung von \ref{sk-is-acyc} \ref{itm:sk-is-acyc-comp}. Das
-  führt die Aussage auf die beschränkte homologische Dimension von
+  unter Verwendung von \ref{sk-char} \ref{itm:sk-char-res} und
+  \ref{sk-is-acyc} \ref{itm:sk-is-acyc-comp}. Das führt die Aussage
+  auf die beschränkte homologische Dimension von
   $n$-Mannigfaltigkeiten im folgenden Lemma zurück, denn für $\K$
-  lokal-endlich von beschränkter Dimension kann ist $U(\sigma)$ offene
+  lokal-endlich von beschränkter Dimension ist $U(\sigma)$ eine offene
   Teilmenge eines endlichdimensionalen reellen Vektorraums $\R^n$.
 \end{proof}
 \begin{lemma}
-  hom Dim $U \open R^n$
+  Für $U \open \R^n$ und $F \in \Ab_{/U}$ gilt $H^q(U; F) = 0$ für
+  alle $q > n$.
 \end{lemma}
 \begin{proof}
-  azyklizitätslemma
+  Zunächst können wir ohne Einschränkung $U = \R^n$ annehmen, indem
+  wir verwenden, dass die Fortsetzung durch Null entlang der
+  Einbettung $j: U \inj \R^n$ Isomorphismen
+  \[ H^q(U; F) \iso H^q(U; j_! F) \]
+  liefert.
+
+  Nach \cite{KS}, 3.2.2, gibt es für $F \in \Ab_{/\R^n}$ eine
+  $n$-Schritt Auflösung durch kompaktweiche Garben. Wir müssen also
+  zeigen, dass kompaktweiche Garben $\Gamma$-azyklisch sind
+  (\cite{TG}, 4.8 zeigt das nur für $\Gamma_!$). Mit dem
+  Azyklizitätskriterium \cite{TG}, 4.1.6, und den Aussagen für
+  $\Gamma_!$ bleibt nur noch zu zeigen, dass eine kurze exakte Sequenz
+  von Garben $F' \inj F \surj F''$ mit $F'$ kompaktweich exakt bleibt
+  nach Anwenden von $\Gamma$. Dies folgern wir allerdings sofort aus
+  der $\sigma$-Kompaktheit von $\R^n$ und den Aussagen für $\Gamma_!$:
+  Sei dazu $\R^n = \bigcup_i K_i$ eine kompakte Ausschöpfung mit $K_i$
+  kompakt und $K_i \subset \intr(K_{i+1})$. Dann gilt $\Gamma_!(K_i,
+  F) = \Gamma(K_i, F)$, $F|_{K_i}$ ist kompaktweich und unsere kurze
+  exakte Sequenz bleibt exakt nach Anwenden von $\Gamma(K_i, \cdot)$
+  und somit auch im filtrierenden Kolimes nach Anwenden von $\Gamma =
+  \colf_i \Gamma(K_i, \cdot)$.
 \end{proof}
 
 \end{document}
