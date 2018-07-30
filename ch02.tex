@@ -401,22 +401,76 @@ erhalten:
   \DerskK. \]
 \end{theorem}
 \begin{proof}
+  %% Die Funkoren $(\iota, \beta)$ bleibt eine Adjunktion nach Übergang
+  %% zu den derivierten Kategorien nach \cite{TD}, 3.2.25.  
+
   Mit \cite{TD}, 3.6.10, finden wir für $F \in \Ket(\AbKr)$ eine
-  homotopieinjektive Auflösung $F \qiso I$ durch injektive Garben. Ist
-  $F \in \sKons(\K)$, so können wir $R\beta \circ \iota$ auf $F$ mit
-  $I$ berechnen und erhalten
-  \[ R\beta \, \iota F \iso \beta I \iso I \qiso F \]
-  nach ???.
-
-  % Hier benötigen wir eine homotopieinjektive Auflösung durch schwach
-  % konstruktible, oder geht das einfacher?
-
-  Umgekehrt berechnen wir für $F \in Ket(\AbKr)$ schwach
-  $|\K|$-konstruierbar
-  \[ \iota R\beta F \iso \beta I \qiso I \qiso F \]
-  nach \ref{beta-qi} und der $\beta$-Azyklizität injektiver Garben
-  \ref{sk-is-acyc} \ref{itm:sk-is-acyc-beta}.
+  homotopieinjektive Auflösung $F \qiso I$ durch injektive Garben, die
+  also entfaltet ist für $\beta$. Mit dem vorangegangenen Satz
+  \ref{beta-qi} und der $\beta$-Azyklizität injektiver Garben
+  \ref{sk-is-acyc} \ref{itm:sk-is-acyc-beta} erhalten wir für $F \in
+  \DerskK$:
+  \[R \beta F \iso \beta I \iso I \iso F. \]
+  Tatsächlich hat $R \beta$ Bild in $\Der(\sKons(\K))$ und unsere
+  obige Aussage beinhaltet die Isotransformationen $\Id \Isotrafo R
+  \beta \circ \iota$ und $\iota \circ R \beta \Isotrafo \Id$.
 \end{proof}
+\begin{bem}
+  Ist $\K$ lokal-endlich und von beschränkter Dimension, so erhalten
+  wir dasselbe Ergebnis mit deutlich weniger Technik, nämlich ohne
+  Rückgriff auf homotopieinjektive Auflösungen. In der Tat können wir
+  nach dem Satz über das unbeschränkte Derivieren homologisch
+  endlicher Funktoren (\cite{TG}, 3.7.4) mit beliebigen Auflösungen
+  aus $\beta$-azyklischen Objekten arbeiten und dann einfach mit
+  \ref{sk-is-acyc} \ref{itm:sk-is-acyc-beta} eine beliebige welke
+  Auflösung wählen.
 
+  Wir müssen also zeigen, dass $\beta$ homologisch rechtsendlich ist
+  und sich jede Garbe $F \in \AbKr$ in eine $\beta$-azyklische
+  einbetten lässt. Letzteres folgt wieder aus \ref{sk-is-acyc}
+  \ref{itm:sk-is-acyc-beta}, ersteres zeigen wir im folgenden Lemma.
+
+  %% In der Tat können wir die geometrische Realisierung eines solchen
+  %% Simplizes lokal (d. h. auf $U(\sigma)$-Mengen) in einen $\R^n$
+  %% einbetten. Nun kann ein Schnitt über $U(\sigma)$ (wieso?) auf
+  %% eindeutige Weise ausgedehnt werden zu einem Schnitt über
+  %% $\overline{U(\sigma)}$ und wir erhalten
+  %% \[ H^q(U(\sigma), F) \] \iso H^q_!(\overline{U(\sigma)}, F)
+  %% = 0 \quad \text{für } q > n \]
+
+  %% nach der kohomologischen Dimension von $n$-Mannigfaltigkeiten
+  %% \cite{TG} ??.
+\end{bem}
+\begin{lemma}
+  Ist $\K$ ein lokal-endlicher Simplizialkomplex beschränkter
+  Dimension, so ist $\beta: \AbKr \to \AbKr$ ein homologisch
+  rechtsendlicher Funktor.
+
+  %% der homologischen Dimension kleiner oder gleich $\dim \K$.
+  %% stimmt das überhaupt?
+\end{lemma}
+
+%% Dabei definieren wir die Dimension eines nichtleeren
+%% Simplizialkomplexes $\K$ als
+%% \[ \dim \K := \sup_{\sigma \in \K} |\sigma| - 1 \]
+%% und $\dim \K := - \infty$, falls $\K$ leer ist.
+
+\begin{proof}
+  Sei $F \in \AbKr$. Dann ist $R^k \beta F$ schwach
+  $|\K|$-konstruierbar und wir bestimmen für $x \in |\sigma|$ die
+  Halme mittels
+  \[ (R^k \beta F)_x \iso (R^k \beta F)(U(\sigma)) \iso H^k(U(\sigma); F) \]
+  unter Verwendung von \ref{sk-is-acyc} \ref{itm:sk-is-acyc-comp}. Das
+  führt die Aussage auf die beschränkte homologische Dimension von
+  $n$-Mannigfaltigkeiten im folgenden Lemma zurück, denn für $\K$
+  lokal-endlich von beschränkter Dimension kann ist $U(\sigma)$ offene
+  Teilmenge eines endlichdimensionalen reellen Vektorraums $\R^n$.
+\end{proof}
+\begin{lemma}
+  hom Dim $U \open R^n$
+\end{lemma}
+\begin{proof}
+  azyklizitätslemma
+\end{proof}
 
 \end{document}
