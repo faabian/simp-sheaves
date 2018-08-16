@@ -38,16 +38,47 @@ simplizialen Mengen und simplizialen Garben. Wir notieren die
 Funktorkategorien simplizialer Objekte in $C$ auch kurz mit $\s C =
 [\Delta\op, C]$.
 
-%% Simpliziale Mengen haben eine große Bedeutung in der Topologie, da
-%% ihre Quillen-Homotopiekategorie zu der der topologischen Räume
-%% äquivalent ist.
+Die monotonen Abbildungen $[m] \to [n]$ werden von zwei besonders
+einfachen Klassen monotoner Abbildungen erzeugt: Zum einen von den
+Randabbildungen, den eindeutigen Injektionen $d_i^n: [n - 1] \to [n]$,
+die $i \in \{0, \dots, n\}$ nicht treffen, zum anderen von den
+Degenerationsabbildungen, den eindeutigen Surjektionen $s_i^n: [n +
+1] \to [n]$, für die $i \in \{0, \dots n\}$ zweielementiges Urbild
+hat.
+
+\begin{lemma}[\cite{??}]
+  \begin{enumerate}[label=(\roman*)]
+  \item Die Rand- und Degenerationsabbildungen erfüllen die Relationen
+    \begin{align*}
+    d_j^{n+1} d_i^n = d_i^{n+1} d_{j-1}^n \quad \text{für} \quad i < j
+    s_j^n s_i^{n+1} = s_i^n s_{j+1}^{n+1} \quad \text{für} \quad i \leq j
+    s_j^{n-1} d_i^n = d_i^{n-1} s_{j-1}^{n-2} \quad \text{für} \quad i < j
+    s_j^{n-1} d_i^n = \id_{[n-1]} \quad \text{für} \quad i = j \text{ oder } i = j+1
+    s_j^{n-1} d_i^n = d_{i-1}^{n-1} s_j^{n-2} \quad \text{für} \quad i > j + 1
+    \end{align*}
+ 
+  \item Sei $f: [m] \to [n]$ monoton. Dann hat $f$ eine eindeutige
+    Darstellung
+    \[ f = d_{i_1}^n \dots d_{i_s}^{n-s+1} s_{j_t}^{m-t} \dots s_{j_1}^{m-1} \]
+    mit $n \geq i_1 > \dots > i_s \geq 0$, $m > j_1 > \dots > j_t \geq
+    0$ und $n = m-t+s$.
+    
+  \item Die vom Köcher der endlichen nichtleeren Ordinalzahlen mit den
+  Rand- und Korandabbildungen und den angegebenen Relationen erzeugte
+  Kategorie ist isomorph zu $\Delta$.
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+% TODO
+\end{proof}
+
 
 Die einfachsten Beispiele nichttrivialer simplizialer Mengen sind die
 Standard-$n$-Simplizes, die sich als die darstellbaren Funktoren
 $\Delta^n = \Delta(\cdot, [n])$ beschreiben lassen. Wir erhalten einen
 Funktor
 \begin{align*}
-  \Delta &\to \s\Ens
+  \Delta &\to \s\Ens, \\
   [n] &\mapsto \Delta^n = \Delta(\cdot, [n]).
 \end{align*}
 
@@ -98,15 +129,20 @@ Realisierung eines 1-Simplizes realisiert werden, dessen Endpunkte
 Formal definieren wir zunächst die geometrische Realsierung des
 Standard-$n$-Simplex als den abgeschlossenen geometrischen
 Standard-$n$-Simplex
-\[ |\Delta^n| = \{ x \in \R^{n+1} | 0 \leq x_i \leq 1, \sum_{i=0}^n x_i = 1 \} \]
+\[ |\Delta^n| = \{ x \in \R^{n+1} | 0 \leq x_i \leq 1, \sum_{i=0}^n x_i = 1 \}. \]
+
+% TODO geometrische Standardsimplizes und Randabb., Degenerationen
+
 und fordern, dass sich die Realisierung mit Kolimites vertrage:
-\[ |\col_i X_i| \iso \col_i |X_i| \].
+\[ |\col_i X_i| \iso \col_i |X_i|. \]
 Das erreichen wir, indem wir für eine simpliziale Menge $X$ setzen
 \[ |X| := \col_{\Delta^n \to X} |\Delta^n|, \]
 wieder mit dem Kolimes über die Simplexkategorie von $X$.
 
 Ein Morphismus simplizialer Mengen $X \to Y$ induziert nun durch
 Nachschalten von $X \to Y$ einen Funktor auf den Simplexkategorien
-$\Delta \downarrow X \to \Delta \downarrow Y$
+$\Delta \downarrow X \to \Delta \downarrow Y$ und damit auch auf den
+Kolimites eine stetige Abbildung $|X| \to |Y|$. Wir erhalten also den
+Funktor der geometrischen Realisierung $| \cdot |: \s \Ens \to \Top$.
 \end{document}
 
