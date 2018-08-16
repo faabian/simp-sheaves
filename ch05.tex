@@ -1,0 +1,112 @@
+% include latex header (\usepackage, \newcommand etc.) 
+\input{header.tex}
+
+\begin{document}
+
+\title{Simpliziale Garben}
+\author{Fabian Glöckle}
+\date{\today}
+% \maketitle
+
+\chapter{Simpliziale Garben}
+
+In diesem Kapitel beschäftigen wir uns mit simplizialen Objekten in
+der Kategorie der Garben auf einem topologischen Raum $X$. Während
+Simplizialkomplexe ungerichtete Graphen verallgemeinern,
+verallgemeinern simpliziale Mengen gerichtete Graphen, und werden uns
+so bei der geometrischen Realisierung von Objekten in
+Diagrammkategorien von Garben zur Verfügung stehen.
+
+Wir betrachten die Menge $\Delta$ der nichtleeren endlichen
+Ordinalzahlen. Ihre Elemente sind von der Form $\{0, 1, \dots, n\}$
+für ein $n \in \N$, welche wir kurz mit $[n]$ bezeichnen werden. Wir
+verstehen diese Mengen $[n]$ als angeordnete Mengen.
+
+\begin{defn}
+  Die Simplex-Kategorie $\Delta$ ist die Kategorie der endlichen
+  nichtleeren Ordinalzahlen versehen mit monotonen Abbildungen als
+  Morphismen.
+
+  Ist $C$ eine Kategorie, so bezeichnen wir eine Prägarbe auf $\Delta$
+  mit Werten in $C$ (d. h. einen Funktor $\Delta\op \to C$) als
+  simpliziales Objekt in $C$.
+\end{defn}
+
+Unseren gewohnten Sprechweisen folgend nennen wir simpliziale Objekte
+in $C$ auch kurz ``simpliziale $C$'' und sprechen etwa von
+simplizialen Mengen und simplizialen Garben. Wir notieren die
+Funktorkategorien simplizialer Objekte in $C$ auch kurz mit $\s C =
+[\Delta\op, C]$.
+
+%% Simpliziale Mengen haben eine große Bedeutung in der Topologie, da
+%% ihre Quillen-Homotopiekategorie zu der der topologischen Räume
+%% äquivalent ist.
+
+Die einfachsten Beispiele nichttrivialer simplizialer Mengen sind die
+Standard-$n$-Simplizes, die sich als die darstellbaren Funktoren
+$\Delta^n = \Delta(\cdot, [n])$ beschreiben lassen. Wir erhalten einen
+Funktor
+\begin{align*}
+  \Delta &\to \s\Ens
+  [n] &\mapsto \Delta^n = \Delta(\cdot, [n]).
+\end{align*}
+
+Ist $X \in \s\Ens$ eine simpliziale Menge, so bezeichnen wir $X_n :=
+X([n])$ als die Menge der $n$-Simplizes von $X$. Nun sind die
+$n$-Simplizes von $X$ gerade die ``Bilder des $n$-ten
+Standardsimplizes in $X$'' sind, präziser
+\[ X_n \iso \s\Ens(\Delta^n, X). \]
+In der Tat besagt das Yoneda-Lemma, dass die Transformationen des
+freien Funktors $\Delta^n = \Delta(\cdot, [n])$ zum Funktor $X$ in
+natürlicher Bijektion stehen zu $X([n])$.
+
+Das folgende Lemma zeigt, dass sich eine simpliziale Menge $X$
+vollständig durch ihre Simplizes $\Delta^n \to X$ verstehen lässt.
+Wir betrachten dazu die Simplexkategorie von $X$, d. h. die Kategorie
+$\Delta \downarrow X$, wobei wir in der Notation unterschlagen, dass
+wir mittels $[n] \mapsto \Delta^n$ abstrakte Simplizes $[n]$ als
+simpliziale Mengen auffassen. Konkret ist also ein Objekt unserer
+Simplexkategorie von $X$ ein Morphismus $\Delta^n \to X$ und ein
+Morphismus in der Simplexkategorie ein von $[n] \to [m]$ induzierter
+Morphismus simplizialer Mengen $\Delta^n \to \Delta^m$ über $X$.
+
+\begin{lemma}
+  Sei $X \in \s\Ens$ eine simpliziale Menge. Dann gilt
+  \[ X \iso \col_{\Delta^n \to X} \Delta^n, \]
+  mit dem Kolimes über die Simplexkategorie von $X$.
+\end{lemma}
+\begin{proof}
+  Bezeichne $C$ obigen Kolimes. Das System, über das der Kolimes
+  gebildet wird, sichert uns nach der universellen Eigenschaft des
+  Kolimes einen eindeutigen Morphismus $C \to X$. Wir müssen also
+  zeigen, dass dieser Bijektionen auf den $n$-Simplizes
+  induziert. Tatsächlich definiert ein $n$-Simplex $\Delta^n \to C$
+  durch Nachschalten von $C \to X$ einen $n$-Simplex in $X$. Diese
+  Zuordnung ist bijektiv, denn wir erhalten eine Umkehrabbildung, wenn
+  wir $\Delta^n \to X$ den zugehörigen Morphismus in den Kolimes
+  $\Delta^n \to C$ zuordnen.
+\end{proof}
+
+Wir erklären nun die geometrische Realisierung simplizialer
+Mengen. Der Unterschied zur geometrsichen Realsierung von
+Simplizialkomplexen ist im Wesentlichen die Möglichkeit, Simplizes
+``wiederzuverwenden'', was zu Identifikationen in der geomtrischen
+Realisierung führt. Beispielsweise soll die $S^1$ als geometrische
+Realisierung eines 1-Simplizes realisiert werden, dessen Endpunkte
+übereinstimmen.
+
+Formal definieren wir zunächst die geometrische Realsierung des
+Standard-$n$-Simplex als den abgeschlossenen geometrischen
+Standard-$n$-Simplex
+\[ |\Delta^n| = \{ x \in \R^{n+1} | 0 \leq x_i \leq 1, \sum_{i=0}^n x_i = 1 \} \]
+und fordern, dass sich die Realisierung mit Kolimites vertrage:
+\[ |\col_i X_i| \iso \col_i |X_i| \].
+Das erreichen wir, indem wir für eine simpliziale Menge $X$ setzen
+\[ |X| := \col_{\Delta^n \to X} |\Delta^n|, \]
+wieder mit dem Kolimes über die Simplexkategorie von $X$.
+
+Ein Morphismus simplizialer Mengen $X \to Y$ induziert nun durch
+Nachschalten von $X \to Y$ einen Funktor auf den Simplexkategorien
+$\Delta \downarrow X \to \Delta \downarrow Y$
+\end{document}
+
