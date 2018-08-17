@@ -39,48 +39,87 @@ Funktorkategorien simplizialer Objekte in $C$ auch kurz mit $\s C =
 [\Delta\op, C]$.
 
 Die monotonen Abbildungen $[m] \to [n]$ werden von zwei besonders
-einfachen Klassen monotoner Abbildungen erzeugt: Zum einen von den
-Randabbildungen, den eindeutigen Injektionen $d_i^n: [n - 1] \to [n]$,
-die $i \in \{0, \dots, n\}$ nicht treffen, zum anderen von den
-Degenerationsabbildungen, den eindeutigen Surjektionen $s_i^n: [n +
+einfachen Klassen monotoner Abbildungen erzeugt: von den
+\emph{Randabbildungen}, den eindeutigen Injektionen $d_i^n: [n - 1] \to [n]$,
+die $i \in \{0, \dots, n\}$ nicht treffen, und den
+\emph{Degenerationsabbildungen}, den eindeutigen Surjektionen $s_i^n: [n +
 1] \to [n]$, für die $i \in \{0, \dots n\}$ zweielementiges Urbild
 hat.
 
-\begin{lemma}[\cite{??}]
-  \begin{enumerate}[label=(\roman*)]
-  \item Die Rand- und Degenerationsabbildungen erfüllen die Relationen
-    \begin{align*}
-    d_j^{n+1} d_i^n = d_i^{n+1} d_{j-1}^n \quad \text{für} \quad i < j
-    s_j^n s_i^{n+1} = s_i^n s_{j+1}^{n+1} \quad \text{für} \quad i \leq j
-    s_j^{n-1} d_i^n = d_i^{n-1} s_{j-1}^{n-2} \quad \text{für} \quad i < j
-    s_j^{n-1} d_i^n = \id_{[n-1]} \quad \text{für} \quad i = j \text{ oder } i = j+1
-    s_j^{n-1} d_i^n = d_{i-1}^{n-1} s_j^{n-2} \quad \text{für} \quad i > j + 1
-    \end{align*}
+\begin{lemma}[\cite{GM}, I.2, ex. 1] \label{face-gen}
+  \begin{enumerate}[label=(\roman*)] \item \label{itm:face-gen-rel}
+  Die Rand- und Degenerationsabbildungen erfüllen die Relationen
+  \begin{align*}
+    d_j^{n+1} d_i^n &= d_i^{n+1} d_{j-1}^n \quad \text{für} \quad i < j, \\
+    s_j^n s_i^{n+1} &= s_i^n s_{j+1}^{n+1} \quad \text{für} \quad i \leq j, \\
+    s_j^{n-1} d_i^n &=
+    \begin{cases}
+    d_i^{n-1} s_{j-1}^{n-2} \quad \text{für} \quad i < j, \\
+    \id_{[n-1]} \quad \text{für} \quad i = j \text{ oder } i = j+1, \\
+    d_{i-1}^{n-1} s_j^{n-2} \quad \text{für} \quad i > j + 1.
+    \end{cases}
+  \end{align*}
  
-  \item Sei $f: [m] \to [n]$ monoton. Dann hat $f$ eine eindeutige
-    Darstellung
-    \[ f = d_{i_1}^n \dots d_{i_s}^{n-s+1} s_{j_t}^{m-t} \dots s_{j_1}^{m-1} \]
-    mit $n \geq i_1 > \dots > i_s \geq 0$, $m > j_1 > \dots > j_t \geq
-    0$ und $n = m-t+s$.
+  \item \label{itm:face-gen-form} Sei $f: [m] \to [n]$ monoton. Dann
+  hat $f$ eine eindeutige Darstellung
+  \[ f = d_{i_1}^n \dots d_{i_s}^{n-s+1} s_{j_t}^{m-t} \dots s_{j_1}^{m-1} \]
+  mit $n \geq i_1 > \dots > i_s \geq 0$, $m > j_1 > \dots > j_t \geq
+  0$ und $n = m-t+s$.
     
-  \item Die vom Köcher der endlichen nichtleeren Ordinalzahlen mit den
-  Rand- und Korandabbildungen und den angegebenen Relationen erzeugte
-  Kategorie ist isomorph zu $\Delta$.
-  \end{enumerate}
+  \item \label{itm:face-gen-cat} Die vom Köcher der endlichen
+  nichtleeren Ordinalzahlen mit den Rand- und Korandabbildungen und
+  den angegebenen Relationen auf den Morphismenmengen erzeugte
+  Pfadkategorie ist isomorph zu $\Delta$.
+\end{enumerate}
 \end{lemma}
 \begin{proof}
-% TODO
-\end{proof}
+  \begin{enumerate}[label=(\roman*)]
+  \item Durch Bildchen Zeichnen oder explizites Nachrechnen: Wir
+  werten beide Abbildungen simultan auf allen Elementen aus und
+  erhalten zum Beispiel für die erste Aussage:
+  \begin{align*}
+  &(0, 1, \dots, i-1, i, i+1, \cdots, j-2, j-1, j, \cdots, n-1) \\
+  \xmapsto{d_i^n} \quad
+  &(0, 1, \cdots, i-1, i+1, i+2, \cdots, j-1, j, j+1, \cdots, n) \\
+  \xmapsto{d_j^{n+1}} \quad
+  &(0, 1, \cdots, i-1, i+1, i+2, \cdots, j-1, j+1, j+2, \cdots, n+1)
+  \end{align*}
+  sowie
+  \begin{align*}
+  &(0, 1, \cdots, i-1, i, i+1, \cdots, j-2, j-1, j, \cdots, n-1) \\
+  \xmapsto{d_{j-1}^n} \quad
+  &(0, 1, \cdots, i-1, i, i+1, \cdots, j-2, j, j+1, \cdots, n) \\
+  \xmapsto{d_i^{n+1}} \quad
+  &(0, 1, \cdots, i-1, i+1, i+2, \cdots, j-1, j+1, j+2, \cdots, n+1).
+  \end{align*}
 
+  \item In einer solchen Darstellung gibt $m - t$ die Anzahl der
+  Funktionswerte der Abbildung an, die $j_k$ beschreiben die Partition
+  von $(0, \cdots, m)$ in zusammenhängende Abschnitte mit demselben
+  Funktionswert und die $i_k$ bestimmen die Funktionswerte selbst.
+
+  \item Jeden Morphismus in der Pfadkategorie, d. h. jedes Tupel
+  komponierbarer Rand- und Degenerationsabbildungen kann mit den
+  Relationen aus dem ersten Teil auf eine Form wie
+  in \ref{itm:face-gen-form} gebracht werden. Umgekehrt ist
+  nach \ref{itm:face-gen-form} jede monotone Abbildung aber auch als
+  ein solcher Pfad darstellbar. Den Isomorphismus definiert also der
+  Funktor, der auf Objekten durch die Identität und auf Morphismen
+  durch die offensichtliche Zuordnung der Erzeuger der Pfadkategorie
+  auf die jeweiligen Rand- und Degenerationsabbildungen gegeben ist.
+\end{enumerate}
+\end{proof}
 
 Die einfachsten Beispiele nichttrivialer simplizialer Mengen sind die
 Standard-$n$-Simplizes, die sich als die darstellbaren Funktoren
-$\Delta^n = \Delta(\cdot, [n])$ beschreiben lassen. Wir erhalten einen
+$\Delta^n = \Delta(\cdot, [n])$ beschreiben lassen. Wir erhalten den
 Funktor
 \begin{align*}
-  \Delta &\to \s\Ens, \\
-  [n] &\mapsto \Delta^n = \Delta(\cdot, [n]).
+  R: \Delta\op &\to \s\Ens, \\
+  [n] &\mapsto \Delta^n = \Delta(\cdot, [n]),
 \end{align*}
+der auf Morphismen durch Vorschalten gegeben ist, welches wir mit
+$f \mapsto f^*$ notieren.
 
 Ist $X \in \s\Ens$ eine simpliziale Menge, so bezeichnen wir $X_n :=
 X([n])$ als die Menge der $n$-Simplizes von $X$. Nun sind die
@@ -118,6 +157,8 @@ Morphismus simplizialer Mengen $\Delta^n \to \Delta^m$ über $X$.
   $\Delta^n \to C$ zuordnen.
 \end{proof}
 
+% TODO erklären inwiefern das ganz allgemein für jeden Funktor C \to Ens geht
+
 Wir erklären nun die geometrische Realisierung simplizialer
 Mengen. Der Unterschied zur geometrsichen Realsierung von
 Simplizialkomplexen ist im Wesentlichen die Möglichkeit, Simplizes
@@ -131,18 +172,55 @@ Standard-$n$-Simplex als den abgeschlossenen geometrischen
 Standard-$n$-Simplex
 \[ |\Delta^n| = \{ x \in \R^{n+1} | 0 \leq x_i \leq 1, \sum_{i=0}^n x_i = 1 \}. \]
 
-% TODO geometrische Standardsimplizes und Randabb., Degenerationen
+Ein Morphismus $f: [m] \to [n]$ definiert eine stetige Abbildung $|f|:
+|\Delta^m| \to |\Delta^n|$ auf den zugehörigen
+Simplizes. Nach \ref{face-gen} reicht es, diese für Rand- und
+Degenerationsabbildungen anzugeben. Für die Randabbildung $|d_i|$
+handelt es sich dabei um die Inklusion der $i$-ten Kante, d. h. in
+Koordinaten das Einfügen einer Null an der $i$-ten Stelle, für die
+Degenerationen $|s_i|$ um den Kollaps der $i$-ten Kante, d. h. in
+Koordinaten die Ersetzung der $i$-ten und ihrer darauffolgenden
+Koordinate durch ihre Summe. In Formeln:
 
-und fordern, dass sich die Realisierung mit Kolimites vertrage:
+\begin{align*}
+  |d_i^n|(x_0, \cdots, x_{n-1})
+  &= (x_0, \cdots, x_{i-1}, 0, x_i, \cdots, x_{n-1}), \\
+  |s_i^n|(x_0, \cdots, x_{n+1})
+  &= (x_0, \cdots, x_{i-1}, x_i + x_{i+1}, x_{i+2}, \cdots, x_{n+1}).
+\end{align*}
+
+Nun fordern wir, dass sich die Realisierung mit Kolimites vertrage:
 \[ |\col_i X_i| \iso \col_i |X_i|. \]
 Das erreichen wir, indem wir für eine simpliziale Menge $X$ setzen
 \[ |X| := \col_{\Delta^n \to X} |\Delta^n|, \]
-wieder mit dem Kolimes über die Simplexkategorie von $X$.
+wieder mit dem Kolimes über die Simplexkategorie von $X$ und den oben definierten stetigen Abbildungen auf den geomtrischen Simplizes.
+
+Wie ganz allgemein können wir den Kolimes topologischer Räume auch
+explizit mittels Koprodukt und Koegalisator ausschreiben, wir
+verstehen die Mengen $X_n$ als diskrete topologische Räume und
+erhalten:
+\[ |X| \iso (\coprod_n X_n \times |\Delta^n|) / \sim \]
+mit der Quotiententopologie, die durch die Äquivalenzrelation
+\[ (x, |f|(p)) \sim (f^*(x), p) \]
+für alle monotonen $f: [m] \to [n]$ gegeben ist.
 
 Ein Morphismus simplizialer Mengen $X \to Y$ induziert nun durch
 Nachschalten von $X \to Y$ einen Funktor auf den Simplexkategorien
 $\Delta \downarrow X \to \Delta \downarrow Y$ und damit auch auf den
 Kolimites eine stetige Abbildung $|X| \to |Y|$. Wir erhalten also den
 Funktor der geometrischen Realisierung $| \cdot |: \s \Ens \to \Top$.
+
+\begin{bem}
+Diese Konstruktion lässt sich interpretieren als das Tensorprodukt der
+Funktoren
+\begin{align*}
+  X: \Delta\op &\to \Top \quad \text{und} \\
+  ??: \Delta &\to \Top, [n] \mapsto |\Delta^n|,
+% TODO: gescheiten Namen finden, oben den Funktor klarer machen.
+\end{align*}
+wobei die Mengen $X_n$ als diskrete topologische Räume aufgefasst
+werden (\cite{Moer}, III.1).
+\end{bem}
+
 \end{document}
 
