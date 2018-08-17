@@ -131,14 +131,22 @@ In der Tat besagt das Yoneda-Lemma, dass die Transformationen des
 freien Funktors $\Delta^n = \Delta(\cdot, [n])$ zum Funktor $X$ in
 natürlicher Bijektion stehen zu $X([n])$.
 
-Das folgende Lemma zeigt, dass sich eine simpliziale Menge $X$
-vollständig durch ihre Simplizes $\Delta^n \to X$ verstehen lässt.
-Wir betrachten dazu die Simplexkategorie von $X$, d. h. die Kategorie
-$\Delta \downarrow X$, wobei wir in der Notation unterschlagen, dass
-wir mittels $[n] \mapsto \Delta^n$ abstrakte Simplizes $[n]$ als
-simpliziale Mengen auffassen. Konkret ist also ein Objekt unserer
-Simplexkategorie von $X$ ein Morphismus $\Delta^n \to X$ und ein
-Morphismus in der Simplexkategorie ein von $[n] \to [m]$ induzierter
+Das anschließende Lemma zeigt, dass sich eine simpliziale Menge $X$
+vollständig durch ihre Simplizes $\Delta^n \to X$ verstehen
+lässt. Dazu erklären wir zunächst Slice-Kategorien, Kategorien von
+Objekten über einem gegebenen Objekt bzw. Spezialfälle von
+Komma-Kategorien.
+\begin{defn}
+  Sei $r: C \to D$ ein Funktor und $X \in D$ ein Objekt. Dann
+  bezeichnet $\slicecat{C}{r}{X}$ die Slice-Kategorie der Objekte von
+  $C$ über $X$ mittels $r$, deren Objekte Objekte $Y \in C$ samt einem
+  Morphismus $\pi_Y: rY \to X$ sind und deren Morphismen Morphismen
+  $f: Y \to Z$ in $C$ sind, für die $rf$ ein Morphismus über $X$ ist,
+  d. h. $\pi_Y = \pi_Z \circ rf$ gilt.
+\end{defn}
+Wir bezeichnen die Slice-Kategorie $\slicecat{\Delta}{r}{X}$ als die
+Simplexkategorie von $X$. Konkret ist darin ein Objekt ein Morphismus
+$\Delta^n \to X$ und ein Morphismus ein von $[n] \to [m]$ induzierter
 Morphismus simplizialer Mengen $\Delta^n \to \Delta^m$ über $X$.
 
 \begin{lemma}
@@ -163,26 +171,32 @@ Mengen. Wir halten mit wörtlich übertragenen Beweis allgemein fest:
   darstellbare Funktoren $C(X, \cdot)$.
 \end{prop}
 \begin{proof}
-  Wir betrachten wieder mittels des Funktors $r: C \to \Ens^C,
-  X \mapsto C(X, \cdot)$ die Kategorie $C \downarrow \! {\scriptstyle
-  r} \, F$ der darstellbaren Funktoren über $F$. Wir bezeichnen wieder
-  den Kolimes mit $K$ und erhalten mit der universellen Eigenschaft
-  eine Tranformation $K \Trafo F$. Diese ist eine Isotransformation,
-  wenn sie auf allen Objekten $X \in C$ Bijektionen $KX \iso FX$
-  induziert. Nach dem Yoneda-Lemma entsprechen diese den
-  Transformationen $C(X, \cdot) \Trafo K$ bzw. $C(X, \cdot) \Trafo
-  F$. Diese stehen aber nach der universellen Eigenschaft des Kolimes
-  und der Definition der Kategorie $C \downarrow \! {\scriptstyle
-  r} \, F$ in Bijektion durch Nachschalten von $K \Trafo F$.
+  Wir betrachten mittels des Funktors $r: C \to \Ens^C, X \mapsto
+  C(X, \cdot)$ die Slice-Kategorie $\slicecat{C}{r}{F}$ der
+  darstellbaren Funktoren über $F$ und dann das System in $\Ens^C$,
+  das daraus durch Vergessen der Transformationen nach $F$
+  hervorgeht. Wir bezeichnen wieder den Kolimes darüber mit $K$ und
+  erhalten mit der universellen Eigenschaft eine Tranformation
+  $K \Trafo F$. Diese ist eine Isotransformation, wenn sie auf allen
+  Objekten $X \in C$ Bijektionen $KX \iso FX$ induziert. Nach dem
+  Yoneda-Lemma entsprechen diese den Transformationen
+  $C(X, \cdot) \Trafo K$ bzw. $C(X, \cdot) \Trafo F$. Diese stehen
+  aber nach der universellen Eigenschaft des Kolimes und der
+  Definition der Kategorie $\slicecat{C}{r}{F}$ in Bijektion durch
+  Nachschalten von $K \Trafo F$.
 \end{proof}
 
 Wir erklären nun die geometrische Realisierung simplizialer
-Mengen. Der Unterschied zur geometrsichen Realsierung von
+Mengen. Der Unterschied zur geometrischen Realsierung von
 Simplizialkomplexen ist im Wesentlichen die Möglichkeit, Simplizes
-``wiederzuverwenden'', was zu Identifikationen in der geomtrischen
-Realisierung führt. Beispielsweise soll die $S^1$ als geometrische
-Realisierung eines 1-Simplizes realisiert werden, dessen Endpunkte
-übereinstimmen.
+wiederzuverwenden und zu degenerieren, was zu Identifikationen in der
+geometrischen Realisierung führt. Ein Fall von ``Wiederverwendung''
+ist etwa die Realisierung der $S^1$ als 1-Simplex, dessen Endpunkte
+übereinstimmen. Degeneration bedeutet, dass niedererdimensionale
+Simplizes auch die Rolle höherdimensionaler Simplizes übernehmen
+können. Wir können etwa unser Beispiel modifizieren und die $S^n$ als
+$n$-Simplex realisieren, bei dem alle Kanten in einem Punkt
+zusammenfallen.
 
 Formal definieren wir zunächst die geometrische Realsierung des
 Standard-$n$-Simplex als den abgeschlossenen geometrischen
@@ -198,19 +212,21 @@ Koordinaten das Einfügen einer Null an der $i$-ten Stelle, für die
 Degenerationen $|s_i|$ um den Kollaps der $i$-ten Kante, d. h. in
 Koordinaten die Ersetzung der $i$-ten und ihrer darauffolgenden
 Koordinate durch ihre Summe. In Formeln:
-
 \begin{align*}
   |d_i^n|(x_0, \cdots, x_{n-1})
   &= (x_0, \cdots, x_{i-1}, 0, x_i, \cdots, x_{n-1}), \\
   |s_i^n|(x_0, \cdots, x_{n+1})
   &= (x_0, \cdots, x_{i-1}, x_i + x_{i+1}, x_{i+2}, \cdots, x_{n+1}).
 \end{align*}
+Wir erhalten einen Funktor $R: \Delta \to \Top, [n] \mapsto \Delta^n$.
 
 Nun fordern wir, dass sich die Realisierung mit Kolimites vertrage:
 \[ |\col_i X_i| \iso \col_i |X_i|. \]
 Das erreichen wir, indem wir für eine simpliziale Menge $X$ setzen
 \[ |X| := \col_{\Delta^n \to X} |\Delta^n|, \]
-wieder mit dem Kolimes über die Simplexkategorie von $X$ und den oben definierten stetigen Abbildungen auf den geomtrischen Simplizes.
+wieder mit dem Kolimes über die Simplexkategorie von $X$ sowie mit den
+oben definierten induzierten stetigen Abbildungen auf den
+geometrischen Simplizes.
 
 Wie ganz allgemein können wir den Kolimes topologischer Räume auch
 explizit mittels Koprodukt und Koegalisator ausschreiben, wir
@@ -232,13 +248,34 @@ Diese Konstruktion lässt sich interpretieren als das Tensorprodukt der
 Funktoren
 \begin{align*}
   X: \Delta\op &\to \Top \quad \text{und} \\
-  ??: \Delta &\to \Top, [n] \mapsto |\Delta^n|,
-% TODO: gescheiten Namen finden, oben den Funktor klarer machen.
+  R: \Delta &\to \Top, [n] \mapsto |\Delta^n|,
 \end{align*}
 wobei die Mengen $X_n$ als diskrete topologische Räume aufgefasst
 werden (\cite{Moer}, III.1):
-\[ |X| = X \otimes ??. \]
+\[ |X| = X \otimes R. \]
 \end{bem}
+
+Die geometrischen Realisierungen simplizialer Mengen liegen
+tatsächlich sogar in einer in ihren kategoriellen Eigenschaften
+bequemen (\emph{convenient}) Kategorie topologischer Räume, den
+kompakt erzeugten Hausdorffräumen.
+
+\begin{defn}[\cite{Steenrod}]
+  Ein Hausdorffraum $X$ heißt kompakt erzeugt, falls jede Teilmenge
+  $A \subset X$, für die $A \cap K$ abgeschlossen ist für jedes
+  Kompaktum $K \subset X$, selbst bereits abgeschlossen ist in $X$.
+\end{defn}
+Wir notieren volle Unterkategorie der kompakt erzeugten Hausdorffräume
+in den topologischen Räumen mit $\CGHaus$. Die kompakt erzeugten
+Hausdorffräume umfassen eine sehr große Klasse an relevanten
+topologischen Räumen, etwa CW-Komplexe oder erstabzählbare Räume.
+% TODO citation needed
+Für uns relevant ist das folgende Kriterium:
+\begin{lemma}
+  % ?? was brauchen wir eig?
+\end{lemma}
+
+
 
 \end{document}
 
