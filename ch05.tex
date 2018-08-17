@@ -47,8 +47,9 @@ die $i \in \{0, \dots, n\}$ nicht treffen, und den
 hat.
 
 \begin{lemma}[\cite{GM}, I.2, ex. 1] \label{face-gen}
+
   \begin{enumerate}[label=(\roman*)] \item \label{itm:face-gen-rel}
-  Die Rand- und Degenerationsabbildungen erfüllen die Relationen
+  Die Rand- und Degenerationsabbildungen er\-fül\-len die Relationen
   \begin{align*}
     d_j^{n+1} d_i^n &= d_i^{n+1} d_{j-1}^n \quad \text{für} \quad i < j, \\
     s_j^n s_i^{n+1} &= s_i^n s_{j+1}^{n+1} \quad \text{für} \quad i \leq j, \\
@@ -146,18 +147,34 @@ Morphismus simplizialer Mengen $\Delta^n \to \Delta^m$ über $X$.
   mit dem Kolimes über die Simplexkategorie von $X$.
 \end{lemma}
 \begin{proof}
-  Bezeichne $C$ obigen Kolimes. Das System, über das der Kolimes
+  Bezeichne $K$ obigen Kolimes. Das System, über das der Kolimes
   gebildet wird, sichert uns nach der universellen Eigenschaft des
-  Kolimes einen eindeutigen Morphismus $C \to X$. Wir müssen also
-  zeigen, dass dieser Bijektionen auf den $n$-Simplizes
-  induziert. Tatsächlich definiert ein $n$-Simplex $\Delta^n \to C$
-  durch Nachschalten von $C \to X$ einen $n$-Simplex in $X$. Diese
-  Zuordnung ist bijektiv, denn wir erhalten eine Umkehrabbildung, wenn
-  wir $\Delta^n \to X$ den zugehörigen Morphismus in den Kolimes
-  $\Delta^n \to C$ zuordnen.
+  Kolimes einen Morphismus $K \to X$. Wir müssen also zeigen, dass
+  dieser Bijektionen auf den $n$-Simplizes induziert. Tatsächlich
+  definiert ein $n$-Simplex $\Delta^n \to K$ durch Nachschalten von
+  $K \to X$ einen $n$-Simplex in $X$. Diese Zuordnung ist bijektiv,
+  denn wir erhalten eine Umkehrabbildung, wenn wir $\Delta^n \to X$
+  den zugehörigen Morphismus in den Kolimes $\Delta^n \to K$ zuordnen.
 \end{proof}
-
-% TODO erklären inwiefern das ganz allgemein für jeden Funktor C \to Ens geht
+Der Beweis benötigte keine konkreten Eigenschaften der simplizialen
+Mengen. Wir halten mit wörtlich übertragenen Beweis allgemein fest:
+\begin{prop}
+  Sei $F: C \to \Ens$ ein Funktor. Dann ist $F$ ein Kolimes über
+  darstellbare Funktoren $C(X, \cdot)$.
+\end{prop}
+\begin{proof}
+  Wir betrachten wieder mittels des Funktors $r: C \to \Ens^C,
+  X \mapsto C(X, \cdot)$ die Kategorie $C \downarrow \! {\scriptstyle
+  r} \, F$ der darstellbaren Funktoren über $F$. Wir bezeichnen wieder
+  den Kolimes mit $K$ und erhalten mit der universellen Eigenschaft
+  eine Tranformation $K \Trafo F$. Diese ist eine Isotransformation,
+  wenn sie auf allen Objekten $X \in C$ Bijektionen $KX \iso FX$
+  induziert. Nach dem Yoneda-Lemma entsprechen diese den
+  Transformationen $C(X, \cdot) \Trafo K$ bzw. $C(X, \cdot) \Trafo
+  F$. Diese stehen aber nach der universellen Eigenschaft des Kolimes
+  und der Definition der Kategorie $C \downarrow \! {\scriptstyle
+  r} \, F$ in Bijektion durch Nachschalten von $K \Trafo F$.
+\end{proof}
 
 Wir erklären nun die geometrische Realisierung simplizialer
 Mengen. Der Unterschied zur geometrsichen Realsierung von
@@ -219,7 +236,8 @@ Funktoren
 % TODO: gescheiten Namen finden, oben den Funktor klarer machen.
 \end{align*}
 wobei die Mengen $X_n$ als diskrete topologische Räume aufgefasst
-werden (\cite{Moer}, III.1).
+werden (\cite{Moer}, III.1):
+\[ |X| = X \otimes ??. \]
 \end{bem}
 
 \end{document}
