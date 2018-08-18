@@ -229,13 +229,14 @@ oben definierten induzierten stetigen Abbildungen auf den
 geometrischen Simplizes.
 
 Wie ganz allgemein können wir den Kolimes topologischer Räume auch
-explizit mittels Koprodukt und Koegalisator ausschreiben, wir
+explizit mittels Koprodukt und Koegalisator ausschreiben. Wir
 verstehen die Mengen $X_n$ als diskrete topologische Räume und
 erhalten:
 \[ |X| \iso (\coprod_n X_n \times |\Delta^n|) / \sim \]
-mit der Quotiententopologie, die durch die Äquivalenzrelation
+mit der Quotiententopologie, die durch die von
 \[ (x, |f|(p)) \sim (f^*(x), p) \]
-für alle monotonen $f: [m] \to [n]$ gegeben ist.
+für alle monotonen $f: [m] \to [n]$ erzeugte Äquivalenzrelation
+gegeben ist.
 
 Ein Morphismus simplizialer Mengen $X \to Y$ induziert nun durch
 Nachschalten von $X \to Y$ einen Funktor auf den Simplexkategorien
@@ -261,19 +262,47 @@ bequemen (\emph{convenient}) Kategorie topologischer Räume, den
 kompakt erzeugten Hausdorffräumen.
 
 \begin{defn}[\cite{Steenrod}]
-  Ein Hausdorffraum $X$ heißt kompakt erzeugt, falls jede Teilmenge
-  $A \subset X$, für die $A \cap K$ abgeschlossen ist für jedes
-  Kompaktum $K \subset X$, selbst bereits abgeschlossen ist in $X$.
+  Ein topologischer Raum $X$ heißt kompakt erzeugt, falls gilt: eine
+  Teilmenge $A \subset X$ ist abgeschlossen, falls $A \cap K$
+  abgeschlossen ist für jedes Kompaktum $K \subset X$.
 \end{defn}
+\begin{bem}
+  Äquivalent dazu ist: eine Teilmenge $U \subset X$ ist offen, falls
+  $U \cap K$ offen ist für jedes Kompaktum $K \subset X$.
+\end{bem}
 Wir notieren volle Unterkategorie der kompakt erzeugten Hausdorffräume
 in den topologischen Räumen mit $\CGHaus$. Die kompakt erzeugten
 Hausdorffräume umfassen eine sehr große Klasse an relevanten
 topologischen Räumen, etwa CW-Komplexe oder erstabzählbare Räume.
 % TODO citation needed
-Für uns relevant ist das folgende Kriterium:
+Für uns relevant sind die folgenden Kriterien:
 \begin{lemma}
-  % ?? was brauchen wir eig?
+  \begin{enumerate}[label=(\roman*)]
+    \item Ist $X$ ein lokal kompakter topologischer Raum, so ist $X$
+      kompakt erzeugt.
+  \item Ist $p: X \surj Y$ eine Quotientenabbildung (d. h. $Y$ trägt
+    die Finaltopologie bezüglich $p$) und $X$ kompakt erzeugt, so ist
+    auch $Y$ kompakt erzeugt.
+  \end{enumerate}
 \end{lemma}
+\begin{proof}
+  \begin{enumerate}[label=(\roman*)]
+    \item Sei $U \subset X$ mit $U \cap K$ offen für alle $K \subset
+      X$ kompakt. Mit der Lokalkompaktheit von $X$ wählen wir zu jedem
+      $x \in X$ eine kompakte Umgebung $K_x$ und erhalten, dass $U =
+      \bigcup_{x \in X} U \cap K_x$ offen ist als Vereinigung offener
+      Mengen.
+    \item Sei $A \subset Y$ mit $A \cap K$ abgeschlossen für alle $K
+      \subset Y$ kompakt. Mit der Finaltopologie auf $Y$ gilt, dass $A
+      \subset Y$ genau dann abgeschlossen ist, wenn $p^{-1}(A) \subset
+      X$ abgeschlossen ist. Sei nun $\tilde{K} \subset X$ kompakt. Es
+      ist $p^{-1}(A) \cap \tilde{K}$ abgeschlossen, denn $p(p^{-1}(A)
+      \cap \tilde{K}) = p(\tilde{K}) \cap A$ ist abgeschlossen nach
+      Voraussetzung ($p(\tilde{K}) \subset Y$ ist kompakt als stetiges
+      Bild eines Kompaktums). Da $X$ kompakt erzeugt ist, folgt nun,
+      dass $p^{-1}(A)$ abgeschlossen ist und somit auch $A \subset Y$.
+  \end{enumerate}
+\end{proof}
 
 
 
