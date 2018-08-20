@@ -320,7 +320,7 @@ $X$.
 
 Wir definieren nun die \emph{sparsame geometrsiche Realisierung} einer
 simplizialen Menge $X$ wie folgt:
-\[ || X || := \coprod_n NX_n \times |\Delta^n| / \sim_N ,\]
+\[ \| X \| := \coprod_n NX_n \times |\Delta^n| / \sim_N ,\]
 wobei wie gehabt $NX_n$ die diskrete Topologie trägt und die
 Äquivalenzrelation erzeugt ist von
 \[ (x, d_i p) \sim_N (y, s p), \]
@@ -332,7 +332,7 @@ interpretieren als das Umgehen der mittleren Schritte in der Rechnung
 \begin{satz}
   Die von der Inklusion
   \[ \coprod_n NX_n \times |\Delta^n| \inj \coprod_n X_n \times |\Delta^n| \]
-  induzierte Abbildung $||X|| \iso |X|$ ist ein Homöomorphismus.
+  induzierte Abbildung $\|X\| \iso |X|$ ist ein Homöomorphismus.
 \end{satz}
 \begin{proof}
   Die Abbildung existiert und ist stetig nach der universellen
@@ -340,7 +340,7 @@ interpretieren als das Umgehen der mittleren Schritte in der Rechnung
   $\sim$ umfasst $\sim_N$. Sie ist bijektiv, denn für die
   dazukommenden Punkte in degenerierten Simplizes $s^* x$ gilt ohnehin
   $(s^* x, p) \sim (x, s p)$. Weiter ist sie offen: Ist $U \open
-  ||X||$ eine offene Teilmenge, so berechnen wir ihr Bild in $|X|$
+  \|X\|$ eine offene Teilmenge, so berechnen wir ihr Bild in $|X|$
   durch das Bild ihres Urbilds $V$ in $\coprod_n NX_n \times
   |\Delta^n|$ unter
   \[ \coprod_n NX_n \times |\Delta^n|
@@ -363,28 +363,57 @@ interpretieren als das Umgehen der mittleren Schritte in der Rechnung
 Wir geben eine weitere Interpretation der geometrischen Realisierung
 als iteratives Ankleben geometrischer Simplizes an ihre Ränder an und
 werden so insbesondere sehen, dass die geometrische Realisierung einen
-Hausdorffraum liefert.
+Hausdorffraum liefert (\cite{Moer}, III.1).
 
-Bezeichne dazu $||X^{\leq k}|| = \coprod_{0 \leq n \leq k} NX_n \times
+Bezeichne dazu $\|X^{\leq k}\| = \coprod_{n = 0}^k NX_n \times
 |\Delta^n| / \sim_N $ die geometrische Realisierung durch
 nichtdegenerierte Simplizes der Dimension $\leq k$. Wir erhalten
-Einbettungen $||X^{\leq k}|| \inj ||X||$ sowie $||X|| = \bigcup_k
-||X^{\leq k}||$, denn die Äquivalenzrelation von ganz $||X||$ fügt
-keine neuen Identifikationen auf den Teilmengen $||X^{\leq k} \subset
-||X||$ hinzu.
+Einbettungen $\|X^{\leq k}\| \inj \|X\|$ sowie $\|X\| = \bigcup_k
+\|X^{\leq k}\|$, denn die Äquivalenzrelation von ganz $\|X\|$ fügt
+keine neuen Identifikationen auf den Teilmengen $\|X^{\leq k}\|
+\subset \|X\|$ hinzu.
 
-Wir können die $||X^{\leq k}||$ iterativ konstruieren. Setze dazu
-$||X^{\leq 0}|| = X_0$ mit der diskreten Topologie. Nun ist $||X^{\leq
-  k}||$ der Pushout topologischer Räume
+Wir können die $\|X^{\leq k}\|$ iterativ konstruieren. Betrachte dazu
+die stetigen Abbildungen $\pi_k$, die uns den ``$k$-dimensionalen
+Teil'' von $\|X\|$ liefern:
+\[ pi_k: NX_k \times |\Delta^k|
+  \inj \coprod_{n=0}^k NX_n \times |\Delta^n|
+  \surj \|X^{\leq k}\|. \]
 
-%% \shorthandoff{"}
-%% \[ \begin{tikzcd}
-%%     (x, t) \arrow[r, hook] \arrow[d] \arrow[dr, phantom, "\lrcorner"]
-%%     & X \times I \arrow[d, "\pi"] \\
-%%     x \arrow[r, hook]
-%%     & X.
-%% \end{tikzcd} \]
-  
+\begin{prop}
+  Sei $X \in \s\Ens$ eine simpliziale Menge. Dann ist
+  \shorthandoff{"}
+  \[ \begin{tikzcd}
+    NX_k \times \del |\Delta^k| \arrow[r, hook] \arrow[d]
+    \arrow[dr, phantom, "\ulcorner"]
+    & NX_k \times |\Delta^n| \arrow[d, "\pi_k"] \\
+    \|X^{\leq k-1}\| \arrow[r, hook]
+    & \|X^{\leq k}\|
+  \end{tikzcd} \]
+  ein Pushout topologischer Räume ist. Dabei ist die Abbildung links
+  auf der $i$-ten Kante $d_i: |\Delta^{k-1}| \inj \del |\Delta^k|$
+  gegeben durch die Verknüpfung
+  \[ NX_k \times |\Delta^{k-1}|
+  \xrightarrow{d_i^* \times \id} NX_{k-1} \times |\Delta^{k-1}|
+  \xrightarrow{\pi_{k-1}} \|X^{\leq k-1}\|. \]
+\end{prop}
+\begin{proof}
+  Sowohl der Pushout des Diagramms als auch $\|X^{\leq k}\|$ sind
+  Quotienten von $\coprod_{n=0}^k NX_n \times |\Delta^n|$ nach
+  gewissen Äquivalenzrelationen. Bezeichne die Einschränkung von
+  $\sim_N$ auf $\coprod_{n=0}^k NX_n \times |\Delta^n|$ mit
+  $\sim_N^k$. Dann ist $(x, d_i p) \sim (d_i^* x, p)$ eine erzeugende
+  Relation für $\sim_N^k$ genau dann, wenn es eine erzeugende Relation
+  für $\sim_N^{k-1}$ ist oder es gilt $x \in NX_k$ und wegen
+
+  % Problem: die Relation hat ja eigentlich degenerierte ausgespart
+  % und lautet deshalb anders..
+
+  %% Dann sind Paare $(x, p), (y, q) \in \coprod_{n=0}^k NX_n \times
+  %% |\Delta^n|$ äquivalent bezüglich $\sim_N^k$ genau dann, wenn sie
+  %% äquivalent bezüglich $\sim_N^{k-1}$ sind oder es gilt: Es ist
+  %% o. E. $x \in NX_k$.
+\end{proof}
 
 \section{Kompakt erzeugte Hausdorffräume}
 
