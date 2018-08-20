@@ -17,6 +17,8 @@ verallgemeinern simpliziale Mengen gerichtete Graphen, und werden uns
 so bei der geometrischen Realisierung von Objekten in
 Diagrammkategorien von Garben zur Verfügung stehen.
 
+\section{Simpliziale Mengen}
+
 Wir betrachten die Menge $\Delta$ der nichtleeren endlichen
 Ordinalzahlen. Ihre Elemente sind von der Form $\{0, 1, \dots, n\}$
 für ein $n \in \N$, welche wir kurz mit $[n]$ bezeichnen werden. Wir
@@ -36,7 +38,12 @@ Unseren gewohnten Sprechweisen folgend nennen wir simpliziale Objekte
 in $C$ auch kurz ``simpliziale $C$'' und sprechen etwa von
 simplizialen Mengen und simplizialen Garben. Wir notieren die
 Funktorkategorien simplizialer Objekte in $C$ auch kurz mit $\s C =
-[\Delta\op, C]$.
+[\Delta\op, C]$. Opponiert bezeichnen wir einen Funktor $\Delta \to C$
+als kosimpliziales Objekt in $C$.
+
+Für $X \in \s C$ ein simpliziales Objekt notieren wir kurz $X_n =
+X([n])$ und für eine monotone Abbildung $f: [m] \to [n]$ auch $f^* =
+X(f)$.
 
 Die monotonen Abbildungen $[m] \to [n]$ werden von zwei besonders
 einfachen Klassen monotoner Abbildungen erzeugt: von den
@@ -186,6 +193,34 @@ Mengen. Wir halten mit wörtlich übertragenen Beweis allgemein fest:
   Nachschalten von $K \Trafo F$.
 \end{proof}
 
+\section{Der kosimpliziale Raum der Standardsimplizes}
+
+Die geometrsiche Realsierung einer simplizialen Menge soll sich mit
+geeigneten Identifikationen aus den geometrischen Realisierungen von
+Standard-$n$-Simplizes zusammensetzen. Diese definieren wir als die
+abgeschlossenen geometrischen Standard-$n$-Simplizes
+\[ |\Delta^n| = \{ x \in \R^{n+1} | 0 \leq x_i \leq 1, \sum_{i=0}^n x_i = 1 \}. \]
+
+Ein Morphismus $f: [m] \to [n]$ induziert eine stetige Abbildung $|f|:
+|\Delta^m| \to |\Delta^n|$ auf den zugehörigen Simplizes. Nach
+\ref{face-gen} reicht es, diese für Rand- und Degenerationsabbildungen
+anzugeben. Für die Randabbildung $|d_i|$ handelt es sich dabei um die
+Inklusion der $i$-ten Kante, d. h. in Koordinaten das Einfügen einer
+Null an der $i$-ten Stelle, für die Degenerationen $|s_i|$ um den
+Kollaps der $i$-ten Kante, d. h. in Koordinaten die Ersetzung der
+$i$-ten und ihrer darauffolgenden Koordinate durch ihre Summe. In
+Formeln:
+\begin{align*}
+  |d_i^n|(x_0, \cdots, x_{n-1})
+  &= (x_0, \cdots, x_{i-1}, 0, x_i, \cdots, x_{n-1}), \\
+  |s_i^n|(x_0, \cdots, x_{n+1})
+  &= (x_0, \cdots, x_{i-1}, x_i + x_{i+1}, x_{i+2}, \cdots, x_{n+1}).
+\end{align*}
+Wir erhalten einen Funktor $R: \Delta \to \Top, [n] \mapsto \Delta^n$,
+genannt der \emph{kosimpliziale Raum der Standardsimplizes}.
+
+\section{Geometrische Realisierung simplizialer Mengen}
+
 Wir erklären nun die geometrische Realisierung simplizialer
 Mengen. Der Unterschied zur geometrischen Realsierung von
 Simplizialkomplexen ist im Wesentlichen die Möglichkeit, Simplizes
@@ -195,38 +230,41 @@ ist etwa die Realisierung der $S^1$ als 1-Simplex, dessen Endpunkte
 übereinstimmen. Degeneration bedeutet, dass niedererdimensionale
 Simplizes auch die Rolle höherdimensionaler Simplizes übernehmen
 können. Wir können etwa unser Beispiel modifizieren und die $S^n$ als
-$n$-Simplex realisieren, bei dem alle Kanten in einem Punkt
-zusammenfallen.
+$n$-Simplex realisieren, bei dem alle niederdimensionalen Kanten in
+einem Punkt zusammenfallen.
 
-Formal definieren wir zunächst die geometrische Realsierung des
-Standard-$n$-Simplex als den abgeschlossenen geometrischen
-Standard-$n$-Simplex
-\[ |\Delta^n| = \{ x \in \R^{n+1} | 0 \leq x_i \leq 1, \sum_{i=0}^n x_i = 1 \}. \]
-
-Ein Morphismus $f: [m] \to [n]$ definiert eine stetige Abbildung $|f|:
-|\Delta^m| \to |\Delta^n|$ auf den zugehörigen
-Simplizes. Nach \ref{face-gen} reicht es, diese für Rand- und
-Degenerationsabbildungen anzugeben. Für die Randabbildung $|d_i|$
-handelt es sich dabei um die Inklusion der $i$-ten Kante, d. h. in
-Koordinaten das Einfügen einer Null an der $i$-ten Stelle, für die
-Degenerationen $|s_i|$ um den Kollaps der $i$-ten Kante, d. h. in
-Koordinaten die Ersetzung der $i$-ten und ihrer darauffolgenden
-Koordinate durch ihre Summe. In Formeln:
-\begin{align*}
-  |d_i^n|(x_0, \cdots, x_{n-1})
-  &= (x_0, \cdots, x_{i-1}, 0, x_i, \cdots, x_{n-1}), \\
-  |s_i^n|(x_0, \cdots, x_{n+1})
-  &= (x_0, \cdots, x_{i-1}, x_i + x_{i+1}, x_{i+2}, \cdots, x_{n+1}).
-\end{align*}
-Wir erhalten einen Funktor $R: \Delta \to \Top, [n] \mapsto \Delta^n$.
-
-Nun fordern wir, dass sich die Realisierung mit Kolimites vertrage:
+Die geometrische Realisierung von Standard-$n$-Simplizes haben wir
+gerade gesehen. Nun fordern wir, dass sich die Realisierung mit
+Kolimites vertrage:
 \[ |\col_i X_i| \iso \col_i |X_i|. \]
-Das erreichen wir, indem wir für eine simpliziale Menge $X$ setzen
-\[ |X| := \col_{\Delta^n \to X} |\Delta^n|, \]
-wieder mit dem Kolimes über die Simplexkategorie von $X$ sowie mit den
-oben definierten induzierten stetigen Abbildungen auf den
-geometrischen Simplizes.
+Wenn dies der Fall sein soll, so müssen wir mit der Darstellung
+\[ X := \col_{\Delta^n \to X} \Delta^n \]
+aus \ref{sset-colim} auf jeden Fall setzen
+\[ |X| := \col_{\Delta^n \to X} |\Delta^n|. \]
+Debei wird der Kolimes wieder über die Simplexkategorie von $X$
+gebildet, nun allerdings mit den induzierten stetigen Abbildungen aus
+\ref{} als Systemmorphismen.
+
+Ein Morphismus simplizialer Mengen $X \to Y$ induziert nun durch
+Nachschalten von $X \to Y$ einen Funktor auf den Simplexkategorien
+$\Delta \downarrow X \to \Delta \downarrow Y$ und damit auch auf den
+Kolimites eine stetige Abbildung $|X| \to |Y|$. Wir erhalten also den
+Funktor der geometrischen Realisierung $| \cdot |: \s \Ens \to \Top$.
+
+Unsere Konstruktion erfüllt tatsächlich:
+\begin{prop}
+  Der Funktor der geometrischen Realisierung simplizialer Mengen $|
+  \cdot|$ vertauscht mit beliebigen Kolimites über kleine
+  Indexkategorien.
+\end{prop}
+\begin{proof}
+  Zu zeigen ist, dass die Bildung der Simplexkategorie mit Kolimites
+  vertauscht, d. h. für einen Funktor $X: I \to \s\Ens$ gilt:
+  \[ \slicecat{\Delta}{r}{\col_i X_i} \iso \col_i \slicecat{\Delta}{r}{X_i}. \]
+  Beide Kategorien bestehen aber aus Objekten der Form $\Delta^n \to
+  X_i$ für ein $i \in I$, die identifiziert werden, falls sie durch
+  Nachschalten von $X_i \to X_j$ auseinander hervorgehen.
+\end{proof}
 
 Wie ganz allgemein können wir den Kolimes topologischer Räume auch
 explizit mittels Koprodukt und Koegalisator ausschreiben. Wir
@@ -237,12 +275,6 @@ mit der Quotiententopologie, die durch die von
 \[ (x, |f|(p)) \sim (f^*(x), p) \]
 für alle monotonen $f: [m] \to [n]$ erzeugte Äquivalenzrelation
 gegeben ist.
-
-Ein Morphismus simplizialer Mengen $X \to Y$ induziert nun durch
-Nachschalten von $X \to Y$ einen Funktor auf den Simplexkategorien
-$\Delta \downarrow X \to \Delta \downarrow Y$ und damit auch auf den
-Kolimites eine stetige Abbildung $|X| \to |Y|$. Wir erhalten also den
-Funktor der geometrischen Realisierung $| \cdot |: \s \Ens \to \Top$.
 
 \begin{bem}
 Diese Konstruktion lässt sich interpretieren als das Tensorprodukt der
@@ -255,6 +287,106 @@ wobei die Mengen $X_n$ als diskrete topologische Räume aufgefasst
 werden (\cite{Moer}, III.1):
 \[ |X| = X \otimes R. \]
 \end{bem}
+
+\section{Sparsame Realisierung durch nichtdegenerierte Simplizes}
+
+Während die Definition simplizialer Mengen und ihrer Realisierung mit
+Degenerationsabbildungen wie gesehen von einem formalen Standpunkt aus
+sehr elegant ist, ist für die konkrete Arbeit häufig eine explizitere
+Form der Realisierung praktischer, die ``unnötige Simplizes von
+vornherein weglässt''.
+\begin{defn}[\cite{GM}, I.2.9]
+  Sei $X \in \s\Ens$ eine simpliziale Menge. Ein Simplex $x \in X_n$
+  heißt degeneriert, falls es einen Simplex $y \in X_m$ und eine
+  surjektive monotone Abbildung $s: [n] \to [m], n > m$ gibt mit $x =
+  s^* y$.
+\end{defn}
+Andernfalls heißt ein Simplex nichtdegeneriert. Für $X \in \s\Ens$
+bezeichne $NX_n$ die Menge der nichtdegenerierten $n$-Simplizes von
+$X$.
+\begin{lemma}[\cite{MIT}, Prop. 9] \label{degen-repr}
+  Sei $X \in \s\Ens$ eine simpliziale Menge und $x \in X_n$ ein
+  $n$-Simplex. Dann gibt es eine eindeutige Darstellung $x = s^* y$
+  für $y \in NX_m$ einen nichtdegenerierten Simplex von $X$ und $s:
+  [n] \to [m]$ eine surjektive monotone Abbildung.
+\end{lemma}
+\begin{proof}
+  Ist $x$ nichtdegeneriert, wähle $y = x$ und $s =
+  \id_{[n]}$. Andernfalls gibt es nach Definition ein $y$ eine
+  Surjektion mit der gewünschten Eigenschaft. Diese sind eindeutig
+  nach den Relationen aus \ref{face-gen}, vergleiche \cite{MIT},
+  Prop. 9.
+\end{proof}
+
+Wir definieren nun die \emph{sparsame geometrsiche Realisierung} einer
+simplizialen Menge $X$ wie folgt:
+\[ || X || := \coprod_n NX_n \times |\Delta^n| / \sim_N ,\]
+wobei wie gehabt $NX_n$ die diskrete Topologie trägt und die
+Äquivalenzrelation erzeugt ist von
+\[ (x, d_i p) \sim_N (y, s p), \]
+falls $s^* y = d_i^* x$ die eindeutige Darstellung von $d_i^* x$ aus
+\ref{degen-repr} ist. Diese Äquivalenzrelation lässt sich
+interpretieren als das Umgehen der mittleren Schritte in der Rechnung
+\[ (x, d_i p) \sim (d_i^* x, p) \sim (s^* y, p) \sim (y, s p). \]
+
+\begin{satz}
+  Die von der Inklusion
+  \[ \coprod_n NX_n \times |\Delta^n| \inj \coprod_n X_n \times |\Delta^n| \]
+  induzierte Abbildung $||X|| \iso |X|$ ist ein Homöomorphismus.
+\end{satz}
+\begin{proof}
+  Die Abbildung existiert und ist stetig nach der universellen
+  Eigenschaft topologischer Quotienten, denn die Äquivalenzrelation
+  $\sim$ umfasst $\sim_N$. Sie ist bijektiv, denn für die
+  dazukommenden Punkte in degenerierten Simplizes $s^* x$ gilt ohnehin
+  $(s^* x, p) \sim (x, s p)$. Weiter ist sie offen: Ist $U \open
+  ||X||$ eine offene Teilmenge, so berechnen wir ihr Bild in $|X|$
+  durch das Bild ihres Urbilds $V$ in $\coprod_n NX_n \times
+  |\Delta^n|$ unter
+  \[ \coprod_n NX_n \times |\Delta^n|
+  \inj \coprod_n X_n \times |\Delta^n| \xrightarrow{q} |X|. \]
+
+  Bezeichne $\overline{V}$ den Abschluss von $V \open \coprod_n X_n
+  \times |\Delta^n|$ unter $\sim$-Äquivalenz. Es gilt $\overline{V} =
+  q^{-1}(q(V))$ und wir müssen nach Definition der Quotiententopologie
+  zeigen, dass $\overline{V}$ offen ist. Bezeichne für $x$ einen
+  nichtdegenerierten Simplex von $X$ den Schnitt von $V$ mit dem zu
+  $x$ gehörigen geometrischen Simplex $|\Delta^n|$ mit $V_x$. Bei
+  Übergang von $V$ zu $\overline{V}$ kommen dann alle Punkte $(s^* x,
+  p)$ mit $(x, s p) \in U_x$ hinzu. Das Urbild der offenen Menge $U_x$
+  unter dem stetigen $s$-Kollaps $|s|$ ist dann natürlich wieder
+  offen.
+\end{proof}
+
+\section{Iterative Konstruktion der geometrischen Realisierung}
+
+Wir geben eine weitere Interpretation der geometrischen Realisierung
+als iteratives Ankleben geometrischer Simplizes an ihre Ränder an und
+werden so insbesondere sehen, dass die geometrische Realisierung einen
+Hausdorffraum liefert.
+
+Bezeichne dazu $||X^{\leq k}|| = \coprod_{0 \leq n \leq k} NX_n \times
+|\Delta^n| / \sim_N $ die geometrische Realisierung durch
+nichtdegenerierte Simplizes der Dimension $\leq k$. Wir erhalten
+Einbettungen $||X^{\leq k}|| \inj ||X||$ sowie $||X|| = \bigcup_k
+||X^{\leq k}||$, denn die Äquivalenzrelation von ganz $||X||$ fügt
+keine neuen Identifikationen auf den Teilmengen $||X^{\leq k} \subset
+||X||$ hinzu.
+
+Wir können die $||X^{\leq k}||$ iterativ konstruieren. Setze dazu
+$||X^{\leq 0}|| = X_0$ mit der diskreten Topologie. Nun ist $||X^{\leq
+  k}||$ der Pushout topologischer Räume
+
+%% \shorthandoff{"}
+%% \[ \begin{tikzcd}
+%%     (x, t) \arrow[r, hook] \arrow[d] \arrow[dr, phantom, "\lrcorner"]
+%%     & X \times I \arrow[d, "\pi"] \\
+%%     x \arrow[r, hook]
+%%     & X.
+%% \end{tikzcd} \]
+  
+
+\section{Kompakt erzeugte Hausdorffräume}
 
 Die geometrischen Realisierungen simplizialer Mengen liegen
 tatsächlich sogar in einer in ihren kategoriellen Eigenschaften
@@ -307,4 +439,3 @@ Für uns relevant sind die folgenden Kriterien:
 
 
 \end{document}
-
