@@ -276,18 +276,6 @@ mit der Quotiententopologie, die durch die von
 für alle monotonen $f: [m] \to [n]$ erzeugte Äquivalenzrelation
 gegeben ist.
 
-\begin{bem}
-Diese Konstruktion lässt sich interpretieren als das Tensorprodukt der
-Funktoren
-\begin{align*}
-  X: \Delta\op &\to \Top \quad \text{und} \\
-  R: \Delta &\to \Top, [n] \mapsto |\Delta^n|,
-\end{align*}
-wobei die Mengen $X_n$ als diskrete topologische Räume aufgefasst
-werden (\cite{Moer}, III.1):
-\[ |X| = X \otimes R. \]
-\end{bem}
-
 \section{Sparsame Realisierung durch nichtdegenerierte Simplizes}
 
 Während die Definition simplizialer Mengen und ihrer Realisierung mit
@@ -510,5 +498,83 @@ Daraus folgt sofort unser Ziel.
   |\Delta^n|$ kompakt erzeugt und mit \ref{cg-crit}
   \ref{itm:cg-crit-quot} auch $|X|$.
 \end{proof}
+
+% TODO |X| vertauscht mit endl. Limites
+
+\section{Geometrische Realisierung als Koende}
+
+Die Sprache der Enden und Koenden ermöglicht uns eine allgemeinere
+Sicht auf die geometrische Realisierung und wird sich später als
+nützlich erweisen, um andere Formen der geometrischen Realisierung
+einzuführen. Wir führen Koenden und ihre Eigenschaften ein, Enden sind
+dazu formal dual. Die Darstellung folgt \cite{nlab:end} und
+\cite{Lore}.
+\begin{defn}[\cite{Lore}, 1.1 f.]
+  Sei $F: C\op \times C \to D$ ein Funktor. Ein Objekt $K \in D$ mit
+  Morphismen $\iota_c: F(c, c) \to K$ für alle $c \in C$ heißt Kokeil
+  für $F$, falls für alle Morphismen $f: c \to d$ in $C$ das folgende
+  Diagramm kommutiert:
+  \shorthandoff{"}
+  \[ \begin{tikzcd}
+    F(d, c) \arrow{r}{F(f, \id)} \arrow{d}{F(\id, f)}
+    & F(c, c) \arrow{d}{\iota_c} \\
+    F(d, d) \arrow{r}{\iota_d} & K
+  \end{tikzcd} \]
+  Die Kokeile für $F$ bilden eine Kategorie (Morphismen verträglich
+  mit den $\iota_c$). Ein initiales Objekt in der Kategorie der
+  Kokeile für $F$ (ein universeller Kokeil) heißt das Koende von $F$.
+\end{defn}
+Ein Kokeil für einen Funktor $F: C\op \times C \to D\op$ heißt
+entsprechend Keil für den assoziierten Funktor $F\op: C \times C\op
+\to D$ und ein universeller Keil das Ende des Funktors $F\op$. Wir
+notieren häufig das Koende von $F$ als Integral:
+\[ \int^{c \in C} F(c, c). \]
+
+Wir können Koenden als Koegalisator von Koprodukten darstellen:
+\begin{lemma}[\cite{Lore}, 1.14] \label{coend-coeq}
+  Sei $F: C\op \times C \to D$ ein Funktor und $K$ sein Koende. Dann
+  ist das folgende Diagramm ein Koegalisator:
+  \[ \coprod_{f: c \to d} F(d, c)
+  \overset{F(f, \id}{\underset{F(\id, f)}{\rightrightarrows}}
+  \coprod_{c \in C} F(c, c) \to K. \]
+\end{lemma}
+\begin{proof}
+  Der Morphismus in das Koende ist von den $\iota_c: F(c, c) \to K$
+  induziert, die Morphismen des Egalisators durch die angegebenen
+  Morphismen auf den Komponenten $F(d, c) \xrightarrow{F(f, \id)} F(c,
+  c)$ und $F(d, c) \xrightarrow{F(\id, f)} F(d, d)$. Die universellen
+  Eigenschaften, die den Koegalisator und das Koende definieren, sind
+  dann identisch.
+\end{proof}
+
+Sind $F: C\op \to D$ und $G: C \to D$ Funktoren und ist $D$ eine
+monoidale Kategorie (Schmelzkategorie mit universellen
+Verschmelzungen), so definieren sie einen Funktor
+\begin{alignat*}{4}
+  C\op \times C &\to D \times D &&\to D, \\
+  (a, b) &\mapsto (Fa, Gb) &&\mapsto Fa \otimes Gb.
+\end{alignat*}
+Das Koende über diesen Funktor heißt das \emph{Tensorprodukt} $F
+\otimes G$ von $F$ und $G$.
+
+Wir erinnern an die Darstellung der geometrischen Realisierung mit
+Koegalisator und Koprodukt:
+\[ |X| \iso (\coprod_n X_n \times |\Delta^n|) / \sim \]
+mit dem Quotienten nach der Äquivalenzrelation
+\[ (x, |f|(p)) \sim (f^* x, p) \]
+für alle monotonen $f: [m] \to [n]$. Das ist gerade der Koegalisator
+ \[ \coprod_{f: [n] \to [m]} X_n \times |\Delta^m|
+ \overset{f^* \times \id}{\underset{\id \times |f|)}{\rightrightarrows}}
+ \coprod_{[n]} X_n \times |\Delta^n| \to |X| \]
+aus \ref{coend-coeq} und mithin, falls $\Top$ mit ihrer kartesischen
+Schmelzstruktur durch Produkte versehen ist, das Tensorprodukt der
+Funktoren
+\begin{alignat*}{4}
+  &X: \Delta\op \to &&\Ens \to &&\Top \qquad &&\text{und} \\
+  &R: \Delta &&\to &&\Top, && [n] \mapsto |\Delta^n|,
+\end{alignat*}
+wobei die Mengen $X_n$ als diskrete topologische Räume aufgefasst
+werden (\cite{Moer}, III.1):
+\[ |X| = X \otimes R. \]
 
 \end{document}
