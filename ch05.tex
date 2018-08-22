@@ -1,0 +1,75 @@
+% include latex header (\usepackage, \newcommand etc.) 
+\input{header.tex}
+
+\begin{document}
+
+\title{Simpliziale Garben}
+\author{Fabian Glöckle}
+\date{\today}
+% \maketitle
+
+\section{Simpliziale Garben}
+
+Die Beschreibung der geometrischen Realsierung als Tensorprodukt von
+Funktoren eröffnet uns eine Reihe weiterer geometrischer
+Realisierungen, die diejenige simplizialer Mengen verallgemeinern.
+
+Zunächst stellen wir fest, dass wir in unserer Konstruktion
+simpliziale Mengen immer als diskrete simpliziale topologische Räume
+betrachtet haben, und die Diskretheit genauso gut auch fallen lassen
+können. Wir erhalten die geometrische Realisierung $|X| = X \otimes R$
+eines simplizialen topologischen Raums $X: \Delta\op \to \Top$.
+\begin{bsp}
+  Wir betrachten den simplizialen topologischen Raum $X: \Delta\op \to
+  \Top$, den wir aus dem (kombinatorischen) Standard-1-Simplex
+  $\Delta^1$ erhalten, indem wir disjunkte Vereinigungen von Punkten
+  durch disjunkte Vereinigungen von Intervallen $I = [0, 1]$ mit von
+  den Identitäten induzierten Abbildungen ersetzen. Offenbar ist die
+  geometrische Realiserung das Produnkt $I \times
+  |\Delta^1|$. Ersetzen wir $X_0$ wieder durch zwei Punkte ${0, 1}$
+  mit beliebigen Degenerationen, so erhalten wir eine zu einer
+  Kreisscheibe verdickte Linie zwischen den beiden Punkten als
+  Realisierung. Ersetzen wir die höheren $X_n, n \geq 2$ ebenfalls
+  wieder durch Punkte mit beliebigen Randabbildungen, so sorgen deren
+  Identifikationen dafür, dass die geometrische Realisierung wieder
+  $|\Delta^1|$ wird.
+  % TODO Interessantere Beispiele? RP^n oder so?
+\end{bsp}
+
+Weiter verallgemeinert die Konstruktion auch auf
+Diagrammkategorien. Ist $I$ eine kleine Kategorie und $X: \Delta\op
+\to \Top^I$ ein simpliziales $I$-System topologischer Räume, so
+erhalten wir eine geometrische Realisierung $|X| = X \otimes R$ von
+$X$, wenn wir $R: \Delta \to \Top \to \Top^I$ mittels des Funktors der
+konstanten Darstellung auf die Diagrammkategorie
+fortsetzen. Insbesondere erhalten wir eine geometrische Realisierung
+für die Kategorie der Paare topologischer Räume mit stetiger
+Abbildung, d. h. die Diagrammkategorie $\Top^I$ für $I = \{ \bullet
+\to \bullet \}$. Uns interessiert der Fall von Garben:
+\begin{satz}
+  Sei $I = \{ \bullet \to \bullet \}$, $X: \Delta\op \to \Top^I$ ein
+  simpliziales Paar topologischer Räume mit stetiger Abbildung, für
+  die $X_n: E_n \to Y_n$ étale ist für alle $[n]$. Dann ist auch die
+  geometrische Realisierung $|X|: |E| \to |Y|$ étale.
+\end{satz}
+\begin{proof}
+  Die Realisierung ist die Abbildung $|E| = \coprod_n E_n \times
+  |\Delta^n| / \sim \to |Y| = \coprod_n Y_n \times |\Delta^n| / \sim$,
+  die von den $X_n: E_n \to Y_n$ induziert wird. Sind die $X_n: E_n
+  \to Y_n$ étale, so ist die Abbildung auf den Koprodukten étale und
+  es reicht zu bemerken, dass die Wirkung von $f: [n] \to [m]$ auf den
+  Koprodukten verträglich ist nach Definition eines Funktors nach
+  $\Top^I$.
+\end{proof}
+In die Sprache der Garben zurückübersetzt bedeutet das, dass wir eine
+geometrische Realisierung erklärt haben für simpliziale Garben über
+topologischen Räumen $X: \Delta\op \to \Ens_{/\Top}$:
+\[ E_n \in \Ens_{/Y_n} \qquad \rightsquigarrow \qquad |E| \in \Ens_{/|Y|} . \]
+
+% TODO:
+% * konkret machen (im Fall von Y_n diskret vllt)
+% * Nerv und Realisierung, finde die Adjungierten
+% * charakterisiere das Bild
+% * deriviert???
+
+\end{document}
