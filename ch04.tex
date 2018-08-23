@@ -133,7 +133,9 @@ Ist $X \in \s\Ens$ eine simpliziale Menge, so bezeichnen wir $X_n :=
 X([n])$ als die Menge der $n$-Simplizes von $X$. Nun sind die
 $n$-Simplizes von $X$ gerade die ``Bilder des $n$-ten
 Standardsimplizes in $X$'' sind, präziser
-\[ X_n \iso \s\Ens(\Delta^n, X). \]
+\begin{equation} \label{eq:simp-as-hom}
+X_n \iso \s\Ens(\Delta^n, X).
+\end{equation}
 In der Tat besagt das Yoneda-Lemma, dass die Transformationen des
 freien Funktors $\Delta^n = \Delta(\cdot, [n])$ zum Funktor $X$ in
 natürlicher Bijektion stehen zu $X([n])$.
@@ -236,11 +238,15 @@ einem Punkt zusammenfallen.
 Die geometrische Realisierung von Standard-$n$-Simplizes haben wir
 gerade gesehen. Nun fordern wir, dass sich die Realisierung mit
 Kolimites vertrage:
-\[ |\col_i X_i| \iso \col_i |X_i|. \]
+\begin{equation} \label{eq:real-cocont}
+|\col_i X_i| \iso \col_i |X_i|.
+\end{equation}
 Wenn dies der Fall sein soll, so müssen wir mit der Darstellung
 \[ X := \col_{\Delta^n \to X} \Delta^n \]
 aus \ref{sset-colim} auf jeden Fall setzen
-\[ |X| := \col_{\Delta^n \to X} |\Delta^n|. \]
+\begin{equation} \label{eq:real-colim}
+|X| := \col_{\Delta^n \to X} |\Delta^n|.
+\end{equation}
 Debei wird der Kolimes wieder über die Simplexkategorie von $X$
 gebildet, nun allerdings mit den induzierten stetigen Abbildungen aus
 \ref{} als Systemmorphismen.
@@ -499,7 +505,8 @@ Daraus folgt sofort unser Ziel.
   \ref{itm:cg-crit-quot} auch $|X|$.
 \end{proof}
 
-% TODO |X| vertauscht mit endl. Limites
+% TODO |X| vertauscht mit endl. Limites in CGHaus
+% TODO Gegenbsp. vertauscht nicht mit beliebigen Limites
 
 \section{Geometrische Realisierung als Koende}
 
@@ -507,14 +514,12 @@ Die Sprache der Enden und Koenden ermöglicht uns eine allgemeinere
 Sicht auf die geometrische Realisierung und wird sich später als
 nützlich erweisen, um andere Formen der geometrischen Realisierung
 einzuführen. Wir führen Koenden und ihre Eigenschaften ein, Enden sind
-dazu formal dual. Die Darstellung folgt \cite{nlab:end} und
-\cite{Lore}.
+dazu formal dual. Die Darstellung folgt \cite{Lore}.
 \begin{defn}[\cite{Lore}, 1.1 f.]
   Sei $F: C\op \times C \to D$ ein Funktor. Ein Objekt $K \in D$ mit
   Morphismen $\iota_c: F(c, c) \to K$ für alle $c \in C$ heißt Kokeil
   für $F$, falls für alle Morphismen $f: c \to d$ in $C$ das folgende
   Diagramm kommutiert:
-  \shorthandoff{"}
   \[ \begin{tikzcd}
     F(d, c) \arrow{r}{F(f, \id)} \arrow{d}{F(\id, f)}
     & F(c, c) \arrow{d}{\iota_c} \\
@@ -576,5 +581,44 @@ Funktoren
 wobei die Mengen $X_n$ als diskrete topologische Räume aufgefasst
 werden (\cite{Moer}, III.1):
 \[ |X| = X \otimes R. \]
+
+Rückblickend halten wir fest, dass während unsere durch die
+``Kostetigkeitseigenschaft'' für die Simplexkategorie
+$\slicecat{\Delta}{r}{X}$ (Gl. \ref{eq:real-colim},
+\ref{eq:real-cocont}) definierte geometrische Realisierung in dieser
+Situation elegant ist, sie darauf beruht, dass sich die ``Wirkung''
+von $\Ens$ auf $\Top$ $(X_n, |\Delta^n|) \mapsto \coprod_{X_n}
+|\Delta^n|$, wie wir sie im folgenden Abschnitt formal erklären,
+darstellen lässt über den $\Delta^n$-Anteil der Simplexkategorie. Dies
+wird bei ``Wirkungen'' wie von $\Top$ auf $\Top$ durch das kartesische
+Produkt nicht mehr der Fall sein.
+
+\section{Der (Ko-) Enden-Kalkül}
+
+Die Sprache der (Ko-) Enden besitzt eine Reihe an Verträglichkeits-
+und Umformungseigenschaften, die sie zu einem mächtigen Werkzeug für
+eine Vielzahl formaler Rechnungen in Anwendungen der Kategorientheorie
+machen (für Beispiele siehe \cite{Lore}). Im folgenden werden einige
+Umformungsregeln dieses Kalküls \footnote{Bei der Übersetzung
+  aus dem Englischen geht leider die Analogie zu den Regeln der
+  Differentiations- und Integrationstheorie verloren.}
+zusammengestellt.
+\begin{lemma}[Transformationen als Ende, \cite{Lore}, 1.18]
+  Seien $F, G: C \to D$ zwei Funktoren. Dann gibt es einen natürlichen
+  Isomorphismus
+  \[ [C, D](F, G) \iso \int_c D(Fc, Gc). \]
+\end{lemma}
+\begin{proof}
+  Transformationen $F \Implies G$ sind genau diejenigen Tupel aus
+  $\prod_c D(Fc, Gc)$, für die für jedes $f: c \to d$ in $C$ die
+  Bilder rechts unten im Diagramm übereinstimmen:
+  \[ \begin{tikzcd}
+    & D(Fc, Gc) \arrow{d}{Gf \circ} \\
+    D(Fd, Gd) \arrow{r}{\circ Ff} & D(Fc, Gd)
+  \end{tikzcd}. \]
+  Damit ist $[C, D](F, G)$ der Egalisator aus der Dualisierung von
+  \ref{eq:???} und folglich das angegebene Ende.
+\end{proof}
+
 
 \end{document}

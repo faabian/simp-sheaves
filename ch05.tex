@@ -65,6 +65,76 @@ In die Sprache der Garben zurückübersetzt bedeutet das, dass wir eine
 geometrische Realisierung erklärt haben für simpliziale Garben über
 topologischen Räumen $X: \Delta\op \to \Ens_{/\Top}$:
 \[ E_n \in \Ens_{/Y_n} \qquad \rightsquigarrow \qquad |E| \in \Ens_{/|Y|} . \]
+Man beachte, dass Morphismen étaler $\Top^I$ den ``Morphismen'' in
+$\Ens_{/\Top} entsprechen, während sonst häufig mit Komorphismen
+gearbeitet wird.
+
+\subsection{Die Dualität von Nerv und Realisierung}
+
+Wir suchen Rechtsadjungierte für unsere geometrischen
+Realisierungen. Für die Realisierung simplizialer Mengen gelingt uns
+das einfach.
+\begin{satz}
+  Der Funktor der singulären Ketten $S: \Top \to \s\Ens$, $SY
+  = \Top(R \cdot, Y): [n] \mapsto \Top(|\Delta^n|, Y)$ ist
+  rechtsadjungiert zur geometrischen Realisierung
+  $|\cdot|: \s\Ens \to \Top$.
+\end{satz}
+\begin{proof}
+  Die Rand- und Degenerationsabbildungen von $SY$ sind für $f: [n] \to
+  [m]$ gegeben durch Vorschalten von $|f|: |\Delta^n| \to
+  |\Delta^m|$. Wir berechnen
+  \begin{align*}
+    \Top(|X|, Y)
+    & = \Top(\col_{\slicecat{\Delta}{r}{X}} |\Delta^n|, Y) \\
+    & \iso \col_{\slicecat{\Delta}{r}{X}} \Top(|\Delta^n|, Y) \\
+    & \iso \col_{\slicecat{\Delta}{r}{X}} \s\Ens(\Delta^n, \Top(R\cdot, Y)) \\
+    & \iso \s\Ens(\iso \col_{\slicecat{\Delta}{r}{X}} \Delta^n, \Top(R\cdot, Y)) \\
+    & \iso \s\Ens(X, SY)
+  \end{align*}  
+  mit der Definition der geometrischen Realisierung im ersten Schritt
+  (Gl. \ref{eq:real-colim}), der Verträglichkeit von $\Hom:
+  C\op \times C \to \Ens$ mit Limites im zweiten und vierten Schritt,
+  unserer Bestimmung der $n$-Simplizes als Morphismenmenge
+  (Gl. \ref{eq:simp-as-hom}) im dritten Schritt und unserer
+  Beschreibung einer simplizialen Menge als Kolimes über ihre
+  Simplexkategorie (\ref{sset-colim}) im letzten Schritt.
+\end{proof}
+
+% TODO:
+% * Koenden-Kalkül
+% * allgemeine Nerv-Realisierung-Dualität
+% * erklären, wieso das für Ens/Top nicht funktioniert
+
+\subsection{Die kartesisch abgeschlossene Struktur der Garben auf $X$}
+
+Für unsere allgemeine Dualität von Nerv und Realisierung \ref{}
+benötigen wir also eine bessere $V$-angereichterte Struktur auf
+$C$. Wenn wir uns auf $\EnsX$ beschränken, erhalten wir sogar die
+Struktur einer kartesisch abgeschlossenen Kategorie
+(engl. \emph{cartesian closed category}), d. h. einer Kategorie mit
+endlichen Produkten, für deren kartesische monoidale Struktur es ein
+internes Hom gibt.
+
+\begin{prop}
+  Die Kategorie $\EnsX$ ist kartesisch abgeschlossen mit Produkt
+  \[ (F \times G)(U) = F(U) \times G(U) \]
+  und internem Hom
+  \[ (F \Implies G)(U) = G(U)^{F(U)} \].
+\end{prop}
+\begin{proof}
+  Das Produkt erfüllt offenbar die universelle Eigenschaft in $\pEnsX$
+  und ist eine Garbe, da Produkte mit dem Limes der Garbeneigenschaft
+  vertauschen. Das interne Hom besteht für $U \open X$ und $V \subset
+  U$ offen aus verträglichen Abbildungen $F(V) \to G(V)$, mithin also
+  aus Garbenmorphismen $F|_U \to G|_U$. Diese sind untereinander
+  veträglich durch Einschränkung und erfüllen die Garbenbedingung, die
+  ja gerade nach der Verklebbarkeit stetiger Abbildungen modelliert
+  war. Für die Adjunktion $(\cdot \times G, G \Implies \cdot)$
+  bemerken wir, dass sie nach dem Exponentialgesetz in $\Ens$ bereits
+  für die Prägarbenkategorien gilt.
+\end{proof}
+
 
 % TODO:
 % * konkret machen (im Fall von Y_n diskret vllt)
