@@ -66,7 +66,7 @@ geometrische Realisierung erklärt haben für simpliziale Garben über
 topologischen Räumen $X: \Delta\op \to \Ens_{/\Top}$:
 \[ E_n \in \Ens_{/Y_n} \qquad \rightsquigarrow \qquad |E| \in \Ens_{/|Y|} . \]
 Man beachte, dass Morphismen étaler $\Top^I$ den ``Morphismen'' in
-$\Ens_{/\Top} entsprechen, während sonst häufig mit Komorphismen
+$\Ens_{/\Top}$ entsprechen, während sonst häufig mit Komorphismen
 gearbeitet wird.
 
 \subsection{Die Dualität von Nerv und Realisierung}
@@ -100,9 +100,26 @@ das einfach.
   Beschreibung einer simplizialen Menge als Kolimes über ihre
   Simplexkategorie (\ref{sset-colim}) im letzten Schritt.
 \end{proof}
+Während dieses Argument wieder ein sehr anschauliches ist, möchten wie
+wie in \ref{coend-correct-real} erklärt, unser Argument mit den
+Begriffen und Techniken von Koenden führen, um es automatisch
+verallgemeinern zu können. Wir geben hier noch einmal die direkte
+Übersetzung obigen Beweises in die Sprache der Koenden an, und dann
+sofort die Verallgemeinerung.
+\begin{proof}
+  Wir berechnen mit den Regeln des Koenden-Kalküls:
+  \begin{align*}
+     \Top(|X|, Y)
+     &= \Top \left( \int^{[n]} X([n]) \times R[n], Y \right) \\
+     & \iso \int_{[n]} \Top \big( X([n]) \times R[n], Y \big) \\
+     & \iso \int_{[n]} \Ens \big( X([n]), \Top(R[n], Y) \big) \\
+     & \iso [\Delta\op, \Ens] \big( X, \Top(R \cdot, Y) \big) \\
+     &= \s\Ens(X, SY).
+  \end{align*}
+\end{proof}
 
 % TODO:
-% * Koenden-Kalkül
+% * Koenden-Kalkül s.o. fertig
 % * allgemeine Nerv-Realisierung-Dualität
 % * erklären, wieso das für Ens/Top nicht funktioniert
 
