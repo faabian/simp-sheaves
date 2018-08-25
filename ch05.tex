@@ -44,8 +44,9 @@ $X$, wenn wir $R: \Delta \to \Top \to \Top^I$ mittels des Funktors der
 konstanten Darstellung auf die Diagrammkategorie
 fortsetzen. Insbesondere erhalten wir eine geometrische Realisierung
 für die Kategorie der Paare topologischer Räume mit stetiger
-Abbildung, d. h. die Diagrammkategorie $\Top^I$ für $I = \{ \bullet
-\to \bullet \}$. Uns interessiert der Fall von Garben:
+Abbildung, d. h. die Diagrammkategorie $\Top^I$ für $I$ die von
+$\{ \bullet \to \bullet \}$ erzeugte Kategorie. Uns interessiert der
+Fall von Garben:
 \begin{satz}
   Sei $I = \{ \bullet \to \bullet \}$, $X: \Delta\op \to \Top^I$ ein
   simpliziales Paar topologischer Räume mit stetiger Abbildung, für
@@ -76,7 +77,7 @@ Realisierungen. Für die Realisierung simplizialer Mengen gelingt uns
 das einfach.
 \begin{satz}
   Der Funktor der singulären Ketten $S: \Top \to \s\Ens$, $SY
-  = \Top(R \cdot, Y): [n] \mapsto \Top(|\Delta^n|, Y)$ ist
+  = \Top(R \, \cdot, Y): [n] \mapsto \Top(|\Delta^n|, Y)$ ist
   rechtsadjungiert zur geometrischen Realisierung
   $|\cdot|: \s\Ens \to \Top$.
 \end{satz}
@@ -88,8 +89,8 @@ das einfach.
     \Top(|X|, Y)
     & = \Top(\col_{\slicecat{\Delta}{r}{X}} |\Delta^n|, Y) \\
     & \iso \col_{\slicecat{\Delta}{r}{X}} \Top(|\Delta^n|, Y) \\
-    & \iso \col_{\slicecat{\Delta}{r}{X}} \s\Ens(\Delta^n, \Top(R\cdot, Y)) \\
-    & \iso \s\Ens(\iso \col_{\slicecat{\Delta}{r}{X}} \Delta^n, \Top(R\cdot, Y)) \\
+    & \iso \col_{\slicecat{\Delta}{r}{X}} \s\Ens(\Delta^n, \Top(R \, \cdot, Y)) \\
+    & \iso \s\Ens(\iso \col_{\slicecat{\Delta}{r}{X}} \Delta^n, \Top(R \, \cdot, Y)) \\
     & \iso \s\Ens(X, SY)
   \end{align*}  
   mit der Definition der geometrischen Realisierung im ersten Schritt
@@ -106,22 +107,48 @@ Begriffen und Techniken von Koenden führen, um es automatisch
 verallgemeinern zu können. Wir geben hier noch einmal die direkte
 Übersetzung obigen Beweises in die Sprache der Koenden an, und dann
 sofort die Verallgemeinerung.
-\begin{proof} [\cite{Lore}, 3.2]
+\begin{proof} (\cite{Lore}, 3.2)
   Wir berechnen mit den Regeln des Koenden-Kalküls:
   \begin{align*}
      \Top(|X|, Y)
-     &= \Top \left( \int^{[n]} X([n]) \times R[n], Y \right) \\
-     & \iso \int_{[n]} \Top \big( X([n]) \times R[n], Y \big) \\
-     & \iso \int_{[n]} \Ens \big( X([n]), \Top(R[n], Y) \big) \\
-     & \iso [\Delta\op, \Ens] \big( X, \Top(R \cdot, Y) \big) \\
+     &= \Top \left( \int^{[n]} X[n] \times R[n], Y \right) \\
+     & \iso[\ref{coend-cocont}]
+       \int_{[n]} \Top \big( X[n] \times R[n], Y \big) \\
+     & \iso[\ref{copower}]
+       \int_{[n]} \Ens \big( X[n], \Top(R[n], Y) \big) \\
+     & \iso[\ref{trans-end}]
+       [\Delta\op, \Ens] \big( X, \Top(R \, \cdot, Y) \big) \\
      &= \s\Ens(X, SY).
   \end{align*}
-  % TODO add refs
+\end{proof}
+
+\begin{theorem} [Allgemeine Nerv-Realisierungs-Dualität, \cite{Lore}, 3.2]
+  Seien $C$ eine $V$-Kategorie mit Koexponentialen und ein Funktor $R:
+  S \to C$ gegeben. Dann gibt es eine Adjunktion $(|\cdot|, N)$  
+  \[ C \xtofrom[N]{|\cdot|} [S\op, V] \]
+  mit
+  \begin{alignat*}{3}
+    &|\cdot|: && X &&\mapsto \int^s X(s) \odot R(s) \qquad \text{und} \\
+    &N: && Y &&\mapsto C(R \, \cdot, Y).
+  \end{alignat*}
+\end{theorem}
+\begin{proof}
+  In wörtlicher Verallgemeinerung des Vorangegangenen:
+  \begin{align*}
+     C(|X|, Y)
+     &= C \left( \int^s X(s) \odot R(s), Y \right) \\
+     & \iso[\ref{coend-cocont}]
+       \int_s C \big( X(s) \odot R(s), Y \big) \\
+     & \iso[\ref{copower}]
+       \int_s V \big( X(s), C(R(s), Y) \big) \\
+     & \iso[\ref{trans-end}]
+       [S\op, V] \big( X, C(R \, \cdot, Y) \big) \\
+     &= [S\op, V] (X, NY).
+  \end{align*}
 \end{proof}
 
 % TODO:
-% * Koenden-Kalkül s.o. fertig
-% * allgemeine Nerv-Realisierung-Dualität
+% * erster Ansatz: halmweise Realisierung funktioniert nicht
 % * erklären, wieso das für Ens/Top nicht funktioniert
 
 \subsection{Die kartesisch abgeschlossene Struktur der Garben auf $X$}
