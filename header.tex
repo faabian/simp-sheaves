@@ -10,6 +10,7 @@
 \usepackage{tikz-cd}
 \usepackage{enumitem}
 \usepackage{hyperref}
+\usepackage{extpfeil}
 
 \setlength{\parskip}{\medskipamount}
 \setlength{\parindent}{0pt}
@@ -34,6 +35,7 @@
 \theoremstyle{remark}
 \newtheorem{bem}[theorem]{Bemerkung}
 
+\DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Cat}{Cat}
 \DeclareMathOperator{\poset}{poset}
 \DeclareMathOperator{\EnsX}{Ens_{/X}}
@@ -70,7 +72,7 @@
 \newcommand{\etalespace}[1]{\overline{#1}}
 \newcommand{\B}{\mathcal{B}}
 \newcommand{\op}{^\mathrm{op}}
-\newcommand{\iso}{\xrightarrow{\sim}}
+\newcommand{\iso}[1][]{\xrightarrow[#1]{\sim}}
 \newcommand{\qiso}{\xrightarrow{\approx}}
 \newcommand{\fromqiso}{\xleftarrow{\approx}}
 \newcommand{\open}{\subset\kern-0.58em\circ}

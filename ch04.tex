@@ -133,7 +133,9 @@ Ist $X \in \s\Ens$ eine simpliziale Menge, so bezeichnen wir $X_n :=
 X([n])$ als die Menge der $n$-Simplizes von $X$. Nun sind die
 $n$-Simplizes von $X$ gerade die ``Bilder des $n$-ten
 Standardsimplizes in $X$'' sind, präziser
-\[ X_n \iso \s\Ens(\Delta^n, X). \]
+\begin{equation} \label{eq:simp-as-hom}
+X_n \iso \s\Ens(\Delta^n, X).
+\end{equation}
 In der Tat besagt das Yoneda-Lemma, dass die Transformationen des
 freien Funktors $\Delta^n = \Delta(\cdot, [n])$ zum Funktor $X$ in
 natürlicher Bijektion stehen zu $X([n])$.
@@ -236,11 +238,15 @@ einem Punkt zusammenfallen.
 Die geometrische Realisierung von Standard-$n$-Simplizes haben wir
 gerade gesehen. Nun fordern wir, dass sich die Realisierung mit
 Kolimites vertrage:
-\[ |\col_i X_i| \iso \col_i |X_i|. \]
+\begin{equation} \label{eq:real-cocont}
+|\col_i X_i| \iso \col_i |X_i|.
+\end{equation}
 Wenn dies der Fall sein soll, so müssen wir mit der Darstellung
 \[ X := \col_{\Delta^n \to X} \Delta^n \]
 aus \ref{sset-colim} auf jeden Fall setzen
-\[ |X| := \col_{\Delta^n \to X} |\Delta^n|. \]
+\begin{equation} \label{eq:real-colim}
+|X| := \col_{\Delta^n \to X} |\Delta^n|.
+\end{equation}
 Debei wird der Kolimes wieder über die Simplexkategorie von $X$
 gebildet, nun allerdings mit den induzierten stetigen Abbildungen aus
 \ref{} als Systemmorphismen.
@@ -499,7 +505,8 @@ Daraus folgt sofort unser Ziel.
   \ref{itm:cg-crit-quot} auch $|X|$.
 \end{proof}
 
-% TODO |X| vertauscht mit endl. Limites
+% TODO |X| vertauscht mit endl. Limites in CGHaus
+% TODO Gegenbsp. vertauscht nicht mit beliebigen Limites
 
 \section{Geometrische Realisierung als Koende}
 
@@ -507,14 +514,12 @@ Die Sprache der Enden und Koenden ermöglicht uns eine allgemeinere
 Sicht auf die geometrische Realisierung und wird sich später als
 nützlich erweisen, um andere Formen der geometrischen Realisierung
 einzuführen. Wir führen Koenden und ihre Eigenschaften ein, Enden sind
-dazu formal dual. Die Darstellung folgt \cite{nlab:end} und
-\cite{Lore}.
+dazu formal dual. Die Darstellung folgt \cite{Lore}.
 \begin{defn}[\cite{Lore}, 1.1 f.]
   Sei $F: C\op \times C \to D$ ein Funktor. Ein Objekt $K \in D$ mit
   Morphismen $\iota_c: F(c, c) \to K$ für alle $c \in C$ heißt Kokeil
   für $F$, falls für alle Morphismen $f: c \to d$ in $C$ das folgende
   Diagramm kommutiert:
-  \shorthandoff{"}
   \[ \begin{tikzcd}
     F(d, c) \arrow{r}{F(f, \id)} \arrow{d}{F(\id, f)}
     & F(c, c) \arrow{d}{\iota_c} \\
@@ -576,5 +581,251 @@ Funktoren
 wobei die Mengen $X_n$ als diskrete topologische Räume aufgefasst
 werden (\cite{Moer}, III.1):
 \[ |X| = X \otimes R. \]
+
+\begin{bem} \label{coend-correct-real}
+  Rückblickend halten wir fest, dass während unsere durch die
+  ``Kostetigkeitseigenschaft'' für die Simplexkategorie
+  $\slicecat{\Delta}{r}{X}$ (Gl. \ref{eq:real-colim},
+  \ref{eq:real-cocont}) definierte geometrische Realisierung in dieser
+  Situation elegant ist, sie auf einer konkreten Eigenschaft der
+  Situation simplizialer \emph{Mengen} beruht, die wir bei
+  allgemeineren simplizialen Objekten nicht mehr gegeben
+  haben. Konkret werden wir im nächsten Abschnitt einen gewissen
+  Begriff einer Wirkung einer Kategorie auf einer anderen Kategorie
+  erklären (Koexponentiale, siehe \ref{???}). Die Besonderheit
+  simplizialer Mengen beruht nun darauf, dass sich die Wirkung von
+  $\Ens$ auf $\Top$ $(X_n, |\Delta^n|) \mapsto \coprod_{X_n}
+  |\Delta^n|$ als von der Wirkung von $\Ens$ auf $\s\Ens$, $(X_n,
+  \Delta^n) \mapsto \coprod_{X_n} \Delta^n \cong \set{\Delta^n
+    \xrightarrow{x} X}{x \in X_n}$ induziert darstellen lässt, was uns
+  zum Begriff der Simplexkategorie von $X$ geführt hat. Bei Wirkungen
+  wie von $\Top$ auf $\Top$ durch das kartesische Produkt wird es
+  nicht mehr möglich sein, die $\Delta^n \to X$ aus der
+  Simplexkategorie als topologischen Raum aufzufassen. Unsere
+  Beschreibung der geometrischen Realisierung als Koende ist also die
+  für allgemeinere Kontexte richtige Beschreibung.
+\end{bem}
+
+\section{Der (Ko-) Enden-Kalkül}
+
+Die Sprache der (Ko-) Enden besitzt eine Reihe an Verträglichkeits-
+und Umformungseigenschaften, die sie zu einem mächtigen Werkzeug für
+eine Vielzahl formaler Rechnungen in Anwendungen der Kategorientheorie
+machen (für Beispiele siehe \cite{Lore}). Im folgenden werden einige
+Umformungsregeln dieses Kalküls \footnote{Bei der Übersetzung
+  aus dem Englischen geht leider die Analogie zu den Regeln der
+  Differentiations- und Integrationstheorie verloren.}
+zusammengestellt.
+
+% TODO Ninja Yoneda (density thm)
+
+\begin{lemma}[Funktorialität, \cite{Lore}]
+  Sind $F \xRightarrow{\eta} G \xRightarrow{\tau} H$ Transformationen
+  von Funktoren $F, G, H: C\op \times C \to D$, deren Koenden
+  existieren, so sind die auf den Koenden induzierten Morphismen
+  \[ \int (\tau \circ \eta), \int \tau \circ \int \eta:
+  \int^c F(c, c) \to \int^c H(c, c) \]
+  durch die Transformationen auf den Koenden gegeben und damit
+  verträglich: $\int (\tau \circ \eta), \int \tau \circ \int \eta$.
+\end{lemma}
+\begin{proof}
+  Dies folgt sofort aus der Eindetigkeit dieses Morphismus in der
+  universellen Definition von Koenden.
+\end{proof}
+
+\begin{lemma}[Fubini, \cite{Lore}, 1.9, \cite{ML}, IX, 8]
+  Sei $F: C\op \times C \times D\op \times D \to E$ ein Funktor. Dann
+  ist
+  \[ \int^{c \in C} F(c, c, \cdot, -): D\op \times D \to E \]
+  ein Funktor und es gilt
+  \[ \int^{d \in D} \int^{c \in C} F(c, c, d, d)
+  \iso \int^{(c, d) \in C \times D} F(c, c, d, d), \]
+  wobei rechts $F$ als Funktor $F: (C \times D)\op \times (C \times
+  D)$ aufgefasst wird.
+\end{lemma}
+\begin{proof}
+  Sei $K: D\op \times D \to E$ ein Kokeil für $F: C\op \times C \to
+  [D\op \times D, E]$ in der Funktorkategorie $D\op \times D \to E$
+  und $L(K)$ ein Kokeil für $K$. Auch solche iterierten Kokeile $L(K)$
+  bestehen aus Morphismen $F(c, c, d, d) \to L(K)$ für alle $c, d$ als
+  Komposition von $F(c, c, \cdot, \cdot) \Implies K$ ausgewertet auf
+  $(d, d) \in D\op \times D$ mit $K(d, d) \to L(K)$. Sie erfüllen die
+  Kommutativitätseigenschaft von Kokeil-Quadraten für alle Morphismen
+  der Form $(f, \id_d)$ in $C \times D$ (die Transformation aus der
+  Kokeil-Eigenschaft von $K$ ausgewertet in $(d, d) \in D\op \times
+  D$) sowie $(\id_c, g)$ in $C \times D$ (durch Vorschalten der zur
+  Transfromation $F(c, c, \cdot, \cdot) \Implies K$ gehörigen
+  Morphismen vor das Kokeil-Quadrat von $L(K)$).
+
+  Nach denselben Argumenten definiert ein Kokeil $M$ für $F: (C \times
+  D)\op \times (C \times D)$ einen iterierten Kokeil: Wir können einen
+  iterierten Kokeil ``sparsam'' angeben, indem wir die inneren Kokeile
+  nicht für alle $(d, d') \in D\op \times D$, sondern nur für
+  Diagonalelemente $(d, d) \in D\op \times D$ sowie
+  ``Morphismenobjekte'' $(d', d) \in D\op \times D$ für einen
+  Morphismus $f: d \to d'$ angeben. Der iterierte Kokeil ist dadurch
+  vollständig festgelegt, da ja nur diese Kokeile in den Daten eines
+  iterierten Kokeils eine Rolle spielen. Nun ist $M$ zunächst wegen
+  der Kommutativität von
+  \[ \begin{tikzcd}
+    F(c', c, d, d) \arrow{r} \arrow{d} & F(c, c, d, d) \arrow{d} \\
+    F(c', c', d, d) \arrow{r} & M
+  \end{tikzcd} \]
+  ein $(d, d)$-Kokeil und dann durch Setzen der Inklusionen $F(c, c,
+  d', d) \to M$ als Komposition $F(c, c, d', d) \to F(c, c, d', d')
+  \to M = F(c, c, d', d) \to F(c, c, d, d) \to M$ wegen der
+  Kommutativität von
+  \[ \begin{tikzcd}
+    F(c', c, d', d) \arrow{rr} \arrow{dd} & & F(c, c, d', d) \arrow{d} \\
+    & & F(c, c, d, d) \arrow{d} \\
+    F(c', c', d', d) \arrow{r} & F(c', c', d', d') \arrow{r} & M
+  \end{tikzcd} \]
+  auch ein $(d', d)$-Morphismenkokeil. Klarerweise ist dann auch $M$
+  ein iterierter Kokeil über sich selbst als $(d, d)$- und $(d',
+  d)$-Kokeil.
+
+  Morphismen von Kokeilen entsprechen nun Morphismen iterierter
+  Kokeile und damit entsprechen sich auch Koenden alias die initialen
+  Objekte der beiden Kategorien.
+\end{proof}
+\begin{bem}
+  Unser Argument verbessert die Aussage von \cite{ML}, IX.8, geringfügig, da
+  wie angedeutet nicht alle $(d', d)$-Koenden existieren müssen.
+  
+  Ein weniger ad hoc formuliertes Argument würde Kokeile wie in als
+  Kolimites über die zugehörige \emph{twisted arrow category}
+  (\cite{Lore}, 1.12 f.) bzw. \emph{subdivision category} (\cite{ML},
+  IX.5) beschreiben und die Aussage damit auf die für iterierte
+  Kolimites und die jeweiligen Pfeilkategorien zurückführen.
+\end{bem}
+
+\begin{defn}
+  Sei $F: C \to D$ ein Funktor. $F$ heißt \emph{stetig}, falls er mit
+  allen Limites vertauscht. $F$ heißt \emph{kostetig}, falls er mit
+  allen Kolimites vertauscht.
+\end{defn}
+
+\begin{lemma}[Koenden und kostetige Funktoren, \cite{Lore}, 1.16]
+  \label{coend-cocont}
+  Ist $F: D \to E$ ein kostetiger Funktor und $T: C\op \times C \to D$
+  ein Funktor, dann ist der natürliche Morphismus
+  \[ F \int^c T(c, c) \iso \int^c F \circ T(c, c), \]
+  ein Isomorphismus, wann immer eines der beiden Koenden existiert.
+\end{lemma}
+\begin{proof}
+  Das folgt direkt aus unserer Beschreibung von Koenden als Kolimites
+  in \ref{coend-coeq}.
+\end{proof}
+\begin{bem}
+  Das wichtigste Beispiel für diesen Fall ist der
+  $\Hom$-Funktor. Praktisch nach Definition von Limes und Kolimes sind
+  $D(d, \cdot): D \to \Ens$ und $D(\cdot, d): D\op \to \Ens$
+  stetig. Wir erhalten für $F: C\op \times C \to D$:
+  \begin{align*}
+    D(d, \int_c F(c, c)) & \iso \int_c D(d, F(c, c)) \\
+    D(\int^c F(c, c), d) &\iso \int_c D(F(c, c), d).
+  \end{align*}
+\end{bem}
+
+\begin{lemma}[Transformationen als Ende, \cite{Lore}, 1.18]
+  \label{trans-end}
+  Seien $F, G: C \to D$ zwei Funktoren. Dann gibt es einen natürlichen
+  Isomorphismus
+  \[ [C, D](F, G) \iso \int_c D(Fc, Gc). \]
+\end{lemma}
+\begin{proof}
+  Transformationen $F \Implies G$ sind genau diejenigen Tupel aus
+  $\prod_c D(Fc, Gc)$, für die für jedes $f: c \to d$ in $C$ die
+  Bilder rechts unten im Diagramm übereinstimmen:
+  \[ \begin{tikzcd}
+    & D(Fc, Gc) \arrow{d}{Gf \circ} \\
+    D(Fd, Gd) \arrow{r}{\circ Ff} & D(Fc, Gd)
+  \end{tikzcd}. \]
+  Damit ist $[C, D](F, G)$ der Egalisator aus der Dualisierung von
+  \ref{coend-coeq} und folglich das angegebene Ende.
+\end{proof}
+
+\subsection{Angereicherte Kategorien}
+
+In der ursprünglichen Definition einer Kategorie tragen die Morphismen
+$C(x, y)$ die Struktur einer Menge. Der Wunsch, Begriffe wie ``die
+Summe zweier Morphismen'' oder ``der Nullmorphismus'' aus der
+Kategorie der $R$-Moduln auch kategorientheoretisch zu erfassen,
+brachte uns zum Begriff der additiven Kategorien, bei denen
+Morphismenmengen abelsche Gruppen sind und Funktoren
+Gruppenhomomorphismen auf den Morphismengruppen induzieren. Diese
+Konstruktion möchten wir auch für Kategorien zur Verfügung stehen
+haben, bei denen die Morphismenmengen eine andere Struktur tragen
+(etwa die eines topologischen Raums) oder gar keine Mengen sind,
+sondern Objekte einer anderen Kategorie $V$. Solche Kategorien
+bezeichnet man als über $V$ angereicherte (engl. \emph{enriched})
+Kategorien. Wir imitieren die herkömmliche Definition von Kategorien:
+\begin{defn}[Angereicherte Kategorie]
+  Sei $V$ eine monoidale Kategorie (Schmelzkategorie mit universellen
+  Verschmelzungen). Eine über $V$ angereicherte Kategorie $C$
+  ($V$-Kategorie) besteht aus:
+  \begin{enumerate}
+  \item einer Klasse von Objekten $\Ob(C)$
+  \item für jedes Paar von Objekten $(x, y)$ ein Objekt $C(x,y) \in V$
+  \item einer Komposition $C(x, y) \otimes C(y, z) \to C(x, z)$
+  \item für jedes Objekt $x \in \Ob(C)$ einem Morphismus in $V$
+    $\id_x: I \to C(x, x)$ für $I$ die universelle 0-Verschmelzung,
+  \end{enumerate}
+  sodass die Komposition assoziativ ist (bezüglich des eindeutigen
+  Morphismus $C(w,x) \otimes (C(x,y) \otimes C(y,z)) \iso (C(w,x)
+  \otimes C(x,y)) \otimes C(y,z)$) und verträglich mit den Identitäten
+  (bezüglich der eindeutigen Morphismen $C(x, y) \otimes I \iso C(x,
+  y)$ und $I \otimes C(x,y) \iso C(x,y)$).
+
+  Ein Funktor zwischen $V$-Kategorien $F: C \to D$ ist eine Zuordnung
+  auf Objekten $F: c \mapsto Fc$ zusammen mit Morphismen $C(x, y) \to
+  D(Fx, Fy)$ in $V$.
+\end{defn}
+\begin{bsp}
+  Eine Kategorie ist eine über $\Ens$ angereicherte Kategorie
+  bezüglich der kartesischen monoidalen Struktur auf $\Ens$. Eine
+  präadditive Kategorie ist eine über $\Ab$ angereicherte Kategorie
+  bezüglich des Tensorprodukts auf $\Ab$. Jede monoidale Kategorie mit
+  adjungiertem internem Hom (monoidale geschlossene Kategorie) $V$ ist
+  eine $V$-Kategorie über sich selbst.
+\end{bsp}
+
+In einer monoidalen geschlossenen Kategorie $V$ haben wir die Adjunktion
+\[ V(a \otimes b, c) \iso V(a, V(b, c)) \]
+mit $V(b, c) = (b \Implies c)$ dem internen Hom-Objekt. Das Objekt $a
+\otimes b$ ist dann ein darstellendes Objekt für den Funktor $c
+\mapsto V(a, V(b, c))$ und heißt manchmal auch Koexponential
+(engl. \emph{copower}) von $a$ und $b$. Wir verallgemeinern diese
+Situationen auf Koexponentiale in angereicherten Kategorien:
+\begin{defn} \label{copower}
+  Sei $C$ eine $V$-Kategorie. Ist $x \in C$ ein darstellendes Objekt
+  für den Funktor $c \mapsto V(v, C(b, c))$ mit $v \in V, b \in C$,
+  gilt also
+  \[ C(x, c) \iso V(v, C(b, c)) \]
+  natürlich in $c \in C$, so heißt $x = v \odot b$ das Koexponential
+  von $v$ und $b$.  
+\end{defn}
+In diesem Fall heißt die Kategorie $C$ tensoriert über $V$.
+\begin{bsp}
+  Jede Kategorie mit beliebigen Koprodukten hat Koexponentiale über
+  $\Ens$. Mit $V \odot B = \coprod_V B$ gilt:
+  \[ C(V \odot B, C) \iso \Ens(V, C(B, C)). \]
+\end{bsp}
+
+Wir können nun auch die geometrische Realisierung in der Sprache
+angereicherter Kategorien formulieren. Ist $C$ eine $V$-Kategorie mit
+Koexponentialen und sind Funktoren
+\begin{align*}
+  &R: \Delta &\to C \qquad{und} \\
+  &X: \Delta\op &\to V
+\end{align*}
+gegeben, so erklären wir die geometrische Realisierung von $X$ als das
+Koende über den Funktor
+\begin{align*}
+  \Delta\op \times S &\to C, \\
+  [n], [m] &\mapsto X[n] \odot R[m].
+\end{align*}
+Der Fall simplizialer Mengen ist $C = \Top$ und $V = \Ens$ mit dem
+kanonischem Koexponential.
 
 \end{document}
