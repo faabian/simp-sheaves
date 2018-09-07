@@ -47,7 +47,7 @@ für die Kategorie der Paare topologischer Räume mit stetiger
 Abbildung, d. h. die Diagrammkategorie $\Top^I$ für $I$ die von
 $\{ \bullet \to \bullet \}$ erzeugte Kategorie. Uns interessiert der
 Fall von Garben:
-\begin{satz}
+\begin{satz} \label{real-enstop}
   Sei $I = \{ \bullet \to \bullet \}$, $X: \Delta\op \to \Top^I$ ein
   simpliziales Paar topologischer Räume mit stetiger Abbildung, für
   die $X_n: E_n \to Y_n$ étale ist für alle $[n]$. Dann ist auch die
@@ -123,6 +123,7 @@ sofort die Verallgemeinerung.
 \end{proof}
 
 \begin{theorem} [Allgemeine Nerv-Realisierungs-Dualität, \cite{Lore}, 3.2]
+  \label{nerve}
   Seien $C$ eine $V$-Kategorie mit Koexponentialen und ein Funktor $R:
   S \to C$ gegeben. Dann gibt es eine Adjunktion $(|\cdot|, N)$  
   \[ C \xtofrom[N]{|\cdot|} [S\op, V] \]
@@ -180,15 +181,53 @@ internes Hom gibt.
   für die Prägarbenkategorien gilt.
 \end{proof}
 
+Diese Strukrur einer kartesisch abgeschlossenen Kategorie macht
+$\EnsX$ insbesondere zu einer über sich selbst tensorierten Kategorie
+im Sinne von \ref{copower}. Wir erhalten einen Nerv-Funktor für die
+geometrische Realisierung simplizialer Garben auf $X$ aus \ref{nerve}.
 
-% TODO: Problem? Garbenmorphismen, nicht wie sonst Komorphismen!
+\subsection{Kategorien von Garben über topologischen Räumen}
+
+Wir betrachten die Kategorienfaserungen $\Ens_{/\Top} \to \Top$ mit
+Morphismen den stetigen Abbildungen zwischen den étalen Räumen über
+der stetigen Abbildung in der Basis sowie $\Ens{\sslash \Top} \to
+\Top$ mit Opkomorphismen als Morphismen, d. h. für $F \in \EnsX$ und
+$G \in \Ens_{/Y}$:
+\[ \Ens_{\sslash \Top}(F, G) = \coprod_{f: X \to Y} \EnsX(f^* G, F). \]
+
+Wir möchten einen Nerv-Funktor nicht nur für die Realisierung
+simplizialer Garben über $X$ finden, sondern auch für simpliziale
+Garben über variablen topologischen Räumen, also für simpliziale
+Objekte in $\Ens_{/\Top}$ und $\Ens_{\sslash \Top}$. Dafür benötigen
+wir wieder eine monoidal abgeschlossene Struktur auf diesen
+Kategorien.
+
+Die Kategorie $\Ens_{/\Top}$ besitzt Produkte, die algebraisch gegeben
+sind durch Rückzug und Produkt und topologisch durch Bilden der
+Produkträume. Konkret:
+\begin{prop}
+  Seien $F_i \in \Ens_{/X_i}$ für $i \in I$ einer Indexmenge Garben
+  über topologischen Räumen. Dann erfüllt die Garbe
+  \[ F = \prod_i \pr_i^* F_i \in \EnsX \]
+  für $X = \prod_i X_i$ und $\pr_i: X \to X_i$ den Projektionen die
+  universelle Eigenschaft eines Produkts in $\Ens_{/\Top}$. Für ihren
+  étalen Raum gilt:
+  \[ \etalespace{F} = \prod_i \etalespace{F_i} \]
+  und $\etalespace{F} \to X$ ist durch das Produkt der
+  $\etalespace{F_i} \to X_i$ gegeben.
+\end{prop}
+\begin{proof}
+  erst top^I erklären dann alegbraishc
+  iso durch Morphismus + halmiso
+\end{proof}
+
+
 
 % TODO:
 % * konkret machen (im Fall von Y_n diskret vllt)
-% * Nerv und Realisierung, finde die Adjungierten
 % * charakterisiere das Bild
 % * deriviert???
 
-% * Problem: was ist die V-enriched Struktur bei uns??
+% V-enriched Struktur durch stetige-Funktionen-Garbe?
 
 \end{document}
