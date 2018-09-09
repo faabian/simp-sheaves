@@ -254,8 +254,46 @@ erhielten wir durch Nachschalten des Faserfunktors $\Ens_{/\Top} \to
 \Top$ bzw. $\Ens_{\sslash \Top} \to \Top$ ein zum kartesischen Produkt
 adjungiertes internes Hom in der Kategorie der topologischen Räume,
 was bekanntermaßen in dieser Allgemeinheit nicht möglich ist
-(\cite{???}). Wir müssen uns also wieder auf unsere bequeme Kategorie
-kompakt erzeugter topologischer Räume einschränken.
+(\cite{???}). Wir müssen uns also wieder auf eine bequeme Kategorie
+topologischer Räume mit internem Hom einschränken.
+
+Die häufige Wahl $\CGHaus$ ist für uns ungeeignet, denn der étale Raum
+einer Garbe über einem kompakt erzeugten Hausdorffraum ist im
+Allgemeinen kein Hausdorffraum mehr (betrachte etwa die Garbe der
+stetigen Funktionen nach $\R$). Abhilfe schafft uns eine Konstruktion
+aus \cite{Vogt}, die die den kompakt erzeugten Räumen
+zugrundeliegenden Gedanken verallgemeinert. Wir geben hier nur die
+Ergebnisse an.
+
+Äquivalent zu unserer (der \emph{point-set-}Topologie entspringenden)
+Definition kompakt erzeugter Räume ist die folgende Charakterisierung:
+\begin{lemma}[\ref{def:cg}, Variante]
+  Ein topologischer Raum $X$ ist kompakt erzeugt genau dann, wenn
+  gilt: Eine Teilmenge $U \subset X$ ist offen genau dann, wenn ihr
+  Urbild unter allen stetigen Abbildungen $K \to X$, $K$ kompakt,
+  offen ist.
+\end{lemma}
+\begin{proof}
+  Unsere Bedingung besagt, dass $X$ die Finaltopologie bezüglich des
+  Systems der $K \to X$, $K$ kompakt tragen soll. Die Bedingung aus
+  der ursprünglichen Definition ist dieselbe für das System der
+  Inklusionen kompakter Mengen $K \subset X$. Da jede stetige Abbilung
+  $K \to X$, $K$ kompakt, über die Inklusion ihres kompakten Bilds
+  faktorisiert, ist letzteres System in ersterem konfinal und die
+  Finaltopologien stimmen überein.
+\end{proof}
+Der in \ref{??} angesprochene zur Inklusion Linksadjungierte
+$k: \Top \to \CG$ lässt sich nun auch beschreiben als das Versehen der
+$X$ zugrundeliegenden Menge mit der genannten Finaltopologie. Der Raum
+$kX$ ist dann sogar ein Kolimes über das System der $K \to X$, $K$
+kompakt, mit Morphismen über $X$ (\cite{Vogt}, 1.1).
+
+Nun verallgemeinern wir: Sei $\mathcal{I}$ eine nichtleere volle
+Unterkategorie von $\Top$ (für $\CG$ die kompakten Räume). Betrachte
+die Kategorie $\slicecat{\mathcal{I}}{}{X}$ und $kX
+:= \col_{\slicecat{mathcal{I}}{}{X}} X$.
+
+...
 
 %% TODO:
 %% * Rainer M. Vogt: internes Hom für lokalkompakte gibt einen Nerv für
