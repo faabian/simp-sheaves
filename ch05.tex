@@ -162,7 +162,7 @@ Struktur einer kartesisch abgeschlossenen Kategorie
 endlichen Produkten, für deren kartesische monoidale Struktur es ein
 internes Hom gibt.
 
-\begin{prop}
+\begin{prop} \label{ensx-cart-closed}
   Die Kategorie $\EnsX$ ist kartesisch abgeschlossen mit Produkt
   \[ (F \times G)(U) = F(U) \times G(U) \]
   und internem Hom
@@ -202,24 +202,66 @@ Objekte in $\Ens_{/\Top}$ und $\Ens_{\sslash \Top}$. Dafür benötigen
 wir wieder eine monoidal abgeschlossene Struktur auf diesen
 Kategorien.
 
-Die Kategorie $\Ens_{/\Top}$ besitzt Produkte, die algebraisch gegeben
-sind durch Rückzug und Produkt und topologisch durch Bilden der
-Produkträume. Konkret:
+Die Kategorie $\Ens_{/\Top}$ besitzt endliche Produkte, die
+algebraisch gegeben sind durch Rückzug und Produkt und topologisch
+durch Bilden der Produkträume. Konkret:
 \begin{prop}
-  Seien $F_i \in \Ens_{/X_i}$ für $i \in I$ einer Indexmenge Garben
-  über topologischen Räumen. Dann erfüllt die Garbe
-  \[ F = \prod_i \pr_i^* F_i \in \EnsX \]
-  für $X = \prod_i X_i$ und $\pr_i: X \to X_i$ den Projektionen die
-  universelle Eigenschaft eines Produkts in $\Ens_{/\Top}$. Für ihren
-  étalen Raum gilt:
-  \[ \etalespace{F} = \prod_i \etalespace{F_i} \]
-  und $\etalespace{F} \to X$ ist durch das Produkt der
-  $\etalespace{F_i} \to X_i$ gegeben.
+  Seien $F_{1,2} \in \Ens_{/X_{1,2}}$ Garben über topologischen Räumen
+  $X_1$ und $X_2$. Dann erfüllt die Garbe
+  \[ F_1 \times F_2 := \pr_1^* F_1 \times \pr_2^* F_2 \in \Ens_{/X_1 \times X_2} \]
+  mit $\pr_{1,2}: X_1 \times X_2 \to X_{1,2}$ den Projektionen die
+  universelle Eigenschaft des Produkts von $F_1$ und $F_2$ in
+  $\Ens_{/\Top}$. Für ihren étalen Raum gilt:
+  \[ \etalespace{F_1 \times F_2} = \etalespace{F_1} \times \etalespace{F_2} \]
+  und $\etalespace{F_1 \times F_2} \to X_1 \times X_2$ ist durch das
+  Produkt der $\etalespace{F_{1,2}} \to X_{1,2}$ gegeben.
 \end{prop}
 \begin{proof}
-  erst top^I erklären dann alegbraishc
-  iso durch Morphismus + halmiso
+  Die Beschreibung von $\Ens_{/\Top}$ als Paare topologischer Räume
+  mit étaler Abbildung zeigt die Aussage über den étalen Raum des
+  Produkts. Die induzierte Abbildung $\etalespace{F_1}
+  \times \etalespace{F_2} \to X_1 \times X_2$ ist ein Homöomorphismus
+  auf der Produktmenge der Umgebungen, auf denen $\etalespace{F_{1,2}}
+  \to X_{1,2}$ Homöomorphismen sind.
+  
+  Für die algebraische Beschreibung erhalten wir mit der Offenheit der
+  Projektionen $\pr_{1,2}$ und \ref{ensx-cart-closed} für die Schnitte
+  über Basismengen $U_1 \times U_2$:
+  \begin{align*}
+    (F_1 \times F_2)(U_1 \times U_2)
+    &\iso (\pr_1^* F_1)(U_1 \times U_2) \times (\pr_2^* F_2)(U_1 \times U_2) \\
+    &\iso F_1(U_1) \times F_2(U_2).
+  \end{align*}
+  Wir erhalten also einen Garbenmorphismus über $X_1 \times X_2$ von
+  der algeraischen zur topologischen Beschreibung, indem einem Paar
+  $(s, t) \in F_1(U_1) \times F_2 \times U_2$ der Schnitt $s \times t:
+  U_1 \times U_2 \to \etalespace{F_1} \times \etalespace{F_2}$
+  zugeordnet wird. Dieser Morphismus induziert auf den Halmen die
+  Bijektion $(F_1 \times F_2)_{x, y} \iso (F_1)_x \times (F_2)_y$ aus
+  dem Vertauschen von endlichen Produkten mit filtrierenden Kolimites.
 \end{proof}
+\begin{bem}
+  Auf ähnliche Weise kann man auch für $\Ens_{\sslash \Top}$ endliche
+  Produkte konstruieren: es handelt sich (wegen der opponierten
+  Fasern) um das \emph{Ko}produkt der mit den Projektionen auf den
+  Produktraum zurückgezogenen Garben.
+\end{bem}
+
+Wir könnten erwarten, dass wie das Produkt auch das interne Hom von
+$EnsX$ in unsere relative Situation übertragen werden kann. Dies
+gelingt tatsächlich aber im Allgemeinen nicht, denn in diesem Fall
+erhielten wir durch Nachschalten des Faserfunktors $\Ens_{/\Top} \to
+\Top$ bzw. $\Ens_{\sslash \Top} \to \Top$ ein zum kartesischen Produkt
+adjungiertes internes Hom in der Kategorie der topologischen Räume,
+was bekanntermaßen in dieser Allgemeinheit nicht möglich ist
+(\cite{???}). Wir müssen uns also wieder auf unsere bequeme Kategorie
+kompakt erzeugter topologischer Räume einschränken.
+
+%% TODO:
+%% * Rainer M. Vogt: internes Hom für lokalkompakte gibt einen Nerv für
+%%   Ens/Top
+%% * erwähnen, dass keine Einheit/Koeinheits-Isos zu erwarten, aber auf
+%%   Homotopie: Quillen-Äq. von Modellkategorien
 
 
 
