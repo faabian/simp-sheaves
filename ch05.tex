@@ -123,6 +123,7 @@ sofort die Verallgemeinerung.
 \end{proof}
 
 \begin{theorem} [Allgemeine Nerv-Realisierungs-Dualität, \cite{Lore}, 3.2]
+  \label{nerve-real}
   Seien $C$ eine $V$-Kategorie mit Koexponentialen und ein Funktor $R:
   S \to C$ gegeben. Dann gibt es eine Adjunktion $(|\cdot|, N)$  
   \[ C \xtofrom[N]{|\cdot|} [S\op, V] \]
@@ -150,41 +151,54 @@ sofort die Verallgemeinerung.
 % TODO:
 % * erster Ansatz: halmweise Realisierung funktioniert nicht
 % * erklären, wieso das für Ens/Top nicht funktioniert
+%   bzw. Ens/Top anreichern / kart. abschließen
 
-\subsection{Die kartesisch abgeschlossene Struktur der Garben auf $X$}
+\subsection{Die kartesisch abgeschlossene Struktur
+  der Garben auf topologischen Räumen}
 
-Für unsere allgemeine Dualität von Nerv und Realisierung \ref{}
-benötigen wir also eine bessere $V$-angereichterte Struktur auf
-$C$. Wenn wir uns auf $\EnsX$ beschränken, erhalten wir sogar die
-Struktur einer kartesisch abgeschlossenen Kategorie
-(engl. \emph{cartesian closed category}), d. h. einer Kategorie mit
-endlichen Produkten, für deren kartesische monoidale Struktur es ein
-internes Hom gibt.
+Für unsere allgemeine Dualität von Nerv und Realisierung
+\ref{nerve-real} benötigen wir also eine bessere $V$-angereichterte
+Struktur auf $C$. Wir können der Kategorie $\Ens_{/\Top}$ mit
+Komorphismen $(f, \phi)$ sogar die Struktur einer kartesisch
+abgeschlossenen Kategorie geben, d. h. einer Kategorie mit endlichen
+Produkten, für deren kartesische monoidale Struktur es ein internes
+Hom gibt. Wir wiederholen die Struktur auf $\EnsX$.
+% TODO geht das ???
 
 \begin{prop}
   Die Kategorie $\EnsX$ ist kartesisch abgeschlossen mit Produkt
   \[ (F \times G)(U) = F(U) \times G(U) \]
   und internem Hom
-  \[ (F \Implies G)(U) = G(U)^{F(U)} \].
+  \[ (F \Implies G)(U) = \Ens_{/U}(F|_U, G|_U) \]
+  jeweils mit den von den Restriktionen von $F$ und $G$ induzierten
+  Restriktionen.
 \end{prop}
 \begin{proof}
   Das Produkt erfüllt offenbar die universelle Eigenschaft in $\pEnsX$
   und ist eine Garbe, da Produkte mit dem Limes der Garbeneigenschaft
-  vertauschen. Das interne Hom besteht für $U \open X$ und $V \subset
-  U$ offen aus verträglichen Abbildungen $F(V) \to G(V)$, mithin also
-  aus Garbenmorphismen $F|_U \to G|_U$. Diese sind untereinander
-  veträglich durch Einschränkung und erfüllen die Garbenbedingung, die
-  ja gerade nach der Verklebbarkeit stetiger Abbildungen modelliert
-  war. Für die Adjunktion $(\cdot \times G, G \Implies \cdot)$
-  bemerken wir, dass sie nach dem Exponentialgesetz in $\Ens$ bereits
-  für die Prägarbenkategorien gilt.
+  vertauschen. Das interne Hom besteht aus stetigen Abbildungen über
+  $U$ und erfüllt somit die Garbenbedingung, die ja sogar nach der
+  Verklebbarkeit stetiger Abbildungen modelliert war. Für die
+  Adjunktion müssen wir zeigen
+  \[ \EnsX(F \times G, H) \iso \EnsX(F, G \Implies H). \]
+  Links stehen restriktionsverträgliche Systeme $F(U) \times G(U) \to
+  H(U)$ alias $F(U) \to \Ens(G(U), H(U))$, rechts
+  restriktionsverträgliche Systeme $F(U) \to \Ens_{/U}(G|_U,
+  H|_U)$. Wir erhalten eine Abbildung von rechts nach links durch den
+  globalen Teil $G(U) \to H(U)$ des Garbenmorphismus $G|_U \to H|_U$
+  und das Exponentialgesetz in $\Ens$ und von links nach rechts durch
+  Ergänzen des globalen Teils $G(U) \to H(U)$ durch verträgliche $G(V)
+  \to H(V)$ als die Bilder unter $F(U) \to F(V) \to \Ens(G(V),
+  H(V))$. Diese Abbildungen sind zueinander invers.
 \end{proof}
+Weiter besitzt $\EnsX$ natürlich auch Koprodukte, nämlich die
+Garbifizierungen der $U$-weise definierten Koprodukte in $\pEnsX$.
 
 
 % TODO:
-% * konkret machen (im Fall von Y_n diskret vllt)
-% * Nerv und Realisierung, finde die Adjungierten
-% * charakterisiere das Bild
+% * konkret machen (im Fall von Y_n diskret vllt) *
+% * charakterisiere das Bild -> kleiner machen mit kleinerem Intervall?
+%   (Moer)
 % * deriviert???
 
 \end{document}
