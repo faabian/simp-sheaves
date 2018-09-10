@@ -47,7 +47,7 @@ für die Kategorie der Paare topologischer Räume mit stetiger
 Abbildung, d. h. die Diagrammkategorie $\Top^I$ für $I$ die von
 $\{ \bullet \to \bullet \}$ erzeugte Kategorie. Uns interessiert der
 Fall von Garben:
-\begin{satz}
+\begin{satz} \label{real-enstop}
   Sei $I = \{ \bullet \to \bullet \}$, $X: \Delta\op \to \Top^I$ ein
   simpliziales Paar topologischer Räume mit stetiger Abbildung, für
   die $X_n: E_n \to Y_n$ étale ist für alle $[n]$. Dann ist auch die
@@ -123,7 +123,7 @@ sofort die Verallgemeinerung.
 \end{proof}
 
 \begin{theorem} [Allgemeine Nerv-Realisierungs-Dualität, \cite{Lore}, 3.2]
-  \label{nerve-real}
+  \label{nerve}
   Seien $C$ eine $V$-Kategorie mit Koexponentialen und ein Funktor $R:
   S \to C$ gegeben. Dann gibt es eine Adjunktion $(|\cdot|, N)$  
   \[ C \xtofrom[N]{|\cdot|} [S\op, V] \]
@@ -153,19 +153,17 @@ sofort die Verallgemeinerung.
 % * erklären, wieso das für Ens/Top nicht funktioniert
 %   bzw. Ens/Top anreichern / kart. abschließen
 
-\subsection{Die kartesisch abgeschlossene Struktur
-  der Garben auf topologischen Räumen}
+\subsection{Die kartesisch abgeschlossene Struktur der Garben auf $X$}
 
-Für unsere allgemeine Dualität von Nerv und Realisierung
-\ref{nerve-real} benötigen wir also eine bessere $V$-angereichterte
-Struktur auf $C$. Wir können der Kategorie $\Ens_{/\Top}$ mit
-Komorphismen $(f, \phi)$ sogar die Struktur einer kartesisch
-abgeschlossenen Kategorie geben, d. h. einer Kategorie mit endlichen
-Produkten, für deren kartesische monoidale Struktur es ein internes
-Hom gibt. Wir wiederholen die Struktur auf $\EnsX$.
-% TODO geht das ???
+Für unsere allgemeine Dualität von Nerv und Realisierung \ref{nerve}
+benötigen wir also eine bessere $V$-angereichterte Struktur auf
+$C$. Wenn wir uns auf $\EnsX$ beschränken, erhalten wir sogar die
+Struktur einer kartesisch abgeschlossenen Kategorie
+(engl. \emph{cartesian closed category}), d. h. einer Kategorie mit
+endlichen Produkten, für deren kartesische monoidale Struktur es ein
+internes Hom gibt.
 
-\begin{prop}
+\begin{prop} \label{ensx-cart-closed}
   Die Kategorie $\EnsX$ ist kartesisch abgeschlossen mit Produkt
   \[ (F \times G)(U) = F(U) \times G(U) \]
   und internem Hom
@@ -195,10 +193,134 @@ Weiter besitzt $\EnsX$ natürlich auch Koprodukte, nämlich die
 Garbifizierungen der $U$-weise definierten Koprodukte in $\pEnsX$.
 
 
+Diese Strukrur einer kartesisch abgeschlossenen Kategorie macht
+$\EnsX$ insbesondere zu einer über sich selbst tensorierten Kategorie
+im Sinne von \ref{copower}. Wir erhalten einen Nerv-Funktor für die
+geometrische Realisierung simplizialer Garben auf $X$ aus \ref{nerve}.
+
+\subsection{Kategorien von Garben über topologischen Räumen}
+
+Wir betrachten die Kategorienfaserungen $\Ens_{/\Top} \to \Top$ mit
+Morphismen den stetigen Abbildungen zwischen den étalen Räumen über
+der stetigen Abbildung in der Basis sowie $\Ens{\sslash \Top} \to
+\Top$ mit Opkomorphismen als Morphismen, d. h. für $F \in \EnsX$ und
+$G \in \Ens_{/Y}$:
+\[ \Ens_{\sslash \Top}(F, G) = \coprod_{f: X \to Y} \EnsX(f^* G, F). \]
+
+Wir möchten einen Nerv-Funktor nicht nur für die Realisierung
+simplizialer Garben über $X$ finden, sondern auch für simpliziale
+Garben über variablen topologischen Räumen, also für simpliziale
+Objekte in $\Ens_{/\Top}$ und $\Ens_{\sslash \Top}$. Dafür benötigen
+wir wieder eine monoidal abgeschlossene Struktur auf diesen
+Kategorien.
+
+Die Kategorie $\Ens_{/\Top}$ besitzt endliche Produkte, die
+algebraisch gegeben sind durch Rückzug und Produkt und topologisch
+durch Bilden der Produkträume. Konkret:
+\begin{prop}
+  Seien $F_{1,2} \in \Ens_{/X_{1,2}}$ Garben über topologischen Räumen
+  $X_1$ und $X_2$. Dann erfüllt die Garbe
+  \[ F_1 \times F_2 := \pr_1^* F_1 \times \pr_2^* F_2 \in \Ens_{/X_1 \times X_2} \]
+  mit $\pr_{1,2}: X_1 \times X_2 \to X_{1,2}$ den Projektionen die
+  universelle Eigenschaft des Produkts von $F_1$ und $F_2$ in
+  $\Ens_{/\Top}$. Für ihren étalen Raum gilt:
+  \[ \etalespace{F_1 \times F_2} = \etalespace{F_1} \times \etalespace{F_2} \]
+  und $\etalespace{F_1 \times F_2} \to X_1 \times X_2$ ist durch das
+  Produkt der $\etalespace{F_{1,2}} \to X_{1,2}$ gegeben.
+\end{prop}
+\begin{proof}
+  Die Beschreibung von $\Ens_{/\Top}$ als Paare topologischer Räume
+  mit étaler Abbildung zeigt die Aussage über den étalen Raum des
+  Produkts. Die induzierte Abbildung $\etalespace{F_1}
+  \times \etalespace{F_2} \to X_1 \times X_2$ ist ein Homöomorphismus
+  auf der Produktmenge der Umgebungen, auf denen $\etalespace{F_{1,2}}
+  \to X_{1,2}$ Homöomorphismen sind.
+  
+  Für die algebraische Beschreibung erhalten wir mit der Offenheit der
+  Projektionen $\pr_{1,2}$ und \ref{ensx-cart-closed} für die Schnitte
+  über Basismengen $U_1 \times U_2$:
+  \begin{align*}
+    (F_1 \times F_2)(U_1 \times U_2)
+    &\iso (\pr_1^* F_1)(U_1 \times U_2) \times (\pr_2^* F_2)(U_1 \times U_2) \\
+    &\iso F_1(U_1) \times F_2(U_2).
+  \end{align*}
+  Wir erhalten also einen Garbenmorphismus über $X_1 \times X_2$ von
+  der algeraischen zur topologischen Beschreibung, indem einem Paar
+  $(s, t) \in F_1(U_1) \times F_2 \times U_2$ der Schnitt $s \times t:
+  U_1 \times U_2 \to \etalespace{F_1} \times \etalespace{F_2}$
+  zugeordnet wird. Dieser Morphismus induziert auf den Halmen die
+  Bijektion $(F_1 \times F_2)_{x, y} \iso (F_1)_x \times (F_2)_y$ aus
+  dem Vertauschen von endlichen Produkten mit filtrierenden Kolimites.
+\end{proof}
+\begin{bem}
+  Auf ähnliche Weise kann man auch für $\Ens_{\sslash \Top}$ endliche
+  Produkte konstruieren: es handelt sich (wegen der opponierten
+  Fasern) um das \emph{Ko}produkt der mit den Projektionen auf den
+  Produktraum zurückgezogenen Garben.
+\end{bem}
+
+Wir könnten erwarten, dass wie das Produkt auch das interne Hom von
+$EnsX$ in unsere relative Situation übertragen werden kann. Dies
+gelingt tatsächlich aber im Allgemeinen nicht, denn in diesem Fall
+erhielten wir durch Nachschalten des Faserfunktors $\Ens_{/\Top} \to
+\Top$ bzw. $\Ens_{\sslash \Top} \to \Top$ ein zum kartesischen Produkt
+adjungiertes internes Hom in der Kategorie der topologischen Räume,
+was bekanntermaßen in dieser Allgemeinheit nicht möglich ist
+(\cite{???}). Wir müssen uns also wieder auf eine bequeme Kategorie
+topologischer Räume mit internem Hom einschränken.
+
+Die häufige Wahl $\CGHaus$ ist für uns ungeeignet, denn der étale Raum
+einer Garbe über einem kompakt erzeugten Hausdorffraum ist im
+Allgemeinen kein Hausdorffraum mehr (betrachte etwa die Garbe der
+stetigen Funktionen nach $\R$). Abhilfe schafft uns eine Konstruktion
+aus \cite{Vogt}, die die den kompakt erzeugten Räumen
+zugrundeliegenden Gedanken verallgemeinert. Wir geben hier nur die
+Ergebnisse an.
+
+Äquivalent zu unserer (der \emph{point-set-}Topologie entspringenden)
+Definition kompakt erzeugter Räume ist die folgende Charakterisierung:
+\begin{lemma}[\ref{def:cg}, Variante]
+  Ein topologischer Raum $X$ ist kompakt erzeugt genau dann, wenn
+  gilt: Eine Teilmenge $U \subset X$ ist offen genau dann, wenn ihr
+  Urbild unter allen stetigen Abbildungen $K \to X$, $K$ kompakt,
+  offen ist.
+\end{lemma}
+\begin{proof}
+  Unsere Bedingung besagt, dass $X$ die Finaltopologie bezüglich des
+  Systems der $K \to X$, $K$ kompakt tragen soll. Die Bedingung aus
+  der ursprünglichen Definition ist dieselbe für das System der
+  Inklusionen kompakter Mengen $K \subset X$. Da jede stetige Abbilung
+  $K \to X$, $K$ kompakt, über die Inklusion ihres kompakten Bilds
+  faktorisiert, ist letzteres System in ersterem konfinal und die
+  Finaltopologien stimmen überein.
+\end{proof}
+Der in \ref{??} angesprochene zur Inklusion Linksadjungierte
+$k: \Top \to \CG$ lässt sich nun auch beschreiben als das Versehen der
+$X$ zugrundeliegenden Menge mit der genannten Finaltopologie. Der Raum
+$kX$ ist dann sogar ein Kolimes über das System der $K \to X$, $K$
+kompakt, mit Morphismen über $X$ (\cite{Vogt}, 1.1).
+
+Nun verallgemeinern wir: Sei $\mathcal{I}$ eine nichtleere volle
+Unterkategorie von $\Top$ (für $\CG$ die kompakten Räume). Betrachte
+die Kategorie $\slicecat{\mathcal{I}}{}{X}$ und $kX
+:= \col_{\slicecat{mathcal{I}}{}{X}} X$.
+
+...
+
+%% TODO:
+%% * Rainer M. Vogt: internes Hom für lokalkompakte gibt einen Nerv für
+%%   Ens/Top
+%% * erwähnen, dass keine Einheit/Koeinheits-Isos zu erwarten, aber auf
+%%   Homotopie: Quillen-Äq. von Modellkategorien
+
+
+
 % TODO:
 % * konkret machen (im Fall von Y_n diskret vllt) *
 % * charakterisiere das Bild -> kleiner machen mit kleinerem Intervall?
 %   (Moer)
 % * deriviert???
+
+% V-enriched Struktur durch stetige-Funktionen-Garbe?
 
 \end{document}

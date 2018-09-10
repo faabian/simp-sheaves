@@ -415,22 +415,23 @@ Teil'' von $\|X\|$ liefern:
 
 \begin{kor} \label{real-hd}
   Die geometrische Realisierung $|X|$ einer simplizialen Menge $X \in
-  \s\Ens$ ist ein Hausdorffraum.
+  \s\Ens$ ist ein CW-Komplex und insbesondere ein Hausdorffraum.
 \end{kor}
 \begin{proof}
-  Die vorangegangene Proposition zeigt sogar, dass es sich um einen
-  CW-Komplex handelt.  Die Pushouts sind dabei das Ankleben von
-  $k$-Zellen.  Konkret zur Hausdorff-Eigenschaft: Seien $p, q \in
-  \|X\|$, $p \neq q$. Dann gibt es ein $k$ mit $p, q \in \|X^{\leq
-    k}\| \setminus \|X^{\leq k-1}\|$. Somit liegt ohne Einschränkung
-  $p$ im Inneren eines $k$-Simplizes und kann ohne Probleme durch
-  disjunkte offene Umgebungen $U_k, V_k \open \|X^{\leq k}\|$ von
-  Randpunkten dieses Simplexes und Punkten in anderen Simplizes
-  getrennt werden. Wir erhalten daraus disjunkte offene Umgebungen $U$
-  und $V$ in ganz $|X|$, indem wir sie ``baryzentrisch ergänzen'': Sei
-  dazu zu jedem geometrischen Standardsimplex $|\Delta^n|$ ein
-  ausgezeichneter Punkt $z_n$ in seinem offenen Inneren fest gewählt
-  (etwa das Baryzentrum). Wir setzen für $n \geq k$ induktiv
+  Die vorangegangene Proposition zeigt, dass es sich um einen
+  CW-Komplex handelt. Die Pushouts sind dabei das Ankleben von
+  $k$-Zellen $D^k \cong |\Delta^k|$. Konkret zur
+  Hausdorff-Eigenschaft: Seien $p, q \in \|X\|$, $p \neq q$. Dann gibt
+  es ein $k$ mit $p, q \in \|X^{\leq k}\| \setminus \|X^{\leq
+    k-1}\|$. Somit liegt ohne Einschränkung $p$ im Inneren eines
+  $k$-Simplizes und kann ohne Probleme durch disjunkte offene
+  Umgebungen $U_k, V_k \open \|X^{\leq k}\|$ von Randpunkten dieses
+  Simplexes und Punkten in anderen Simplizes getrennt werden. Wir
+  erhalten daraus disjunkte offene Umgebungen $U$ und $V$ in ganz
+  $|X|$, indem wir sie ``baryzentrisch ergänzen'': Sei dazu zu jedem
+  geometrischen Standardsimplex $|\Delta^n|$ ein ausgezeichneter Punkt
+  $z_n$ in seinem offenen Inneren fest gewählt (etwa das
+  Baryzentrum). Wir setzen für $n \geq k$ induktiv
   \begin{align*}
     U_{n+1} = \big\{ \: [(y, r)] \in \|X^{\leq n+1}\| \quad \big| \quad
     & y \in NX_{n+1}, \exists t \in (0, 1], w \in |\Delta^n|: \\
@@ -446,23 +447,25 @@ Teil'' von $\|X\|$ liefern:
 
 Die geometrischen Realisierungen simplizialer Mengen liegen
 tatsächlich sogar in einer in ihren kategoriellen Eigenschaften
-bequemen (\emph{convenient}) Kategorie topologischer Räume, den
+bequemen (engl. \emph{convenient}) Kategorie topologischer Räume, den
 kompakt erzeugten Hausdorffräumen.
 
-\begin{defn}[\cite{Steenrod}]
+\begin{defn}[\cite{Steenrod}] \label{def:cg}
   Ein topologischer Raum $X$ heißt kompakt erzeugt, falls gilt: eine
-  Teilmenge $A \subset X$ ist abgeschlossen, falls $A \cap K$
+  Teilmenge $A \subset X$ ist abgeschlossen, falls $A \cap K$ in $K$
   abgeschlossen ist für jedes Kompaktum $K \subset X$.
 \end{defn}
 \begin{bem}
   Äquivalent dazu ist: eine Teilmenge $U \subset X$ ist offen, falls
-  $U \cap K$ offen ist für jedes Kompaktum $K \subset X$.
+  $U \cap K$ in $K$ offen ist für jedes Kompaktum $K \subset X$.
 \end{bem}
-Wir notieren volle Unterkategorie der kompakt erzeugten Hausdorffräume
-in den topologischen Räumen mit $\CGHaus$. Die kompakt erzeugten
-Hausdorffräume umfassen eine sehr große Klasse an relevanten
-topologischen Räumen, etwa CW-Komplexe oder erstabzählbare Räume.
-% TODO citation needed
+Wir notieren volle Unterkategorie der kompakt erzeugten topologischen
+Räume in den topologischen Räumen mit $\CG$ und der kompakt erzeugten
+Hausdorffräume mit $\CGHaus$. Die kompakt erzeugten topologischen
+Räume umfassen eine sehr große Klasse an relevanten topologischen
+Räumen, etwa CW-Komplexe (nach dem nachfolgenden Lemma \ref{cg-crit})
+oder erstabzählbare Räume (\cite{Steenrod}, 2.2).
+
 Für uns relevant sind die folgenden Kriterien:
 \begin{lemma} \label{cg-crit}
   \begin{enumerate}[label=(\roman*)]
@@ -472,24 +475,34 @@ Für uns relevant sind die folgenden Kriterien:
       Quotientenabbildung (d. h. $Y$ trägt die Finaltopologie
       bezüglich $p$) und $X$ kompakt erzeugt, so ist auch $Y$ kompakt
       erzeugt.
+     \item \label{itm:cg-crit-cw} Ist $X$ ein CW-Komplex, so ist $X$
+       kompakt erzeugt.
   \end{enumerate}
 \end{lemma}
 \begin{proof}
   \begin{enumerate}[label=(\roman*)]
-    \item Sei $U \subset X$ mit $U \cap K$ offen für alle $K \subset
-      X$ kompakt. Mit der Lokalkompaktheit von $X$ wählen wir zu jedem
-      $x \in X$ eine kompakte Umgebung $K_x$ und erhalten, dass $U =
-      \bigcup_{x \in X} U \cap K_x$ offen ist als Vereinigung offener
-      Mengen.
-    \item Sei $A \subset Y$ mit $A \cap K$ abgeschlossen für alle $K
-      \subset Y$ kompakt. Mit der Finaltopologie auf $Y$ gilt, dass $A
-      \subset Y$ genau dann abgeschlossen ist, wenn $p^{-1}(A) \subset
-      X$ abgeschlossen ist. Sei nun $\tilde{K} \subset X$ kompakt. Es
-      ist $p^{-1}(A) \cap \tilde{K}$ abgeschlossen, denn $p(p^{-1}(A)
-      \cap \tilde{K}) = p(\tilde{K}) \cap A$ ist abgeschlossen nach
-      Voraussetzung ($p(\tilde{K}) \subset Y$ ist kompakt als stetiges
-      Bild eines Kompaktums). Da $X$ kompakt erzeugt ist, folgt nun,
-      dass $p^{-1}(A)$ abgeschlossen ist und somit auch $A \subset Y$.
+    \item \label{itm:cg-crit-proof-lc} Sei $U \subset X$ mit $U \cap
+      K$ offen für alle $K \subset X$ kompakt. Mit der
+      Lokalkompaktheit von $X$ wählen wir zu jedem $x \in X$ eine
+      kompakte Umgebung $K_x$ und erhalten, dass $U = \bigcup_{x \in
+        X} U \cap K_x$ offen ist als Vereinigung offener Mengen.
+    \item \label{itm:cg-crit-proof-quot} Sei $A \subset Y$ mit $A \cap
+      K$ abgeschlossen für alle $K \subset Y$ kompakt. Mit der
+      Finaltopologie auf $Y$ gilt, dass $A \subset Y$ genau dann
+      abgeschlossen ist, wenn $p^{-1}(A) \subset X$ abgeschlossen
+      ist. Sei nun $\tilde{K} \subset X$ kompakt. Es ist $p^{-1}(A)
+      \cap \tilde{K}$ abgeschlossen, denn $p(p^{-1}(A) \cap \tilde{K})
+      = p(\tilde{K}) \cap A$ ist abgeschlossen nach Voraussetzung
+      ($p(\tilde{K}) \subset Y$ ist kompakt als stetiges Bild eines
+      Kompaktums). Da $X$ kompakt erzeugt ist, folgt nun, dass
+      $p^{-1}(A)$ abgeschlossen ist und somit auch $A \subset Y$.
+    \item Die $n$-Bälle $D^n$ und $n-1$-Sphären $S^{n-1}$ sind kompakt
+      erzeugt nach \ref{itm:cg-crit-proof-lc}. Disjunkte Vereinigungen
+      kompakt erzeugter Räume sind kompakt erzeugt. Quotienten kompakt
+      erzeugter Räume sind kompakt erzeugt nach
+      \ref{itm:cg-crit-proof-quot}. Da kompakte Teilmengen von
+      CW-Komplexen nur endlich viele offene Zellen treffen, ist auch
+      die Vereinigung über alle $n$-Skelette kompakt erzeugt.
   \end{enumerate}
 \end{proof}
 
@@ -502,11 +515,39 @@ Daraus folgt sofort unser Ziel.
   Es handelt sich um einen Hausdorffraum nach \ref{real-hd}. Nach
   \ref{cg-crit} \ref{itm:cg-crit-lc} ist $\coprod_n X_n \times
   |\Delta^n|$ kompakt erzeugt und mit \ref{cg-crit}
-  \ref{itm:cg-crit-quot} auch $|X|$.
+  \ref{itm:cg-crit-quot} auch $|X|$. Das folgt auch aus \ref{real-hd}
+  und \ref{cg-crit} \ref{itm:cg-crit-cw}.
 \end{proof}
+\begin{bem}
+  Die geometrische Realisierung $|\cdot|: \s\Ens \to \CGHaus$
+  vertauscht mit endlichen Limites. Ganz allgemein lassen sich
+  endliche Limites als Egalisatoren endlicher Produkte darstellen. Der
+  Egalisator in $\Top$ zweier stetiger Abbildungen zwischen kompakt
+  erzeugten Hausdorffräumen ist dabei als abgeschlossener Unterraum
+  eines kompakt erzeugten Hausdorffraums selbst wieder in $\CGHaus$
+  und erfüllt die universelle Eigenschaft in dieser
+  Unterkategorie. Das Vertauschen der Realisierung mit Egalisatoren
+  folgt direkt aus der Definition. Für das Vertauschen mit endlichen
+  Produkten verweisen wir auf \cite{Gabriel-Zisman}. Entscheidend ist,
+  dass das Produkt in $\Top$ zweier kompakt erzeugter Hausdorffräume
+  im Allgemeinen nicht wieder kompakt erzeugt ist. Das korrekte
+  Produkt in $\CGHaus$ heißt auch \emph{Kelley-Produkt} und ist
+  gegeben durch Anwenden des Linksadjungierten der Inklusion $\CG \to
+  \Top$ auf das Produkt in $\Top$. Dieser Linksadjungierte $k: \Top
+  \to \CG$ verfeinert die Topologie eines Raumes $X$ um alle Mengen $U
+  \subset X$, deren Schnitte mit allen Kompakta $K \subset X$ in $K$
+  offen sind, also genau um die für kompakte Erzeugtheit
+  benötigten. Es gilt also:
+  \[ |X \times Y| \iso k(|X| \times |Y|). \]
+\end{bem}
 
-% TODO |X| vertauscht mit endl. Limites in CGHaus
+% TODO Vertauschen mit Kelley-Produkt ausführen?
+% TODO Stelle suchen in Gabriel-Zisman
 % TODO Gegenbsp. vertauscht nicht mit beliebigen Limites
+
+\begin{bsp} \label{ex:cg-products}
+  % TODO Gegenbsp CG nicht abg. unter Produkten in Top.
+\end{bsp}
 
 \section{Geometrische Realisierung als Koende}
 
