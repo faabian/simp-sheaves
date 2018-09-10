@@ -294,29 +294,171 @@ Definition kompakt erzeugter Räume ist die folgende Charakterisierung:
   faktorisiert, ist letzteres System in ersterem konfinal und die
   Finaltopologien stimmen überein.
 \end{proof}
-Der in \ref{??} angesprochene zur Inklusion Linksadjungierte
-$k: \Top \to \CG$ lässt sich nun auch beschreiben als das Versehen der
-$X$ zugrundeliegenden Menge mit der genannten Finaltopologie. Der Raum
-$kX$ ist dann sogar ein Kolimes über das System der $K \to X$, $K$
-kompakt, mit Morphismen über $X$ (\cite{Vogt}, 1.1).
+Der in \ref{real-prodcuts} angesprochene zur Inklusion
+Rechtsadjungierte $k: \Top \to \CG$ lässt sich nun auch beschreiben
+als das Versehen der $X$ zugrundeliegenden Menge mit der genannten
+Finaltopologie. Der Raum $kX$ ist dann sogar ein Kolimes über das
+System der $K \to X$, $K$ kompakt, mitsamt den Morphismen über $X$
+(\cite{Vogt}, 1.1).
 
-Nun verallgemeinern wir: Sei $\mathcal{I}$ eine nichtleere volle
-Unterkategorie von $\Top$ (für $\CG$ die kompakten Räume). Betrachte
-die Kategorie $\slicecat{\mathcal{I}}{}{X}$ und $kX
-:= \col_{\slicecat{mathcal{I}}{}{X}} X$.
+Nun verallgemeinern wir (\cite{Vogt}, 1): Sei $\mathcal{I}$ eine
+nichtleere volle Unterkategorie von $\Top$ (für $\CG$ die kompakten
+Räume). Betrachte die Kategorie $\slicecat{\mathcal{I}}{}{X}$ und $kX
+:= \col_{\slicecat{mathcal{I}}{}{X}} X$. Bezeichne die volle
+Unterkategorie der topologischen Räume $X$ mit $kX \cong X$ mit
+$\mathcal{K}$. Dann ist $k: \Top \to \mathcal{K}$ ein Funktor und
+rechtsadjungiert zur Inklusion $\mathcal{K} \to \Top$. Es gilt
+$\mathcal{I} \subset \mathcal{K}$.
+\begin{bem}
+  Eine volle Unterkategorie mit zur Inklusion Rechtsadjungiertem heißt
+  auch \emph{koreflektiert} (engl. \emph{coreflective}), der
+  Rechtsadjungierte heißt \emph{Koreflektor}.
+\end{bem}
 
-...
+Wir nehmen nun an, dass $\mathcal{I}$ die folgenden Axiome erfüllt:
+\begin{enumerate}
+  \item Ist $A \subset X$ ein abgeschlossener Unterraum eines Objekts
+    $X \in \mathcal{I}$, dann gilt $A \in \mathcal{K}$.
+  \item $\mathcal{I}$ ist abgeschlossen unter endlichen Produkten.
+  \item Sind $X, Y \in \mathcal{I}$, so ist die Auswertungsabbildung
+    \begin{align*}
+      \ev_{X, Y}: \Top_{co}(X, Y) \times X &\to Y,
+      (f, x) &\mapsto f(x)
+    \end{align*}
+    stetig. Dabei ist $\Top_{co}(X, Y)$ die Morphismenmenge $\Top(X;
+    Y)$ versehen mit der kompakt-offen Topologie.
+\end{enumerate}
+Dann besitzt $\mathcal{K}$ die Struktur einer kartesisch
+abgeschlossenen Kategorie mit Produkten
+\[ X \otimes Y \: := \: k(X \times Y) \]
+den ``k-ifizierungen'' der Produkte in $\Top$ und internem Hom
+\[ X \Implies Y \: := \: k(\Top_{co}(X, Y)) \] 
+(\cite{Vogt}, 3).
+
+\begin{defn}
+  Ein topologischer Raum heißt \emph{lokalkompakt} (im starken Sinne),
+  wenn jeder Punkt eine Umgebungsbasis aus kompakten Mengen besitzt.
+\end{defn}
+\begin{bem}
+  Dies ist eine stärkere Bedingung als \emph{lokal kompakt} (im
+  schwachen Sinne) wie in \ref{cg-crit} zu sein. Jene stimmt überein
+  mit unserer Konvention für ``lokal Eigenschaft'' und wird daher
+  getrennt geschrieben. Für Hausdorffräume stimmen beide Begriffe
+  überein.
+\end{bem}
+Die volle Unterkategorie der lokalkompakten topologischen Räume
+$\mathcal{L} \subset \Top$ erfüllt die Axiome und hat deshalb eine
+zugehörige kartesisch abgeschlossene Unterkategorie $\mathcal{K}$, die
+die kompakt erzeugten Hausdorffräume und lokalkompakten Räume umfasst
+(\cite{Vogt}, 5.3).
+
+Der Vorteil dieser Konstruktion im Vergleich zu den kompakt erzeugten
+Hausdorffräumen ist folgende Beobachtung:
+\begin{prop}
+  \begin{enumerate}[label=(\roman*)]
+    \item Ein étaler Raum über einem lokalkompakten topologischen Raum
+      ist lokalkompakt.
+    \item Die Kategorie der lokalkompakten topologischen Räume
+      $\mathcal{L}$ ist
+      %% TODO ???
+      %% tensoriert über K oder so
+      %% kartesisch abgeschlossen. <-- stimmt (vmtl.) nicht!
+  \end{enumerate}
+\end{prop}
+\begin{proof}
+  \begin{enumerate}[label=(\roman*)]
+    \item Étale Abbildungen sind nach Definition lokale
+      Homöomorphismen, Lokalkompaktheit ist eine lokale Eigenschaft.
+    \item Das Produkt $X \times Y$ aus $\Top$ ist lokalkompakt, falls
+      beide Faktoren es sind und stimmt dann auch mit den Produkten in
+      $\mathcal{L}$ und $\mathcal{K}$ überein.
+      % TODO ???
+  \end{enumerate}
+\end{proof}
+
+Unsere Hoffnung, eine kartesisch abgeschlossene Struktur auf
+$\Ens_{/\Top}$ zu finden, wird sich nicht erfüllen. Wir können aber
+erklären, wieso.
+
+\begin{satz}
+  Es gibt keine kartesisch abgeschlossene Struktur auf $\Ens_{/\Esp}$
+  für $\Esp \subset \Top$ eine nichtleere volle Unterkategorie der
+  topologischen Räume.
+\end{satz}
+\begin{proof}
+  Im nachgestellten Lemma wird gezeigt, dass Produkt und internes Hom
+  in $\Ens_{/\Esp}$ durch Nachschalten des ``Basisfunktors''
+  $\Ens_{/\Esp} \to \Esp$ ein Produkt und internes Hom in $\Esp$
+  liefern. Sei also $\Esp \subset \Top$ eine kartesisch abgeschlossene
+  volle Unterkategorie. Wir konstruieren nun eine kartesisch
+  abgeschlossene Struktur auf $\Esp^I$, für $I$ die von $\bullet \to
+  \bullet$ erzeugte Kategorie.
+
+  Ein Morphismus in $\Esp^I$ ist ein kommutatives Quadrat
+  \[ \begin{tikzcd}
+    F \arrow[r] \arrow{d}{p} & G \arrow{d}{q} \\
+    X \arrow[r] & Y,
+  \end{tikzcd} \]
+  also ein Element des Faserprodukts von Mengen
+  \[ \Esp^I(F \to X, G \to Y) = \Esp(F, G) \times_{\Esp(F, Y)} \Esp(X, Y), \]
+  wobei die Abbildungen nach $\Esp(F, Y)$ durch Nachschalten von $q$
+  bzw. Vorschalten von $p$ gegeben sind.
+
+  Ist nun $X \Implies Y$ ein internes Hom in $\Esp$, so gilt
+  \[ \Esp(\point, X \Implies Y)
+     \iso \Esp(\point \times X, Y) \iso \Top(X, Y),
+  \]
+  d. h. die dem internen Hom-Objekt zugrundeliegende Menge muss
+  $\Top(X, Y)$ sein (es ist $\point \in \Esp$ das terminale Objekt, da
+  in der vollen Unterkategorie auch alle konstanten Abbildungen
+  vorkommen). Dasselbe Argument funktioniert mit $\point \to \point$
+  in $\Esp^I$ und das interne Hom-Objekt von $F \to X$ und $G \to Y$
+  in $\Esp^I$ hat die dem oberen Objekt zugrundeliegende Menge
+  $\Esp^I(F \to X, G \to Y)$ wegen
+  \[ \Esp^I(\point \to \point, H \to Z) \iso \Esp(\point, H). \]
+  Das untere Objekt ist wie oben erwähnt das interne Hom $X \Implies
+  Y$.
+
+  % TODO
+  
+\end{proof}
+
+\begin{lemma}
+  Sei $(\times, \Implies)$ eine kartesisch abgeschlossene Struktur
+  auf $\Ens_{\Esp}$ für $\Esp$ eine nichtleere volle Unterkategorie
+  von $\Top$. Dann liefert das Nachschalten des Basisfunktors $B: (F
+  \to X) \mapsto X$ eine kartesisch abgeschlossene Struktur auf
+  $\Esp$.
+\end{lemma}
+\begin{proof}
+  Betrachte die Einbettung $\iota: \Esp \inj \Ens_{/\Esp}$ durch
+  konstant einelementigen Garben $X \mapsto (X \xrightarrow{\id}
+  X)$. Dann ist $B(\iota Y \times \iota Z)$ das Produkt von $Y$ und
+  $Z$ in $\Esp$, denn $\Esp^I(F \to X, \iota Y) \iso \Esp(X, Y)$ und
+  somit
+  \begin{align*}
+    \Esp(X, B(\iota Y \times \iota Z))
+    &\iso \Esp^I(F \to X, \iota Y \times \iota Z) \\
+    &\iso \Esp^I(F \to X, \iota Y) \times \Esp^I(F \to X, \iota Z) \\
+    &\iso \Esp(X, Y) \times \Esp(X, Z).
+  \end{align*}
+
+  % TODO: korrekt? wieso ist das Produkt konstant einelementiger
+  % konstant einelementig?
+  
+\end{proof}
+
 
 %% TODO:
 %% * Rainer M. Vogt: internes Hom für lokalkompakte gibt einen Nerv für
-%%   Ens/Top
+%%   Ens/Top; Nope, erklären wieso nicht
 %% * erwähnen, dass keine Einheit/Koeinheits-Isos zu erwarten, aber auf
 %%   Homotopie: Quillen-Äq. von Modellkategorien
 
 
 
 % TODO:
-% * konkret machen (im Fall von Y_n diskret vllt) *
+% * konkret machen (im Fall von Y_n diskret vllt)
 % * charakterisiere das Bild -> kleiner machen mit kleinerem Intervall?
 %   (Moer)
 % * deriviert???

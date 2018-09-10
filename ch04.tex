@@ -479,6 +479,9 @@ Für uns relevant sind die folgenden Kriterien:
        kompakt erzeugt.
   \end{enumerate}
 \end{lemma}
+Dabei heißt ein topologischer Raum \emph{lokal kompakt} (im schwachen
+Sinne), falls jeder Punkt eine kompakte Umgebung besitzt. Beachte den
+Unterschied zu \ref{loc-compact} und \ref{loc-compact-usage}.
 \begin{proof}
   \begin{enumerate}[label=(\roman*)]
     \item \label{itm:cg-crit-proof-lc} Sei $U \subset X$ mit $U \cap
@@ -518,7 +521,7 @@ Daraus folgt sofort unser Ziel.
   \ref{itm:cg-crit-quot} auch $|X|$. Das folgt auch aus \ref{real-hd}
   und \ref{cg-crit} \ref{itm:cg-crit-cw}.
 \end{proof}
-\begin{bem}
+\begin{bem} \label{real-products}
   Die geometrische Realisierung $|\cdot|: \s\Ens \to \CGHaus$
   vertauscht mit endlichen Limites. Ganz allgemein lassen sich
   endliche Limites als Egalisatoren endlicher Produkte darstellen. Der
@@ -532,13 +535,12 @@ Daraus folgt sofort unser Ziel.
   dass das Produkt in $\Top$ zweier kompakt erzeugter Hausdorffräume
   im Allgemeinen nicht wieder kompakt erzeugt ist. Das korrekte
   Produkt in $\CGHaus$ heißt auch \emph{Kelley-Produkt} und ist
-  gegeben durch Anwenden des Linksadjungierten der Inklusion $\CG \to
-  \Top$ auf das Produkt in $\Top$. Dieser Linksadjungierte $k: \Top
-  \to \CG$ verfeinert die Topologie eines Raumes $X$ um alle Mengen $U
-  \subset X$, deren Schnitte mit allen Kompakta $K \subset X$ in $K$
-  offen sind, also genau um die für kompakte Erzeugtheit
-  benötigten. Es gilt also:
-  \[ |X \times Y| \iso k(|X| \times |Y|). \]
+  gegeben durch Anwenden des Rechtsadjungierten der Inklusion
+  $\CG \to \Top$ auf das Produkt in $\Top$. Dieser Rechtsadjungierte
+  $k: \Top \to \CG$ verfeinert die Topologie eines Raumes $X$ um alle
+  Mengen $U \subset X$, deren Schnitte mit allen Kompakta $K \subset
+  X$ in $K$ offen sind, also genau um die für kompakte Erzeugtheit
+  benötigten. Es gilt also: \[ |X \times Y| \iso k(|X| \times |Y|). \]
 \end{bem}
 
 % TODO Vertauschen mit Kelley-Produkt ausführen?
