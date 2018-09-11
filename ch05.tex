@@ -381,18 +381,59 @@ $\Ens_{/\Top}$ zu finden, wird sich nicht erfüllen. Wir können aber
 erklären, wieso.
 
 \begin{satz}
-  Es gibt keine kartesisch abgeschlossene Struktur auf $\Ens_{/\Esp}$
-  für $\Esp \subset \Top$ eine nichtleere volle Unterkategorie der
-  topologischen Räume.
+  Es gibt keine kartesisch abgeschlossene Struktur auf
+  $\Ens_{/C} \subset \Ens_{/\Top}$ für $C \subset \Top$ eine
+  nichtleere volle Unterkategorie der topologischen Räume.
 \end{satz}
 \begin{proof}
-  Im nachgestellten Lemma wird gezeigt, dass Produkt und internes Hom
-  in $\Ens_{/\Esp}$ durch Nachschalten des ``Basisfunktors''
-  $\Ens_{/\Esp} \to \Esp$ ein Produkt und internes Hom in $\Esp$
-  liefern. Sei also $\Esp \subset \Top$ eine kartesisch abgeschlossene
-  volle Unterkategorie. Wir konstruieren nun eine kartesisch
-  abgeschlossene Struktur auf $\Esp^I$, für $I$ die von $\bullet \to
-  \bullet$ erzeugte Kategorie.
+  Zunächst zeigen wir, dass Produkt und internes Hom von $\Ens_{/C}$
+  ein Produkt und internes Hom in $C$ liefern. Betrachte dazu die
+  volltreuen Einbettungen $C \to \Ens_{/C}$ durch faserweise initiale
+  Garben $\iota: X \mapsto (\varnothing \to X)$ (konstant leer) und
+  durch faserweise terminale Garben $\tau: X \mapsto
+  (X \xrightarrow{\id} X)$ (konstant einelementig). Wir haben
+  natürliche Bijketionen
+  \begin{align*}
+    \Ens_{/C}(\iota X, U \to L) &\iso C(X, L) \qquad \text{und} \\
+    \Ens_{/C}(\tau X, U \to L) &\iso C(X, U).
+  \end{align*}
+  durch Betrachten des unteren bzw. oberen Pfeils des kommutativen
+  Quadrats.
+
+  Sei $(U \to L) = \tau Y \times \tau Z$ das Produkt in
+  $\Ens_{/C}$. Dieses erfüllt die universelle Eigenschaft des Produkts
+  insbesondere für Testobjekte der Form $\iota X$ und wir erhalten aus
+  der universellen Eigenschaft durch Einschränken auf den unteren
+  Pfeil
+  \[ \begin{tikcd}
+    \Ens_{/C}(\iota X, U \to L) \arrow{r}{\sim} \arrow{d}{\sim}
+    & \Ens_{/C}(\iota X, \tau Y) \times \Ens_{/C}(\iota X, \tau Z) \arrow{d}{\sim}
+    C(X, L) \arrow{r}{\sim} C(X, Y) \times C(X, Z).
+  \end{tikcd} \]
+  Es erfüllt also $L$ die universelle Eigenschaft des Produkts $Y
+  \times Z$ in $C$.  Betrachten wir Testobjekte der Form $\tau X$, so
+  erhalten wir entsprechend durch Einschränken auf den oberen Pfeil
+  auch, dass $U \iso Y \times Z$ ist und die Abbildung dazwischen der
+  eindeutige Isomorphismus zwischen den universellen Objekten. 
+
+  Mit derselben Technik erhalten wir auch für $U \to L = (\tau Y
+  \Implies \tau Z)$ das interne Hom, dass wegen
+  \begin{align*}
+    C(X, U)
+    &\iso \Ens_{/C}(\tau X, U \to L) \\
+    &\iso \Ens_{/C}(\tau X \times \tau Y, \tau Z) \\
+    &\iso C(X \times Y, Z)
+  \end{align*}
+  
+
+
+Im nachgestellten Lemma wird gezeigt, dass Produkt und internes Hom in
+$\Ens_{/\Esp}$ durch Nachschalten des ``Basisfunktors'' $\Ens_{/\Esp}
+\to \Esp$ ein Produkt und internes Hom in $\Esp$ liefern. Sei also
+$\Esp \subset \Top$ eine kartesisch abgeschlossene volle
+Unterkategorie. Wir konstruieren nun eine kartesisch abgeschlossene
+Struktur auf $\Esp^I$, für $I$ die von $\bullet \to \bullet$ erzeugte
+Kategorie.
 
   Ein Morphismus in $\Esp^I$ ist ein kommutatives Quadrat
   \[ \begin{tikzcd}
