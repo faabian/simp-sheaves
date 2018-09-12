@@ -229,6 +229,7 @@ durch Bilden der Produkträume. Konkret:
   Produkt der $\etalespace{F_{1,2}} \to X_{1,2}$ gegeben.
 \end{prop}
 \begin{proof}
+  % TODO: formal Faserprodukt-Bijektion angeben
   Die Beschreibung von $\Ens_{/\Top}$ als Paare topologischer Räume
   mit étaler Abbildung zeigt die Aussage über den étalen Raum des
   Produkts. Die induzierte Abbildung $\etalespace{F_1}
@@ -319,7 +320,8 @@ Wir nehmen nun an, dass $\mathcal{I}$ die folgenden Axiome erfüllt:
 \begin{enumerate}
   \item Ist $A \subset X$ ein abgeschlossener Unterraum eines Objekts
     $X \in \mathcal{I}$, dann gilt $A \in \mathcal{K}$.
-  \item $\mathcal{I}$ ist abgeschlossen unter endlichen Produkten.
+  \item $\mathcal{I}$ ist abgeschlossen unter endlichen kartesischen
+    Produkten (Produkten in $\Top$).
   \item Sind $X, Y \in \mathcal{I}$, so ist die Auswertungsabbildung
     \begin{align*}
       \ev_{X, Y}: \Top_{co}(X, Y) \times X &\to Y,
@@ -358,6 +360,7 @@ Hausdorffräumen ist folgende Beobachtung:
   \begin{enumerate}[label=(\roman*)]
     \item Ein étaler Raum über einem lokalkompakten topologischen Raum
       ist lokalkompakt.
+      % TODO golt das sogar für die koreflektierte Hülle??
     \item Die Kategorie der lokalkompakten topologischen Räume
       $\mathcal{L}$ ist
       %% TODO ???
@@ -386,13 +389,22 @@ erklären, wieso.
   nichtleere volle Unterkategorie der topologischen Räume.
 \end{satz}
 \begin{proof}
+  Wir erinnern daran, dass ein Morphismus in $\Ens_{/C}$ ein
+  kommutatives Quadrat
+  \[ \begin{tikzcd}
+    F \arrow[r] \arrow{d}{p} & G \arrow{d}{q} \\
+    X \arrow[r] & Y
+  \end{tikzcd} \]
+  ist. In diesem Beweis notieren wir Objekte in $\Ens_{/C}$ mitsamt
+  ihrer Basis als $F \to X$.
+  
   Zunächst zeigen wir, dass Produkt und internes Hom von $\Ens_{/C}$
   ein Produkt und internes Hom in $C$ liefern. Betrachte dazu die
   volltreuen Einbettungen $C \to \Ens_{/C}$ durch faserweise initiale
   Garben $\iota: X \mapsto (\varnothing \to X)$ (konstant leer) und
-  durch faserweise terminale Garben $\tau: X \mapsto
-  (X \xrightarrow{\id} X)$ (konstant einelementig). Wir haben
-  natürliche Bijketionen
+  durch faserweise terminale Garben $\tau: X \mapsto (X
+  \xrightarrow{\id} X)$ (konstant einelementig). Wir haben natürliche
+  Bijketionen
   \begin{align*}
     \Ens_{/C}(\iota X, U \to L) &\iso C(X, L) \qquad \text{und} \\
     \Ens_{/C}(\tau X, U \to L) &\iso C(X, U).
@@ -405,18 +417,26 @@ erklären, wieso.
   insbesondere für Testobjekte der Form $\iota X$ und wir erhalten aus
   der universellen Eigenschaft durch Einschränken auf den unteren
   Pfeil
-  \[ \begin{tikcd}
-    \Ens_{/C}(\iota X, U \to L) \arrow{r}{\sim} \arrow{d}{\sim}
-    & \Ens_{/C}(\iota X, \tau Y) \times \Ens_{/C}(\iota X, \tau Z) \arrow{d}{\sim}
-    C(X, L) \arrow{r}{\sim} C(X, Y) \times C(X, Z).
-  \end{tikcd} \]
+  \[ \begin{tikzcd}
+    \Ens_{/C}(\iota X, U \to L) \arrow{r}{\sim}
+    \arrow{d}{\sim}
+    & \Ens_{/C}(\iota X, \tau Y) \times \Ens_{/C}(\iota X, \tau Z)
+    \arrow{d}{\sim} \\
+    C(X, L) \arrow{r}{\sim}
+    & C(X, Y) \times C(X, Z).
+  \end{tikzcd} \]
   Es erfüllt also $L$ die universelle Eigenschaft des Produkts $Y
   \times Z$ in $C$.  Betrachten wir Testobjekte der Form $\tau X$, so
   erhalten wir entsprechend durch Einschränken auf den oberen Pfeil
-  auch, dass $U \iso Y \times Z$ ist und die Abbildung dazwischen der
-  eindeutige Isomorphismus zwischen den universellen Objekten. 
-
-  Mit derselben Technik erhalten wir auch für $U \to L = (\tau Y
+  auch, dass $U \iso Y \times Z$ ist und die Abbildung dazwischen nach
+  dem Yoneda-Lemma der eindeutige Isomorphismus zwischen den
+  universellen Objekten. Es ist also $\tau X \times \tau Y \iso \tau
+  (X \times Y)$ in $\Ens_{/C}$. Analog finden wir
+  \begin{equation} \label{eq:iota-prod}
+    \iota X \times (G \to Y) \iso \iota (X \times Y).
+  \end{equation}
+  
+  Mit derselben Technik erhalten wir auch für $(U \to L) = (\tau Y
   \Implies \tau Z)$ das interne Hom, dass wegen
   \begin{align*}
     C(X, U)
@@ -424,71 +444,82 @@ erklären, wieso.
     &\iso \Ens_{/C}(\tau X \times \tau Y, \tau Z) \\
     &\iso C(X \times Y, Z)
   \end{align*}
-  
+  $U$ ein internes Hom in $C$ für $Y$ und $Z$ ist und wegen
+  \begin{align*}
+    C(X, L)
+    &\iso \Ens_{/C}(\iota X, U \to L) \\
+    &\iso \Ens_{/C}(\iota X \times \tau Y, \tau Z) \\
+    &\iso \Ens_{/C}(\iota (X \times Y), \tau Z) \\
+    &\iso C(X \times Y, Z)
+  \end{align*}
+  auch $L$. Wieder ist nach dem Yoneda-Lemma $U \to L$ der eindeutige
+  Isomorphismus zweier einen Funktor darstellenden
+  Objekte \footnote{Solche bis auf eindeutigen Isomorphismus
+    eindeutigen Objekte werden wir wie üblich kanonisch wählen und die
+    eindeutigen Isomorphismen als Identitäten schreiben.}.
 
+  Es muss also $C$ kartesisch abgeschlossen sein.
 
-Im nachgestellten Lemma wird gezeigt, dass Produkt und internes Hom in
-$\Ens_{/\Esp}$ durch Nachschalten des ``Basisfunktors'' $\Ens_{/\Esp}
-\to \Esp$ ein Produkt und internes Hom in $\Esp$ liefern. Sei also
-$\Esp \subset \Top$ eine kartesisch abgeschlossene volle
-Unterkategorie. Wir konstruieren nun eine kartesisch abgeschlossene
-Struktur auf $\Esp^I$, für $I$ die von $\bullet \to \bullet$ erzeugte
-Kategorie.
-
-  Ein Morphismus in $\Esp^I$ ist ein kommutatives Quadrat
+  Ein Morphismus
   \[ \begin{tikzcd}
     F \arrow[r] \arrow{d}{p} & G \arrow{d}{q} \\
     X \arrow[r] & Y,
   \end{tikzcd} \]
-  also ein Element des Faserprodukts von Mengen
-  \[ \Esp^I(F \to X, G \to Y) = \Esp(F, G) \times_{\Esp(F, Y)} \Esp(X, Y), \]
-  wobei die Abbildungen nach $\Esp(F, Y)$ durch Nachschalten von $q$
+  ist nach der Kommutativität des Quadrats ein Element des
+  Faserprodukts von Mengen
+  \[ \Ens_{/C}(F \to X, G \to Y) = \Top(F, G) \times_{\Top(F, Y)} C(X, Y), \]
+  wobei die Abbildungen nach $\Top(F, Y)$ durch Nachschalten von $q$
   bzw. Vorschalten von $p$ gegeben sind.
 
-  Ist nun $X \Implies Y$ ein internes Hom in $\Esp$, so gilt
-  \[ \Esp(\point, X \Implies Y)
-     \iso \Esp(\point \times X, Y) \iso \Top(X, Y),
-  \]
-  d. h. die dem internen Hom-Objekt zugrundeliegende Menge muss
-  $\Top(X, Y)$ sein (es ist $\point \in \Esp$ das terminale Objekt, da
-  in der vollen Unterkategorie auch alle konstanten Abbildungen
-  vorkommen). Dasselbe Argument funktioniert mit $\point \to \point$
-  in $\Esp^I$ und das interne Hom-Objekt von $F \to X$ und $G \to Y$
-  in $\Esp^I$ hat die dem oberen Objekt zugrundeliegende Menge
-  $\Esp^I(F \to X, G \to Y)$ wegen
-  \[ \Esp^I(\point \to \point, H \to Z) \iso \Esp(\point, H). \]
-  Das untere Objekt ist wie oben erwähnt das interne Hom $X \Implies
-  Y$.
-
-  % TODO
-  
-\end{proof}
-
-\begin{lemma}
-  Sei $(\times, \Implies)$ eine kartesisch abgeschlossene Struktur
-  auf $\Ens_{\Esp}$ für $\Esp$ eine nichtleere volle Unterkategorie
-  von $\Top$. Dann liefert das Nachschalten des Basisfunktors $B: (F
-  \to X) \mapsto X$ eine kartesisch abgeschlossene Struktur auf
-  $\Esp$.
-\end{lemma}
-\begin{proof}
-  Betrachte die Einbettung $\iota: \Esp \inj \Ens_{/\Esp}$ durch
-  konstant einelementigen Garben $X \mapsto (X \xrightarrow{\id}
-  X)$. Dann ist $B(\iota Y \times \iota Z)$ das Produkt von $Y$ und
-  $Z$ in $\Esp$, denn $\Esp^I(F \to X, \iota Y) \iso \Esp(X, Y)$ und
-  somit
+  Wir bestimmen nun mit einem bekannten Trick die den internen
+  Hom-Objekten zugrundeliegenden Mengen. Bezeichne $v: \Top \to \Ens$
+  den Vergissfunktor. Wir können den Funktor
+  \begin{alignat*}{2}
+    \Ens_{/C} \: &\to \: \Top \: &&\to \: \Ens, \\
+    (U \to L) \: &\mapsto \: U \: &&\mapsto \: vU
+  \end{alignat*}
+  darstellen durch $\Ens_{/C}(\tau \point, \cdot)$
+  und den Funktor
+  \begin{alignat*}{2}
+    \Ens_{/C} \: &\to \: C \: &&\to \: \Ens, \\
+    (U \to L) \: &\mapsto \: L \: &&\mapsto \: vL
+  \end{alignat*}
+  durch $\Ens_{/C}(\iota \point, \cdot)$. Wir erhalten
   \begin{align*}
-    \Esp(X, B(\iota Y \times \iota Z))
-    &\iso \Esp^I(F \to X, \iota Y \times \iota Z) \\
-    &\iso \Esp^I(F \to X, \iota Y) \times \Esp^I(F \to X, \iota Z) \\
-    &\iso \Esp(X, Y) \times \Esp(X, Z).
+    \Ens_{/C}(\tau \point, (F \to X) \Implies (G \to Y))
+    &\iso \Ens_{/C}(\tau \point \times (F \to X), G \to Y) \quad & \\
+    &\iso \Ens_{/C}(F \to X, G \to Y) & \text{und} \\
+    \Ens_{/C}(\iota \point, (F \to X) \Implies (G \to Y))
+    &\iso \Ens_{/C}(\iota \point \times (F \to X), G \to Y) \\
+    &\iso \Ens_{/C}(\iota X, G \to Y) \\
+    &\iso C(X, Y),
   \end{align*}
+  da $\tau \point$ das terminale Objekt von $\Ens_{/C}$ ist sowie nach
+  Gleichung \ref{eq:iota-prod}.
 
-  % TODO: korrekt? wieso ist das Produkt konstant einelementiger
-  % konstant einelementig?
-  
+  Die Abbildung im internen Hom-Objekt bestimmen wir mit den
+  Funktorialitäten: Das Vorschalten von $\iota X \to (F \to X)$
+  induziert einen Morphismus $\big( (F \to X) \Implies (G \to Y) \big)
+  \to \big( \iota X \Implies (G \to Y) \big)$ bzw.
+  \[ \begin{tikzcd}
+    \Top(F, G) \times_{\Top(F, Y)} C(X, Y) \arrow{d} \arrow{r}
+    & \Top(\varnothing, G) \times_{\Top(\varnothing, Y)} C(X, Y) \arrow{d} \arrow{r}{\sim}
+    & C(X, Y) \arrow{d}{\id} \\
+    C(X, Y) \arrow{r}{\id}
+    & C(X, Y) \arrow{r}{\id}
+    & C(X, Y).
+  \end{tikzcd} \]
+  Dabei kommt die Identität in der Basis aus dem Yoneda-Lemma für
+  \[ \Ens_{/C}(\iota \point, (F \to X) \Implies (G \to Y))
+  \Isotrafo \Ens_{/C}(\iota \point, \iota X \Implies (G \to Y)). \]
+
+  Die Abbildung im Hom-Objekt ist also (wie nicht anders zu erwarten)
+  die Projektion auf den zweiten Faktor. Soll diese étale sein, so
+  muss %???
+
+  % Bijektion der Adjunktion ist sogar Homöo über off. Homöo in Basis!
 \end{proof}
-
+  
 
 %% TODO:
 %% * Rainer M. Vogt: internes Hom für lokalkompakte gibt einen Nerv für
