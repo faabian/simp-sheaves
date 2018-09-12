@@ -221,6 +221,44 @@ Formeln:
 Wir erhalten einen Funktor $R: \Delta \to \Top, [n] \mapsto \Delta^n$,
 genannt der \emph{kosimpliziale Raum der Standardsimplizes}.
 
+\begin{bem} \label{clumsy-real}
+  Wie im Fall der Simplizialkomplexe möchten wir neben der
+  anschaulich-geometrischen Realisierung durch Hausdorffräume auch
+  noch eine kombinatorischere Realisierung analog zur
+  Ordnungstopologie auf dem Simplizialkomplex finden. Wir definieren
+  die \emph{plumpen Standard-$n$-Simplizes $\blacktriangle^n} induktiv
+  als Quotienten:
+  \[ \blacktriangle^0 := |\Delta^0| = \point \]
+  und
+  \[ \blacktriangle^n := |\Delta^n| / \sim \]
+  mit der Äquivalenzrelation
+  \begin{gather*}
+    x \sim y \text{ für } x, y \in \intr |\Delta^n| \text{ und }  \\
+    |d_i| x \sim |d_i| y \text{ für } x, y \in |\Delta^{n-1}|.
+  \end{gather*}
+  Dabei steht $\intr |\Delta^n|$ für das offene Innere von $|\Delta^n|
+  \subset \R^{n+1}$. Anschaulich gesprochen wird also bei $|\Delta^n|
+  \to \blacktriangle^n$ das offene Innere zu einem Punkt identifiziert
+  und eine solche Identifikation auch auf allen Rändern vorgenommen.
+\end{bem}
+\begin{bsp}
+  Der plumpe Standard-$1$-Simplex ist ein dreipunktiger Raum mit einem
+  offenen dichten Punkt und zwei abgeschlossenen Punkten, eine
+  Variante des Sierpinski-Raums. Der plumpe Standard-$2$-Simplex ist
+  siebenpunktig.
+\end{bsp}
+\begin{lemma}
+  Die stetigen Abbildungen $|f|: |\Delta^m| \to |\Delta^n|$ für
+  monotones $f: [m] \to [n]$ induzieren stetige Abbildungen $|f|:
+  \blacktriangle^m \to \blacktriangle^n$.
+\end{lemma}
+\begin{proof}
+  Für die Randabbildungen $|d_i|$ folgt das sofort aus der Definition
+  der Äquivalenzrelation. Für die Degenerationen $|s_i|$ 
+  % TODO
+\end{proof}
+% = Funktor = kosimplizialer Raum
+
 \section{Geometrische Realisierung simplizialer Mengen}
 
 Wir erklären nun die geometrische Realisierung simplizialer
