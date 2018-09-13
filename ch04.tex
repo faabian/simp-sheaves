@@ -209,8 +209,8 @@ Ein Morphismus $f: [m] \to [n]$ induziert eine stetige Abbildung $|f|:
 anzugeben. Für die Randabbildung $|d_i|$ handelt es sich dabei um die
 Inklusion der $i$-ten Kante, d. h. in Koordinaten das Einfügen einer
 Null an der $i$-ten Stelle, für die Degenerationen $|s_i|$ um den
-Kollaps der $i$-ten Kante, d. h. in Koordinaten die Ersetzung der
-$i$-ten und ihrer darauffolgenden Koordinate durch ihre Summe. In
+Kollaps der $i$-ten direkten Kante, d. h. in Koordinaten die Ersetzung
+der $i$-ten und ihrer darauffolgenden Koordinate durch ihre Summe. In
 Formeln:
 \begin{align*}
   |d_i^n|(x_0, \cdots, x_{n-1})
@@ -218,16 +218,17 @@ Formeln:
   |s_i^n|(x_0, \cdots, x_{n+1})
   &= (x_0, \cdots, x_{i-1}, x_i + x_{i+1}, x_{i+2}, \cdots, x_{n+1}).
 \end{align*}
-Wir erhalten einen Funktor $R: \Delta \to \Top, [n] \mapsto \Delta^n$,
-genannt der \emph{kosimpliziale Raum der Standardsimplizes}.
+Wir erhalten einen Funktor $R: \Delta \to \Top, [n] \mapsto
+|\Delta^n|$, genannt der \emph{kosimpliziale Raum der
+  Standardsimplizes}.
 
 \begin{bem} \label{clumsy-real}
   Wie im Fall der Simplizialkomplexe möchten wir neben der
   anschaulich-geometrischen Realisierung durch Hausdorffräume auch
   noch eine kombinatorischere Realisierung analog zur
   Ordnungstopologie auf dem Simplizialkomplex finden. Wir definieren
-  die \emph{plumpen Standard-$n$-Simplizes $\blacktriangle^n} induktiv
-  als Quotienten:
+  die \emph{plumpen Standard-$n$-Simplizes $\blacktriangle^n$}
+  induktiv als Quotienten:
   \[ \blacktriangle^0 := |\Delta^0| = \point \]
   und
   \[ \blacktriangle^n := |\Delta^n| / \sim \]
@@ -249,15 +250,27 @@ genannt der \emph{kosimpliziale Raum der Standardsimplizes}.
 \end{bsp}
 \begin{lemma}
   Die stetigen Abbildungen $|f|: |\Delta^m| \to |\Delta^n|$ für
-  monotones $f: [m] \to [n]$ induzieren stetige Abbildungen $|f|:
-  \blacktriangle^m \to \blacktriangle^n$.
+  monotones $f: [m] \to [n]$ induzieren stetige Abbildungen
+  $\overline{|f|}: \blacktriangle^m \to \blacktriangle^n$, sodass
+  \[ \begin{tikzcd}
+    \| \Delta^m \| \arrow{d} \arrow{r}{|f|} & \| \Delta^n \| \arrow{d} \\
+    \blacktriangle^m \arrow{r}{\overline{|f|}} & \blacktriangle^n
+  \end{tikzcd} \]
+  kommutiert.
 \end{lemma}
 \begin{proof}
   Für die Randabbildungen $|d_i|$ folgt das sofort aus der Definition
-  der Äquivalenzrelation. Für die Degenerationen $|s_i|$ 
-  % TODO
+  der Äquivalenzrelation. Die Menge $\intr |\Delta^m|$ wird
+  beschrieben durch die Menge der Punkte $(x_0, \cdots, x_m)$, für die
+  alle Koordinaten echt positiv sind. Diese Beschreibung ist invariant
+  unter Addition mittlerer Koordinaten. Dies zeigt die
+  Wohldefiniertheit der induzierten Abbildung $\overline{|s_i|}:
+  \blacktriangle^m \to \blacktriangle^{m-1}$ für im Inneren
+  identifizierte Punkte. Genauso argumentiert man auf den Rändern.
 \end{proof}
-% = Funktor = kosimplizialer Raum
+Diese Transformation liefert den kosimplizialen Raum $\blacktriangle
+R: \Delta \to \Top, [n] \mapsto \blacktriangle^n$ der plumpen
+Standardsimplizes.
 
 \section{Geometrische Realisierung simplizialer Mengen}
 
@@ -780,6 +793,9 @@ zusammengestellt.
   Kolimites und die jeweiligen Pfeilkategorien zurückführen.
 \end{bem}
 
+% TODO subdivision category doch definieren (benötigt in neuer
+% Realisierung)
+
 \begin{defn}
   Sei $F: C \to D$ ein Funktor. $F$ heißt \emph{stetig}, falls er mit
   allen Limites vertauscht. $F$ heißt \emph{kostetig}, falls er mit
@@ -909,5 +925,15 @@ Koende über den Funktor
 \end{align*}
 Der Fall simplizialer Mengen ist $C = \Top$ und $V = \Ens$ mit dem
 kanonischem Koexponential.
+
+\begin{bem} \label{real-model-natural}
+  In dieser Formulierung ist auch klar, dass eine Transformation $R
+  \Trafo \tilde{R}$ einen Morphismus der Koenden $R \otimes X \to
+  \tilde{R} \otimes X$ induziert. Konkret erhalten wir aus unserem
+  Morphismus kosimplizialer Räume $|\Delta| \to \blacktriangle$ also
+  Morphismen zwischen den geometrischen Realisierungen $|X| \to
+  \blacktriangle |X|$.  
+\end{bem}
+
 
 \end{document}

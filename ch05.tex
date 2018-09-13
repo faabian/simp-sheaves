@@ -69,6 +69,69 @@ topologischen Räumen $X: \Delta\op \to \Ens_{/\Top}$:
 Man beachte, dass Morphismen étaler $\Top^I$ den ``Morphismen'' in
 $\Ens_{/\Top}$ entsprechen, während sonst häufig mit Komorphismen
 gearbeitet wird.
+\begin{bem} \label{real-ensx}
+  Diese geometrische Realisierung simplizialer Garben auf
+  topologischen Räumen spezialisiert zu einer geometrischen
+  Realisierung simplizialer Garben auf $X$: Ist
+  $F: \Delta\op \to \EnsX$ eine simpliziale Garbe auf $X$, so ist ihre
+  geometrische Realisierung aus \ref{real-enstop} eine Garbe
+  $|F| \in \EnsX$, da die geometrische Realisierung des konstanten
+  simplizialen topologischen Raums $X: [n] \mapsto X$ selbst $X$ ist.
+
+  Für Garben $E_n$ auf diskreten Räumen $D_n$ handelt es sich um die
+  geometrische Realisierung eines Pfeils simplizialer Mengen. Die
+  relative Version über $X$ hiervon ist die folgende: für Garben $E_n$
+  auf $X \times D_n$ für diskrete $D_n$ und zu für $f: [m] \to [n]$
+  monoton von $D_n \to D_m$ induzierten Basen $D_n \times X \to
+  D_m \times X$ der Garbenmorphismen ist die geometrische Realisierung
+  eine Garbe über $X \times |D|$, für $|D|$ die Realisierung der
+  simplizialen Menge $[n] \mapsto D_n$.
+\end{bem}
+
+\subsection{Diskussion verschiedener Verfahren zur Realisierung}
+
+Ziel unserer Überlegungen wird es sein, die Aussagen zu simplizial
+konstanten Garben auf der geometrischen Realisierung eines
+Simplizialkomplexes $\K$ als Garben auf dem topologischen Raum $\K$
+auf die Situation simplizialer Mengen zu übertragen. Die
+angesprochenen Realisierungen in \ref{real-enstop} und \ref{real-ensx}
+sind dafür nicht geeignet. Das liegt daran, dass wir, um aus Garben
+auf der Realisierung wieder ein Diagramm von Garben zu erhalten,
+generisierende Randabbildungen benötigen. Im Fall einer simplizialen
+Garbe $\Delta\op \to \Ens_{/\Top}$ sind die Randabbildungen im
+Garbensystem dagegen gegenläufig zu den generisierenden Einbettungen
+$|d_i|: |\Delta^{n-1}| \inj |\Delta^n|$ der Basisräume.
+
+Wir erklären eine neue Realisierung, die diesem Anspruch gerecht wird.
+Sei dazu $R: \Delta \to \Top$ ein kosimplizialer Raum und
+$F: \Delta\op \to \Ens_{\sslash\Top}, [n] \mapsto F_n \in Ens_{/X_n}$
+eine simpliziale Garbe über topologischen Räumen mit Komorphismen. Für
+$f: [n] \to [m]$ monoton gibt es also eine stetige Abbildung $Ff:
+X_m \to X_n$ und einen Morphismus von Garben über $X_m$: $Ff^* F_n \to
+F_m$. Wir erhalten einen Funktor $K$ von der Unterteilungskategorie
+$\Sub(\Delta)$ von $\Delta$ in die topologischen Räume
+\begin{align*}
+  K: \Sub(\Delta) &\to \Top, \\
+  [n]^§ &\mapsto F_n \times R[n], \\
+  (f: [n] \to [m])^§ &\mapsto Ff^* F_n \times R[n],
+\end{align*}
+der auf Morphismen $f^§ \to [n]^§$ vom universellen Morphismus $Ff^*
+F_n \to F_n$ über $Ff$ induziert ist und auf Morphismen $f^§ \to
+[m]^§$ durch den Morphismus $Ff^* F_n \to F_m$ in $\Ens_{/X_m}$ sowie
+$Rf$ gegeben ist.
+\begin{prop}
+  In dieser Situation ist das Kolimes über den oben definierten
+  Funktor $K$ ein étaler Raum über der geometrischen Realisierung der
+  Basis $|X|$.
+\end{prop}
+\begin{proof}
+  Offenbar ist $\coprod_n F_n \times R[n] \to \coprod_n X_n \times
+  R[n]$ étale.
+  % TODO prüfe Wirkung
+  
+  % TODO prüfe, ob eigentlich der \Top^I Beweis dann stimmt?? und
+  % vergleiche die beiden Konstruktionen
+\end{proof}
 
 \subsection{Die Dualität von Nerv und Realisierung}
 
