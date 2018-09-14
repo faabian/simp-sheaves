@@ -1,0 +1,81 @@
+% include latex header (\usepackage, \newcommand etc.) 
+\input{header.tex}
+
+\begin{document}
+
+\title{Simpliziale Garben}
+\author{Fabian Glöckle}
+\date{\today}
+% \maketitle
+
+\section{Schwach konstruierbare Garben auf simplizialen Mengen}
+
+In diesem Abschnitt möchten wir die Aussagen aus Kapitel \ref{??}
+übertragen auf den Fall, dass es sich bei dem Basisraum um die
+Realisierung einer simplizialen Menge anstelle eines
+Simplizialkomplexes handelt. Wir gehen vor wie in den ersten beiden
+Abschnitten.
+\begin{prop}
+  Die geometrische Realisierung diskret simplizialer Garben liefert
+  eine Äquivalenz von Katgeorien %TODO
+\end{prop}
+
+Nach der Bemerkung \ref{sk-homalg} reicht es, die topologischen Teile
+des Beweises aus \ref{ch2??} zu übertragen. Wir formulieren ganz
+allgemein:
+\begin{defn}
+  Eine Konstruierbarkeitssituation ist eine stetige Abbildung $p: |\K|
+  \to \K$ topologischer Räume, sodass gilt: Jeder Punkt $\sigma \in
+  \K$ besitzt eine kleinste offene Umgebung $(\geq \sigma)$. Wir
+  notieren $U(\sigma) = p^{-1}((\geq \sigma))$. Eine Garbe $F \in
+  \AbKr$ heißt schwach $|\K|$-konstruierbar, falls die Koeinheit der
+  Adjunktion auf $F$ einen Isomorphismus $p^* p_* F \iso F$ ist.
+\end{defn}
+In unserer Konstruierbarkeitssituation nennen wir $\K$ die
+\emph{kombinatorische} und $|\K|$ die \emph{geometrische
+  Realisierung}. Wir übertragen den Begriff derivierter schwach
+$|\K|$-konstruierbarer Garben (mit schwach $|\K|$-konstruierbaren
+Kohomologiegarben) und die Notationen $\sKons(\K)$ und $\DerskK$.
+
+Wir können mit identischem Beweis den allgemeinen Teil von
+\ref{sk-char} übertragen:
+\begin{prop} \label{gensk-char}
+  Für $F \in \AbKr$ sind äquivalent:
+  \begin{enumerate}[label=(\arabic*)]
+  \item \label{itm:gensk-char-sk} $F$ ist schwach $|\K|$-konstruierbar
+  \item \label{itm:gensk-char-essim} $F$ liegt im wesentlichen Bild
+    des Rückzugs $p^*$.
+  \item \label{itm:gensk-char-res} Die Restriktion $F(U(\sigma)) \to
+    F_x$ ist für alle $\sigma \in \K$ und alle $x \in |\sigma|$ ein
+    Isomorphismus.
+  \end{enumerate}
+\end{prop}
+
+In guten Konstruierbarkeitssituationen lässt sich auch eine
+geometrische Formulierung schwacher $|\K|$-Konstruierbarkeit angeben:
+\begin{defn}
+  In einer Konstruierbarkeitssituation $p: |\K| \to \K$ heißt eine
+  Garbe $F \in \AbKr$ geometrisch schwach $|\K|$-konstruierbar, falls
+  die Einschränkungen $F|_{|\sigma|}$ konstant sind für alle Urbilder
+  $|\sigma| = p^{-1}(\sigma)$ von Punkten $\sigma \in \K$.
+\end{defn}
+\begin{prop} \label{gensk-char-geom}
+  Ist in einer Konstruierbarkeitssituation $p: |\K| \to \K$ ...  so
+  ist für eine Garbe $F \in \AbKr$ äquivalent:
+  \begin{enumerate}
+    \item \label{itm:gensk-char-geom-sk} $F$ ist $|\K|$-konstruierbar.
+    \item \label{itm:gensk-char-geom-geom} $F$ ist geometrisch schwach
+      $|\K|$-konstruierbar.
+  \end{enumerate}
+  \end{prop}
+Das ist der fehlende Teil von \ref{sk-char}.
+\begin{proof}
+  Die Richtung $\ref{itm:gensk-char-geom-sk} \Implies
+  \ref{itm:gensk-char-geom-geom}$ folgt wieder aus \ref{gensk-char}
+  \ref{itm:gensk-char-res} und \ref{const-stalk} wegen $|\sigma|
+  \subset U(\sigma)$.
+
+  Für die umgekehrte Richtung %TODO
+\end{proof}
+
+\end{document}

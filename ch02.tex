@@ -155,7 +155,7 @@ $|\K|$-konstruierbarer Garben:
 
 Wir tragen die benötigten Lemmata nach.
 
-\begin{lemma}[\cite{TG}, 2.1.41]
+\begin{lemma}[\cite{TG}, 2.1.41] \label{const-stalk}
   Sei $X$ ein topologischer Raum, $F \in \EnsX$ eine Garbe auf $X$,
   für die die Restriktion $\Gamma F \iso F_x$ für alle $x \in X$
   bijektiv ist. Dann ist $F$ eine konstante Garbe auf $X$ mit Halm
@@ -233,20 +233,25 @@ Wir tragen die benötigten Lemmata nach.
 \end{proof}
 
 Wir bezeichnen den Funktor $p^*p_*: \AbKr \to \sKons(\K)$ kurz mit
-$\beta$ und bemerken, dass er nach obiger Proposition ein
-Rechtsadjungierter zur Inklusion $\iota: \sKons(\K) \to \AbKr$
-ist. Für $S \in \sKons(\K)$ und $F \in \AbKr$ gilt:
-\begin{align*}
-  & \sKons(\K)(W, \beta F) \\
-  \iso & \sKons(\K)(\beta W, \beta F) \\
-  \iso & \AbKr(p_* W, p_* p^* p_* F) \\
-  \iso & \AbKr(p_* W, p_* F) \\
-  \iso & \AbKr(\beta W, F) \\
-  \iso & \AbKr(W, F).
-\end{align*}
-Dabei wurde die bekannte Adjunktion $(p^*, p_*)$ sowie im dritten
-Schritt ``finaler Rückzug mit zusammenhängenden Fasern'' (\cite{TG},
-4.3.22) benutzt.
+$\beta$. Es handelt sich um einen Koreflektor:
+\begin{lemma} \label{beta-adjoint}
+  Der Funktor $\beta: \AbKr \to \sKons(\K)$ ist ein Rechtsadjungierter
+  zur Inklusion $\iota: \sKons(\K) \to \AbKr$.
+\end{lemma}
+\begin{proof}
+  Für $S \in \sKons(\K)$ und $F \in \AbKr$ gilt:
+  \begin{align*}
+    & \sKons(\K)(W, \beta F) \\
+    \iso & \sKons(\K)(\beta W, \beta F) \\
+    \iso & \AbKr(p_* W, p_* p^* p_* F) \\
+    \iso & \AbKr(p_* W, p_* F) \\
+    \iso & \AbKr(\beta W, F) \\
+    \iso & \AbKr(W, F).
+  \end{align*}
+  Dabei wurde die bekannte Adjunktion $(p^*, p_*)$ sowie im dritten
+  Schritt ``finaler Rückzug mit zusammenhängenden Fasern'' (\cite{TG},
+  4.3.22) benutzt.
+\end{proof}
 
 Als Komposition zweier linksexakter Funktoren ist $\beta$ natürlich
 wieder linksexakt. Der allgemeinen Terminologie folgend bezeichnen wir
@@ -357,41 +362,6 @@ unbeschränkten Aussage.
 Damit ist der entscheidende Schritt für unser Ziel gezeigt. Wir
 erhalten:
 
-%% \begin{theorem}
-%%   Sei $\K$ ein lokal endlicher Simplizialkomplex. Die oben definierten
-%%   Funktoren $\iota, \beta$ induzieren auf den derivierten Kategorien
-%%   eine Äquivalenz  
-%%   \[ \Der^+(\sKons(\K))
-%%   \mathrel{\mathop{\rightleftarrows}^{\iota}_{R \beta}}
-%%   \DerpskK. \]
-%% \end{theorem}
-%% \begin{proof}
-%%   % benötigen wir lok endl für endl homolog Dim und Definiertheit der
-%%   % Derivierten?
-
-%%   % TD 3.4.18 funktioniert nur für derivierte Kategorien von
-%%   % Kategorien mit genug Injektiven, DerpskK ist aber a priori keine
-%%   % solche...
-%%   Die Kategorien $\sKons(\K)$ und $\DerpskK$ haben genug
-%%   Injektive.  Mit der Grothendieck-Spektralsequenz für derivierte
-%%   Kategorien (\cite{TD}, 3.4.18) und der Exaktheit von $\iota$
-%%   erhalten wir somit
-
-%%   \[ R\beta \circ R\iota \iso R(\beta \circ \iota) \iso R \Id = \Id \]
-
-%%   auf $\Der^+(\sKons(\K))$, da welke Garben $\beta$-azyklisch sind, sowie
-
-%%   \[ \iota \circ R \beta \iso \Id \]
-
-%%   auf $\DerpskK$ nach der vorangegangenen Proposition.
-%% \end{proof}
-\begin{bem}
-  Kashiwara und Schapira beschränken sich auf die Äquivalenz der
-  beschränkten derivierten Kategorien, allerdings mit der gleichen
-  Argumentation. In \cite{KS} 1.7.12 wird eine allgemeine Aussage für
-  solche Situationen gezeigt, die hier aber m.E. nicht benötigt wird.
-\end{bem}
-
 \begin{theorem}
   Sei $\K$ ein Simplizialkomplex. Die oben definierten Funktoren
   $\iota, \beta$ induzieren auf den derivierten Kategorien eine
@@ -401,8 +371,8 @@ erhalten:
   \DerskK. \]
 \end{theorem}
 \begin{proof}
-  %% Die Funkoren $(\iota, \beta)$ bleibt eine Adjunktion nach Übergang
-  %% zu den derivierten Kategorien nach \cite{TD}, 3.2.25.  
+  %% Die Funktoren $(\iota, \beta)$ bleiben eine Adjunktion nach
+  %% Übergang zu den derivierten Kategorien nach \cite{TD}, 3.2.25.
 
   Mit \cite{TD}, 3.6.10, finden wir für $F \in \Ket(\AbKr)$ eine
   homotopieinjektive Auflösung $F \qiso I$ durch injektive Garben, die
@@ -415,6 +385,12 @@ erhalten:
   obige Aussage beinhaltet die Isotransformationen $\Id \Isotrafo R
   \beta \circ \iota$ und $\iota \circ R \beta \Isotrafo \Id$.
 \end{proof}
+\begin{bem}
+  Kashiwara und Schapira beschränken sich auf die Äquivalenz der
+  beschränkten derivierten Kategorien, allerdings mit der gleichen
+  Argumentation. In \cite{KS} 1.7.12 wird eine allgemeine Aussage für
+  solche Situationen gezeigt, die hier aber m.E. nicht benötigt wird.
+\end{bem}
 \begin{bem}
   Ist $\K$ lokal-endlich und von beschränkter Dimension, so erhalten
   wir dasselbe Ergebnis mit deutlich weniger Technik, nämlich ohne
@@ -494,5 +470,11 @@ erhalten:
   und somit auch im filtrierenden Kolimes nach Anwenden von $\Gamma =
   \colf_i \Gamma(K_i, \cdot)$.
 \end{proof}
-
+\begin{bem} \label{sk-homalg}
+  Man beachte, dass der Beweis ab \ref{beta-adjoint} ausschließlich
+  auf homologischer Algebra beruht, die konkreten topologischen
+  Eigenschaften der Situation fließen im Wesentlichen in \ref{sk-char}
+  ein. Dies wird sich in \ref{ch??} als nützlich erweisen, um die
+  Aussage für simpliziale Mengen zu formulieren.
+\end{bem}
 \end{document}
