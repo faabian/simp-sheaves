@@ -120,14 +120,23 @@ F_n \to F_n$ über $Ff$ induziert ist und auf Morphismen $f^\S \to
 [m]^\S$ durch den Morphismus $Ff^* F_n \to F_m$ in $\Ens_{/X_m}$ sowie
 $Rf$ gegeben ist.
 \begin{prop}
-  In dieser Situation ist das Kolimes über den oben definierten
+  In dieser Situation ist der Kolimes $|F|$ über den oben definierten
   Funktor $K$ ein étaler Raum über der geometrischen Realisierung der
   Basis $|X|$.
 \end{prop}
 \begin{proof}
   Offenbar ist $\coprod_n F_n \times R[n] \to \coprod_n X_n \times
-  R[n]$ étale.
-  % TODO prüfe Wirkung
+  R[n]$ étale. Im Diagramm
+  \[ \begin{tikzcd}
+    & \arrow{ld} Ff^* F_n \times R[n] \arrow{rd} & \\
+    F_n \times R[n] \arrow{d} & & F_m \times R[m] \arrow{d} \\
+    X_n \times R[n] \arrow{rd} & & X_m \times R[m] \arrow{ld} \\
+    & \lvert X \rvert &
+  \end{tikzcd} \]
+  stimmen beide Wege $Ff^* F_n \times R[n] \to |X|$ überein, d. h. die
+  induzierte Abbildung $|F| \to |X|$ ist wohldefiniert und stetig.
+
+    % TODO prüfe Wirkung: étale?
   
   % TODO prüfe, ob eigentlich der \Top^I Beweis dann stimmt?? und
   % vergleiche die beiden Konstruktionen
