@@ -655,17 +655,60 @@ sind. Wir machen diese Aussage präzise:
   Identitäten sowie für $f: X \to Y$ Pfeile
   \[ X^\S \from f^\S \to Y^\S. \]
 \end{defn}
-\begin{prop}
+\begin{prop}[\cite{ML}, IX.5.1, \cite{Lore}, 1.13]
   Es gibt einen Funktor $[C\op \times C, D] \to [\Sub(C) \to D], F
-  \mapsto \hat{F}$, der einen Funktor von der Kategorie der Kokeile
-  für $F$ in die Kategorie der Kokegel für $\hat{F}$ induziert.
+  \mapsto \hat{F}$, der einen Äquivalenz von Kategorien zwischen der
+  Kategorie der Kokeile für $F$ und der Kategorie der Kokegel für
+  $\hat{F}$ induziert. Insbesondere gilt
+  \[ \int^{c \in C} F(c, c) \iso \col \hat{F}. \]
 \end{prop}
 \begin{proof}
-  % TODO
+  Wir erhalten $\hat{F}$ durch die folgenden Zuordnungen für $f: c \to
+  d$ einen Morphismus in $C$ und $c, d$ Objekte in $C$:
+  \[ \begin{tikzcd}
+    c^\S \arrow{d, mapsto} \arrow{l}
+    & f^\S \arrow{d, mapsto} \arrow{r}
+    & d^\S \arrow{d, mapsto} \\
+    F(c, c) \arrow{l}{F(f, \id)
+    & F(d, c) \arrow{r}{F(\id, f)
+    & F(d, d).
+  \end{tikzcd} \]
+  Diese Zuordnung $F \mapsto \hat{F}$ ist selbst funktoriell:
+  Transformationen $F \Trafo G$ induzieren Transformationen $\hat{F}
+  \to \hat{G}$. Kokeile für $F$ und Kokegel für $\hat{F}$ bestehen nun
+  beide aus einem Objekt $K$ mit Morphismen $\iota_c: F(c, c) \to K$
+  für $c \in C$ und $\iota_f: F(d, c) \to K$ für $f: c \to d$, sodass
+  die drei Morphismen $F(d, c) \to K$ übereinstimmen:
+  \[ \iota_f = \iota_c \circ F(f, \id) = \iota_d \circ F(\id, f). \]
+  Ein Morphismus von Kokeilen für $F$ und von Kokegeln für $\hat{F}$
+  ist jeweils ein mit den angegebenen Inklusionen $\iota_c, \iota_f$
+  verträglicher Morphismus der Objekte $K \to K'$. Koenden für $F$ und
+  Kolimites für $\hat{F}$ sind die initialen Objekte der Kategorien
+  von Kokeilen für $F$ bzw. Kokegeln für $\hat{F}$.
 \end{proof}
-\begin{bem}
-  % TODO: twisted arrow category ist sogar äquivalent, aber wir
-  % benötigen die Verallgemeinerung
+\begin{bem}[\cite{Lore}, 1.12]
+  Eine andere Beschreibung verwendet statt der Unterteilungskategorie
+  $\Sub(C)$ die verdrehte Pfeilkategorie $\TW(C)$ von $C$, deren Objekte
+  Morphismen $f: c \to c'$ in $C$ und Morphismen zwischen $f: c \to
+  c'$ und $g: d \to g'$ Quadrate
+  \[ \begin{tikzcd}
+    c \arrow{d}{f} \arrow{r}{h} & d \arrow{d}{g} \\
+    c' \arrow{l}{k} & d'.
+  \end{tikzcd}
+  Wir erhalten eine Äquivalenz der Kategorien von Kokegeln über
+  Funktoren $F: \TW(C) \to D$ bzw. über Funktoren $G: \Sub(C) \to D$:
+  beide bestehen aus Morphismen $\id_c \to K$ bzw. $c^\S \to K$, die
+  mit $f \to \id_c, f \to \id_{c'}$ bzw. $f^\S \to c^\S, f^\S \to
+  c'^\S$ kompatibel sein sollen. Die weiteren Kompatibilitäten für
+  einen Kokegel über $F: \TW(C) \to D$, die von $f \to g$ gefordert
+  werden, sind bereits automatisch erfüllt, denn mit den Bezeichnungen
+  wie im Diagramm gilt etwa, dass die Kompitibilität $f \to g \to
+  \id_d \to K = f \to id_{c'} \to K$ diejenige zu $k \circ g: d \to
+  c'$ ist. Der Morphismus $f \to g$ in $\TW(C)$ fordert
+  Kompatibiltäten für die Inklusionen von $\id_c, \id_d, \id_{d'}$ und
+  $\id_{c'}$ nach $K$. Diese entsprechen jeweils Kompatibilitäten zu
+  den Kompositionen $g \circ h, k \circ g$ und $k \circ g \circ h$ im
+  obigen Diagramm.
 \end{bem}
 
 Sind $F: C\op \to D$ und $G: C \to D$ Funktoren und ist $D$ eine
