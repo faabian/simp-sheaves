@@ -645,6 +645,28 @@ Wir können Koenden als Koegalisator von Koprodukten darstellen:
   Eigenschaften, die den Koegalisator und das Koende definieren, sind
   dann identisch.
 \end{proof}
+Damit ist klar, dass Koenden Kolimites über eine geeignete Kategorie
+sind. Wir machen diese Aussage präzise:
+\begin{defn} \label{def:sub}
+  Sei $C$ eine Kategorie. Die \emph{Unterteilungskategorie}
+  (engl. \emph{subdivision category}) $\Sub(C)$ von $C$ besteht aus
+  Objekten $X^\S$ und $f^\S$ für alle Objekte $X \in C$ und Morphismen
+  $f: X \to Y$ in $C$. Die Morphismen von $\Sub(C)$ sind die
+  Identitäten sowie für $f: X \to Y$ Pfeile
+  \[ X^\S \from f^\S \to Y^\S. \]
+\end{defn}
+\begin{prop}
+  Es gibt einen Funktor $[C\op \times C, D] \to [\Sub(C) \to D], F
+  \mapsto \hat{F}$, der einen Funktor von der Kategorie der Kokeile
+  für $F$ in die Kategorie der Kokegel für $\hat{F}$ induziert.
+\end{prop}
+\begin{proof}
+  % TODO
+\end{proof}
+\begin{bem}
+  % TODO: twisted arrow category ist sogar äquivalent, aber wir
+  % benötigen die Verallgemeinerung
+\end{bem}
 
 Sind $F: C\op \to D$ und $G: C \to D$ Funktoren und ist $D$ eine
 monoidale Kategorie (Schmelzkategorie mit universellen

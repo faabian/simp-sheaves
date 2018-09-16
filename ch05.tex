@@ -241,15 +241,18 @@ internes Hom gibt.
   und internem Hom
   \[ (F \Implies G)(U) = \Ens_{/U}(F|_U, G|_U) \]
   jeweils mit den von den Restriktionen von $F$ und $G$ induzierten
-  Restriktionen.
+  Restriktionen. Der étale Raum des Produkts ist gegeben durch das
+  Faserprodukt über $X$:
+  \[ \etalespace{F \times G}
+     \iso \etalespace{F} \times_X \etalespace{G}. \]
 \end{prop}
 \begin{proof}
   Das Produkt erfüllt offenbar die universelle Eigenschaft in $\pEnsX$
   und ist eine Garbe, da Produkte mit dem Limes der Garbeneigenschaft
-  vertauschen. Das interne Hom besteht aus stetigen Abbildungen über
-  $U$ und erfüllt somit die Garbenbedingung, die ja sogar nach der
-  Verklebbarkeit stetiger Abbildungen modelliert war. Für die
-  Adjunktion müssen wir zeigen
+  vertauschen (Spezialfall von \ref{ensx-complete}). Das interne Hom
+  besteht aus stetigen Abbildungen über $U$ und erfüllt somit die
+  Garbenbedingung, die ja sogar nach der Verklebbarkeit stetiger
+  Abbildungen modelliert war. Für die Adjunktion müssen wir zeigen
   \[ \EnsX(F \times G, H) \iso \EnsX(F, G \Implies H). \]
   Links stehen restriktionsverträgliche Systeme $F(U) \times G(U) \to
   H(U)$ alias $F(U) \to \Ens(G(U), H(U))$, rechts
@@ -260,12 +263,18 @@ internes Hom gibt.
   Ergänzen des globalen Teils $G(U) \to H(U)$ durch verträgliche $G(V)
   \to H(V)$ als die Bilder unter $F(U) \to F(V) \to \Ens(G(V),
   H(V))$. Diese Abbildungen sind zueinander invers.
+
+  Für den étalen Raum des Produkts erhalten wir nach der universellen
+  Eigenschaft des Faserprodukts eine stetige Abbildung über $X$
+  \[ \etalespace{F \times G}
+  \to \etalespace{F} \times_X \etalespace{G}.
+  \]
+  Diese induziert auf den Halmen die Bijektionen
+  \[ (F \times G)_x \iso F_x \times G_x \]
+  aus dem Vertauschen endlicher Limites mit filtrierenden Kolimites.
 \end{proof}
-Weiter besitzt $\EnsX$ natürlich auch Koprodukte, nämlich die
-Garbifizierungen der $U$-weise definierten Koprodukte in $\pEnsX$.
 
-
-Diese Strukrur einer kartesisch abgeschlossenen Kategorie macht
+Diese Struktur einer kartesisch abgeschlossenen Kategorie macht
 $\EnsX$ insbesondere zu einer über sich selbst tensorierten Kategorie
 im Sinne von \ref{copower}. Wir erhalten einen Nerv-Funktor für die
 geometrische Realisierung simplizialer Garben auf $X$ aus \ref{nerve}.
@@ -331,6 +340,35 @@ durch Bilden der Produkträume. Konkret:
   Fasern) um das \emph{Ko}produkt der mit den Projektionen auf den
   Produktraum zurückgezogenen Garben.
 \end{bem}
+Auch dieses Verfahren können wir für beliebige Limites und Kolimites
+durchführen und so \ref{ensx-complete} übertragen:
+\begin{satz}
+  Die Kategorie der Garben auf topologischen Räumen mit Morphismen
+  $\Ens_{/\Top}$ ist vollständig und kovollständig.
+\end{satz}
+\begin{proof}
+  Die Kategorie der topologischen Räume $\Top$ ist vollständig und
+  kovollständig mit der Initial- bzw. Finaltopologie für die Limes-
+  bzw. Kolimesmengen. Sei $F_i \in \Ens_{/X_i}$ für eine kleine
+  Kategorie $I$ ein System von Garben auf topologischen Räumen. Wir
+  erhalten für $\pr_i: \lim_i X_i \to X_i$ die Projektionen den Limes
+  durch
+  \[ \lim_i F_i := \lim_i \pr_i^* F_i \in \Ens_{\lim_i X_i}. \]
+  Für eine Garbe $G \in \Ens_{/Y}$ und einen Kegel $G \to F_i$
+  faktorisieren zunächst die Morphismen in der Basis $f_i: Y \to X_i$
+  eindeutig über $\pr_i$: $f_i = \pr_i \circ g_i$. Wir erhalten mit
+  der universellen Eigenschaft des Rückzugs und der Adjunktion $(f^*,
+  f_*)$:
+  \[ \Ens_{/\Top}(G, F_i) \iso \Ens_{/\lim_i X_i}(g_i_* G, \pr_i^* F_i) \]
+  einen Kegel in $\Ens_{/\lim_i X_i}$, für den der angegebene Limes
+  nach \ref{ensx-complete} das universelle Problem löst.
+
+  Für den Kolimes finden wir ebenfalls eine eindeutige Faktorisierung
+  über den Kolimes $\ins_i: X_i \to \col_i X_i$ in der Basis und
+  erhalten den Kolimes in $\Ens_{/\Top}$ als
+  \[ \col_i F_i := \col_i \ins_i_* F_i \in \Ens_{/\col_i X_i}. \]
+  Man beachte, dass hierbei der Prägarbenkolimes garbifiziert wird.
+\end{proof}
 
 Wir könnten erwarten, dass wie das Produkt auch das interne Hom von
 $EnsX$ in unsere relative Situation übertragen werden kann. Dies
@@ -399,7 +437,7 @@ Wir nehmen nun an, dass $\mathcal{I}$ die folgenden Axiome erfüllt:
       \ev_{X, Y}: \Top_{co}(X, Y) \times X &\to Y,
       (f, x) &\mapsto f(x)
     \end{align*}
-    stetig. Dabei ist $\Top_{co}(X, Y)$ die Morphismenmenge $\Top(X;
+    stetig. Dabei ist $\Top_{co}(X, Y)$ die Morphismenmenge $\Top(X,
     Y)$ versehen mit der kompakt-offen Topologie.
 \end{enumerate}
 Dann besitzt $\mathcal{K}$ die Struktur einer kartesisch
