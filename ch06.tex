@@ -16,9 +16,29 @@ In diesem Abschnitt möchten wir die Aussagen aus Kapitel \ref{??}
 Realisierung einer simplizialen Menge anstelle eines
 Simplizialkomplexes handelt. Wir gehen vor wie in den ersten beiden
 Abschnitten.
+
+Sei $X \in \s\Ens$ eine simpliziale Menge. Wir erinnern an die
+eindeutige Darstellung eines Simplex $x$ als Degeneration $s^* y$ für
+$y$ einen nichtdegenerierten Simplex und $s$ monoton und surjektiv aus
+\ref{degen-repr}, notiert $y = N(x)$. Eine monotone Abbildung $f: [n]
+\to [m]$ induziert dann eine partielle Abbildung $\tilde{f}: \coprod_n
+NX_n \to \coprod_n NX_n$ auf den nichtdegenerierten Simplizes, gegeben
+durch $N(x) \mapsto N(f^* x)$ für $x \in X_n$.
+\begin{defn}
+  Sei $X \in \s\Ens$ eine simpliziale Menge. Die $X$ zugeordnete
+  Kategorie $C_X$ besitzt als Objekte $\Ob(C_X) := \coprod_n NX_n$ die
+  Menge der nichtdegenerierten Simplizes von $X$ und für jedes $f: [n]
+  \to [m]$ monoton und $\sigma \in NX_n$ einen Morphismus $\sigma \to
+  \tilde{f}(\sigma))$ mit der Komposition $\sigma \to
+  \tilde{f}(\sigma) \to \tilde{g}(\tilde{f}(\sigma)) = \sigma \to
+  \widetilde{g \circ f}(\sigma)$.
+\end{defn}
+
 \begin{prop}
-  Die geometrische Realisierung diskret simplizialer Garben liefert
-  eine Äquivalenz von Katgeorien %TODO
+  Die kovariante Realisierung mittels plumper Simplizes von
+  simplizialen Garben über diskreten topologischen Räumen mit
+  Komorphismen \ref{real-ensx-cov} liefert eine Äquivalenz von
+  Katgeorien %TODO
 \end{prop}
 
 Nach der Bemerkung \ref{sk-homalg} reicht es, die topologischen Teile
