@@ -1,3 +1,4 @@
+% Emacs mode: -*-latex-*-
 % include latex header (\usepackage, \newcommand etc.) 
 \input{header.tex}
 
@@ -8,7 +9,7 @@
 \date{\today}
 % \maketitle
 
-\section{Simpliziale Garben}
+\section{Realisierung simplizialer Garben}
 
 Die Beschreibung der geometrischen Realsierung als Tensorprodukt von
 Funktoren eröffnet uns eine Reihe weiterer geometrischer
@@ -44,31 +45,38 @@ $X$, wenn wir $R: \Delta \to \Top \to \Top^I$ mittels des Funktors der
 konstanten Darstellung auf die Diagrammkategorie
 fortsetzen. Insbesondere erhalten wir eine geometrische Realisierung
 für die Kategorie der Paare topologischer Räume mit stetiger
-Abbildung, d. h. die Diagrammkategorie $\Top^I$ für $I$ die von
-$\{ \bullet \to \bullet \}$ erzeugte Kategorie. Uns interessiert der
-Fall von Garben:
-\begin{satz} \label{real-enstop}
-  Sei $I = \{ \bullet \to \bullet \}$, $X: \Delta\op \to \Top^I$ ein
-  simpliziales Paar topologischer Räume mit stetiger Abbildung, für
-  die $X_n: E_n \to Y_n$ étale ist für alle $[n]$. Dann ist auch die
-  geometrische Realisierung $|X|: |E| \to |Y|$ étale.
-\end{satz}
-\begin{proof}
-  Die Realisierung ist die Abbildung $|E| = \coprod_n E_n \times
-  |\Delta^n| / \sim \to |Y| = \coprod_n Y_n \times |\Delta^n| / \sim$,
-  die von den $X_n: E_n \to Y_n$ induziert wird. Sind die $X_n: E_n
-  \to Y_n$ étale, so ist die Abbildung auf den Koprodukten étale und
-  es reicht zu bemerken, dass die Wirkung von $f: [n] \to [m]$ auf den
-  Koprodukten verträglich ist nach Definition eines Funktors nach
-  $\Top^I$.
+Abbildung, d. h. die Diagrammkategorie $\Top^I$ für $I$ die von $\{
+\bullet \to \bullet \}$ erzeugte Kategorie. Eine Realisierung für
+Garben über topologischen Räumen erhalten wir so aber nicht: Sind in
+einem simplizialen $\Top^I$ alle Abbildungen étale, bedeutet das noch
+nicht, dass auch die induzierte Abbildung in der geometrischen
+Realisierung étale ist. Sind etwa alle Basisräume $X_n$ einpunktig, so
+ist die Realisierung $|X|$ ebenfalls einpunktig. Étale Räume $F_n \to
+X_n$ sind diskret, d. h. die geometrische Realisierung $|F|$ ist die
+einer simplizialen Menge, also im Allgemeinen ein höherdimensionaler
+CW-Komplex. Ein solcher ist nicht diskret, also nicht étale über
+$|X|$. Wir erhalten die korrekte Realisierung für $\Ens_{/\Top}$,
+indem wir den Kolimes in der Garbenkategorie statt in den
+topologischen Räumen bilden.
+\begin{prop}
+  Sei $F \in [\Delta\op, \Ens_{/\Top}]$ eine simpliziale Garbe über
+  topologischen Räumen mit Morphismen und $R: \Delta \to \Ens_{/\Top}$
+  eine kosimpliziale Garbe über topologischen Räumen. Dann ist die
+  Realisierung $F \otimes R \in \Ens_{/\Top}$ eine Garbe über der
+  geometrischen Realisierung der Basisräume.
+\end{prop}
+\begin{proof} \label{real-enstop}
+  Die Existenz der Realisierung folgt direkt aus der Beschreibung von
+  Koenden als Kolimites \ref{coend-col} und der Kovollständigkeit von
+  $\Ens_{/\Top}$ nach \ref{enstop-complete}. Dort wird auch der
+  Basisraum des Kolimites zum Kolimes der Basisräume bestimmt.
 \end{proof}
-In die Sprache der Garben zurückübersetzt bedeutet das, dass wir eine
-geometrische Realisierung erklärt haben für simpliziale Garben über
-topologischen Räumen $X: \Delta\op \to \Ens_{/\Top}$:
-\[ E_n \in \Ens_{/Y_n} \qquad \rightsquigarrow \qquad |E| \in \Ens_{/|Y|} . \]
-Man beachte, dass Morphismen étaler $\Top^I$ den ``Morphismen'' in
-$\Ens_{/\Top}$ entsprechen, während sonst häufig mit Komorphismen
-gearbeitet wird.
+\begin{bem}
+  Eine kanonische Wahl für $R$ ist etwa die konstant einelementige
+  Garbe $|\Delta^n| \to |\Delta^n|$ oder ihre plumpe Variante
+  $\blacktriangle^n \to \blacktriangle^n$.
+\end{bem}
+
 \begin{bem} \label{real-ensx}
   Diese geometrische Realisierung simplizialer Garben auf
   topologischen Räumen spezialisiert zu einer geometrischen
@@ -88,8 +96,6 @@ gearbeitet wird.
   simplizialen Menge $[n] \mapsto D_n$.
 \end{bem}
 
-\subsection{Diskussion verschiedener Verfahren zur Realisierung}
-
 Ziel unserer Überlegungen wird es sein, die Aussagen zu simplizial
 konstanten Garben auf der geometrischen Realisierung eines
 Simplizialkomplexes $\K$ als Garben auf dem topologischen Raum $\K$
@@ -103,44 +109,51 @@ Garbensystem dagegen gegenläufig zu den generisierenden Einbettungen
 $|d_i|: |\Delta^{n-1}| \inj |\Delta^n|$ der Basisräume.
 
 Wir erklären eine neue Realisierung, die diesem Anspruch gerecht wird.
-Sei dazu $R: \Delta \to \Top$ ein kosimplizialer Raum und
-$F: \Delta\op \to \Ens_{\sslash\Top}, [n] \mapsto F_n \in Ens_{/X_n}$
-eine simpliziale Garbe über topologischen Räumen mit Komorphismen. Für
-$f: [n] \to [m]$ monoton gibt es also eine stetige Abbildung $Ff:
-X_m \to X_n$ und einen Morphismus von Garben über $X_m$: $Ff^* F_n \to
-F_m$. Wir erhalten einen Funktor $K$ von der Unterteilungskategorie
-$\Sub(\Delta)$ von $\Delta$ in die topologischen Räume
-\begin{align*}
-  K: \Sub(\Delta) &\to \Top, \\
-  [n]^\S &\mapsto F_n \times R[n], \\
-  (f: [n] \to [m])^\S &\mapsto Ff^* F_n \times R[n],
-\end{align*}
-der auf Morphismen $f^\S \to [n]^\S$ vom universellen Morphismus $Ff^*
-F_n \to F_n$ über $Ff$ induziert ist und auf Morphismen $f^\S \to
-[m]^\S$ durch den Morphismus $Ff^* F_n \to F_m$ in $\Ens_{/X_m}$ sowie
-$Rf$ gegeben ist.
+Sei dazu $R: \Delta \to \Ens_{/\Top}$ eine kosimplizialer
+topologischer Raum und $F: \Delta\op \to \Ens_{\sslash\Top}, [n]
+\mapsto F_n \in Ens_{/X_n}$ eine simpliziale Garbe über topologischen
+Räumen mit Komorphismen. Für $f: [n] \to [m]$ monoton gibt es also
+eine stetige Abbildung $Ff: X_m \to X_n$ und einen Morphismus von
+Garben über $X_m$: $Ff^* F_n \to F_m$. Wir erhalten einen Funktor $K$
+von der Unterteilungskategorie $\Sub(\Delta)$ von $\Delta$ in die
+Garben über topologischen Räumen
+\[ \begin{tikzcd}
+  \Sub(\Delta) \arrow{d}
+  & {[n]}^\S \arrow[mapsto]{d}
+  & \arrow{l} f^\S \arrow{r} \arrow[mapsto]{d}
+  & {[m]}^\S \arrow[mapsto]{d} \\
+  \Ens_{/\Top}
+  & F_n \times R[n]
+  & \arrow{l} Ff^* F_n \times R[n] \arrow{r}
+  & F_m \times R[m]
+\end{tikzcd}
+\]
+der für $f: [n] \to [m]$ in $\Delta$ auf Morphismen $f^\S \to [n]^\S$
+vom universellen Morphismus $Ff^* F_n \to F_n$ über $Ff$ induziert ist
+und auf Morphismen $f^\S \to [m]^\S$ durch die Morphismen $Ff^* F_n
+\to F_m$ in $\Ens_{/X_m}$ sowie $Rf$. Letzterer ist tatsächlich ein
+Morphismus in $\Ens_{/\Top}$, denn es kommutiert
+\[ \begin{tikzcd}
+  Ff^* F_n \times R[n] \arrow{d} \arrow{r}
+  & F_m \times R[n] \arrow{d} \arrow{r}
+  & F_m \times R[m] \arrow{d} \\
+  X_m \times R[n] \arrow{r}
+  & X_m \times R[n] \arrow{r}
+  & X_m \times R[m].
+\end{tikzcd} \]
+Wir erhalten die folgende ``gemischte'' Realisierung:
 \begin{prop}
-  In dieser Situation ist der Kolimes $|F|$ über den oben definierten
-  Funktor $K$ ein étaler Raum über der geometrischen Realisierung der
-  Basis $|X|$.
+  Sei $F \in [\Delta\op, \Ens_{\sslash \Top}]$ eine simpliziale Garbe
+  über topologischen Räumen mit Komorphismen und $R: \Delta \to \Top$
+  ein kosimplizialer topologischer Raum. Dann ist der Kolimes $|F|$
+  über den oben definierten zugehörigen Funktor $K: \Sub(\Delta) \to
+  \Ens_{/\Top}$ eine Garbe über der geometrischen Realisierung $X
+  \otimes R$ der Basisräume.
 \end{prop}
-\begin{proof}
-  Offenbar ist $\coprod_n F_n \times R[n] \to \coprod_n X_n \times
-  R[n]$ étale. Im Diagramm
-  \[ \begin{tikzcd}
-    & \arrow{ld} Ff^* F_n \times R[n] \arrow{rd} & \\
-    F_n \times R[n] \arrow{d} & & F_m \times R[m] \arrow{d} \\
-    X_n \times R[n] \arrow{rd} & & X_m \times R[m] \arrow{ld} \\
-    & \lvert X \rvert &
-  \end{tikzcd} \]
-  stimmen beide Wege $Ff^* F_n \times R[n] \to |X|$ überein, d. h. die
-  induzierte Abbildung $|F| \to |X|$ ist wohldefiniert und stetig.
-
-    % TODO prüfe Wirkung: étale?
-  
-  % TODO prüfe, ob eigentlich der \Top^I Beweis dann stimmt?? und
-  % vergleiche die beiden Konstruktionen
-\end{proof}
+\begin{bem}
+  % TODO erklären wieso das für X_n = D_n \times X eine sinnvolle
+  % Konstruktion ist
+\end{bem}
 
 \subsection{Die Dualität von Nerv und Realisierung}
 
@@ -342,7 +355,7 @@ durch Bilden der Produkträume. Konkret:
 \end{bem}
 Auch dieses Verfahren können wir für beliebige Limites und Kolimites
 durchführen und so \ref{ensx-complete} übertragen:
-\begin{satz}
+\begin{satz} \label{enstop-complete}
   Die Kategorie der Garben auf topologischen Räumen mit Morphismen
   $\Ens_{/\Top}$ ist vollständig und kovollständig.
 \end{satz}
@@ -359,14 +372,14 @@ durchführen und so \ref{ensx-complete} übertragen:
   eindeutig über $\pr_i$: $f_i = \pr_i \circ g_i$. Wir erhalten mit
   der universellen Eigenschaft des Rückzugs und der Adjunktion $(f^*,
   f_*)$:
-  \[ \Ens_{/\Top}(G, F_i) \iso \Ens_{/\lim_i X_i}(g_i_* G, \pr_i^* F_i) \]
+  \[ \Ens_{/\Top}(G, F_i) \iso \Ens_{/\lim_i X_i}(g_{i*} G, \pr_i^* F_i) \]
   einen Kegel in $\Ens_{/\lim_i X_i}$, für den der angegebene Limes
   nach \ref{ensx-complete} das universelle Problem löst.
 
   Für den Kolimes finden wir ebenfalls eine eindeutige Faktorisierung
   über den Kolimes $\ins_i: X_i \to \col_i X_i$ in der Basis und
   erhalten den Kolimes in $\Ens_{/\Top}$ als
-  \[ \col_i F_i := \col_i \ins_i_* F_i \in \Ens_{/\col_i X_i}. \]
+  \[ \col_i F_i := \col_i \ins_{i*} F_i \in \Ens_{/\col_i X_i}. \]
   Man beachte, dass hierbei der Prägarbenkolimes garbifiziert wird.
 \end{proof}
 

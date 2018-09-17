@@ -1,3 +1,4 @@
+% Emacs mode: -*-latex-*-
 % include latex header (\usepackage, \newcommand etc.) 
 \input{header.tex}
 
@@ -655,7 +656,7 @@ sind. Wir machen diese Aussage präzise:
   Identitäten sowie für $f: X \to Y$ Pfeile
   \[ X^\S \from f^\S \to Y^\S. \]
 \end{defn}
-\begin{prop}[\cite{ML}, IX.5.1, \cite{Lore}, 1.13]
+\begin{prop}[\cite{ML}, IX.5.1, \cite{Lore}, 1.13] \label{coend-col}
   Es gibt einen Funktor $[C\op \times C, D] \to [\Sub(C) \to D], F
   \mapsto \hat{F}$, der einen Äquivalenz von Kategorien zwischen der
   Kategorie der Kokeile für $F$ und der Kategorie der Kokegel für
@@ -666,19 +667,21 @@ sind. Wir machen diese Aussage präzise:
   Wir erhalten $\hat{F}$ durch die folgenden Zuordnungen für $f: c \to
   d$ einen Morphismus in $C$ und $c, d$ Objekte in $C$:
   \[ \begin{tikzcd}
-    c^\S \arrow{d, mapsto} \arrow{l}
-    & f^\S \arrow{d, mapsto} \arrow{r}
-    & d^\S \arrow{d, mapsto} \\
-    F(c, c) \arrow{l}{F(f, \id)
-    & F(d, c) \arrow{r}{F(\id, f)
+    \Sub(C) \arrow{d}
+    & c^\S \arrow[mapsto]{d}
+    & \arrow{l} f^\S \arrow[mapsto]{d} \arrow{r}
+    & d^\S \arrow[mapsto]{d} \\
+    D
+    & F(c, c)
+    & \arrow{l}{F(f, \id)} F(d, c) \arrow{r}{F(\id, f)}
     & F(d, d).
   \end{tikzcd} \]
   Diese Zuordnung $F \mapsto \hat{F}$ ist selbst funktoriell:
   Transformationen $F \Trafo G$ induzieren Transformationen $\hat{F}
-  \to \hat{G}$. Kokeile für $F$ und Kokegel für $\hat{F}$ bestehen nun
-  beide aus einem Objekt $K$ mit Morphismen $\iota_c: F(c, c) \to K$
-  für $c \in C$ und $\iota_f: F(d, c) \to K$ für $f: c \to d$, sodass
-  die drei Morphismen $F(d, c) \to K$ übereinstimmen:
+  \Trafo \hat{G}$. Kokeile für $F$ und Kokegel für $\hat{F}$ bestehen
+  nun beide aus einem Objekt $K$ mit Morphismen $\iota_c: F(c, c) \to
+  K$ für $c \in C$ und $\iota_f: F(d, c) \to K$ für $f: c \to d$,
+  sodass die drei Morphismen $F(d, c) \to K$ übereinstimmen:
   \[ \iota_f = \iota_c \circ F(f, \id) = \iota_d \circ F(\id, f). \]
   Ein Morphismus von Kokeilen für $F$ und von Kokegeln für $\hat{F}$
   ist jeweils ein mit den angegebenen Inklusionen $\iota_c, \iota_f$
@@ -690,11 +693,11 @@ sind. Wir machen diese Aussage präzise:
   Eine andere Beschreibung verwendet statt der Unterteilungskategorie
   $\Sub(C)$ die verdrehte Pfeilkategorie $\TW(C)$ von $C$, deren Objekte
   Morphismen $f: c \to c'$ in $C$ und Morphismen zwischen $f: c \to
-  c'$ und $g: d \to g'$ Quadrate
+  c'$ und $g: d \to g'$ kommutative Quadrate
   \[ \begin{tikzcd}
     c \arrow{d}{f} \arrow{r}{h} & d \arrow{d}{g} \\
-    c' \arrow{l}{k} & d'.
-  \end{tikzcd}
+    c' & \arrow{l}{k} d'.
+  \end{tikzcd} \]
   Wir erhalten eine Äquivalenz der Kategorien von Kokegeln über
   Funktoren $F: \TW(C) \to D$ bzw. über Funktoren $G: \Sub(C) \to D$:
   beide bestehen aus Morphismen $\id_c \to K$ bzw. $c^\S \to K$, die
@@ -709,6 +712,15 @@ sind. Wir machen diese Aussage präzise:
   $\id_{c'}$ nach $K$. Diese entsprechen jeweils Kompatibilitäten zu
   den Kompositionen $g \circ h, k \circ g$ und $k \circ g \circ h$ im
   obigen Diagramm.
+
+  Der Funktor $[C\op \times C, D] \to [\TW(C), D]$ ordnet dann einem
+  Funktor $F$ den Funktor
+  \begin{align*}
+    (f: c \to d) &\mapsto F(d, c)), \\
+    (f \to g) &\mapsto F(h, k)
+  \end{align*}
+  mit Vorschalten von $h$ und Nachschalten von $k$ für einen
+  Morphismus $f \to g$ wie im obigen Diagramm zu.
 \end{bem}
 
 Sind $F: C\op \to D$ und $G: C \to D$ Funktoren und ist $D$ eine
@@ -798,9 +810,10 @@ zusammengestellt.
   \[ \int^{c \in C} F(c, c, \cdot, -): D\op \times D \to E \]
   ein Funktor und es gilt
   \[ \int^{d \in D} \int^{c \in C} F(c, c, d, d)
-  \iso \int^{(c, d) \in C \times D} F(c, c, d, d), \]
-  wobei rechts $F$ als Funktor $F: (C \times D)\op \times (C \times
-  D)$ aufgefasst wird.
+  \iso \int^{(c, d) \in C \times D} F(c, c, d, d),
+  \]
+  falls eines der beiden Koenden existiert, wobei rechts $F$ als
+  Funktor $F: (C \times D)\op \times (C \times D)$ aufgefasst wird.
 \end{lemma}
 \begin{proof}
   Sei $K: D\op \times D \to E$ ein Kokeil für $F: C\op \times C \to
@@ -817,15 +830,14 @@ zusammengestellt.
   Morphismen vor das Kokeil-Quadrat von $L(K)$).
 
   Nach denselben Argumenten definiert ein Kokeil $M$ für $F: (C \times
-  D)\op \times (C \times D)$ einen iterierten Kokeil: Wir können einen
-  iterierten Kokeil ``sparsam'' angeben, indem wir die inneren Kokeile
-  nicht für alle $(d, d') \in D\op \times D$, sondern nur für
-  Diagonalelemente $(d, d) \in D\op \times D$ sowie
-  ``Morphismenobjekte'' $(d', d) \in D\op \times D$ für einen
-  Morphismus $f: d \to d'$ angeben. Der iterierte Kokeil ist dadurch
-  vollständig festgelegt, da ja nur diese Kokeile in den Daten eines
-  iterierten Kokeils eine Rolle spielen. Nun ist $M$ zunächst wegen
-  der Kommutativität von
+  D)\op \times (C \times D)$ einen iterierten Kokeil: Mit der
+  Unterteilungskategorie können wir einen iterierten Kokeil
+  ``sparsam'' angeben, indem wir die inneren Kokeile nicht für alle
+  $(d, d') \in D\op \times D$, sondern nur für Diagonalelemente $(d,
+  d) \in D\op \times D$ sowie Morphismenobjekte $(d', d) \in D\op
+  \times D$ für einen Morphismus $f: d \to d'$ angeben. Der iterierte
+  Kokeil ist dadurch nach \ref{coend-col} vollständig festgelegt. Nun
+  ist $M$ zunächst wegen der Kommutativität von
   \[ \begin{tikzcd}
     F(c', c, d, d) \arrow{r} \arrow{d} & F(c, c, d, d) \arrow{d} \\
     F(c', c', d, d) \arrow{r} & M
@@ -848,23 +860,42 @@ zusammengestellt.
   Objekte der beiden Kategorien.
 \end{proof}
 \begin{bem}
-  Unser Argument verbessert die Aussage von \cite{ML}, IX.8, geringfügig, da
-  wie angedeutet nicht alle $(d', d)$-Koenden existieren müssen.
-  
-  Ein weniger ad hoc formuliertes Argument würde Kokeile wie in als
-  Kolimites über die zugehörige \emph{twisted arrow category}
-  (\cite{Lore}, 1.12 f.) bzw. \emph{subdivision category} (\cite{ML},
-  IX.5) beschreiben und die Aussage damit auf die für iterierte
-  Kolimites und die jeweiligen Pfeilkategorien zurückführen.
+  Unser Argument verbessert die Aussage von \cite{ML}, IX.8,
+  geringfügig, da wie angedeutet nicht alle $(d', d)$-Koenden, sondern
+  nur die zu Morphismen $f: d \to d'$ gehörigen, existieren
+  müssen. Der Unterschied wird bei einer diskreten Kategorie besonders
+  deutlich. Ein konzeptionellerer Beweis benutzt die Darstellung von
+  Koenden als Kolimites aus \ref{coend-col}.
 \end{bem}
-
-% TODO subdivision category doch definieren (benötigt in neuer
-% Realisierung)
+\begin{proof}[Alternativer Beweis]
+  Der Isomorphismus von Kategorien $\TW(C \times D) \iso \TW(C) \times
+  \TW(D)$ ist verträglich mit dem Funktor $F \to \hat{F}$ aus
+  \ref{coend-col}:
+  \[ \begin{tikzcd}
+    {[(C \times D)\op \times (C \times D), E]}
+    \arrow{d}{\sim} \arrow{r}{F \mapsto \hat{F}}
+    & {[\TW(C \times D), E]} \arrow{d}{\sim} \\
+    {[C\op \times C, [D\op \times D, E]]} \arrow{r}
+    & {[\TW(C), [\TW(D), E]]},
+  \end{tikzcd}
+  \]
+  wobei der untere Funktor gegeben ist durch
+  \[ [C\op \times C, [D\op \times D, E]]
+  \to [\TW(C), [D\op, \times D, E]] \to [\TW(C), [\TW(D), E]].
+  \]
+  Die Darstellung iterierter Koenden als Produkt-Koenden folgt dann
+  direkt aus der Darstellung iterierter Kolimites als
+  Produkt-Kolimites:
+  \[ \col_{I \times J} F \iso \col_I \col_J \tilde{F}, \]
+  falls $F \mapsto \tilde{F}$ unter dem Exponentialgesetz $[I \times
+    J, C] \iso [I, [J, C]]$.
+\end{proof}
 
 \begin{defn}
   Sei $F: C \to D$ ein Funktor. $F$ heißt \emph{stetig}, falls er mit
-  allen Limites vertauscht. $F$ heißt \emph{kostetig}, falls er mit
-  allen Kolimites vertauscht.
+  Limites über kleine Kategorien vertauscht. $F$ heißt
+  \emph{kostetig}, falls er mit Kolimites über kleine Kategorien
+  vertauscht.
 \end{defn}
 
 \begin{lemma}[Koenden und kostetige Funktoren, \cite{Lore}, 1.16]
@@ -993,12 +1024,11 @@ kanonischem Koexponential.
 
 \begin{bem} \label{real-model-natural}
   In dieser Formulierung ist auch klar, dass eine Transformation $R
-  \Trafo \tilde{R}$ einen Morphismus der Koenden $R \otimes X \to
-  \tilde{R} \otimes X$ induziert. Konkret erhalten wir aus unserem
+  \Trafo \overline{R}$ einen Morphismus der Koenden $R \otimes X \to
+  \overline{R} \otimes X$ induziert. Konkret erhalten wir aus unserem
   Morphismus kosimplizialer Räume $|\Delta| \to \blacktriangle$ also
   Morphismen zwischen den geometrischen Realisierungen $|X| \to
-  \blacktriangle |X|$.  
+  \blacktriangle |X|$.
 \end{bem}
-
 
 \end{document}
