@@ -76,7 +76,6 @@ topologischen Räumen bilden.
   Garbe $|\Delta^n| \to |\Delta^n|$ oder ihre plumpe Variante
   $\blacktriangle^n \to \blacktriangle^n$.
 \end{bem}
-
 \begin{bem} \label{real-ensx}
   Diese geometrische Realisierung simplizialer Garben auf
   topologischen Räumen spezialisiert zu einer geometrischen
@@ -117,32 +116,39 @@ eine stetige Abbildung $Ff: X_m \to X_n$ und einen Morphismus von
 Garben über $X_m$: $Ff^* F_n \to F_m$. Wir erhalten einen Funktor $K$
 von der Unterteilungskategorie $\Sub(\Delta)$ von $\Delta$ in die
 Garben über topologischen Räumen
-\[ \begin{tikzcd}
-  \Sub(\Delta) \arrow{d}
-  & {[n]}^\S \arrow[mapsto]{d}
-  & \arrow{l} f^\S \arrow{r} \arrow[mapsto]{d}
-  & {[m]}^\S \arrow[mapsto]{d} \\
-  \Ens_{/\Top}
-  & F_n \times R[n]
-  & \arrow{l} Ff^* F_n \times R[n] \arrow{r}
-  & F_m \times R[m]
-\end{tikzcd}
-\]
+\begin{equation} \label{dg:cov-real}
+  \begin{tikzcd}
+    \Sub(\Delta) \arrow{dd}
+    & {[n]}^\S \dar[mapsto, shorten <= 3em, yshift=1.5em]
+    & \lar f^\S \dar[mapsto, shorten <= 3em, yshift=1.5em] \rar
+    & {[m]}^\S \dar[mapsto, shorten <= 3em, yshift=1.5em] \\[25]
+    & F_n \times R[n]
+    & \lar Ff^* F_n \times R[n] \rar
+    & F_m \times R[m] \\[-2em]
+    \Ens_{/\Top}
+    & \dar[shorten <= -1em]
+    & \dar[shorten <= -1em]
+    & \dar[shorten <= -1em] \\[-2em]
+    & X_n \times R[n]
+    & \lar X_m \times R[n] \rar
+    & X_m \times R[m],
+  \end{tikzcd}
+\end{equation}
 der für $f: [n] \to [m]$ in $\Delta$ auf Morphismen $f^\S \to [n]^\S$
 vom universellen Morphismus $Ff^* F_n \to F_n$ über $Ff$ induziert ist
 und auf Morphismen $f^\S \to [m]^\S$ durch die Morphismen $Ff^* F_n
 \to F_m$ in $\Ens_{/X_m}$ sowie $Rf$. Letzterer ist tatsächlich ein
 Morphismus in $\Ens_{/\Top}$, denn es kommutiert
 \[ \begin{tikzcd}
-  Ff^* F_n \times R[n] \arrow{d} \arrow{r}
-  & F_m \times R[n] \arrow{d} \arrow{r}
-  & F_m \times R[m] \arrow{d} \\
-  X_m \times R[n] \arrow{r}
-  & X_m \times R[n] \arrow{r}
+  Ff^* F_n \times R[n] \dar \rar
+  & F_m \times R[n] \dar \rar
+  & F_m \times R[m] \dar \\
+  X_m \times R[n] \rar
+  & X_m \times R[n] \rar
   & X_m \times R[m].
 \end{tikzcd} \]
-Wir erhalten die folgende ``gemischte'' Realisierung:
-\begin{prop}
+Wir erhalten die folgende ``kovariante'' Realisierung:
+\begin{prop} \label{real-enstop-cov}
   Sei $F \in [\Delta\op, \Ens_{\sslash \Top}]$ eine simpliziale Garbe
   über topologischen Räumen mit Komorphismen und $R: \Delta \to \Top$
   ein kosimplizialer topologischer Raum. Dann ist der Kolimes $|F|$
@@ -150,9 +156,63 @@ Wir erhalten die folgende ``gemischte'' Realisierung:
   \Ens_{/\Top}$ eine Garbe über der geometrischen Realisierung $X
   \otimes R$ der Basisräume.
 \end{prop}
-\begin{bem}
-  % TODO erklären wieso das für X_n = D_n \times X eine sinnvolle
-  % Konstruktion ist
+\begin{bem} \label{real-ensx-cov}
+  Diese geometrische Realisierung simplizialer Garben auf
+  topologischen Räumen mit Komorphismen spezialisiert zu einer
+  geometrischen Realisierung simplizialer Garben auf $X$: Ist $F:
+  \Delta\op \to \Ens_{\sslash X}$ eine simpliziale Garbe auf
+  topologischen Räumen mit Komorphismen und konstantem Basisraum $X$
+  alias eine kosimpliziale Garbe $F\op: \Delta \to \EnsX$, so
+  vereinfacht das Diagramm \ref{dg:cov-real} zu
+  \[
+  \begin{tikzcd}
+    \Sub(\Delta) \arrow{dd}
+    & {[n]}^\S \dar[mapsto, shorten <= 3em, yshift=1.5em]
+    & \lar f^\S \dar[mapsto, shorten <= 3em, yshift=1.5em] \rar
+    & {[m]}^\S \dar[mapsto, shorten <= 3em, yshift=1.5em] \\[25]
+    & F_n \times R[n]
+    & \lar[equal] Ff^* F_n \times R[n] \rar
+    & F_m \times R[m] \\[-2em]
+    \Ens_{/\Top}
+    & \dar[shorten <= -1em]
+    & \dar[shorten <= -1em]
+    & \dar[shorten <= -1em] \\[-2em]
+    & X \times R[n]
+    & \lar[equal] X \times R[n] \rar
+    & X \times R[m],
+  \end{tikzcd}
+  \]
+  und ihre geometrische Realisierung aus \ref{real-enstop-cov} ist
+  eine Garbe $|F| \in \EnsX$, der Kolimes über den Funktor $\Delta \to
+  \Ens_{/\Top}$, der $f: [n] \to [m]$ monoton auf den Morphismus
+  \[ \begin{tikzcd}
+    F_n \times R[n] \dar \rar{F\op f \times |f|}
+    & F_m \times R[m] \dar \\
+    X \times R[n] \rar
+    & X \times R[m]
+  \end{tikzcd} \]
+  schickt.
+
+  Sind alle $X_n$ diskret, so bestimmt für $\sigma \in X_n$ der Halm
+  $(F_m)_\sigma$ die konstante Garbe $(F_m)_\sigma \times R[n] \to
+  {\sigma} \times R[n]$ und wir erhalten für monotones $f: [n] \to
+  [m]$ Abbildungen $(F_n)_{f(\sigma)} \to (F_m)_\sigma$, die diese
+  konstanten Garben verkleben. Insbesondere sind für Randabbildungen
+  $d_i$ die Verklebungen Generisierungen, die angeben, wie ein Element
+  des Halms am Rand eines Simplex einen Schnitt über eine Umgebung
+  dieses Punkts (auch im Inneren des Simplex) definiert. Wir werden
+  diese Beobachtungen in \ref{real-enstop-cov-equiv} präzisieren und
+  die zunächst seltsam anmutende Konstruktion als etwas natürlicher
+  wahrnehmen.
+
+  Für die relative Version betrachten wir Basisräume $X_n = X \times
+  D_n$ mit diskreten $D_n$ und von $D_m \to D_n$ induzierten
+  Abbildungen. Zu $\sigma \in D_n$ gehört dann eine Garbe $F_\sigma :=
+  F_n|_{\sigma \times X} \in \EnsX$ und wir erhalten für monotones $f:
+  [n] \to [m]$ Garbenmorphismen $F_{f(\sigma)} \to F_\sigma$, die
+  diese Garben verkleben. Wieder sind diese generisierend, erlauben
+  also die Ausweitung eines $U$-Schnitts von einem Randpunkt auf einen
+  $U$-Schnitt im Inneren.
 \end{bem}
 
 \subsection{Die Dualität von Nerv und Realisierung}
@@ -175,7 +235,7 @@ das einfach.
     & = \Top(\col_{\slicecat{\Delta}{r}{X}} |\Delta^n|, Y) \\
     & \iso \col_{\slicecat{\Delta}{r}{X}} \Top(|\Delta^n|, Y) \\
     & \iso \col_{\slicecat{\Delta}{r}{X}} \s\Ens(\Delta^n, \Top(R \, \cdot, Y)) \\
-    & \iso \s\Ens(\iso \col_{\slicecat{\Delta}{r}{X}} \Delta^n, \Top(R \, \cdot, Y)) \\
+    & \iso \s\Ens(\col_{\slicecat{\Delta}{r}{X}} \Delta^n, \Top(R \, \cdot, Y)) \\
     & \iso \s\Ens(X, SY)
   \end{align*}  
   mit der Definition der geometrischen Realisierung im ersten Schritt
@@ -515,7 +575,7 @@ erklären, wieso.
   Wir erinnern daran, dass ein Morphismus in $\Ens_{/C}$ ein
   kommutatives Quadrat
   \[ \begin{tikzcd}
-    F \arrow[r] \arrow{d}{p} & G \arrow{d}{q} \\
+    F \arrow[r] \dar{p} & G \dar{q} \\
     X \arrow[r] & Y
   \end{tikzcd} \]
   ist. In diesem Beweis notieren wir Objekte in $\Ens_{/C}$ mitsamt
@@ -541,11 +601,11 @@ erklären, wieso.
   der universellen Eigenschaft durch Einschränken auf den unteren
   Pfeil
   \[ \begin{tikzcd}
-    \Ens_{/C}(\iota X, U \to L) \arrow{r}{\sim}
+    \Ens_{/C}(\iota X, U \to L) \rar{\sim}
     \arrow{d}{\sim}
     & \Ens_{/C}(\iota X, \tau Y) \times \Ens_{/C}(\iota X, \tau Z)
-    \arrow{d}{\sim} \\
-    C(X, L) \arrow{r}{\sim}
+    \dar{\sim} \\
+    C(X, L) \rar{\sim}
     & C(X, Y) \times C(X, Z).
   \end{tikzcd} \]
   Es erfüllt also $L$ die universelle Eigenschaft des Produkts $Y
@@ -585,7 +645,7 @@ erklären, wieso.
 
   Ein Morphismus
   \[ \begin{tikzcd}
-    F \arrow[r] \arrow{d}{p} & G \arrow{d}{q} \\
+    F \arrow[r] \dar{p} & G \dar{q} \\
     X \arrow[r] & Y,
   \end{tikzcd} \]
   ist nach der Kommutativität des Quadrats ein Element des
@@ -625,11 +685,11 @@ erklären, wieso.
   induziert einen Morphismus $\big( (F \to X) \Implies (G \to Y) \big)
   \to \big( \iota X \Implies (G \to Y) \big)$ bzw.
   \[ \begin{tikzcd}
-    \Top(F, G) \times_{\Top(F, Y)} C(X, Y) \arrow{d} \arrow{r}
-    & \Top(\varnothing, G) \times_{\Top(\varnothing, Y)} C(X, Y) \arrow{d} \arrow{r}{\sim}
-    & C(X, Y) \arrow{d}{\id} \\
-    C(X, Y) \arrow{r}{\id}
-    & C(X, Y) \arrow{r}{\id}
+    \Top(F, G) \times_{\Top(F, Y)} C(X, Y) \dar \rar
+    & \Top(\varnothing, G) \times_{\Top(\varnothing, Y)} C(X, Y) \dar \rar{\sim}
+    & C(X, Y) \dar{\id} \\
+    C(X, Y) \rar{\id}
+    & C(X, Y) \rar{\id}
     & C(X, Y).
   \end{tikzcd} \]
   Dabei kommt die Identität in der Basis aus dem Yoneda-Lemma für
