@@ -154,6 +154,9 @@ Komma-Kategorien.
   $f: Y \to Z$ in $C$ sind, für die $rf$ ein Morphismus über $X$ ist,
   d. h. $\pi_Y = \pi_Z \circ rf$ gilt.
 \end{defn}
+Es handelt sich gewissermaßen um den Schnitt des Bildes des Funktors
+$r$ mit der Über-Kategorie $C_X$.
+
 Wir bezeichnen die Slice-Kategorie $\slicecat{\Delta}{r}{X}$ als die
 Simplexkategorie von $X$. Konkret ist darin ein Objekt ein Morphismus
 $\Delta^n \to X$ und ein Morphismus ein von $[n] \to [m]$ induzierter
@@ -241,7 +244,9 @@ Wir erhalten einen Funktor $R: \Delta \to \Top, [n] \mapsto
   Dabei steht $\intr |\Delta^n|$ für das offene Innere von $|\Delta^n|
   \subset \R^{n+1}$. Anschaulich gesprochen wird also bei $|\Delta^n|
   \to \blacktriangle^n$ das offene Innere zu einem Punkt identifiziert
-  und eine solche Identifikation auch auf allen Rändern vorgenommen.
+  und eine solche Identifikation auch auf allen Rändern
+  vorgenommen. Der offene Punkt im Inneren ist dicht, wir nennen ihn
+  auch den \emph{generischen Punkt} von $\blacktriangle^n$.
 \end{bem}
 \begin{bsp}
   Der plumpe Standard-$1$-Simplex ist ein dreipunktiger Raum mit einem
@@ -319,9 +324,10 @@ Unsere Konstruktion erfüllt tatsächlich:
   Zu zeigen ist, dass die Bildung der Simplexkategorie mit Kolimites
   vertauscht, d. h. für einen Funktor $X: I \to \s\Ens$ gilt:
   \[ \slicecat{\Delta}{r}{\col_i X_i} \iso \col_i \slicecat{\Delta}{r}{X_i}. \]
-  Beide Kategorien bestehen aber aus Objekten der Form $\Delta^n \to
-  X_i$ für ein $i \in I$, die identifiziert werden, falls sie durch
-  Nachschalten von $X_i \to X_j$ auseinander hervorgehen.
+  In der Funktorkategorie $\s\Ens$ erhalten wir Bijektionen zwischen
+  den Mengen von $n$-Simplizes
+  \[ (\col_i X_i)_n \iso \col_i (X_i)_n. \]
+  Diese sind mit den Morphismen in $\Delta$ verträglich.
 \end{proof}
 
 Wie ganz allgemein können wir den Kolimes topologischer Räume auch
