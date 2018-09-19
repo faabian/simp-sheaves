@@ -61,6 +61,10 @@ Inklusionsfunktor und $\iota^*: [\Delta\op, \Ens] \to [{\Delta^+}\op,
   $\hat{f}$ mit demselben Bild (und anderem Definitionsbereich $[k]$)
   schickt.
 \end{defn}
+\begin{bem}
+  Der Name ``Stufenfunktor'' rührt daher, dass die Werte einer
+  monotonen Funktion die Stufen in ihrem Graphen beschreiben.
+\end{bem}
 Das Vorschalten von monotonen Injektionen vor $f \in \Delta([m], [n])$
 (Morphismen in $\slicecat{\Delta^+}{r}{\iota^* \Delta^n}$) induziert
 auf der zugehörigen monotonen Injektion $\hat{f} \in \Delta^+([k],
@@ -76,14 +80,24 @@ Bildmengen. Dies zeigt die Funktorialität.
     {[m]} \rar[mapsto]
     & \slicecat{\Delta^+}{r}{\Delta^{+m}}
   \end{tikzcd} \]
-  ist ein Funktor $R: \Delta \to \Cat$, genannt die
+  ist ein Funktor $R: \Delta \to \poset$, genannt die
   \emph{kosimpliziale Standard-Kategorie}.
 \end{prop}
 \begin{proof}
-  % TODO
+  Wir müssen zeigen, dass für monotone $f: [m] \to [n]$ und $g: [l]
+  \to [m]$ gilt
+  \[ \Step ((f \circ g)\circ) = \Step (f \circ) \Step (g \circ) \]
+  für $(f \circ)$ den Nachschaltefunktor und $\Step$ den
+  Stufenfunktor. Das folgt aber daraus, dass beide Funktoren eine
+  monotone Injektion $h: [k] \to [l]$ auf die Injektion auf $\im (f
+  \circ g \circ h)$ schicken. Diese Entsprechnung ist verträglich mit
+  Einschränkungen von $h$ (Vorschalten von monotonen Injektionen), ist
+  also eine Transformation.
 
-  % gibt es eine univ. Eigenschaft des Stufenfunktors, mit der man das
-  % schön zeigen kann?
+  Es handelt sich bei den Kategorien
+  $\slicecat{\Delta^+}{r}{\Delta^{+n}}$ tatsächlich um halbgeordnete
+  Mengen, denn die nichttrivialen Morphismen sind das Vorschalten von
+  echten Injektionen und senken somit den Grad eines Simplex.
 \end{proof}
 \begin{prop}
   Die Kategorie der kleinen Kategorien $\Cat$ ist kovollständig. Ein
@@ -91,13 +105,43 @@ Bildmengen. Dies zeigt die Funktorialität.
   selbst eine halbgeordnete Menge.
 \end{prop}
 \begin{proof}
-  % TODO
+  Die Köcherbasiskategorie ist die Kategorie $Q: E
+  \mathrel{\mathop{\leftleftarrows}^{s}_{t}} V$ (mit Identitäten). Die
+  Kategorie der Köcher ist die Kategorie der Prägarben auf $Q$: $Quiv
+  := [Q\op, \Ens]$. Es folgt sofort die Vollständigkeit und
+  Kovollständigkeit von $Quiv$. Kleine Kategorien sind bestimmte
+  Köcher mit Zusatzstruktur, nämlich Tupel $(Q, K, I)$ bestehend aus
+  einem Köcher $Q = (C, \Lambda, s, t)$, einer Kompositionsregel $K:
+  \Lambda \times_C \Lambda \to \Lambda$ (Faserprodukt über $\Lambda
+  \xrightarrow{s} C \xleftarrow{t} \Lambda$) und Identitäten $I: C \to
+  \Lambda$, sodass für alle Elemente, für die die Ausdrücke definiert
+  sind, gilt
+  \begin{gather*}
+    s(K(f, g)) = s(g), \\
+    t(K(f, g)) = t(f), \\
+    s(I(c)) = c, \\
+    t(I(c)) = c, \\
+    K(f, I(s(f))) = f, \\
+    K(I(t(f)), f) = f, \\
+    K(K(f, g), h) = K(f, K(g, h)).
+  \end{gather*}
+  (Das sind die Axiome eines internen Kategorienobjekts in $\Ens$.)
+  Funktoren zwischen kleinen Kategorien sind Köchermorphismen, für die
+  die offensichtlichen Diagramme für $I$ und $K$ kommutieren.
+
+  Es gibt einen Linksadjungierten zur Einbettung $\Cat \to Quiv$, das
+  Bilden der freien Pfadkategorie über dem Köcher. Es ist aber $\Cat
+  \subset Quiv$ i. A. keine volle Unterkategorie, weshalb wir
+  Kolimites nicht durch Anwendung des Reflektors auf den Kolimes in
+  $Quiv$ konstruieren können.
+  % TODO anderer Beweis oder Verweis
 \end{proof}
 \begin{defn}
   Die \emph{kategorielle Realisierung} einer simplizialen Menge $X \in
   \s\Ens$ ist definiert als das Tensorprodukt von Funktoren $X \times
   R \in \Cat$ für $R$ die kosimpliziale Standard-Kategorie.
 \end{defn}
+
 
 Betrachte nun für eine feste simpliziale Menge $X \in \s\Ens$ die
 volle Unterkategorie $(\s\EnsssTop)_X \subset \s\EnsssTop$ der
