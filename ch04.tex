@@ -25,7 +25,7 @@ Ordinalzahlen. Ihre Elemente sind von der Form $\{0, 1, \dots, n\}$
 für ein $n \in \N$, welche wir kurz mit $[n]$ bezeichnen werden. Wir
 verstehen diese Mengen $[n]$ als angeordnete Mengen.
 
-\begin{defn}
+\begin{defn} \label{def:delta}
   Die Simplex-Kategorie $\Delta$ ist die Kategorie der endlichen
   nichtleeren Ordinalzahlen versehen mit monotonen Abbildungen als
   Morphismen.
@@ -120,9 +120,12 @@ hat.
 \end{proof}
 
 Die einfachsten Beispiele nichttrivialer simplizialer Mengen sind die
-Standard-$n$-Simplizes, die sich als die darstellbaren Funktoren
-$\Delta^n = \Delta(\cdot, [n])$ beschreiben lassen. Wir erhalten den
-Funktor
+Standard-$n$-Simplizes:
+\begin{defn} \label{def:comb-standard-simplex}
+  Die darstellbare simpliziale Menge $\Delta^n := \Delta(\cdot, [n])$
+  heißt \emph{Standard-$n$-Simplex}.
+\end{defn}
+Wir erhalten den Funktor
 \begin{align*}
   R: \Delta\op &\to \s\Ens, \\
   [n] &\mapsto \Delta^n = \Delta(\cdot, [n]),
@@ -198,6 +201,7 @@ Mengen. Wir halten mit wörtlich übertragenen Beweis allgemein fest:
   Definition der Kategorie $\slicecat{C}{r}{F}$ in Bijektion durch
   Nachschalten von $K \Trafo F$.
 \end{proof}
+% TODO geht allgemein mit Ninja-Yoneda
 
 \section{Der kosimpliziale Raum der Standardsimplizes}
 

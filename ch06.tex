@@ -17,32 +17,37 @@ Realisierung einer simplizialen Menge anstelle eines
 Simplizialkomplexes handelt. Wir gehen vor wie in den ersten beiden
 Abschnitten.
 
-Sei $X \in \s\Ens$ eine simpliziale Menge. Wir erinnern an die
-eindeutige Darstellung eines Simplex $x$ als Degeneration $s^* y$ für
-$y$ einen nichtdegenerierten Simplex und $s$ monoton und surjektiv aus
-\ref{degen-repr}, notiert $y = N(x)$. Eine monotone Abbildung $f: [n]
-\to [m]$ induziert dann eine partielle Abbildung $\tilde{f}: \coprod_n
-NX_n \to \coprod_n NX_n$ auf den nichtdegenerierten Simplizes, gegeben
-durch $N(x) \mapsto N(f^* x)$ für $x \in X_n$. Es gilt $\tilde{s} =
-\id$ für surjektive $s$ (wo definiert) und $\tilde{g \circ f} =
-\tilde{g} \circ \tilde{f}$ (wo definiert).
+Für die Darstellung von Garben auf simplizialen Mengen als
+Diagrammkategorien von Garben definieren wir eine \emph{kategorielle
+  Realisierung} einer simplizialen Menge. Wir benötigen die Begriffe
+für nichtdegenerierte Simplizes (vgl. \ref{def:delta},
+\ref{def:comb-standard-simplex}).
 \begin{defn}
-  Sei $X \in \s\Ens$ eine simpliziale Menge. Die $X$ zugeordnete
-  Kategorie $C_X$ besitzt als Objekte $\Ob(C_X) := \coprod_n NX_n$ die
-  Menge der nichtdegenerierten Simplizes von $X$ und einen eindeutigen
-  Morphismus $\sigma \to \tau$, falls $\tau = \tilde{f}(\sigma)$ für
-  ein monotones $f: [n] \to [m]$.
+  Die Unterkategorie der endlichen nichtleeren Ordinalzahlen mit
+  injektiven monotonen Abbildungen $\Delta^+ \subset \Delta$ heißt
+  \emph{nichtdegenerierte Simplexkategorie}.
 \end{defn}
-Nach \ref{face-gen} \ref{itm:face-gen-form} lässt sich jedes monotone
-$f$ als Kompositionen einer surjektiven monotonen Abbildung $t$ mit
-einer injektiven monotonen Abbildung $d$ schreiben: $f = t \circ
-d$. Wir können folgern, dass die induzierte Abbildung $\tilde{f}$ den
-Grad nichtdegenerierter Simplizes senkt: $\tilde{f}(N(x)) = N(f^* x) =
-N(d^* t^* s^* N(x)) = N((st)'^* d'^* N(x)) = d'^* N(x)$ für $(s \circ
-t) \circ d = d' \circ (st)'$ die durch die Relationen \ref{face-gen}
-\ref{itm:face-gen-rel} erhaltene Darstellung mit einer surjektiven
-monotonen Abbildung $(st)'$ und einer injektiven monotonen Abbildung
-$d'$.
+Wir wiederholen die Begriffe für simpliziale Mengen für Prägarben auf
+$\Delta^+$.
+\begin{defn}
+  Die darstellbare Prägarbe auf $\Delta^+$
+  \[ \Delta^{+n} :=  \Delta^+(\cdot, [n]) \]
+  heißt \emph{nichtdegenerierter Standard-$n$-Simplex}.
+\end{defn}
+Diese Zurodnung liefert einen Funktor $r: \Delta^+ \to [\Delta^+\op,
+  \Ens]$. Wir erhalten unsere für die kategorielle Realisierung
+gewünschte kosimpliziale Kategorie durch den Funktor
+\begin{align*}
+  R: \Delta \to \Cat, \\
+  [n] \mapsto \slicecat{\Delta^+}{r}{\Delta^{+n}}.
+\end{align*}
+% TODO zeigen, dass das durch perfide Tricks tatsächlich ein Funktor
+% von \Delta aus ist!
+\begin{defn}
+  Die \emph{kategorielle Realisierung} einer simplizialen Menge $X \in
+  \s\Ens$ ist definiert als das Tensorprodukt von Funktoren $X \times
+  R \in \Cat$ für $R$ die kosimpliziale Kategorie.
+\end{defn}
 
 Betrachte nun für eine feste simpliziale Menge $X \in \s\Ens$ die
 volle Unterkategorie $(\s\EnsssTop)_X \subset \s\EnsssTop$ der
@@ -70,17 +75,16 @@ Wir erhalten die folgende Übertragung von \ref{sheaf-simp-compl}:
 
 \begin{lemma}
   Sei $X \in \s\Ens$ eine simpliziale Menge. Dann gibt es einen
-  Homöomorphismus $\blacktriangle X \iso P_X$, wobei $P_X$ die
+  Homöomorphismus $\blacktriangle X \iso C_X$, wobei $C_X$ die
   Ordnungstopologie trägt. Insbesondere hat jeder Punkt in der plumpen
   Realisierung $\sigma \in \blacktriangle X$ eine kleinste offene
   Umgebung $(\geq \sigma)$.
 \end{lemma}
 \begin{proof}
-  Ein Punkt $\sigma \in \blacktriangle X$ ist der generische Punkt
-  eines nichtdegenerierten $n$-Simplizes. Wir identifizieren die
-  nichtdegenerierten Simplizes mit ihren generischen Punkten. Die
-  Menge $(\geq \sigma) := \set{\tau \in}{}$
-    % TODO
+  Jeder Punkt $\sigma \in \blacktriangle X$ ist der generische Punkt
+  eines nichtdegenerierten $n$-Simplex.
+  % TODO Zellen des CW-Komplexes haben disjunktes Inneres
+  Dies liefert eine Bijektion $\blacktriangle X \to C_X$. 
 \end{proof}
 
 Nach der Bemerkung \ref{sk-homalg} reicht es, die topologischen Teile
