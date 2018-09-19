@@ -35,6 +35,7 @@
 \theoremstyle{remark}
 \newtheorem{bem}[theorem]{Bemerkung}
 
+\DeclareMathOperator{\Step}{Step}
 \DeclareMathOperator{\Sub}{Sub}
 \DeclareMathOperator{\TW}{TW}
 \DeclareMathOperator{\Hom}{Hom}
@@ -104,3 +105,32 @@
 \newcommand{\EnsTop}{\Ens_{/\Top}}
 \newcommand{\EnsssTop}{\Ens_{\sslash \Top}}  % Ens slash slash Top
 \renewcommand{\coprod}{\bigsqcup}
+
+% Allow for colons in tikz pictures. Code from
+% https://tex.stackexchange.com/questions/89467/why-does-pdftex-hang-on-this-file
+
+\makeatletter
+\AtEndPreamble{
+  \ifnum\mathcode`\:=\string"8000
+    \begingroup\lccode`\~=`\:
+    \lowercase{\endgroup\let\math@colon@meaning~}
+  \else
+    \expandafter\let\expandafter\math@colon@meaning\string:
+  \fi
+}
+\AtBeginDocument{
+  \ifnum\catcode`\:=\active
+    \letcs\text@colon@meaning{active@char\string:}
+  \else
+    \expandafter\let\expandafter\text@colon@meaning\string:
+  \fi
+\protected\def\tikz@nonactivecolon{%
+  \ifmmode
+    \expandafter\math@colon@meaning
+   \else
+    \expandafter\text@colon@meaning
+   \fi} 
+\begingroup\lccode`\~=`\:
+\lowercase{\endgroup\let~\tikz@nonactivecolon}
+}
+\makeatother

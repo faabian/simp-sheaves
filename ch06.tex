@@ -34,9 +34,52 @@ $\Delta^+$.
   \[ \Delta^{+n} :=  \Delta^+(\cdot, [n]) \]
   heißt \emph{nichtdegenerierter Standard-$n$-Simplex}.
 \end{defn}
-Diese Zurodnung liefert einen Funktor $r: \Delta^+ \to [\Delta^+\op,
+Diese Zurodnung liefert einen Funktor $r: \Delta^+ \to [{\Delta^+}\op,
   \Ens]$. Wir erhalten unsere für die kategorielle Realisierung
-gewünschte kosimpliziale Kategorie durch den Funktor
+gewünschte kosimpliziale Kategorie durch den Funktor der
+nichtdegenerierten Simplizes des nichtdegenerierten
+Standard-$n$-Simplex. Bezeichne dazu $\iota: \Delta^+ \inj \Delta$ den
+Inklusionsfunktor und $\iota^*: [\Delta\op, \Ens] \to [{\Delta^+}\op,
+  \Ens]$ den Rückzugsfunktor auf Prägarben.
+\begin{defn}
+  Der \emph{Stufenfunktor} ist der Funktor
+  \[\Step: \slicecat{\Delta^+}{r}{\iota^* \Delta^n}
+  \to \slicecat{\Delta^+}{r}{\Delta^{+n}},
+  \]
+  gegeben durch das kommutative Quadrat
+  \[ 
+  \begin{tikzcd}
+    f: \Delta^{+m} \to \iota^* \Delta^n \dar[mapsto]{\sim} \rar[mapsto]
+    & \Step f:  \Delta^{+k}  \to \iota^* \Delta^{+n} \dar[mapsto]{\sim} \\
+    f \in \Delta([m], [n]) \rar[mapsto]
+    & \hat{f} \in \Delta^+([k], [n]),
+  \end{tikzcd}
+  \]
+  in dem die Vertikalen die eindeutigen Zuordnungen aus dem
+  Yoneda-Lemma sind und die untere Horizontale die Abbildung, die eine
+  monotone Abbildung $f$ auf die eindeutige monotone Injektion
+  $\hat{f}$ mit demselben Bild (und anderem Definitionsbereich $[k]$)
+  schickt.
+\end{defn}
+Das Vorschalten von monotonen Injektionen vor $f \in \Delta([m], [n])$
+(Morphismen in $\slicecat{\Delta^+}{r}{\iota^* \Delta^n}$) induziert
+auf der zugehörigen monotonen Injektion $\hat{f} \in \Delta^+([k],
+[n])$ ebenfalls Morphismen durch Vorschalten von Injektionen, denn das
+Einschränken von Funktionen auf Teilmengen verkleinert auch die
+Bildmengen. Dies zeigt die Funktorialität.
+\begin{prop}
+  Die Zuordnung
+  \[ \begin{tikzcd}
+    {[n]} \arrow{dd}{f} \rar[mapsto]
+    & \slicecat{\Delta^+}{r}{\Delta^{+n}} \dar{f \circ} \\
+    & \slicecat{\Delta^+}{r}{\iota^* \Delta^m} \dar{\Step} \\
+    {[m]} \rar[mapsto]
+    & \slicecat{\Delta^+}{r}{\Delta^{+m}}
+  \end{tikzcd} \]
+  ist ein Funktor $R: \Delta \to \Cat$, genannt die
+  Standard-kosimpliziale Kategorie.
+\end{prop}
+
 \begin{align*}
   R: \Delta \to \Cat, \\
   [n] \mapsto \slicecat{\Delta^+}{r}{\Delta^{+n}}.
