@@ -77,19 +77,26 @@ Bildmengen. Dies zeigt die Funktorialität.
     & \slicecat{\Delta^+}{r}{\Delta^{+m}}
   \end{tikzcd} \]
   ist ein Funktor $R: \Delta \to \Cat$, genannt die
-  Standard-kosimpliziale Kategorie.
+  \emph{kosimpliziale Standard-Kategorie}.
 \end{prop}
+\begin{proof}
+  % TODO
 
-\begin{align*}
-  R: \Delta \to \Cat, \\
-  [n] \mapsto \slicecat{\Delta^+}{r}{\Delta^{+n}}.
-\end{align*}
-% TODO zeigen, dass das durch perfide Tricks tatsächlich ein Funktor
-% von \Delta aus ist!
+  % gibt es eine univ. Eigenschaft des Stufenfunktors, mit der man das
+  % schön zeigen kann?
+\end{proof}
+\begin{prop}
+  Die Kategorie der kleinen Kategorien $\Cat$ ist kovollständig. Ein
+  Kolimes über halbgeordnete Mengen $\poset \subset \Cat$ ist dabei
+  selbst eine halbgeordnete Menge.
+\end{prop}
+\begin{proof}
+  % TODO
+\end{proof}
 \begin{defn}
   Die \emph{kategorielle Realisierung} einer simplizialen Menge $X \in
   \s\Ens$ ist definiert als das Tensorprodukt von Funktoren $X \times
-  R \in \Cat$ für $R$ die kosimpliziale Kategorie.
+  R \in \Cat$ für $R$ die kosimpliziale Standard-Kategorie.
 \end{defn}
 
 Betrachte nun für eine feste simpliziale Menge $X \in \s\Ens$ die
