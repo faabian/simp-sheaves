@@ -115,17 +115,38 @@ Wir prüfen, dass wir so insbesondere eine Garbifizierung zu
   kovollständig. Somit ist auch die Kategorie der Prägarben auf $X$
   $[\OffX\op, \Ens]$ vollständig und kovollständig nach der
   Beschreibung von Limites in Funktorkategorien als objektweise
-  Limites. Tatsächlich ist aber in $\EnsX$ die Limes-Prägarbe eines
-  Systems von Garben bereits eine Garbe nach unserer Fromulierung der
-  Garbenbedingung als Limes und der Kommutativität von Limites. Für
-  die Kovollständigkeit behaupten wir, dass die Garbifizierung der
-  Kolimes-Prägarbe die universelle Eigenschaft des Kolimes in der
-  Kategorie $\EnsX$ erfüllt. In der Tat folgt das direkt aus der
-  universellen Eigenschaft des Kolimes in der Prägarbenkategorie und
-  der universellen Eigenschaft der Garbifizierung.  Derselbe Beweis
-  gilt für $\AbX$ unter Verwendung der Vollständigkeit und
-  Kovollständigkeit der abelschen Gruppen.
+  Limites. Als Rechtsadjungierter der Garbifizierung vertauscht nun
+  der Inklusionsfunktor $\iota: \EnsX \to \pEnsX$ mit Limites,
+  d. h. die Limites in $\EnsX$ sind die Limites der zugehörigen
+  Prägarben. Die Kolimites sind gegeben durch die Garbifizierungen der
+  Prägarben-Kolimites. Es gilt mit dem Prägarbenkolimes $\col_i \iota
+  F_i$ über ein System von Garben $F_i \in \EnsX$ für eine Garbe $G
+  \in \EnsX$:
+  \begin{align*}
+    \EnsX((\col_i \iota F_i)^+, G)
+    &\iso \pEnsX(\col_i \iota F_i, \iota G) \\
+    &\iso \col_i \pEnsX(\iota F_i, \iota G) \\
+    &\iso \col_i \EnsX(F_i, G).
+  \end{align*}
+  Derselbe Beweis gilt für $\AbX$ unter Verwendung der Vollständigkeit
+  und Kovollständigkeit der abelschen Gruppen.
 \end{proof}
+Der Beweis hat nur benutzt, dass $\pEnsX$ vollständig und
+kovollständig ist und $\EnsX$ eine volle Unterkategorie mit
+Linksadjungiertem zur Inklusion.
+\begin{defn} \label{refl-sub}
+  Eine volle Unterkategorie einer Kategorie, für die die Inklusion
+  einen Linksadjungierten besitzt, heißt \emph{reflektive}
+  Unterkategorie. In diesem Fall heißt der Linksadjungierte
+  \emph{Reflektor}.
+\end{defn}
+Wir halten fest:
+\begin{prop} \label{refl-sub-complete}
+  Sei $C \subset D$ eine reflektive Unterkategorie. Ist $D$
+  vollständig, so ist auch $C$ vollständig mit denselben Limites. Ist
+  $D$ kovollständig, so ist auch $C$ kovollständig mit den
+  Reflektionen der Kolimites in $D$ als Kolimites.
+\end{prop}
 
 Bezeichne wieder $\B$ die Kategorie der Basis der Topologie auf einem
 Produkt topologischer Räume $X \times Y$ mit Inklusionen als

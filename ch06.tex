@@ -120,9 +120,15 @@ Bildmengen. Dies zeigt die Funktorialität.
   werden. Weiter müssen wie im folgenden Diagramm Morphismen $Ff$ und
   $Gf$ identifiziert werden, was auf die Kompositionen fortgesetzt
   wird.
-
-  %TODO Diagramm
-  
+  \[ 
+  \begin{tikzcd}
+    a \ar{dd}{f}
+    & Fa \rar[phantom]{\sim} \ar{dd}{Ff} & Ga \ar{dd}{Gf}  \\[-10pt]
+    \rar[mapsto, shorten <= 2em, xshift = -1em]
+    & \rar[phantom]{\sim} & \lar[phantom] \\[-10pt]
+    b & Fb \rar[phantom]{\sim} & Gb
+  \end{tikzcd}
+  \]  
   Die Identifikationen $Fa \sim Ga$ für $a \in A$ und $Ff \sim Gf$ für
   $f \in A(a, b)$ sind notwendig für einen Koegalisator $B \to C$,
   damit $A \mathrel{\mathop{\rightrightarrows}^{F}_{G}} B \to C$
@@ -132,12 +138,10 @@ Bildmengen. Dies zeigt die Funktorialität.
   Für die volle Unterkategorie $\poset \subset \Cat$ können wir
   \ref{refl-sub-complete} verwenden, mit dem Reflektor $\Cat \to
   \poset$, der im folgenden Lemma konstruiert wird.
-
-  % TODO refl-sub-complete
 \end{proof}
 \begin{defn}
   Eine Kategorie heißt \emph{dünn}, falls jede Morphismenmenge
-  höchstens einelementig ist. Eine Kategorie heißt
+  höchs\-tens einelementig ist. Eine Kategorie heißt
   \emph{Skelettkategorie}, falls in ihr jeder Isomorphismus eine
   Identität ist.
 \end{defn}
@@ -223,8 +227,13 @@ Bildmengen. Dies zeigt die Funktorialität.
     Koegalisator in den halbgeordneten Mengen. Dann ist nach
     \ref{cat-cocomplete} und \ref{poset-reflective} die
     zugrundeliegende mengentheoretische Abbildung von $B \to C$ der
-    mengentheoretische Koegalisator.
-    % TODO geht das überhaupt?
+    mengentheoretische Koegalisator: nur der Reflektor $\Cat \to
+    \mathrm{skelCat}$ könnte die zugrundeliegende Menge ändern, wird
+    aber bereits auf eine Skelettkategorie angewandt, denn ein
+    Kategorienkolimes über halbgeordnete Mengen enthält keine
+    Morphismen in entgegengesetzte Richtungen.
+
+    % TODO: Finaltopologie?    
 \end{proof}
 
 % TODO ersetze Step durch N
