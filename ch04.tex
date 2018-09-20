@@ -165,7 +165,7 @@ Simplexkategorie von $X$. Konkret ist darin ein Objekt ein Morphismus
 $\Delta^n \to X$ und ein Morphismus ein von $[n] \to [m]$ induzierter
 Morphismus simplizialer Mengen $\Delta^n \to \Delta^m$ über $X$.
 
-\begin{lemma}
+\begin{lemma} \label{sset-col}
   Sei $X \in \s\Ens$ eine simpliziale Menge. Dann gilt
   \[ X \iso \col_{\Delta^n \to X} \Delta^n, \]
   mit dem Kolimes über die Simplexkategorie von $X$.
@@ -310,7 +310,7 @@ aus \ref{sset-colim} auf jeden Fall setzen
 \end{equation}
 Debei wird der Kolimes wieder über die Simplexkategorie von $X$
 gebildet, nun allerdings mit den induzierten stetigen Abbildungen aus
-\ref{} als Systemmorphismen.
+\ref{??} als Systemmorphismen.
 
 Ein Morphismus simplizialer Mengen $X \to Y$ induziert nun durch
 Nachschalten von $X \to Y$ einen Funktor auf den Simplexkategorien
@@ -1010,7 +1010,7 @@ Situationen auf Koexponentiale in angereicherten Kategorien:
 \end{defn}
 In diesem Fall nennt man die Kategorie $C$ auch \emph{tensoriert über
   $V$}.
-\begin{bsp}
+\begin{bsp} \label{ens-tensored}
   Jede Kategorie mit beliebigen Koprodukten hat Koexponentiale über
   $\Ens$. Mit $V \odot B = \coprod_V B$ gilt:
   \[ C(V \odot B, C) \iso \Ens(V, C(B, C)). \]
@@ -1037,8 +1037,8 @@ kanonischem Koexponential.
   \Trafo \overline{R}$ einen Morphismus der Koenden $R \otimes X \to
   \overline{R} \otimes X$ induziert. Konkret erhalten wir aus unserem
   Morphismus kosimplizialer Räume $|\Delta| \to \blacktriangle$ also
-  Morphismen zwischen den geometrischen Realisierungen $|X| \to
-  \blacktriangle |X|$.
+  stetige Abbildungen zwischen den geometrischen Realisierungen $|X|
+  \to \blacktriangle |X|$.
 \end{bem}
 
 \end{document}

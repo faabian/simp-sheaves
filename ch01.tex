@@ -101,40 +101,44 @@ natürlich im Allgemeinen nicht möglich, da bereits in $\mathcal{K}$
 die Vereinigungseigenschaft von Topologien in der Regel verletzt
 ist. Allerdings können wir $\mathcal{K} \times \OffX$ recht leicht zur
 Basis einer Topologie von $\mathcal{K} \times X$ machen.
-
-%% \begin{defn}
-%%   Die Ordnungstopologie auf einer halbgeordneten Menge $X$ hat als
-%%   abgeschlossene Mengen alle ``nach unten abgeschlossenen'' Mengen,
-%%   d.h. Mengen $A \subset X$ mit der Eigenschaft, dass falls $b \in A$
-%%   und $a \leq b$, so auch $a \in A$.
-%% \end{defn}
-
 \begin{defn}
-  Sei $(X, \leq)$ eine halbgeordnete Menge.  Wir bezeichnen die von
-  den Mengen der Form $(\geq \sigma) = \{\tau \in X | \tau \geq
-  \sigma\}$ (für $\sigma \in X$) erzeugte Topologie als die
+  Sei $(X, \leq)$ eine halbgeordnete Menge.  Wir bezeichnen die
+  Topologie mit Basis den Mengen der Form $(\geq \sigma) = \{\tau \in
+  X | \tau \geq \sigma\}$ (für $\sigma \in X$) als die
   Ordnungstopologie auf $X$.
 \end{defn}
-
-Für $X = \mathcal{K}$ einen Simplizialkomplex gilt sogar:
-
+Wir prüfen, dass es sich um die Basis einer Topologie handeln kann:
 \begin{lemma}
-  Das System der $(\geq \sigma)$ ist eine Basis der
-  Ordnungstopologie.
+  Sei $(X, \leq)$ eine halbgeordnete Menge. Dann lassen sich endliche
+  Schnitte im System der Mengen $(\geq \sigma)$, $\sigma \in X$ als
+  Vereinigungen von Mengen in diesem System schreiben und $X$ wird
+  durch die Mengen des Systems überdeckt.
 \end{lemma}
-
 \begin{proof}
-  $\mathcal{K}$ wird überdeckt durch Mengen aus dem System, da $\sigma
-  \in (\geq \sigma)$. Das System ist schnittstabil, da für einen
-  Simplizialkomplex gilt:
-
-  \[(\geq \sigma) \cap (\geq \tau) = (\geq (\sigma \cup \tau))
-  \text{ oder }
-  (\geq \sigma) \cap (\geq \tau) = \emptyset. \]
+  Offenbar gilt $X = \cup_\sigma (\geq \sigma)$ und $(\geq \sigma)
+  \cap (\geq \tau) = \cup_{x \in (\geq \sigma) \cap (\geq \tau)} (\geq
+  x)$.
 \end{proof}
 
-Im folgenden verstehen wir einen Simplizialkomplex $\mathcal{K}$ stets
-mit der Ordnungstopologie versehen als topologischen Raum.
+Für $X = \mathcal{K}$ einen Simplizialkomplex vereinfachen sich die
+Schnitte:
+\[(\geq \sigma) \cap (\geq \tau) = (\geq (\sigma \cup \tau))
+\text{ oder }
+(\geq \sigma) \cap (\geq \tau) = \emptyset. \]
+
+\begin{lemma} \label{ord-functor}
+  Das Versehen mit der Ordnungstopologie definiert einen Funktor
+  $\Ord: \poset \to \Top$.
+\end{lemma}
+\begin{proof}
+  Ist $f: X \to Y$ ein Morphismus halbgeordneter Mengen, so besteht
+  das Urbild von $(\geq \sigma)$, $\sigma \in Y$ aus allen $\tau \in
+  X$ mit $f(\tau) \geq \sigma$. Dies ist eine nach oben abgeschlossene
+  Menge, also offen in $\Ord X$.
+\end{proof}
+Wir werden den Funktor $\Ord$ für Simplizialkomplexe $\mathcal{K}$ in
+der Notation unterschlagen und sie direkt als topologische Räume
+auffassen.
 
 Bezeichne nun $\B$ die Basis der Produkttopologie von
 $\mathcal{K} \times X$ bestehend aus Produktmengen der Form $(\geq

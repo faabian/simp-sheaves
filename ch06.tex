@@ -99,7 +99,7 @@ Bildmengen. Dies zeigt die Funktorialität.
   Mengen, denn die nichttrivialen Morphismen sind das Vorschalten von
   echten Injektionen und senken somit den Grad eines Simplex.
 \end{proof}
-\begin{prop}
+\begin{prop} \label{cat-cocomplete}
   Die Kategorien der kleinen Kategorien $\Cat$ und der halbgeordneten
   Mengen $\poset$ sind kovollständig.
 \end{prop}
@@ -141,7 +141,7 @@ Bildmengen. Dies zeigt die Funktorialität.
   \emph{Skelettkategorie}, falls in ihr jeder Isomorphismus eine
   Identität ist.
 \end{defn}
-\begin{lemma}
+\begin{lemma} \label{poset-reflective}
   Die vollen Unterkategorien $\mathrm{thinCat}, \mathrm{skelCat}
   \subset \Cat$ der dünnen bzw. Skelettkategorien sind reflektiv. Der
   Reflektor $\Cat \to \mathrm{skelCat}$ macht aus dünnen Kategorien
@@ -170,22 +170,72 @@ Bildmengen. Dies zeigt die Funktorialität.
   sind nach Definition dünne Skelettkategorien.
 \end{proof}
 \begin{bem}
-  Der Ansatz, Limites und Kolimites in $Cat$ (wie im Fall der Garben)
-  über die Einbettung $\Cat \subset \mathrm{Quiv}$ in die Kategorie
-  der Köcher zu konstruieren, funktioniert \emph{nicht}. Jene ist als
-  Prägarbenkategorie tatsächlich vollständig und kovollständig und die
-  Inklusion hat mit der freien Pfadkategorie über einem Köcher
-  tatsächlich einen Linksadjungierten; allerdings handelt es sich
-  nicht um eine volle (d. h. reflektive) Unterkategorie, weshalb die
-  Limites und Kolimites von denen in $\mathrm{Quiv}$ bzw. ihren freien
+  Der Ansatz, Limites und Kolimites in $Cat$ mittels
+  \ref{refl-sub-complete} über die Einbettung $\Cat \subset
+  \mathrm{Quiv}$ in die Kategorie der Köcher zu konstruieren,
+  funktioniert \emph{nicht}. Jene ist als Prägarbenkategorie
+  tatsächlich vollständig und kovollständig und die Inklusion hat mit
+  der freien Pfadkategorie über einem Köcher tatsächlich einen
+  Linksadjungierten; allerdings handelt es sich nicht um eine volle
+  (dann also reflektive) Unterkategorie, weshalb die Limites und
+  Kolimites von denen in $\mathrm{Quiv}$ bzw. ihren freien
   Pfadkategorien abweichen.
 \end{bem}
 \begin{defn}
   Die \emph{kategorielle Realisierung} einer simplizialen Menge $X \in
-  \s\Ens$ ist definiert als das Tensorprodukt von Funktoren $X \times
-  R \in \Cat$ für $R$ die kosimpliziale Standard-Kategorie.
+  \s\Ens$ ist definiert als das Tensorprodukt von Funktoren $X \otimes
+  R \in \poset$ für $R$ die kosimpliziale Standard-Kategorie und die
+  natürliche $\Ens$-tensorierte Struktur auf $\poset$
+  (\ref{ens-tensored}).
 \end{defn}
 
+\begin{prop}
+  Sei $X \in \s\Ens$ eine simpliziale Menge. Dann gibt es einen
+  Homöomorphismus $\blacktriangle X \iso X \otimes R$, wobei $X
+  \otimes R$ die Ordnungstopologie trägt. Insbesondere hat jeder Punkt
+  in der plumpen Realisierung $\sigma \in \blacktriangle X$ eine
+  kleinste offene Umgebung $(\geq \sigma)$.
+\end{prop}
+\begin{proof}
+  % TODO coends commute with colimit over the coend-defining functor
+  % TODO \Ord functor and its cocontinuity
+  
+  Der Funktor $\Ord: \poset \to \Top$ ist nach dem nachgestellten
+  Lemma kostetig. Daher reicht es mit \ref{??}, einen Isomorphismus
+  kosimplizialer topologischer Räume $\blacktriangle \to \Ord R$ zu
+  finden. Beide bestehen aus einem Punkt pro nichtdegeneriertem
+  Simplex (\ref{cw-disjoint-inner}) von $\Delta^n$ und haben als
+  offene Mengen nach oben abgeschlossene Mengen. Randabbildungen $d_i$
+  sind Inklusionen in die Ränder, Degenerationen Kollapse von
+  Kanten. Dies begründen wir sorgfältiger: Unsere Definition von
+  $Rs_i: R[n] \to R[n-1]$ schickt einen nichtdegenerierten Simplex $f:
+  [m] \to [n]$ monoton und injektiv auf $N(s_i \circ f)$, den
+  nichtdegenerierten Simplex, der zum Kollaps von $i$ und $i+1$ in $f$
+  gehört.
+\end{proof}
+\begin{lemma}
+  Der Funktor $\Ord: \poset \to \Top$, der eine halbgeordneten Menge
+  mit der Ordnungstopologie versieht, ist kostetig.
+\end{lemma}
+\begin{proof}
+    Klar ist, dass $\Ord$ mit Koprodukten vertauscht. Sei nun $A
+    \mathrel{\mathop{\rightrightarrows}^{F}_{G}} B \to C$ ein
+    Koegalisator in den halbgeordneten Mengen. Dann ist nach
+    \ref{cat-cocomplete} und \ref{poset-reflective} die
+    zugrundeliegende mengentheoretische Abbildung von $B \to C$ der
+    mengentheoretische Koegalisator.
+    % TODO geht das überhaupt?
+\end{proof}
+
+% TODO ersetze Step durch N
+
+% TODO sheaf-order-top
+Mit \ref{sheaf-order-top} erhalten wir sofort:
+\begin{prop}
+  Sei $X \in \s\Ens$ eine simpliziale Menge. Dann gibt es eine
+  Äquivalenz von Kategorien $\Ens_{/\blacktriangle X} \qiso [(X
+    \otimes R)\op, \Ens]$.
+\end{prop}
 
 Betrachte nun für eine feste simpliziale Menge $X \in \s\Ens$ die
 volle Unterkategorie $(\s\EnsssTop)_X \subset \s\EnsssTop$ der
@@ -198,9 +248,10 @@ Wir erhalten die folgende Übertragung von \ref{sheaf-simp-compl}:
   (\ref{real-enstop-cov}) liefert eine Äquivalenz von Kategorien
   \[ (\s\EnsssTop)_X \qiso \Ens_{/\blacktriangle X}. \]
   Weiter gibt es eine Äquivalenz
-  \[ (\s\EnsssTop)_X \qiso [C_X\op, \Ens] \]
-  gegeben durch den Funktor $F \mapsto (\sigma \mapsto (F_n)_\sigma$
-  für $\sigma \in NX_n$.
+  \[ (\s\EnsssTop)_X \qiso [(X \otimes R)\op, \Ens] \]
+  gegeben durch den Funktor, der $F \in (\s\EnsssTop)_X$ auf den
+  Funktor $(\sigma \mapsto (F_n)_\sigma$ schickt für $\sigma \in
+  NX_n$.
 \end{prop}
 \begin{proof}
   Eine Garbe $F_n$ über einem diskreten Raum $X_n$ ist diskret und
@@ -211,19 +262,7 @@ Wir erhalten die folgende Übertragung von \ref{sheaf-simp-compl}:
   \to (F_m)_\sigma$ für $\sigma \in X_m$.
 \end{proof}
 
-\begin{lemma}
-  Sei $X \in \s\Ens$ eine simpliziale Menge. Dann gibt es einen
-  Homöomorphismus $\blacktriangle X \iso C_X$, wobei $C_X$ die
-  Ordnungstopologie trägt. Insbesondere hat jeder Punkt in der plumpen
-  Realisierung $\sigma \in \blacktriangle X$ eine kleinste offene
-  Umgebung $(\geq \sigma)$.
-\end{lemma}
-\begin{proof}
-  Jeder Punkt $\sigma \in \blacktriangle X$ ist der generische Punkt
-  eines nichtdegenerierten $n$-Simplex.
-  % TODO Zellen des CW-Komplexes haben disjunktes Inneres
-  Dies liefert eine Bijektion $\blacktriangle X \to C_X$. 
-\end{proof}
+% TODO überleiten
 
 Nach der Bemerkung \ref{sk-homalg} reicht es, die topologischen Teile
 des Beweises aus \ref{ch2??} zu übertragen. Wir formulieren ganz
