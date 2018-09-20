@@ -100,42 +100,86 @@ Bildmengen. Dies zeigt die Funktorialität.
   echten Injektionen und senken somit den Grad eines Simplex.
 \end{proof}
 \begin{prop}
-  Die Kategorie der kleinen Kategorien $\Cat$ ist kovollständig. Ein
-  Kolimes über halbgeordnete Mengen $\poset \subset \Cat$ ist dabei
-  selbst eine halbgeordnete Menge.
+  Die Kategorien der kleinen Kategorien $\Cat$ und der halbgeordneten
+  Mengen $\poset$ sind kovollständig.
 \end{prop}
 \begin{proof}
-  Die Köcherbasiskategorie ist die Kategorie $Q: E
-  \mathrel{\mathop{\leftleftarrows}^{s}_{t}} V$ (mit Identitäten). Die
-  Kategorie der Köcher ist die Kategorie der Prägarben auf $Q$: $Quiv
-  := [Q\op, \Ens]$. Es folgt sofort die Vollständigkeit und
-  Kovollständigkeit von $Quiv$. Kleine Kategorien sind bestimmte
-  Köcher mit Zusatzstruktur, nämlich Tupel $(Q, K, I)$ bestehend aus
-  einem Köcher $Q = (C, \Lambda, s, t)$, einer Kompositionsregel $K:
-  \Lambda \times_C \Lambda \to \Lambda$ (Faserprodukt über $\Lambda
-  \xrightarrow{s} C \xleftarrow{t} \Lambda$) und Identitäten $I: C \to
-  \Lambda$, sodass für alle Elemente, für die die Ausdrücke definiert
-  sind, gilt
-  \begin{gather*}
-    s(K(f, g)) = s(g), \\
-    t(K(f, g)) = t(f), \\
-    s(I(c)) = c, \\
-    t(I(c)) = c, \\
-    K(f, I(s(f))) = f, \\
-    K(I(t(f)), f) = f, \\
-    K(K(f, g), h) = K(f, K(g, h)).
-  \end{gather*}
-  (Das sind die Axiome eines internen Kategorienobjekts in $\Ens$.)
-  Funktoren zwischen kleinen Kategorien sind Köchermorphismen, für die
-  die offensichtlichen Diagramme für $I$ und $K$ kommutieren.
+  Koprodukte in $\Cat$ sind die Koprodukte der zugrundeliegenden
+  Köcher, d. h. die disjunkte Vereinigung über die Objektmengen und
+  aus den Ausgangskategorien übernommene Morphismenmengen.
 
-  Es gibt einen Linksadjungierten zur Einbettung $\Cat \to Quiv$, das
-  Bilden der freien Pfadkategorie über dem Köcher. Es ist aber $\Cat
-  \subset Quiv$ i. A. keine volle Unterkategorie, weshalb wir
-  Kolimites nicht durch Anwendung des Reflektors auf den Kolimes in
-  $Quiv$ konstruieren können.
-  % TODO anderer Beweis oder Verweis
+  Die Koegalisatoren in $\Cat$ sind schwieriger, vergleiche
+  \cite{BBP}. Wir geben die Konstruktion kurz an. Betrachte kleine
+  Kategorien mit Funktoren $A
+  \mathrel{\mathop{\rightrightarrows}^{F}_{G}} B$. Die dem
+  Koegalisator $B \to C$ zugrundeliegende mengentheoretische Abbildung
+  ist der Koegalisator der den Funktoren $F$ und $G$ zugrundeliegenden
+  mengentheoretischen Abbildungen. Durch diese Identifikationen in $C$
+  werden Morphismen neu komponierbar, deren Kompositionen den durch
+  die Identifikationen verschmolzenen Morphismenmengen hinzugefügt
+  werden. Weiter müssen wie im folgenden Diagramm Morphismen $Ff$ und
+  $Gf$ identifiziert werden, was auf die Kompositionen fortgesetzt
+  wird.
+
+  %TODO Diagramm
+  
+  Die Identifikationen $Fa \sim Ga$ für $a \in A$ und $Ff \sim Gf$ für
+  $f \in A(a, b)$ sind notwendig für einen Koegalisator $B \to C$,
+  damit $A \mathrel{\mathop{\rightrightarrows}^{F}_{G}} B \to C$
+  übereinstimmen. Die weiteren Schritte machen ``minimalinvasiv'' $B$
+  mit diesen Identifikationen wieder zu einer Kategorie.
+
+  Für die volle Unterkategorie $\poset \subset \Cat$ können wir
+  \ref{refl-sub-complete} verwenden, mit dem Reflektor $\Cat \to
+  \poset$, der im folgenden Lemma konstruiert wird.
+
+  % TODO refl-sub-complete
 \end{proof}
+\begin{defn}
+  Eine Kategorie heißt \emph{dünn}, falls jede Morphismenmenge
+  höchstens einelementig ist. Eine Kategorie heißt
+  \emph{Skelettkategorie}, falls in ihr jeder Isomorphismus eine
+  Identität ist.
+\end{defn}
+\begin{lemma}
+  Die vollen Unterkategorien $\mathrm{thinCat}, \mathrm{skelCat}
+  \subset \Cat$ der dünnen bzw. Skelettkategorien sind reflektiv. Der
+  Reflektor $\Cat \to \mathrm{skelCat}$ macht aus dünnen Kategorien
+  dünne Kategorien und liefert durch Komposition mit dem Reflektor
+  $\Cat \to \mathrm{thinCat}$ einen Reflektor $\Cat \to \poset$.
+\end{lemma}
+\begin{proof}
+  Der Linksadjungierte zu $\mathrm{thinCat} \inj \Cat$ ist gegeben
+  durch die Identifikation aller nichtleeren Morphismenmengen zu
+  einelementigen Morphismenmengen. Der Linksadjungierte zu
+  $\mathrm{skelCat} \inj \Cat$ ist die zu einer kleinen Kategorie mit
+  dem Auswahlaxiom konstruierte Unterkategorie, die Isomorphieklassen
+  von Objekten durch ein Objekt aus diesen ersetzt. Klar ist, dass
+  Funktoren $F: C \to D$ in eine dünne Kategorie $D$ Abbildungen auf
+  Objekten sind mit der Zusatzeigenschaft, dass es einen Morphismus
+  $Ff: Fx \to Fy$ in $D$ geben muss, wann immer es einen Morphismus
+  $f: x \to y$ in $C$ gibt. Das ist unerheblich davon, wie viele
+  Morphismen $x \to y$ es in $C$ gibt und zeigt die erste
+  Adjunktion. Ein Funktor in eine Skelettkategorie schickt isomorphe
+  Objekte auf dasselbe Objekt, wird also schon durch das Bild eines
+  Objekts jeder Isomorphieklasse eindeutig festgelegt. Dies zeigt die
+  zweite Adjunktion.
+
+  Der Reflektor $\Cat \to \mathrm{skelCat}$ liefert eine
+  Unterkategorie und erhält deshalb Dünnheit. Halbgeordnete Mengen
+  sind nach Definition dünne Skelettkategorien.
+\end{proof}
+\begin{bem}
+  Der Ansatz, Limites und Kolimites in $Cat$ (wie im Fall der Garben)
+  über die Einbettung $\Cat \subset \mathrm{Quiv}$ in die Kategorie
+  der Köcher zu konstruieren, funktioniert \emph{nicht}. Jene ist als
+  Prägarbenkategorie tatsächlich vollständig und kovollständig und die
+  Inklusion hat mit der freien Pfadkategorie über einem Köcher
+  tatsächlich einen Linksadjungierten; allerdings handelt es sich
+  nicht um eine volle (d. h. reflektive) Unterkategorie, weshalb die
+  Limites und Kolimites von denen in $\mathrm{Quiv}$ bzw. ihren freien
+  Pfadkategorien abweichen.
+\end{bem}
 \begin{defn}
   Die \emph{kategorielle Realisierung} einer simplizialen Menge $X \in
   \s\Ens$ ist definiert als das Tensorprodukt von Funktoren $X \times
