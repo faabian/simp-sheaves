@@ -112,14 +112,15 @@ Wir prüfen, dass es sich um die Basis einer Topologie handeln kann:
   durch die Mengen des Systems überdeckt.
 \end{lemma}
 \begin{proof}
-  Offenbar gilt $X = \cup_\sigma (\geq \sigma)$ und $(\geq \sigma)
-  \cap (\geq \tau) = \cup_{x \in (\geq \sigma) \cap (\geq \tau)} (\geq
-  x)$.
+  Offenbar gilt $X = \cup_\sigma (\geq \sigma)$ und
+  \[ (\geq \sigma) \cap (\geq \tau)
+  = \bigcup_{x \in (\geq \sigma) \cap (\geq \tau)} (\geq x).
+  \]
 \end{proof}
 Eine Menge $U \subset X$ ist bezüglich der Ordnungstopologie also
 genau dann offen, wenn sie nach oben abgeschlossen ist, d. h. wenn
 gilt
-\[ U = \cup_{x \in U} (\geq x). \]
+\[ U = \bigcup_{x \in U} (\geq x). \]
 
 Für $X = \mathcal{K}$ einen Simplizialkomplex vereinfachen sich die
 Schnitte:

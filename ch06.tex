@@ -32,9 +32,9 @@ $\Delta^+$.
 \begin{defn}
   Die darstellbare Prägarbe auf $\Delta^+$
   \[ \Delta^{+n} :=  \Delta^+(\cdot, [n]) \]
-  heißt \emph{nichtdegenerierter Standard-$n$-Simplex}.
+  heißt der \emph{nichtdegenerierte Standard-$n$-Simplex}.
 \end{defn}
-Diese Zurodnung liefert einen Funktor $r: \Delta^+ \to [{\Delta^+}\op,
+Diese Zuordnung liefert einen Funktor $r: \Delta^+ \to [{\Delta^+}\op,
   \Ens]$. Wir erhalten unsere für die kategorielle Realisierung
 gewünschte kosimpliziale Kategorie durch den Funktor der
 nichtdegenerierten Simplizes des nichtdegenerierten
@@ -43,23 +43,23 @@ Inklusionsfunktor und $\iota^*: [\Delta\op, \Ens] \to [{\Delta^+}\op,
   \Ens]$ den Rückzugsfunktor auf Prägarben.
 \begin{defn}
   Der \emph{Stufenfunktor} ist der Funktor
-  \[\Step: \slicecat{\Delta^+}{r}{\iota^* \Delta^n}
+  \[N: \slicecat{\Delta^+}{r}{\iota^* \Delta^n}
   \to \slicecat{\Delta^+}{r}{\Delta^{+n}},
   \]
   gegeben durch das kommutative Quadrat
   \[ 
   \begin{tikzcd}
     f: \Delta^{+m} \to \iota^* \Delta^n \dar[mapsto]{\sim} \rar[mapsto]
-    & \Step f:  \Delta^{+k}  \to \iota^* \Delta^{+n} \dar[mapsto]{\sim} \\
+    & N(f):  \Delta^{+k}  \to \iota^* \Delta^{+n} \dar[mapsto]{\sim} \\
     f \in \Delta([m], [n]) \rar[mapsto]
-    & \hat{f} \in \Delta^+([k], [n]),
+    & N(f) \in \Delta^+([k], [n]),
   \end{tikzcd}
   \]
   in dem die Vertikalen die eindeutigen Zuordnungen aus dem
   Yoneda-Lemma sind und die untere Horizontale die Abbildung, die eine
-  monotone Abbildung $f$ auf die eindeutige monotone Injektion
-  $\hat{f}$ mit demselben Bild (und anderem Definitionsbereich $[k]$)
-  schickt.
+  monotone Abbildung $f$ auf die eindeutige monotone Injektion $N(f)$
+  aus \ref{degen-repr} mit demselben Bild (und anderem
+  Definitionsbereich $[k]$) schickt.
 \end{defn}
 \begin{bem}
   Der Name ``Stufenfunktor'' rührt daher, dass die Werte einer
@@ -76,7 +76,7 @@ Bildmengen. Dies zeigt die Funktorialität.
   \[ \begin{tikzcd}
     {[n]} \arrow{dd}{f} \rar[mapsto]
     & \slicecat{\Delta^+}{r}{\Delta^{+n}} \dar{f \circ} \\
-    & \slicecat{\Delta^+}{r}{\iota^* \Delta^m} \dar{\Step} \\
+    & \slicecat{\Delta^+}{r}{\iota^* \Delta^m} \dar{N} \\
     {[m]} \rar[mapsto]
     & \slicecat{\Delta^+}{r}{\Delta^{+m}}
   \end{tikzcd} \]
@@ -86,8 +86,8 @@ Bildmengen. Dies zeigt die Funktorialität.
 \begin{proof}
   Wir müssen zeigen, dass für monotone $f: [m] \to [n]$ und $g: [l]
   \to [m]$ gilt
-  \[ \Step ((f \circ g)\circ) = \Step (f \circ) \Step (g \circ) \]
-  für $(f \circ)$ den Nachschaltefunktor und $\Step$ den
+  \[ N ((f \circ g)\circ) = N (f \circ) N (g \circ) \]
+  für $(f \circ)$ den Nachschaltefunktor und $N$ den
   Stufenfunktor. Das folgt aber daraus, dass beide Funktoren eine
   monotone Injektion $h: [k] \to [l]$ auf die Injektion auf $\im (f
   \circ g \circ h)$ schicken. Diese Entsprechnung ist verträglich mit
@@ -99,6 +99,12 @@ Bildmengen. Dies zeigt die Funktorialität.
   Mengen, denn die nichttrivialen Morphismen sind das Vorschalten von
   echten Injektionen und senken somit den Grad eines Simplex.
 \end{proof}
+\begin{bem}
+  Die halbgeordneten Mengen $\slicecat{\Delta^+}{r}{\Delta^{+n}}$ sind
+  natürlich einfach die (opponierten) Standard-$n$-Simplizialkomplexe;
+  unsere Konstruktion liefert allerdings die Rand- und
+  Degenerationsmorphismen auf natürliche Art mit.
+\end{bem}
 \begin{prop} \label{cat-cocomplete}
   Die Kategorien der kleinen Kategorien $\Cat$ und der halbgeordneten
   Mengen $\poset$ sind kovollständig.
@@ -201,21 +207,18 @@ Bildmengen. Dies zeigt die Funktorialität.
   kleinste offene Umgebung $(\geq \sigma)$.
 \end{prop}
 \begin{proof}
-  % TODO coends commute with colimit over the coend-defining functor
-  % TODO \Ord functor and its cocontinuity
-  
   Der Funktor $\Ord: \poset \to \Top$ ist nach dem nachgestellten
-  Lemma kostetig. Daher reicht es mit \ref{??}, einen Isomorphismus
-  kosimplizialer topologischer Räume $\blacktriangle \to \Ord R$ zu
-  finden. Beide bestehen aus einem Punkt pro nichtdegeneriertem
-  Simplex (\ref{cw-disjoint-inner}) von $\Delta^n$ und haben als
-  offene Mengen nach oben abgeschlossene Mengen. Randabbildungen $d_i$
-  sind Inklusionen in die Ränder, Degenerationen Kollapse von
-  Kanten. Dies begründen wir sorgfältiger: Unsere Definition von
-  $Rs_i: R[n] \to R[n-1]$ schickt einen nichtdegenerierten Simplex $f:
-  [m] \to [n]$ monoton und injektiv auf $N(s_i \circ f)$, den
-  nichtdegenerierten Simplex, der zum Kollaps von $i$ und $i+1$ in $f$
-  gehört.
+  Lemma kostetig. Daher reicht es mit \ref{coend-cocont}, einen
+  Isomorphismus kosimplizialer topologischer Räume $\blacktriangle \to
+  \Ord R$ zu finden. Beide bestehen aus einem Punkt pro
+  nichtdegeneriertem Simplex (\ref{cw-disjoint-inner}) von $\Delta^n$
+  und haben als offene Mengen nach oben abgeschlossene
+  Mengen. Randabbildungen $d_i$ sind Inklusionen in die Ränder,
+  Degenerationen Kollapse von Kanten. Dies begründen wir sorgfältiger:
+  Unsere Definition von $Rs_i: R[n] \to R[n-1]$ schickt einen
+  nichtdegenerierten Simplex $f: [m] \to [n]$ monoton und injektiv auf
+  $N(s_i \circ f)$, den nichtdegenerierten Simplex, der zum Kollaps
+  von $i$ und $i+1$ in $f$ gehört.
 \end{proof}
 \begin{lemma}
   Der Funktor $\Ord: \poset \to \Top$, der eine halbgeordneten Menge
@@ -226,17 +229,21 @@ Bildmengen. Dies zeigt die Funktorialität.
     \mathrel{\mathop{\rightrightarrows}^{F}_{G}} B \to C$ ein
     Koegalisator in den halbgeordneten Mengen. Dann ist nach
     \ref{cat-cocomplete} und \ref{poset-reflective} die
-    zugrundeliegende mengentheoretische Abbildung von $B \to C$ der
+    zugrundeliegende mengentheoretische Abbildung von $q: B \to C$ der
     mengentheoretische Koegalisator: nur der Reflektor $\Cat \to
     \mathrm{skelCat}$ könnte die zugrundeliegende Menge ändern, wird
     aber bereits auf eine Skelettkategorie angewandt, denn ein
     Kategorienkolimes über halbgeordnete Mengen enthält keine
-    Morphismen in entgegengesetzte Richtungen.
-
-    % TODO: Finaltopologie?    
+    Morphismen in entgegengesetzte Richtungen. Wir müssen noch zeigen,
+    dass $\Ord(q): \Ord B \to \Ord C$ final ist. Ist $U \subset C$
+    eine Menge mit offenem Urbild $q^{-1}(C)$, so ist ein Morphismus
+    $x \to y$ in $C$ mit $x \in U$ ein Pfad $x = v_0 \to v_1 \sim w_1
+    \to w_2 \sim v_2 \to \cdots \to y$ bestehend aus Morphismen in
+    $B$, die sich nach den Identifaktionen durch $q$ verknüpfen
+    lassen. Induktiv liegen nun nach der Abgeschlossenheit nach oben
+    von $q^{-1}(U)$ alle $v_i$, $w_i$ in $q^{-1}(U)$ und somit auch
+    $y$. Es folgt die Offenheit von $U$.
 \end{proof}
-
-% TODO ersetze Step durch N
 
 % TODO sheaf-order-top
 Mit \ref{sheaf-order-top} erhalten wir sofort:

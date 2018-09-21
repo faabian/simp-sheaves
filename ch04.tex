@@ -236,15 +236,15 @@ Wir erhalten einen Funktor $R: \Delta \to \Top, [n] \mapsto
   noch eine kombinatorischere Realisierung analog zur
   Ordnungstopologie auf dem Simplizialkomplex finden. Wir definieren
   die \emph{plumpen Standard-$n$-Simplizes $\blacktriangle^n$}
-  induktiv als Quotienten:
+  Quotienten induktiv konstruierter Äquivalenzrelationen:
   \[ \blacktriangle^0 := |\Delta^0| = \point \]
   und
   \[ \blacktriangle^n := |\Delta^n| / \sim \]
   mit der Äquivalenzrelation
-  \begin{gather*}
-    x \sim y \text{ für } x, y \in \intr |\Delta^n| \text{ und }  \\
-    |d_i| x \sim |d_i| y \text{ für } x, y \in |\Delta^{n-1}|.
-  \end{gather*}
+  \begin{alignat*}{3}
+    x &\sim y && \qquad \text{für } x, y \in \intr |\Delta^n| \text{ und }  \\
+    |d_i| x &\sim |d_i| y && \qquad \text{für } x \sim y \in |\Delta^{n-1}|.
+  \end{alignat*}
   Dabei steht $\intr |\Delta^n|$ für das offene Innere von $|\Delta^n|
   \subset \R^{n+1}$. Anschaulich gesprochen wird also bei $|\Delta^n|
   \to \blacktriangle^n$ das offene Innere zu einem Punkt identifiziert
@@ -263,8 +263,10 @@ Wir erhalten einen Funktor $R: \Delta \to \Top, [n] \mapsto
   monotones $f: [m] \to [n]$ induzieren stetige Abbildungen
   $\overline{|f|}: \blacktriangle^m \to \blacktriangle^n$, sodass
   \[ \begin{tikzcd}
-    \| \Delta^m \| \arrow{d} \arrow{r}{|f|} & \| \Delta^n \| \arrow{d} \\
-    \blacktriangle^m \arrow{r}{\overline{|f|}} & \blacktriangle^n
+    \lvert \Delta^m \rvert \arrow{d} \arrow{r}{|f|}
+    & \lvert \Delta^n \rvert \arrow{d} \\
+    \blacktriangle^m \arrow{r}{\overline{|f|}}
+    & \blacktriangle^n
   \end{tikzcd} \]
   kommutiert.
 \end{lemma}
@@ -368,13 +370,13 @@ $X$.
 \end{lemma}
 \begin{proof}
   Ist $x$ nichtdegeneriert, wähle $y = x$ und $s =
-  \id_{[n]}$. Andernfalls gibt es nach Definition ein $y$ eine
+  \id_{[n]}$. Andernfalls gibt es nach Definition ein $y$ und eine
   Surjektion mit der gewünschten Eigenschaft. Diese sind eindeutig
   nach den Relationen aus \ref{face-gen}, vergleiche \cite{MIT},
   Prop. 9.
 \end{proof}
 Wir notieren für eine solche Darstellung $x = s^* y$ auch $y = N(x)$
-oder zur Bewahrung der $s$-Information auch $y = N_s(x)$.
+oder zur Bewahrung der Information über $s$ auch $y = N_s(x)$.
 
 Wir definieren nun die \emph{sparsame geometrsiche Realisierung} einer
 simplizialen Menge $X$ wie folgt:
@@ -699,11 +701,24 @@ sind. Wir machen diese Aussage präzise:
   Kolimites für $\hat{F}$ sind die initialen Objekte der Kategorien
   von Kokeilen für $F$ bzw. Kokegeln für $\hat{F}$.
 \end{proof}
+\begin{kor} \label{coend-cocont}
+  Koenden vertauschen mit Kolimites über die sie definierenden
+  Funktoren, es gilt für ein System von Funktoren $F_i: C\op \times C
+  \to D$
+  \[ \col_i \int^c F_i(c, c) \iso \int^c \col_i F_i(c, c), \]
+  wenn die beteiligten Terme definiert sind.
+\end{kor}
+\begin{proof}
+  Unsere Beschreibung von Koenden als Kolimites und das Vertauschen
+  von Kolimites reduzieren die Aussage auf die Kostetigkeit von $F
+  \mapsto \hat{F}$. Dies ist klar, da Kolimites in Funktorkategorien
+  objektweise berechnet werden.
+\end{proof}
 \begin{bem}[\cite{Lore}, 1.12]
   Eine andere Beschreibung verwendet statt der Unterteilungskategorie
-  $\Sub(C)$ die verdrehte Pfeilkategorie $\TW(C)$ von $C$, deren Objekte
-  Morphismen $f: c \to c'$ in $C$ und Morphismen zwischen $f: c \to
-  c'$ und $g: d \to g'$ kommutative Quadrate
+  $\Sub(C)$ die verdrehte Pfeilkategorie $\TW(C)$ von $C$, deren
+  Objekte Morphismen $f: c \to c'$ in $C$ und Morphismen zwischen $f:
+  c \to c'$ und $g: d \to g'$ kommutative Quadrate
   \[ \begin{tikzcd}
     c \arrow{d}{f} \arrow{r}{h} & d \arrow{d}{g} \\
     c' & \arrow{l}{k} d'.
