@@ -578,8 +578,8 @@ den ``k-ifizierungen'' der Produkte in $\Top$ und internem Hom
     $\mathcal{I}_L$.
   \end{enumerate}
 \end{prop}
-Für Axiom \ref{itm:k-axiom-subspace} weisen wir das nach. Da es sich
-um eine lokale Eigenschaft handelt, gilt die Aussage im Fall der
+Für das Axiom \ref{itm:k-axiom-subspace} weisen wir das nach. Da es
+sich um eine lokale Eigenschaft handelt, gilt die Aussage im Fall der
 lokalkompakten Räume sofort. Für die kompakten Hausdorffräume bemerkt
 man, dass eine offene Teilmenge eines kompakten Hausdorffraums
 lokalkompakt ist und lokalkompakte Hausdorffräume in der koreflektiven
@@ -626,11 +626,51 @@ Struktur auf $\EnsTop$ zuwenden.
   $\EnsTop$ ist nicht kartesisch abgeschlossen.
 \end{prop}
 \begin{proof}
-  % TODO
+  Wir erinnern daran, dass ein Morphismus in $\EnsTop$ ein
+  kommutatives Quadrat
+  \[ \begin{tikzcd}
+    F \arrow[r] \dar{p} & G \dar{q} \\
+    X \arrow[r] & Y
+  \end{tikzcd} \]
+  ist. In diesem Beweis notieren wir Objekte in $\EnsTop$ mitsamt
+  ihrer Basis als $F \to X$. Angenommen, es gibt ein internes Hom zum
+  Produkt aus \ref{??} in $\EnsTop$. Wir wollen zeigen, dass dieses
+  dann auch ein internes Hom in $\Top$ liefert, ein Widerspruch zu der
+  bekannten Aussage, dass $\Top$ nicht kartesisch abgeschlossen ist
+  (\cite{Borceux}, Prop. 7.1.2).
+
+  Betrachte dazu die volltreuen Einbettungen $\Top \to \EnsTop$ durch
+  faserweise initiale Garben $\iota: X \mapsto (\varnothing \to X)$
+  (konstant leer) und durch faserweise terminale Garben $\tau: X
+  \mapsto (X \xrightarrow{\id} X)$ (konstant einelementig). Wir haben
+  natürliche Bijketionen
+  \begin{align*}
+    \EnsTop(\iota X, U \to L) &\iso C(X, L) \qquad \text{und} \\
+    \EnsTop(\tau X, U \to L) &\iso C(X, U).
+  \end{align*}
+  durch Betrachten des unteren bzw. oberen Pfeils des kommutativen
+  Quadrats.
+  
+  Wir erhalten für $(U \to L) = (\tau Y \Implies \tau Z)$ das interne
+  Hom, dass wegen
+  \begin{align*}
+    C(X, U)
+    &\iso \Ens_{/C}(\tau X, U \to L) \\
+    &\iso \Ens_{/C}(\tau X \times \tau Y, \tau Z) \\
+    &\iso C(X \times Y, Z)
+  \end{align*}
+  $U$ ein internes Hom in $\Top$ für $Y$ und $Z$ ist.
+
+  % TODO schöner
 \end{proof}
 Da das einzige Problem die fehlende kartesisch abgeschlossene Struktur
-in der Basis dargestellt hat, schränken wir uns einfach auf eine
-bequemere Kategorie ein.
+in der Basis war, schränken wir uns auf eine bequemere Kategorie
+ein.
+
+% TODO Satz unfertig
+Es stellt sich heraus, dass für kartesisch abgeschlossene
+Kategorien, die mit jedem Raum $X$ auch alle étalen Räume über $X$
+enthält
 \begin{Satz}
   Sei $\mathcal{K}$ eine koreflektive Unterkategorie der topologischen
   Räume, die die Axiome \ref{itm:k-axiom-subset} -
@@ -653,76 +693,7 @@ erklären, wieso.
   nichtleere volle Unterkategorie der topologischen Räume.
 \end{satz}
 \begin{proof}
-  Wir erinnern daran, dass ein Morphismus in $\Ens_{/C}$ ein
-  kommutatives Quadrat
-  \[ \begin{tikzcd}
-    F \arrow[r] \dar{p} & G \dar{q} \\
-    X \arrow[r] & Y
-  \end{tikzcd} \]
-  ist. In diesem Beweis notieren wir Objekte in $\Ens_{/C}$ mitsamt
-  ihrer Basis als $F \to X$.
-  
-  Zunächst zeigen wir, dass Produkt und internes Hom von $\Ens_{/C}$
-  ein Produkt und internes Hom in $C$ liefern. Betrachte dazu die
-  volltreuen Einbettungen $C \to \Ens_{/C}$ durch faserweise initiale
-  Garben $\iota: X \mapsto (\varnothing \to X)$ (konstant leer) und
-  durch faserweise terminale Garben $\tau: X \mapsto (X
-  \xrightarrow{\id} X)$ (konstant einelementig). Wir haben natürliche
-  Bijketionen
-  \begin{align*}
-    \Ens_{/C}(\iota X, U \to L) &\iso C(X, L) \qquad \text{und} \\
-    \Ens_{/C}(\tau X, U \to L) &\iso C(X, U).
-  \end{align*}
-  durch Betrachten des unteren bzw. oberen Pfeils des kommutativen
-  Quadrats.
 
-  Sei $(U \to L) = \tau Y \times \tau Z$ das Produkt in
-  $\Ens_{/C}$. Dieses erfüllt die universelle Eigenschaft des Produkts
-  insbesondere für Testobjekte der Form $\iota X$ und wir erhalten aus
-  der universellen Eigenschaft durch Einschränken auf den unteren
-  Pfeil
-  \[ \begin{tikzcd}
-    \Ens_{/C}(\iota X, U \to L) \rar{\sim}
-    \arrow{d}{\sim}
-    & \Ens_{/C}(\iota X, \tau Y) \times \Ens_{/C}(\iota X, \tau Z)
-    \dar{\sim} \\
-    C(X, L) \rar{\sim}
-    & C(X, Y) \times C(X, Z).
-  \end{tikzcd} \]
-  Es erfüllt also $L$ die universelle Eigenschaft des Produkts $Y
-  \times Z$ in $C$.  Betrachten wir Testobjekte der Form $\tau X$, so
-  erhalten wir entsprechend durch Einschränken auf den oberen Pfeil
-  auch, dass $U \iso Y \times Z$ ist und die Abbildung dazwischen nach
-  dem Yoneda-Lemma der eindeutige Isomorphismus zwischen den
-  universellen Objekten. Es ist also $\tau X \times \tau Y \iso \tau
-  (X \times Y)$ in $\Ens_{/C}$. Analog finden wir
-  \begin{equation} \label{eq:iota-prod}
-    \iota X \times (G \to Y) \iso \iota (X \times Y).
-  \end{equation}
-  
-  Mit derselben Technik erhalten wir auch für $(U \to L) = (\tau Y
-  \Implies \tau Z)$ das interne Hom, dass wegen
-  \begin{align*}
-    C(X, U)
-    &\iso \Ens_{/C}(\tau X, U \to L) \\
-    &\iso \Ens_{/C}(\tau X \times \tau Y, \tau Z) \\
-    &\iso C(X \times Y, Z)
-  \end{align*}
-  $U$ ein internes Hom in $C$ für $Y$ und $Z$ ist und wegen
-  \begin{align*}
-    C(X, L)
-    &\iso \Ens_{/C}(\iota X, U \to L) \\
-    &\iso \Ens_{/C}(\iota X \times \tau Y, \tau Z) \\
-    &\iso \Ens_{/C}(\iota (X \times Y), \tau Z) \\
-    &\iso C(X \times Y, Z)
-  \end{align*}
-  auch $L$. Wieder ist nach dem Yoneda-Lemma $U \to L$ der eindeutige
-  Isomorphismus zweier einen Funktor darstellenden
-  Objekte \footnote{Solche bis auf eindeutigen Isomorphismus
-    eindeutigen Objekte werden wir wie üblich kanonisch wählen und die
-    eindeutigen Isomorphismen als Identitäten schreiben.}.
-
-  Es muss also $C$ kartesisch abgeschlossen sein.
 
   Ein Morphismus
   \[ \begin{tikzcd}

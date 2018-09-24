@@ -1,33 +1,6 @@
-\documentclass[a4paper]{article}
-% \usepackage[left=3cm,right=3cm,top=3cm,bottom=2cm]{geometry} % page settings
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsthm}
-\usepackage[textsize=small]{todonotes}
-% \usepackage{etoolbox}
-\usepackage[ngerman]{babel}
-\usepackage[utf8]{inputenc}
-% \usepackage{framed}
-% \usepackage{fancyhdr}
-% \usepackage{tikz}
-
-\setlength{\parskip}{\medskipamount}
-\setlength{\parindent}{0pt}
-
-% \newcounter{satz}
-
-\newtheorem{satz}{Satz}[section]
-\newtheorem{defn}[satz]{Definition}
-\newtheorem{theorem}[satz]{Theorem}
-\newtheorem{prop}[satz]{Proposition}
-\newtheorem{cor}[satz]{Korollar}
-
-
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\op}{^{op}}
-\newcommand{\del}{\partial}
-\newcommand{\et}{\acute{e}t}
+% Emacs mode: -*-latex-*-
+% include latex header (\usepackage, \newcommand etc.) 
+\input{header.tex}
 
 \begin{document}
 
@@ -36,27 +9,23 @@
 \date{\today}
 \maketitle
 
-\section{Einleitung}
+\tableofcontents
 
-Ziel der vorliegenden Arbeit ist es, eine geometrische Anschauung für
-Diagrammkategorien Abelscher Garben zu entwickeln, wie sie etwa in der
-Theorie der Derivatoren eine Rolle spielen.
+% Einleitung
 
-\section{Simplizialkomplexe von Garben}
+%\input{ch01.tex}
+%\input{ch02.tex}
+%\input{ch03.tex}
+%\input{ch04.tex}
+%\input{ch05.tex}
+%\input{ch06.tex}
 
-\section{Simpliziale Objekte in der Kategorie der Garben}
+\cite{KS} \cite{TG} \cite{GJ} \cite{BBP} \cite{GM}
 
-\section{Diagramme in der Kategorie der Garben}
+\bibliographystyle{alpha}
+\bibliography{bibtex}
+\addcontentsline{toc}{chapter}{Literatur}
 
-\begin{thebibliography}{9}
-
-%% \bibitem{lamport94}
-%%   L. C. Grove, C. T. Benson,
-%%   Finite Reflection Groups,
-%%   Graduate Texts in Mathematics Vol. 99,
-%%   2nd edition,
-%%   Springer-Verlag (1985).
-
-\end{thebibliography}
+% Eigenständigkeitserklärung
 
 \end{document}
