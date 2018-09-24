@@ -498,16 +498,51 @@ $\mathcal{I} \subset \mathcal{K}$.
 \begin{bem}
   Dual zu \ref{refl-sub} heißt eine volle Unterkategorie mit zur
   Inklusion Rechtsadjungiertem \emph{koreflektiv}, der
-  Rechtsadjungierte heißt \emph{Koreflektor}.
+  Rechtsadjungierte heißt \emph{Koreflektor}. Die Konstruktion, die
+  zur vollen Unterkategorie $\mathcal{I} \subset \Top$ eine
+  koreflektive Unterkategorie $\mathcal{K} \subset \Top$ liefert,
+  welche $\mathcal{I}$ umfasst, heißt auch Übergang zur
+  \emph{koreflektiven Hülle}. Es handelt sich tatsächlich um eine
+  idempotente Operation (\cite{Vogt}, Prop. 1.5).
 \end{bem}
+Die koreflektive Hülle besitzt die folgenden Stabilitätseigenschaften:
+\begin{prop} \label{k-complete}
+  Die koreflektive Hülle $\mathcal{K}$ ist vollständig und
+  kovollständig. Die Kolimites stimmen mit den Kolimites aus $\Top$
+  überein, die Limites entstehen durch Anwendung des Koreflektors $k$
+  auf den Limes in $\Top$.
+\end{prop}
+Insbesondere ist $\mathcal{K}$ also stabil unter disjunkten Summen und
+Quotientenbildung.
+\begin{proof}
+  Das ist die duale Aussage zu \ref{refl-sub-complete}. Die
+  Vollständigkeit und Kovollständigkeit von $\Top$ durch Versehen der
+  mengentheoretischen Limites bzw. Kolimites mit der Initial-
+  bzw. Finaltopologie ist bekannt.
+\end{proof}
 
-Wir nehmen nun an, dass $\mathcal{I}$ die folgenden Axiome erfüllt:
+Im allgemeinen kann man keine Aussage darüber treffen, ob mit der
+Relativtopologie versehene Unterräume von Objekten in $\mathcal{K}$
+wieder zu $\mathcal{K}$ gehören. Wir benötigen die folgende
+Eigenschaft:
 \begin{enumerate}
-  \item Ist $A \subset X$ ein abgeschlossener Unterraum eines Objekts
-    $X \in \mathcal{I}$, dann gilt $A \in \mathcal{K}$.
-  \item $\mathcal{I}$ ist abgeschlossen unter endlichen kartesischen
-    Produkten (Produkten in $\Top$).
-  \item Sind $X, Y \in \mathcal{I}$, so ist die Auswertungsabbildung
+\item \label{itm:k-axiom-subspace} Ist $U \open X$ ein offener
+  Unterraum eines Objekts $X \in \mathcal{I}$ versehen mit der
+  Relativtopologie, so gilt $U \in \mathcal{K}$.
+\end{enumerate}
+In diesem Fall gilt bereits für Objekte $X \in \mathcal{K}$, dass
+offene Unterräume $U \open X$ wieder Objekte von $\mathcal{K}$
+sind. Dieselbe Aussage gilt, wenn man ``offen'' zweimal durch
+``abgeschlossen'' ersetzt (\cite{Vogt}, Prop. 2.4).
+
+Wir nehmen nun an, dass $\mathcal{I}$ die folgenden Axiome erfüllt
+(\cite{Vogt}, Axiom 2):
+\begin{enumerate}
+  \setcounter{enumi}{1}
+  \item \label{itm:k-axiom-prod} $\mathcal{I}$ ist abgeschlossen unter
+    endlichen kartesischen Produkten (Produkten in $\Top$).
+  \item \label{itm:k-axiom-ev} Sind $X, Y \in \mathcal{I}$, so ist die
+    Auswertungsabbildung
     \begin{align*}
       \ev_{X, Y}: \Top_{co}(X, Y) \times X &\to Y,
       (f, x) &\mapsto f(x)
@@ -533,36 +568,80 @@ den ``k-ifizierungen'' der Produkte in $\Top$ und internem Hom
   getrennt geschrieben. Für Hausdorffräume stimmen beide Begriffe
   überein.
 \end{bem}
-Die volle Unterkategorie der lokalkompakten topologischen Räume
-$\mathcal{L} \subset \Top$ erfüllt die Axiome und hat deshalb eine
-zugehörige kartesisch abgeschlossene Unterkategorie $\mathcal{K}$, die
-die kompakt erzeugten Hausdorffräume und lokalkompakten Räume umfasst
-(\cite{Vogt}, 5.3).
-
-Der Vorteil dieser Konstruktion im Vergleich zu den kompakt erzeugten
-Hausdorffräumen ist folgende Beobachtung:
-\begin{prop}
+\begin{prop}[\cite{Vogt}, 5]
+  Die folgenden vollen Unterkategorien der Kategorie der topologischen
+  Räume erfüllen die Axiome \ref{itm:k-axiom-subspace} -
+  \ref{itm:k-axiom-ev}.
   \begin{enumerate}[label=(\roman*)]
-    \item Ein étaler Raum über einem lokalkompakten topologischen Raum
-      ist lokalkompakt.
-      % TODO golt das sogar für die koreflektive Hülle??
-    \item Die Kategorie der lokalkompakten topologischen Räume
-      $\mathcal{L}$ ist
-      %% TODO ???
-      %% tensoriert über K oder so
-      %% kartesisch abgeschlossen. <-- stimmt (vmtl.) nicht!
+  \item die Kategorie der kompakten Hausdorffräume $\mathcal{I}_K$,
+  \item die Kategorie der lokalkompakten topologischen Räume
+    $\mathcal{I}_L$.
   \end{enumerate}
 \end{prop}
+Für Axiom \ref{itm:k-axiom-subspace} weisen wir das nach. Da es sich
+um eine lokale Eigenschaft handelt, gilt die Aussage im Fall der
+lokalkompakten Räume sofort. Für die kompakten Hausdorffräume bemerkt
+man, dass eine offene Teilmenge eines kompakten Hausdorffraums
+lokalkompakt ist und lokalkompakte Hausdorffräume in der koreflektiven
+Hülle der kompakten Hausdorffräume enthalten sind:
+% TODO
+
+% TODO 2,3?
+\begin{kor}
+  Die koreflektiven Hüllen von $\mathcal{I}_K$ und $\mathcal{I}_L$
+  sind kartesisch abgeschlossen und enthalten mit jedem Objekt $X$
+  auch alle offenen und alle abgeschlossenen Unterräume $Y \subset X$.
+\end{kor}
+
+Damit können wir die für uns entscheidende Eigenschaft zeigen:
+\begin{prop}
+  Ist $X \in \mathcal{K}$ für $\mathcal{K}$ die koreflektive Hülle von
+  $\mathcal{I}_K$ bzw. $\mathcal{I}_L$ und $F \to X$ eine étale
+  Abbildung, so gilt auch $F \in \mathcal{K}$.
+\end{prop}
 \begin{proof}
-  \begin{enumerate}[label=(\roman*)]
-    \item Étale Abbildungen sind nach Definition lokale
-      Homöomorphismen, Lokalkompaktheit ist eine lokale Eigenschaft.
-    \item Das Produkt $X \times Y$ aus $\Top$ ist lokalkompakt, falls
-      beide Faktoren es sind und stimmt dann auch mit den Produkten in
-      $\mathcal{L}$ und $\mathcal{K}$ überein.
-      % TODO ???
-  \end{enumerate}
+  Wir können den étalen Raum $F \to X$ als Kolimes mittels der
+  Schnitte $F(U)$ über offene Mengen $U \open X$ darstellen:
+  \[ F \iso \coprod_{U \open X} F(U) \times U / \sim. \]
+  Dabei läuft das Koprodukt über alle offenen Teilmengen von $X$ und
+  ist die Äquivalenzrelation die Identifikation gleicher Keime, d. h.
+  \[ (s, p) \sim (t, q) \Iff p = q \text{ und } s_p = t_p. \]
+  Die étale Abbildung $F \to X$ ist dann von der Projektion auf die
+  zweiten Faktoren induziert und wohldefiniert. Man erkennt leicht den
+  Isomorphismus als die Koeinheit der Adjunktion $(ét, S)$ aus
+  \cite{TG}, 2.1.24, eingeschränkt auf die Kategorie der étalen Räume
+  über $X$.
+
+  Nach den Stabilitätseigenschaften von $\mathcal{K}$ sind die offenen
+  Teilmengen $U \subset X$ Objekte von $\mathcal{K}$ und dann auch der
+  Kolimes $F$ bestehend aus Koprodukt und Koegalisator. Man beachte,
+  dass es sich bei $F(U) \times U$ mit der diskreten Topologie auf
+  $F(U)$ formal um das Koprodukt $\coprod_{F(U)} U$ handelt.
 \end{proof}
+
+Wir können uns nun der Frage nach einer kartesisch abgeschlossenen
+Struktur auf $\EnsTop$ zuwenden.
+\begin{prop}
+  Die Kategorie der Garben über topologischen Räumen mit Morphismen
+  $\EnsTop$ ist nicht kartesisch abgeschlossen.
+\end{prop}
+\begin{proof}
+  % TODO
+\end{proof}
+Da das einzige Problem die fehlende kartesisch abgeschlossene Struktur
+in der Basis dargestellt hat, schränken wir uns einfach auf eine
+bequemere Kategorie ein.
+\begin{Satz}
+  Sei $\mathcal{K}$ eine koreflektive Unterkategorie der topologischen
+  Räume, die die Axiome \ref{itm:k-axiom-subset} -
+  \ref{itm:k-axiom-ev} erfüllt. Dann ist die Kategorie der Garben über
+  Räumen in $\mathcal{K}$ mit Morphismen $\Ens_{/\mathcal{K}} \subset
+  \EnsTop$ kartesisch abgeschlossen.
+\end{Satz}
+\begin{proof}
+  % TODO
+\end{proof}
+
 
 Unsere Hoffnung, eine kartesisch abgeschlossene Struktur auf
 $\Ens_{/\Top}$ zu finden, wird sich nicht erfüllen. Wir können aber
