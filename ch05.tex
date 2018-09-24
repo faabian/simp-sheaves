@@ -295,8 +295,6 @@ sofort die Verallgemeinerung.
 
 % TODO:
 % * erster Ansatz: halmweise Realisierung funktioniert nicht
-% * erklären, wieso das für Ens/Top nicht funktioniert
-%   bzw. Ens/Top anreichern / kart. abschließen
 
 \subsection{Die kartesisch abgeschlossene Struktur der Garben auf $X$}
 
@@ -346,13 +344,59 @@ internes Hom gibt.
   \[ (F \times G)_x \iso F_x \times G_x \]
   aus dem Vertauschen endlicher Limites mit filtrierenden Kolimites.
 \end{proof}
-% TODO: allg. Aussage (kl. Prägarbenkat. über kart. abg. Kat. ist
-% kart. abg. aus Ninja-Yoneda-Lemma herleiten)
-
 Diese Struktur einer kartesisch abgeschlossenen Kategorie macht
 $\EnsX$ insbesondere zu einer über sich selbst tensorierten Kategorie
 im Sinne von \ref{copower}. Wir erhalten einen Nerv-Funktor für die
 geometrische Realisierung simplizialer Garben auf $X$ aus \ref{nerve}.
+
+Da es sich wieder um eine sehr allgemeine Aussage handelt, geben wir
+sie in ihrer vollen Form an.
+\begin{prop}
+  Ist $C$ eine kleine Kategorie, so ist die Prägarbenkategorie
+  $\Ens^{C\op}$ kartesisch abgeschlossen.
+\end{prop}
+\begin{proof}
+  Nach der objektweisen Berechnung von Limites in Funktorkategorien
+  ist das Prägarbenprodukt gegeben durch $(F \times G)(c) = F(c)
+  \times G(c)$ für $F, G \in \Ens^{C\op}$ und $c \in C$. Wir
+  behaupten, dass das interne Hom in der Prägarbenkategorie die
+  Prägarbe
+  \[ (F \Implies G)(c) := \Ens^{C\op}(F \times C(\cdot, c), G), \]
+  ist, die auf Morphismen $f: c \to d$ durch Vorschalten von
+  Transformationen $\id_F \times (\circ f)$ gegeben ist, mit $(\circ
+  f): C(\cdot, c) \to C(\cdot, d)$ dem Nachschalten von $f$. Mit
+  \ref{trans-end} sind Morphismen in $\Ens^{C\op}$ darstellbar als
+  Ende
+  \[ \Ens^{C\op}(F, G) = \int_c \Ens(F(c), G(c)) \]
+  und wir berechnen mit den Regeln des (Ko-) Endenkalküls für $F, G, H
+  \in \Ens^{C\op}$:
+  \begin{align*}
+    \Ens^{C\op}(F, G \Implies H)
+    &\iso[Def.] \Ens^{C\op}(F, \Ens^{C\op}(F \times C(\cdot, \bullet), G)) \\
+    &\iso[\ref{trans-end}]
+     \int_c \Ens(F(c), \int_d \Ens(G(d) \times C(d, c), H(d))) \\
+    &\iso[\ref{coend-cocont}]
+     \int_c \int_d \Ens(F(c), \Ens(G(d) \times C(d, c), H(d))) \\
+    &\iso[\ref{coend-fubini}]
+     \int_d \int_c \Ens(F(c), \Ens(G(d) \times  C(d, c), H(d))) \\
+    &\iso[Adj.] \int_d \int_c \Ens(F(c) \times G(d) \times C(d, c), H(d)) \\
+    &\iso[\ref{coend-cocont}]
+     \int_d \Ens( \int^c F(c) \times G(d) \times C(d, c), H(d)) \\
+    &\iso[\ref{coend-density}]
+     \int_d \Ens( F(d) \times G(d), H(d)) \\
+    &\iso[\ref{trans-end}]
+     \Ens^{C\op}(F \times G, H).
+  \end{align*}
+  % TODO left und right setzen für bessere Klammern
+\end{proof}
+Die obere Aussage über Prägarben auf topologischen Räumen ergibt sich
+daraus durch die Beobachtung, dass $F|_U = F \times \OffX(\cdot, U)$
+ist, denn $\OffX$ ist halbgeordnet durch Inklusionen. Wir erhalten
+auch die kartesisch abgeschlossene Struktur simplizialer Mengen, der
+Prägarbenkategorie auf $\Delta$. Explizit ist für $X, Y \in \s\Ens$:
+\[ (X \times Y)_n = X_n \times Y_n \]
+und
+\[ (X \Implies Y)_n = \s\Ens(X \times \Delta^n, Y). \]
 
 \subsection{Kategorien von Garben über topologischen Räumen}
 
@@ -608,7 +652,7 @@ Damit können wir die für uns entscheidende Eigenschaft zeigen:
   \[ (s, p) \sim (t, q) \Iff p = q \text{ und } s_p = t_p. \]
   Die étale Abbildung $F \to X$ ist dann von der Projektion auf die
   zweiten Faktoren induziert und wohldefiniert. Man erkennt leicht den
-  Isomorphismus als die Koeinheit der Adjunktion $(ét, S)$ aus
+  Isomorphismus als die Koeinheit der Adjunktion $(\et, S)$ aus
   \cite{TG}, 2.1.24, eingeschränkt auf die Kategorie der étalen Räume
   über $X$.
 
@@ -671,13 +715,13 @@ ein.
 Es stellt sich heraus, dass für kartesisch abgeschlossene
 Kategorien, die mit jedem Raum $X$ auch alle étalen Räume über $X$
 enthält
-\begin{Satz}
+\begin{satz}
   Sei $\mathcal{K}$ eine koreflektive Unterkategorie der topologischen
   Räume, die die Axiome \ref{itm:k-axiom-subset} -
   \ref{itm:k-axiom-ev} erfüllt. Dann ist die Kategorie der Garben über
   Räumen in $\mathcal{K}$ mit Morphismen $\Ens_{/\mathcal{K}} \subset
   \EnsTop$ kartesisch abgeschlossen.
-\end{Satz}
+\end{satz}
 \begin{proof}
   % TODO
 \end{proof}
