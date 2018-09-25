@@ -681,7 +681,7 @@ siehe etwa \cite{??}.
 \end{kor}
 
 Damit können wir die für uns entscheidende Eigenschaft zeigen:
-\begin{prop}
+\begin{prop} \label{k-etale-closed}
   Ist $X \in \mathcal{K}$ für $\mathcal{K}$ die koreflektive Hülle von
   $\mathcal{I}_K$ bzw. $\mathcal{I}_L$ und $F \to X$ eine étale
   Abbildung, so gilt auch $F \in \mathcal{K}$.
@@ -754,7 +754,7 @@ Da das einzige Problem die fehlende kartesisch abgeschlossene Struktur
 in der Basis war, schränken wir uns auf eine bequemere Kategorie $\K$
 ein. Zunächst betrachten wir den Fall von Paaren von $\K$-Räumen mit
 stetiger, aber nicht notwendigerweise étaler, Abbildung.
-\begin{lemma}
+\begin{lemma} \label{k-arrow-cart-closed}
   Sei $I$ die Pfeilkategorie $\bullet \to \bullet$ und $\K \subset
   \Top$ eine koreflektive, kartesisch abgeschlossene Kategorie
   topologischer Räume. Dann ist $\K^I$ kartesisch abgeschlossen.
@@ -777,19 +777,73 @@ stetiger, aber nicht notwendigerweise étaler, Abbildung.
   % TODO left/right setzen
 \end{proof}
 Im allgemeinen ist das interne Hom in $\K^I$ für $(F \to X)$ und $G
-\to Y)$ mit étalen Abbildungen nicht wieder étale. Für die volle
-Unterkategorie $\Ens_{\K} \subset \K^I$ der étalen Räume über
-$\K$-Räumen benötigen wir daher wieder eine koreflektive
-Struktur. Diese ist gegeben durch die ``Étalisierung'':
+\to Y)$ mit étalen Abbildungen nicht wieder étale. Wir können
+versuchen, es zu ``étalisieren'':
 \begin{lemma}[\cite{TG}, 2.1.40]
-  Für $X$ einen topologischen Raum besitzt die Inklusion $\etTop_X
-  \inj \Top_X$ einen Rechtsadjungierten, genannt die
-  \emph{Etalisierung}.
+  Für $X$ einen topologischen Raum ist die volle Unterkategorie
+  $\etTop_X \inj \Top_X$ koreflektiv. Der zur Inklusion
+  Rechtsadjungierte heißt \emph{Étalisierung}.
 \end{lemma}
-\begin{proof}
-  % TODO
+\begin{proof} (\cite{TG}, 2.1.40)
+  Wir erhalten die Étalisierung als die Verknüpfung $\et \circ S$ für
+  $S$ den Funktor der Schnittgarbe und $\et$ den Funktor des étalen
+  Raums einer Garbe. Es handelt sich um die Verknüpfung von
+  Adjunktionen
+  \[(\et, S) \circ (S, \et) = (\et \circ S, \et \circ S):
+  \Top_X \rightleftarrows \EnsX \rightleftarrows \etTop_X,
+  \]
+  wobei letztere Adjunktion sogar die bekannte Äquivalenz von
+  Kategorien ist.
 \end{proof}
-
+Ist $\K \subset \Top$ nun eine Kategorie topologischer Räume, die mit
+jedem Raum $X$ auch jeden étalen Raum über $X$ enthält (etwa wie in
+\ref{k-etale-closed}), so können wir die Kategorie der étalen Räume
+über $\K$ als volle Unterkategorie von $\K^I$ auffassen:
+\[ \et \K^I := \Ens_{/\K} \subset \K^I. \]
+Gäbe es nun einen Koreflektor $^+: \K^I \to \et \K^I$, so hätten wir
+für $F, G, H \in \et \K^I$:
+\begin{align*}
+  \et \K^I(F \times G, H)
+  &\iso \K^I(F \times G, H) \\
+  &\iso \K^I(F, G \Implies H) \\
+  &\iso \et \K^I(F, (G \Implies H)^+),
+\end{align*}
+mit der kartesisch abgeschlossenen Struktur aus
+\ref{k-arrow-cart-closed} im zweiten Schritt. Die Produkte in $\K^I$
+und $\et \K^I$ stimmen dabei nach dem folgenden Lemma überein.
+\begin{lemma}
+  Ist $k: \Top \to \K$ ein Koreflektor und $p: F \to X$ étale in
+  $\Top$, so ist $kp: kF \to kX$ étale.
+\end{lemma}
+\begin{bem}
+  Die Bedingung, dass $\K$ koreflektiv sei, ist hier nur eine sehr
+  schwache Einschränkung, denn sie ist äquivalent dazu, dass $\K$
+  unter Kolimites in $\Top$ abgeschlossen ist (\cite{Herrlich},
+  Thm. 37.3).
+  % TODO benötigen wir col-Abschluss eh?
+\end{bem}
+\begin{proof}
+  Dass $p$ étale ist, bedeutet, dass es für jedes $x \in F$ ein
+  kommutatives Quadrat
+  \[ 
+  \begin{tikzcd}
+    U \dar{\sim} \rar[hook] & F \dar{p} \\
+    p(U) \rar[hook] & X
+  \end{tikzcd}
+  \]
+  gibt mit $U \open F$ und $p(U) \open X$. Anwendung von $k$ ergibt
+  das entsprechende Diagramm, in welchem $kU$ und $k(p(U))$ offen
+  sind, da der Koreflektor die Topologien höchstens verfeinert und die
+  Abbildungen injektiv bleiben, da $k$ die zugrundeliegenden
+  mengentheoretischen Abbildungen erhält. Da $k$ ein Funktor ist,
+  kommutiert das Quadrat und $kU \iso k(p(U)) = (kp)(KU)$ ist ein
+  Homöomorphismus.
+\end{proof}
+Das Übereinstimmen der Produkte in $\K^I$ und $\et \K^I$ ergibt sich
+nun daraus, dass für $(F \to X), (G \to Y) \in \et \K^I$ zunächst das
+Produkt $(F \times G \to X \times Y)$ in $\Top$ étale ist, und dann
+nach dem Lemma auch das Produkt $k(F \times G) \to k(X \times Y)$ in
+$\K^I$ étale und somit in $\et \K^I$ ist.
 
 % TODO Satz unfertig
 Es stellt sich heraus, dass für kartesisch abgeschlossene Kategorien,
@@ -799,12 +853,9 @@ die mit jedem Raum $X$ auch alle étalen Räume über $X$ enthält
   Räume, die die Axiome \ref{itm:k-axiom-subset} -
   \ref{itm:k-axiom-ev} erfüllt. Dann ist die Kategorie der Garben über
   Räumen in $\mathcal{K}$ mit Morphismen $\Ens_{/\mathcal{K}} \subset
-  \EnsTop$ kartesisch abgeschlossen.
+  \EnsTop$
+  % TODO: ???
 \end{satz}
-\begin{proof}
-  % TODO
-\end{proof}
-
 
 Unsere Hoffnung, eine kartesisch abgeschlossene Struktur auf
 $\Ens_{/\Top}$ zu finden, wird sich nicht erfüllen. Wir können aber
