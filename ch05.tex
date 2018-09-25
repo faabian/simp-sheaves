@@ -625,12 +625,40 @@ den ``k-ifizierungen'' der Produkte in $\Top$ und internem Hom
 Für das Axiom \ref{itm:k-axiom-subspace} weisen wir das nach. Da es
 sich um eine lokale Eigenschaft handelt, gilt die Aussage im Fall der
 lokalkompakten Räume sofort. Für die kompakten Hausdorffräume bemerkt
-man, dass eine offene Teilmenge eines kompakten Hausdorffraums
-lokalkompakt ist und lokalkompakte Hausdorffräume in der koreflektiven
-Hülle der kompakten Hausdorffräume enthalten sind:
-% TODO
+man, dass nach dem folgenden Lemma eine offene Teilmenge eines
+kompakten Hausdorffraums lokalkompakt ist und lokalkompakte
+Hausdorffräume mit den kompakt erzeugten Hausdorffräumen allgemein
+(vgl. \ref{cg-crit} \ref{itm:cg-crit-lc}) in der koreflektiven Hülle
+der kompakten Hausdorffräume enthalten sind: in der Tat ist für diese
+das System der Inklusionen kompakter Teilmengen konfinal im System der
+von kompakten Hausdorffräumen ausgehenden stetigen Abbildungen, da das
+Bild von Kompakta unter stetigen Abbildungen kompakt ist. Die
+Bedingung, kompakt erzeugt zu sein, bedeutet aber gerade, die
+Finaltopologie bezüglich dieser Inklusionen zu tragen.
+\begin{lemma}
+  Sei $K$ ein kompakter Hausdorffraum und $U \open K$ eine offene
+  Teilmenge. Dann ist $U$ mit der induzierten Topologie lokalkompakt.
+\end{lemma}
+\begin{proof}
+  Sei $V \open U$ eine offene Umgebung eines Punktes $x \in U$. Der
+  Rand $\del V$ ist als abgeschlossene Teilmenge eines kompakten
+  Hausdorffraums kompakt und kann somit durch endlich viele offene
+  Mengen überdeckt werden, die disjunkt zu einer offenen Umgebung
+  $W_0$ von $x$ sind. Bezeichne die Vereinigung dieser Mengen mit
+  $W$. Wegen $W \supset \del V$ ist $V \setminus W = \overline{V}
+  \setminus W$ abgeschlossen und somit eine kompakte Umgebung von $x$,
+  die die offene Umgebung $W_0$ von $x$ enthält.
+\end{proof}
+Auch Axiom \ref{itm:k-axiom-prod} sieht man direkt: ein Produkt von
+Hausdorffräumen ist bekanntermaßen wieder Hausdorffsch und ein Produkt
+kompakter Räume wieder kompakt. Mit dieser Aussage finden wir auch bei
+einem Produkt lokalkompakter Räume Umgebungsbasen aus Kompakta durch
+die Umgebungsbasen aus Produktmengen.
 
-% TODO 2,3?
+Für das Axiom \ref{itm:k-axiom-ev} verweisen wir auf die Literatur,
+siehe etwa \cite{??}.
+% TODO finden
+
 \begin{kor}
   Die koreflektiven Hüllen von $\mathcal{I}_K$ und $\mathcal{I}_L$
   sind kartesisch abgeschlossen und enthalten mit jedem Objekt $X$
