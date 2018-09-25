@@ -350,7 +350,7 @@ im Sinne von \ref{copower}. Wir erhalten einen Nerv-Funktor für die
 geometrische Realisierung simplizialer Garben auf $X$ aus \ref{nerve}.
 
 Da es sich wieder um eine sehr allgemeine Aussage handelt, geben wir
-sie in ihrer vollen Form an.
+die Verallgemeinerung auf beliebige Prägarbenkategorien an.
 \begin{prop}
   Ist $C$ eine kleine Kategorie, so ist die Prägarbenkategorie
   $\Ens^{C\op}$ kartesisch abgeschlossen.
@@ -397,6 +397,21 @@ Prägarbenkategorie auf $\Delta$. Explizit ist für $X, Y \in \s\Ens$:
 \[ (X \times Y)_n = X_n \times Y_n \]
 und
 \[ (X \Implies Y)_n = \s\Ens(X \times \Delta^n, Y). \]
+
+Auch die Rolle von $\Ens$ kann verallgemeinert werden. Wir erhalten:
+\begin{prop} \label{presheaf-cart-closed}
+  Sei $E$ eine kartesisch abgeschlossene Kategorie und $C$ eine kleine
+  Kategorie. Dann ist die Kategorie der Prägarben $E^{C\op}$
+  angereichert über $E$ und kartesisch abgeschlossen.
+\end{prop}
+\begin{proof}
+  Sind $F, G \in E^{C\op}$ Prägarben, so erhalten wir die
+  angereicherte Struktur durch Übertragung der obigen Formulierung als
+  $\Ens$-Ende:
+  \[ E^{C\op}(F, G) := \int_c E(F(c), G(c)) \in E, \]
+  für $E(\cdot, \cdot)$ das interne Hom in $E$. Damit funktioniert der
+  Beweis oben auch für diesen Fall.
+\end{proof}
 
 \subsection{Kategorien von Garben über topologischen Räumen}
 
@@ -736,13 +751,49 @@ Struktur auf $\EnsTop$ zuwenden.
   % TODO schöner
 \end{proof}
 Da das einzige Problem die fehlende kartesisch abgeschlossene Struktur
-in der Basis war, schränken wir uns auf eine bequemere Kategorie
-ein.
+in der Basis war, schränken wir uns auf eine bequemere Kategorie $\K$
+ein. Zunächst betrachten wir den Fall von Paaren von $\K$-Räumen mit
+stetiger, aber nicht notwendigerweise étaler, Abbildung.
+\begin{lemma}
+  Sei $I$ die Pfeilkategorie $\bullet \to \bullet$ und $\K \subset
+  \Top$ eine koreflektive, kartesisch abgeschlossene Kategorie
+  topologischer Räume. Dann ist $\K^I$ kartesisch abgeschlossen.
+\end{lemma}
+\begin{proof}
+  Es handelt sich um eine Prägarbenkategorie auf $I\op$ mit Werten in
+  einer kartesisch abgeschlossenen Kategorie. Die Aussage folgt somit
+  aus \ref{presheaf-cart-closed}. Expliziter ist das interne Hom von
+  $F \to X$ mit $G \to Y$ das Paar $\K(F, G) \times_{\K(F, Y)} \K(X,
+  Y) \to \K(X, Y)$, das die Menge der kommutativen Quadrate mit einer
+  Topologie ausstattet, mit der Projektion auf den zweiten Faktor als
+  Abbildung. Die Adjunktion $\K^I((F \to X) \times (G \to Y), (H \to
+  Z)) \iso \K^I((F \to X), (G \to Y) \Implies (H \to Z))$ für $(F \to
+  X), (G \to Y), (H \to Z) \in \K^I$ ist dann die Bijektion von
+  Faserprodukten
+  \[ \K(F \times G, H) \times_{\K(F \times G, Z)} \K(X \times Y, Z)
+  \iso \K(F, \K(G, H) \times_{\K(G, Z)} \K(Y, Z))
+  \times_{\K(F, \K(Y, Z))} \K(X, \K(Y, Z)).
+  \]
+  % TODO left/right setzen
+\end{proof}
+Im allgemeinen ist das interne Hom in $\K^I$ für $(F \to X)$ und $G
+\to Y)$ mit étalen Abbildungen nicht wieder étale. Für die volle
+Unterkategorie $\Ens_{\K} \subset \K^I$ der étalen Räume über
+$\K$-Räumen benötigen wir daher wieder eine koreflektive
+Struktur. Diese ist gegeben durch die ``Étalisierung'':
+\begin{lemma}[\cite{TG}, 2.1.40]
+  Für $X$ einen topologischen Raum besitzt die Inklusion $\etTop_X
+  \inj \Top_X$ einen Rechtsadjungierten, genannt die
+  \emph{Etalisierung}.
+\end{lemma}
+\begin{proof}
+  % TODO
+\end{proof}
+
 
 % TODO Satz unfertig
-Es stellt sich heraus, dass für kartesisch abgeschlossene
-Kategorien, die mit jedem Raum $X$ auch alle étalen Räume über $X$
-enthält
+Es stellt sich heraus, dass für kartesisch abgeschlossene Kategorien,
+die mit jedem Raum $X$ auch alle étalen Räume über $X$ enthält
 \begin{satz}
   Sei $\mathcal{K}$ eine koreflektive Unterkategorie der topologischen
   Räume, die die Axiome \ref{itm:k-axiom-subset} -
