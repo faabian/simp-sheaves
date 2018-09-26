@@ -810,7 +810,13 @@ für $F, G, H \in \et \K^I$:
 \end{align*}
 mit der kartesisch abgeschlossenen Struktur aus
 \ref{k-arrow-cart-closed} im zweiten Schritt. Die Produkte in $\K^I$
-und $\et \K^I$ stimmen dabei nach dem folgenden Lemma überein.
+und $\et \K^I$ stimmen dabei nach dem folgenden Lemma
+überein. Umgekehrt ist, falls ein internes Hom $(G \Implies H)^+$ in
+$\et \K^I$ existiert, die Zuordnung $(G \Implies H) \mapsto (G
+\Implies H)^+$ ein partiell definierter Koreflektor. Unsere Aufgabe
+ist es nun zu zeigen, dass eine solche relative Form der Étalisierung
+nicht möglich ist.
+
 \begin{lemma}
   Ist $k: \Top \to \K$ ein Koreflektor und $p: F \to X$ étale in
   $\Top$, so ist $kp: kF \to kX$ étale.
@@ -845,94 +851,42 @@ Produkt $(F \times G \to X \times Y)$ in $\Top$ étale ist, und dann
 nach dem Lemma auch das Produkt $k(F \times G) \to k(X \times Y)$ in
 $\K^I$ étale und somit in $\et \K^I$ ist.
 
-% TODO Satz unfertig
-Es stellt sich heraus, dass für kartesisch abgeschlossene Kategorien,
-die mit jedem Raum $X$ auch alle étalen Räume über $X$ enthält
 \begin{satz}
-  Sei $\mathcal{K}$ eine koreflektive Unterkategorie der topologischen
-  Räume, die die Axiome \ref{itm:k-axiom-subset} -
-  \ref{itm:k-axiom-ev} erfüllt. Dann ist die Kategorie der Garben über
-  Räumen in $\mathcal{K}$ mit Morphismen $\Ens_{/\mathcal{K}} \subset
-  \EnsTop$
-  % TODO: ???
-\end{satz}
-
-Unsere Hoffnung, eine kartesisch abgeschlossene Struktur auf
-$\Ens_{/\Top}$ zu finden, wird sich nicht erfüllen. Wir können aber
-erklären, wieso.
-
-\begin{satz}
-  Es gibt keine kartesisch abgeschlossene Struktur auf
-  $\Ens_{/C} \subset \Ens_{/\Top}$ für $C \subset \Top$ eine
-  nichtleere volle Unterkategorie der topologischen Räume.
+  Der partiell definierte Koreflektor $^+: \K^I \to \et \K^I$ ist nur
+  auf $\et \K^I$ definiert.
 \end{satz}
 \begin{proof}
+  Dies liegt daran, dass die Testobjekte, mit denen wir Objekte in
+  $\K^I$ eindeutig festlegen können, bereits étale sind.
 
-
-  Ein Morphismus
-  \[ \begin{tikzcd}
-    F \arrow[r] \dar{p} & G \dar{q} \\
-    X \arrow[r] & Y,
-  \end{tikzcd} \]
-  ist nach der Kommutativität des Quadrats ein Element des
-  Faserprodukts von Mengen
-  \[ \Ens_{/C}(F \to X, G \to Y) = \Top(F, G) \times_{\Top(F, Y)} C(X, Y), \]
-  wobei die Abbildungen nach $\Top(F, Y)$ durch Nachschalten von $q$
-  bzw. Vorschalten von $p$ gegeben sind.
-
-  Wir bestimmen nun mit einem bekannten Trick die den internen
-  Hom-Objekten zugrundeliegenden Mengen. Bezeichne $v: \Top \to \Ens$
-  den Vergissfunktor. Wir können den Funktor
-  \begin{alignat*}{2}
-    \Ens_{/C} \: &\to \: \Top \: &&\to \: \Ens, \\
-    (U \to L) \: &\mapsto \: U \: &&\mapsto \: vU
-  \end{alignat*}
-  darstellen durch $\Ens_{/C}(\tau \point, \cdot)$
-  und den Funktor
-  \begin{alignat*}{2}
-    \Ens_{/C} \: &\to \: C \: &&\to \: \Ens, \\
-    (U \to L) \: &\mapsto \: L \: &&\mapsto \: vL
-  \end{alignat*}
-  durch $\Ens_{/C}(\iota \point, \cdot)$. Wir erhalten
-  \begin{align*}
-    \Ens_{/C}(\tau \point, (F \to X) \Implies (G \to Y))
-    &\iso \Ens_{/C}(\tau \point \times (F \to X), G \to Y) \quad & \\
-    &\iso \Ens_{/C}(F \to X, G \to Y) & \text{und} \\
-    \Ens_{/C}(\iota \point, (F \to X) \Implies (G \to Y))
-    &\iso \Ens_{/C}(\iota \point \times (F \to X), G \to Y) \\
-    &\iso \Ens_{/C}(\iota X, G \to Y) \\
-    &\iso C(X, Y),
-  \end{align*}
-  da $\tau \point$ das terminale Objekt von $\Ens_{/C}$ ist sowie nach
-  Gleichung \ref{eq:iota-prod}.
-
-  Die Abbildung im internen Hom-Objekt bestimmen wir mit den
-  Funktorialitäten: Das Vorschalten von $\iota X \to (F \to X)$
-  induziert einen Morphismus $\big( (F \to X) \Implies (G \to Y) \big)
-  \to \big( \iota X \Implies (G \to Y) \big)$ bzw.
-  \[ \begin{tikzcd}
-    \Top(F, G) \times_{\Top(F, Y)} C(X, Y) \dar \rar
-    & \Top(\varnothing, G) \times_{\Top(\varnothing, Y)} C(X, Y) \dar \rar{\sim}
-    & C(X, Y) \dar{\id} \\
-    C(X, Y) \rar{\id}
-    & C(X, Y) \rar{\id}
-    & C(X, Y).
-  \end{tikzcd} \]
-  Dabei kommt die Identität in der Basis aus dem Yoneda-Lemma für
-  \[ \Ens_{/C}(\iota \point, (F \to X) \Implies (G \to Y))
-  \Isotrafo \Ens_{/C}(\iota \point, \iota X \Implies (G \to Y)). \]
-
-  Die Abbildung im Hom-Objekt ist also (wie nicht anders zu erwarten)
-  die Projektion auf den zweiten Faktor. Soll diese étale sein, so
-  muss %???
-
-  % Bijektion der Adjunktion ist sogar Homöo über off. Homöo in Basis!
+  Konkret gelte also
+  \begin{equation} \label{eq:coreflection-adjunction}
+    \K^I((F \to X), (G \to Y)) \iso \et \K^I((F \to X), (G \to Y)^+)
+  \end{equation}
+  für alle étalen $F \to X$. Ein Objekt $(H \to Z) \in \K^I$ ist nach
+  dem Yoneda-Lemma (bis auf eindeutigen Isomorphismus) eindeutig
+  festgelegt durch seine Yoneda-Einbettung $\K^I(\cdot, (H \to
+  Z))$. Wir behaupten, dass sogar die Funktoren $\K^I(\iota \cdot, (H
+  \to Z)) = \K(\cdot, Z)$ und $\K^I(\tau \cdot, (H \to Z)) = \K(\cdot,
+  H): \K \to \Ens$ und ihre aus $\iota \cdot \Implies \tau \cdot$
+  entstehende Transformation ausreichen, um $H \to Z$ eindeutig
+  festzulegen. In der Tat bestimmen die beiden Funktoren nach dem
+  Yoneda-Lemma bereits die beteiligten Räume $H$ und $Z$ eindeutig und
+  der Morphismus $H \to Z$ entspricht der Transformation. Nun sind
+  $\iota X, \tau X \in \et \K^I$ für alle $X \in \K$, was den Beweis
+  abschließt: dann müssen nämlich im Fall von
+  \ref{eq:coreflection-adjunction} $(G \to Y)$ und $(G \to Y)^+$
+  isomorph sein und die Koreflektion ist genau dann definiert, wenn
+  $(G \to Y)$ sowieso schon étale ist.  
 \end{proof}
-  
+\begin{kor}
+  Es gibt keine kartesisch abgeschlossene Struktur auf $\et \K^I$,
+  falls $\K$ nichtétale Abbildungen enthält.
+\end{kor}
+
+% TODO Notationen vereinheitlichen etc.
 
 %% TODO:
-%% * Rainer M. Vogt: internes Hom für lokalkompakte gibt einen Nerv für
-%%   Ens/Top; Nope, erklären wieso nicht
 %% * erwähnen, dass keine Einheit/Koeinheits-Isos zu erwarten, aber auf
 %%   Homotopie: Quillen-Äq. von Modellkategorien
 
@@ -943,7 +897,5 @@ erklären, wieso.
 % * charakterisiere das Bild -> kleiner machen mit kleinerem Intervall?
 %   (Moer)
 % * deriviert???
-
-% V-enriched Struktur durch stetige-Funktionen-Garbe?
 
 \end{document}
