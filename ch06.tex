@@ -101,7 +101,7 @@ Bildmengen. Dies zeigt die Funktorialität.
 \end{proof}
 \begin{bem}
   Die halbgeordneten Mengen $\slicecat{\Delta^+}{r}{\Delta^{+n}}$ sind
-  natürlich einfach die (opponierten) Standard-$n$-Simplizialkomplexe;
+  natürlich einfach die opponierten Standard-$n$-Simplizialkomplexe;
   unsere Konstruktion liefert allerdings die Rand- und
   Degenerationsmorphismen auf natürliche Art mit.
 \end{bem}
@@ -199,26 +199,26 @@ Bildmengen. Dies zeigt die Funktorialität.
   (\ref{ens-tensored}).
 \end{defn}
 
-\begin{prop}
+\begin{prop} \label{clumsy-order-top}
   Sei $X \in \s\Ens$ eine simpliziale Menge. Dann gibt es einen
-  Homöomorphismus $\blacktriangle X \iso X \otimes R$, wobei $X
-  \otimes R$ die Ordnungstopologie trägt. Insbesondere hat jeder Punkt
-  in der plumpen Realisierung $\sigma \in \blacktriangle X$ eine
-  kleinste offene Umgebung $(\geq \sigma)$.
+  Homöomorphismus $\blacktriangle X \iso \Ord((X \otimes
+  R)\op)$. Insbesondere hat jeder Punkt in der plumpen Realisierung
+  $\sigma \in \blacktriangle X$ eine kleinste offene Umgebung $(\geq
+  \sigma)$.
 \end{prop}
 \begin{proof}
   Der Funktor $\Ord: \poset \to \Top$ ist nach dem nachgestellten
-  Lemma kostetig. Daher reicht es mit \ref{coend-cocont}, einen
-  Isomorphismus kosimplizialer topologischer Räume $\blacktriangle \to
-  \Ord R$ zu finden. Beide bestehen aus einem Punkt pro
-  nichtdegeneriertem Simplex (\ref{cw-disjoint-inner}) von $\Delta^n$
-  und haben als offene Mengen nach oben abgeschlossene
-  Mengen. Randabbildungen $d_i$ sind Inklusionen in die Ränder,
-  Degenerationen Kollapse von Kanten. Dies begründen wir sorgfältiger:
-  Unsere Definition von $Rs_i: R[n] \to R[n-1]$ schickt einen
-  nichtdegenerierten Simplex $f: [m] \to [n]$ monoton und injektiv auf
-  $N(s_i \circ f)$, den nichtdegenerierten Simplex, der zum Kollaps
-  von $i$ und $i+1$ in $f$ gehört.
+  Lemma kostetig. Daher reicht es mit \ref{coend-cocont} (und der
+  Kostetigkeit des Opponierens), einen Isomorphismus kosimplizialer
+  topologischer Räume $\blacktriangle \to \Ord R\op$ zu finden. Beide
+  bestehen aus einem Punkt pro nichtdegeneriertem Simplex
+  (\ref{cw-disjoint-inner}) von $\Delta^n$ und haben als offene Mengen
+  nach oben abgeschlossene Mengen. Randabbildungen $d_i$ sind
+  Inklusionen in die Ränder, Degenerationen Kollapse von Kanten. Dies
+  begründen wir sorgfältiger: Unsere Definition von $Rs_i: R[n] \to
+  R[n-1]$ schickt einen nichtdegenerierten Simplex $f: [m] \to [n]$
+  monoton und injektiv auf $N(s_i \circ f)$, den nichtdegenerierten
+  Simplex, der zum Kollaps von $i$ und $i+1$ in $f$ gehört.
 \end{proof}
 \begin{lemma}
   Der Funktor $\Ord: \poset \to \Top$, der eine halbgeordneten Menge
@@ -245,62 +245,91 @@ Bildmengen. Dies zeigt die Funktorialität.
     $y$. Es folgt die Offenheit von $U$.
 \end{proof}
 
-% TODO sheaf-order-top
-Mit \ref{sheaf-order-top} erhalten wir sofort:
-\begin{prop}
+Mit \ref{sheaf-order-top} und \ref{clumsy-order-top} erhalten wir
+sofort die folgende kombinatorische Charakterisierung von Garben auf
+der plumpen Realisierung:
+\begin{prop} \label{clumsy-comb}
   Sei $X \in \s\Ens$ eine simpliziale Menge. Dann gibt es eine
   Äquivalenz von Kategorien $\Ens_{/\blacktriangle X} \qiso [(X
     \otimes R)\op, \Ens]$.
 \end{prop}
+\begin{bem}
+  Betrachte für eine feste simpliziale Menge $X \in \s\Ens$ die volle
+  Unterkategorie $(\s\EnsssTop)_X \subset \s\EnsssTop$ der
+  simplizialen Garben über topologischen Räumen mit Komorphismen, für
+  die die Basisräume diskret und als simplizialer topologischer Raum
+  isomorph zur simplizialen Menge $X$ sind. Man könnte eine Aussage
+  wie die folgende erwarten:
+  \begin{quote}
+    Die kovariante Realisierung mittels plumper Simplizes
+    (\ref{real-enstop-cov}) liefert eine Äquivalenz von Kategorien
+    \[ (\s\EnsssTop)_X \qiso \Ens_{/\blacktriangle X}. \]
+  \end{quote}
+  Dies verhindern aber die degenerierten Simplizes $s^*(\sigma)$ für
+  $s: [n] \to [m]$ monoton und surjektiv. Für diese enthält eine
+  simpliziale Garbe $F$ auf der linken Seite beliebig wählbare Mengen,
+  die Halme $(F_n)_{s^*(\sigma)}$, welche aus der geometrischen
+  Realisierung nicht wiedergewonnen werden können, da sie mit ihren
+  Bildern unter $Fs: (F_n)_{s^*(\sigma)} \to (F_m)_\sigma$
+  identifiziert werden.
 
-Betrachte nun für eine feste simpliziale Menge $X \in \s\Ens$ die
-volle Unterkategorie $(\s\EnsssTop)_X \subset \s\EnsssTop$ der
-simplizialen Garben über topologischen Räumen mit Komorphismen mit der
-simplizialen Menge $X$ als diskreten Basisräumen.
+  Stattdessen setzen wir $(\s\EnsssTop)_X^{nd} \subset
+  (\s\EnsssTop)_X$ die volle Unterkategorie der oben definierten
+  simplizialen Garben $F$ über $X$, für die zudem die Degenerationen
+  $Fs: (F_n)_{s^*(\sigma)} \to (F_m)_\sigma$ Bijektionen sind. Für
+  diese erhalten wir den gewünschten quasiinversen Funktor, indem wir
+  mit \ref{clumsy-comb} einer Garbe $F \in [(X \otimes R)\op, \Ens]$
+  auf folgende Weise eine simpliziale Garbe $\hat{F} \in
+  (\s\EnsssTop)_X^{nd}$ zuordnen: Schreibe für $\sigma \in X_n$ kurz
+  $F(\sigma)$ für die Menge, die $F$ dem maximalen Element in
+  $\{\sigma\} \times R[n]\op$ via $X_n \times R[n]\op \to (X \otimes
+  R)\op$ zuordnet. Die Garben $\hat{F}_n \in \Ens_{/X_n}$ sind diskret
+  und bestehen dann aus der Menge $F(N(\sigma))$ über $\sigma$. Für
+  eine monotone Abbildung $f: [n] \to [m]$ erhalten wir die
+  Abbildungen $(\hat{F}_n)_{f^*(\sigma)} \to (\hat{F}_{m})_\sigma$ für
+  die Komorphismen von $\hat{F}$ über $f^*$ aus $F(N(f(\sigma))) \to
+  F(N(\sigma))$. Insbesondere sind die Degenerationen
+  $(\hat{F}_n)_{s^*(\sigma)} \to (\hat{F}_{n-1})_\sigma$ dann einfach
+  Identitäten und unsere Abbildungen erfüllen die simplizialen
+  Relationen.
+\end{bem}
 
-Wir erhalten die folgende Übertragung von \ref{sheaf-simp-compl}:
-\begin{prop}
-  Die kovariante Realisierung mittels plumper Simplizes
-  (\ref{real-enstop-cov}) liefert eine Äquivalenz von Kategorien
-  \[ (\s\EnsssTop)_X \qiso \Ens_{/\blacktriangle X}. \]
-  Weiter gibt es eine Äquivalenz
-  \[ (\s\EnsssTop)_X \qiso [(X \otimes R)\op, \Ens] \]
-  gegeben durch den Funktor, der $F \in (\s\EnsssTop)_X$ auf den
-  Funktor $(\sigma \mapsto (F_n)_\sigma$ schickt für $\sigma \in
-  NX_n$.
-\end{prop}
-\begin{proof}
-  Eine Garbe $F_n$ über einem diskreten Raum $X_n$ ist diskret und
-  somit durch ihre Halme festgelegt. Wir können sie somit als einen
-  Funktor der diskreten Kategorie $X_n$ in die Kategorie der Mengen
-  $F_n: X_n \to \Ens$ auffassen. Ein Komorphismus über $Ff^*: X_m \to
-  X_n$ sind dann Abbildungen zwischen den Halmen $(F_n)_{Ff(\sigma)}
-  \to (F_m)_\sigma$ für $\sigma \in X_m$.
-\end{proof}
-
-% TODO überleiten
+Wir kommen nun zur Übertragung der Ergebnisse aus \ref{ch02} auf die
+Situation simplizialer Mengen. Dies ermöglicht etwa die Aussage auch
+für Triangulierungen wie in Beispiel \ref{ex:real-sphere}.
 
 Nach der Bemerkung \ref{sk-homalg} reicht es, die topologischen Teile
-des Beweises aus \ref{ch2??} zu übertragen. Wir formulieren ganz
-allgemein:
-\begin{defn}
-  Eine Konstruierbarkeitssituation ist eine stetige Abbildung $p: |\K|
-  \to \K$ topologischer Räume, sodass gilt: Jeder Punkt $\sigma \in
-  \K$ besitzt eine kleinste offene Umgebung $(\geq \sigma)$. Wir
-  notieren $U(\sigma) = p^{-1}((\geq \sigma))$. Eine Garbe $F \in
-  \AbKr$ heißt schwach $|\K|$-konstruierbar, falls die Koeinheit der
-  Adjunktion auf $F$ einen Isomorphismus $p^* p_* F \iso F$ ist.
+des Beweises zu übertragen. Wir sammeln die benötigten Axiome:
+\begin{defn} \label{def:constr}
+  Eine \emph{Konstruierbarkeitssituation} ist eine stetige Abbildung
+  $p: |\K| \to \K$ mit den folgenden Eigenschaften:
+  \begin{enumerate}
+  \item \label{constr-final} $p$ ist final, surjektiv und hat
+    zusammenhängende Fasern.
+  \item \label{constr-comb-space} Jeder Punkt $\sigma \in \K$ besitzt
+    eine kleinste offene Umgebung $(\geq \sigma)$.
+  \end{enumerate}
 \end{defn}
-In unserer Konstruierbarkeitssituation nennen wir $\K$ die
-\emph{kombinatorische} und $|\K|$ die \emph{geometrische
-  Realisierung}. Wir übertragen den Begriff derivierter schwach
+Wir notieren $U(\sigma) = p^{-1}((\geq \sigma))$. In einer
+Konstruierbarkeitssituation nennen wir $\K$ die \emph{kombinatorische}
+und $|\K|$ die \emph{geometrische Realisierung}.
+
+Der ``richtige'' äquivalente Begriff von schwacher Konstruierbarkeit
+aus \ref{sk-char} wird zur allgemeinen Definition:
+\begin{defn}
+  Eine Garbe $F \in \AbKr$ heißt schwach $|\K|$-konstruierbar, falls
+  die Koeinheit der Adjunktion auf $F$ einen Isomorphismus $p^* p_* F
+  \iso F$ ist.
+\end{defn}
+Auch übertragen wir den Begriff derivierter schwach
 $|\K|$-konstruierbarer Garben (mit schwach $|\K|$-konstruierbaren
 Kohomologiegarben) und die Notationen $\sKons(\K)$ und $\DerskK$.
 
-Wir können mit identischem Beweis den allgemeinen Teil von
+Mit identischem Beweis überträgt sich der allgemeine Teil von
 \ref{sk-char} übertragen:
 \begin{prop} \label{gensk-char}
-  Für $F \in \AbKr$ sind äquivalent:
+  In einer Konstruierbarkeitssituation $p: |\K| \to \K$ sind für $F
+  \in \AbKr$ sind äquivalent:
   \begin{enumerate}[label=(\arabic*)]
   \item \label{itm:gensk-char-sk} $F$ ist schwach $|\K|$-konstruierbar
   \item \label{itm:gensk-char-essim} $F$ liegt im wesentlichen Bild
@@ -310,6 +339,64 @@ Wir können mit identischem Beweis den allgemeinen Teil von
     Isomorphismus.
   \end{enumerate}
 \end{prop}
+Und es folgt sofort, in Anbetracht von \ref{dersk-eq-rel}:
+\begin{theorem}
+  Sei $p: |\K| \to \K$ eine Konstruierbarkeitssituation und $X \in
+  \Top$.  Dann gibt es eine Äquivalenz von Kategorien
+  \[ \Der(\sKons(\K \times X))
+     \mathrel{\mathop{\rightleftarrows}^{\iota}_{R \beta}}
+     \Der_{\mathrm{sk}}(|\K| \times X),
+  \]
+  wobei $\iota$ die Inklusion und $\beta = (p \times \id_X)^* (p
+  \times \id_X)_*: \Ab_{|\K| \times X} \to \sKons(\K \times X)$ ist.
+\end{theorem}
+Es reicht also für den Fall simplizialer Mengen, die Axiome einer
+Konstruierbarkeitssituation zu zeigen.
+\begin{prop}
+  Sei $X \in \s\Ens$ eine simpliziale Menge. Dann ist $p: |X| \to
+  \blacktriangle X$ eine Konstruierbarkeitssituation.
+\end{prop}
+\begin{proof}
+  Die Abbildung $p: |X| \to \blacktriangle X$ ist ein Kolimes über die
+  Quotientenabbildungen $|\Delta^n| \to \blacktriangle^n$ mit
+  zusammenhängenden Fasern und das Axiom \ref{def:constr}
+  \ref{itm:constr-final} folgt aus dem nachgestellten Lemma. Das Axiom
+  \ref{def:constr} \ref{itm:constr-comb-space} zur Existenz kleinster
+  offener Umgebungen folgt aus \ref{clumsy-comb}.
+\end{proof}
+\begin{lemma}
+  Sei $X_i \to Y_i$ ein Morphismus von Diagrammen von topologischen
+  Räumen $[I, \Top]$ mit finalen, surjektiven Abbildungen $X_i \to
+  Y_i$ mit zusammenhängenden Fasern. Dann ist die induzierte Abbildung
+  $\col_i X_i \to \col_i Y_i$ final, surjektiv und hat
+  zusammenhängende Fasern.
+  % TODO benötigen wir, dass alle Systemmorphismen zusammenhängende
+  % Fasern haben?
+\end{lemma}
+\begin{proof}
+  Die Surjektivität ist offensichtlich (nimm ein Urbild unter einem
+  geeigneten $Y_i \to \col_i Y_i$, dann unter $X_i \surj Y_i$ und dann
+  dessen Inklusion nach $\col_i X_i$). Ist die Komposition $\col_i X_i
+  \to \col_i Y_i \to Z$ stetig, so sind alle
+  \[X_i \to \col_i X_i \to \col_i Y_i \to Z
+  = X_i \to Y_i \to \col_i Y_i \to Z \] stetig, und die Stetigkeit von
+  $g$ folgt daraus, dass Kompositionen finaler Abbildungen final sind
+  und $\col_i Y_i$ folglich die Finaltopologie bezüglich aller $X_i
+  \to \col_i Y_i$ trägt.
+
+  Für den Zusammenhang der Fasern sei $y \in \col_i Y_i$, $F_i \subset
+  Y_i$ die Faser von $y$ unter $Y_i \to \col_i Y_i$ und $G_i \subset
+  X_i$ das Urbild von $F_i$. Die beiden Kolimites sind Quotienten der
+  disjunkten Vereinigung über das System nach einer von den
+  Systemmorphismen herrührenden Äquivalenzrelation. Ist $y_i \sim
+  f(y_j)$ mit $y_i \in F_i$ und $f: Y_i \to Y_j$ einem
+  Systemmorphismus eine erzeugende Relation, so sind auch die
+  Zusammenhangskomponenten von $ZK(y_i)$ und $ZK(f(y_i))$ in $\col_i
+  X_i$ nicht disjunkt:
+
+  %TODO fertig + ZK ersetzen
+\end{proof}
+
 
 In guten Konstruierbarkeitssituationen lässt sich auch eine
 geometrische Formulierung schwacher $|\K|$-Konstruierbarkeit angeben:

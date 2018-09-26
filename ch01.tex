@@ -124,9 +124,11 @@ gilt
 
 Für $X = \mathcal{K}$ einen Simplizialkomplex vereinfachen sich die
 Schnitte:
-\[(\geq \sigma) \cap (\geq \tau) = (\geq (\sigma \cup \tau))
-\text{ oder }
-(\geq \sigma) \cap (\geq \tau) = \emptyset. \]
+\begin{equation} \label{eq:simp-comp-meets}
+  (\geq \sigma) \cap (\geq \tau) = (\geq (\sigma \cup \tau))
+  \text{ oder }
+  (\geq \sigma) \cap (\geq \tau) = \emptyset.
+\end{equation}
 
 \begin{lemma} \label{ord-functor}
   Das Versehen mit der Ordnungstopologie definiert einen Funktor
@@ -189,7 +191,7 @@ Eigenschaft:
   F(U)$ mit $s |_{V_i} = s_i$.
 \end{quote}
 Oder äquivalent, falls wir für $(V_i)_{i \in I}$ eine unter endlichen
-Schnitten stabile Überdeckung und als Systemmorphismen die
+Schnitten stabile Überdeckung ist und wir als Systemmorphismen die
 Restriktionen wählen:
 \[ F(U) = \lim_{i \in I} F(V_i) . \]
 
@@ -256,8 +258,35 @@ Restriktionen wählen:
   Garbenbedingung für Basismengen folgt aus der für festes
   $\sigma \in \mathcal{K}$.
 \end{proof}
-
-% TODO nichtrelative Version (Garben auf \Ord X, X \poset) erklären
-% \label{sheaf-order-top}
-
+Wir geben die nicht-relative Version dieser Aussage an, mit einem
+Beweis, der die entscheidenden Schritte im vorangehenden Beweis noch
+einmal systematischer darstellt. Mit den Techniken aus Kapitel
+\ref{ch03} folgt daraus umgekehrt auch die relative Version.
+\begin{defn}
+  Sei $(X, \leq)$ eine halbgeordnete Menge und $S \subset X$ eine
+  Teilmenge. Ein Element $I \in X$ heißt Infimum von $S$, falls es
+  eine größte untere Schranke von $S$ ist, d. h. $I \leq x$ für alle
+  $x \in S$ und falls $J \leq x$ für alle $x \in S$, dann $J \leq I$.
+\end{defn}
+Das Infimum einer Teilmenge $S \in X$ muss nicht existieren, ist in
+diesem Fall allerdings eindeutig. Ein Simplizialkomplex besitzt binäre
+Infima. Die Basis aus $(\geq \sigma)$-Mengen der Ordnungstopologie
+einer halbgeordneten Menge mit binären Infima ist schnittstabil,
+vergleiche Gleichung \ref{eq:simp-comp-meets}.
+\begin{satz} \label{sheaf-order-top}
+  Sei $\K \in \poset$ mit binären Infima. Dann ist der Funktor
+  \[
+  [\mathcal{K}, \Ens] \to \EnsB \qiso \Ens_{/\Ord \mathcal{K}}
+  \]
+  für $\B$ die Basis der Ordnungstopologie eine Äquivalenz von
+  Kategorien.
+\end{satz}
+\begin{proof}
+   Da $\sigma \leq \tau$ die umgekehrte Inklusion $\Implies (\geq
+   \sigma) \supset (\geq \tau)$ imppliziert, gilt $\K \iso \B\op$. Die
+   Garbenbedingung für $\B$ ist leer, denn jede Überdeckung von $(\geq
+   \sigma)$ durch Basismengen enthält $(\geq \sigma)$, $(\geq \sigma)$
+   ist also initial in einer solchen Überdeckung und die Limites über
+   die beiden Systeme stimmen überein.
+\end{proof}
 \end{document}

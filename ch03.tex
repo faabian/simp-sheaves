@@ -151,7 +151,7 @@ Wir halten fest:
 Bezeichne wieder $\B$ die Kategorie der Basis der Topologie auf einem
 Produkt topologischer Räume $X \times Y$ mit Inklusionen als
 Morphismen.
-\begin{satz}
+\begin{satz} \label{sheaves-prod-topos}
   Seien $X$ und $Y$ topologische Räume. Dann gibt es eine Äquivalenz
   von Kategorien
   \[ (\EnsX)_{/Y} \qiso \Ens_{/\B} \fromqiso \Ens_{/X \times Y} \]
@@ -204,6 +204,7 @@ Morphismen.
   \qiso \Ab_{/X \times Y}$.
   %% da auch die Schnittfunktoren $\Gamma(U, \cdot) = \AbX(\Z_U, \cdot)$
   %% darstellbar sind
+% TODO
 \end{bem}
 
 \subsection{Exkurs: Überlagerungen von Produkträumen}
@@ -271,23 +272,47 @@ für $\pi: |\sigma| \times X \to X$ die Projektion.
 
 Wir könnten nun für diesen Begriff dieselben Aussagen wie im
 vorangegangen Abschnitt mit vollkommen analogen Argumenten erneut
-beweisen. Ein bisschen Kategorientheorie und unsere obige
-Charakterisierung ermöglichen uns aber ein einfacheres Vorgehen. Wir
-bemerken, dass für die Konstruktion unserer Kategorienbifaserung
-$\Ab_{/\Top} \to \Top$ mitsamt ihren bekannten Eigenschaften und die
-darauf aufbauende Argumentation im vorangegangenen Abschnitt der
-Umstand keine Rolle gespielt hat, dass unsere Garben Werte in den
-abelschen Gruppen annnehmen. Dieselben Konstruktionen funktionieren
-für $\mathcal{A}_{/\Top}$ eine Garbenkategorie mit Werten in einer
-beliebigen vollständigen abelschen Kategorie. Davon überzeugt man sich
-im Zweifel auch explizit zunächst durch Übertragung auf
-Garbenkategorien mit Werten in $R$-Linksmoduln und dann durch den
-Einbettungssatz von Mitchell auf beliebige abelsche Kategorien.
+beweisen. Kategorientheorie und unsere obige Charakterisierung von
+Garben auf Produkträumen ermöglichen uns aber ein einfacheres
+Vorgehen. Wir bemerken, dass für die Konstruktion unserer
+Kategorienbifaserung $\Ab_{\sslash \Top} \to \Top$ mitsamt ihren
+bekannten Eigenschaften und die darauf aufbauende Argumentation im
+vorangegangenen Abschnitt der Umstand keine Rolle gespielt hat, dass
+unsere Garben Werte in den abelschen Gruppen annnehmen. Dieselben
+Konstruktionen funktionieren für $\mathcal{A}_{\sslash \Top}$ eine
+Garbenkategorie mit Werten in einer beliebigen vollständigen abelschen
+Kategorie. Davon überzeugt man sich im Zweifel auch explizit zunächst
+durch Übertragung auf Garbenkategorien mit Werten in $R$-Linksmoduln
+und dann durch den Einbettungssatz von Mitchell auf beliebige abelsche
+Kategorien.
 
-Wir erhalten:
-\begin{theorem}
-  % TODO: Formulierung des Theorems in ch02 in seiner endgültigen
-  % Form, übertragen auf den relativen Fall
+Um den relativen Fall abzuschließen, werden diese Argumentation auf
+den Fall $\mathcal{A} = \AbX$ anwenden. Die benötigten
+homotopieinjektiven Auflösungen im Beweis erhalten wir dann durch
+unsere Äquivalenz $(\AbX)_{/Y} \qiso \Ab_{/X \times Y}$. Wir erhalten:
+\begin{theorem} \label{dersk-eq-rel}
+  Sei $\K$ ein Simplizialkomplex. Dann gibt es eine Äquivalenz von
+  Kategorien
+  \[ \Der(\sKons(\K \times X))
+     \mathrel{\mathop{\rightleftarrows}^{\iota}_{R \beta}}
+     \Der_{\mathrm{sk}}(|\K| \times X),
+  \]
+  wobei $\iota$ die Inklusion und $\beta = (p \times \id_X)^* (p
+  \times \id_X)_*: \Ab_{|\K| \times X} \to \sKons(\K \times X)$ ist.
 \end{theorem}
+\begin{bem}
+  Der tieferstehende Grund für \ref{sheaves-prod-topos} und die sich
+  daraus ergebende Möglichkeit, alle über $X = \point$ gezeigten
+  Aussagen auch zu relativieren, ergibt sich daraus, dass es sich bei
+  $\Ens$ und $\EnsX$ beiden um \emph{elementare Topoi} handelt, also
+  Kategorien, die die wichtigsten Eigenschaften der Kategorie der
+  Mengen verallgemeinern. Für die Übertragung von Aussagen von $\Ens$
+  auf andere Topoi ist entscheidend, dass diese über eine konstruktive
+  interne Logik verfügen, die etwa das Auswahlaxiom oder oder den Satz
+  vom ausgeschlossenen Dritten aus der klassischen Logik und
+  Mengenlehre nicht kennt. Argumente, die diese Eigenschaften der
+  klassischen Logik nicht benutzen, übertragen sich sofort auf andere
+  Topoi. Siehe \cite{MoerTopoi} für eine Darstellung dieser Ideen.
+\end{bem}
 
 \end{document}
