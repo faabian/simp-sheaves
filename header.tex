@@ -136,3 +136,13 @@
 \lowercase{\endgroup\let~\tikz@nonactivecolon}
 }
 \makeatother
+
+% Allow unaligning in align environment. Code from
+% https://tex.stackexchange.com/questions/84345/how-do-i-get-this-strange-alignment
+\makeatletter
+\newcommand{\unalign}[1]{%
+  \ifmeasuring@ \else
+    \makebox[\ifcase 1\maxcolumn@widths \fi][l]{$\displaystyle#1$}
+  \fi
+}
+\makeatother

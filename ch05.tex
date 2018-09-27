@@ -45,10 +45,11 @@ $X$, wenn wir $R: \Delta \to \Top \to \Top^I$ mittels des Funktors der
 konstanten Darstellung auf die Diagrammkategorie
 fortsetzen. Insbesondere erhalten wir eine geometrische Realisierung
 für die Kategorie der Paare topologischer Räume mit stetiger
-Abbildung, d. h. die Diagrammkategorie $\Top^I$ für $I$ die von $\{
-\bullet \to \bullet \}$ erzeugte Kategorie. Eine Realisierung für
-Garben über topologischen Räumen erhalten wir so aber nicht: Sind in
-einem simplizialen $\Top^I$ alle Abbildungen étale, bedeutet das noch
+Abbildung, d. h. die Diagrammkategorie $\Top^{[1]}$ für $[1]$ die
+Kategorie des Ordinals $[1] \in \Delta$, die Pfeilkategorie $\{
+\bullet \to \bullet \}$. Eine Realisierung für Garben über
+topologischen Räumen erhalten wir so aber nicht: Sind in einem
+simplizialen $\Top^{[1]}$ alle Abbildungen étale, bedeutet das noch
 nicht, dass auch die induzierte Abbildung in der geometrischen
 Realisierung étale ist. Sind etwa alle Basisräume $X_n$ einpunktig, so
 ist die Realisierung $|X|$ ebenfalls einpunktig. Étale Räume $F_n \to
@@ -214,6 +215,20 @@ Wir erhalten die folgende \emph{kovariante Realisierung}:
   also die Ausweitung eines $U$-Schnitts von einem Randpunkt auf einen
   $U$-Schnitt im Inneren.
 \end{bem}
+\begin{bem}
+  Eine weitere Idee zur geometrischen Realisierung simplizialer Garben
+  ist die folgende: Ist $F$ eine Prägarbe auf $I$ mit Werten in $C$
+  und $G: C \to D$ ein Funktor, so ist $GF: I\op \to D$ eine Prägarbe
+  mit Werten in $D$. Nach dem Exponentialgesetz von Funktoren ist eine
+  simpliziale Prägarbe über $X$ dasselbe wie eine Prägarbe mit Werten
+  in den simplizialen Mengen und wir können die geometrische
+  Realisierung $|\cdot|: \s\Ens \to \CGHaus$ nachschalten. Dies
+  liefert eine Prägarbe topologischer Räume auf $X$. Allerdings
+  schränkt diese Konstruktion nicht auf die vollen Unterkategorien der
+  Garben ein, die als Limes über ein im Allgemeinen unendliches System
+  formuliert ist, da die geometrische Realisierung im Allgemeinen
+  nicht mit beliebigen Limites vertauscht.
+\end{bem}
 
 \subsection{Die Dualität von Nerv und Realisierung}
 
@@ -292,9 +307,6 @@ sofort die Verallgemeinerung.
      &= [S\op, V] (X, NY).
   \end{align*}
 \end{proof}
-
-% TODO:
-% * erster Ansatz: halmweise Realisierung funktioniert nicht
 
 \subsection{Die kartesisch abgeschlossene Struktur der Garben auf $X$}
 
@@ -434,23 +446,32 @@ algebraisch gegeben sind durch Rückzug und Produkt und topologisch
 durch Bilden der Produkträume. Konkret:
 \begin{prop}
   Seien $F_{1,2} \in \Ens_{/X_{1,2}}$ Garben über topologischen Räumen
-  $X_1$ und $X_2$. Dann erfüllt die Garbe
+  $X_1$ und $X_2$. Dann ist die Garbe
   \[ F_1 \times F_2 := \pr_1^* F_1 \times \pr_2^* F_2 \in \Ens_{/X_1 \times X_2} \]
-  mit $\pr_{1,2}: X_1 \times X_2 \to X_{1,2}$ den Projektionen die
-  universelle Eigenschaft des Produkts von $F_1$ und $F_2$ in
-  $\Ens_{/\Top}$. Für ihren étalen Raum gilt:
-  \[ \etalespace{F_1 \times F_2} = \etalespace{F_1} \times \etalespace{F_2} \]
-  und $\etalespace{F_1 \times F_2} \to X_1 \times X_2$ ist durch das
-  Produkt der $\etalespace{F_{1,2}} \to X_{1,2}$ gegeben.
+  mit $\pr_{1,2}: X_1 \times X_2 \to X_{1,2}$ den Projektionen das
+  Produkt von $F_1$ und $F_2$ in $\Ens_{/\Top}$. Ihr étaler Raum ist:
+  \[ \etalespace{F_1 \times F_2} = \etalespace{F_1} \times \etalespace{F_2}
+  \to X_1 \times X_2
+  \]
+  mit der von $\etalespace{F_{1,2}} \to X_{1,2}$ induzierten
+  Produktabbildung.
 \end{prop}
 \begin{proof}
-  % TODO: formal Faserprodukt-Bijektion angeben
-  Die Beschreibung von $\Ens_{/\Top}$ als Paare topologischer Räume
-  mit étaler Abbildung zeigt die Aussage über den étalen Raum des
-  Produkts. Die induzierte Abbildung $\etalespace{F_1}
-  \times \etalespace{F_2} \to X_1 \times X_2$ ist ein Homöomorphismus
-  auf der Produktmenge der Umgebungen, auf denen $\etalespace{F_{1,2}}
-  \to X_{1,2}$ Homöomorphismen sind.
+  Für ein Testobjekt $G \in \Ens_{/Y}$ prüft man leicht die Bijektion
+  von Faserprodukten
+  \begin{align*}
+    \Top(\etalespace{G}, \etalespace{F_1} \times \etalespace{F_2})
+    &\times_{\Top(\etalespace{G}, X_1 \times X_2)} \Top(Y, X_1 \times X_2) \\
+    \unalign{\iso} \Top(\etalespace{G}, \etalespace{F_1})
+    &\times_{\Top(\etalespace{G}, X_1)} \Top(Y, X_1) \\
+    \times \Top(\etalespace{G}, \etalespace{F_2})
+    &\times_{\Top(\etalespace{G}, X_2)} \Top(Y, X_2),
+  \end{align*}
+  dies zeigt die Aussage über den étalen Raum des Produkts. Die
+  Abbildung $\etalespace{F_1} \times \etalespace{F_2} \to X_1 \times
+  X_2$ ist étale und konkret ein Homöomorphismus auf der Produktmenge
+  der Umgebungen, auf denen $\etalespace{F_{1,2}} \to X_{1,2}$
+  Homöomorphismen sind.
   
   Für die algebraische Beschreibung erhalten wir mit der Offenheit der
   Projektionen $\pr_{1,2}$ und \ref{ensx-cart-closed} für die Schnitte
@@ -755,20 +776,20 @@ in der Basis war, schränken wir uns auf eine bequemere Kategorie $\K$
 ein. Zunächst betrachten wir den Fall von Paaren von $\K$-Räumen mit
 stetiger, aber nicht notwendigerweise étaler, Abbildung.
 \begin{lemma} \label{k-arrow-cart-closed}
-  Sei $I$ die Pfeilkategorie $\bullet \to \bullet$ und $\K \subset
-  \Top$ eine koreflektive, kartesisch abgeschlossene Kategorie
-  topologischer Räume. Dann ist $\K^I$ kartesisch abgeschlossen.
+  Sei $\K \subset \Top$ eine koreflektive, kartesisch abgeschlossene
+  Kategorie topologischer Räume. Dann ist $\K^{[1]}$ kartesisch
+  abgeschlossen.
 \end{lemma}
 \begin{proof}
-  Es handelt sich um eine Prägarbenkategorie auf $I\op$ mit Werten in
+  Es handelt sich um eine Prägarbenkategorie auf $[1]\op$ mit Werten in
   einer kartesisch abgeschlossenen Kategorie. Die Aussage folgt somit
   aus \ref{presheaf-cart-closed}. Expliziter ist das interne Hom von
   $F \to X$ mit $G \to Y$ das Paar $\K(F, G) \times_{\K(F, Y)} \K(X,
   Y) \to \K(X, Y)$, das die Menge der kommutativen Quadrate mit einer
   Topologie ausstattet, mit der Projektion auf den zweiten Faktor als
-  Abbildung. Die Adjunktion $\K^I((F \to X) \times (G \to Y), (H \to
-  Z)) \iso \K^I((F \to X), (G \to Y) \Implies (H \to Z))$ für $(F \to
-  X), (G \to Y), (H \to Z) \in \K^I$ ist dann die Bijektion von
+  Abbildung. Die Adjunktion $\K^{[1]}((F \to X) \times (G \to Y), (H \to
+  Z)) \iso \K^{[1]}((F \to X), (G \to Y) \Implies (H \to Z))$ für $(F \to
+  X), (G \to Y), (H \to Z) \in \K^{[1]}$ ist dann die Bijektion von
   Faserprodukten
   \[ \K(F \times G, H) \times_{\K(F \times G, Z)} \K(X \times Y, Z)
   \iso \K(F, \K(G, H) \times_{\K(G, Z)} \K(Y, Z))
@@ -776,7 +797,7 @@ stetiger, aber nicht notwendigerweise étaler, Abbildung.
   \]
   % TODO left/right setzen
 \end{proof}
-Im allgemeinen ist das interne Hom in $\K^I$ für $(F \to X)$ und $G
+Im allgemeinen ist das interne Hom in $\K^{[1]}$ für $(F \to X)$ und $G
 \to Y)$ mit étalen Abbildungen nicht wieder étale. Wir können
 versuchen, es zu ``étalisieren'':
 \begin{lemma}[\cite{TG}, 2.1.40]
@@ -798,21 +819,21 @@ versuchen, es zu ``étalisieren'':
 Ist $\K \subset \Top$ nun eine Kategorie topologischer Räume, die mit
 jedem Raum $X$ auch jeden étalen Raum über $X$ enthält (etwa wie in
 \ref{k-etale-closed}), so können wir die Kategorie der étalen Räume
-über $\K$ als volle Unterkategorie von $\K^I$ auffassen:
-\[ \et \K^I := \Ens_{/\K} \subset \K^I. \]
-Gäbe es nun einen Koreflektor $^+: \K^I \to \et \K^I$, so hätten wir
-für $F, G, H \in \et \K^I$:
+über $\K$ als volle Unterkategorie von $\K^{[1]}$ auffassen:
+\[ \et \K^{[1]} := \Ens_{/\K} \subset \K^{[1]}. \]
+Gäbe es nun einen Koreflektor $^+: \K^{[1]} \to \et \K^{[1]}$, so hätten wir
+für $F, G, H \in \et \K^{[1]}$:
 \begin{align*}
-  \et \K^I(F \times G, H)
-  &\iso \K^I(F \times G, H) \\
-  &\iso \K^I(F, G \Implies H) \\
-  &\iso \et \K^I(F, (G \Implies H)^+),
+  \et \K^{[1]}(F \times G, H)
+  &\iso \K^{[1]}(F \times G, H) \\
+  &\iso \K^{[1]}(F, G \Implies H) \\
+  &\iso \et \K^{[1]}(F, (G \Implies H)^+),
 \end{align*}
 mit der kartesisch abgeschlossenen Struktur aus
-\ref{k-arrow-cart-closed} im zweiten Schritt. Die Produkte in $\K^I$
-und $\et \K^I$ stimmen dabei nach dem folgenden Lemma
+\ref{k-arrow-cart-closed} im zweiten Schritt. Die Produkte in $\K^{[1]}$
+und $\et \K^{[1]}$ stimmen dabei nach dem folgenden Lemma
 überein. Umgekehrt ist, falls ein internes Hom $(G \Implies H)^+$ in
-$\et \K^I$ existiert, die Zuordnung $(G \Implies H) \mapsto (G
+$\et \K^{[1]}$ existiert, die Zuordnung $(G \Implies H) \mapsto (G
 \Implies H)^+$ ein partiell definierter Koreflektor. Unsere Aufgabe
 ist es nun zu zeigen, dass eine solche relative Form der Étalisierung
 nicht möglich ist.
@@ -845,42 +866,42 @@ nicht möglich ist.
   kommutiert das Quadrat und $kU \iso k(p(U)) = (kp)(KU)$ ist ein
   Homöomorphismus.
 \end{proof}
-Das Übereinstimmen der Produkte in $\K^I$ und $\et \K^I$ ergibt sich
-nun daraus, dass für $(F \to X), (G \to Y) \in \et \K^I$ zunächst das
+Das Übereinstimmen der Produkte in $\K^{[1]}$ und $\et \K^{[1]}$ ergibt sich
+nun daraus, dass für $(F \to X), (G \to Y) \in \et \K^{[1]}$ zunächst das
 Produkt $(F \times G \to X \times Y)$ in $\Top$ étale ist, und dann
 nach dem Lemma auch das Produkt $k(F \times G) \to k(X \times Y)$ in
-$\K^I$ étale und somit in $\et \K^I$ ist.
+$\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
 
 \begin{satz}
-  Der partiell definierte Koreflektor $^+: \K^I \to \et \K^I$ ist nur
-  auf $\et \K^I$ definiert.
+  Der partiell definierte Koreflektor $^+: \K^{[1]} \to \et \K^{[1]}$ ist nur
+  auf $\et \K^{[1]}$ definiert.
 \end{satz}
 \begin{proof}
   Dies liegt daran, dass die Testobjekte, mit denen wir Objekte in
-  $\K^I$ eindeutig festlegen können, bereits étale sind.
+  $\K^{[1]}$ eindeutig festlegen können, bereits étale sind.
 
   Konkret gelte also
   \begin{equation} \label{eq:coreflection-adjunction}
-    \K^I((F \to X), (G \to Y)) \iso \et \K^I((F \to X), (G \to Y)^+)
+    \K^{[1]}((F \to X), (G \to Y)) \iso \et \K^{[1]}((F \to X), (G \to Y)^+)
   \end{equation}
-  für alle étalen $F \to X$. Ein Objekt $(H \to Z) \in \K^I$ ist nach
+  für alle étalen $F \to X$. Ein Objekt $(H \to Z) \in \K^{[1]}$ ist nach
   dem Yoneda-Lemma (bis auf eindeutigen Isomorphismus) eindeutig
-  festgelegt durch seine Yoneda-Einbettung $\K^I(\cdot, (H \to
-  Z))$. Wir behaupten, dass sogar die Funktoren $\K^I(\iota \cdot, (H
-  \to Z)) = \K(\cdot, Z)$ und $\K^I(\tau \cdot, (H \to Z)) = \K(\cdot,
+  festgelegt durch seine Yoneda-Einbettung $\K^{[1]}(\cdot, (H \to
+  Z))$. Wir behaupten, dass sogar die Funktoren $\K^{[1]}(\iota \cdot, (H
+  \to Z)) = \K(\cdot, Z)$ und $\K^{[1]}(\tau \cdot, (H \to Z)) = \K(\cdot,
   H): \K \to \Ens$ und ihre aus $\iota \cdot \Implies \tau \cdot$
   entstehende Transformation ausreichen, um $H \to Z$ eindeutig
   festzulegen. In der Tat bestimmen die beiden Funktoren nach dem
   Yoneda-Lemma bereits die beteiligten Räume $H$ und $Z$ eindeutig und
   der Morphismus $H \to Z$ entspricht der Transformation. Nun sind
-  $\iota X, \tau X \in \et \K^I$ für alle $X \in \K$, was den Beweis
+  $\iota X, \tau X \in \et \K^{[1]}$ für alle $X \in \K$, was den Beweis
   abschließt: dann müssen nämlich im Fall von
   \ref{eq:coreflection-adjunction} $(G \to Y)$ und $(G \to Y)^+$
   isomorph sein und die Koreflektion ist genau dann definiert, wenn
   $(G \to Y)$ sowieso schon étale ist.  
 \end{proof}
 \begin{kor}
-  Es gibt keine kartesisch abgeschlossene Struktur auf $\et \K^I$,
+  Es gibt keine kartesisch abgeschlossene Struktur auf $\et \K^{[1]}$,
   falls $\K$ nichtétale Abbildungen enthält.
 \end{kor}
 
@@ -898,7 +919,5 @@ $\K^I$ étale und somit in $\et \K^I$ ist.
 % * charakterisiere das Bild -> kleiner machen mit kleinerem Intervall?
 %   (Moer)
 % * deriviert???
-
-% TODO ersetze I = Pfeilkategorie durch Ordinal [1]
 
 \end{document}

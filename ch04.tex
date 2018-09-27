@@ -201,7 +201,10 @@ Mengen. Wir halten mit wörtlich übertragenen Beweis allgemein fest:
   Definition der Kategorie $\slicecat{C}{r}{F}$ in Bijektion durch
   Nachschalten von $K \Trafo F$.
 \end{proof}
-% TODO geht allgemein mit Ninja-Yoneda
+\begin{bem}
+  Dies folgt später auch sofort aus der Dichteformel für Koenden
+  \ref{coend-density} und \ref{coend-col}.
+\end{bem}
 
 \section{Der kosimpliziale Raum der Standardsimplizes}
 
@@ -819,8 +822,6 @@ Umformungsregeln dieses Kalküls \footnote{Bei der Übersetzung
   Differentiations- und Integrationstheorie verloren.}
 zusammengestellt.
 
-% TODO Ninja Yoneda (density thm)
-
 \begin{lemma}[Funktorialität, \cite{Lore}]
   Sind $F \xRightarrow{\eta} G \xRightarrow{\tau} H$ Transformationen
   von Funktoren $F, G, H: C\op \times C \to D$, deren Koenden
@@ -929,7 +930,6 @@ zusammengestellt.
   \emph{kostetig}, falls er mit Kolimites über kleine Kategorien
   vertauscht.
 \end{defn}
-
 \begin{lemma}[Koenden und kostetige Funktoren, \cite{Lore}, 1.16]
   \label{coend-cocont}
   Ist $F: D \to E$ ein kostetiger Funktor und $T: C\op \times C \to D$
@@ -969,6 +969,80 @@ zusammengestellt.
   Damit ist $[C, D](F, G)$ der Egalisator aus der Dualisierung von
   \ref{coend-coeq} und folglich das angegebene Ende.
 \end{proof}
+
+Neben dem Fubini-Satz für Enden gibt es eine weitere bemerkenswerte
+Analogie zu Interalen. Aus der Integrationstheorie ist die Formel
+\[ \int_X f \, d\delta_x = f(x) \]
+für $\delta_x$ das Diracmaß zum Punkt $x \in X$ bekannt. Im
+Koendenkalkül kommt der Yoneda-Einbettung die Rolle des Diracmaßes zu:
+\begin{prop}[Dichteformel, \cite{Lore}, 2.1] \label{coend-density}
+  Seien $F: C \to \Ens$ und $G: C\op \to \Ens$ Funktoren. Dann gibt es
+  eine Isotransformation von Funktoren $C \to \Ens$
+  \[ F \Isotrafo \int^c F(c) \times C(c, \cdot) \]
+  sowie von Funktoren $C\op \to \Ens$
+  \[ G \Isotrafo \int^c G(c) \times C(\cdot, c). \]
+\end{prop}
+\begin{bem}
+  Die Aussage trägt in \cite{Lore}, 2.1, den sehr treffenden Namen
+  \emph{Ninja Yoneda-Lemma}.
+\end{bem}
+\begin{proof}
+  Dies folgt aus dem Yoneda-Lemma und unseren schon bekannten
+  Rechenregeln, wir zeigen die erste Aussage. Seien dazu $F, G: C \to
+  \Ens$ Funktoren, dann gilt:
+  \begin{align*}
+    &[C, \Ens](\int^c F(c) \times C(c, \cdot), G) \\
+    \iso[\ref{trans-end}] \quad
+    &\int_d \Ens(\int^c F(c) \times C(c, d), Gd) \\
+    \iso[\ref{coend-cocont}] \quad
+    &\int_d \int_c \Ens(F(c) \times C(c, d), Gd) \\
+    \iso[\ref{coend-fubini}] \quad
+    &\int_c \int_d \Ens(F(c) \times C(c, d), Gd) \\
+    \iso[int. Hom] \quad
+    &\int_c \int_d \Ens(C(c, d), Fc \Implies Gd) \\
+    \iso[\ref{trans-end}] \quad
+    &\int_c [C, \Ens](\Ens(C(c, \cdot), Fc \Implies G \cdot) \\
+    \iso[Yon.] \quad
+    &\int_c (Fc \Implies Gc) \\
+    \iso \quad &\int_c \Ens(Fc, Gc) \\
+    \iso[\ref{trans-end}] \quad
+    &[C, \Ens](F, G),
+  \end{align*}
+  % TODO left / right setzen
+  was mit dem ``Yoneda-Lemma für $\Cat$'' die Aussage zeigt.
+\end{proof}
+\begin{bem}
+  Wie weit die Analogie zwischen Integralen und (Ko-) Enden reicht,
+  ist mir nicht bekannt. Sie ist vermutlich neben den analogen
+  Eigenschaften (Fubini, Dichteformel) durch die Konstruktion von
+  Koenden als direkte Summen von Produkten zweier Objekte (analog zu
+  Riemann- bzw. Lebesguesummen in der Maßtheorie)
+  inspiriert
+  \footnote{Vergleiche hierzu die Diskussion in
+    \url{https://mathoverflow.net/questions/239326/why-do-we-denote-coends-with-integral-notation-beyond-fubinis-theorem}.}
+  Die Frage ist, inwiefern maßtheoretische Aussagen eine direkte
+  Übersetzung in die Sprache der (Ko-) Enden haben. Das folgende
+  Beispiel beleuchtet dies nur bedingt, ist aber eine schöne Anwendung
+  der Dichteformel.
+\end{bem}
+\begin{bsp}
+  Nach der Verträglichkeit des Integrals mit Verwandtschaft
+  (\cite{AN3}, 1.5.19) ist der Integraloperator $(f, \mu) \mapsto \int
+  f \, \mu$ auf einem Koende definiert. Bezeichne dazu $\mathcal{M}$
+  die Kategorie der Messräume (Mengen mit $\sigma$-Algebra) und $M_X$
+  die Menge der Maße auf einem Messraum $X$. Das Integral ist dann
+  eine Paarung $M_X \times \mathcal{M}(X, \R) \to \R$ (der Maßraum
+  $\R$ links wie üblich versehen mit der Borelalgebra), für die die
+  beiden Wirkungen einer messbaren Abbildung $\Phi: X \to Y$ durch
+  Vorschalten bzw. Bildmaß übereinstimmen:
+  \[ \int (f \circ \Phi) \, \mu = \int f \, \Phi_*(\mu). \]
+  Somit ist der Integraloperator definiert auf dem Koende
+  \[ \int^{X \in \mathcal{M}} M_X \times \mathcal{M}(X, \R) \iso M_\R \]
+  nach der Dichteformel. Dies ist die Aussage, dass es wegen
+  \[ \int f \, \mu = \int (\id_\R \circ f) \, \mu = \int \id_R f_*(\mu) \]
+  reicht, die Identitätsfunktion auf $\R$ bezüglich allen Maßen auf
+  $\R$ integrieren zu können.
+\end{bsp}
 
 \subsection{Angereicherte Kategorien}
 
