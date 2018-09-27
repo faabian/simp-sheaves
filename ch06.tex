@@ -304,10 +304,10 @@ des Beweises zu übertragen. Wir sammeln die benötigten Axiome:
   Eine \emph{Konstruierbarkeitssituation} ist eine stetige Abbildung
   $p: |\K| \to \K$ mit den folgenden Eigenschaften:
   \begin{enumerate}
-  \item \label{constr-final} $p$ ist final, surjektiv und hat
+  \item \label{itm:constr-final} $p$ ist final, surjektiv und hat
     zusammenhängende Fasern.
-  \item \label{constr-comb-space} Jeder Punkt $\sigma \in \K$ besitzt
-    eine kleinste offene Umgebung $(\geq \sigma)$.
+  \item \label{itm:constr-comb-space} Jeder Punkt $\sigma \in \K$
+    besitzt eine kleinste offene Umgebung $(\geq \sigma)$.
   \end{enumerate}
 \end{defn}
 Wir notieren $U(\sigma) = p^{-1}((\geq \sigma))$. In einer
@@ -318,7 +318,7 @@ Der ``richtige'' äquivalente Begriff von schwacher Konstruierbarkeit
 aus \ref{sk-char} wird zur allgemeinen Definition:
 \begin{defn}
   Eine Garbe $F \in \AbKr$ heißt schwach $|\K|$-konstruierbar, falls
-  die Koeinheit der Adjunktion auf $F$ einen Isomorphismus $p^* p_* F
+  die Koeinheit der Adjunktion auf $F$ ein Isomorphismus $p^* p_* F
   \iso F$ ist.
 \end{defn}
 Auch übertragen wir den Begriff derivierter schwach
@@ -362,7 +362,7 @@ Konstruierbarkeitssituation zu zeigen.
   zusammenhängenden Fasern und das Axiom \ref{def:constr}
   \ref{itm:constr-final} folgt aus dem nachgestellten Lemma. Das Axiom
   \ref{def:constr} \ref{itm:constr-comb-space} zur Existenz kleinster
-  offener Umgebungen folgt aus \ref{clumsy-comb}.
+  offener Umgebungen wurde in \ref{clumsy-comb} gezeigt.
 \end{proof}
 \begin{lemma}
   Sei $X_i \to Y_i$ ein Morphismus von Diagrammen von topologischen
@@ -380,49 +380,64 @@ Konstruierbarkeitssituation zu zeigen.
   \to \col_i Y_i \to Z$ stetig, so sind alle
   \[X_i \to \col_i X_i \to \col_i Y_i \to Z
   = X_i \to Y_i \to \col_i Y_i \to Z \] stetig, und die Stetigkeit von
-  $g$ folgt daraus, dass Kompositionen finaler Abbildungen final sind
+  $g$ folgt daraus, dass die Kompositionen finaler Familien final ist
   und $\col_i Y_i$ folglich die Finaltopologie bezüglich aller $X_i
   \to \col_i Y_i$ trägt.
 
-  Für den Zusammenhang der Fasern sei $y \in \col_i Y_i$, $F_i \subset
-  Y_i$ die Faser von $y$ unter $Y_i \to \col_i Y_i$ und $G_i \subset
-  X_i$ das Urbild von $F_i$. Die beiden Kolimites sind Quotienten der
-  disjunkten Vereinigung über das System nach einer von den
+  Zum Zusammenhang der Fasern: Die beiden Kolimites sind Quotienten
+  der disjunkten Vereinigung über das System nach einer von den
   Systemmorphismen herrührenden Äquivalenzrelation. Ist $y_i \sim
-  f(y_j)$ mit $y_i \in F_i$ und $f: Y_i \to Y_j$ einem
-  Systemmorphismus eine erzeugende Relation, so sind auch die
-  Zusammenhangskomponenten von $ZK(y_i)$ und $ZK(f(y_i))$ in $\col_i
-  X_i$ nicht disjunkt:
-
-  %TODO fertig + ZK ersetzen
+  Yf(y_i)$ mit $y_i \in F_i$ und $Yf: Y_i \to Y_j$ einem
+  Systemmorphismus eine erzeugende Relation, so sind auch die Urbilder
+  der Zusammenhangskomponenten von $y_i$ und $Yf(y_i)$ in $\col_i X_i$
+  nicht disjunkt: ist etwa $x_i$ ein Urbild von $y_i$, so ist
+  $Xf(x_i)$ ein Urbild von $Yf(y_i)$ und die Zusammenhangskomponenten
+  treffen sich im Kolimes $\col_i X_i$ im Punkt $x_i \sim Xf(x_i)$.
 \end{proof}
-
-
-In guten Konstruierbarkeitssituationen lässt sich auch eine
-geometrische Formulierung schwacher $|\K|$-Konstruierbarkeit angeben:
+Bei der Übertragung von \ref{sk-char} ist die interessanteste
+äquivalente Formulierung schwacher $|\K|$-Konstruierbarkeit bislang
+unter den Tisch gefallen.
 \begin{defn}
   In einer Konstruierbarkeitssituation $p: |\K| \to \K$ heißt eine
-  Garbe $F \in \AbKr$ geometrisch schwach $|\K|$-konstruierbar, falls
-  die Einschränkungen $F|_{|\sigma|}$ konstant sind für alle Urbilder
-  $|\sigma| = p^{-1}(\sigma)$ von Punkten $\sigma \in \K$.
+  Garbe $F \in \AbKr$ \emph{geometrisch schwach $|\K|$-konstruierbar},
+  falls die Einschränkungen $F|_{|\sigma|}$ konstant sind für alle
+  Urbilder $|\sigma| = p^{-1}(\sigma)$ von Punkten $\sigma \in \K$.
 \end{defn}
+Wir erhalten im Allgemeinen nur noch eine Implikation:
 \begin{prop} \label{gensk-char-geom}
-  Ist in einer Konstruierbarkeitssituation $p: |\K| \to \K$ ...  so
-  ist für eine Garbe $F \in \AbKr$ äquivalent:
-  \begin{enumerate}
-    \item \label{itm:gensk-char-geom-sk} $F$ ist $|\K|$-konstruierbar.
-    \item \label{itm:gensk-char-geom-geom} $F$ ist geometrisch schwach
-      $|\K|$-konstruierbar.
-  \end{enumerate}
-  \end{prop}
+  Ist $p: |\K| \to \K$ eine Konstruierbarkeitssituation, so impliziert
+  für eine Garbe $F \in \AbKr$ schwache $|\K|$-Konstruierbarkeit
+  geometrisch schwache $|\K|$-Konstruierbarkeit.
+\end{prop}
 Das ist der fehlende Teil von \ref{sk-char}.
 \begin{proof}
-  Die Richtung $\ref{itm:gensk-char-geom-sk} \Implies
-  \ref{itm:gensk-char-geom-geom}$ folgt wieder aus \ref{gensk-char}
-  \ref{itm:gensk-char-res} und \ref{const-stalk} wegen $|\sigma|
-  \subset U(\sigma)$.
-
-  Für die umgekehrte Richtung %TODO
+  Dies folgt wieder aus \ref{gensk-char} \ref{itm:gensk-char-res} und
+  \ref{const-stalk} wegen $|\sigma| \subset U(\sigma)$.
 \end{proof}
+\begin{bsp}
+  Die umgekehrte Richtung gilt im Allgemeinen nicht: Sei etwa $|X| =
+  S^1$ mit der Triangulierung als simpliziale Menge aus
+  \ref{ex:real-sphere} und $F \in \Ab_{/|X|}$ die nichtkonstante lokal
+  konstante Garbe auf $S^1$ mit Halm $\Z$. Für $\sigma$ den
+  $0$-Simplex ist dann $U(\sigma) = S^1$ und es ist $\Z \cong F_\sigma
+  \ncong F(U(\sigma)) = \Gamma F = 0$.
+\end{bsp}
+\begin{bem}
+  Für die umgekehrte Richtung würden wir für $x \in
+  U(\sigma)$ eine stetige Zusammenziehung
+  \[ h: (0, 1] \times U(\sigma) \to U(\sigma) \]
+  benötigen, für die gilt:
+  \begin{enumerate}
+  \item Die Mengen $h({t} \times U(\sigma))$ bilden für $t \in (0, 1]$
+    eine Umgebungsbasis von $x$.
+  \item Es gilt $h(t, y) \in |\tau| \Iff y \in |\tau|$.
+  \item $h$ ist surjektiv.
+  \end{enumerate}
+  (Dies sind die Eigenschaften aus dem Beweis von \ref{sk-char}.)  Die
+  Existenz solcher Zusammenziehungen als Axiom zu setzen, bedeutet im
+  Wesentlichen, nur Triangulierungen zu erlauben, bei denen die
+  $U(\sigma)$-Mengen ``sich nicht selbst wieder treffen'' und damit im
+  Wesentlichen wieder mit Simplizialkomplexen zu arbeiten.
+\end{bem}
 
 \end{document}
