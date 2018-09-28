@@ -14,14 +14,17 @@
 In diesem Abschnitt möchten wir die Aussagen aus Kapitel \ref{??}
 übertragen auf den Fall, dass es sich bei dem Basisraum um die
 Realisierung einer simplizialen Menge anstelle eines
-Simplizialkomplexes handelt. Wir gehen vor wie in den ersten beiden
-Abschnitten.
+Simplizialkomplexes handelt. Simplizialkomplexe sind halbgeordnete
+Mengen, unsere Technik verwendete im Wesentlichen die
+Ordnungstopologie halbgeordneter Mengen. Simplizial konstante Garben
+auf simplizialen Mengen entsprechen hingegen Diagrammen von Mengen, in
+denen es auch mehrere Pfeile zwischen zwei zu nichtdegenerierten
+Simplizes gehörigen Punkten geben kann. Diese \emph{kategorielle
+  Realisierung} simplizialer Mengen werden wir im folgenden
+konstruieren.
 
-Für die Darstellung von Garben auf simplizialen Mengen als
-Diagrammkategorien von Garben definieren wir eine \emph{kategorielle
-  Realisierung} einer simplizialen Menge. Wir benötigen die Begriffe
-für nichtdegenerierte Simplizes (vgl. \ref{def:delta},
-\ref{def:comb-standard-simplex}).
+Wir benötigen die Begriffe für nichtdegenerierte Simplizes
+(vgl. \ref{def:delta}, \ref{def:comb-standard-simplex}).
 \begin{defn}
   Die Unterkategorie der endlichen nichtleeren Ordinalzahlen mit
   injektiven monotonen Abbildungen $\Delta^+ \subset \Delta$ heißt
@@ -80,7 +83,7 @@ Bildmengen. Dies zeigt die Funktorialität.
     {[m]} \rar[mapsto]
     & \slicecat{\Delta^+}{r}{\Delta^{+m}}
   \end{tikzcd} \]
-  ist ein Funktor $R: \Delta \to \poset$, genannt die
+  ist ein Funktor $R: \Delta \to \Cat$, genannt die
   \emph{kosimpliziale Standard-Kategorie}.
 \end{prop}
 \begin{proof}
@@ -95,19 +98,14 @@ Bildmengen. Dies zeigt die Funktorialität.
   also eine Transformation.
 
   Es handelt sich bei den Kategorien
-  $\slicecat{\Delta^+}{r}{\Delta^{+n}}$ tatsächlich um halbgeordnete
-  Mengen, denn die nichttrivialen Morphismen sind das Vorschalten von
-  echten Injektionen und senken somit den Grad eines Simplex.
+  $\slicecat{\Delta^+}{r}{\Delta^{+n}}$ um ``gerichtete Kategorien'',
+  bei denen es keine Kreise von Pfeilen außer den Identitäten gibt,
+  denn die nichttrivialen Morphismen sind das Vorschalten von echten
+  Injektionen und senken somit den Grad eines Simplex.
 \end{proof}
-\begin{bem}
-  Die halbgeordneten Mengen $\slicecat{\Delta^+}{r}{\Delta^{+n}}$ sind
-  natürlich einfach die opponierten Standard-$n$-Simplizialkomplexe;
-  unsere Konstruktion liefert allerdings die Rand- und
-  Degenerationsmorphismen auf natürliche Art mit.
-\end{bem}
+
 \begin{prop} \label{cat-cocomplete}
-  Die Kategorien der kleinen Kategorien $\Cat$ und der halbgeordneten
-  Mengen $\poset$ sind kovollständig.
+  Die Kategorie der kleinen Kategorien $\Cat$ ist kovollständig.
 \end{prop}
 \begin{proof}
   Koprodukte in $\Cat$ sind die Koprodukte der zugrundeliegenden
@@ -140,10 +138,53 @@ Bildmengen. Dies zeigt die Funktorialität.
   damit $A \mathrel{\mathop{\rightrightarrows}^{F}_{G}} B \to C$
   übereinstimmen. Die weiteren Schritte machen ``minimalinvasiv'' $B$
   mit diesen Identifikationen wieder zu einer Kategorie.
+\end{proof}
+\begin{bem}
+  Der Ansatz, Limites und Kolimites in $Cat$ mittels
+  \ref{refl-sub-complete} über die Einbettung $\Cat \subset
+  \mathrm{Quiv}$ in die Kategorie der Köcher zu konstruieren,
+  funktioniert \emph{nicht}. Jene ist als Prägarbenkategorie
+  tatsächlich vollständig und kovollständig und die Inklusion hat mit
+  der freien Pfadkategorie über einem Köcher tatsächlich einen
+  Linksadjungierten; allerdings handelt es sich nicht um eine volle
+  (dann also reflektive) Unterkategorie, weshalb die Limites und
+  Kolimites von denen in $\mathrm{Quiv}$ bzw. ihren freien
+  Pfadkategorien abweichen.
+\end{bem}
+\begin{defn}
+  Die \emph{kategorielle Realisierung} einer simplizialen Menge $X \in
+  \s\Ens$ ist definiert als das Tensorprodukt von Funktoren $X \otimes
+  R \in \poset$ für $R$ die kosimpliziale Standard-Kategorie und die
+  natürliche $\Ens$-tensorierte Struktur auf $\poset$
+  (\ref{ens-tensored}).
+\end{defn}
+\begin{bsp}
+  Betrachte die Standarddarstellung von $S^1$ als simpliziale Menge
+  $X$ mit einem nichtdegenerierten $1$-Simplex und einem
+  nichtdegenerierten $0$-Simplex aus \ref{ex:real-sphere}. Dann ist
+  die kategorielle Realisierung von $X$ das Diagramm
+  \[ \bullet \rightrightarrows \bullet \]
+  mit zwei Objekten und zwei parallelen Pfeilen dazwischen, sowie
+  nicht eingezeichneten Identitäten.
+\end{bsp}
 
-  Für die volle Unterkategorie $\poset \subset \Cat$ können wir
-  \ref{refl-sub-complete} verwenden, mit dem Reflektor $\Cat \to
-  \poset$, der im folgenden Lemma konstruiert wird.
+\subsection{Realisierung als halbgeordnete Menge}
+
+Der kombinatorische topologische Raum $\blacktriangle X$ einer
+simplizialen Menge eignet sich \emph{nicht} für die Übertragung der
+Aussagen zu schwach konstruierbaren Garben auf Simplizialkomplexen auf
+die Situation simplizialer Mengen, denn diese geometrische
+Realisierung sieht nicht mehrfache Verklebungsabbildungen. Dies
+möchten wir präzise machen.
+
+\begin{prop} \label{poset-cocomplete}
+  Die Kategorie $\poset$ der halbgeordneten Mengen ist kovollständig.
+\end{prop}
+\begin{proof}
+  Die halbgeordneten Mengen sind eine volle Unterkategorie $\poset
+  \subset \Cat$. Wir können daher \ref{refl-sub-complete} verwenden,
+  mit dem Reflektor $\Cat \to \poset$, der im folgenden Lemma
+  konstruiert wird.
 \end{proof}
 \begin{defn}
   Eine Kategorie heißt \emph{dünn}, falls jede Morphismenmenge
@@ -156,7 +197,7 @@ Bildmengen. Dies zeigt die Funktorialität.
   \subset \Cat$ der dünnen bzw. Skelettkategorien sind reflektiv. Der
   Reflektor $\Cat \to \mathrm{skelCat}$ macht aus dünnen Kategorien
   dünne Kategorien und liefert durch Komposition mit dem Reflektor
-  $\Cat \to \mathrm{thinCat}$ einen Reflektor $\Cat \to \poset$.
+  $\Cat \to \mathrm{thinCat}$ einen Reflektor $\pos: \Cat \to \poset$.
 \end{lemma}
 \begin{proof}
   Der Linksadjungierte zu $\mathrm{thinCat} \inj \Cat$ ist gegeben
@@ -179,44 +220,26 @@ Bildmengen. Dies zeigt die Funktorialität.
   Unterkategorie und erhält deshalb Dünnheit. Halbgeordnete Mengen
   sind nach Definition dünne Skelettkategorien.
 \end{proof}
-\begin{bem}
-  Der Ansatz, Limites und Kolimites in $Cat$ mittels
-  \ref{refl-sub-complete} über die Einbettung $\Cat \subset
-  \mathrm{Quiv}$ in die Kategorie der Köcher zu konstruieren,
-  funktioniert \emph{nicht}. Jene ist als Prägarbenkategorie
-  tatsächlich vollständig und kovollständig und die Inklusion hat mit
-  der freien Pfadkategorie über einem Köcher tatsächlich einen
-  Linksadjungierten; allerdings handelt es sich nicht um eine volle
-  (dann also reflektive) Unterkategorie, weshalb die Limites und
-  Kolimites von denen in $\mathrm{Quiv}$ bzw. ihren freien
-  Pfadkategorien abweichen.
-\end{bem}
-\begin{defn}
-  Die \emph{kategorielle Realisierung} einer simplizialen Menge $X \in
-  \s\Ens$ ist definiert als das Tensorprodukt von Funktoren $X \otimes
-  R \in \poset$ für $R$ die kosimpliziale Standard-Kategorie und die
-  natürliche $\Ens$-tensorierte Struktur auf $\poset$
-  (\ref{ens-tensored}).
-\end{defn}
 
+Bezeichne dazu $P = \pos R: \Delta \to \poset$ die kosimpliziale
+halbgeordnete Menge zu unseren Standardkategorien. Die halbgeordneten
+Mengen $P[n] = \pos \slicecat{\Delta^+}{r}{\Delta^{+n}}$ sind dann die
+opponierten Standard-$n$-Simplizialkomplexe.
 \begin{prop} \label{clumsy-order-top}
   Sei $X \in \s\Ens$ eine simpliziale Menge. Dann gibt es einen
-  Homöomorphismus $\blacktriangle X \iso \Ord((X \otimes
-  R)\op)$. Insbesondere hat jeder Punkt in der plumpen Realisierung
-  $\sigma \in \blacktriangle X$ eine kleinste offene Umgebung $(\geq
-  \sigma)$.
+  Homöomorphismus $\blacktriangle X \iso \Ord((X \otimes P)\op)$.
 \end{prop}
 \begin{proof}
   Der Funktor $\Ord: \poset \to \Top$ ist nach dem nachgestellten
   Lemma kostetig. Daher reicht es mit \ref{coend-cocont} (und der
   Kostetigkeit des Opponierens), einen Isomorphismus kosimplizialer
-  topologischer Räume $\blacktriangle \to \Ord R\op$ zu finden. Beide
+  topologischer Räume $\blacktriangle \to \Ord P\op$ zu finden. Beide
   bestehen aus einem Punkt pro nichtdegeneriertem Simplex
   (\ref{cw-disjoint-inner}) von $\Delta^n$ und haben als offene Mengen
   nach oben abgeschlossene Mengen. Randabbildungen $d_i$ sind
   Inklusionen in die Ränder, Degenerationen Kollapse von Kanten. Dies
-  begründen wir sorgfältiger: Unsere Definition von $Rs_i: R[n] \to
-  R[n-1]$ schickt einen nichtdegenerierten Simplex $f: [m] \to [n]$
+  begründen wir sorgfältiger: Unsere Definition von $Ps_i: P[n] \to
+  P[n-1]$ schickt einen nichtdegenerierten Simplex $f: [m] \to [n]$
   monoton und injektiv auf $N(s_i \circ f)$, den nichtdegenerierten
   Simplex, der zum Kollaps von $i$ und $i+1$ in $f$ gehört.
 \end{proof}
@@ -251,7 +274,7 @@ der plumpen Realisierung:
 \begin{prop} \label{clumsy-comb}
   Sei $X \in \s\Ens$ eine simpliziale Menge. Dann gibt es eine
   Äquivalenz von Kategorien $\Ens_{/\blacktriangle X} \qiso [(X
-    \otimes R)\op, \Ens]$.
+    \otimes P)\op, \Ens]$.
 \end{prop}
 \begin{bem}
   Betrachte für eine feste simpliziale Menge $X \in \s\Ens$ die volle
@@ -293,6 +316,8 @@ der plumpen Realisierung:
   Identitäten und unsere Abbildungen erfüllen die simplizialen
   Relationen.
 \end{bem}
+
+\subsection{??}
 
 Wir kommen nun zur Übertragung der Ergebnisse aus \ref{ch02} auf die
 Situation simplizialer Mengen. Dies ermöglicht etwa die Aussage auch
