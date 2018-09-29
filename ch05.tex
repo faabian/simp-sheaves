@@ -513,12 +513,14 @@ durchführen und so \ref{ensx-complete} übertragen:
 \end{proof}
 \begin{bem}
   Die verbleibenden Fragen zur Vollständigkeit und Kovollständigkeit
-  von $\EnsTop$ werden in \ref{enstop-not-complete} negativ
-  beantwortet.
+  von $\EnsTop$ werden in \ref{enstop-not-complete} und
+  \ref{enstop-no-coequalizers} negativ beantwortet.
 \end{bem}
 
+\subsection{Kartesisch abgeschlossene koreflektive Kategorien topologischer Räume}
+
 Wir könnten erwarten, dass wie das Produkt auch das interne Hom von
-$EnsX$ in unsere relative Situation übertragen werden kann. Dies
+$\EnsX$ in unsere relative Situation übertragen werden kann. Dies
 gelingt tatsächlich aber im Allgemeinen nicht, denn in diesem Fall
 erhielten wir durch Nachschalten des Faserfunktors $\Ens_{/\Top} \to
 \Top$ bzw. $\Ens_{\sslash \Top} \to \Top$ ein zum kartesischen Produkt
@@ -697,7 +699,7 @@ Damit können wir die für uns entscheidende Eigenschaft zeigen:
 \begin{prop} \label{k-etale-closed}
   Ist $X \in \mathcal{K}$ für $\mathcal{K}$ die koreflektive Hülle von
   $\mathcal{I}_K$ bzw. $\mathcal{I}_L$ und $F \to X$ eine étale
-  Abbildung, so gilt auch $F \in \mathcal{K}$.
+  Abbildung, so ist auch $F \in \mathcal{K}$.
 \end{prop}
 \begin{proof}
   Wir können den étalen Raum $F \to X$ als Kolimes mittels der
@@ -720,49 +722,50 @@ Damit können wir die für uns entscheidende Eigenschaft zeigen:
 \end{proof}
 
 Wir können uns nun der Frage nach einer kartesisch abgeschlossenen
-Struktur auf $\EnsTop$ zuwenden.
+Struktur auf $\EnsTop$ zuwenden. Ganz allgemein gilt:
+\begin{prop}
+  Ist $C \subset D$ eine koreflektive Unterkategorie einer kartesisch
+  abgeschlossenen Kategorie $C$, dann ist $D$ kartesisch
+  abgeschlossen.
+\end{prop}
+\begin{proof}
+  Ein Produkt $X \times Y$ ist ein darstellendes Objekt für den
+  Funktor $D(\cdot, X) \times D(\cdot, Y)$, ein internes Hom $X
+  \Implies Y$ ein darstellendes Objekt für den Funktor $D(\cdot \times
+  X, Y)$. Die Aussage folgt also aus der Definition eines Koreflektors
+  bzw. dem folgenden Lemma.
+\end{proof}
+\begin{lemma}
+  Sei $C \subset D$ eine koreflektive Unterkategorie. Dann ist die
+  Einschränkung auf $C$ jedes auf $D$ darstellbaren Funktors $D\op \to
+  \Ens$ darstellbar.
+\end{lemma}
+\begin{proof}
+  Dies ist direkt die Definition eines Koreflektors $^+$. Ist
+  $D(\cdot, d)$ ein darstellbarer Funktor, so stimmt seine
+  Einschränkung auf $C$ mit $C(\cdot, d^+)$ überein.
+\end{proof}
+
+Damit können wir folgern:
 \begin{prop}
   Die Kategorie der Garben über topologischen Räumen mit Morphismen
   $\EnsTop$ ist nicht kartesisch abgeschlossen.
 \end{prop}
 \begin{proof}
-  Wir erinnern daran, dass ein Morphismus in $\EnsTop$ ein
-  kommutatives Quadrat
-  \[ \begin{tikzcd}
-    F \arrow[r] \dar{p} & G \dar{q} \\
-    X \arrow[r] & Y
-  \end{tikzcd} \]
-  ist. In diesem Beweis notieren wir Objekte in $\EnsTop$ mitsamt
-  ihrer Basis als $F \to X$. Angenommen, es gibt ein internes Hom zum
-  Produkt aus \ref{??} in $\EnsTop$. Wir wollen zeigen, dass dieses
-  dann auch ein internes Hom in $\Top$ liefert, ein Widerspruch zu der
-  bekannten Aussage, dass $\Top$ nicht kartesisch abgeschlossen ist
-  (\cite{Borceux}, Prop. 7.1.2).
-
-  Betrachte dazu die volltreuen Einbettungen $\Top \to \EnsTop$ durch
-  faserweise initiale Garben $\iota: X \mapsto (\varnothing \to X)$
-  (konstant leer) und durch faserweise terminale Garben $\tau: X
-  \mapsto (X \xrightarrow{\id} X)$ (konstant einelementig). Wir haben
-  natürliche Bijketionen
-  \begin{align*}
-    \EnsTop(\iota X, U \to L) &\iso C(X, L) \qquad \text{und} \\
-    \EnsTop(\tau X, U \to L) &\iso C(X, U).
-  \end{align*}
-  durch Betrachten des unteren bzw. oberen Pfeils des kommutativen
-  Quadrats.
-  
-  Wir erhalten für $(U \to L) = (\tau Y \Implies \tau Z)$ das interne
-  Hom, dass wegen
-  \begin{align*}
-    C(X, U)
-    &\iso \Ens_{/C}(\tau X, U \to L) \\
-    &\iso \Ens_{/C}(\tau X \times \tau Y, \tau Z) \\
-    &\iso C(X \times Y, Z)
-  \end{align*}
-  $U$ ein internes Hom in $\Top$ für $Y$ und $Z$ ist.
-
-  % TODO schöner
+  Betrachte die volle Unterkategorie $\Top \subset \EnsTop$ gegeben
+  durch die Einbettung $X \mapsto (\varnothing \to X)$. Diese ist
+  koreflektiv mit dem Koreflektor $(G \to Y) \mapsto (\varnothing \to
+  Y)$. In der Tat gilt:
+  \[ \EnsTop((\varnothing \to X), (G \to Y)) \iso \Top(X, Y)
+  \iso \EnsTop((\varnothing \to X), (\varnothing \to Y)).
+  \]
+  Nach \ref{coreflective-cart-closed} müsste $\Top$ kartesisch
+  abgeschlossen, ein Widerspruch zu der bekannten Aussage, dass dies
+  für $\Top$ nicht möglich ist (\cite{??}).
 \end{proof}
+% TODO iwo \iota X, \tau X faserweise initiale / terminale Garben
+% defn.
+
 Da das einzige Problem die fehlende kartesisch abgeschlossene Struktur
 in der Basis war, schränken wir uns auf eine bequemere Kategorie $\K$
 ein. Zunächst betrachten wir den Fall von Paaren von $\K$-Räumen mit
@@ -776,13 +779,15 @@ stetiger, aber nicht notwendigerweise étaler, Abbildung.
   Es handelt sich um eine Prägarbenkategorie auf $[1]\op$ mit Werten in
   einer kartesisch abgeschlossenen Kategorie. Die Aussage folgt somit
   aus \ref{presheaf-cart-closed}. Expliziter ist das interne Hom von
-  $F \to X$ mit $G \to Y$ das Paar $\K(F, G) \times_{\K(F, Y)} \K(X,
-  Y) \to \K(X, Y)$, das die Menge der kommutativen Quadrate mit einer
-  Topologie ausstattet, mit der Projektion auf den zweiten Faktor als
-  Abbildung. Die Adjunktion $\K^{[1]}((F \to X) \times (G \to Y), (H \to
-  Z)) \iso \K^{[1]}((F \to X), (G \to Y) \Implies (H \to Z))$ für $(F \to
-  X), (G \to Y), (H \to Z) \in \K^{[1]}$ ist dann die Bijektion von
-  Faserprodukten
+  $F \to X$ mit $G \to Y$ das Paar
+  \[ \K(F, G) \times_{\K(F, Y)} \K(X, Y) \to \K(X, Y),
+  \]
+  das die Menge der kommutativen Quadrate mit einer Topologie
+  ausstattet, mit der Projektion auf den zweiten Faktor als
+  Abbildung. Die Adjunktion $\K^{[1]}((F \to X) \times (G \to Y), (H
+  \to Z)) \iso \K^{[1]}((F \to X), (G \to Y) \Implies (H \to Z))$ für
+  $(F \to X), (G \to Y), (H \to Z) \in \K^{[1]}$ ist dann die
+  Bijektion von Faserprodukten
   \[ \K(F \times G, H) \times_{\K(F \times G, Z)} \K(X \times Y, Z)
   \iso \K(F, \K(G, H) \times_{\K(G, Z)} \K(Y, Z))
   \times_{\K(F, \K(Y, Z))} \K(X, \K(Y, Z)).
@@ -805,8 +810,8 @@ versuchen, es zu ``étalisieren'':
   \[(\et, S) \circ (S, \et) = (\et \circ S, \et \circ S):
   \Top_X \rightleftarrows \EnsX \rightleftarrows \etTop_X,
   \]
-  wobei letztere Adjunktion sogar die bekannte Äquivalenz von
-  Kategorien ist.
+  wobei letztere Adjunktion die bekannte Äquivalenz von Kategorien
+  ist.
 \end{proof}
 Ist $\K \subset \Top$ nun eine Kategorie topologischer Räume, die mit
 jedem Raum $X$ auch jeden étalen Raum über $X$ enthält (etwa wie in
@@ -864,68 +869,64 @@ Produkt $(F \times G \to X \times Y)$ in $\Top$ étale ist, und dann
 nach dem Lemma auch das Produkt $k(F \times G) \to k(X \times Y)$ in
 $\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
 
-\begin{satz}
-  Der partiell definierte Koreflektor $^+: \K^{[1]} \to \et \K^{[1]}$ ist nur
-  auf $\et \K^{[1]}$ definiert.
+\begin{satz} \label{enstop-missing-coreflector}
+  Sei $\K \subset \Top$ eine volle Unterkategorie. Der partiell
+  definierte Koreflektor $^+: \K^{[1]} \to \et \K^{[1]}$ ist nur auf
+  $\et \K^{[1]}$ definiert.
 \end{satz}
 \begin{proof}
   Dies liegt daran, dass die Testobjekte, mit denen wir Objekte in
-  $\K^{[1]}$ eindeutig festlegen können, bereits étale sind.
-
-  Konkret gelte also
+  $\K^{[1]}$ eindeutig festlegen können, bereits étale sind. Betrachte
+  dazu die Einbettungen $\iota, \tau: \K \to \et \K^{[1]}$ durch über
+  dem betreffenden Raum initiale bzw. terminale Garben:
+  \[ \iota X := (\varnothing \to X), \\
+  \tau X := (X \xrightarrow{\id} X. \]
+    
+  Gelte also
   \begin{equation} \label{eq:coreflection-adjunction}
     \K^{[1]}((F \to X), (G \to Y)) \iso \et \K^{[1]}((F \to X), (G \to Y)^+)
   \end{equation}
-  für alle étalen $F \to X$. Ein Objekt $(H \to Z) \in \K^{[1]}$ ist nach
-  dem Yoneda-Lemma (bis auf eindeutigen Isomorphismus) eindeutig
+  für alle étalen $F \to X$. Ein Objekt $(H \to Z) \in \K^{[1]}$ ist
+  nach dem Yoneda-Lemma (bis auf eindeutigen Isomorphismus) eindeutig
   festgelegt durch seine Yoneda-Einbettung $\K^{[1]}(\cdot, (H \to
-  Z))$. Wir behaupten, dass sogar die Funktoren $\K^{[1]}(\iota \cdot, (H
-  \to Z)) = \K(\cdot, Z)$ und $\K^{[1]}(\tau \cdot, (H \to Z)) = \K(\cdot,
-  H): \K \to \Ens$ und ihre aus $\iota \cdot \Implies \tau \cdot$
-  entstehende Transformation ausreichen, um $H \to Z$ eindeutig
+  Z))$. Wir behaupten, dass sogar die Funktoren $\K^{[1]}(\iota \cdot,
+  (H \to Z)) = \K(\cdot, Z)$ und $\K^{[1]}(\tau \cdot, (H \to Z)) =
+  \K(\cdot, H): \K \to \Ens$ und ihre aus $\iota \cdot \Implies \tau
+  \cdot$ entstehende Transformation ausreichen, um $H \to Z$ eindeutig
   festzulegen. In der Tat bestimmen die beiden Funktoren nach dem
   Yoneda-Lemma bereits die beteiligten Räume $H$ und $Z$ eindeutig und
   der Morphismus $H \to Z$ entspricht der Transformation. Nun sind
-  $\iota X, \tau X \in \et \K^{[1]}$ für alle $X \in \K$, was den Beweis
-  abschließt: dann müssen nämlich im Fall von
+  $\iota X, \tau X \in \et \K^{[1]}$ für alle $X \in \K$, was den
+  Beweis abschließt: dann müssen nämlich im Fall von
   \ref{eq:coreflection-adjunction} $(G \to Y)$ und $(G \to Y)^+$
   isomorph sein und die Koreflektion ist genau dann definiert, wenn
-  $(G \to Y)$ sowieso schon étale ist.  
+  $(G \to Y)$ sowieso schon étale ist.
 \end{proof}
 \begin{kor}
-  Es gibt keine kartesisch abgeschlossene Struktur auf $\et \K^{[1]}$,
-  falls $\K$ nichtétale Abbildungen enthält.
+  Es gibt ein internes Hom für $F \to X$ und $G \to Y$ in $\et
+  \K^{[1]}$ genau dann, wenn die Projektion auf den zweiten Faktor
+  \[ \K(F, G) \times_{\K(F, Y)} \K(X, Y) \to \K(X, Y) \]
+  étale ist.
 \end{kor}
+\begin{proof}
+  Dies folgt aus \ref{k-arrow-cart-closed} und
+  \ref{enstop-missing-coreflector}.
+\end{proof}
+\begin{bem}
+  Diese Bedingung ist sehr restriktiv, denn sie besagt im Fall einer
+  koreflektiven vollen Unterkategorie $\K$, dass es für eine Abbildung
+  $f: F \to G$ über $g: X \to Y$ eine in der $k$-Verfeinerung der
+  kompakt-offen Topologie offene Umgebung von $g$ gibt, über der $f$
+  jeweils eine eindeutige darüberliegende Abbildung $F \to G$
+  definiert.
+\end{bem}
+
+\subsection{Vollständigkeitseigenschaften von der Garben auf topologischen Räumen}
 
 Mit denselben Techniken können wir auch zeigen, dass die Kategorie
-$\EnsTop$ der Garben auf topologischen Räumen (über die endlichen
+$\EnsTop$ der Garben auf topologischen Räumen über die endlichen
 Limites aus \ref{enstop-fin-complete} und die trivialen Koprodukte
-hinaus) weder vollständig noch kovollständig ist.
-
-\begin{prop} \label{enstop-missing-coreflector}
-  Der partiell definierte Reflektor $^+: \Top^{[1]} \to \et
-  \Top^{[1]}$ ist nur auf $\et \Top^{[1]} = \EnsTop$ definiert.
-\end{prop}
-\begin{proof}
-  Sei der Reflektor $(F \to X)^+ = F^+ \to X^+$ auf $F \to X$
-  definiert, d. h. es gebe für alle étalen $G \to Y$ eine natürliche
-  Bijektion
-  \begin{equation} \label{eq:enstop-reflector}
-    \Top^{[1]}((F \to X), (G \to Y))
-    \iso \et \Top^{[1]}((F \to X)^+, (G \to Y)).
-  \end{equation}
-  Dann erhalten wir mit den étalen Testobjekten $\tau Y$ für $Y \in
-  \Top$:
-  \[ \Top(X, Y) \iso \Top^{[1]}((F \to X), \tau Y)
-  \iso \et \Top^{[1]}((F \to X)^+, \tau Y) \iso \Top(X^+, Y).
-  \]
-  Mit dem Yoneda-Lemma folgt $X^+ \iso X$ und durch Nachschalten $F^+
-  \to X^+ \to X$ ohne Einschränkung $X^+ = X$. Die Einheit der
-  Adjunktion liefert einen Morphismus $F \to F^+$ von Garben über $X$,
-  über den jeder Morphismus in eine Garbe $G \to Y$ eindeutig
-  faktorisieren soll.
-  % TODO wie weiter? funktioniert das überhaupt?
-\end{proof}
+hinaus weder vollständig noch kovollständig ist.
 
 \begin{prop} \label{enstop-not-complete}
   Die Kategorie $\EnsTop$ der Garben über topologischen Räumen besitzt
@@ -943,13 +944,31 @@ hinaus) weder vollständig noch kovollständig ist.
   (\ref{enstop-missing-coreflector}) für die Existenz von unendlichen
   Produkten nötig.
 \end{proof}
+\begin{kor} \label{enstop-not-reflective}
+  Die volle Unterkategorie $\EnsTop \subset \Top^{[1]}$ ist nicht
+  reflektiv.
+\end{kor}
+\begin{proof}
+  Gäbe es einen zur Inklusion Linksadjungierten, so wäre die Inklusion
+  linksexakt, würde also Limites erhalten.
+\end{proof}
 \begin{prop} \label{enstop-no-coequalizers}
   Die Kategorie $\EnsTop$ der Garben über topologischen Räumen besitzt
-  keine Koegalisatoren.
-  % TODO stimmt das?
+  nicht alle Koegalisatoren.
 \end{prop}
 \begin{proof}
-  % TODO
+  Betrachte etwa $F \in \Ens_{/[0,1]}$ die konstant zweielementige
+  Garbe und für $\point \in \Ens_{/\point}$ die konstant einelementige
+  Garbe auf dem Punkt die Morphismen $\point \rightrightarrows F$, die
+  den Punkt auf die beiden Endpunkte über $0$ bzw $1 \in [0, 1]$ eines
+  festen globalen Schnitts von $F$ schicken. Der Koegalisator in
+  $\Top^{[1]}$ ist ein topologischer Raum über $S^1$, dessen eine
+  Zusammenhangskomponente $S^1 \xrightarrow{\id} S^1$ und dessen
+  andere Zusammenhangskomponente eine \emph{abgeschlossene} Teilmenge
+  einer Spirale über $S^1$ ist, die in genau einem Punkt
+  zweielementiges Urbild hat. Der Koegalisator existiert also nach
+  \ref{enstop-not-reflective} nicht, da die Abbildung im Koegalisator
+  in $\Top^{[1]}$ nicht étale ist.
 \end{proof}
 
 
