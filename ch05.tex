@@ -285,12 +285,13 @@ sofort die Verallgemeinerung.
 
 \begin{theorem} [Allgemeine Nerv-Realisierungs-Dualität, \cite{Lore}, 3.2]
   \label{nerve}
-  Seien $C$ eine $V$-Kategorie mit Koexponentialen und ein Funktor $R:
-  S \to C$ gegeben. Dann gibt es eine Adjunktion $(|\cdot|, N)$  
+  Seien $C$ eine $V$-Kategorie mit Koexponentialen $\odot$ und ein
+  Funktor $R: S \to C$ gegeben. Dann gibt es eine Adjunktion
+  $(|\cdot|, N)$
   \[ C \xtofrom[N]{|\cdot|} [S\op, V] \]
   mit
   \begin{alignat*}{3}
-    &|\cdot|: && X &&\mapsto \int^s X(s) \odot R(s) \qquad \text{und} \\
+    &|\cdot|: && X &&\mapsto \int^{s \in S} X(s) \odot R(s) \qquad \text{und} \\
     &N: && Y &&\mapsto C(R \, \cdot, Y).
   \end{alignat*}
 \end{theorem}
@@ -501,15 +502,15 @@ durchführen und so \ref{ensx-complete} übertragen:
 \begin{satz} \label{enstop-fin-complete}
   Die Kategorie der Garben auf topologischen Räumen mit Morphismen
   $\Ens_{/\Top}$ besitzt endliche Limites.
-  % TODO kovollst. falsch
 \end{satz}
 \begin{proof}
-  Es reicht, die Existenz von Pullbacks (Limites über Winkel) zu
-  zeigen. Diese existieren in $\Top^{[1]}$ offensichtlich und ergeben
-  für étale $F_i \to X_i$ tatsächlich eine étale Abbildung $\lim_i F_i
-  \to \lim_i X_i$. Dies wurde für endliche Produkte in
-  \ref{enstop-prod} gezeigt und ist für Einschränkungen auf Teilmengen
-  mit der induzierten Topologie klar.
+  Es reicht mit \ref{enstop-prod} die Existenz von Egalisatoren zu
+  zeigen. Seien dazu $(F \to X) \rightrightarrows (G \to Y)$ zwei
+  Morphismen. Wir zeigen, dass der Egalisator $E \to W$ aus
+  $\Top^{[1]}$ eine Garbe ist. Sei $f$ die (übereinstimmende)
+  Verknüpfung $W \to X \rightrightarrows Y$. Nun ist $E$ insbesondere
+  ein Egalisator von Garben über $W \subset X$: $E \to F|_W
+  \rightrightarrows f^* G$ und somit eine Garbe.
 \end{proof}
 \begin{bem}
   Die verbleibenden Fragen zur Vollständigkeit und Kovollständigkeit
@@ -522,12 +523,12 @@ durchführen und so \ref{ensx-complete} übertragen:
 Wir könnten erwarten, dass wie das Produkt auch das interne Hom von
 $\EnsX$ in unsere relative Situation übertragen werden kann. Dies
 gelingt tatsächlich aber im Allgemeinen nicht, denn in diesem Fall
-erhielten wir durch Nachschalten des Faserfunktors $\Ens_{/\Top} \to
-\Top$ bzw. $\Ens_{\sslash \Top} \to \Top$ ein zum kartesischen Produkt
-adjungiertes internes Hom in der Kategorie der topologischen Räume,
-was bekanntermaßen in dieser Allgemeinheit nicht möglich ist
-(\cite{???}). Wir müssen uns also wieder auf eine bequeme Kategorie
-topologischer Räume mit internem Hom einschränken.
+erhielten wir durch Einschränken auf die Basis ein zum kartesischen
+Produkt adjungiertes internes Hom in der Kategorie der topologischen
+Räume (\ref{full-enstop-not-cart-closed}), was bekanntermaßen in
+dieser Allgemeinheit nicht möglich ist (\cite{Borceux???}). Wir müssen
+uns also wieder auf eine bequeme Kategorie topologischer Räume mit
+internem Hom einschränken.
 
 Die häufige Wahl $\CGHaus$ ist für uns ungeeignet, denn der étale Raum
 einer Garbe über einem kompakt erzeugten Hausdorffraum ist im
@@ -747,7 +748,7 @@ Struktur auf $\EnsTop$ zuwenden. Ganz allgemein gilt:
 \end{proof}
 
 Damit können wir folgern:
-\begin{prop}
+\begin{prop} \label{full-enstop-not-cart-closed}
   Die Kategorie der Garben über topologischen Räumen mit Morphismen
   $\EnsTop$ ist nicht kartesisch abgeschlossen.
 \end{prop}
@@ -788,10 +789,11 @@ stetiger, aber nicht notwendigerweise étaler, Abbildung.
   \to Z)) \iso \K^{[1]}((F \to X), (G \to Y) \Implies (H \to Z))$ für
   $(F \to X), (G \to Y), (H \to Z) \in \K^{[1]}$ ist dann die
   Bijektion von Faserprodukten
-  \[ \K(F \times G, H) \times_{\K(F \times G, Z)} \K(X \times Y, Z)
-  \iso \K(F, \K(G, H) \times_{\K(G, Z)} \K(Y, Z))
-  \times_{\K(F, \K(Y, Z))} \K(X, \K(Y, Z)).
-  \]
+  \begin{align*}
+    &\K(F \times G, H) \times_{\K(F \times G, Z)} \K(X \times Y, Z) \\
+    \iso \quad &\K(F, \K(G, H) \times_{\K(G, Z)} \K(Y, Z))
+    \times_{\K(F, \K(Y, Z))} \K(X, \K(Y, Z)).
+  \end{align*}
   % TODO left/right setzen
 \end{proof}
 Im allgemeinen ist das interne Hom in $\K^{[1]}$ für $(F \to X)$ und $G
@@ -879,9 +881,10 @@ $\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
   $\K^{[1]}$ eindeutig festlegen können, bereits étale sind. Betrachte
   dazu die Einbettungen $\iota, \tau: \K \to \et \K^{[1]}$ durch über
   dem betreffenden Raum initiale bzw. terminale Garben:
-  \[ \iota X := (\varnothing \to X), \\
-  \tau X := (X \xrightarrow{\id} X. \]
-    
+  \begin{align*}
+    \iota X := (\varnothing \to X), \\
+    \tau X := (X \xrightarrow{\id} X.
+  \end{align*}
   Gelte also
   \begin{equation} \label{eq:coreflection-adjunction}
     \K^{[1]}((F \to X), (G \to Y)) \iso \et \K^{[1]}((F \to X), (G \to Y)^+)
