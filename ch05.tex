@@ -226,9 +226,10 @@ Wir erhalten die folgende \emph{kovariante Realisierung}:
   Realisierung $|\cdot|: \s\Ens \to \CGHaus$ nachschalten. Dies
   liefert eine Prägarbe topologischer Räume auf $X$. Allerdings
   schränkt diese Konstruktion nicht auf die vollen Unterkategorien der
-  Garben ein, die als Limes über ein im Allgemeinen unendliches System
-  formuliert ist, da die geometrische Realisierung im Allgemeinen
-  nicht mit beliebigen Limites vertauscht.
+  Garben ein: die Garbenbedingung ist als Limes über ein im
+  Allgemeinen unendliches System formuliert, die geometrische
+  Realisierung vertauscht aber im Allgemeinen nicht mit beliebigen
+  Limites.
 \end{bem}
 
 \subsection{Die Dualität von Nerv und Realisierung}
@@ -315,10 +316,15 @@ sofort die Verallgemeinerung.
 Für unsere allgemeine Dualität von Nerv und Realisierung \ref{nerve}
 benötigen wir also eine bessere $V$-angereichterte Struktur auf
 $C$. Wenn wir uns auf $\EnsX$ beschränken, erhalten wir sogar die
-Struktur einer kartesisch abgeschlossenen Kategorie
-(engl. \emph{cartesian closed category}), d. h. einer Kategorie mit
-endlichen Produkten, für deren kartesische monoidale Struktur es ein
-internes Hom gibt.
+Struktur einer kartesisch abgeschlossenen Kategorie.
+\begin{defn}
+  Eine Kategorie $C$ mit endlichen Produkten heißt \emph{kartesisch
+    abgeschlossen}, falls es ein internes Hom für die kartesische
+  Schmelzstruktur durch Produkte gibt.
+\end{defn}
+Das bedeutet konkret, dass es eine Adjunktion $(\times Y, Y \Implies)$
+gibt, also eine in allen Variablen natürliche Bijektion
+\[ C(X \times Y, Z) \iso C(X, Y \Implies Z). \]
 
 \begin{prop} \label{ensx-cart-closed}
   Die Kategorie $\EnsX$ ist kartesisch abgeschlossen mit Produkt
@@ -363,8 +369,9 @@ $\EnsX$ insbesondere zu einer über sich selbst tensorierten Kategorie
 im Sinne von \ref{copower}. Wir erhalten einen Nerv-Funktor für die
 geometrische Realisierung simplizialer Garben auf $X$ aus \ref{nerve}.
 
-Da es sich wieder um eine sehr allgemeine Aussage handelt, geben wir
-die Verallgemeinerung auf beliebige Prägarbenkategorien an.
+Den obigen konkreten Beweis für das interne Hom der Prägarbenkategorie
+$\pEnsX = [\OffX\op, \Ens]$ können wir mit einer Rechnung im
+Koendenkalkül auf beliebige Prägarbenkategorien ausweiten.
 \begin{prop}
   Ist $C$ eine kleine Kategorie, so ist die Prägarbenkategorie
   $\Ens^{C\op}$ kartesisch abgeschlossen.
@@ -731,25 +738,12 @@ Wir können uns nun der Frage nach einer kartesisch abgeschlossenen
 Struktur auf $\EnsTop$ zuwenden. Ganz allgemein gilt:
 \begin{prop}
   Ist $C \subset D$ eine koreflektive Unterkategorie einer kartesisch
-  abgeschlossenen Kategorie $C$, dann ist $D$ kartesisch
-  abgeschlossen.
+  abgeschlossenen Kategorie $C$ und stimmen die Produkte in $C$ und
+  $D$ überein, dann ist $D$ kartesisch abgeschlossen.
 \end{prop}
 \begin{proof}
-  Ein Produkt $X \times Y$ ist ein darstellendes Objekt für den
-  Funktor $D(\cdot, X) \times D(\cdot, Y)$, ein internes Hom $X
-  \Implies Y$ ein darstellendes Objekt für den Funktor $D(\cdot \times
-  X, Y)$. Die Aussage folgt also aus der Definition eines Koreflektors
-  bzw. dem folgenden Lemma.
-\end{proof}
-\begin{lemma}
-  Sei $C \subset D$ eine koreflektive Unterkategorie. Dann ist die
-  Einschränkung auf $C$ jedes auf $D$ darstellbaren Funktors $D\op \to
-  \Ens$ darstellbar.
-\end{lemma}
-\begin{proof}
-  Dies ist direkt die Definition eines Koreflektors $^+$. Ist
-  $D(\cdot, d)$ ein darstellbarer Funktor, so stimmt seine
-  Einschränkung auf $C$ mit $C(\cdot, d^+)$ überein.
+  In diesem Fall ist die Koreflektion $(X \Implies Y)^+$ des internen
+  Hom in $D$ ein internes Hom in $C$.
 \end{proof}
 
 Damit können wir folgern:
@@ -765,12 +759,12 @@ Damit können wir folgern:
   \[ \EnsTop((\varnothing \to X), (G \to Y)) \iso \Top(X, Y)
   \iso \EnsTop((\varnothing \to X), (\varnothing \to Y)).
   \]
-  Nach \ref{coreflective-cart-closed} müsste $\Top$ kartesisch
-  abgeschlossen, ein Widerspruch zu der bekannten Aussage, dass dies
-  für $\Top$ nicht möglich ist (\cite{??}).
+  Die Produkte in $\EnsTop$ und $\Top \subset \EnsTop$ stimmen nach
+  \ref{enstop-prod} überein. Somit müsste laut
+  \ref{coreflective-cart-closed} $\Top$ kartesisch abgeschlossen sein,
+  ein Widerspruch zu der bekannten Aussage, dass dies für $\Top$ nicht
+  möglich ist (\cite{??}).
 \end{proof}
-% TODO iwo \iota X, \tau X faserweise initiale / terminale Garben
-% defn.
 
 Da das einzige Problem die fehlende kartesisch abgeschlossene Struktur
 in der Basis war, schränken wir uns auf eine bequemere Kategorie $\K$
@@ -977,6 +971,8 @@ hinaus weder vollständig noch kovollständig ist.
   zweielementiges Urbild hat. Der Koegalisator existiert also nach
   \ref{enstop-not-reflective} nicht, da die Abbildung im Koegalisator
   in $\Top^{[1]}$ nicht étale ist.
+  % TODO der Reflektor existiert ja nur nicht überall...
+  % TODO besseres Beispiel, komplett durchrechnen..
 \end{proof}
 
 

@@ -11,17 +11,57 @@
 
 \section{Schwach konstruierbare Garben auf simplizialen Mengen}
 
-In diesem Abschnitt möchten wir die Aussagen aus Kapitel \ref{??}
-übertragen auf den Fall, dass es sich bei dem Basisraum um die
-Realisierung einer simplizialen Menge anstelle eines
-Simplizialkomplexes handelt. Simplizialkomplexe sind halbgeordnete
-Mengen, unsere Technik verwendete im Wesentlichen die
+In diesem Abschnitt möchten wir die Aussagen aus den Kapiteln
+\ref{ch01??} und \ref{ch02??}  übertragen auf den Fall, dass es sich
+bei dem Basisraum um die Realisierung einer simplizialen Menge
+anstelle eines Simplizialkomplexes handelt. Simplizialkomplexe sind
+halbgeordnete Mengen und unsere Technik verwendete die
 Ordnungstopologie halbgeordneter Mengen. Simplizial konstante Garben
 auf simplizialen Mengen entsprechen hingegen Diagrammen von Mengen, in
 denen es auch mehrere Pfeile zwischen zwei zu nichtdegenerierten
-Simplizes gehörigen Punkten geben kann. Diese \emph{kategorielle
-  Realisierung} simplizialer Mengen werden wir im folgenden
+Simplizes gehörigen Punkten geben kann. Solche kategoriellen
+Realisierungen simplizialer Mengen werden wir in diesem Abschnitt
 konstruieren.
+
+Konkret ist für $X \in \s\Ens$ eine simpliziale Menge eine Kategorie
+$D_X$ gesucht, für die es eine Äquivalenz von Kategorien
+\[ \Ens_{/|X|}^{sk} \qiso {[D_X\op, \Ens]} \]
+gibt. Dabei steht $\Ens_{/|X|}^{sk}$ für die simplizial konstanten
+Garben auf $|X|$. Wir diskutieren die in Frage kommenden Kategorien
+$D_X$ an einem einfachen Beispiel. Betrachte die Standarddarstellung
+von $S^1$ als simpliziale Menge $X$ mit einem nichtdegenerierten
+$1$-Simplex und einem nichtdegenerierten $0$-Simplex aus
+\ref{ex:real-sphere}. Als kategorielle Realisierung $D_X$ von $X$
+können folgende Diagramme in Frage kommen:
+\begin{enumerate}
+\item Das Diagramm $D_X = (\bullet \to \bullet)$. Es handelt sich um
+  das Diagramm der nichtdegenerierten Simplizes von $X$ mit der
+  Angabe, welche Simplizes im Abschluss welcher Simplizes
+  liegen. Dieses Diagramm ist zu grob, um simplizial konstanten Garben
+  auf $S^1$ zu entsprechen, wie die Realisierung von $D_X$ mit der
+  Ordnungstopologie und dann die erste Garbenkohomologie zeigt. Im
+  Abschnitt \ref{sec:real-poset} werden wir diese kategorielle
+  Realisierung mit der geometrischen Realisierung durch plumpe
+  Simplizes in Beziehung setzen.
+\item Das Diagramm $D_X = \slicecat{\Delta}{r}{X}$. Es handelt sich um
+  das Diagramm aller Simplizes von $X$ mit der Angabe von Rändern und
+  Degenerationen. Diese Diagramm ist zu fein, um von einer simplizial
+  konstanten Garbe auf $S^1$ eindeutig bestimmt zu werden, denn diese
+  trägt keine Informationen über die degenerierten Simplizes. Im
+  Abschnitt \ref{sec:real-simplex-cat} werden wir diese kategorielle
+  Realisierung mit den simplizialen Objekten in $\EnsssTop$ mit
+  diskreten Basisräumen in Beziehung setzen.
+\item Das Diagramm $D_X = (\bullet \rightrightarrows \bullet)$. Dieses
+  Diagramm würden wir anschaulich erwarten. Es handelt sich um die
+  nichtdegenerierten Simplizes von $X$ mit der Angabe von Rändern,
+  nicht aber von Degenerationen. Im Abschitt
+  \ref{sec:real-directed-cat} zeigen wir die versprochene Aussage,
+  dass Prägarben auf diesem Diagramm simplizial konstanten Garben auf
+  $|X|$ entsprechen.
+\end{enumerate}
+
+\subsection{Realisierung als gerichtete Kategorie}
+\label{sec:real-directed-cat}
 
 Wir benötigen die Begriffe für nichtdegenerierte Simplizes
 (vgl. \ref{def:delta}, \ref{def:comb-standard-simplex}).
@@ -154,28 +194,36 @@ Bildmengen. Dies zeigt die Funktorialität.
 \begin{defn}
   Die \emph{kategorielle Realisierung} einer simplizialen Menge $X \in
   \s\Ens$ ist definiert als das Tensorprodukt von Funktoren $X \otimes
-  R \in \poset$ für $R$ die kosimpliziale Standard-Kategorie und die
-  natürliche $\Ens$-tensorierte Struktur auf $\poset$
+  R \in \Cat$ für $R$ die kosimpliziale Standard-Kategorie und die
+  natürliche $\Ens$-tensorierte Struktur auf $\Cat$
   (\ref{ens-tensored}).
 \end{defn}
 \begin{bsp}
   Betrachte die Standarddarstellung von $S^1$ als simpliziale Menge
   $X$ mit einem nichtdegenerierten $1$-Simplex und einem
-  nichtdegenerierten $0$-Simplex aus \ref{ex:real-sphere}. Dann ist
-  die kategorielle Realisierung von $X$ das Diagramm
+  nichtdegenerierten $0$-Simplex aus \ref{ex:real-sphere}. Wie
+  angekündigt ist die kategorielle Realisierung von $X$ das Diagramm
   \[ \bullet \rightrightarrows \bullet \]
   mit zwei Objekten und zwei parallelen Pfeilen dazwischen, sowie
   nicht eingezeichneten Identitäten.
 \end{bsp}
 
+\begin{theorem}
+% TODO hier Hauptaussage eintragen  
+\end{theorem}
+
 \subsection{Realisierung als halbgeordnete Menge}
+\label{sec:real-poset}
 
 Der kombinatorische topologische Raum $\blacktriangle X$ einer
 simplizialen Menge eignet sich \emph{nicht} für die Übertragung der
 Aussagen zu schwach konstruierbaren Garben auf Simplizialkomplexen auf
 die Situation simplizialer Mengen, denn diese geometrische
 Realisierung sieht nicht mehrfache Verklebungsabbildungen. Dies
-möchten wir präzise machen.
+möchten wir präzise machen. Wir definieren dazu eine Realisierung $X
+\otimes P$ von $X$ durch halbgeordnete Mengen. Die kosimpliziale
+halbgeordnete Menge $P: \Delta \to \poset$ erhalten wir dabei aus $R:
+\Delta \to \Cat$ durch Anwenden eines Reflektors $\Cat \to \poset$.
 
 \begin{prop} \label{poset-cocomplete}
   Die Kategorie $\poset$ der halbgeordneten Mengen ist kovollständig.
@@ -221,7 +269,7 @@ möchten wir präzise machen.
   sind nach Definition dünne Skelettkategorien.
 \end{proof}
 
-Bezeichne dazu $P = \pos R: \Delta \to \poset$ die kosimpliziale
+Bezeichne nun $P = \pos R: \Delta \to \poset$ die kosimpliziale
 halbgeordnete Menge zu unseren Standardkategorien. Die halbgeordneten
 Mengen $P[n] = \pos \slicecat{\Delta^+}{r}{\Delta^{+n}}$ sind dann die
 opponierten Standard-$n$-Simplizialkomplexe.
@@ -276,6 +324,8 @@ der plumpen Realisierung:
   Äquivalenz von Kategorien $\Ens_{/\blacktriangle X} \qiso [(X
     \otimes P)\op, \Ens]$.
 \end{prop}
+
+% TODO das muss raus oder woanders hin
 \begin{bem}
   Betrachte für eine feste simpliziale Menge $X \in \s\Ens$ die volle
   Unterkategorie $(\s\EnsssTop)_X \subset \s\EnsssTop$ der
@@ -317,7 +367,11 @@ der plumpen Realisierung:
   Relationen.
 \end{bem}
 
-\subsection{??}
+\subsection{Realisierung als Simplexkategorie}
+\label{sec:real-simplex-cat}
+
+\subsection{Allgemeine schwache Konstruierbarkeit}
+% TODO behalten? Titel?
 
 Wir kommen nun zur Übertragung der Ergebnisse aus \ref{ch02} auf die
 Situation simplizialer Mengen. Dies ermöglicht etwa die Aussage auch
