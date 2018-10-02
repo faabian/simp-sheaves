@@ -34,7 +34,16 @@ eines simplizialen topologischen Raums $X: \Delta\op \to \Top$.
   wieder durch Punkte mit beliebigen Randabbildungen, so sorgen deren
   Identifikationen dafür, dass die geometrische Realisierung wieder
   $|\Delta^1|$ wird.
-  % TODO Interessantere Beispiele? RP^n oder so?
+
+  Interessanter ist vielleicht der simpliziale topologische Raum, der
+  in Grad 0 aus den Simplizes $S^1 \sqcup \point$ und in Grad 1 aus
+  den nichtdegenerierten Simplizes $D^2$ besteht, und dessen
+  Randabbildungen $S^1 \times {0}$ mit $\point$ und $S^1 \times {1}$
+  mit $S^1 \subset D^2$ durch ``Wickeln mit doppelter
+  Geschwindigkeit'' (komplex $x \mapsto x^2$) identifizieren. Dazu
+  kommen degenerierte Simplizes, sodass die Degenerationsabbildungen
+  keine weiteren Identifikationen verursachen. Wir erhalten so den
+  zweidimensionalen reell-projektiven Raum.
 \end{bsp}
 
 Weiter verallgemeinert die Konstruktion auch auf
@@ -626,7 +635,7 @@ Wir nehmen nun an, dass $\mathcal{I}$ die folgenden Axiome erfüllt
   \item \label{itm:k-axiom-ev} Sind $X, Y \in \mathcal{I}$, so ist die
     Auswertungsabbildung
     \begin{align*}
-      \ev_{X, Y}: \Top_{co}(X, Y) \times X &\to Y,
+      \ev_{X, Y}: \Top_{co}(X, Y) \times X &\to Y, \\
       (f, x) &\mapsto f(x)
     \end{align*}
     stetig. Dabei ist $\Top_{co}(X, Y)$ die Morphismenmenge $\Top(X,
@@ -694,8 +703,7 @@ einem Produkt lokalkompakter Räume Umgebungsbasen aus Kompakta durch
 die Umgebungsbasen aus Produktmengen.
 
 Für das Axiom \ref{itm:k-axiom-ev} verweisen wir auf die Literatur,
-siehe etwa \cite{??}.
-% TODO finden
+siehe etwa \cite{TM}, 1.12.12.
 
 \begin{kor}
   Die koreflektiven Hüllen von $\mathcal{I}_K$ und $\mathcal{I}_L$
@@ -915,13 +923,35 @@ $\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
   \ref{enstop-missing-coreflector}.
 \end{proof}
 \begin{bem}
-  Diese Bedingung ist sehr restriktiv, denn sie besagt im Fall einer
-  koreflektiven vollen Unterkategorie $\K$, dass es für eine Abbildung
-  $f: F \to G$ über $g: X \to Y$ eine in der $k$-Verfeinerung der
-  kompakt-offen Topologie offene Umgebung von $g$ gibt, über der $f$
-  jeweils eine eindeutige darüberliegende Abbildung $F \to G$
-  definiert.
+  Wenn $\K(F, G)$ die kompakt-offen Topologie trägt, erhielten wir
+  folgendes Gegenbeispiel zum kartesischen Abschluss von $\et
+  \K^{[1]}$: Für $X = Y = \point$ sind étale Räume $F \to X$ und $G
+  \to Y$ diskret. Das interne Hom von $F \Implies G$ lautet $\K(F, G)
+  \to \K(X, Y) = \point$ und muss folglich selbst diskret sein. Dies
+  ist im Fall, dass $F$ unendlich ist, ein Widerspruch zum folgenden
+  Lemma. Im Fall der koreflektiven Hüllen von $\K = \mathcal{I}_K$
+  oder $\K = \mathcal{I}_L$ aus dem vorangegangenen Abschnitt gilt
+  allerdings $\K(F, G) = k(\Top_{co}(F, G))$. Mir ist nicht bekannt,
+  ob der Koreflektor die Topologien so sehr verfeinern kann, dass
+  $\K(F, G)$ auch bei unendlichem $F$ diskret wird.
 \end{bem}
+\begin{lemma}
+  Ist $G$ diskret, so ist die kompakt-offen Topologie auf $\Top(F,
+  G)$, $F \in \Top$ genau dann diskret, wenn $X$ endlich viele
+  Zusammenhangskomponenten hat.
+\end{lemma}
+\begin{proof}
+  Die kompakt-offen Topologie ist genau dann diskret, wenn jede
+  stetige Abbildung $f: F \to G$ durch endlich viele Aussagen der Form
+  $f(K) \subset U$ für $K \subset F$ kompakt und $U \open G$ eindeutig
+  festgelegt ist. Ein Kompaktum $K \subset F$ trifft nur endlich viele
+  Zusammenhangskomponenten von $F$. Daher kann $f$ nicht eindeutig
+  festgelegt werden, wenn $F$ unendlich viele Zusammenhangskomponenten
+  hat. Umgekehrt ist $f$ als stetige Funktion in einen diskreten Raum
+  konstant auf Zusammenhangskomponenten und kann durch die Angabe des
+  Funktionswerts (Punkte in $G$ sind offen) eines Punktes in jeder
+  Zusammenhangskomponente eindeutig festgelegt werden.
+\end{proof}
 
 \subsection{Vollständigkeitseigenschaften von der Garben auf topologischen Räumen}
 
@@ -953,6 +983,27 @@ hinaus weder vollständig noch kovollständig ist.
 \begin{proof}
   Gäbe es einen zur Inklusion Linksadjungierten, so wäre die Inklusion
   linksexakt, würde also Limites erhalten.
+\end{proof}
+Wir können sogar zeigen, dass es den Reflektor praktisch nicht gibt.
+\begin{prop}
+  Der partiell definierte Reflektor $\Top^{[1]} \to \EnsTop$ ist nur
+  auf $\EnsTop$ definiert.
+\end{prop}
+\begin{proof}
+  Sei der Reflektor $^+$ definiert auf einem Objekt $F \to X$. Durch
+  Testen mit Zielobjekten $\tau Y$, $Y \in \Top$ ist nach dem
+  Yoneda-Lemma die Basis von $(F \to X)^+$ wieder (bis auf eindeutigen
+  Homöomorphismus) $X$ und die Einheit der Adjunktion liegt über der
+  Identität auf $X$. Wegen der eindeutigen Faktorisierung über diese
+  Einheit müssen sich nicht nur die gesamten Mengen von kommutativen
+  Quadraten von $F \to X$ bzw. $(F \to X)^+$ in eine Garbe
+  entsprechen, sondern sogar die Morphismen über jeder Abbildung $f$
+  in der Basis. Insbesondere können wir über $X$ testen mit étalen
+  Objekten der Form $\Sigma \times U \to X$ für eine diskrete Menge
+  $\Sigma$ und offenes $U \open X$. Nach dem Yoneda-Lemma bestimmt
+  dies die Schnitte $F(U)$ bzw. $F^+(U)$ eindeutig. Die Restriktionen
+  erhalten wir durch
+  % TODO problemas beim kein Reflektor-Beweis
 \end{proof}
 \begin{prop} \label{enstop-no-coequalizers}
   Die Kategorie $\EnsTop$ der Garben über topologischen Räumen besitzt

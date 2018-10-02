@@ -258,10 +258,43 @@ $\beta$. Es handelt sich um einen Koreflektor:
   4.3.22) benutzt.
 \end{proof}
 
-Als Komposition zweier linksexakter Funktoren ist $\beta$ natürlich
-wieder linksexakt. Der allgemeinen Terminologie folgend bezeichnen wir
-eine Garbe $F \in \AbKr$ $\beta$-azyklisch, falls ihre höheren
-Derivierten von $\beta$ verschwinden, also falls
+\begin{lemma}[\cite{TG}, 4.3.22] \label{final-pullback}
+  Sei $p: X \to Y$ eine finale Surjektion mit zusammenhängenden
+  Fasern. Dann ist die Einheit der Adjunktion $\Id \Trafo p_* p^*$ für
+  alle $G \in \Ens_{/Y}$ ein Isomorphismus.
+\end{lemma}
+\begin{proof}
+  Wir zeigen, dass die Einheit der Adjunktion Bijektionen auf allen
+  Schnitten über $U \open Y$ induziert. Ohne Einschränkung reicht der
+  Fall der globalen Schnitte $U = Y$, denn die Einschränkung von $p$
+  auf $p^{-1}(U) \to U$ erfüllt ebenfalls die Voraussetzungen des
+  Lemmas. Zu zeigen ist also, dass die Einheit der Adjunktion
+  Bijektionen $\Gamma G \iso \Gamma p_* p^* G = \Gamma p^* G$
+  induziert. Nach der universellen Eigenschaft des Rückzugs stehen
+  globale Schnitte $s: X \to p^* G$ von $p^* G \to X$ in Bijektion zu
+  Schnitten $t: X \to G$ von $G \to Y$ über $p$. Eine solche Abbildung
+  $t$ faktorisiert nun nach der Surjektivität von $p$ zunächst
+  mengentheoretisch über $p$. Diese Faktorisierung ist eindeutig, denn
+  $t$ ist konstant auf den Fasern $p^{-1}(y)$ von $y \in Y$ als
+  stetige Abbildung von einem zusammenhängenden Raum in den diskreten
+  Raum $G_y$. Die Stetigkeit dieser mengentheoretischen Faktorisierung
+  folgt nun aus der Finalität von $p$. Die Umkehrabbildung schaltet
+  einem Schnitt von $G \to Y$ über $\id_Y$ einen Schnitt über $p$
+  durch Vorschalten von $p$ zu.
+\end{proof}
+\begin{bem} \label{connected-fibers-subst}
+  Die Voraussetzung zusammenhängender Fasern kann fallen gelassen
+  werden, wenn stattdessen in $p^* G$ nur diejenigen Garbenschnitte
+  als Schnitte zugelassen werden, welche gewisse zu den Daten von $p^*
+  G$ gehörige Verträglichkeiten erfüllen müssen, die die Abbildung
+  $p^{-1}(y) \to G_y$ wieder konstant machen. Dies werden wir in
+  \ref{sehaf-col} benötigen und dort auch präzisieren.
+\end{bem}
+
+Als Komposition zweier linksexakter Funktoren ist $\beta$ wieder
+linksexakt. Der allgemeinen Terminologie folgend bezeichnen wir eine
+Garbe $F \in \AbKr$ $\beta$-azyklisch, falls ihre höheren Derivierten
+von $\beta$ verschwinden, also falls
 \[ R^k\beta F = 0 \text{ für alle } k > 0.  \]
 
 Später benötigen wir die folgende Charakterisierung

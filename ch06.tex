@@ -210,73 +210,125 @@ Bildmengen. Dies zeigt die Funktorialität.
 
 Als zweite Zutat für unseren Satz, der simplizial konstante Garben auf
 $|X|$ mit Prägarben auf der kategoriellen Realisierung $X \otimes R$
-in Beziehung setzen soll, benötigen wir eine Charakterisierung von
-Garben auf Kolimites topologischer Räume. Unser Weg führt über die
-halbgeordneten den topologischen Räumen zugeordneten \emph{Locales}
-ihrer offener Mengen.
+in Beziehung setzen soll, benötigen wir eine Beschreibung von Garben
+auf Kolimites. Die Argumentation ist recht einfach, sofern die
+richtigen Begriffe von Limites und Kolimites von großen Kategorien zur
+Verfügung stehen. Problematisch dabei ist, dass Aussagen über
+Isomorphismen (strikte Äquivalenz) im Allgemeinen zu restriktiv sind,
+und wir Limites nur bis auf (schwache) Äquivalenz von Kategorien
+benötigen. Wir versuchen hier, dies durch ein Modell in den Griff zu
+bekommen, welches schwache Limites als starke Limites modelliert und
+dabei die Informationen über die beteiligten Isomorphismen
+mitverfolgt.
 \begin{defn}
-  Eine halbgeordnete Menge $X$ heißt \emph{Rahmen}
-  (engl. \emph{frame}, falls sie endliche Infima $U \wedge V$ und
-  beliebige Suprema $\bigvee_i U_i$ besitzt und das Distributivgesetz
-  \[ \bigvee_i (U \wedge V_i) = U \wedge (\bigvee_i V_i) \]
-  erfüllt. Ein Rahmen-Morphismus ist ein Morphismus halbgeordneter
-  Mengen, der Suprema und endliche Infima erhält.
+  Ein Limes eines Systems von Kategorien $C_i$ ist die Kategorie $L$
+  der Produktkategorie $\prod_i C_i$
 \end{defn}
-Wir notieren die Kategorie der Rahmen mit $\Frm$ und ihre opponierte
-Kategorie der \emph{Locales} mit $\Loc := \Frm\op$.
 
-Es gibt einen offensichtlichen Funktor $\Off: \Top \to \Loc$, der
-einem topologischen Raum $X$ die halbgeordnete Menge seiner offenen
-Mengen $\OffX$ mit ihren mengentheoretischen Inklusionen zuordnet. Ist
-$f: X \to Y$ stetig, so definiert das Urbild $f^{-1}: \Off_Y \to
-\Off_X$ einen Morphismus von Rahmen in die Gegenrichtung bzw. einen
-gleichsinnigen Morphismus von Locales $\Off_X \to \Off_Y$.
+Dafür führen wir einen Limesbegriff für Garben- und
+allgemeiner Funktorenkategorien ein.
+% TODO sollte das ein Lemma sein und die univ Eig zeigen?
+\begin{defn}
+  Sei $I$ eine kleine Kategorie, $C: I \to \Cat$ ein System von
+  kleinen Kategorien und $D$ eine Kategorie. Ein \emph{Limes von
+    Funktoren} $F \in \lim_i [C_i, D]$ ist ein Tupel von Funktoren
+  $F_i \in [C_i, D]$ samt Isotransformationen $T_f: F_i \Isotrafo F_j
+  \circ Cf$ für alle $f: i \to j$ in $I$.
+\end{defn}
+Die Formulierung ist analog gebildet zu der eines Limes in $\Ens_D$,
+wobei striktes Übereinstimmen (Identitätstransformation) auf schwaches
+Übereinstimmen (Isotransformation) abgemildert wird. Der Begriff
+gewährleistet die Stetigkeit des $\Hom$ in der schwachen ``Kategorie''
+der Kategorien mit Äquivalenzen als Isomorphismen:
+\[ [ \col_i C_i, D] \qiso \lim_i [C_i, D] \]
+ist eine Äquivalenz von Kategorien. Man beachte, dass die
+Isotransformationen $T_f$ Teil der Daten des Funktor-Limes sind.
 
-Bezeichne nun weiter $\Bas$ die Kategorie der halbgeordneten Mengen,
-die endliche Infima besitzen und deren (sofern existente) Suprema das
-Distributivitätsgesetz erfüllen. Morphismen in $\Bas$ sind opponierte
-Morphismen halbgeordneter Mengen, die Suprema und endliche Infima
-erhalten. Die Kategorie $\Bas$ verallgemeinert somit die Eigenschaften
-von Basen topologischer Räume. Wir erhalten einen offensichtlichen
-Reflektor $T: \Bas \to \Loc$, der eine halbgeordnete Menge um ihre
-Suprema ergänzt, also im Fall einer Basis eines topologischen Raums
-die erzeugte Topologie bildet.
-\begin{prop}
-  Bis auf Anwenden der Einheit der Adjunktion $(T, \iota)$ ist der
-  Funktor $\Off: \Top \to \Loc \to \Bas$ kostetig, d. h. es gilt in
-  $\Bas$:
-  \[ \Off(\col_i X_i) \iso T \, \iota \, \col_i \Off (X_i) .\]
-\end{prop}
+Nun können wir die Beschreibung von Garben auf Kolimites formulieren.
+\begin{satz} \label{sheaf-col}
+  Sei $X = \col_i X_i$ ein Kolimes topologischer Räume. Dann ist der
+  Limes von Funktoren
+  \[ \lim_i \ins_i^*: \EnsX \to \lim_i \ins_i^* \EnsX \]
+  für $\ins_i^*: \EnsX \to \Ens_{/X_i}$ den Rückzug entlang den
+  Abbildungen des Kolimes $\ins_i: X_i \to X$ und Systemmorphismen das
+  Nachschalten von $f^*: \Ens_{/X_j} \to \Ens_{/X_i}$ für $f: i \to j$
+  in $I$ eine Äquivalenz von Kategorien.
+\end{satz}
 \begin{proof}
-  Die Topologie einer disjunkten Vereinigung $\bigsqcup_i X_i$ hat
-  tatsächlich die Basis $\bigsqcup_i \Off_{X_i}$.
-  
-  Für einen Koegalisator
-  \[ X \overset{f}{\underset{g}{\rightrightarrows}}
-   Y \xrightarrow{q} K
-  \]
-  in $\Top$ gilt: $U \subset K$ ist offen genau dann, wenn
-  $q^{-1}(U) \subset Y$ offen ist. Wir können $\Off_K$ folglich mit
-  den $U \in \Off_Y$ identifizieren, für die $q^{-1}(q(U)) = U$
-  ist. Dies ist genau dann der Fall, wenn $U$ stabil ist unter
-  Hinzunahme äquivalenter Punkte $f(x) \sim g(x)$, d. h. wenn
-  $f^{-1}(U) = g^{-1}(U)$. Es folgt, dass
-  \[ \Off_K \xrightarrow{q^{-1}} \Off_Y
-  \overset{f^{-1}}{\underset{g^{-1}}{\rightrightarrows}} \Off_X
-  \]
-  sogar ohne Rückgriff auf die Einheit der Adjunktion ein Egalisator
-  von Rahmen ist, also ein Koegalisator von Locales.
+  Ist $X = \coprod_i X_i$ ein Koprodukt (d. h. $I$ diskret), so sind
+  die $\ins_i^*$ Restriktionen, das Bild $\ins_i^* \EnsX \subset
+  \Ens_{/X_i}$ ist dicht und die Äquivalenz ist die bekannte Aussage
+  $\EnsX \qiso \prod_i \Ens_{/X_i}$.
+
+  Im Fall eines Koegalisators $Z
+  \overset{f}{\underset{g}{\rightrightarrows}} Y \xrightarrow{q} X$
+  müssen wir zeigen, dass der Rückzug $q^*$ eine Äquivalenz von
+  Kategorien liefert zwischen den Garben auf $X$ und der Kategorie
+  bestehend aus den Paaren $(G, \tau)$ für $G \in \Ens_{/Y}$ eine
+  Garbe auf $Y$, die im wesentlichen Bild des Rückzugs $q^*$ liegt und
+  für die gilt: $f^* G = \tau g^* G$.
+
+  Wir behaupten, ein Quasiinverser ist durch $(G, \tau) \mapsto q_* G$
+  gegeben. In der Tat ist $q$ final und surjektiv und nach
+  \ref{final-pullback} ist die Einheit $F \to q_* q^* F$ ein
+  Isomorphismus, wenn man zu den Daten von $q^* F$ die Verklebung
+  $\tau$ dazuzählt.
 \end{proof}
-\begin{kor}
-  Es gibt eine natürliche Äquivalenz von Kategorien
-  \[ \Ens_{/\col_i X_i} \qiso \lim_i \Ens_{/X_i}. \]
-\end{kor}
+% TODO exakter
+\begin{bem}
+  Entscheidend in diesem Beweis ist, dass die Isomorpismen $\tau$ zu
+  den Daten von Limesgarben dazugehören. Im Fall von $X = S^1$ ist
+  dies die Verklebung, die bestimmt, wie aus einer Garbe auf dem
+  Einheitsintervall eine Garbe auf der Kreislinie gemacht wird.
+\end{bem}
+Diese Äquivalenz schränkt ein zu einer Äquivalenz der vollen
+Unterkategorien simplizial konstanter Garben.
+\begin{prop}
+ Für eine simpliziale Menge $X \in \s\Ens$ gilt:
+  \[ \Ens_{/|X|}^{sk} \qiso \lim_{\slicecat{\Delta}{r}{X}} \Ens_{/|\Delta^n|}^{sk}. \]
+\end{prop}
 \begin{proof}
   % TODO
 \end{proof}
 \begin{theorem}
-% TODO hier Hauptaussage eintragen  
+  Sei $X \in \s\Ens$ eine simpliziale Menge. Dann gibt es eine
+  Äquivalenz von Kategorien zwischen Prägarben auf der kategoriellen
+  Realisierung von $X$ und simplizial konstanten Garben auf $|X|$:
+  \[ [(X \otimes R)\op, \Ens] \qiso \Ens^{sk}_{/|X|} .\]
 \end{theorem}
+\begin{proof}
+  Wir nutzen, dass nach \ref{sheaf-col} beide Seiten mit dem Kolimes
+  $|X| = \col_{\slicecat{\Delta}{r}{X}} |\Delta^n|$ vertauschen:
+  \begin{align*}
+    [(X \otimes R)\op, \Ens]
+    &\qiso [\col_{\slicecat{\Delta}{r}{X}} (\Delta^n \otimes R)\op, \Ens] \\
+    &\qiso \lim_{\slicecat{\Delta}{r}{X}} [(\Delta^n \otimes R)\op, \Ens] \\
+    &\qiso \lim_{\slicecat{\Delta}{r}{X}} [(\Delta^n \otimes P)\op, \Ens] \\
+    &\qiso \lim_{\slicecat{\Delta}{r}{X}} \Ens_{/\Ord(\Delta^n)} \\
+    &\qiso \lim_{\slicecat{\Delta}{r}{X}} \Ens_{/|\Delta^n|}^{sk} \\
+    &\qiso \Ens_{/|X|}^{sk}.    
+  \end{align*}
+  Dabei verwendet der zweite Schritt die Stetigkeit des
+  Kategorien-Homs, der dritte den Umstand, dass es in $\Delta^n$ keine
+  Mehrfachkanten gibt, der vierte \ref{clumsy-comb} und der fünfte
+  \ref{sk-char}.
+\end{proof}
+\begin{bem}
+  Prägarben auf der kategoriellen Realisierung sind sogar Garben auf
+  einer Basis: Formuliert man die Garbenbedingung für Garben auf einer
+  Basis analog zum Fall von Überdeckungen in $\OffX$
+  ordnungstheoretisch, erhält man:
+  \begin{quote}
+    Eine Prägarbe $F$ auf einer halbgeordneten Menge $X$ heißt Garbe,
+    falls sie jedes Supremum (jeden Kolimes) über bezüglich endlichen
+    Infima (Limites) abgeschlossene Teilsysteme von $X$ auf den
+    zugehörigen Limes schickt, sofern das Supremum in $X$ existiert:
+    \[ F(\col_i U_i) \iso \lim_i F(U_i). \]
+  \end{quote}
+  Dies ist bei Prägarben auf der kategoriellen Realisierung
+  trivialerweise erfüllt, denn ist in der kategoriellen Realisierung
+  $x = \sup S$, so ist bereits $x \in S$.
+\end{bem}
 
 \subsection{Realisierung als halbgeordnete Menge}
 \label{sec:real-poset}

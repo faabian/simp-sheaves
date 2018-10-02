@@ -591,7 +591,7 @@ Unterschied zu \ref{loc-compact} und \ref{loc-compact-usage}.
   \end{enumerate}
 \end{proof}
 
-Daraus folgt sofort unser Ziel.
+Mit diesen Kriterien folgt sofort unser Ziel.
 \begin{kor}
   Die geometrische Realisierung $|X|$ einer simplizialen Menge $X \in
   \s\Ens$ ist ein kompakt erzeugter Hausdorffraum.
@@ -603,34 +603,63 @@ Daraus folgt sofort unser Ziel.
   \ref{itm:cg-crit-quot} auch $|X|$. Das folgt auch aus \ref{real-hd}
   und \ref{cg-crit} \ref{itm:cg-crit-cw}.
 \end{proof}
-\begin{bem} \label{real-products}
+
+Der entscheidende Grund, in der Kategorie $\CGHaus$ statt in $\Top$ zu
+arbeiten, ist die Existenz eines internen Hom.
+\begin{theorem}[\cite{Gabriel-Zisman}, III, 2.1.2]
+  \label{cghaus-cart-closed}
+  Die Kategorie $\CGHaus$ der kompakt erzeugten Hausdorffräume ist
+  kartesisch abgeschlossen.
+\end{theorem}
+Aus der Adjunktion $(\times Y, Y \Implies)$ folgt auch die
+Rechtsexaktheit von Produkten in $\CGHaus$.
+\begin{satz}[\cite{Gabriel-Zisman}, III, 3] \label{real-products}
   Die geometrische Realisierung $|\cdot|: \s\Ens \to \CGHaus$
-  vertauscht mit endlichen Limites. Ganz allgemein lassen sich
-  endliche Limites als Egalisatoren endlicher Produkte darstellen. Der
-  Egalisator in $\Top$ zweier stetiger Abbildungen zwischen kompakt
-  erzeugten Hausdorffräumen ist dabei als abgeschlossener Unterraum
-  eines kompakt erzeugten Hausdorffraums selbst wieder in $\CGHaus$
-  und erfüllt die universelle Eigenschaft in dieser
-  Unterkategorie. Das Vertauschen der Realisierung mit Egalisatoren
-  folgt direkt aus der Definition. Für das Vertauschen mit endlichen
-  Produkten verweisen wir auf \cite{Gabriel-Zisman}. Entscheidend ist,
-  dass das Produkt in $\Top$ zweier kompakt erzeugter Hausdorffräume
-  im Allgemeinen nicht wieder kompakt erzeugt ist. Das korrekte
-  Produkt in $\CGHaus$ heißt auch \emph{Kelley-Produkt} und ist
-  gegeben durch Anwenden des Rechtsadjungierten der Inklusion
-  $\CG \to \Top$ auf das Produkt in $\Top$. Dieser Rechtsadjungierte
-  $k: \Top \to \CG$ verfeinert die Topologie eines Raumes $X$ um alle
-  Mengen $U \subset X$, deren Schnitte mit allen Kompakta $K \subset
-  X$ in $K$ offen sind, also genau um die für kompakte Erzeugtheit
-  benötigten. Es gilt also: \[ |X \times Y| \iso k(|X| \times |Y|). \]
+  vertauscht mit endlichen Limites.
+\end{satz}
+\begin{bem}
+   Entscheidend ist, dass das Produkt in $\Top$ zweier kompakt
+   erzeugter Hausdorffräume im Allgemeinen nicht wieder kompakt
+   erzeugt ist. Das korrekte Produkt in $\CGHaus$ heißt auch
+   \emph{Kelley-Produkt} und wird notiert $X \times_{Ke} Y$. Es ist
+   gegeben durch Anwenden des Rechtsadjungierten der Inklusion $\CG
+   \to \Top$ auf das Produkt in $\Top$. Dieser Rechtsadjungierte $k:
+   \Top \to \CG$ verfeinert die Topologie eines Raumes $X$ um alle
+   Mengen $U \subset X$, deren Schnitte mit allen Kompakta $K \subset
+   X$ in $K$ offen sind, also genau um die für kompakte Erzeugtheit
+   benötigten. Es gilt also:
+   \[ |X \times Y| \iso k(|X| \times |Y|). \]
 \end{bem}
-
-% TODO Vertauschen mit Kelley-Produkt ausführen?
-% TODO Stelle suchen in Gabriel-Zisman
-% TODO Gegenbsp. vertauscht nicht mit beliebigen Limites
-
-\begin{bsp} \label{ex:cg-products}
-  % TODO Gegenbsp CG nicht abg. unter Produkten in Top.
+\begin{proof}[Beweisskizze](\cite{Gabriel-Zisman}, III, 3)
+   Ganz allgemein lassen sich endliche Limites als Egalisatoren
+   endlicher Produkte darstellen. Für die Egalisatoren verweisen auf
+   \cite{Garbiel-Zisman}, III, 3.3. Für das Vertauschen mit endlichen
+   Produkten zeigt man, dass die Aussage für Standardsimplizes gilt,
+   es also einen Homöomorphismus $|\Delta^n \times \Delta^m| \iso
+   |\Delta^n| \times |\Delta^m|$ gibt, siehe \cite{Gabriel-Zisman},
+   III, 3.4. Dann folgt die Aussage sofort aus dem Vertauschen des
+   Produkts in $\CGHaus$ mit Kolimites als linksadjungierter Funktor
+   des internen Hom in $\CGHaus$ (\ref{cghaus-cart-closed}):
+   \begin{align*}
+     |X \times Y|
+     &\iso |\col_{\slicecat{\Delta}{r}{X}} \Delta^n \times
+     \col_{\slicecat{\Delta}{r}{Y}} \Delta^m| \\
+     &\iso \col_{\slicecat{\Delta}{r}{X}} \col_{\slicecat{\Delta}{r}{Y}}
+     |\Delta^n \times \Delta^m| \\
+     &\iso \col_{\slicecat{\Delta}{r}{X}} \col_{\slicecat{\Delta}{r}{Y}}
+     (|\Delta^n| \times_{Ke} |\Delta^m|) \\
+     &\iso |\col_{\slicecat{\Delta}{r}{X}} \Delta^n|
+     \times_{Ke} |\col_{\slicecat{\Delta}{r}{Y}} \Delta^m|) \\
+     &\iso |X| \times_{Ke} |Y|.
+   \end{align*}
+\end{proof}
+\begin{bsp}[\cite{Engelking}, 3.3.29] \label{ex:cg-products}
+  Ein Produkt in $\Top$ zweier kompakt erzeugter Hausdorff-Räume ist
+  im Allgemeinen nicht wieder kompakt erzeugt. Ein Beispiel ist das
+  Produkt $X \times Y$ mit $X = \R \setminus {1, \frac{1}{2},
+    \frac{1}{3}, \cdots }$ mit der Teilraumtopologie und $Y$ einem
+  unendlichen Bouquet von Kreisen mit der Quotiententopologie von $\R
+  \surj \R/\N = Y$.
 \end{bsp}
 
 \section{Geometrische Realisierung als Koende}
@@ -847,8 +876,11 @@ zusammengestellt.
 
 \begin{lemma}[Fubini, \cite{Lore}, 1.9, \cite{ML}, IX, 8]
   \label{coend-fubini}
-  Sei $F: C\op \times C \times D\op \times D \to E$ ein Funktor. Dann
-  ist
+  Sei $F: C\op \times C \times D\op \times D \to E$ ein Funktor, für
+  den die Koenden $\int^c F(c, c, d, d')$ für alle $d, d' \in D$
+  existieren.
+
+  Dann ist
   \[ \int^{c \in C} F(c, c, \cdot, -): D\op \times D \to E \]
   ein Funktor und es gilt
   \[ \int^{d \in D} \int^{c \in C} F(c, c, d, d)
@@ -857,6 +889,14 @@ zusammengestellt.
   falls eines der beiden Koenden existiert, wobei rechts $F$ als
   Funktor $F: (C \times D)\op \times (C \times D)$ aufgefasst wird.
 \end{lemma}
+\begin{bem}
+  Formal fließt in die Aussage der \emph{Parameter-Satz} ein, der
+  besagt, dass Koenden mit der Adjunktion $[C\op \times C \times D, E]
+  \iso {[C\op \times C, [D, E]]}$ verträglich sind, also Koenden in
+  Funktorkategorien objektweise berechnet werden können (\cite{ML},
+  IX, 7). Dies folgt sofort aus der Darstellung von Koenden als
+  Kolimites \ref{coend-col}.
+\end{bem}
 \begin{proof}
   Sei $K: D\op \times D \to E$ ein Kokeil für $F: C\op \times C \to
   [D\op \times D, E]$ in der Funktorkategorie $D\op \times D \to E$
@@ -868,7 +908,7 @@ zusammengestellt.
   der Form $(f, \id_d)$ in $C \times D$ (die Transformation aus der
   Kokeil-Eigenschaft von $K$ ausgewertet in $(d, d) \in D\op \times
   D$) sowie $(\id_c, g)$ in $C \times D$ (durch Vorschalten der zur
-  Transfromation $F(c, c, \cdot, \cdot) \Implies K$ gehörigen
+  Transformation $F(c, c, \cdot, \cdot) \Implies K$ gehörigen
   Morphismen vor das Kokeil-Quadrat von $L(K)$).
 
   Nach denselben Argumenten definiert ein Kokeil $M$ für $F: (C \times
@@ -901,15 +941,8 @@ zusammengestellt.
   Kokeile und damit entsprechen sich auch Koenden alias die initialen
   Objekte der beiden Kategorien.
 \end{proof}
-\begin{bem}
-  % TODO: dann ist eine Seite nicht def., gehe zurück zu ML!
-  Unser Argument verbessert die Aussage von \cite{ML}, IX.8,
-  geringfügig, da wie angedeutet nicht alle $(d', d)$-Koenden, sondern
-  nur die zu Morphismen $f: d \to d'$ gehörigen, existieren
-  müssen. Der Unterschied wird bei einer diskreten Kategorie besonders
-  deutlich. Ein konzeptionellerer Beweis benutzt die Darstellung von
-  Koenden als Kolimites aus \ref{coend-col}.
-\end{bem}
+ Ein konzeptionellerer Beweis benutzt die Darstellung von Koenden als
+ Kolimites aus \ref{coend-col}.
 \begin{proof}[Alternativer Beweis]
   Der Isomorphismus von Kategorien $\TW(C \times D) \iso \TW(C) \times
   \TW(D)$ ist verträglich mit dem Funktor $F \to \hat{F}$ aus
