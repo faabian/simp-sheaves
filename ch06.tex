@@ -26,10 +26,12 @@ konstruieren.
 Konkret ist für $X \in \s\Ens$ eine simpliziale Menge eine Kategorie
 $D_X$ gesucht, für die es eine Äquivalenz von Kategorien
 \[ \Ens_{/|X|}^{sk} \qiso {[D_X\op, \Ens]} \]
-gibt. Dabei steht $\Ens_{/|X|}^{sk}$ für die simplizial konstanten
-Garben auf $|X|$. Wir diskutieren die in Frage kommenden Kategorien
-$D_X$ an einem einfachen Beispiel. Betrachte die Standarddarstellung
-von $S^1$ als simpliziale Menge $X$ mit einem nichtdegenerierten
+gibt. Dabei steht $\Ens_{/|X|}^{sk}$ für die \emph{simplizial
+  konstanten Garben} auf $|X|$, d. h. Garben, deren Einschränkungen
+auf die Zellen der geometrischen Realisierung aus \ref{cw-cells}
+konstant sind. Wir diskutieren die in Frage kommenden Kategorien $D_X$
+an einem einfachen Beispiel. Betrachte die Standarddarstellung von
+$S^1$ als simpliziale Menge $X$ mit einem nichtdegenerierten
 $1$-Simplex und einem nichtdegenerierten $0$-Simplex aus
 \ref{ex:real-sphere}. Als kategorielle Realisierung $D_X$ von $X$
 können folgende Diagramme in Frage kommen:
@@ -62,8 +64,6 @@ können folgende Diagramme in Frage kommen:
 
 \subsection{Realisierung als gerichtete Kategorie}
 \label{sec:real-directed-cat}
-
-% TODO zeigen, dass die Kat. gerichtet ist
 
 Wir benötigen die Begriffe für nichtdegenerierte Simplizes
 (vgl. \ref{def:delta}, \ref{def:comb-standard-simplex}).
@@ -221,12 +221,20 @@ haben (und benötigen), sondern Isotransformationen von Funktoren und
 Äquivalenzen von Kategorien. Ein Limes-Begriff für Kategorien muss
 insofern die \emph{2-kategorielle Struktur} der ``Kategorie'' der
 Kategorien berücksichtigen. Wir erhalten die richtigen Formulierungen
-anhand des Übersetzungsschemas:
-% TODO format
-%% 1-Kategorie & 2-Kategorie \\
-%% Gleichheit, kommutieren & 2-Isomorphismus (Isotransformation), kommutieren bis auf 2-Isomorphismus \\
-%% Ismorphismus & Äquivalenz
-
+wie in \cite{nlab:2-limit} erklärt anhand des Übersetzungsschemas:
+\renewcommand{\arraystretch}{1.5}
+\begin{center}
+    \begin{tabulary}{\textwidth}{RCL}
+    1-Kategorie & $\leftrightarrow$
+    & 2-Kategorie \\
+    Gleichheit von Morphismen & $\leftrightarrow$
+    & 2-Isomorphismus von Morphismen (Isotransformation) \\
+    kommutieren & $\leftrightarrow$
+    & kommutieren bis auf 2-Isomorphismus \\
+    Isomorphismus & $\leftrightarrow$
+    & Quasi-Isomorphismus (Äquivalenz von Kategorien)  
+  \end{tabulary}
+\end{center}
 Ein 2-Limes über ein über $I$ indiziertes System von Kategorien $C_i$
 ist also etwa eine Kategorie $C$, für die es für jede Testkategorie
 $T$ eine Äquivalenz von Kategorien gibt zwischen der Funktorkategorie
@@ -246,48 +254,12 @@ Nun können wir die Beschreibung von Garben auf Kolimites formulieren.
   Sei $X = \col_i X_i$ ein Kolimes topologischer Räume. Dann ist der
   Limes von Funktoren
   \[ \kappa = \lim_i \ins_i^*: \EnsX \to \lim_i \ins_i^* \EnsX \]
-  für $\ins_i^*: \EnsX \to \Ens_{/X_i}$ den Rückzug entlang den
-  Abbildungen des Kolimes $\ins_i: X_i \to X$ und Systemmorphismen das
-  Nachschalten von $f^*: \Ens_{/X_j} \to \Ens_{/X_i}$ für $f: i \to j$
-  in $I$ eine Äquivalenz von Kategorien.
+  eine Äquivalenz von Kategorien. Dabei ist $\ins_i^* \EnsX$ das
+  wesentliche Bild des Rückzugs entlang den Abbildungen des Kolimes
+  $\ins_i: X_i \to X$ und die Systemmorphismen sind das Nachschalten
+  von $f^*: \Ens_{/X_j} \to \Ens_{/X_i}$ für $f: i \to j$ in $I$.
 \end{satz}
 \begin{proof}
-  Es handelt sich tatsächlich um einen Funktor in
-  \[ [\EnsX, \lim_i \ins_i^* \EnsX] \qiso \lim_i [\EnsX, \ins_i^* \EnsX], \]
-  da die Rückzüge mit den Systemmorphimus-Rückzügen $f^*$ verträglich
-  sind. Wir können $\iota: \lim_i \ins_i^* \EnsX \to \prod_i
-  \Ens_{/X_i} \qiso \Ens_{/\coprod_i X_i}$ äquivalent zu einer vollen
-  Unterkategorie auffassen und erhalten mit $q: \coprod_i X_i \to X$
-  der natürlichen Quotientenabbildung ein Diagramm von Funktoren
-  \[ 
-  \begin{tikzcd}
-    \lim_i \ins_i^* \EnsX \rar{\textstyle\iota}
-    & \Ens_{/\coprod_i X_i} \arrow{dl}{\textstyle q_*} \\
-    \EnsX \uar{\textstyle\kappa}. &
-  \end{tikzcd}
-  \]
-  Nun ist $\iota$ volltreu und die Adjunktion $(q^*, q_*)$ liefert mit
-  $\iota\,\kappa = q^*$ eine Adjunktion $(\kappa, q_* \, \iota)$. Zu
-  zeigen sind noch, dass Einheit und Koeinheit der Adjunktion
-  Isomorphismen sind, wobei wegen den Dreiecksidentitäten und der
-  Einschränkung auf das Bild des Rückzugs die Aussage für die Einheit
-  $q_* \, \iota \, \kappa = q_* \, q^*$ reicht. Diese Aussage wäre
-  (wegen der nicht notwendigerweise zusammenhängenden Fasern) für die
-  Adjunktion $(q^*, q_*)$ im Allgemeinen nicht richtig, stimmt aber
-  für die Adjunktion $(\kappa, q_* \, \iota)$. Im Beweis der Aussage
-  ``Finaler Rückzug mit zusammenhängenden Fasern''
-  (\ref{final-pullback}) benötigen wir für $F \in \EnsX$ und $x \in X$
-  die Aussage, dass die Abbildung $U \to \kappa F \to F$, die ein
-  Schnitt über $U$ von $\kappa F$ durch Nachschalten von $\kappa F \to
-  F$ induziert, über $X$ (mengentheoretisch) faktorisiert, also
-  konstant ist in der Einschränkung auf die Faser $q^{-1}(x) \to F_x$.
-  Ist nun $\ins_i(y) \sim (\ins_j \circ f)(y)$ für $f: i \to j$ in $I$
-  eine Identifikation in der Faser von $q$ über $x$, so gehört zu den
-  Daten von $\kappa F$ ein Isomorphismus $F_i \iso f^* F_j$ für $F_i$,
-  $F_j$ die Komponenten von $\kappa F$.
-
-  % TODO: \iota nicht voll, wenn Isos von \kappa zu den Daten gehören!
-  
   Ist $X = \coprod_i X_i$ ein Koprodukt (d. h. $I$ diskret), so sind
   die $\ins_i^*$ Restriktionen, das Bild $\ins_i^* \EnsX \subset
   \Ens_{/X_i}$ ist dicht und die Äquivalenz ist die bekannte Aussage
@@ -295,19 +267,39 @@ Nun können wir die Beschreibung von Garben auf Kolimites formulieren.
 
   Im Fall eines Koegalisators $Z
   \overset{f}{\underset{g}{\rightrightarrows}} Y \xrightarrow{q} X$
-  müssen wir zeigen, dass der Rückzug $q^*$ eine Äquivalenz von
-  Kategorien liefert zwischen den Garben auf $X$ und der Kategorie
-  bestehend aus den Paaren $(G, \tau)$ für $G \in \Ens_{/Y}$ eine
-  Garbe auf $Y$, die im wesentlichen Bild des Rückzugs $q^*$ liegt und
-  für die gilt: $f^* G = \tau g^* G$.
+  besteht eine Garbe $G$ in der Limeskategorie aus einer Garbe $G$ auf
+  $Y$, einem Isomorphismus $G \iso q^* F$ für $F$ eine Garbe auf $X$
+  und einem Isomorphismus $\tau: f^* G \iso g^* G$ von Garben auf
+  $Z$. Wir behaupten, dass ein Quasiinverser zu $\kappa$ durch eine
+  Abwandlung $q_*$ des direkten Bilds gegeben ist mit
+  \[ (q_* G)(U) := \set{s \in G(q^{-1}(U))}{\tau_x(s_{f(x)}) = s_{g(x)}
+    \text{ für alle } x \in (q \circ f)^{-1}(U) }
+  \]
+  und der Abbildung $\tau_x$ definiert durch das kommutative Quadrat
+  \[
+  \begin{tikzcd}
+    (f^* G)_x \dar{\sim} \rar{\textstyle\tau} & (g^* G)_x \dar{\sim} \\
+    G_{f(x)} \rar{\textstyle\tau_x} & G_{g(x)}.
+  \end{tikzcd}
+  \]
+  Der Isomorphismus $q_* \, \kappa \, F \iso F$ folgt nun mit der
+  Finalität und Surjektivität von $q$ ähnlich wie im Beweis der
+  Aussage zum finalen Rückzug mit zusammenhängenden Fasern
+  (\ref{final-pullback}). Dort benötigten wir für $x \in X$ die
+  Aussage, dass die Verknüpfung $U \to \kappa \,F \to F$ eines
+  Schnitts über $U$ mit der Abbildung des Rückzugs $\kappa \, F \to F$
+  über $X$ (mengentheoretisch) faktorisiert, also konstant ist in der
+  Einschränkung auf die Faser $q^{-1}(x) \to F_x$. Ist nun $f(x) \sim
+  g(x)$ eine Identifikation in der Faser, so stellt unsere
+  Konstruktion sicher, dass ein $q_*$-Schnitt derLimesgarbe $\kappa \,
+  F$ gerade die von $F_{q(f(x))} = F_{q(g(x))}$ herrührenden
+  Identifikationen berücksichtigen muss und wieder über $X$
+  faktorisiert.
 
-  Wir behaupten, ein Quasiinverser ist durch $(G, \tau) \mapsto q_* G$
-  gegeben. In der Tat ist $q$ final und surjektiv und nach
-  \ref{final-pullback} ist die Einheit $F \to q_* q^* F$ ein
-  Isomorphismus, wenn man zu den Daten von $q^* F$ die Verklebung
-  $\tau$ dazuzählt.
+  Der umgekehrte Isomorphismus $\kappa \, q_* \, G \iso G$ folgt aus
+  diesem, da die Limeskategorie gerade das wesentliche Bild von
+  $\kappa$ ist.
 \end{proof}
-% TODO exakter
 \begin{bem}
   Entscheidend in diesem Beweis ist, dass die Isomorpismen $\tau$ zu
   den Daten von Limesgarben dazugehören. Im Fall von $X = S^1$ ist
@@ -316,12 +308,16 @@ Nun können wir die Beschreibung von Garben auf Kolimites formulieren.
 \end{bem}
 Diese Äquivalenz schränkt ein zu einer Äquivalenz der vollen
 Unterkategorien simplizial konstanter Garben.
-\begin{prop}
+\begin{prop} \label{sheaf-col-sk}
  Für eine simpliziale Menge $X \in \s\Ens$ gilt:
   \[ \Ens_{/|X|}^{sk} \qiso \lim_{\slicecat{\Delta}{r}{X}} \Ens_{/|\Delta^n|}^{sk}. \]
 \end{prop}
 \begin{proof}
-  % TODO
+  Bei den simplizial konstanten Garben auf den Simplizes $\Delta^n \to
+  X$ handelt es sich um die wesentlichen Bilder des Rückzugs entlang
+  der Einbettungen $|\Delta^n| \to |X|$. Das folgt daraus, dass unter
+  diesen Abbildungen das Urbild einer Zelle eine Vereinigung von
+  Zellen ist.
 \end{proof}
 \begin{theorem}
   Sei $X \in \s\Ens$ eine simpliziale Menge. Dann gibt es eine
@@ -330,8 +326,9 @@ Unterkategorien simplizial konstanter Garben.
   \[ [(X \otimes R)\op, \Ens] \qiso \Ens^{sk}_{/|X|} .\]
 \end{theorem}
 \begin{proof}
-  Wir nutzen, dass nach \ref{sheaf-col} beide Seiten mit dem Kolimes
-  $|X| = \col_{\slicecat{\Delta}{r}{X}} |\Delta^n|$ vertauschen:
+  Wir nutzen, dass nach \ref{sheaf-col-sk} beide Seiten mit dem
+  Kolimes $|X| = \col_{\slicecat{\Delta}{r}{X}} |\Delta^n|$
+  vertauschen:
   \begin{align*}
     [(X \otimes R)\op, \Ens]
     &\qiso [\col_{\slicecat{\Delta}{r}{X}} (\Delta^n \otimes R)\op, \Ens] \\
@@ -345,6 +342,11 @@ Unterkategorien simplizial konstanter Garben.
   Kategorien-Homs, der dritte den Umstand, dass es in $\Delta^n$ keine
   Mehrfachkanten gibt, der vierte \ref{clumsy-comb} und der fünfte
   \ref{sk-char}.
+
+  Beachte, dass der auftretende Kolimes zunächst ein (starker) Kolimes
+  in der 1-Kategorie der kleinen Kategorien ist und mit dem
+  (schwachen) 2-Kolimes für den zweiten Schritt übereinstimmt, weil es
+  sich bei den beteiligten Kategorien um Skelettkategorien handelt.
 \end{proof}
 \begin{bem}
   Prägarben auf der kategoriellen Realisierung sind sogar Garben auf
