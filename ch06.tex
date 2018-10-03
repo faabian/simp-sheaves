@@ -50,7 +50,7 @@ können folgende Diagramme in Frage kommen:
   trägt keine Informationen über die degenerierten Simplizes. Im
   Abschnitt \ref{sec:real-simplex-cat} werden wir diese kategorielle
   Realisierung mit den simplizialen Objekten in $\EnsssTop$ mit
-  diskreten Basisräumen in Beziehung setzen.
+  diskreten Basisräumen $X$ in Beziehung setzen.
 \item Das Diagramm $D_X = (\bullet \rightrightarrows \bullet)$. Dieses
   Diagramm würden wir anschaulich erwarten. Es handelt sich um die
   nichtdegenerierten Simplizes von $X$ mit der Angabe von Rändern,
@@ -62,6 +62,8 @@ können folgende Diagramme in Frage kommen:
 
 \subsection{Realisierung als gerichtete Kategorie}
 \label{sec:real-directed-cat}
+
+% TODO zeigen, dass die Kat. gerichtet ist
 
 Wir benötigen die Begriffe für nichtdegenerierte Simplizes
 (vgl. \ref{def:delta}, \ref{def:comb-standard-simplex}).
@@ -213,48 +215,79 @@ $|X|$ mit Prägarben auf der kategoriellen Realisierung $X \otimes R$
 in Beziehung setzen soll, benötigen wir eine Beschreibung von Garben
 auf Kolimites. Die Argumentation ist recht einfach, sofern die
 richtigen Begriffe von Limites und Kolimites von großen Kategorien zur
-Verfügung stehen. Problematisch dabei ist, dass Aussagen über
-Isomorphismen (strikte Äquivalenz) im Allgemeinen zu restriktiv sind,
-und wir Limites nur bis auf (schwache) Äquivalenz von Kategorien
-benötigen. Wir versuchen hier, dies durch ein Modell in den Griff zu
-bekommen, welches schwache Limites als starke Limites modelliert und
-dabei die Informationen über die beteiligten Isomorphismen
-mitverfolgt.
-\begin{defn}
-  Ein Limes eines Systems von Kategorien $C_i$ ist die Kategorie $L$
-  der Produktkategorie $\prod_i C_i$
-\end{defn}
+Verfügung stehen. Problematisch dabei ist, dass wir selten
+tatsächliche Gleichheit von Funktoren und Isomorphismen von Kategorien
+haben (und benötigen), sondern Isotransformationen von Funktoren und
+Äquivalenzen von Kategorien. Ein Limes-Begriff für Kategorien muss
+insofern die \emph{2-kategorielle Struktur} der ``Kategorie'' der
+Kategorien berücksichtigen. Wir erhalten die richtigen Formulierungen
+anhand des Übersetzungsschemas:
+% TODO format
+%% 1-Kategorie & 2-Kategorie \\
+%% Gleichheit, kommutieren & 2-Isomorphismus (Isotransformation), kommutieren bis auf 2-Isomorphismus \\
+%% Ismorphismus & Äquivalenz
 
-Dafür führen wir einen Limesbegriff für Garben- und
-allgemeiner Funktorenkategorien ein.
-% TODO sollte das ein Lemma sein und die univ Eig zeigen?
-\begin{defn}
-  Sei $I$ eine kleine Kategorie, $C: I \to \Cat$ ein System von
-  kleinen Kategorien und $D$ eine Kategorie. Ein \emph{Limes von
-    Funktoren} $F \in \lim_i [C_i, D]$ ist ein Tupel von Funktoren
-  $F_i \in [C_i, D]$ samt Isotransformationen $T_f: F_i \Isotrafo F_j
-  \circ Cf$ für alle $f: i \to j$ in $I$.
-\end{defn}
-Die Formulierung ist analog gebildet zu der eines Limes in $\Ens_D$,
-wobei striktes Übereinstimmen (Identitätstransformation) auf schwaches
-Übereinstimmen (Isotransformation) abgemildert wird. Der Begriff
-gewährleistet die Stetigkeit des $\Hom$ in der schwachen ``Kategorie''
-der Kategorien mit Äquivalenzen als Isomorphismen:
-\[ [ \col_i C_i, D] \qiso \lim_i [C_i, D] \]
-ist eine Äquivalenz von Kategorien. Man beachte, dass die
-Isotransformationen $T_f$ Teil der Daten des Funktor-Limes sind.
+Ein 2-Limes über ein über $I$ indiziertes System von Kategorien $C_i$
+ist also etwa eine Kategorie $C$, für die es für jede Testkategorie
+$T$ eine Äquivalenz von Kategorien gibt zwischen der Funktorkategorie
+$[T, C]$ und der Kategorie bestehend aus (großen) Tupeln von Funktoren
+$F_i \in [T, C_i]$ für alle $i \in I$, für die es Isotransformationen
+$Cf \circ F_i \Isotrafo F_j$ für alle $f: i \to j$ in $I$ gibt. Mit
+dieser Definition folgt automatisch die Exaktheit des Kategorien-Homs:
+\begin{align*}
+  [C, \lim_i D_i] &\qiso \lim_i [C, D_i], \\
+  [\col_i C_i, D] &\qiso \lim_i [C_i, D].
+\end{align*}
+2-Limites von Kategorien sind dann eindeutig bis auf Isomorphismus im
+2-Kategorie-Sinne, d. h. bis auf Äquivalenz von Kategorien.
 
 Nun können wir die Beschreibung von Garben auf Kolimites formulieren.
 \begin{satz} \label{sheaf-col}
   Sei $X = \col_i X_i$ ein Kolimes topologischer Räume. Dann ist der
   Limes von Funktoren
-  \[ \lim_i \ins_i^*: \EnsX \to \lim_i \ins_i^* \EnsX \]
+  \[ \kappa = \lim_i \ins_i^*: \EnsX \to \lim_i \ins_i^* \EnsX \]
   für $\ins_i^*: \EnsX \to \Ens_{/X_i}$ den Rückzug entlang den
   Abbildungen des Kolimes $\ins_i: X_i \to X$ und Systemmorphismen das
   Nachschalten von $f^*: \Ens_{/X_j} \to \Ens_{/X_i}$ für $f: i \to j$
   in $I$ eine Äquivalenz von Kategorien.
 \end{satz}
 \begin{proof}
+  Es handelt sich tatsächlich um einen Funktor in
+  \[ [\EnsX, \lim_i \ins_i^* \EnsX] \qiso \lim_i [\EnsX, \ins_i^* \EnsX], \]
+  da die Rückzüge mit den Systemmorphimus-Rückzügen $f^*$ verträglich
+  sind. Wir können $\iota: \lim_i \ins_i^* \EnsX \to \prod_i
+  \Ens_{/X_i} \qiso \Ens_{/\coprod_i X_i}$ äquivalent zu einer vollen
+  Unterkategorie auffassen und erhalten mit $q: \coprod_i X_i \to X$
+  der natürlichen Quotientenabbildung ein Diagramm von Funktoren
+  \[ 
+  \begin{tikzcd}
+    \lim_i \ins_i^* \EnsX \rar{\textstyle\iota}
+    & \Ens_{/\coprod_i X_i} \arrow{dl}{\textstyle q_*} \\
+    \EnsX \uar{\textstyle\kappa}. &
+  \end{tikzcd}
+  \]
+  Nun ist $\iota$ volltreu und die Adjunktion $(q^*, q_*)$ liefert mit
+  $\iota\,\kappa = q^*$ eine Adjunktion $(\kappa, q_* \, \iota)$. Zu
+  zeigen sind noch, dass Einheit und Koeinheit der Adjunktion
+  Isomorphismen sind, wobei wegen den Dreiecksidentitäten und der
+  Einschränkung auf das Bild des Rückzugs die Aussage für die Einheit
+  $q_* \, \iota \, \kappa = q_* \, q^*$ reicht. Diese Aussage wäre
+  (wegen der nicht notwendigerweise zusammenhängenden Fasern) für die
+  Adjunktion $(q^*, q_*)$ im Allgemeinen nicht richtig, stimmt aber
+  für die Adjunktion $(\kappa, q_* \, \iota)$. Im Beweis der Aussage
+  ``Finaler Rückzug mit zusammenhängenden Fasern''
+  (\ref{final-pullback}) benötigen wir für $F \in \EnsX$ und $x \in X$
+  die Aussage, dass die Abbildung $U \to \kappa F \to F$, die ein
+  Schnitt über $U$ von $\kappa F$ durch Nachschalten von $\kappa F \to
+  F$ induziert, über $X$ (mengentheoretisch) faktorisiert, also
+  konstant ist in der Einschränkung auf die Faser $q^{-1}(x) \to F_x$.
+  Ist nun $\ins_i(y) \sim (\ins_j \circ f)(y)$ für $f: i \to j$ in $I$
+  eine Identifikation in der Faser von $q$ über $x$, so gehört zu den
+  Daten von $\kappa F$ ein Isomorphismus $F_i \iso f^* F_j$ für $F_i$,
+  $F_j$ die Komponenten von $\kappa F$.
+
+  % TODO: \iota nicht voll, wenn Isos von \kappa zu den Daten gehören!
+  
   Ist $X = \coprod_i X_i$ ein Koprodukt (d. h. $I$ diskret), so sind
   die $\ins_i^*$ Restriktionen, das Bild $\ins_i^* \EnsX \subset
   \Ens_{/X_i}$ ist dicht und die Äquivalenz ist die bekannte Aussage
@@ -328,6 +361,21 @@ Unterkategorien simplizial konstanter Garben.
   Dies ist bei Prägarben auf der kategoriellen Realisierung
   trivialerweise erfüllt, denn ist in der kategoriellen Realisierung
   $x = \sup S$, so ist bereits $x \in S$.
+\end{bem}
+
+\begin{bem}
+  Ein erster Ansatz für die Beschreibung von Garben auf Kolimites
+  führt über ihre Beschreibung als gewisse volle Unterkategorie der
+  Funktorkategorie $[\OffX\op, \Ens]$. Eine halbgeordnete Menge mit
+  beliebigen Suprema (Vereinigungen), endlichen Infima (Schnitten) und
+  einem Distributivgesetz heißt auch \emph{Locale}. Diese bilden mit
+  Locale-Morphismen, opponierten Morphismen halbgeordneter Mengen, die
+  Suprema und endliche Infima erhalten, eine Kategorie $\Loc$. Man
+  könnte versuchen, den Funktor $\Off: \Top \to \Loc$ in Beziehung zu
+  Kolimites zu setzen. Überraschend ist dabei, dass für Koprodukte die
+  zugöhrige Locale erzeugt ist vom Koprodukt der Locales, für
+  Koegalisatoren die zugehörige Locale jedoch der \emph{Egalisator}
+  der zugehörigen Locales ist.
 \end{bem}
 
 \subsection{Realisierung als halbgeordnete Menge}

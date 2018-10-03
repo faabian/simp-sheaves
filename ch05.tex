@@ -742,6 +742,8 @@ Damit können wir die für uns entscheidende Eigenschaft zeigen:
   $\OffX(\cdot, U)$ ist (\ref{presheaf-colimit-representable}).
 \end{bem}
 
+\subsection{Kartesischer Abschluss von Garben auf topologischen Räumen} 
+
 Wir können uns nun der Frage nach einer kartesisch abgeschlossenen
 Struktur auf $\EnsTop$ zuwenden. Ganz allgemein gilt:
 \begin{prop}
@@ -953,7 +955,7 @@ $\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
   Zusammenhangskomponente eindeutig festgelegt werden.
 \end{proof}
 
-\subsection{Vollständigkeitseigenschaften von der Garben auf topologischen Räumen}
+\subsection{Vollständigkeitseigenschaften der Garben auf topologischen Räumen}
 
 Mit denselben Techniken können wir auch zeigen, dass die Kategorie
 $\EnsTop$ der Garben auf topologischen Räumen über die endlichen
@@ -984,62 +986,68 @@ hinaus weder vollständig noch kovollständig ist.
   Gäbe es einen zur Inklusion Linksadjungierten, so wäre die Inklusion
   linksexakt, würde also Limites erhalten.
 \end{proof}
-Wir können sogar zeigen, dass es den Reflektor praktisch nicht gibt.
+Wir können sogar zeigen, dass es den Reflektor praktisch nicht
+gibt. Bezeichne dazu einen Punkt in einem Raum $F \in \Top_X$ als
+\emph{étale}, wenn er die lokale Homöomorphismus-Eigenschaft eines
+étalen Raums über $X$ erfüllt.
 \begin{prop}
-  Der partiell definierte Reflektor $\Top^{[1]} \to \EnsTop$ ist nur
-  auf $\EnsTop$ definiert.
+  Der partiell definierte Reflektor $\Top^{[1]} \to \EnsTop$ ist auf
+  $F \in \Top_X$ genau dann definiert, wenn jeder nichtétale Punkt
+  $\sigma \in F$ eine kleinste offene Umgebung $U(\sigma)$ besitzt.
 \end{prop}
 \begin{proof}
-  Sei der Reflektor $^+$ definiert auf einem Objekt $F \to X$. Durch
-  Testen mit Zielobjekten $\tau Y$, $Y \in \Top$ ist nach dem
-  Yoneda-Lemma die Basis von $(F \to X)^+$ wieder (bis auf eindeutigen
-  Homöomorphismus) $X$ und die Einheit der Adjunktion liegt über der
-  Identität auf $X$. Wegen der eindeutigen Faktorisierung über diese
-  Einheit müssen sich nicht nur die gesamten Mengen von kommutativen
-  Quadraten von $F \to X$ bzw. $(F \to X)^+$ in eine Garbe
-  entsprechen, sondern sogar die Morphismen über jeder Abbildung $f$
-  in der Basis. Insbesondere können wir über $X$ testen mit étalen
-  Objekten der Form $\Sigma \times U \to X$ für eine diskrete Menge
-  $\Sigma$ und offenes $U \open X$. Nach dem Yoneda-Lemma bestimmt
-  dies die Schnitte $F(U)$ bzw. $F^+(U)$ eindeutig. Die Restriktionen
-  erhalten wir durch
-  % TODO problemas beim kein Reflektor-Beweis
+  Besitzt jeder nichtétale Punkt in $F$ eine kleinste offene Umgebung,
+  so ergänzt der Reflektor in $F$ einen nichtétalen Punkt $\sigma$
+  lokal zu einer Kopie von $U(\sigma)$. Ein Morphismus von $F$ in eine
+  Garbe $G \in \Ens_{/Y}$ schickt $\sigma$ auf einen Keim $f(\sigma)$
+  eines Schnitts in $G(V)$ für eine offene Umgebung $V$ des
+  Basispunkts von $f(\sigma)$, deren Urbild $f^{-1}(V) \supset
+  U(\sigma)$ die kleinste offene Umgebung von $\sigma$ enthält. Da
+  Übereinstimmungsmengen von Schnitten offen sind, enthält ihr Urbild
+  mit $\sigma$ auch $U(\sigma)$ und es lässt sich somit ein Morphismus
+  $F \to G$ eindeutig über den Reflektor $F \to F^+$ faktorisieren.
+  
+  Sei umgekehrt der Reflektor $^+$ definiert auf einem Objekt $F \to
+  X$. Durch Testen mit Zielobjekten $\tau Y$, $Y \in \Top$ ist nach
+  dem Yoneda-Lemma die Basis von $(F \to X)^+$ wieder (bis auf
+  eindeutigen Homöomorphismus) $X$ und die Einheit der Adjunktion
+  $\kappa: F \to F^+$ liegt über der Identität auf $X$. Wegen der
+  eindeutigen Faktorisierung über $\kappa$ müssen sich nicht nur die
+  gesamten Mengen von kommutativen Quadraten von $F \to X$ bzw. $(F
+  \to X)^+$ in eine Garbe entsprechen, sondern sogar die Morphismen
+  über jeder Abbildung $f$ in der Basis. Sei $\sigma \in F$ nun ein
+  nichtétaler Punkt, $U \open X$ eine étale Umgebung von
+  $\kappa(\sigma)$ und $V \subsetneq U$ eine echt kleinere offene
+  Umgebung von $\kappa(\sigma)$. Wir wählen als Testraum die Garbe $G$
+  über dem Sierpinski-Raum mit zweielementigem Halm über dem offenen
+  Punkt und genau einem globalen Schnitt und als Abbildung in der
+  Basis die Abbildung, für die das Urbild des offenen Punktes $V$
+  ist. Nun gibt es Morphismen $F \to G$, die $\sigma$ auf den
+  nichtfortsetzbaren Schnitt über dem offenen Punkt schicken, aber
+  keine Morphismen $F^+ \to G$, die $\kappa(\sigma)$ auf den
+  nichtfortsetzbaren Schnitt über dem offenen Punkt schicken, ein
+  Widerspruch zur eindeutigen Faktorisierung über $\kappa$.
 \end{proof}
-\begin{prop} \label{enstop-no-coequalizers}
-  Die Kategorie $\EnsTop$ der Garben über topologischen Räumen besitzt
-  nicht alle Koegalisatoren.
-\end{prop}
-\begin{proof}
-  Betrachte etwa $F \in \Ens_{/[0,1]}$ die konstant zweielementige
-  Garbe und für $\point \in \Ens_{/\point}$ die konstant einelementige
-  Garbe auf dem Punkt die Morphismen $\point \rightrightarrows F$, die
-  den Punkt auf die beiden Endpunkte über $0$ bzw $1 \in [0, 1]$ eines
-  festen globalen Schnitts von $F$ schicken. Der Koegalisator in
-  $\Top^{[1]}$ ist ein topologischer Raum über $S^1$, dessen eine
-  Zusammenhangskomponente $S^1 \xrightarrow{\id} S^1$ und dessen
-  andere Zusammenhangskomponente eine \emph{abgeschlossene} Teilmenge
-  einer Spirale über $S^1$ ist, die in genau einem Punkt
-  zweielementiges Urbild hat. Der Koegalisator existiert also nach
-  \ref{enstop-not-reflective} nicht, da die Abbildung im Koegalisator
-  in $\Top^{[1]}$ nicht étale ist.
-  % TODO der Reflektor existiert ja nur nicht überall...
-  % TODO besseres Beispiel, komplett durchrechnen..
-\end{proof}
-
+\begin{kor} \label{enstop-coequalizers}
+  Ein Kolimes in $\EnsTop$ existiert genau dann, wenn alle nicht\-étalen
+  Punkte des Kolimes in $\Top^{[1]}$ eine kleinste offene Umgebung
+  haben.
+\end{kor}
+\begin{bsp}
+  Betrachte den Basisraum $X = [0, 1] \sqcup \point$ und die über $[0,
+    1]$ konstant einelementige und über $\point$ zweielementige Garbe
+  $F \in \EnsX$. Durch Identifikation (d. h. einen Koegalisator mit
+  der konstant einelementigen Garbe über dem Punkt) des Punkts in
+  $F_0$ mit einem der Punkte aus $F_{\point}$ und der zugehörigen
+  Identifaktion $0 \sim \point$ entsteht ein topologischer Raum über
+  dem Quotienten $[0, 1]$ der Basis mit einem globalen Schnitt und
+  einem weiteren, nichtétalen Punkt über $0$.
+\end{bsp}
 
 % TODO Notationen vereinheitlichen in den Beweisen zum fehlenden
 % kart. Abschluss
 
-%% TODO:
-%% * erwähnen, dass keine Einheit/Koeinheits-Isos zu erwarten, aber auf
-%%   Homotopie: Quillen-Äq. von Modellkategorien
-
-
-
-% TODO:
-% * konkret machen (im Fall von Y_n diskret vllt)
-% * charakterisiere das Bild -> kleiner machen mit kleinerem Intervall?
-%   (Moer)
-% * deriviert???
+%% TODO: keine Einheit/Koeinheits-Isos zu erwarten, aber auf
+%% Homotopie: Quillen-Äq. von Modellkategorien
 
 \end{document}

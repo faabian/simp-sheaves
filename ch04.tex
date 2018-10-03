@@ -127,7 +127,7 @@ Standard-$n$-Simplizes:
 \end{defn}
 Wir erhalten den Funktor
 \begin{align*}
-  R: \Delta\op &\to \s\Ens, \\
+  |\Delta|: \Delta\op &\to \s\Ens, \\
   [n] &\mapsto \Delta^n = \Delta(\cdot, [n]),
 \end{align*}
 der auf Morphismen durch Vorschalten gegeben ist, welches wir mit
@@ -212,34 +212,73 @@ Die geometrsiche Realsierung einer simplizialen Menge soll sich mit
 geeigneten Identifikationen aus den geometrischen Realisierungen von
 Standard-$n$-Simplizes zusammensetzen. Diese definieren wir als die
 abgeschlossenen geometrischen Standard-$n$-Simplizes
-\[ |\Delta^n| = \set{x \in \R^{n+1}}{0 \leq x_i \leq 1, \sum_{i=0}^n x_i = 1}. \]
+\[ |\Delta^n| = \set{(x_0, \cdots, x_n) \in \R^{n+1}}
+   {0 \leq x_i \leq 1, \sum_{i=0}^n x_i = 1}. \]
+Es wird sich später herausstellen, dass es sich hierbei tatsächlich um
+die geometrische Realisierung der kombinatorischen
+Standard-$n$-Simplizes $\Delta^n$ handelt, dies rechtfertigt die
+Notation.
 
 Ein Morphismus $f: [m] \to [n]$ induziert eine stetige Abbildung $|f|:
 |\Delta^m| \to |\Delta^n|$ auf den zugehörigen Simplizes. Nach
 \ref{face-gen} reicht es, diese für Rand- und Degenerationsabbildungen
-anzugeben. Für die Randabbildung $|d_i|$ handelt es sich dabei um die
-Inklusion der $i$-ten Kante, d. h. in Koordinaten das Einfügen einer
-Null an der $i$-ten Stelle, für die Degenerationen $|s_i|$ um den
-Kollaps der $i$-ten direkten Kante, d. h. in Koordinaten die Ersetzung
-der $i$-ten und ihrer darauffolgenden Koordinate durch ihre Summe. In
-Formeln:
+anzugeben. Für die Randabbildung $|d_i^n|: |\Delta^{n-1}| \to
+|\Delta^n|$ ($0 \leq i \leq n$) handelt es sich dabei um die Inklusion
+der $i$-ten Kante, d. h. in Koordinaten das Einfügen einer Null an der
+$i$-ten Stelle, für die Degenerationen $|s_i^n|: |\Delta^{n+1}| \to
+|\Delta^n|$ ($0 \leq i \leq n$) um den Kollaps der $i$-ten direkten
+Kante, d. h. in Koordinaten die Ersetzung der $i$-ten und ihrer
+darauffolgenden Koordinate durch ihre Summe. In Formeln:
 \begin{align*}
   |d_i^n|(x_0, \cdots, x_{n-1})
   &= (x_0, \cdots, x_{i-1}, 0, x_i, \cdots, x_{n-1}), \\
   |s_i^n|(x_0, \cdots, x_{n+1})
   &= (x_0, \cdots, x_{i-1}, x_i + x_{i+1}, x_{i+2}, \cdots, x_{n+1}).
 \end{align*}
-Wir erhalten einen Funktor $R: \Delta \to \Top, [n] \mapsto
+Wir erhalten einen Funktor $|\Delta|: \Delta \to \Top, [n] \mapsto
 |\Delta^n|$, genannt der \emph{kosimpliziale Raum der
   Standardsimplizes}.
 
+\begin{bem}[\cite{Moer}, III.1.1] \label{gen-intervall}
+  Eine alternative Darstellung der geometrischen
+  Standard-$n$-Simplizes ist für $I = [0, 1]$ das Einheitsintervall
+  mit Endpunkten $0$, $1$ und Anordnung $\leq$:
+  \[ |\Delta^n| = \set{(x_1, \cdots, x_n) \in I^n}{x_1 \leq \cdots \leq x_n} \]
+  mit den Inklusionen von Rändern $|d_i^n|: |\Delta^{n-1}| \to
+  |\Delta^n|$, $0 \leq i \leq n$:
+  \[ |d_i^n|(x_1, \cdots, x_{n-1}) = 
+  \begin{cases}
+    (0, x_1, \cdots, x_{n-1}) & i = 0, \\ (x_1, \cdots, x_{n-1}, 1) &
+    i = n, \\ (x_1, \cdots, x_i, x_i, \cdots, x_{n-1}) & \text{sonst}
+  \end{cases}
+  \]
+  und Kollapsen von Kanten $|s_i^n|: |\Delta^{n+1}| \to |\Delta^{n}|$,
+  $0 \leq i \leq n$, durch Vergessen der $(i+1)$-ten Koordinate
+  \[ |s_i^n|(x_1, \cdots x_{n+1}) =
+  (x_1, \cdots, x_i, x_{i+1}, \cdots, x_{n+1}).
+  \]
+  Man beachte, dass die Konstruktion nur einen angeordneten
+  topologischen Raum mit Minimum $0$ und Maximum $1$ benötigt, und
+  sich auf solche ``verallgemeinerten Intervalle'' überträgt. Der
+  Sierpinski-Raum aus einem offenen dichten Punkt $1$ und einem
+  abgeschlossenen Punkt $0$ ist etwa solch ein verallgemeinertes
+  Intervall.
+\end{bem}
+
 \begin{bem} \label{clumsy-real}
   Wie im Fall der Simplizialkomplexe möchten wir neben der
-  anschaulich-geometrischen Realisierung durch Hausdorffräume auch
+  anschaulich-geometrischen Realisierung durch lokal reelle Räume auch
   noch eine kombinatorischere Realisierung analog zur
-  Ordnungstopologie auf dem Simplizialkomplex finden. Wir definieren
-  die \emph{plumpen Standard-$n$-Simplizes $\blacktriangle^n$}
-  Quotienten induktiv konstruierter Äquivalenzrelationen:
+  Ordnungstopologie auf dem Simplizialkomplex finden. Nahe liegt es,
+  die Standard-$n$-Simplizialkomplexe mit ihrer Ordnungsgtopologie zu
+  verwenden. Wir konstruieren sie als Quotienten der reellen
+  Standardsimplizes, werden aber später sehen, dass sie uns bei der
+  kombinatorischen Beschreibung von Garben auf simplizialen Mengen
+  nicht weiterhelfen.
+
+  Wir definieren die \emph{plumpen Standard-$n$-Simplizes
+    $\blacktriangle^n$} Quotienten induktiv konstruierter
+  Äquivalenzrelationen:
   \[ \blacktriangle^0 := |\Delta^0| = \point \]
   und
   \[ \blacktriangle^n := |\Delta^n| / \sim \]
@@ -283,8 +322,8 @@ Wir erhalten einen Funktor $R: \Delta \to \Top, [n] \mapsto
   \blacktriangle^m \to \blacktriangle^{m-1}$ für im Inneren
   identifizierte Punkte. Genauso argumentiert man auf den Rändern.
 \end{proof}
-Diese Transformation liefert den kosimplizialen Raum $\blacktriangle
-R: \Delta \to \Top, [n] \mapsto \blacktriangle^n$ der plumpen
+Diese Transformation liefert den kosimplizialen Raum $\blacktriangle:
+\Delta \to \Top, [n] \mapsto \blacktriangle^n$ der plumpen
 Standardsimplizes.
 
 \section{Geometrische Realisierung simplizialer Mengen}
@@ -819,11 +858,11 @@ Schmelzstruktur durch Produkte versehen ist, das Tensorprodukt der
 Funktoren
 \begin{alignat*}{4}
   &X: \Delta\op \to &&\Ens \to &&\Top \qquad &&\text{und} \\
-  &R: \Delta &&\to &&\Top, && [n] \mapsto |\Delta^n|,
+  &|\Delta|: \Delta &&\to &&\Top, && [n] \mapsto |\Delta^n|,
 \end{alignat*}
 wobei die Mengen $X_n$ als diskrete topologische Räume aufgefasst
 werden (\cite{Moer}, III.1):
-\[ |X| = X \otimes R. \]
+\[ |X| = X \otimes |\Delta|. \]
 
 \begin{bem} \label{coend-correct-real}
   Rückblickend halten wir fest, dass während unsere durch die
@@ -1179,7 +1218,5 @@ kanonischem Koexponential.
   stetige Abbildungen zwischen den geometrischen Realisierungen $|X|
   \to \blacktriangle |X|$.
 \end{bem}
-
-% TODO nenne R für geom Standardsimplizes |\Delta|
 
 \end{document}
