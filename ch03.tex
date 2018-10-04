@@ -1,15 +1,7 @@
 % Emacs mode: -*-latex-*-
-% include latex header (\usepackage, \newcommand etc.) 
-\input{header.tex}
 
-\begin{document}
-
-\title{Simpliziale Garben}
-\author{Fabian Glöckle}
-\date{\today}
-% \maketitle
-
-\chapter{Verallgemeinerte Garben}
+\section{Verallgemeinerte Garben}
+\label{sec:gen-sheaves}
 
 In diesem Abschnitt sollen die Beobachtungen der letzten beiden
 Abschnitte vereint werden. Nach Abschnitt
@@ -231,7 +223,7 @@ Kardinalitäten haben.
 \begin{satz}
   Seien $X$ und $Y$ topologische Räume, $Y$ einfach
   zusammenhängend. Bezeichne $\pi: X \times Y \to X$ die
-  Projektion. Dann induzieren die Funktoren  
+  Projektion. Dann induzieren die Funktoren
   \[ \EnsX^{\lk}
   \mathrel{\mathop{\rightleftarrows}^{\pi^*}_{\pi_*}}
   \Ens_{/X \times Y}^{\lk} \]
@@ -239,16 +231,16 @@ Kardinalitäten haben.
 \end{satz}
 \begin{proof}
   Der Isomorphismus $F \iso \pi_* \pi^* F$ für $F \in \EnsX^{\lk}$ ist
-  gerade die Aussage zu finalem Rückzug mit zusammenhängender
-  Faser \ref{??}, da $Y$ zusammenhängend ist als einfach
+  gerade die Aussage zu finalem Rückzug mit zusammenhängender Faser
+  \ref{final-pullback}, da $Y$ zusammenhängend ist als einfach
   zusammenhängender Raum.
 
   Der Isomorphismus $\pi^* \pi_* F \iso F$ für $F \in \Ens_{/X \times
-  Y}^{\lk}$ folgt aus der Aussage zu faserkonstanten Garben \ref{??},
-  falls wir zeigen können, dass $F$ konstant ist auf den Fasern von
-  $\pi$. Tatsächlich ist aber $F|_{\pi^{-1}(x)}$ eine lokal konstante
-  Garbe auf $Y$ und mithin konstant wegen des einfachen Zusammenhangs
-  von $Y$. 
+    Y}^{\lk}$ folgt aus der Aussage zu faserkonstanten Garben
+  \ref{constant-on-fibers}, falls wir zeigen können, dass $F$ konstant
+  ist auf den Fasern von $\pi$. Tatsächlich ist aber
+  $F|_{\pi^{-1}(x)}$ eine lokal konstante Garbe auf $Y$ und mithin
+  konstant wegen des einfachen Zusammenhangs von $Y$.
 \end{proof}
 
 \subsection{Anwendung auf relativ schwach konstruierbare Garben} 
@@ -294,15 +286,19 @@ unsere Äquivalenz $(\AbX)_{/Y} \qiso \Ab_{/X \times Y}$. Wir erhalten:
   Der tieferstehende Grund für \ref{sheaves-prod-topos} und die sich
   daraus ergebende Möglichkeit, alle über $X = \point$ gezeigten
   Aussagen auch zu relativieren, ergibt sich daraus, dass es sich bei
-  $\Ens$ und $\EnsX$ beiden um \emph{elementare Topoi} handelt, also
+  $\Ens$ und $\EnsX$ um \emph{elementare Topoi} handelt, also
   Kategorien, die die wichtigsten Eigenschaften der Kategorie der
   Mengen verallgemeinern. Für die Übertragung von Aussagen von $\Ens$
-  auf andere Topoi ist entscheidend, dass diese über eine konstruktive
-  interne Logik verfügen, die etwa das Auswahlaxiom oder oder den Satz
-  vom ausgeschlossenen Dritten aus der klassischen Logik und
-  Mengenlehre nicht kennt. Argumente, die diese Eigenschaften der
-  klassischen Logik nicht benutzen, übertragen sich sofort auf andere
-  Topoi. Siehe \cite{MoerTopoi} für eine Darstellung dieser Ideen.
+  auf einen Topos $E$ verwendet man die
+  \emph{Mitchell-Bénabou-Sprache} (\cite{MoerTopoi}, VI.5) von
+  $E$. Die \emph{Kripke-Joyal-Semantik} (\cite{MoerTopoi}, VI.6) weist
+  Formeln der Mitchell-Bénabou-Sprache wieder logische Aussagen
+  zu. Mit dieser Übertragungstechnik bleiben Aussagen aus $\Ens$ in
+  $E$ gültig, wenn sie mittels ausschließlich \emph{konstruktiver}
+  Argumente beweisbar sind. Konkreter sind als Schlussregeln die
+  Regeln des intuitionistischen Prädikatenkalküls erlaubt, die sich
+  von den Schlussregeln der klassischen Logik unterscheiden: nicht
+  erlaubt sind Widerspruchsargumente (kein Satz vom ausgeschlossenen
+  Dritten) und die Verwendung des Auswahlaxioms (\cite{MoerTopoi},
+  VI.5, letzter Absatz).
 \end{bem}
-
-\end{document}

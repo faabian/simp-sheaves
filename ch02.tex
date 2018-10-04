@@ -1,15 +1,7 @@
 % Emacs mode: -*-latex-*-
-% include latex header (\usepackage, \newcommand etc.) 
-\input{header.tex}
 
-\begin{document}
-
-\title{Simpliziale Garben}
-\author{Fabian Glöckle}
-\date{\today}
-% \maketitle
-
-\chapter{Schwach konstruierbare Garben auf Simplizialkomplexen}
+\section{Schwach konstruierbare Garben auf Simplizialkomplexen}
+\label{sec:simp-comp-sk}
 
 Ziel dieses Abschnitts ist es, eine geometrischere Charakterisierung
 von Garben auf einem Simplizialkomplex $\K$ zu geben. Wir werden
@@ -131,27 +123,26 @@ $|\K|$-konstruierbarer Garben:
   \end{align*}
   
   Die Mengen $h(\{t\} \times U(\sigma))$ bilden für $t \in (0, 1]$
-    eine Umgebungsbasis von $x$, wir müssen also nur noch den Kolimes
-    der Schnitte über diese Mengen bestimmen. Bezeichne $\pi: (0, 1]
-      \times U(\sigma) \to U(\sigma)$ die Projektion auf den zweiten
-      Faktor. Nach der simplizialen Konstanz von $F$ und wegen $h(t,
-      y) \in |\tau| \Iff y \in |\tau|$ ist der Rückzug $h^* F$
-      konstant auf den Fasern von $\pi$ und lässt sich somit nach dem
-      zweiten nachgestellten Lemma schreiben als $\pi^* \pi_* h^* F
-      \iso h^* F$. Bezeichne $\iota_t: U(\sigma) \xhookrightarrow{}
-      (0, 1] \times U(\sigma)$ die Inklusion. Dann erhalten wir wie
-        gewünscht mit der Funktorialität des Rückzugs, $\pi \circ
-        \iota_t = \id_{U(\sigma)}$ sowie $\Gamma \pi_* = \Gamma$
-   \begin{align*}
+  eine Umgebungsbasis von $x$, wir müssen also nur noch den Kolimes
+  der Schnitte über diese Mengen bestimmen. Bezeichne $\pi: (0, 1]
+  \times U(\sigma) \to U(\sigma)$ die Projektion auf den zweiten
+  Faktor. Nach der simplizialen Konstanz von $F$ und wegen $h(t,
+  y) \in |\tau| \Iff y \in |\tau|$ ist der Rückzug $h^* F$
+  konstant auf den Fasern von $\pi$ und lässt sich somit nach dem
+  zweiten nachgestellten Lemma schreiben als $\pi^* \pi_* h^* F
+  \iso h^* F$. Bezeichne $\iota_t: U(\sigma) \xhookrightarrow{}
+  (0, 1] \times U(\sigma)$ die Inklusion. Dann erhalten wir wie
+    gewünscht mit der Funktorialität des Rückzugs und $\pi \circ
+  \iota_t = \id_{U(\sigma)}$
+
+  \begin{align*}
      F_x &\iso \colf\limits_{t \in (0, 1]} F(h(\{t\} \times U(\sigma))) \\
          &\iso \colf\limits_{t \in (0, 1]} \Gamma \iota_t^* h^* F \\
          &\iso \colf\limits_{t \in (0, 1]} \Gamma \iota_t^* \pi^* \pi_* h^* F \\
-         &\iso \Gamma \id^* \pi_* h^* F \\
-         &\iso \Gamma h^* F \\
-         &\iso \Gamma F = F(U(\sigma)),
-   \end{align*}
-   im letzten Schritt nach der Surjektivität von $h$.
-   % TODO surjektivität stimmt nicht, wird garbifiziert!
+         &\iso \colf\limits_{t \in (0, 1]} \Gamma \iota_1^* \pi^* \pi_* h^* F \\
+         &\iso \iota_1^* h^* F \\    
+         &\iso F(U(\sigma)).
+  \end{align*}
 \end{proof}
 \begin{bem} \label{beta-sect}
   Aus \autoref{eq:counit-sect} und \ref{itm:sk-char-res} folgt
@@ -174,7 +165,7 @@ Wir tragen die benötigten Lemmata nach.
   Garben-Isomorphismus.
 \end{proof}
 
-\begin{lemma}[\cite{TG}, 6.4.17]
+\begin{lemma}[\cite{TG}, 6.4.17] \label{constant-on-fibers}
   Sei $X$ ein topologischer Raum, $I \subset \R$ ein nichtleeres
   Intervall, $F \in \Ens_{/X \times I}$ eine Garbe und $\pi: X \times
   I \to X$ die Projektion auf den ersten Faktor. Ist $F$ konstant auf
@@ -255,8 +246,8 @@ $\beta$. Es handelt sich um einen Koreflektor:
     \iso & \AbKr(W, F).
   \end{align*}
   Dabei wurde die bekannte Adjunktion $(p^*, p_*)$ sowie im dritten
-  Schritt ``finaler Rückzug mit zusammenhängenden Fasern'' (\cite{TG},
-  4.3.22) benutzt.
+  Schritt das Lemma ``finaler Rückzug mit zusammenhängenden Fasern''
+  (\ref{final-pullback}) benutzt.
 \end{proof}
 
 \begin{lemma}[\cite{TG}, 4.3.22] \label{final-pullback}
@@ -510,5 +501,5 @@ erhalten:
   Eigenschaften der Situation fließen im Wesentlichen in \ref{sk-char}
   ein. Dies wird sich in \ref{ch??} als nützlich erweisen, um die
   Aussage für simpliziale Mengen zu formulieren.
+  % TODO add ref (if still needed)
 \end{bem}
-\end{document}

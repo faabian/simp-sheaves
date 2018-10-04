@@ -1,32 +1,23 @@
 % Emacs mode: -*-latex-*-
-% include latex header (\usepackage, \newcommand etc.) 
-\input{header.tex}
-
-\begin{document}
-
-\title{Simpliziale Garben}
-\author{Fabian Glöckle}
-\date{\today}
-% \maketitle
 
 \section{Schwach konstruierbare Garben auf simplizialen Mengen}
+\label{sec:simp-set-sk}
 
-In diesem Abschnitt möchten wir die Aussagen aus den Kapiteln
-\ref{ch01??} und \ref{ch02??}  übertragen auf den Fall, dass es sich
-bei dem Basisraum um die Realisierung einer simplizialen Menge
-anstelle eines Simplizialkomplexes handelt. Simplizialkomplexe sind
-halbgeordnete Mengen und unsere Technik verwendete die
-Ordnungstopologie halbgeordneter Mengen. Simplizial konstante Garben
-auf simplizialen Mengen entsprechen hingegen Diagrammen von Mengen, in
-denen es auch mehrere Pfeile zwischen zwei zu nichtdegenerierten
-Simplizes gehörigen Punkten geben kann. Solche kategoriellen
-Realisierungen simplizialer Mengen werden wir in diesem Abschnitt
-konstruieren.
+In diesem Abschnitt möchten wir die Aussagen aus Abschnitt
+\ref{sec:simp-comp-ord} übertragen auf den Fall, dass es sich bei dem
+Basisraum um die Realisierung einer simplizialen Menge anstelle eines
+Simplizialkomplexes handelt. Simplizialkomplexe sind halbgeordnete
+Mengen und unsere Technik verwendete die Ordnungstopologie
+halbgeordneter Mengen. Simplizial konstante Garben auf simplizialen
+Mengen entsprechen hingegen Diagrammen von Mengen, in denen es auch
+mehrere Pfeile zwischen zwei zu nichtdegenerierten Simplizes gehörigen
+Punkten geben kann. Solche kategoriellen Realisierungen simplizialer
+Mengen werden wir in diesem Abschnitt konstruieren.
 
 Konkret ist für $X \in \s\Ens$ eine simpliziale Menge eine Kategorie
 $D_X$ gesucht, für die es eine Äquivalenz von Kategorien
-\[ \Ens_{/|X|}^{sk} \qiso {[D_X\op, \Ens]} \]
-gibt. Dabei steht $\Ens_{/|X|}^{sk}$ für die \emph{simplizial
+\[ \Ens_{/|X|}^{\sk} \qiso {[D_X\op, \Ens]} \]
+gibt. Dabei steht $\Ens_{/|X|}^{\sk}$ für die \emph{simplizial
   konstanten Garben} auf $|X|$, d. h. Garben, deren Einschränkungen
 auf die Zellen der geometrischen Realisierung aus \ref{cw-cells}
 konstant sind. Wir diskutieren die in Frage kommenden Kategorien $D_X$
@@ -49,10 +40,10 @@ können folgende Diagramme in Frage kommen:
   das Diagramm aller Simplizes von $X$ mit der Angabe von Rändern und
   Degenerationen. Diese Diagramm ist zu fein, um von einer simplizial
   konstanten Garbe auf $S^1$ eindeutig bestimmt zu werden, denn diese
-  trägt keine Informationen über die degenerierten Simplizes. Im
-  Abschnitt \ref{sec:real-simplex-cat} werden wir diese kategorielle
-  Realisierung mit den simplizialen Objekten in $\EnsssTop$ mit
-  diskreten Basisräumen $X$ in Beziehung setzen.
+  trägt keine Informationen über die degenerierten Simplizes. Gleich
+  im Anschluss werden wir diese kategorielle Realisierung mit den
+  simplizialen Objekten in $\EnsssTop$ mit diskreten Basisräumen $X$
+  in Beziehung setzen.
 \item Das Diagramm $D_X = (\bullet \rightrightarrows \bullet)$. Dieses
   Diagramm würden wir anschaulich erwarten. Es handelt sich um die
   nichtdegenerierten Simplizes von $X$ mit der Angabe von Rändern,
@@ -61,6 +52,29 @@ können folgende Diagramme in Frage kommen:
   dass Prägarben auf diesem Diagramm simplizial konstanten Garben auf
   $|X|$ entsprechen.
 \end{enumerate}
+
+Während wir für die anderen beiden kategoriellen Realisierungen mehr
+ausholen müssen, zeigen wir die Interpretation der Prägarben auf der
+Simplexkategorie von $X$ direkt.
+
+Betrachte für eine feste simpliziale Menge $X \in \s\Ens$ die volle
+Unterkategorie $(\s\EnsssTop)_X \subset \s\EnsssTop$ der simplizialen
+Garben über topologischen Räumen mit Komorphismen, für die die
+Basisräume diskret und als simplizialer topologischer Raum isomorph
+zur simplizialen Menge $X$ sind. Für eine Garbe $F \in
+(\s\EnsssTop)_X$ und $\sigma \in X_n$ einen $n$-Simplex schreiben wir
+$F(\sigma)$ für die Menge $(F_n)_\sigma$, den Halm bei $\sigma$. Für
+$f: [n] \to [m]$ monoton bestehen die Komorphismen $Ff^* F_n \to F_m$
+aus Abbildungen $F(f(\sigma)) \to F(\sigma)$ für $\sigma \in X_m$. Da
+die Simplexkategorie $\slicecat{\Delta}{r}{X}$ von $X$ gerade aus
+allen Simplizes $\sigma \in \coprod_n X_n$ besteht mit Morphismen
+$\sigma \to f(\sigma)$ für alle $f: [n] \to [m]$ und $\sigma \in X_m$,
+haben wir gezeigt:
+\begin{prop} \label{real-simplex-cat}
+  Die obige Zuordnung liefert für $X \in \s\Ens$ eine simpliziale
+  Menge eine Äquivalenz von Kategorien
+  \[ [\slicecat{\Delta}{r}{X}\op, \Ens] \qiso (\s\EnsssTop)_X. \]
+\end{prop}
 
 \subsection{Realisierung als gerichtete Kategorie}
 \label{sec:real-directed-cat}
@@ -310,7 +324,7 @@ Diese Äquivalenz schränkt ein zu einer Äquivalenz der vollen
 Unterkategorien simplizial konstanter Garben.
 \begin{prop} \label{sheaf-col-sk}
  Für eine simpliziale Menge $X \in \s\Ens$ gilt:
-  \[ \Ens_{/|X|}^{sk} \qiso \lim_{\slicecat{\Delta}{r}{X}} \Ens_{/|\Delta^n|}^{sk}. \]
+  \[ \Ens_{/|X|}^{\sk} \qiso \lim_{\slicecat{\Delta}{r}{X}} \Ens_{/|\Delta^n|}^{\sk}. \]
 \end{prop}
 \begin{proof}
   Bei den simplizial konstanten Garben auf den Simplizes $\Delta^n \to
@@ -319,11 +333,11 @@ Unterkategorien simplizial konstanter Garben.
   diesen Abbildungen das Urbild einer Zelle eine Vereinigung von
   Zellen ist.
 \end{proof}
-\begin{theorem}
+\begin{theorem} \label{sheaf-sset-sk}
   Sei $X \in \s\Ens$ eine simpliziale Menge. Dann gibt es eine
   Äquivalenz von Kategorien zwischen Prägarben auf der kategoriellen
   Realisierung von $X$ und simplizial konstanten Garben auf $|X|$:
-  \[ [(X \otimes R)\op, \Ens] \qiso \Ens^{sk}_{/|X|} .\]
+  \[ [(X \otimes R)\op, \Ens] \qiso \Ens^{\sk}_{/|X|} .\]
 \end{theorem}
 \begin{proof}
   Wir nutzen, dass nach \ref{sheaf-col-sk} beide Seiten mit dem
@@ -335,8 +349,8 @@ Unterkategorien simplizial konstanter Garben.
     &\qiso \lim_{\slicecat{\Delta}{r}{X}} [(\Delta^n \otimes R)\op, \Ens] \\
     &\qiso \lim_{\slicecat{\Delta}{r}{X}} [(\Delta^n \otimes P)\op, \Ens] \\
     &\qiso \lim_{\slicecat{\Delta}{r}{X}} \Ens_{/\Ord(\Delta^n)} \\
-    &\qiso \lim_{\slicecat{\Delta}{r}{X}} \Ens_{/|\Delta^n|}^{sk} \\
-    &\qiso \Ens_{/|X|}^{sk}.    
+    &\qiso \lim_{\slicecat{\Delta}{r}{X}} \Ens_{/|\Delta^n|}^{\sk} \\
+    &\qiso \Ens_{/|X|}^{\sk}.    
   \end{align*}
   Dabei verwendet der zweite Schritt die Stetigkeit des
   Kategorien-Homs, der dritte den Umstand, dass es in $\Delta^n$ keine
@@ -364,7 +378,6 @@ Unterkategorien simplizial konstanter Garben.
   trivialerweise erfüllt, denn ist in der kategoriellen Realisierung
   $x = \sup S$, so ist bereits $x \in S$.
 \end{bem}
-
 \begin{bem}
   Ein erster Ansatz für die Beschreibung von Garben auf Kolimites
   führt über ihre Beschreibung als gewisse volle Unterkategorie der
@@ -379,6 +392,56 @@ Unterkategorien simplizial konstanter Garben.
   Koegalisatoren die zugehörige Locale jedoch der \emph{Egalisator}
   der zugehörigen Locales ist.
 \end{bem}
+
+Es schließt sich an diese Beschreibung simplizial konstanter Garben
+auf simplizialen Mengen eine Reihe an Fragen an, die hier nicht mehr
+abschließend beantwortet werden können:
+\begin{enumerate}
+\item Gilt in Analogie zu \ref{dersk-eq} nicht nur
+  \[ \Der([(X \otimes R)\op, \Ab]) \qiso \Der(\Ab^{\sk}_{/|X|}) ,\]
+  sondern sogar
+  \[ \Der([(X \otimes R)\op, \Ab]) \qiso \Der_{\sk}(\Ab_{/|X|}) ,\]
+  für $\Der_{\sk}(\Ab_{/|X|})$ die derivierten abelschen Garben auf
+  $|X|$ mit simplizial konstanten Kohomologiegarben?
+\item Wie lassen sich die gerichteten Kategorien charakterisieren, die
+  als kategorielle Realisierung simplizialer Mengen auftreten?
+  Beispielsweise ist $(\bullet \to \bullet)$ keine solche gerichtete
+  Kategorie.
+\item Lassen sich die Ergebnisse mittels des Nerven einer Kategorie
+  auf beliebige Diagrammkategorien verallgemeinern?
+\end{enumerate}
+
+Wir können die Antworten nur in Teilen skizzieren:
+\begin{enumerate}
+\item
+\item Einem Objekt $\sigma$ einer gerichteten Kategorie kann eine
+  Kardinalzahl zugeordnet werden, die angibt, wie viele nichttriviale
+  Morphismen von $\sigma$ auslaufen. Sind es $n+1$ Stück, nennen wir
+  $n$ die Dimension von $\sigma$. (Gibt es keine, nennen wir $\sigma$
+  nulldimensional.) Eine gerichtete Kategorie $C$ tritt genau dann als
+  kategorielle Realisierung einer simplizialen Menge auf, wenn alle
+  Objekte endliche Dimension haben und die Dimensionen der Objekte
+  eine Halbordnung auf $C$ definieren, die mit der Halbordnung durch
+  Identifikation paralleler Morphismen in $C$ übereinstimmt.
+
+  Alle gerichteten Kategorien lassen sich jedoch als Kolimes von zu
+  simplizialen Mengen gehörigen gerichteten Kategorien
+  auffassen. Anders ausgedrückt sind die gerichteten Kategorien die
+  koreflektive Hülle in $\Cat$ der zu simplizialen Mengen gehörigen
+  gerichteten Kategorien und die Aussage von \ref{sheaf-sset-sk}
+  überträgt sich durch Kostetigkeit. Dies ist ein zur Konstruktion
+  koreflektiver kartesisch abgeschlossener Kategorien aus sich gut
+  verhaltenden Unterkategorien topologischer Räume analoges
+  Vorgehen. Die geometrische Realisierung einer gerichteten Kategorie
+  $C = \col_i (C_i \otimes R)$ ist dabei der Kolimes $|C| = \col_i
+  |X_i|$ für $C_i$ zu simplizialen Mengen $X_i$ gehörige gerichtete
+  Kategorien. Beispielsweise gehört der Sierpinski-Raum zum Quotienten
+  von $S^1$ nach der Identifikation der Bilder zweier gegenläufiger
+  Pfade $|\Delta^1| \to S^1$.
+\item 
+\end{enumerate}
+
+% TODO Fragen, die sich anschließen
 
 \subsection{Realisierung als halbgeordnete Menge}
 \label{sec:real-poset}
@@ -492,51 +555,6 @@ der plumpen Realisierung:
   Äquivalenz von Kategorien $\Ens_{/\blacktriangle X} \qiso [(X
     \otimes P)\op, \Ens]$.
 \end{prop}
-
-% TODO das muss raus oder woanders hin
-\begin{bem}
-  Betrachte für eine feste simpliziale Menge $X \in \s\Ens$ die volle
-  Unterkategorie $(\s\EnsssTop)_X \subset \s\EnsssTop$ der
-  simplizialen Garben über topologischen Räumen mit Komorphismen, für
-  die die Basisräume diskret und als simplizialer topologischer Raum
-  isomorph zur simplizialen Menge $X$ sind. Man könnte eine Aussage
-  wie die folgende erwarten:
-  \begin{quote}
-    Die kovariante Realisierung mittels plumper Simplizes
-    (\ref{real-enstop-cov}) liefert eine Äquivalenz von Kategorien
-    \[ (\s\EnsssTop)_X \qiso \Ens_{/\blacktriangle X}. \]
-  \end{quote}
-  Dies verhindern aber die degenerierten Simplizes $s^*(\sigma)$ für
-  $s: [n] \to [m]$ monoton und surjektiv. Für diese enthält eine
-  simpliziale Garbe $F$ auf der linken Seite beliebig wählbare Mengen,
-  die Halme $(F_n)_{s^*(\sigma)}$, welche aus der geometrischen
-  Realisierung nicht wiedergewonnen werden können, da sie mit ihren
-  Bildern unter $Fs: (F_n)_{s^*(\sigma)} \to (F_m)_\sigma$
-  identifiziert werden.
-
-  Stattdessen setzen wir $(\s\EnsssTop)_X^{nd} \subset
-  (\s\EnsssTop)_X$ die volle Unterkategorie der oben definierten
-  simplizialen Garben $F$ über $X$, für die zudem die Degenerationen
-  $Fs: (F_n)_{s^*(\sigma)} \to (F_m)_\sigma$ Bijektionen sind. Für
-  diese erhalten wir den gewünschten quasiinversen Funktor, indem wir
-  mit \ref{clumsy-comb} einer Garbe $F \in [(X \otimes R)\op, \Ens]$
-  auf folgende Weise eine simpliziale Garbe $\hat{F} \in
-  (\s\EnsssTop)_X^{nd}$ zuordnen: Schreibe für $\sigma \in X_n$ kurz
-  $F(\sigma)$ für die Menge, die $F$ dem maximalen Element in
-  $\{\sigma\} \times R[n]\op$ via $X_n \times R[n]\op \to (X \otimes
-  R)\op$ zuordnet. Die Garben $\hat{F}_n \in \Ens_{/X_n}$ sind diskret
-  und bestehen dann aus der Menge $F(N(\sigma))$ über $\sigma$. Für
-  eine monotone Abbildung $f: [n] \to [m]$ erhalten wir die
-  Abbildungen $(\hat{F}_n)_{f^*(\sigma)} \to (\hat{F}_{m})_\sigma$ für
-  die Komorphismen von $\hat{F}$ über $f^*$ aus $F(N(f(\sigma))) \to
-  F(N(\sigma))$. Insbesondere sind die Degenerationen
-  $(\hat{F}_n)_{s^*(\sigma)} \to (\hat{F}_{n-1})_\sigma$ dann einfach
-  Identitäten und unsere Abbildungen erfüllen die simplizialen
-  Relationen.
-\end{bem}
-
-\subsection{Realisierung als Simplexkategorie}
-\label{sec:real-simplex-cat}
 
 \subsection{Allgemeine schwache Konstruierbarkeit}
 % TODO behalten? Titel?
@@ -685,4 +703,3 @@ Das ist der fehlende Teil von \ref{sk-char}.
   Wesentlichen wieder mit Simplizialkomplexen zu arbeiten.
 \end{bem}
 
-\end{document}

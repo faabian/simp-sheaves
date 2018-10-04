@@ -1,15 +1,10 @@
 % Emacs mode: -*-latex-*-
-% include latex header (\usepackage, \newcommand etc.) 
-\input{header.tex}
 
-\begin{document}
-
-\title{Simpliziale Garben}
-\author{Fabian Glöckle}
-\date{\today}
-% \maketitle
+\chapter{Simpliziale Garben}
+\label{ch:simp-sheaves}
 
 \section{Realisierung simplizialer Garben}
+\label{sec:simp-sheaves-real}
 
 Die Beschreibung der geometrischen Realisierung als Tensorprodukt von
 Funktoren eröffnet uns eine Reihe weiterer geometrischer
@@ -321,6 +316,7 @@ sofort die Verallgemeinerung.
 \end{proof}
 
 \subsection{Die kartesisch abgeschlossene Struktur der Garben auf $X$}
+\label{sec:ensx-cart-closed}
 
 Für unsere allgemeine Dualität von Nerv und Realisierung \ref{nerve}
 benötigen wir also eine bessere $V$-angereichterte Struktur auf
@@ -331,15 +327,15 @@ Struktur einer kartesisch abgeschlossenen Kategorie.
     abgeschlossen}, falls es ein internes Hom für die kartesische
   Schmelzstruktur durch Produkte gibt.
 \end{defn}
-Das bedeutet konkret, dass es eine Adjunktion $(\times Y, Y \Implies)$
+Das bedeutet konkret, dass es eine Adjunktion $(\times Y, Y \iHom)$
 gibt, also eine in allen Variablen natürliche Bijektion
-\[ C(X \times Y, Z) \iso C(X, Y \Implies Z). \]
+\[ C(X \times Y, Z) \iso C(X, Y \iHom Z). \]
 
 \begin{prop} \label{ensx-cart-closed}
   Die Kategorie $\EnsX$ ist kartesisch abgeschlossen mit Produkt
   \[ (F \times G)(U) = F(U) \times G(U) \]
   und internem Hom
-  \[ (F \Implies G)(U) = \Ens_{/U}(F|_U, G|_U) \]
+  \[ (F \iHom G)(U) = \Ens_{/U}(F|_U, G|_U) \]
   jeweils mit den von den Restriktionen von $F$ und $G$ induzierten
   Restriktionen. Der étale Raum des Produkts ist gegeben durch das
   Faserprodukt über $X$:
@@ -353,7 +349,7 @@ gibt, also eine in allen Variablen natürliche Bijektion
   besteht aus stetigen Abbildungen über $U$ und erfüllt somit die
   Garbenbedingung, die ja sogar nach der Verklebbarkeit stetiger
   Abbildungen modelliert war. Für die Adjunktion müssen wir zeigen
-  \[ \EnsX(F \times G, H) \iso \EnsX(F, G \Implies H). \]
+  \[ \EnsX(F \times G, H) \iso \EnsX(F, G \iHom H). \]
   Links stehen restriktionsverträgliche Systeme $F(U) \times G(U) \to
   H(U)$ alias $F(U) \to \Ens(G(U), H(U))$, rechts
   restriktionsverträgliche Systeme $F(U) \to \Ens_{/U}(G|_U,
@@ -391,7 +387,7 @@ Koendenkalkül auf beliebige Prägarbenkategorien ausweiten.
   \times G(c)$ für $F, G \in \Ens^{C\op}$ und $c \in C$. Wir
   behaupten, dass das interne Hom in der Prägarbenkategorie die
   Prägarbe
-  \[ (F \Implies G)(c) := \Ens^{C\op}(F \times C(\cdot, c), G), \]
+  \[ (F \iHom G)(c) := \Ens^{C\op}(F \times C(\cdot, c), G), \]
   ist, die auf Morphismen $f: c \to d$ durch Vorschalten von
   Transformationen $\id_F \times (\circ f)$ gegeben ist, mit $(\circ
   f): C(\cdot, c) \to C(\cdot, d)$ dem Nachschalten von $f$. Mit
@@ -401,7 +397,7 @@ Koendenkalkül auf beliebige Prägarbenkategorien ausweiten.
   und wir berechnen mit den Regeln des (Ko-) Endenkalküls für $F, G, H
   \in \Ens^{C\op}$:
   \begin{align*}
-    \Ens^{C\op}(F, G \Implies H)
+    \Ens^{C\op}(F, G \iHom H)
     &\iso[Def.] \Ens^{C\op}(F, \Ens^{C\op}(F \times C(\cdot, \bullet), G)) \\
     &\iso[\ref{trans-end}]
      \int_c \Ens(F(c), \int_d \Ens(G(d) \times C(d, c), H(d))) \\
@@ -426,7 +422,7 @@ auch die kartesisch abgeschlossene Struktur simplizialer Mengen, der
 Prägarbenkategorie auf $\Delta$. Explizit ist für $X, Y \in \s\Ens$:
 \[ (X \times Y)_n = X_n \times Y_n \]
 und
-\[ (X \Implies Y)_n = \s\Ens(X \times \Delta^n, Y). \]
+\[ (X \iHom Y)_n = \s\Ens(X \times \Delta^n, Y). \]
 
 Auch die Rolle von $\Ens$ kann verallgemeinert werden. Wir erhalten:
 \begin{prop} \label{presheaf-cart-closed}
@@ -542,9 +538,9 @@ gelingt tatsächlich aber im Allgemeinen nicht, denn in diesem Fall
 erhielten wir durch Einschränken auf die Basis ein zum kartesischen
 Produkt adjungiertes internes Hom in der Kategorie der topologischen
 Räume (\ref{full-enstop-not-cart-closed}), was bekanntermaßen in
-dieser Allgemeinheit nicht möglich ist (\cite{Borceux???}). Wir müssen
-uns also wieder auf eine bequeme Kategorie topologischer Räume mit
-internem Hom einschränken.
+dieser Allgemeinheit nicht möglich ist (\cite{Borceux},
+Prop. 7.1.2). Wir müssen uns also wieder auf eine bequeme Kategorie
+topologischer Räume mit internem Hom einschränken.
 
 Die häufige Wahl $\CGHaus$ ist für uns ungeeignet, denn der étale Raum
 einer Garbe über einem kompakt erzeugten Hausdorffraum ist im
@@ -645,7 +641,7 @@ Dann besitzt $\mathcal{K}$ die Struktur einer kartesisch
 abgeschlossenen Kategorie mit Produkten
 \[ X \otimes Y \: := \: k(X \times Y) \]
 den ``k-ifizierungen'' der Produkte in $\Top$ und internem Hom
-\[ X \Implies Y \: := \: k(\Top_{co}(X, Y)) \] 
+\[ X \iHom Y \: := \: k(\Top_{co}(X, Y)) \] 
 (\cite{Vogt}, 3).
 
 \begin{defn}
@@ -743,6 +739,7 @@ Damit können wir die für uns entscheidende Eigenschaft zeigen:
 \end{bem}
 
 \subsection{Kartesischer Abschluss von Garben auf topologischen Räumen} 
+\label{sec:enstop-cart-closed}
 
 Wir können uns nun der Frage nach einer kartesisch abgeschlossenen
 Struktur auf $\EnsTop$ zuwenden. Ganz allgemein gilt:
@@ -752,8 +749,8 @@ Struktur auf $\EnsTop$ zuwenden. Ganz allgemein gilt:
   $D$ überein, dann ist $D$ kartesisch abgeschlossen.
 \end{prop}
 \begin{proof}
-  In diesem Fall ist die Koreflektion $(X \Implies Y)^+$ des internen
-  Hom in $D$ ein internes Hom in $C$.
+  In diesem Fall ist die Koreflektion $(X \iHom Y)^+$ des internen Hom
+  in $D$ ein internes Hom in $C$.
 \end{proof}
 
 Damit können wir folgern:
@@ -773,7 +770,7 @@ Damit können wir folgern:
   \ref{enstop-prod} überein. Somit müsste laut
   \ref{coreflective-cart-closed} $\Top$ kartesisch abgeschlossen sein,
   ein Widerspruch zu der bekannten Aussage, dass dies für $\Top$ nicht
-  möglich ist (\cite{??}).
+  möglich ist (\cite{Borceux}, Prop. 7.1.2).
 \end{proof}
 
 Da das einzige Problem die fehlende kartesisch abgeschlossene Struktur
@@ -795,7 +792,7 @@ stetiger, aber nicht notwendigerweise étaler, Abbildung.
   das die Menge der kommutativen Quadrate mit einer Topologie
   ausstattet, mit der Projektion auf den zweiten Faktor als
   Abbildung. Die Adjunktion $\K^{[1]}((F \to X) \times (G \to Y), (H
-  \to Z)) \iso \K^{[1]}((F \to X), (G \to Y) \Implies (H \to Z))$ für
+  \to Z)) \iso \K^{[1]}((F \to X), (G \to Y) \iHom (H \to Z))$ für
   $(F \to X), (G \to Y), (H \to Z) \in \K^{[1]}$ ist dann die
   Bijektion von Faserprodukten
   \begin{align*}
@@ -834,17 +831,17 @@ für $F, G, H \in \et \K^{[1]}$:
 \begin{align*}
   \et \K^{[1]}(F \times G, H)
   &\iso \K^{[1]}(F \times G, H) \\
-  &\iso \K^{[1]}(F, G \Implies H) \\
-  &\iso \et \K^{[1]}(F, (G \Implies H)^+),
+  &\iso \K^{[1]}(F, G \iHom H) \\
+  &\iso \et \K^{[1]}(F, (G \iHom H)^+),
 \end{align*}
 mit der kartesisch abgeschlossenen Struktur aus
-\ref{k-arrow-cart-closed} im zweiten Schritt. Die Produkte in $\K^{[1]}$
-und $\et \K^{[1]}$ stimmen dabei nach dem folgenden Lemma
-überein. Umgekehrt ist, falls ein internes Hom $(G \Implies H)^+$ in
-$\et \K^{[1]}$ existiert, die Zuordnung $(G \Implies H) \mapsto (G
-\Implies H)^+$ ein partiell definierter Koreflektor. Unsere Aufgabe
-ist es nun zu zeigen, dass eine solche relative Form der Étalisierung
-nicht möglich ist.
+\ref{k-arrow-cart-closed} im zweiten Schritt. Die Produkte in
+$\K^{[1]}$ und $\et \K^{[1]}$ stimmen dabei nach dem folgenden Lemma
+überein. Umgekehrt ist, falls ein internes Hom $(G \iHom H)^+$ in $\et
+\K^{[1]}$ existiert, die Zuordnung $(G \iHom H) \mapsto (G \iHom H)^+$
+ein partiell definierter Koreflektor. Unsere Aufgabe ist es nun zu
+zeigen, dass eine solche relative Form der Étalisierung nicht möglich
+ist.
 
 \begin{lemma}
   Ist $k: \Top \to \K$ ein Koreflektor und $p: F \to X$ étale in
@@ -903,7 +900,7 @@ $\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
   festgelegt durch seine Yoneda-Einbettung $\K^{[1]}(\cdot, (H \to
   Z))$. Wir behaupten, dass sogar die Funktoren $\K^{[1]}(\iota \cdot,
   (H \to Z)) = \K(\cdot, Z)$ und $\K^{[1]}(\tau \cdot, (H \to Z)) =
-  \K(\cdot, H): \K \to \Ens$ und ihre aus $\iota \cdot \Implies \tau
+  \K(\cdot, H): \K \to \Ens$ und ihre aus $\iota \cdot \Trafo \tau
   \cdot$ entstehende Transformation ausreichen, um $H \to Z$ eindeutig
   festzulegen. In der Tat bestimmen die beiden Funktoren nach dem
   Yoneda-Lemma bereits die beteiligten Räume $H$ und $Z$ eindeutig und
@@ -928,16 +925,16 @@ $\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
   Wenn $\K(F, G)$ die kompakt-offen Topologie trägt, erhielten wir
   folgendes Gegenbeispiel zum kartesischen Abschluss von $\et
   \K^{[1]}$: Für $X = Y = \point$ sind étale Räume $F \to X$ und $G
-  \to Y$ diskret. Das interne Hom von $F \Implies G$ lautet $\K(F, G)
-  \to \K(X, Y) = \point$ und muss folglich selbst diskret sein. Dies
-  ist im Fall, dass $F$ unendlich ist, ein Widerspruch zum folgenden
+  \to Y$ diskret. Das interne Hom von $F \iHom G$ lautet $\K(F, G) \to
+  \K(X, Y) = \point$ und muss folglich selbst diskret sein. Dies ist
+  im Fall, dass $F$ unendlich ist, ein Widerspruch zum folgenden
   Lemma. Im Fall der koreflektiven Hüllen von $\K = \mathcal{I}_K$
   oder $\K = \mathcal{I}_L$ aus dem vorangegangenen Abschnitt gilt
   allerdings $\K(F, G) = k(\Top_{co}(F, G))$. Mir ist nicht bekannt,
   ob der Koreflektor die Topologien so sehr verfeinern kann, dass
   $\K(F, G)$ auch bei unendlichem $F$ diskret wird.
 \end{bem}
-\begin{lemma}
+\begin{lemma} \label{compact-open-discrete}
   Ist $G$ diskret, so ist die kompakt-offen Topologie auf $\Top(F,
   G)$, $F \in \Top$ genau dann diskret, wenn $X$ endlich viele
   Zusammenhangskomponenten hat.
@@ -1050,4 +1047,3 @@ gibt. Bezeichne dazu einen Punkt in einem Raum $F \in \Top_X$ als
 %% TODO: keine Einheit/Koeinheits-Isos zu erwarten, aber auf
 %% Homotopie: Quillen-Äq. von Modellkategorien
 
-\end{document}

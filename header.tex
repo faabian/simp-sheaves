@@ -12,6 +12,9 @@
 \usepackage{hyperref}
 \usepackage{extpfeil}
 \usepackage{tabulary}
+%% \usepackage[backend=bibtex,
+%%             dateabbrev=false,
+%%             style=authoryear]{biblatex}
 
 \setlength{\parskip}{\medskipamount}
 \setlength{\parindent}{0pt}
@@ -76,6 +79,7 @@
 \DeclareMathOperator{\intr}{int}
 \DeclareMathOperator{\pr}{pr}
 \DeclareMathOperator{\ins}{in}
+\DeclareMathOperator{\sk}{sk}  % simplicially constant
 
 \newcommand{\Trafo}{\Implies}
 \newcommand{\Isotrafo}{\xRightarrow{\sim}}
@@ -94,14 +98,15 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\DerAbK}{\Der(\Ab_{/|\K|})}
-\newcommand{\DerskK}{\Der_{\mathrm{sk}}(|\K|)}
-\newcommand{\DerpskK}{\Der^+_{\mathrm{sk}}(|\K|)}
+\newcommand{\DerskK}{\Der_{\sk}(|\K|)}
+\newcommand{\DerpskK}{\Der^+_{\sk}(|\K|)}
 \newcommand{\AbKr}{\Ab_{/|\K|}}
 \newcommand{\sKonsK}{\sKons(\K)}
 \newcommand{\inj}{\hookrightarrow}
 \newcommand{\surj}{\twoheadrightarrow}
 \newcommand{\Iff}{\Leftrightarrow}
 \newcommand{\Implies}{\Rightarrow}
+\newcommand{\iHom}{\Rightarrow}
 \newcommand{\cc}{^{\bullet}}  % chain complex
 \newcommand{\from}{\leftarrow}
 \newcommand{\slicecat}[3]{#1 \downarrow \! {\scriptstyle #2} \, #3}

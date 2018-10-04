@@ -1,6 +1,8 @@
 % Emacs mode: -*-latex-*-
 % include latex header (\usepackage, \newcommand etc.) 
-\input{header.tex}
+\input{header}
+
+% \addbibresource{bibtex.bib}
 
 \begin{document}
 
@@ -11,21 +13,21 @@
 
 \tableofcontents
 
-% Einleitung
+\input{intro}
 
-% Dank
-
-%\input{ch01.tex}
-%\input{ch02.tex}
-%\input{ch03.tex}
-%\input{ch04.tex}
-%\input{ch05.tex}
-%\input{ch06.tex}
+\input{ch01}
+\input{ch02}
+\input{ch03}
+\input{ch04}
+\input{ch05}
+\input{ch06}
 
 \bibliographystyle{alpha}
 \bibliography{bibtex}
+
+% \printbibliography
 \addcontentsline{toc}{chapter}{Literatur}
 
-% Eigenständigkeitserklärung
+\input{erklaerung}
 
 \end{document}

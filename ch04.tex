@@ -1,15 +1,7 @@
 % Emacs mode: -*-latex-*-
-% include latex header (\usepackage, \newcommand etc.) 
-\input{header.tex}
 
-\begin{document}
-
-\title{Simpliziale Garben}
-\author{Fabian Glöckle}
-\date{\today}
-% \maketitle
-
-\chapter{Simpliziale Garben}
+\chapter{Simpliziale Mengen}
+\label{ch:simp-sets}
 
 In diesem Kapitel beschäftigen wir uns mit simplizialen Objekten in
 der Kategorie der Garben auf einem topologischen Raum $X$. Während
@@ -18,7 +10,7 @@ verallgemeinern simpliziale Mengen gerichtete Graphen, und werden uns
 so bei der geometrischen Realisierung von Objekten in
 Diagrammkategorien von Garben zur Verfügung stehen.
 
-\section{Simpliziale Mengen}
+\section{Definition simplizialer Mengen}
 
 Wir betrachten die Menge $\Delta$ der nichtleeren endlichen
 Ordinalzahlen. Ihre Elemente sind von der Form $\{0, 1, \dots, n\}$
@@ -229,7 +221,7 @@ $i$-ten Stelle, für die Degenerationen $|s_i^n|: |\Delta^{n+1}| \to
 |\Delta^n|$ ($0 \leq i \leq n$) um den Kollaps der $i$-ten direkten
 Kante, d. h. in Koordinaten die Ersetzung der $i$-ten und ihrer
 darauffolgenden Koordinate durch ihre Summe. In Formeln:
-\begin{align*}
+\begin{align*} \label{eq:cosimp-space}
   |d_i^n|(x_0, \cdots, x_{n-1})
   &= (x_0, \cdots, x_{i-1}, 0, x_i, \cdots, x_{n-1}), \\
   |s_i^n|(x_0, \cdots, x_{n+1})
@@ -354,7 +346,7 @@ aus \ref{sset-colim} auf jeden Fall setzen
 \end{equation}
 Debei wird der Kolimes wieder über die Simplexkategorie von $X$
 gebildet, nun allerdings mit den induzierten stetigen Abbildungen aus
-\ref{??} als Systemmorphismen.
+Gleichung \ref{eq:cosimp-space} als Systemmorphismen.
 
 Ein Morphismus simplizialer Mengen $X \to Y$ induziert nun durch
 Nachschalten von $X \to Y$ einen Funktor auf den Simplexkategorien
@@ -404,7 +396,7 @@ vornherein weglässt''.
 Andernfalls heißt ein Simplex nichtdegeneriert. Für $X \in \s\Ens$
 bezeichne $NX_n$ die Menge der nichtdegenerierten $n$-Simplizes von
 $X$.
-\begin{lemma}[\cite{MIT}, Prop. 9] \label{degen-repr}
+\begin{lemma} \label{degen-repr}
   Sei $X \in \s\Ens$ eine simpliziale Menge und $x \in X_n$ ein
   $n$-Simplex. Dann gibt es eine eindeutige Darstellung $x = s^* y$
   für $y \in NX_m$ einen nichtdegenerierten Simplex von $X$ und $s:
@@ -414,8 +406,7 @@ $X$.
   Ist $x$ nichtdegeneriert, wähle $y = x$ und $s =
   \id_{[n]}$. Andernfalls gibt es nach Definition ein $y$ und eine
   Surjektion mit der gewünschten Eigenschaft. Diese sind eindeutig
-  nach den Relationen aus \ref{face-gen}, vergleiche \cite{MIT},
-  Prop. 9.
+  nach den Relationen aus \ref{face-gen}.
 \end{proof}
 Wir notieren für eine solche Darstellung $x = s^* y$ auch $y = N(x)$
 oder zur Bewahrung der Information über $s$ auch $y = N_s(x)$.
@@ -472,9 +463,9 @@ mit $y = N_s(d_i^* x)$.
   Standard-Darstellung der $S^n$ als simpliziale Menge liefert den
   Sierpinski-Raum bestehend aus einem offenen dichten und einem
   abgeschlossenen Punkt. Dies zeigt, dass die plumpe Realisierung für
-  unsere Zwecke zu grob ist und sich in \ref{ch06??} nicht für die
-  Übertragung der Aussagen über schwach konstruierbare Garben auf
-  Simplizialkomplexen eignen wird.
+  unsere Zwecke zu grob ist und sich in \ref{sec:simp-set-sk} nicht
+  für die Übertragung der Aussagen über schwach konstruierbare Garben
+  auf Simplizialkomplexen eignen wird.
 \end{bsp}
 
 \section{Iterative Konstruktion der geometrischen Realisierung}
@@ -655,7 +646,7 @@ arbeiten, ist die Existenz eines internen Hom.
   Die Kategorie $\CGHaus$ der kompakt erzeugten Hausdorffräume ist
   kartesisch abgeschlossen.
 \end{theorem}
-Aus der Adjunktion $(\times Y, Y \Implies)$ folgt auch die
+Aus der Adjunktion $(\times Y, Y \iHom)$ folgt auch die
 Rechtsexaktheit von Produkten in $\CGHaus$.
 \begin{satz}[\cite{Gabriel-Zisman}, III, 3] \label{real-products}
   Die geometrische Realisierung $|\cdot|: \s\Ens \to \CGHaus$
@@ -677,7 +668,7 @@ Rechtsexaktheit von Produkten in $\CGHaus$.
 \begin{proof}[Beweisskizze](\cite{Gabriel-Zisman}, III, 3)
    Ganz allgemein lassen sich endliche Limites als Egalisatoren
    endlicher Produkte darstellen. Für die Egalisatoren verweisen auf
-   \cite{Garbiel-Zisman}, III, 3.3. Für das Vertauschen mit endlichen
+   \cite{Gabriel-Zisman}, III, 3.3. Für das Vertauschen mit endlichen
    Produkten zeigt man, dass die Aussage für Standardsimplizes gilt,
    es also einen Homöomorphismus $|\Delta^n \times \Delta^m| \iso
    |\Delta^n| \times |\Delta^m|$ gibt, siehe \cite{Gabriel-Zisman},
@@ -705,6 +696,9 @@ Rechtsexaktheit von Produkten in $\CGHaus$.
   unendlichen Bouquet von Kreisen mit der Quotiententopologie von $\R
   \surj \R/\N = Y$.
 \end{bsp}
+
+\chapter{Koenden}
+\label{ch:coends}
 
 \section{Geometrische Realisierung als Koende}
 
@@ -879,7 +873,7 @@ werden (\cite{Moer}, III.1):
   allgemeineren simplizialen Objekten nicht mehr gegeben
   haben. Konkret werden wir im nächsten Abschnitt einen gewissen
   Begriff einer Wirkung einer Kategorie auf einer anderen Kategorie
-  erklären (Koexponentiale, siehe \ref{???}). Die Besonderheit
+  erklären (Koexponentiale, siehe \ref{def:copower}). Die Besonderheit
   simplizialer Mengen beruht nun darauf, dass sich die Wirkung von
   $\Ens$ auf $\Top$ $(X_n, |\Delta^n|) \mapsto \coprod_{X_n}
   |\Delta^n|$ als von der Wirkung von $\Ens$ auf $\s\Ens$, $(X_n,
@@ -893,16 +887,17 @@ werden (\cite{Moer}, III.1):
   für allgemeinere Kontexte richtige Beschreibung.
 \end{bem}
 
-\section{Der (Ko-) Enden-Kalkül}
+\section{Der Koendenkalkül}
+\label{sec:coend-calc}
 
-Die Sprache der (Ko-) Enden besitzt eine Reihe an Verträglichkeits-
-und Umformungseigenschaften, die sie zu einem mächtigen Werkzeug für
-eine Vielzahl formaler Rechnungen in Anwendungen der Kategorientheorie
-machen (für Beispiele siehe \cite{Lore}). Im folgenden werden einige
-Umformungsregeln dieses Kalküls \footnote{Bei der Übersetzung
-  aus dem Englischen geht leider die Analogie zu den Regeln der
-  Differentiations- und Integrationstheorie verloren.}
-zusammengestellt.
+Die Sprache der Enden und Koenden besitzt eine Reihe an
+Verträglichkeits- und Umformungseigenschaften, die sie zu einem
+mächtigen Werkzeug für eine Vielzahl formaler Rechnungen in
+Anwendungen der Kategorientheorie machen (für Beispiele siehe
+\cite{Lore}). Im folgenden werden einige Umformungsregeln dieses
+Kalküls \footnote{Bei der Übersetzung aus dem Englischen geht leider
+  die Analogie zu den Regeln der Differentiations- und
+  Integrationstheorie verloren.}  zusammengestellt.
 
 \begin{lemma}[Funktorialität, \cite{Lore}]
   Sind $F \xRightarrow{\eta} G \xRightarrow{\tau} H$ Transformationen
@@ -918,7 +913,7 @@ zusammengestellt.
   universellen Definition von Koenden.
 \end{proof}
 
-\begin{lemma}[Fubini, \cite{Lore}, 1.9, \cite{ML}, IX, 8]
+\begin{lemma}[Fubini, \cite{Lore}, 1.9, \cite{ML}, IX.8]
   \label{coend-fubini}
   Sei $F: C\op \times C \times D\op \times D \to E$ ein Funktor, für
   den die Koenden $\int^c F(c, c, d, d')$ für alle $d, d' \in D$
@@ -938,7 +933,7 @@ zusammengestellt.
   besagt, dass Koenden mit der Adjunktion $[C\op \times C \times D, E]
   \iso {[C\op \times C, [D, E]]}$ verträglich sind, also Koenden in
   Funktorkategorien objektweise berechnet werden können (\cite{ML},
-  IX, 7). Dies folgt sofort aus der Darstellung von Koenden als
+  IX.7). Dies folgt sofort aus der Darstellung von Koenden als
   Kolimites \ref{coend-col}.
 \end{bem}
 \begin{proof}
@@ -946,13 +941,13 @@ zusammengestellt.
   [D\op \times D, E]$ in der Funktorkategorie $D\op \times D \to E$
   und $L(K)$ ein Kokeil für $K$. Auch solche iterierten Kokeile $L(K)$
   bestehen aus Morphismen $F(c, c, d, d) \to L(K)$ für alle $c, d$ als
-  Komposition von $F(c, c, \cdot, \cdot) \Implies K$ ausgewertet auf
+  Komposition von $F(c, c, \cdot, \cdot) \Trafo K$ ausgewertet auf
   $(d, d) \in D\op \times D$ mit $K(d, d) \to L(K)$. Sie erfüllen die
   Kommutativitätseigenschaft von Kokeil-Quadraten für alle Morphismen
   der Form $(f, \id_d)$ in $C \times D$ (die Transformation aus der
   Kokeil-Eigenschaft von $K$ ausgewertet in $(d, d) \in D\op \times
   D$) sowie $(\id_c, g)$ in $C \times D$ (durch Vorschalten der zur
-  Transformation $F(c, c, \cdot, \cdot) \Implies K$ gehörigen
+  Transformation $F(c, c, \cdot, \cdot) \Trafo K$ gehörigen
   Morphismen vor das Kokeil-Quadrat von $L(K)$).
 
   Nach denselben Argumenten definiert ein Kokeil $M$ für $F: (C \times
@@ -1046,7 +1041,7 @@ zusammengestellt.
   \[ [C, D](F, G) \iso \int_c D(Fc, Gc). \]
 \end{lemma}
 \begin{proof}
-  Transformationen $F \Implies G$ sind genau diejenigen Tupel aus
+  Transformationen $F \Trafo G$ sind genau diejenigen Tupel aus
   $\prod_c D(Fc, Gc)$, für die für jedes $f: c \to d$ in $C$ die
   Bilder rechts unten im Diagramm übereinstimmen:
   \[ \begin{tikzcd}
@@ -1086,11 +1081,11 @@ Koendenkalkül kommt der Yoneda-Einbettung die Rolle des Diracmaßes zu:
     \iso[\ref{coend-fubini}] \quad
     &\int_c \int_d \Ens(F(c) \times C(c, d), Gd) \\
     \iso[int. Hom] \quad
-    &\int_c \int_d \Ens(C(c, d), Fc \Implies Gd) \\
+    &\int_c \int_d \Ens(C(c, d), Fc \iHom Gd) \\
     \iso[\ref{trans-end}] \quad
-    &\int_c [C, \Ens](\Ens(C(c, \cdot), Fc \Implies G \cdot) \\
+    &\int_c [C, \Ens](\Ens(C(c, \cdot), Fc \iHom G \cdot) \\
     \iso[Yon.] \quad
-    &\int_c (Fc \Implies Gc) \\
+    &\int_c (Fc \iHom Gc) \\
     \iso \quad &\int_c \Ens(Fc, Gc) \\
     \iso[\ref{trans-end}] \quad
     &[C, \Ens](F, G),
@@ -1178,18 +1173,18 @@ Kategorien. Wir imitieren die herkömmliche Definition von Kategorien:
 
 In einer monoidalen geschlossenen Kategorie $V$ haben wir die Adjunktion
 \[ V(a \otimes b, c) \iso V(a, V(b, c)) \]
-mit $V(b, c) = (b \Implies c)$ dem internen Hom-Objekt. Das Objekt $a
+mit $V(b, c) = (b \iHom c)$ dem internen Hom-Objekt. Das Objekt $a
 \otimes b$ ist dann ein darstellendes Objekt für den Funktor $c
 \mapsto V(a, V(b, c))$ und heißt manchmal auch Koexponential
 (engl. \emph{copower}) von $a$ und $b$. Wir verallgemeinern diese
 Situationen auf Koexponentiale in angereicherten Kategorien:
-\begin{defn} \label{copower}
-  Sei $C$ eine $V$-Kategorie. Ist $x \in C$ ein darstellendes Objekt
-  für den Funktor $c \mapsto V(v, C(b, c))$ mit $v \in V, b \in C$,
-  gilt also
-  \[ C(x, c) \iso V(v, C(b, c)) \]
-  natürlich in $c \in C$, so heißt $x = v \odot b$ das Koexponential
-  von $v$ und $b$.  
+\begin{defn} \label{def:copower}
+  Sei $C$ eine $V$-Kategorie. Ist $v \odot b \in C$ ein darstellendes
+  Objekt für den Funktor $c \mapsto V(v, C(b, c))$ mit $v \in V, b \in
+  C$, gilt also
+  \[ C(v \odot b, c) \iso V(v, C(b, c)) \]
+  natürlich in $b$, $c$ und $v$, so heißt $v \odot b$ das
+  Koexponential von $v$ und $b$.
 \end{defn}
 In diesem Fall nennt man die Kategorie $C$ auch \emph{tensoriert über
   $V$}.
@@ -1224,4 +1219,3 @@ kanonischem Koexponential.
   \to \blacktriangle |X|$.
 \end{bem}
 
-\end{document}
