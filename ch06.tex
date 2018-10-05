@@ -214,7 +214,7 @@ Bildmengen. Dies zeigt die Funktorialität.
   natürliche $\Ens$-tensorierte Struktur auf $\Cat$
   (\ref{ens-tensored}).
 \end{defn}
-\begin{bsp}
+\begin{bsp} \label{ex:s1-diagram}
   Betrachte die Standarddarstellung von $S^1$ als simpliziale Menge
   $X$ mit einem nichtdegenerierten $1$-Simplex und einem
   nichtdegenerierten $0$-Simplex aus \ref{ex:real-sphere}. Wie
@@ -411,43 +411,52 @@ abschließend beantwortet werden können:
 
 Wir können die Antworten nur in Teilen skizzieren:
 \begin{enumerate}
-\item Betrachte die stetigen Abbildungen $q: \coprod_n NX_n \times
-  |\Delta^n| \to |X|$ und $r: \coprod_n NX_n \times |\Delta^n| \to
-  \coprod_n NX_n \times \blacktriangle^n$. Für $F \in \Ens_{/|X|}$
-  konstruieren wir $p_*F$ aus $r_* \,q^*\, F$. Ein nichtdegenerierter
-  Simplex $\sigma$ von $X$ entspricht den Punkten $r(q^{-1}(|\sigma|))
-  \subset \coprod_n NX_n \times \blacktriangle^n$. Nun setzen wir
+\item Betrachte die stetigen Abbildungen
+  \begin{align*}
+    q: \coprod_n NX_n \times |\Delta^n| &\to |X| \qquad \text{und} \\
+    r: \coprod_n NX_n \times |\Delta^n| &\to
+    \coprod_n NX_n \times \blacktriangle^n.
+  \end{align*}
+  Für $F \in \Ens_{/|X|}$ konstruieren wir $p_*F$ aus $r_* \,q^*\,
+  F$. Ein nichtdegenerierter Simplex $\sigma$ von $X$ entspricht den
+  Punkten
+  \[ r(q^{-1}(|\sigma|)) \subset \coprod_n NX_n \times \blacktriangle^n.
+  \]
+  Nun setzen wir
   \[ p_*(\sigma) := \bigcap_{\tau \in r(q^{-1}(|\sigma|))} (r_*\,q^*\,F)_\tau , \]
   wobei der Schnitt wegen $r(q^{-1}(|\sigma|)) = r(q^{-1}(x))$ für $x
   \in |\sigma|$ mittels der Koeinheit der Adjunktion $(r^*, r_*)$ in
-  $F_x$ gebildet wird:
+  $F_x$ gebildet werden kann, denn es gilt
   \[ (r_*\,q^*\,F)_{r(y)} \iso (r^*\,r_*\,q^*\,F)_y
-  \to (q^*\, F)_y \iso F_{q(y)} = F_x \] für $r(y) \in r(q^{-1}(x))$.
-  
-  Anders gesprochen, war die Reihenfolge der ... falsch in \ref{??}.
+  \to (q^*\, F)_y \iso F_{q(y)} = F_x
+  \]
+  für $r(y) \in r(q^{-1}(x))$. Die Generisierungsabbildungen
+  $p_*F(\sigma) \to p_*F(\tau)$ sind dann die Einschränkungen der
+  Abbildungen in $r_* \,q^*\, F$ aus \ref{simp-comp-sheaf}.
 
-  $\sigma$ gibt es disjunkte offene Umgebungen $U_i(\sigma)$ der
-  Ränder $d_i^* \sigma$ (etwa durch baryzentrische Unterteilung). Ist
-  $\sigma$ ein nichtdegenerierter $n$-Simplex von $X$, so bleiben
-  diese Mengen in der geometrischen Realisierung $|X|$ bis auf
-  Identifikationen der Ränder selbst disjunkt. Betrachte für eine
-  Garbe $F \in \Ens_{/|X|}$ auf $V_i(\sigma) = U_i(\sigma) \setminus
-  |d_i^* \sigma|$ nur diejenigen Schnitte von $F$, die sich zu
-  Schnitten über die gesamte zu $\sigma$ gehörige Zelle $|\sigma|$ von
-  $|X|$ ausdehnen lassen. Wir setzen nun $p_*F(\tau)$ als die Schnitte
-  über $|\tau|$, die sich für $\sigma \to \tau = d_i^*(\sigma)$ eine
-  Randabbildung fortsetzen lassen zu Schnitten über $V_i(\sigma)$.
+  Anschaulich ordnet der Funktor $p_*$ etwa einer Garbe $F$ auf $S^1$
+  wie in \ref{ex:s1-diagram} die Prägarbe auf $(\bullet
+  \rightrightarrows \bullet)$ zu, die dem zur Kreislinie gehörigen
+  Punkt die Schnitte von $F$ über die Kreislinie zuordnet und dem
+  Verklebungspunkt diejenigen Elemente des Halms von $F$ am
+  Verklebungspunkt, die sich jeweils in beide Richtungen einseitig zu
+  einem Schnitt über die Kreislinie fortsetzen lassen, dabei aber
+  nicht übereinstimmen müssen. Wir sagen in einem solchen Fall, dass
+  ein Schnitt entlang eines Morphismus in $X \otimes R$
+  \emph{einseitig generisiert}.
 
+  Anders gesprochen ist die Reihenfolge in \ref{clumsy-comb} die
+  falsche: erst müssen die Generisierungsabbildungen bestimmt werden
+  und erst danach darf verklebt werden.
 
-  Betrachte  zunächst für einen
-  nichtdegenerierten Simplex $\sigma$ von $X$ das System von Mengen
-  $\Gamma(|\sigma|, F)$ für $|\sigma| \subset |X|$ die zu $\sigma$
-  gehörige Zelle der geometrischen Realisierung
-  (vgl. \ref{cw-cells}). Setze dann $p_*F(\sigma)$ diejenigen Elemente
-  $s \in \Gamma(|\sigma|, F)$, die sich für jeden Morphismus $\tau \to
-  \sigma$ in $X \otimes R$ ausdehnen lassen zu einem Schnitt $t \in
-  \Gamma(|\tau|, F)$.
-  % TODO einseitig ausdehnen
+  Die Adjunktion folgt im Wesentlichen daraus, dass ein Morphismus $F
+  \to G$ von Garben über $|X|$ mit simplizial konstantem $F$ durch die
+  Bilder der Schnitte $F(|\sigma|)$ für nichtdegeneriertes $\sigma$
+  eindeutig bestimmt ist. Diese müssen, wenn ihr Urbild entlang $\tau
+  \to \sigma$ einseitig generisiert, ebenfalls entlang $\tau \to
+  \sigma$ einseitig generisieren, was zeigt, dass $F \to G$ bereits
+  durch den simplizial konstanten Teil $p_* G$ von $G$ eindeutig
+  festgelegt ist.
 \item
 \item Einem Objekt $\sigma$ einer gerichteten Kategorie kann eine
   Kardinalzahl zugeordnet werden, die angibt, wie viele nichttriviale
@@ -465,14 +474,14 @@ Wir können die Antworten nur in Teilen skizzieren:
   koreflektive Hülle in $\Cat$ der zu simplizialen Mengen gehörigen
   gerichteten Kategorien und die Aussage von \ref{sheaf-sset-sk}
   überträgt sich durch Kostetigkeit. Dies ist ein zur Konstruktion
-  koreflektiver kartesisch abgeschlossener Kategorien aus sich gut
-  verhaltenden Unterkategorien topologischer Räume analoges
+  koreflektiver kartesisch abgeschlossener Kategorien aus
+  Unterkategorien sich gut verhaltender topologischer Räume analoges
   Vorgehen. Die geometrische Realisierung einer gerichteten Kategorie
   $C = \col_i (C_i \otimes R)$ ist dabei der Kolimes $|C| = \col_i
   |X_i|$ für $C_i$ zu simplizialen Mengen $X_i$ gehörige gerichtete
   Kategorien. Beispielsweise gehört der Sierpinski-Raum zum Quotienten
   von $S^1$ nach der Identifikation der Bilder zweier gegenläufiger
-  Pfade $|\Delta^1| \to S^1$.
+  Wege $|\Delta^1| \to S^1$.
 \item 
 \end{enumerate}
 
