@@ -363,20 +363,16 @@ Unterkategorien simplizial konstanter Garben.
   sich bei den beteiligten Kategorien um Skelettkategorien handelt.
 \end{proof}
 \begin{bem}
-  Prägarben auf der kategoriellen Realisierung sind sogar Garben auf
-  einer Basis: Formuliert man die Garbenbedingung für Garben auf einer
-  Basis analog zum Fall von Überdeckungen in $\OffX$
-  ordnungstheoretisch, erhält man:
-  \begin{quote}
-    Eine Prägarbe $F$ auf einer halbgeordneten Menge $X$ heißt Garbe,
-    falls sie jedes Supremum (jeden Kolimes) über bezüglich endlichen
-    Infima (Limites) abgeschlossene Teilsysteme von $X$ auf den
-    zugehörigen Limes schickt, sofern das Supremum in $X$ existiert:
-    \[ F(\col_i U_i) \iso \lim_i F(U_i). \]
-  \end{quote}
-  Dies ist bei Prägarben auf der kategoriellen Realisierung
-  trivialerweise erfüllt, denn ist in der kategoriellen Realisierung
-  $x = \sup S$, so ist bereits $x \in S$.
+  Folgt man den Äquivalenzen aus dem Satz, so entsprechen offene
+  Mengen in $|X|$ nach oben abgeschlossenen vollen Untersystemen $U
+  \subset X \otimes R$ und Schnitte über offene Mengen Elementen des
+  Limes $\lim_{\sigma \in U} F(\sigma)$ für $F$ eine Prägarbe auf der
+  kategoriellen Realisierung von $X$. Schnitte und Vereinigungen
+  offener Mengen entsprechen den Schnitten und Vereinigungen der
+  zugehörigen nach oben abgeschlossenen Untersysteme und die
+  Garbenbedingung ist in dieser Formulierung der Umstand, dass (auf
+  Schnitten) kompatible Tupel kompatibler Tupel wieder kompatible
+  Tupel auf der Vereinigung bilden.
 \end{bem}
 \begin{bem}
   Ein erster Ansatz für die Beschreibung von Garben auf Kolimites
@@ -397,12 +393,14 @@ Es schließt sich an diese Beschreibung simplizial konstanter Garben
 auf simplizialen Mengen eine Reihe an Fragen an, die hier nicht mehr
 abschließend beantwortet werden können:
 \begin{enumerate}
-\item Gilt in Analogie zu \ref{dersk-eq} nicht nur
-  \[ \Der([(X \otimes R)\op, \Ab]) \qiso \Der(\Ab^{\sk}_{/|X|}) ,\]
-  sondern sogar
-  \[ \Der([(X \otimes R)\op, \Ab]) \qiso \Der_{\sk}(\Ab_{/|X|}) ,\]
-  für $\Der_{\sk}(\Ab_{/|X|})$ die derivierten abelschen Garben auf
-  $|X|$ mit simplizial konstanten Kohomologiegarben?
+\item Gibt es einen Rechtsadjungierten $p_*$ zur Verknüpfung
+  \[[(X \otimes R)\op, \Ens] \qiso \Ens^{\sk}_{/|X|} \inj \Ens_{/|X|} \]
+  der Äquivalenz mit der Einbettung?
+\item Kann mit $p_*$ in Analogie zu \ref{dersk-eq}
+  \[ \Der([(X \otimes R)\op, \Ab]) \qiso \Der_{\sk}(\Ab_{/|X|}) \]
+  formuliert werden für $\Der_{\sk}(\Ab_{/|X|})$ die derivierten
+  abelschen Garben auf $|X|$ mit simplizial konstanten
+  Kohomologiegarben?
 \item Wie lassen sich die gerichteten Kategorien charakterisieren, die
   als kategorielle Realisierung simplizialer Mengen auftreten?
   Beispielsweise ist $(\bullet \to \bullet)$ keine solche gerichtete
@@ -413,6 +411,43 @@ abschließend beantwortet werden können:
 
 Wir können die Antworten nur in Teilen skizzieren:
 \begin{enumerate}
+\item Betrachte die stetigen Abbildungen $q: \coprod_n NX_n \times
+  |\Delta^n| \to |X|$ und $r: \coprod_n NX_n \times |\Delta^n| \to
+  \coprod_n NX_n \times \blacktriangle^n$. Für $F \in \Ens_{/|X|}$
+  konstruieren wir $p_*F$ aus $r_* \,q^*\, F$. Ein nichtdegenerierter
+  Simplex $\sigma$ von $X$ entspricht den Punkten $r(q^{-1}(|\sigma|))
+  \subset \coprod_n NX_n \times \blacktriangle^n$. Nun setzen wir
+  \[ p_*(\sigma) := \bigcap_{\tau \in r(q^{-1}(|\sigma|))} (r_*\,q^*\,F)_\tau , \]
+  wobei der Schnitt wegen $r(q^{-1}(|\sigma|)) = r(q^{-1}(x))$ für $x
+  \in |\sigma|$ mittels der Koeinheit der Adjunktion $(r^*, r_*)$ in
+  $F_x$ gebildet wird:
+  \[ (r_*\,q^*\,F)_{r(y)} \iso (r^*\,r_*\,q^*\,F)_y
+  \to (q^*\, F)_y \iso F_{q(y)} = F_x \] für $r(y) \in r(q^{-1}(x))$.
+  
+  Anders gesprochen, war die Reihenfolge der ... falsch in \ref{??}.
+
+  $\sigma$ gibt es disjunkte offene Umgebungen $U_i(\sigma)$ der
+  Ränder $d_i^* \sigma$ (etwa durch baryzentrische Unterteilung). Ist
+  $\sigma$ ein nichtdegenerierter $n$-Simplex von $X$, so bleiben
+  diese Mengen in der geometrischen Realisierung $|X|$ bis auf
+  Identifikationen der Ränder selbst disjunkt. Betrachte für eine
+  Garbe $F \in \Ens_{/|X|}$ auf $V_i(\sigma) = U_i(\sigma) \setminus
+  |d_i^* \sigma|$ nur diejenigen Schnitte von $F$, die sich zu
+  Schnitten über die gesamte zu $\sigma$ gehörige Zelle $|\sigma|$ von
+  $|X|$ ausdehnen lassen. Wir setzen nun $p_*F(\tau)$ als die Schnitte
+  über $|\tau|$, die sich für $\sigma \to \tau = d_i^*(\sigma)$ eine
+  Randabbildung fortsetzen lassen zu Schnitten über $V_i(\sigma)$.
+
+
+  Betrachte  zunächst für einen
+  nichtdegenerierten Simplex $\sigma$ von $X$ das System von Mengen
+  $\Gamma(|\sigma|, F)$ für $|\sigma| \subset |X|$ die zu $\sigma$
+  gehörige Zelle der geometrischen Realisierung
+  (vgl. \ref{cw-cells}). Setze dann $p_*F(\sigma)$ diejenigen Elemente
+  $s \in \Gamma(|\sigma|, F)$, die sich für jeden Morphismus $\tau \to
+  \sigma$ in $X \otimes R$ ausdehnen lassen zu einem Schnitt $t \in
+  \Gamma(|\tau|, F)$.
+  % TODO einseitig ausdehnen
 \item
 \item Einem Objekt $\sigma$ einer gerichteten Kategorie kann eine
   Kardinalzahl zugeordnet werden, die angibt, wie viele nichttriviale
@@ -514,13 +549,13 @@ opponierten Standard-$n$-Simplizialkomplexe.
   Kostetigkeit des Opponierens), einen Isomorphismus kosimplizialer
   topologischer Räume $\blacktriangle \to \Ord P\op$ zu finden. Beide
   bestehen aus einem Punkt pro nichtdegeneriertem Simplex
-  (\ref{cw-disjoint-inner}) von $\Delta^n$ und haben als offene Mengen
-  nach oben abgeschlossene Mengen. Randabbildungen $d_i$ sind
-  Inklusionen in die Ränder, Degenerationen Kollapse von Kanten. Dies
-  begründen wir sorgfältiger: Unsere Definition von $Ps_i: P[n] \to
-  P[n-1]$ schickt einen nichtdegenerierten Simplex $f: [m] \to [n]$
-  monoton und injektiv auf $N(s_i \circ f)$, den nichtdegenerierten
-  Simplex, der zum Kollaps von $i$ und $i+1$ in $f$ gehört.
+  (\ref{cw-cells}) von $\Delta^n$ und haben als offene Mengen nach
+  oben abgeschlossene Mengen. Randabbildungen $d_i$ sind Inklusionen
+  in die Ränder, Degenerationen Kollapse von Kanten. Dies begründen
+  wir sorgfältiger: Unsere Definition von $Ps_i: P[n] \to P[n-1]$
+  schickt einen nichtdegenerierten Simplex $f: [m] \to [n]$ monoton
+  und injektiv auf $N(s_i \circ f)$, den nichtdegenerierten Simplex,
+  der zum Kollaps von $i$ und $i+1$ in $f$ gehört.
 \end{proof}
 \begin{lemma}
   Der Funktor $\Ord: \poset \to \Top$, der eine halbgeordneten Menge

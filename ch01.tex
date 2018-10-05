@@ -190,7 +190,7 @@ Schnitten stabile Überdeckung ist und wir als Systemmorphismen die
 Restriktionen wählen:
 \[ F(U) = \lim_{i \in I} F(V_i) . \]
 
-\begin{satz}
+\begin{satz} \label{sheaf-on-basis}
   Sei $X$ ein topologischer Raum mit Basis $\B$. Dann gibt es eine
   Äquivalenz von Kategorien
   \[ \EnsX \qiso \EnsB \]
@@ -224,7 +224,7 @@ Restriktionen wählen:
   F(U) $ gilt, handelt es sich tatsächlich um einen Quasi-Inversen.
 \end{proof}
 
-\begin{satz} \label{sheaf-simp-compl}
+\begin{satz} \label{simp-comp-sheaf}
   Der Funktor
   \[
   [\mathcal{K}, \EnsX] \to \EnsB \qiso \Ens_{/\mathcal{K} \times X}
@@ -256,7 +256,8 @@ Restriktionen wählen:
 Wir geben die nicht-relative Version dieser Aussage an, mit einem
 Beweis, der die entscheidenden Schritte im vorangehenden Beweis noch
 einmal systematischer darstellt. Mit den Techniken aus Kapitel
-\ref{ch03} folgt daraus umgekehrt auch die relative Version.
+\ref{sec:gen-sheaves} folgt daraus umgekehrt auch die relative
+Version.
 \begin{defn}
   Sei $(X, \leq)$ eine halbgeordnete Menge und $S \subset X$ eine
   Teilmenge. Ein Element $I \in X$ heißt Infimum von $S$, falls es
