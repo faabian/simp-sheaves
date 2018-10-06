@@ -499,7 +499,29 @@ erhalten:
   Man beachte, dass der Beweis ab \ref{beta-adjoint} ausschließlich
   auf homologischer Algebra beruht, die konkreten topologischen
   Eigenschaften der Situation fließen im Wesentlichen in \ref{sk-char}
-  ein. Dies wird sich in \ref{ch??} als nützlich erweisen, um die
-  Aussage für simpliziale Mengen zu formulieren.
-  % TODO add ref (if still needed)
+  ein. Dies wird sich in Abschnitt \ref{sec:real-directed-cat} als
+  nützlich erweisen, um die Aussage für simpliziale Mengen zu
+  formulieren.
 \end{bem}
+Wir halten den allgemeinen Teil des Arguments fest:
+\begin{satz} \label{gen-sk}
+  Seien $C$ und $D$ abelsche Kategorien mit einem Paar adjungierter
+  Funktoren $(p^*, p_*)$
+  \[ C \mathrel{\mathop{\rightleftarrows}^{p^*}_{p_*}} D, \]
+  für das die Einheit der Adjunktion $\Id \Isotrafo p_* p^*$ auf allen
+  Objekten ein Isomorphismus ist. Bezeichne Objekte $d \in D$, auf
+  denen die Koeinheit $p^* p_* \Trafo \Id$ ein Isomorphismus ist, als
+  \emph{schwach konstruierbar}. Dann ist die volle Unterkategorie der
+  schwach konstruierbaren Objekte $D^{\sk}$ von $D$ koreflektiv mit
+  dem Koreflektor $\beta = p^* p_*$. Gibt es in $\Der(D)$ für
+  beliebige unbeschränkte Kettenkomplexe homotopieinjektive
+  Auflösungen durch injektive Objekte, so gibt es eine Äquivalenz von
+  Kategorien
+  \[ \Der(D^{\sk})
+  \mathrel{\mathop{\rightleftarrows}^{\iota}_{R \beta}}
+  \Der_{\sk}(D),
+  \]
+  wobei $\Der_{\sk}(D)$ die volle Unterkategorie der derivierten
+  Kategorie von $D$ mit schwach konstruierbarer Kohomologie
+  bezeichnet.
+\end{satz}
