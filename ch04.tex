@@ -340,7 +340,7 @@ Kolimites vertrage:
 \end{equation}
 Wenn dies der Fall sein soll, so müssen wir mit der Darstellung
 \[ X := \col_{\Delta^n \to X} \Delta^n \]
-aus \ref{sset-colim} auf jeden Fall setzen
+aus \ref{sset-col} auf jeden Fall setzen
 \begin{equation} \label{eq:real-colim}
 |X| := \col_{\Delta^n \to X} |\Delta^n|.
 \end{equation}
@@ -557,7 +557,9 @@ Teil'' von $\|X\|$ liefern:
 \begin{bem} \label{cw-cells}
   Nach dem Korollar kann die geometrische Realisierung einer
   simplizialen Menge disjunkt in ihre Zellen, die Bilder der offenen
-  Inneren ihrer nichtdegenerierten Simplizes, zerlegt werden.
+  Inneren ihrer nichtdegenerierten Simplizes, zerlegt werden. Wir
+  bezeichnen die zu einem nichtdegenerierten Simplex $\sigma$ gehörige
+  Zelle der geometrischen Realisierung mit $|\sigma|$.
 \end{bem}
 
 \section{Kompakt erzeugte Hausdorffräume}
@@ -598,7 +600,7 @@ Für uns relevant sind die folgenden Kriterien:
 \end{lemma}
 Dabei heißt ein topologischer Raum \emph{lokal kompakt} (im schwachen
 Sinne), falls jeder Punkt eine kompakte Umgebung besitzt. Beachte den
-Unterschied zu \ref{loc-compact} und \ref{loc-compact-usage}.
+Unterschied zu \ref{def:loc-compact} und \ref{loc-compact-usage}.
 \begin{proof}
   \begin{enumerate}[label=(\roman*)]
     \item \label{itm:cg-crit-proof-lc} Sei $U \subset X$ mit $U \cap
@@ -755,7 +757,7 @@ sind. Wir machen diese Aussage präzise:
 \end{defn}
 \begin{prop}[\cite{ML}, IX.5.1, \cite{Lore}, 1.13] \label{coend-col}
   Es gibt einen Funktor $[C\op \times C, D] \to [\Sub(C) \to D], F
-  \mapsto \hat{F}$, der einen Äquivalenz von Kategorien zwischen der
+  \mapsto \hat{F}$, der eine Äquivalenz von Kategorien zwischen der
   Kategorie der Kokeile für $F$ und der Kategorie der Kokegel für
   $\hat{F}$ induziert. Insbesondere gilt
   \[ \int^{c \in C} F(c, c) \iso \col \hat{F}. \]
@@ -785,19 +787,6 @@ sind. Wir machen diese Aussage präzise:
   verträglicher Morphismus der Objekte $K \to K'$. Koenden für $F$ und
   Kolimites für $\hat{F}$ sind die initialen Objekte der Kategorien
   von Kokeilen für $F$ bzw. Kokegeln für $\hat{F}$.
-\end{proof}
-\begin{kor} \label{coend-cocont}
-  Koenden vertauschen mit Kolimites über die sie definierenden
-  Funktoren, es gilt für ein System von Funktoren $F_i: C\op \times C
-  \to D$
-  \[ \col_i \int^c F_i(c, c) \iso \int^c \col_i F_i(c, c), \]
-  wenn die beteiligten Terme definiert sind.
-\end{kor}
-\begin{proof}
-  Unsere Beschreibung von Koenden als Kolimites und das Vertauschen
-  von Kolimites reduzieren die Aussage auf die Kostetigkeit von $F
-  \mapsto \hat{F}$. Dies ist klar, da Kolimites in Funktorkategorien
-  objektweise berechnet werden.
 \end{proof}
 \begin{bem}[\cite{Lore}, 1.12]
   Eine andere Beschreibung verwendet statt der Unterteilungskategorie
@@ -831,6 +820,34 @@ sind. Wir machen diese Aussage präzise:
   \end{align*}
   mit Vorschalten von $h$ und Nachschalten von $k$ für einen
   Morphismus $f \to g$ wie im obigen Diagramm zu.
+\end{bem}
+
+\begin{defn}
+  Sei $F: C \to D$ ein Funktor. $F$ heißt \emph{stetig}, falls er mit
+  Limites über kleine Kategorien vertauscht. $F$ heißt
+  \emph{kostetig}, falls er mit Kolimites über kleine Kategorien
+  vertauscht.
+\end{defn}
+\begin{kor}[Kostetigkeit von Koenden, \cite{Lore}, 1.16]
+  \label{coend-cocont}
+  Ist $F: D \to E$ ein kostetiger Funktor und $T: C\op \times C \to D$
+  ein Funktor, dann ist der natürliche Morphismus
+  \[ F \int^c T(c, c) \iso \int^c F \circ T(c, c), \]
+  ein Isomorphismus, wann immer eines der beiden Koenden existiert.
+\end{kor}
+\begin{proof}
+  Dies folgt wegen $\widehat{F \circ T} = F \circ \hat{T}$ aus der
+  Beschreibung von Koenden als Kolimites \ref{coend-col}.
+\end{proof}
+\begin{bem}
+  Das wichtigste Beispiel für diesen Fall ist der $\Hom$-Funktor. Nach
+  Definition von Limes und Kolimes sind $D(d, \cdot): D \to \Ens$ und
+  $D(\cdot, d): D\op \to \Ens$ stetig. Wir erhalten für $F: C\op
+  \times C \to D$:
+  \begin{align*}
+    D(d, \int_c F(c, c)) & \iso \int_c D(d, F(c, c)) \\
+    D(\int^c F(c, c), d) &\iso \int_c D(F(c, c), d).
+  \end{align*}
 \end{bem}
 
 Sind $F: C\op \to D$ und $G: C \to D$ Funktoren und ist $D$ eine
@@ -1006,34 +1023,9 @@ Kalküls \footnote{Bei der Übersetzung aus dem Englischen geht leider
     J, C] \iso {[I, [J, C]]}$.
 \end{proof}
 
-\begin{defn}
-  Sei $F: C \to D$ ein Funktor. $F$ heißt \emph{stetig}, falls er mit
-  Limites über kleine Kategorien vertauscht. $F$ heißt
-  \emph{kostetig}, falls er mit Kolimites über kleine Kategorien
-  vertauscht.
-\end{defn}
-\begin{lemma}[Koenden und kostetige Funktoren, \cite{Lore}, 1.16]
-  \label{coend-cocont}
-  Ist $F: D \to E$ ein kostetiger Funktor und $T: C\op \times C \to D$
-  ein Funktor, dann ist der natürliche Morphismus
-  \[ F \int^c T(c, c) \iso \int^c F \circ T(c, c), \]
-  ein Isomorphismus, wann immer eines der beiden Koenden existiert.
-\end{lemma}
-\begin{proof}
-  Das folgt direkt aus unserer Beschreibung von Koenden als Kolimites
-  in \ref{coend-coeq}.
-\end{proof}
-\begin{bem}
-  Das wichtigste Beispiel für diesen Fall ist der
-  $\Hom$-Funktor. Praktisch nach Definition von Limes und Kolimes sind
-  $D(d, \cdot): D \to \Ens$ und $D(\cdot, d): D\op \to \Ens$
-  stetig. Wir erhalten für $F: C\op \times C \to D$:
-  \begin{align*}
-    D(d, \int_c F(c, c)) & \iso \int_c D(d, F(c, c)) \\
-    D(\int^c F(c, c), d) &\iso \int_c D(F(c, c), d).
-  \end{align*}
-\end{bem}
-
+Koenden und Enden treten in kategorientheoretischen Rechnungen häufig
+natürlich auf. Das liegt an der folgenden Beschreibung von
+Transformationsmengen als Enden.
 \begin{lemma}[Transformationen als Ende, \cite{Lore}, 1.18]
   \label{trans-end}
   Seien $F, G: C \to D$ zwei Funktoren. Dann gibt es einen natürlichen

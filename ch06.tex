@@ -3,16 +3,17 @@
 \section{Schwach konstruierbare Garben auf simplizialen Mengen}
 \label{sec:simp-set-sk}
 
-In diesem Abschnitt möchten wir die Aussagen aus Abschnitt
-\ref{sec:simp-comp-ord} übertragen auf den Fall, dass es sich bei dem
-Basisraum um die Realisierung einer simplizialen Menge anstelle eines
-Simplizialkomplexes handelt. Simplizialkomplexe sind halbgeordnete
-Mengen und unsere Technik verwendete die Ordnungstopologie
-halbgeordneter Mengen. Simplizial konstante Garben auf simplizialen
-Mengen entsprechen hingegen Diagrammen von Mengen, in denen es auch
-mehrere Pfeile zwischen zwei zu nichtdegenerierten Simplizes gehörigen
-Punkten geben kann. Solche kategoriellen Realisierungen simplizialer
-Mengen werden wir in diesem Abschnitt konstruieren.
+In diesem Abschnitt möchten wir die Aussagen aus
+\autoref{sec:simp-comp-ord} übertragen auf den Fall, dass es sich bei
+dem Basisraum um die Realisierung einer simplizialen Menge anstelle
+eines Simplizialkomplexes handelt. Simplizialkomplexe sind
+halbgeordnete Mengen und unsere Technik verwendete die
+Ordnungstopologie halbgeordneter Mengen. Simplizial konstante Garben
+auf simplizialen Mengen entsprechen hingegen Diagrammen von Mengen, in
+denen es auch mehrere Pfeile zwischen zwei zu nichtdegenerierten
+Simplizes gehörigen Punkten geben kann. Solche kategoriellen
+Realisierungen simplizialer Mengen werden wir in diesem Abschnitt
+konstruieren.
 
 Konkret ist für $X \in \s\Ens$ eine simpliziale Menge eine Kategorie
 $D_X$ gesucht, für die es eine Äquivalenz von Kategorien
@@ -33,9 +34,9 @@ können folgende Diagramme in Frage kommen:
   liegen. Dieses Diagramm ist zu grob, um simplizial konstanten Garben
   auf $S^1$ zu entsprechen, wie die Realisierung von $D_X$ mit der
   Ordnungstopologie und dann die erste Garbenkohomologie zeigt. Im
-  Abschnitt \ref{sec:real-poset} werden wir diese kategorielle
-  Realisierung mit der geometrischen Realisierung durch plumpe
-  Simplizes in Beziehung setzen.
+  \autoref{sec:real-poset} werden wir diese kategorielle Realisierung
+  mit der geometrischen Realisierung durch plumpe Simplizes in
+  Beziehung setzen.
 \item Das Diagramm $D_X = \slicecat{\Delta}{r}{X}$. Es handelt sich um
   das Diagramm aller Simplizes von $X$ mit der Angabe von Rändern und
   Degenerationen. Diese Diagramm ist zu fein, um von einer simplizial
@@ -214,7 +215,7 @@ Bildmengen. Dies zeigt die Funktorialität.
   natürliche $\Ens$-tensorierte Struktur auf $\Cat$
   (\ref{ens-tensored}).
 \end{defn}
-\begin{bsp}
+\begin{bsp} \label{ex:s1-diagram}
   Betrachte die Standarddarstellung von $S^1$ als simpliziale Menge
   $X$ mit einem nichtdegenerierten $1$-Simplex und einem
   nichtdegenerierten $0$-Simplex aus \ref{ex:real-sphere}. Wie
@@ -363,20 +364,16 @@ Unterkategorien simplizial konstanter Garben.
   sich bei den beteiligten Kategorien um Skelettkategorien handelt.
 \end{proof}
 \begin{bem}
-  Prägarben auf der kategoriellen Realisierung sind sogar Garben auf
-  einer Basis: Formuliert man die Garbenbedingung für Garben auf einer
-  Basis analog zum Fall von Überdeckungen in $\OffX$
-  ordnungstheoretisch, erhält man:
-  \begin{quote}
-    Eine Prägarbe $F$ auf einer halbgeordneten Menge $X$ heißt Garbe,
-    falls sie jedes Supremum (jeden Kolimes) über bezüglich endlichen
-    Infima (Limites) abgeschlossene Teilsysteme von $X$ auf den
-    zugehörigen Limes schickt, sofern das Supremum in $X$ existiert:
-    \[ F(\col_i U_i) \iso \lim_i F(U_i). \]
-  \end{quote}
-  Dies ist bei Prägarben auf der kategoriellen Realisierung
-  trivialerweise erfüllt, denn ist in der kategoriellen Realisierung
-  $x = \sup S$, so ist bereits $x \in S$.
+  Folgt man den Äquivalenzen aus dem Satz, so entsprechen offene
+  Mengen in $|X|$ nach oben abgeschlossenen vollen Untersystemen $U
+  \subset X \otimes R$ und Schnitte über offene Mengen Elementen des
+  Limes $\lim_{\sigma \in U} F(\sigma)$ für $F$ eine Prägarbe auf der
+  kategoriellen Realisierung von $X$. Schnitte und Vereinigungen
+  offener Mengen entsprechen den Schnitten und Vereinigungen der
+  zugehörigen nach oben abgeschlossenen Untersysteme und die
+  Garbenbedingung ist in dieser Formulierung der Umstand, dass (auf
+  Schnitten) kompatible Tupel kompatibler Tupel wieder kompatible
+  Tupel auf der Vereinigung bilden.
 \end{bem}
 \begin{bem}
   Ein erster Ansatz für die Beschreibung von Garben auf Kolimites
@@ -397,12 +394,14 @@ Es schließt sich an diese Beschreibung simplizial konstanter Garben
 auf simplizialen Mengen eine Reihe an Fragen an, die hier nicht mehr
 abschließend beantwortet werden können:
 \begin{enumerate}
-\item Gilt in Analogie zu \ref{dersk-eq} nicht nur
-  \[ \Der([(X \otimes R)\op, \Ab]) \qiso \Der(\Ab^{\sk}_{/|X|}) ,\]
-  sondern sogar
-  \[ \Der([(X \otimes R)\op, \Ab]) \qiso \Der_{\sk}(\Ab_{/|X|}) ,\]
-  für $\Der_{\sk}(\Ab_{/|X|})$ die derivierten abelschen Garben auf
-  $|X|$ mit simplizial konstanten Kohomologiegarben?
+\item Gibt es einen Rechtsadjungierten $p_*$ zur Verknüpfung
+  \[p^*: [(X \otimes R)\op, \Ens] \qiso \Ens^{\sk}_{/|X|} \inj \Ens_{/|X|} \]
+  der Äquivalenz mit der Einbettung?
+\item Kann mit $p_*$ in Analogie zu \ref{dersk-eq}
+  \[ \Der([(X \otimes R)\op, \Ab]) \qiso \Der^{\sk}(\Ab_{/|X|}) \]
+  formuliert werden für $\Der^{\sk}(\Ab_{/|X|})$ die derivierten
+  abelschen Garben auf $|X|$ mit simplizial konstanten
+  Kohomologiegarben?
 \item Wie lassen sich die gerichteten Kategorien charakterisieren, die
   als kategorielle Realisierung simplizialer Mengen auftreten?
   Beispielsweise ist $(\bullet \to \bullet)$ keine solche gerichtete
@@ -411,9 +410,57 @@ abschließend beantwortet werden können:
   auf beliebige Diagrammkategorien verallgemeinern?
 \end{enumerate}
 
-Wir können die Antworten nur in Teilen skizzieren:
+Wir können die Antworten nur kurz skizzieren:
 \begin{enumerate}
-\item
+\item Betrachte die stetigen Abbildungen
+  \begin{align*}
+    q: \coprod_n NX_n \times |\Delta^n| &\to |X| \qquad \text{und} \\
+    r: \coprod_n NX_n \times |\Delta^n| &\to
+    \coprod_n NX_n \times \blacktriangle^n.
+  \end{align*}
+  Für $F \in \Ens_{/|X|}$ konstruieren wir $p_*F$ aus $r_* \,q^*\,
+  F$. Ein nichtdegenerierter Simplex $\sigma$ von $X$ entspricht den
+  Punkten
+  \[ r(q^{-1}(|\sigma|)) \subset \coprod_n NX_n \times \blacktriangle^n.
+  \]
+  Nun setzen wir
+  \[ p_*(\sigma) := \bigcap_{\tau \in r(q^{-1}(|\sigma|))} (r_*\,q^*\,F)_\tau , \]
+  wobei der Schnitt wegen $r(q^{-1}(|\sigma|)) = r(q^{-1}(x))$ für $x
+  \in |\sigma|$ mittels der Koeinheit der Adjunktion $(r^*, r_*)$ in
+  $F_x$ gebildet werden kann, denn es gilt
+  \[ (r_*\,q^*\,F)_{r(y)} \iso (r^*\,r_*\,q^*\,F)_y
+  \to (q^*\, F)_y \iso F_{q(y)} = F_x
+  \]
+  für $r(y) \in r(q^{-1}(x))$. Die Generisierungsabbildungen
+  $p_*F(\sigma) \to p_*F(\tau)$ sind dann die Einschränkungen der
+  Abbildungen in $r_* \,q^*\, F$ aus \ref{simp-comp-sheaf}.
+
+  Anschaulich ordnet der Funktor $p_*$ etwa einer Garbe $F$ auf $S^1$
+  wie in \ref{ex:s1-diagram} die Prägarbe auf $(\bullet
+  \rightrightarrows \bullet)$ zu, die dem zur Kreislinie gehörigen
+  Punkt die Schnitte von $F$ über die Kreislinie zuordnet und dem
+  Verklebungspunkt diejenigen Elemente des Halms von $F$ am
+  Verklebungspunkt, die sich jeweils in beide Richtungen einseitig zu
+  einem Schnitt über die Kreislinie fortsetzen lassen, dabei aber
+  nicht übereinstimmen müssen. Wir sagen in einem solchen Fall, dass
+  ein Schnitt entlang eines Morphismus in $X \otimes R$
+  \emph{einseitig generisiert}.
+
+  Anders gesprochen ist die Reihenfolge in \ref{clumsy-comb} die
+  falsche: erst müssen die Generisierungsabbildungen bestimmt werden
+  und erst danach darf verklebt werden.
+
+  Die Adjunktion folgt im Wesentlichen daraus, dass ein Morphismus $F
+  \to G$ von Garben über $|X|$ mit simplizial konstantem $F$ durch die
+  Bilder der Schnitte $F(|\sigma|)$ für nichtdegeneriertes $\sigma$
+  eindeutig bestimmt ist. Diese müssen, wenn ihr Urbild entlang $\tau
+  \to \sigma$ einseitig generisiert, ebenfalls entlang $\tau \to
+  \sigma$ einseitig generisieren, was zeigt, dass $F \to G$ bereits
+  durch den simplizial konstanten Teil $p_* G$ von $G$ eindeutig
+  festgelegt ist. Die Einheit der Adjunktion $\Id \Isotrafo p_* p^*$
+  ist nach Konstruktion auf allen Objekten ein Isomorphismus.
+\item Die Aussage gilt und folgt aus dem Vorangegangenen Punkt und der
+  Aussage zu allgemeiner schwacher Konstruierbarkeit \ref{gen-sk}.
 \item Einem Objekt $\sigma$ einer gerichteten Kategorie kann eine
   Kardinalzahl zugeordnet werden, die angibt, wie viele nichttriviale
   Morphismen von $\sigma$ auslaufen. Sind es $n+1$ Stück, nennen wir
@@ -430,18 +477,51 @@ Wir können die Antworten nur in Teilen skizzieren:
   koreflektive Hülle in $\Cat$ der zu simplizialen Mengen gehörigen
   gerichteten Kategorien und die Aussage von \ref{sheaf-sset-sk}
   überträgt sich durch Kostetigkeit. Dies ist ein zur Konstruktion
-  koreflektiver kartesisch abgeschlossener Kategorien aus sich gut
-  verhaltenden Unterkategorien topologischer Räume analoges
+  koreflektiver kartesisch abgeschlossener Kategorien aus
+  Unterkategorien sich gut verhaltender topologischer Räume analoges
   Vorgehen. Die geometrische Realisierung einer gerichteten Kategorie
   $C = \col_i (C_i \otimes R)$ ist dabei der Kolimes $|C| = \col_i
   |X_i|$ für $C_i$ zu simplizialen Mengen $X_i$ gehörige gerichtete
   Kategorien. Beispielsweise gehört der Sierpinski-Raum zum Quotienten
   von $S^1$ nach der Identifikation der Bilder zweier gegenläufiger
-  Pfade $|\Delta^1| \to S^1$.
-\item 
+  Wege $|\Delta^1| \to S^1$.
+\item Ist $I$ eine kleine Kategorie, so ist der Nerv-Funktor gegeben
+  durch 
+  \begin{align*}
+    N: \Cat &\to \s\Ens, \\
+    I &\mapsto ([n] \mapsto [ [n], I]),
+  \end{align*}
+  wobei ein endliches nichtleeres Ordinal $[n]$ mittels
+  \ref{poset-cat} als Kategorie aufgefasst wird. Eine Prägarbe $F \in
+      [I\op, C]$ für $C$ eine Kategorie definiert trivial eine
+      $C$-wertige Prägarbe auf $N(I) \otimes R$ durch
+  \[ \begin{tikzcd}
+    (F_0 \xrightarrow{f_1} F_1 \to \cdots \to F_n) \dar{d_0} \rar[mapsto]
+    & F_0 \dar{f_1} \\
+    (F_1 \to \cdots \to F_n) \rar[mapsto]
+    & F_1
+  \end{tikzcd} \]
+  für die $0$-te Randabbildung, sowie Identitäten
+  \[ \begin{tikzcd}
+    (F_0 \to F_1 \to \cdots \to F_n) \dar{d_i} \rar[mapsto]
+    & F_0 \dar{\id_{F_0}} \\
+    (F_0 \to \cdots \to F_{i-1}
+    \xrightarrow{f_{i+1} \circ f_i} F_{i+1} \to \cdots \to F_n) \rar[mapsto]
+    & F_0
+  \end{tikzcd} \]
+  für die höheren Randabbilungen $i > 0$. Dies liefert einen Funktor
+  \[ [I\op, \Ens] \to [(N(I) \otimes R)\op, \Ens] \qiso \Ens^{\sk}_{/|N(I)|}, \]
+  unter welchem die Prägarben auf $I$ den \emph{geordnet simplizial
+    konstanten} Garben auf $|N(I)|$ entsprechen: den simplizial
+  konstanten Garben auf $|N(I)|$, für die höchstens die erste
+  einseitige Generisierungsabbildung von der Identität abweicht. Auf
+  einem Standard-$n$-Simplex bedeutet das etwa, dass die Garbe jeweils
+  auf den Mengen
+  \[ D^i = \set{(x_0, \cdots, x_n) \in |\Delta^n|}
+     {x_j = 0 \text{ für } j < i, x_i > 0 } \qquad (0 \leq i \leq n)
+    \]
+  konstant ist.
 \end{enumerate}
-
-% TODO Fragen, die sich anschließen
 
 \subsection{Realisierung als halbgeordnete Menge}
 \label{sec:real-poset}
@@ -514,13 +594,13 @@ opponierten Standard-$n$-Simplizialkomplexe.
   Kostetigkeit des Opponierens), einen Isomorphismus kosimplizialer
   topologischer Räume $\blacktriangle \to \Ord P\op$ zu finden. Beide
   bestehen aus einem Punkt pro nichtdegeneriertem Simplex
-  (\ref{cw-disjoint-inner}) von $\Delta^n$ und haben als offene Mengen
-  nach oben abgeschlossene Mengen. Randabbildungen $d_i$ sind
-  Inklusionen in die Ränder, Degenerationen Kollapse von Kanten. Dies
-  begründen wir sorgfältiger: Unsere Definition von $Ps_i: P[n] \to
-  P[n-1]$ schickt einen nichtdegenerierten Simplex $f: [m] \to [n]$
-  monoton und injektiv auf $N(s_i \circ f)$, den nichtdegenerierten
-  Simplex, der zum Kollaps von $i$ und $i+1$ in $f$ gehört.
+  (\ref{cw-cells}) von $\Delta^n$ und haben als offene Mengen nach
+  oben abgeschlossene Mengen. Randabbildungen $d_i$ sind Inklusionen
+  in die Ränder, Degenerationen Kollapse von Kanten. Dies begründen
+  wir sorgfältiger: Unsere Definition von $Ps_i: P[n] \to P[n-1]$
+  schickt einen nichtdegenerierten Simplex $f: [m] \to [n]$ monoton
+  und injektiv auf $N(s_i \circ f)$, den nichtdegenerierten Simplex,
+  der zum Kollaps von $i$ und $i+1$ in $f$ gehört.
 \end{proof}
 \begin{lemma}
   Der Funktor $\Ord: \poset \to \Top$, der eine halbgeordneten Menge
@@ -555,151 +635,3 @@ der plumpen Realisierung:
   Äquivalenz von Kategorien $\Ens_{/\blacktriangle X} \qiso [(X
     \otimes P)\op, \Ens]$.
 \end{prop}
-
-\subsection{Allgemeine schwache Konstruierbarkeit}
-% TODO behalten? Titel?
-
-Wir kommen nun zur Übertragung der Ergebnisse aus \ref{ch02} auf die
-Situation simplizialer Mengen. Dies ermöglicht etwa die Aussage auch
-für Triangulierungen wie in Beispiel \ref{ex:real-sphere}.
-
-Nach der Bemerkung \ref{sk-homalg} reicht es, die topologischen Teile
-des Beweises zu übertragen. Wir sammeln die benötigten Axiome:
-\begin{defn} \label{def:constr}
-  Eine \emph{Konstruierbarkeitssituation} ist eine stetige Abbildung
-  $p: |\K| \to \K$ mit den folgenden Eigenschaften:
-  \begin{enumerate}
-  \item \label{itm:constr-final} $p$ ist final, surjektiv und hat
-    zusammenhängende Fasern.
-  \item \label{itm:constr-comb-space} Jeder Punkt $\sigma \in \K$
-    besitzt eine kleinste offene Umgebung $(\geq \sigma)$.
-  \end{enumerate}
-\end{defn}
-Wir notieren $U(\sigma) = p^{-1}((\geq \sigma))$. In einer
-Konstruierbarkeitssituation nennen wir $\K$ die \emph{kombinatorische}
-und $|\K|$ die \emph{geometrische Realisierung}.
-
-Der ``richtige'' äquivalente Begriff von schwacher Konstruierbarkeit
-aus \ref{sk-char} wird zur allgemeinen Definition:
-\begin{defn}
-  Eine Garbe $F \in \AbKr$ heißt schwach $|\K|$-konstruierbar, falls
-  die Koeinheit der Adjunktion auf $F$ ein Isomorphismus $p^* p_* F
-  \iso F$ ist.
-\end{defn}
-Auch übertragen wir den Begriff derivierter schwach
-$|\K|$-konstruierbarer Garben (mit schwach $|\K|$-konstruierbaren
-Kohomologiegarben) und die Notationen $\sKons(\K)$ und $\DerskK$.
-
-Mit identischem Beweis überträgt sich der allgemeine Teil von
-\ref{sk-char} übertragen:
-\begin{prop} \label{gensk-char}
-  In einer Konstruierbarkeitssituation $p: |\K| \to \K$ sind für $F
-  \in \AbKr$ sind äquivalent:
-  \begin{enumerate}[label=(\arabic*)]
-  \item \label{itm:gensk-char-sk} $F$ ist schwach $|\K|$-konstruierbar
-  \item \label{itm:gensk-char-essim} $F$ liegt im wesentlichen Bild
-    des Rückzugs $p^*$.
-  \item \label{itm:gensk-char-res} Die Restriktion $F(U(\sigma)) \to
-    F_x$ ist für alle $\sigma \in \K$ und alle $x \in |\sigma|$ ein
-    Isomorphismus.
-  \end{enumerate}
-\end{prop}
-Und es folgt sofort, in Anbetracht von \ref{dersk-eq-rel}:
-\begin{theorem}
-  Sei $p: |\K| \to \K$ eine Konstruierbarkeitssituation und $X \in
-  \Top$.  Dann gibt es eine Äquivalenz von Kategorien
-  \[ \Der(\sKons(\K \times X))
-     \mathrel{\mathop{\rightleftarrows}^{\iota}_{R \beta}}
-     \Der_{\mathrm{sk}}(|\K| \times X),
-  \]
-  wobei $\iota$ die Inklusion und $\beta = (p \times \id_X)^* (p
-  \times \id_X)_*: \Ab_{|\K| \times X} \to \sKons(\K \times X)$ ist.
-\end{theorem}
-Es reicht also für den Fall simplizialer Mengen, die Axiome einer
-Konstruierbarkeitssituation zu zeigen.
-\begin{prop}
-  Sei $X \in \s\Ens$ eine simpliziale Menge. Dann ist $p: |X| \to
-  \blacktriangle X$ eine Konstruierbarkeitssituation.
-\end{prop}
-\begin{proof}
-  Die Abbildung $p: |X| \to \blacktriangle X$ ist ein Kolimes über die
-  Quotientenabbildungen $|\Delta^n| \to \blacktriangle^n$ mit
-  zusammenhängenden Fasern und das Axiom \ref{def:constr}
-  \ref{itm:constr-final} folgt aus dem nachgestellten Lemma. Das Axiom
-  \ref{def:constr} \ref{itm:constr-comb-space} zur Existenz kleinster
-  offener Umgebungen wurde in \ref{clumsy-comb} gezeigt.
-\end{proof}
-\begin{lemma}
-  Sei $X_i \to Y_i$ ein Morphismus von Diagrammen von topologischen
-  Räumen $[I, \Top]$ mit finalen, surjektiven Abbildungen $X_i \to
-  Y_i$ mit zusammenhängenden Fasern. Dann ist die induzierte Abbildung
-  $\col_i X_i \to \col_i Y_i$ final, surjektiv und hat
-  zusammenhängende Fasern.
-\end{lemma}
-\begin{proof}
-  Die Surjektivität ist offensichtlich (nimm ein Urbild unter einem
-  geeigneten $Y_i \to \col_i Y_i$, dann unter $X_i \surj Y_i$ und dann
-  dessen Inklusion nach $\col_i X_i$). Ist die Komposition $\col_i X_i
-  \to \col_i Y_i \to Z$ stetig, so sind alle
-  \[X_i \to \col_i X_i \to \col_i Y_i \to Z
-  = X_i \to Y_i \to \col_i Y_i \to Z \] stetig, und die Stetigkeit von
-  $g$ folgt daraus, dass die Kompositionen finaler Familien final ist
-  und $\col_i Y_i$ folglich die Finaltopologie bezüglich aller $X_i
-  \to \col_i Y_i$ trägt.
-
-  Zum Zusammenhang der Fasern: Die beiden Kolimites sind Quotienten
-  der disjunkten Vereinigung über das System nach einer von den
-  Systemmorphismen herrührenden Äquivalenzrelation. Ist $y_i \sim
-  Yf(y_i)$ mit $y_i \in F_i$ und $Yf: Y_i \to Y_j$ einem
-  Systemmorphismus eine erzeugende Relation, so sind auch die Urbilder
-  der Zusammenhangskomponenten von $y_i$ und $Yf(y_i)$ in $\col_i X_i$
-  nicht disjunkt: ist etwa $x_i$ ein Urbild von $y_i$, so ist
-  $Xf(x_i)$ ein Urbild von $Yf(y_i)$ und die Zusammenhangskomponenten
-  treffen sich im Kolimes $\col_i X_i$ im Punkt $x_i \sim Xf(x_i)$.
-\end{proof}
-Bei der Übertragung von \ref{sk-char} ist die interessanteste
-äquivalente Formulierung schwacher $|\K|$-Konstruierbarkeit bislang
-unter den Tisch gefallen.
-\begin{defn}
-  In einer Konstruierbarkeitssituation $p: |\K| \to \K$ heißt eine
-  Garbe $F \in \AbKr$ \emph{geometrisch schwach $|\K|$-konstruierbar},
-  falls die Einschränkungen $F|_{|\sigma|}$ konstant sind für alle
-  Urbilder $|\sigma| = p^{-1}(\sigma)$ von Punkten $\sigma \in \K$.
-\end{defn}
-Wir erhalten im Allgemeinen nur noch eine Implikation:
-\begin{prop} \label{gensk-char-geom}
-  Ist $p: |\K| \to \K$ eine Konstruierbarkeitssituation, so impliziert
-  für eine Garbe $F \in \AbKr$ schwache $|\K|$-Konstruierbarkeit
-  geometrisch schwache $|\K|$-Konstruierbarkeit.
-\end{prop}
-Das ist der fehlende Teil von \ref{sk-char}.
-\begin{proof}
-  Dies folgt wieder aus \ref{gensk-char} \ref{itm:gensk-char-res} und
-  \ref{const-stalk} wegen $|\sigma| \subset U(\sigma)$.
-\end{proof}
-\begin{bsp}
-  Die umgekehrte Richtung gilt im Allgemeinen nicht: Sei etwa $|X| =
-  S^1$ mit der Triangulierung als simpliziale Menge aus
-  \ref{ex:real-sphere} und $F \in \Ab_{/|X|}$ die nichtkonstante lokal
-  konstante Garbe auf $S^1$ mit Halm $\Z$. Für $\sigma$ den
-  $0$-Simplex ist dann $U(\sigma) = S^1$ und es ist $\Z \cong F_\sigma
-  \ncong F(U(\sigma)) = \Gamma F = 0$.
-\end{bsp}
-\begin{bem}
-  Für die umgekehrte Richtung würden wir für $x \in
-  U(\sigma)$ eine stetige Zusammenziehung
-  \[ h: (0, 1] \times U(\sigma) \to U(\sigma) \]
-  benötigen, für die gilt:
-  \begin{enumerate}
-  \item Die Mengen $h({t} \times U(\sigma))$ bilden für $t \in (0, 1]$
-    eine Umgebungsbasis von $x$.
-  \item Es gilt $h(t, y) \in |\tau| \Iff y \in |\tau|$.
-  \item $h$ ist surjektiv.
-  \end{enumerate}
-  (Dies sind die Eigenschaften aus dem Beweis von \ref{sk-char}.)  Die
-  Existenz solcher Zusammenziehungen als Axiom zu setzen, bedeutet im
-  Wesentlichen, nur Triangulierungen zu erlauben, bei denen die
-  $U(\sigma)$-Mengen ``sich nicht selbst wieder treffen'' und damit im
-  Wesentlichen wieder mit Simplizialkomplexen zu arbeiten.
-\end{bem}
-

@@ -260,12 +260,12 @@ das einfach.
     & \iso \s\Ens(X, SY)
   \end{align*}  
   mit der Definition der geometrischen Realisierung im ersten Schritt
-  (Gl. \ref{eq:real-colim}), der Verträglichkeit von $\Hom:
-  C\op \times C \to \Ens$ mit Limites im zweiten und vierten Schritt,
+  (Gl. \ref{eq:real-colim}), der Verträglichkeit von $\Hom: C\op
+  \times C \to \Ens$ mit Limites im zweiten und vierten Schritt,
   unserer Bestimmung der $n$-Simplizes als Morphismenmenge
   (Gl. \ref{eq:simp-as-hom}) im dritten Schritt und unserer
   Beschreibung einer simplizialen Menge als Kolimes über ihre
-  Simplexkategorie (\ref{sset-colim}) im letzten Schritt.
+  Simplexkategorie (\ref{sset-col}) im letzten Schritt.
 \end{proof}
 Während dieses Argument wieder ein sehr anschauliches ist, möchten wir
 wie in \ref{coend-correct-real} erklärt, unser Argument mit den
@@ -280,7 +280,7 @@ sofort die Verallgemeinerung.
      &= \Top \left( \int^{[n]} X[n] \times R[n], Y \right) \\
      & \iso[\ref{coend-cocont}]
        \int_{[n]} \Top \big( X[n] \times R[n], Y \big) \\
-     & \iso[\ref{copower}]
+     & \iso[\ref{def:copower}]
        \int_{[n]} \Ens \big( X[n], \Top(R[n], Y) \big) \\
      & \iso[\ref{trans-end}]
        [\Delta\op, \Ens] \big( X, \Top(R \, \cdot, Y) \big) \\
@@ -307,7 +307,7 @@ sofort die Verallgemeinerung.
      &= C \left( \int^s X(s) \odot R(s), Y \right) \\
      & \iso[\ref{coend-cocont}]
        \int_s C \big( X(s) \odot R(s), Y \big) \\
-     & \iso[\ref{copower}]
+     & \iso[\ref{def:copower}]
        \int_s V \big( X(s), C(R(s), Y) \big) \\
      & \iso[\ref{trans-end}]
        [S\op, V] \big( X, C(R \, \cdot, Y) \big) \\
@@ -371,8 +371,9 @@ gibt, also eine in allen Variablen natürliche Bijektion
 \end{proof}
 Diese Struktur einer kartesisch abgeschlossenen Kategorie macht
 $\EnsX$ insbesondere zu einer über sich selbst tensorierten Kategorie
-im Sinne von \ref{copower}. Wir erhalten einen Nerv-Funktor für die
-geometrische Realisierung simplizialer Garben auf $X$ aus \ref{nerve}.
+im Sinne von \ref{def:copower}. Wir erhalten einen Nerv-Funktor für
+die geometrische Realisierung simplizialer Garben auf $X$ aus
+\ref{nerve}.
 
 Den obigen konkreten Beweis für das interne Hom der Prägarbenkategorie
 $\pEnsX = [\OffX\op, \Ens]$ können wir mit einer Rechnung im
@@ -567,7 +568,7 @@ Definition kompakt erzeugter Räume ist die folgende Charakterisierung:
   faktorisiert, ist letzteres System in ersterem konfinal und die
   Finaltopologien stimmen überein.
 \end{proof}
-Der in \ref{real-prodcuts} angesprochene zur Inklusion
+Der in \ref{real-products} angesprochene zur Inklusion
 Rechtsadjungierte $k: \Top \to \CG$ lässt sich nun auch beschreiben
 als das Versehen der $X$ zugrundeliegenden Menge mit der genannten
 Finaltopologie. Der Raum $kX$ ist dann sogar ein Kolimes über das
@@ -582,8 +583,8 @@ Unterkategorie der topologischen Räume $X$ mit $kX \cong X$ mit
 $\mathcal{K}$. Dann ist $k: \Top \to \mathcal{K}$ ein Funktor und
 rechtsadjungiert zur Inklusion $\mathcal{K} \to \Top$. Es gilt
 $\mathcal{I} \subset \mathcal{K}$.
-\begin{bem}
-  Dual zu \ref{refl-sub} heißt eine volle Unterkategorie mit zur
+\begin{bem} \label{corefl}
+  Dual zu \ref{def:refl-sub} heißt eine volle Unterkategorie mit zur
   Inklusion Rechtsadjungiertem \emph{koreflektiv}, der
   Rechtsadjungierte heißt \emph{Koreflektor}. Die Konstruktion, die
   zur vollen Unterkategorie $\mathcal{I} \subset \Top$ eine
@@ -644,11 +645,11 @@ den ``k-ifizierungen'' der Produkte in $\Top$ und internem Hom
 \[ X \iHom Y \: := \: k(\Top_{co}(X, Y)) \] 
 (\cite{Vogt}, 3).
 
-\begin{defn}
+\begin{defn} \label{def:loc-compact}
   Ein topologischer Raum heißt \emph{lokalkompakt} (im starken Sinne),
   wenn jeder Punkt eine Umgebungsbasis aus kompakten Mengen besitzt.
 \end{defn}
-\begin{bem}
+\begin{bem} \label{loc-compact-usage}
   Dies ist eine stärkere Bedingung als \emph{lokal kompakt} (im
   schwachen Sinne) wie in \ref{cg-crit} zu sein. Jene stimmt überein
   mit unserer Konvention für ``lokal Eigenschaft'' und wird daher
