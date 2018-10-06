@@ -14,10 +14,9 @@ geometrisch charakterisiert als die simplizial konstanten Garben auf
 der geometrischen Realisierung $|\K|$ von $\K$. Wir erwarten daher
 auch eine relative Version dieser Aussage über einem beliebigen
 topologischen Raum $X$, die die Simplizialkomplexe von Garben auf $X$
-alias Garben auf $\K \times X$ geometrisch beschreibt.
-
-Wir geben zunächst eine leichte Verallgemeinerung der Aussage von
-\autoref{sec:simp-comp-sheaf} an. % TODOxs
+alias Garben auf $\K \times X$ geometrisch beschreibt. Wir werden
+sehen, dass es ein allgemeines Verfahren zur Relativierung solcher
+Aussagen gibt.
 
 Unser Zugang benötigt den Begriff von Garben auf einem topologischen
 Raum $X$ mit Werten in einer beliebigen Kategorien $C$. Die
@@ -168,7 +167,7 @@ als Morphismen.
 \end{satz}
 \begin{bem}
   Dies verallgemeinert wegen \ref{sheaf-order-top} die Aussage für $Y
-  = \K$ aus \ref{sheaf-simp-comp}.
+  = \K$ aus \ref{simp-comp-sheaf}.
 \end{bem}
 \begin{proof}
   Die zweite Äquivalenz ist die Aussage von \ref{sheaf-on-basis}. Für
@@ -186,19 +185,19 @@ als Morphismen.
     (F(V))(U)
     &= (\lim_j F(V_j))(U) \\
     &= \lim_j F(V_j)(U) \\
-    &= \lim_j \lim_i F(V_j)(U_i)
+    &= \lim_j \lim_i F(V_j)(U_i).
   \end{align*}
-  wobei im ersten Schritt die Garbenbedingung von $F \in
-  (\EnsX)_{/Y}$, und im dritten die von $F(V_j) \in \EnsX$ verwendet
-  wurde. Der zweite Schritt ist die Beschreibung von Limites in
+  Dabei wurde im ersten Schritt die Garbenbedingung von $F \in
+  (\EnsX)_{/Y}$ und im dritten die von $F(V_j) \in \EnsX$
+  verwendet. Der zweite Schritt ist die Beschreibung von Limites in
   Funktorkategorien als objektweise Limites.
 
-  Beide Verklebungsbedingungen sind aber äquivalent, da eine beliebige
-  Überdeckung von $U \times V$ natürlich mit den Projektionen auf $X$
-  und $Y$ Überdeckungen von $U$ und $V$ induziert und die
+  Die beiden Verklebungsbedingungen sind äquivalent: Eine beliebige
+  Überdeckung von $U \times V$ induziert mit den Projektionen auf $X$
+  und $Y$ Überdeckungen von $U$ und $V$ und die
   Verträglichkeitsvoraussetzung für die Garbenbedingung von
-  $\Ens_{/\B}$ bezüglich der Produktüberdeckung genau dann erfüllt
-  ist, wenn sie für die ursprüngliche Überdeckung erfüllt ist.
+  $\Ens_{/\B}$ bezüglich der Produktüberdeckung ist genau dann
+  erfüllt, wenn sie für die ursprüngliche Überdeckung erfüllt ist.
 \end{proof}
 \begin{bem}
   Für abelsche Garben erhalten wir die analoge Aussage $(\AbX)_{/Y}
@@ -208,28 +207,28 @@ als Morphismen.
 \subsection{Exkurs: Überlagerungen von Produkträumen}
 
 Nachdem der vorangegangene Satz die étalen Räume über einem
-Produktraum $X \times Y$ beschreibt, möchten wir nun die
-Überlagerungen eines solchen Produktraums beschreiben. Wir können die
-Frage in unserer allgemeineren Terminologie formulieren.
+Produktraum $X \times Y$ beschreibt, möchten wir die Überlagerungen
+eines solchen Produktraums beschreiben. Wir können die Frage in
+unserer Terminologie von Garben formulieren.
 \begin{prop}
   Die Äquivalenz von Kategorien
-  \[ \EnsX \rightleftarrows \etTop_X \]
+  \[ \EnsX \overset{\approx}{\rightleftarrows} \etTop_X \]
   induziert eine Äquivalenz der vollen Unterkategorien
-  \[ \EnsX^{\lk} \rightleftarrows \Ub_X, \]
+  \[ \EnsX^{\lk} \overset{\approx}{\rightleftarrows} \Ub_X, \]
   wobei $\EnsX^{\lk}$ die lokal konstanten Garben auf $X$ bezeichnet.
 \end{prop}
 \begin{proof}
   Die Äquivalenz induziert zunächst die Äquivalenz der vollen
   Unterkategorien der konstanten Garben und der trivialen
   Überlagerungen und dann bei lokaler Forderung der jeweiligen
-  Eigenschaften die Aussage des Satzes.
+  Eigenschaften die behauptete Aussage.
 \end{proof}
 
 Wir erinnern an die überlagerungstheoretische Definition einfachen
 Zusammenhangs in der Sprache von Garben.
 \begin{defn}
-  Ein topologischer Raum $Y$ heißt einfach zusammenhängend, falls jede
-  lokal konstante Garbe auf $Y$ konstant ist.
+  Ein topologischer Raum $Y$ heißt \emph{einfach zusammenhängend},
+  wenn jede lokal konstante Garbe auf $Y$ konstant ist.
 \end{defn}
 Einfach zusammenhängende Räume sind somit insbesondere
 zusammenhängend, da wir sonst auf den Zusammenhangskomponenten
@@ -237,9 +236,9 @@ triviale Überlagerungen wählen können, deren Fasern verschiedene
 Kardinalitäten haben.
 
 \begin{satz}
-  Seien $X$ und $Y$ topologische Räume, $Y$ einfach
-  zusammenhängend. Bezeichne $\pi: X \times Y \to X$ die
-  Projektion. Dann induzieren die Funktoren
+  Seien $X$ ein topologischer Raum und $Y$ ein einfach
+  zusammenhängender topologischer Raum. Bezeichne $\pi: X \times Y \to
+  X$ die Projektion. Dann induzieren die Funktoren
   \[ \EnsX^{\lk}
   \mathrel{\mathop{\rightleftarrows}^{\pi^*}_{\pi_*}}
   \Ens_{/X \times Y}^{\lk} \]
@@ -261,48 +260,54 @@ Kardinalitäten haben.
 
 \subsection{Anwendung auf relative schwach konstruierbare Garben} 
 
-Wir bezeichnen als eine relativ zu $X$ schwach $|\K|$-konstruierbare
-Garbe eine Garbe $F \in \Ab_{|\K| \times X}$, für die die
-Einschränkungen $F|_{|\sigma| \times X}$ Rückzüge von Garben auf $X$
-sind, es also ein $G \in \AbX$ gibt mit
-\[ F|_{|\sigma| \times X} \iso \pi^* G \]
-für $\pi: |\sigma| \times X \to X$ die Projektion.
+Wir formulieren nun die relative Form schwacher Konstruierbarkeit und
+erklären, wie man mit dem Begriff ``garbenwertiger Garben'' die
+relative Form von \ref{dersk-eq} erhält.
+\begin{defn}
+  Sei $X$ ein topologischer Raum und $\K$ ein Simplizialkomplex. Eine
+  Garbe $F \in \Ab_{|\K| \times X}$ heißt \emph{relativ zu $X$ schwach
+    $\K$-konstruierbar}, falls es für jedes $\sigma \in \K$ eine Garbe
+  $G_\sigma \in \AbX$ gibt mit
+  \[ F|_{|\sigma| \times X} \iso \pi^* G_\sigma \]
+  für $\pi: |\sigma| \times X \to X$ die Projektion.
+\end{defn}
 
 Wir könnten nun für diesen Begriff dieselben Aussagen wie im
 vorangegangen Abschnitt mit vollkommen analogen Argumenten erneut
-beweisen. Kategorientheorie und unsere obige Charakterisierung von
-Garben auf Produkträumen ermöglichen uns aber ein einfacheres
-Vorgehen. Wir bemerken, dass für die Konstruktion unserer
-Kategorienbifaserung $\Ab_{\sslash \Top} \to \Top$ mitsamt ihren
-bekannten Eigenschaften und die darauf aufbauende Argumentation im
-vorangegangenen Abschnitt der Umstand keine Rolle gespielt hat, dass
-unsere Garben Werte in den abelschen Gruppen annnehmen. Dieselben
-Konstruktionen funktionieren für $\mathcal{A}_{\sslash \Top}$ eine
-Garbenkategorie mit Werten in einer beliebigen vollständigen abelschen
-Kategorie. Davon überzeugt man sich im Zweifel auch explizit zunächst
-durch Übertragung auf Garbenkategorien mit Werten in $R$-Linksmoduln
-und dann durch den Einbettungssatz von Mitchell auf beliebige abelsche
+beweisen. Unsere obige Charakterisierung von Garben auf Produkträumen
+ermöglicht uns aber ein einfacheres Vorgehen. Wir bemerken, dass für
+die benötigten Konstruktionen (Rückzug, Vorschub, derivierte
+Funktoren), ihre Eigenschaften (Adjuktionen, Exaktheit) und die darauf
+aufbauende Argumentation im vorangegangenen Abschnitt der Umstand
+keine Rolle gespielt hat, dass unsere Garben Werte in den abelschen
+Gruppen annehmen. Dieselben Konstruktionen funktionieren für
+$\mathcal{A}_{/\Top}$ eine Garbenkategorie mit Werten in einer
+beliebigen vollständigen abelschen Kategorie $\mathcal{A}$. Davon
+überzeugt man sich im Zweifel auch explizit zunächst durch Übertragung
+der Aussagen auf Garbenkategorien mit Werten in $R$-Linksmoduln und
+dann durch den Einbettungssatz von Mitchell auf beliebige abelsche
 Kategorien.
 
-Um den relativen Fall abzuschließen, werden diese Argumentation auf
-den Fall $\mathcal{A} = \AbX$ anwenden. Die benötigten
-homotopieinjektiven Auflösungen im Beweis erhalten wir dann durch
-unsere Äquivalenz $(\AbX)_{/Y} \qiso \Ab_{/X \times Y}$. Wir erhalten:
+Um den relativen Fall abzuschließen, werden wir diese Argumentation
+auf den Fall $\mathcal{A} = \AbX$ anwenden. Die benötigten
+homotopieinjektiven Auflösungen im Beweis erhalten wir dann durch die
+Äquivalenz $(\AbX)_{/Y} \qiso \Ab_{/X \times Y}$. Wir erhalten:
 \begin{theorem} \label{dersk-eq-rel}
   Sei $\K$ ein Simplizialkomplex. Dann gibt es eine Äquivalenz von
   Kategorien
-  \[ \Der(\sKons(\K \times X))
+  \[ \Der(\Ab^{\sk}_{/|\K| \times X})
      \mathrel{\mathop{\rightleftarrows}^{\iota}_{R \beta}}
-     \Der_{\mathrm{sk}}(|\K| \times X),
+     \Der^{\sk}(|\K| \times X),
   \]
   wobei $\iota$ die Inklusion und $\beta = (p \times \id_X)^* (p
-  \times \id_X)_*: \Ab_{|\K| \times X} \to \sKons(\K \times X)$ ist.
+  \times \id_X)_*: \Ab_{|\K| \times X} \to \Ab^{\sk}_{/|\K| \times X}$
+  ist.
 \end{theorem}
 \begin{bem}
   Der tieferstehende Grund für \ref{sheaves-prod-topos} und die sich
   daraus ergebende Möglichkeit, alle über $X = \point$ gezeigten
   Aussagen auch zu relativieren, ergibt sich daraus, dass es sich bei
-  $\Ens$ und $\EnsX$ um \emph{elementare Topoi} handelt, also
+  $\Ens$ und $\EnsX$ um \emph{elementare Topoi} handelt, d.~h. um
   Kategorien, die die wichtigsten Eigenschaften der Kategorie der
   Mengen verallgemeinern. Für die Übertragung von Aussagen von $\Ens$
   auf einen Topos $E$ verwendet man die
@@ -318,3 +323,12 @@ unsere Äquivalenz $(\AbX)_{/Y} \qiso \Ab_{/X \times Y}$. Wir erhalten:
   Dritten), das Gesetz der doppelten Negation und die Verwendung des
   Auswahlaxioms (\cite{MoerTopoi}, VI.5, letzter Absatz).
 \end{bem}
+%% \begin{bsp}
+%%   Diese Übertragungstechniken sind in der algebraischen Geometrie
+%%   (auch ohne diese Namen) wohlbekannt und führen zu den
+%%   ``Wörterbüchern'', unter denen etwa Ringe Garben von Ringen und
+%%   $R$-Moduln $\mathcal{O}_X$-Moduln entsprechen. Wir führen die
+%%   Übertragung an einem einfachen Beispiel vor:
+
+%%   % TODO: surjektiv = epi
+%% \end{bsp}
