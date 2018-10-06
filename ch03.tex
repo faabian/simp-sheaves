@@ -3,31 +3,34 @@
 \section{Verallgemeinerte Garben}
 \label{sec:gen-sheaves}
 
-In diesem Abschnitt sollen die Beobachtungen der letzten beiden
-Abschnitte vereint werden. Nach Abschnitt
-\autoref{sec:simp-comp-sheaf} sind Garben auf einem Simplizialkomplex
-$\K$ nichts anderes als ein Simplizialkomplex von Garben über dem
-einpunktigen Raum. In Abschnitt \autoref{sec:sk-pt} haben wir diese
-Garben auf $\K$ geometrisch charakterisiert als die simplizial
-konstanten Garben auf der geometrischen Realisierung $|\K|$ von
-$\K$. Wir erwarten daher auch eine relative Version dieser Aussage
-über einem beliebigen topologischen Raum $X$, die die
-Simplizialkomplexe von Garben auf $X$ alias Garben auf $\K \times X$
-geometrisch beschreibt.
+In diesem Abschnitt werden die Beobachtungen der letzten beiden
+Abschnitte vereint. Nach Abschnitt \autoref{sec:simp-comp-sheaf} sind
+Garben auf einem Simplizialkomplex $\K$ nichts anderes als ein
+Simplizialkomplex von Garben über dem einpunktigen Raum, und ein
+Simplizialkomplex von Garben über einem topologischen Raum $X$
+entspricht einer Garbe auf dem Produkt $\K \times X$. In Abschnitt
+\autoref{sec:sk-pt} haben wir Simplizialkomplexe $\K$ von Mengen
+geometrisch charakterisiert als die simplizial konstanten Garben auf
+der geometrischen Realisierung $|\K|$ von $\K$. Wir erwarten daher
+auch eine relative Version dieser Aussage über einem beliebigen
+topologischen Raum $X$, die die Simplizialkomplexe von Garben auf $X$
+alias Garben auf $\K \times X$ geometrisch beschreibt.
 
 Wir geben zunächst eine leichte Verallgemeinerung der Aussage von
-\autoref{sec:simp-comp-sheaf} an.
+\autoref{sec:simp-comp-sheaf} an. % TODOxs
 
-Wir definieren Garben mit Werten in beliebigen Kategorien $C$ mit der
-schon in \autoref{sec:simp-comp-sheaf} verwandten allgemeinen
-Abstiegsbedingung.
+Unser Zugang benötigt den Begriff von Garben auf einem topologischen
+Raum $X$ mit Werten in einer beliebigen Kategorien $C$. Die
+Garbenbedigung ist dabei die schon in \autoref{sec:simp-comp-sheaf}
+verwendete.
 \begin{defn}[\cite{TG}, 2.1.5]
   Sei $C$ eine Kategorie und $X$ ein topologischer Raum. Eine
-  $C$-wertige Prägarbe $F \in [\OffX\op, C]$ auf $X$ heißt $C$-wertige
-  Garbe auf $X$, falls sie die Abstiegsbedingung erfüllt:
+  $C$-wertige Prägarbe $F \in [\OffX\op, C]$ auf $X$ heißt
+  \emph{$C$-wertige Garbe auf $X$}, falls sie die Garbenbedingung
+  erfüllt:
   \begin{quote}
-    Für alle unter endlichen Schnitten stabilen offenen Überdeckungen
-    $U = \bigcup_i U_i$ gilt $F(U) = \lim_i F(U_i)$.
+    Für alle gesättigten offenen Überdeckungen $U = \bigcup_i U_i$
+    einer offenen Menge gilt $F(U) = \lim_i F(U_i)$.
   \end{quote}
 \end{defn}
 Wir notieren die Kategorie der $C$-wertigen Prägarben auf $X$ mit $\p
@@ -39,6 +42,12 @@ Verklebbarkeit von verträglichen Schnitten.
 
 Auch das Konzept der Garbifizierung können wir auf $C$-wertige
 Prägarben verallgemeinern.
+\begin{defn}
+  Eine Kategorie $C$ heißt \emph{vollständig}, wenn in ihr alle
+  Limites über kleine Kategorien existieren.
+\end{defn}
+Dual dazu bedeutet Kovollständigkeit, dass alle Kolimites über kleine
+Kategorien existieren.
 \begin{satz}
   Sei $C$ eine vollständige und kovollständige Kategorie. Dann hat der
   Vergissfunktor $C_{/X} \to \p C_{/X}$ einen Linksadjungierten,
@@ -46,12 +55,13 @@ Prägarben verallgemeinern.
 \end{satz}
 \begin{proof}
   Sei $F \in \p C_{/X}$. Wir behaupten, dass die Prägarbe
-  \[ F^+(U) :=   \colf\limits_{\mathcal{U}/U} \lim_j F(U_j) \]
+  \[ F^+(U) :=   \colf_{\mathcal{U}/U} \lim_{V \in \mathcal{U}} F(V) \]
   mit den induzierten Restriktionen eine Garbe ist und die
   Adjunktionseigenschaft erfüllt. Dabei steht $\mathcal{U}/U$ für das
   filtrierende System aller gesättigten Überdeckungen $\mathcal{U}$
   von $U$. Die Konstruktion ist funktoriell.
 
+  % TODO umformulieren
   Für die Garbeneigenschaft konstruieren wir für eine gesättigte
   offene Überdeckung $U = \bigcup U_i$ inverse Morphismen
   \[ \colf\limits_{\mathcal{U}/U} \lim_{V \in \mathcal{U}} F(V)
@@ -104,21 +114,20 @@ Wir prüfen, dass wir so insbesondere eine Garbifizierung zu
 \end{lemma}
 \begin{proof}
   Die Kategorien der Mengen $\Ens$ ist vollständig und
-  kovollständig. Somit ist auch die Kategorie der Prägarben auf $X$
-  $[\OffX\op, \Ens]$ vollständig und kovollständig nach der
+  kovollständig. Somit ist auch die Kategorie $[\OffX\op, \Ens]$ der
+  Prägarben auf $X$ vollständig und kovollständig nach der
   Beschreibung von Limites in Funktorkategorien als objektweise
   Limites. Als Rechtsadjungierter der Garbifizierung vertauscht nun
   der Inklusionsfunktor $\iota: \EnsX \to \pEnsX$ mit Limites,
   d. h. die Limites in $\EnsX$ sind die Limites der zugehörigen
-  Prägarben. Die Kolimites sind gegeben durch die Garbifizierungen der
-  Prägarben-Kolimites. Es gilt mit dem Prägarbenkolimes $\col_i \iota
-  F_i$ über ein System von Garben $F_i \in \EnsX$ für eine Garbe $G
-  \in \EnsX$:
+  Prägarben. Der Kolimes eines Systems $F_i \in \EnsX$ ist die
+  Garbifizierung des Prägarben-Kolimes $\col_i \iota F_i$, denn für
+  eine eine Garbe $G \in \EnsX$ gilt:
   \begin{align*}
     \EnsX((\col_i \iota F_i)^+, G)
     &\iso \pEnsX(\col_i \iota F_i, \iota G) \\
-    &\iso \col_i \pEnsX(\iota F_i, \iota G) \\
-    &\iso \col_i \EnsX(F_i, G).
+    &\iso \lim_i \pEnsX(\iota F_i, \iota G) \\
+    &\iso \lim_i \EnsX(F_i, G).
   \end{align*}
   Derselbe Beweis gilt für $\AbX$ unter Verwendung der Vollständigkeit
   und Kovollständigkeit der abelschen Gruppen.
@@ -140,29 +149,36 @@ Wir halten fest:
   Reflektionen der Kolimites in $D$ als Kolimites.
 \end{prop}
 
-Bezeichne wieder $\B$ die Kategorie der Basis durch Produktmengen der
-Produkttopologie auf $X \times Y$ mit Inklusionen als Morphismen.
+Bei ``garbenwertige Garben'' handelt es sich nun um Garben auf dem
+Produktraum. Bezeichne dazu wieder $\B$ die Kategorie der Basis der
+Produkttopologie auf $X \times Y$ durch Produktmengen mit Inklusionen
+als Morphismen.
 \begin{satz} \label{sheaves-prod-topos}
   Seien $X$ und $Y$ topologische Räume. Dann gibt es eine Äquivalenz
   von Kategorien
   \[ (\EnsX)_{/Y} \qiso \Ens_{/\B} \fromqiso \Ens_{/X \times Y} \]
   gegeben durch
   \begin{align*}
-    U \times V &\mapsto (F(V))(U) \quad
+    U \times V &\mapsto (F(V))(U) \qquad
     \text{für } F \in (\EnsX)_{/Y} \text{ und} \\
-     U \times V &\mapsto F(U \times V) \quad
+     U \times V &\mapsto F(U \times V) \qquad
      \text{die Restriktion für } F \in \Ens_{/X \times Y}
   \end{align*}
   für $U \open X$ und $V \open Y$.
 \end{satz}
+\begin{bem}
+  Dies verallgemeinert wegen \ref{sheaf-order-top} die Aussage für $Y
+  = \K$ aus \ref{sheaf-simp-comp}.
+\end{bem}
 \begin{proof}
-  Die zweite Äquivalenz ist \ref{sheaf-on-basis}. Für die erste
-  Äquivalenz bemerken wir wie in \ref{simp-comp-sheaf}, dass die
-  zugrundeliegenden Prägarbenkategorien übereinstimmen. Nun fordert
-  die Garbenbedingung für $\Ens_{/\B}$ die Verklebungseigenschaft für
-  beliebige Überdeckungen von Basismengen durch Basismengen, während
-  die Garbenbedingungen für $(\EnsX)_{/Y}$ die Verklebungseigenschaft
-  für ``Produkt-Überdeckungen'' von Basismengen fordert, d.~h. für
+  Die zweite Äquivalenz ist die Aussage von \ref{sheaf-on-basis}. Für
+  die erste Äquivalenz bemerken wir wie im Beweis von
+  \ref{simp-comp-sheaf}, dass die zugrundeliegenden
+  Prägarbenkategorien übereinstimmen. Nun fordert die Garbenbedingung
+  für $\Ens_{/\B}$ die Verklebungseigenschaft für beliebige
+  Überdeckungen von Basismengen durch Basismengen, während die
+  Garbenbedingungen für $(\EnsX)_{/Y}$ die Verklebungseigenschaft für
+  ``Produkt-Überdeckungen'' von Basismengen fordert, d.~h. für
   Überdeckungen der Form $U \times V = \bigcup_{i,j} U_i \times V_j$
   für $U = \bigcup_i U_i$ eine Überdeckung von $U$ und $V = \bigcup_j
   V_j$ eine Überdeckung von $V$. Wir rechnen dies nach:
