@@ -6,19 +6,30 @@
 \section{Simplizialkomplexe von Garben}
 \label{sec:simp-comp-ord}
 
+Bei Simplizialkomplexen handelt es sich um eine kombinatorisch
+einfache und geometrisch zugängliche Klasse von
+Diagrammkategorien. Ersteres liegt an der Interpretation von
+Simplizialkomplexen als halbgeordnete Mengen, letzteres an der
+Ordnungstopologie, mit der halbgeordnete Mengen versehen werden
+können. Wir werden in diesem Abschnitt zeigen, inwiefern Diagramme von
+Garben auf einem topologischen Raum $X$ von der Form eines
+Simplizialkomplexes $\K$ als Garben auf dem Produktraum $\K \times X$
+interpretiert werden können. Der Abschnitt dient auch als pädagogische
+Einführung in die im weiteren Verlauf verwendeten Begriffe und
+Methoden, und soll Modell und Anschauung für die späteren
+Verallgemeinerungen sein.
 \begin{defn}
-  Ein Simplizialkomplex ist eine Menge $E$, genannt die Ecken des
-  Simplizialkomplexes, samt einem System $ \mathcal{K} \subset
+  Ein \emph{Simplizialkomplex} ist eine Menge $E$, genannt die Ecken
+  des Simplizialkomplexes, samt einem System $ \K \subset
   \mathcal{P}(E) $ von nichtleeren endlichen Teilmengen von $E$,
   genannt die Simplizes des Simplizialkomplexes, derart, dass gilt:
   \begin{itemize}
-  \item Jede einelementige Menge ist ein Simplex (d.h. $\{e\} \in
-    \mathcal{K} \text{ für alle } e \in E$) und
-  \item ist $L \in \mathcal{K}$ ein Simplex, $K \subset L$ nichtleere
-    Teilmenge, so $K \in \mathcal{K}$.
+  \item jede einelementige Menge ist ein Simplex (d.h. $\{e\} \in
+    \K \text{ für alle } e \in E$) und
+  \item ist $L \in \K$ ein Simplex und $K \subset L$ eine
+    nichtleere Teilmenge, so ist $K \in \K$ ein Simplex.
   \end{itemize}
 \end{defn}
-
 Ein Simplizialkomplex ist somit insbesondere eine halbgeordnete Menge
 mit der Mengeninklusion als Halbordnung.
 
@@ -26,8 +37,8 @@ Wir erinnern an die Interpretation von halbgeordneten Mengen als
 Kategorien. Gegeben eine halbgeordnete Menge $X$ definiere die
 Kategorie $C_X$ bestehend aus Objekten $\Ob(C_X) = X$ mit einem
 eindeutigen Morphismus $a \to b$ genau dann, wenn $a \leq b$ bezüglich
-der Halbordnung. Wir erhalten:
-
+der Halbordnung. Funktoren der zugehörigen Kategorien $C_X \to C_Y$
+entsprechen dann monotonen Abbildungen $X \to Y$. Wir erhalten:
 \begin{lemma} \label{poset-cat}
   Obige Konstruktion liefert eine volltreue Einbettung
   \begin{align*}
@@ -35,48 +46,36 @@ der Halbordnung. Wir erhalten:
     X &\mapsto C_X.    
   \end{align*}
 \end{lemma}
-
 Hierbei bezeichnet $\Cat$ die Kategorie der kleinen Kategorien,
 d.h. der Kategorien $C$, für die $\Ob(C)$ eine Menge ist und $\poset$
 die Kategorie der halbgeordneten Mengen mit monotonen Abbildungen als
 Morphismen.
 
-\begin{proof}
-  Offenbar ist $C_X$ tatsächlich eine kleine Kategorie. Funktoren $C_X
-  \to C_Y$ sind Abbildungen $f$ auf Objekten, mit der Eigenschaft,
-  dass es einen Morphismus $f(a) \leftarrow f(b)$ in $C_Y$ gibt, wann
-  immer $a \leftarrow b$ in $C_X$. Das ist aber gerade die Eigenschaft
-  einer monotonen Abbildung.
-\end{proof}
-
-Nun können wir Simplizialkomplexe von Garben definieren.
-
+Simplizialkomplexe können also als Kategorien aufgefasst werden und
+definieren somit Diagrammkategorien.
 \begin{defn}
-  Sei $C$ eine Kategorie, $\mathcal{K}$ ein Simplizialkomplex
-  aufgefasst als Kategorie. Wir nennen einen Funktor $\mathcal{K} \to
-  C$ einen Simplizialkomplex in $C$ der Form $\mathcal{K}$.
+  Sei $C$ eine Kategorie und $\K$ ein Simplizialkomplex
+  aufgefasst als Kategorie. Wir nennen einen Funktor $\K \to
+  C$ einen Simplizialkomplex in $C$ der Form $\K$.
 \end{defn}
+Die Simplizialkomplexe in $C$ bilden als Funktorkategorie eine
+Kategorie. Wir notieren die Kategorie der Funktoren $F: A \to B$ mit
+$B^A$ oder $[A, B]$. Funktorkategorien der Form $[C\op, \Ens]$ heißen
+auch \emph{Prägarben} auf $C$.
 
-Die Simplizialkomplexe in $C$ bilden wie jede Funktorenkategorie eine
-Kategorie (Beweis einfach, vgl. ??). Wir notieren die Kategorie der
-Funktoren $F: A \to B$ häufig mit $B^A$ oder auch $[A, B]$.
-
-Allgemeiner nennen wir Funktorkategorien der Form $[C\op, \Ens]$ auch
-Prägarben auf $C$.
-
-Insbesondere ist ein Simplizialkomplex in der terminalen Kategorie
-dasselbe wie ein gewöhnlicher Simplizialkomplex. Im Folgenden
-interessieren wir uns besonders für die Fälle von Garben- und
-Prägarbenkategorien $C = \EnsX$ bzw. $C = \pEnsX$ für $X$ einen
-topologischen Raum.
-
+Ein Simplizialkomplex in der terminalen Kategorie dasselbe wie ein
+gewöhnlicher Simplizialkomplex. Im Folgenden interessieren wir uns für
+Simplizialkomplexe von Garben oder Prägarben über einem topologischen
+Raum $X$, d.~h. für die Fälle $C = \EnsX$ bzw. $C = \pEnsX$. Den Fall
+der Prägarben verstehen wir sofort:
 \begin{lemma}
-  Wir haben einen Isomorphismus von Kategorien
+  Das Exponentialgesetz von Funktoren liefert eine Äquivalenz von
+  Kategorien
   \[
-    [\mathcal{K}, \pEnsX] \iso {[\mathcal{K} \times \OffX\op, \Ens]}
+    [\K, \pEnsX] \qiso {[\K \times \OffX\op, \Ens]}
   \]    
   zwischen den Simplizialkomplexen von Prägarben auf $X$ und den
-  Prägarben auf $\mathcal{K}\op \times \OffX$.
+  Prägarben auf $\K\op \times \OffX$.
 \end{lemma}
 Hierbei bezeichnet $\OffX$ die durch Mengeninklusion halbgeordnete
 Menge der offenen Mengen in $X$.
@@ -86,39 +85,37 @@ Menge der offenen Mengen in $X$.
   \[ [A, [B, C]] \iso {[A \times B, C]}. \]
 \end{proof}
 
-Unser Ziel wäre es nun, $\mathcal{K} \times \OffX$ wieder als
-Kategorie von offenen Mengen eines topologischen Raums zu realisieren,
-der funktoriell von $\mathcal{K}$ und $X$ abhängt. Das ist aber
-natürlich im Allgemeinen nicht möglich, da bereits in $\mathcal{K}$
-die Vereinigungseigenschaft von Topologien in der Regel verletzt
-ist. Allerdings können wir $\mathcal{K} \times \OffX$ recht leicht zur
-Basis einer Topologie von $\mathcal{K} \times X$ machen.
+Wir möchten Simplizialkomplexe von Garben auf $X$ als Garben auf einem
+geeigneten topologischen Raum darstellen. Dies würde gelingen, wenn
+$\K\op \times \OffX$ wieder die Kategorie der offenen Mengen eines
+topologischen Raums ist. Es ist aber im Allgemeinen bereits in $\K$
+die Vereinigungseigenschaft von Topologien verletzt. Stattdessen
+erlaubt uns die Ordnungstopologie auf $\K$, das System $\K\op \times
+\OffX$ als Basis der Topologie von $\K \times X$ aufzufassen.
 \begin{defn}
-  Sei $(X, \leq)$ eine halbgeordnete Menge.  Wir bezeichnen die
-  Topologie mit Basis den Mengen der Form $(\geq \sigma) = \{\tau \in
-  X | \tau \geq \sigma\}$ (für $\sigma \in X$) als die
-  Ordnungstopologie auf $X$.
+  Sei $(X, \leq)$ eine halbgeordnete Menge. Die Topologie auf $X$,
+  deren Basis aus Mengen der Form $(\geq \sigma) = \set{\tau \in
+    X}{\tau \geq \sigma}$ (für $\sigma \in X$) besteht, heißt die
+  \emph{Ordnungstopologie} auf $X$.
 \end{defn}
-Wir prüfen, dass es sich um die Basis einer Topologie handeln kann:
-\begin{lemma}
-  Sei $(X, \leq)$ eine halbgeordnete Menge. Dann lassen sich endliche
-  Schnitte im System der Mengen $(\geq \sigma)$, $\sigma \in X$ als
-  Vereinigungen von Mengen in diesem System schreiben und $X$ wird
-  durch die Mengen des Systems überdeckt.
-\end{lemma}
-\begin{proof}
-  Offenbar gilt $X = \cup_\sigma (\geq \sigma)$ und
-  \[ (\geq \sigma) \cap (\geq \tau)
-  = \bigcup_{x \in (\geq \sigma) \cap (\geq \tau)} (\geq x).
-  \]
-\end{proof}
 Eine Menge $U \subset X$ ist bezüglich der Ordnungstopologie also
 genau dann offen, wenn sie nach oben abgeschlossen ist, d. h. wenn
 gilt
 \[ U = \bigcup_{x \in U} (\geq x). \]
-
-Für $X = \mathcal{K}$ einen Simplizialkomplex vereinfachen sich die
-Schnitte:
+Wir prüfen, dass es sich um die Basis einer Topologie handeln kann:
+\begin{lemma}
+  Sei $(X, \leq)$ eine halbgeordnete Menge. Dann lassen sich endliche
+  Schnitte im System der Mengen $(\geq \sigma)$, $\sigma \in X$, als
+  Vereinigungen von Mengen in diesem System schreiben und $X$ wird
+  durch die Mengen des Systems überdeckt.
+\end{lemma}
+\begin{proof}
+  Es gilt $X = \bigcup_\sigma (\geq \sigma)$ und
+  \[ (\geq \sigma) \cap (\geq \tau)
+  = \bigcup_{x \in (\geq \sigma) \cap (\geq \tau)} (\geq x).
+  \]
+\end{proof}
+Für $X = \K$ einen Simplizialkomplex vereinfachen sich die Schnitte:
 \begin{equation} \label{eq:simp-comp-meets}
   (\geq \sigma) \cap (\geq \tau) = (\geq (\sigma \cup \tau))
   \text{ oder }
@@ -127,7 +124,7 @@ Schnitte:
 
 \begin{lemma} \label{ord-functor}
   Das Versehen mit der Ordnungstopologie definiert einen Funktor
-  $\Ord: \poset \to \Top$.
+  \[ \Ord: \poset \to \Top . \]
 \end{lemma}
 \begin{proof}
   Ist $f: X \to Y$ ein Morphismus halbgeordneter Mengen, so besteht
@@ -135,49 +132,44 @@ Schnitte:
   X$ mit $f(\tau) \geq \sigma$. Dies ist eine nach oben abgeschlossene
   Menge, also offen in $\Ord X$.
 \end{proof}
-Wir werden den Funktor $\Ord$ für Simplizialkomplexe $\mathcal{K}$ in
-der Notation unterschlagen und sie direkt als topologische Räume
-auffassen.
-
-Bezeichne nun $\B$ die Basis der Produkttopologie von
-$\mathcal{K} \times X$ bestehend aus Produktmengen der Form $(\geq
-\sigma) \times U$ mit $\sigma \in \mathcal{K}, U \open X$. Präziser
-ist der Funktor
-\begin{align*}
-  \mathcal{K}\op \times \OffX &\to \B, \\
+Wir werden den Funktor $\Ord$ für Simplizialkomplexe $\K$ in der
+Notation unterschlagen und sie direkt als topologische Räume
+auffassen. Bezeichne nun $\B$ die Basis der Produkttopologie von $\K
+\times X$ bestehend aus Produktmengen der Form $(\geq \sigma) \times
+U$ mit $\sigma \in \K$, $U \open X$ als halbgeordnete Menge mit
+Inklusionen als Morphismen. Der Funktor
+\begin{align*} \label{eq:prod-base}
+  \K\op \times \OffX &\to \B, \\
   (\sigma, U) &\mapsto (\geq \sigma) \times U
 \end{align*}
-ein Isomorphismus von Kategorien, denn ein Umkehrfunktor wird durch
-die Projektionen einer Produktmenge auf ihre Faktoren und Wahl des
-eindeutigen minimalen Elements im ersten Faktor gegeben. Die Inklusion
-ist in beiden Kategorien dieselbe, da $\sigma \geq \tau$ genau dann,
-wenn $(\geq \sigma) \subset (\geq \tau)$ gilt.
+ist dann ein Isomorphismus von Kategorien, denn ein Umkehrfunktor
+projiziert eine Produktmenge auf die beiden Faktoren und wählt im
+ersten Faktor das eindeutige minimale Element. Die Inklusion ist in
+beiden Kategorien dieselbe, da $\sigma \geq \tau$ genau dann gilt,
+wenn $(\geq \sigma) \subset (\geq \tau)$.
 
-Nun gibt es zu viele offene Mengen in $\mathcal{K} \times X$ für eine
-Aussage der Art
+In $\K \times X$ gibt es zu viele offene Mengen für eine Aussage der
+Art
 \[
-  [\mathcal{K}, \pEnsX] \iso \mathrm{pEns}_{/\mathcal{K} \times X}.
+  [\K, \pEnsX] \qiso \p\Ens_{/\K \times X}.
 \]
-Allerdings können wir beim Isomorphismus
-\[
-  [\mathcal{K}, \pEnsX]
-  \iso {[\mathcal{K} \times \OffX\op, \Ens]}
-  \iso {[\B\op, \Ens]}
-\]
-die rechte Seite als eine Garbenkategorie verstehen, wenn in dieser
-Objekte schon auf einer Basis der Topologie eindeutig festgelegt
-sind. Das ist natürlich nicht der Fall für Prägarben, wohl aber durch
-die Verklebungseigenschaft für Garben.
+Allerdings können wir bei der Äquivalenz
+\begin{equation} \label{eq:simp-comp-presheaf}
+  [\K, \pEnsX]
+  \qiso {[\K \times \OffX\op, \Ens]}
+  \qiso {[\B\op, \Ens]}
+\end{equation}
+die rechte Seite als eine Garbenkategorie verstehen, wenn Garben schon
+auf einer Basis der Topologie eindeutig festgelegt sind. Das ist wegen
+der Verklebungseigenschaft von Garben tatsächlich der Fall.
 \begin{defn}
-  Sei $\B$ eine Basis eines topologischen Raumes $X$.  Wir
-  bezeichnen die volle Unterkategorie der Prägarben auf $\B$,
-  die die Verklebungseigenschaft von Garben für Überdeckungen in
-  $\B$ erfüllen, als die Kategorie der Garben auf
-  $\B$ und notieren sie mit $\EnsB$.
+  Sei $\B$ eine Basis eines topologischen Raumes $X$.  Wir bezeichnen
+  die volle Unterkategorie der Prägarben auf $\B$, die die
+  Verklebungseigenschaft von Garben für Überdeckungen in $\B$
+  erfüllen, als die Kategorie der Garben auf $\B$ und notieren sie mit
+  $\EnsB$.
 \end{defn}
-
-Konkret erfüllen Garben $F \in \EnsB$ also die folgende
-Eigenschaft:
+Konkret erfüllen Garben $F \in \EnsB$ also die folgende Eigenschaft:
 \begin{quote}
   Ist $U = \bigcup_{i \in I} V_i$ eine Vereinigung mit $U, V_i \in
   \B$ und sind $s_i \in F(V_i)$ Schnitte mit
@@ -185,35 +177,34 @@ Eigenschaft:
     \cap V_j}$ für alle $i, j$, so gibt es genau einen Schnitt $s \in
   F(U)$ mit $s |_{V_i} = s_i$.
 \end{quote}
-Oder äquivalent, falls wir für $(V_i)_{i \in I}$ eine unter endlichen
-Schnitten stabile Überdeckung ist und wir als Systemmorphismen die
-Restriktionen wählen:
+Oder äquivalent, falls wir für $(V_i)_{i \in I}$ eine gesättigte
+Überdeckung ist und wir als Systemmorphismen die Restriktionen wählen:
 \[ F(U) = \lim_{i \in I} F(V_i) . \]
 
 \begin{satz} \label{sheaf-on-basis}
   Sei $X$ ein topologischer Raum mit Basis $\B$. Dann gibt es eine
   Äquivalenz von Kategorien
-  \[ \EnsX \qiso \EnsB \]
+  \[ \EnsX \qiso \EnsB , \]
   gegeben durch die Einschränkung auf $\B \subset \OffX$.
 \end{satz}
 \begin{proof}
   Wir konstruieren einen Quasi-Inversen: Sei dazu $F \in \EnsB$ und $U
-  = \bigcup_{i \in I} U_i$ eine unter endlichen Schnitten stabile
-  Überdeckung von $U \open X$ durch Basismengen $U_i \in \B$. Wir
-  setzen $\hat{F}(U) = \lim F(U_i)$ und prüfen die
-  Wohldefiniertheit. Sei $U = \bigcup_{j \in J} V_j$ eine weitere
-  solche Überdeckung von $U$ durch Basismengen $V_j \in \B$. Nun gilt
-  nach der Garbeneigenschaft auf den Basismengen:
+  = \bigcup_{i \in I} U_i$ eine gesättigte Überdeckung von $U \open X$
+  durch Basismengen $U_i \in \B$. Wir setzen $\hat{F}(U) = \lim
+  F(U_i)$ und prüfen die Wohldefiniertheit. Sei $U = \bigcup_{j \in J}
+  V_j$ eine weitere solche Überdeckung von $U$ durch Basismengen $V_j
+  \in \B$. Dann gilt nach der Garbeneigenschaft auf Basismengen:
   \[ \lim_i F(U_i)
   \iso \lim_i \lim_j F(U_i \cap V_j)
   \iso \lim_j \lim_i F(U_i \cap V_j)
-  \iso \lim_j F(V_j) .\]
-  Unsere Zurdnung $F \mapsto \hat{F}$ ist also wohldefiniert. Das Bild
+  \iso \lim_j F(V_j) .
+  \]
+  Die Zuordnung $F \mapsto \hat{F}$ ist also wohldefiniert. Das Bild
   $\hat{F}$ ist tatsächlich eine Garbe, denn falls $U = \bigcup_{i \in
     I} U_i$ eine unter endlichen Schnitten stabile Überdeckung durch
-  offene Mengen und $U_i = \bigcup_{j} V_{ij}$ jeweils eine unter endlichen
-  Schnitten stabile Überdeckung durch Basismengen $V_{ij} \in \B$ ist,
-  so gilt
+  offene Mengen und $U_i = \bigcup_{j} V_{ij}$ jeweils eine unter
+  endlichen Schnitten stabile Überdeckung durch Basismengen $V_{ij}
+  \in \B$ ist, so gilt
   \[ \hat{F}(U) = \lim_{i,j} F(V_{ij}) \iso \lim_i \hat{F}(U_i) \]
   zuerst nach der Definition von $\hat{F}(U)$ und dann wieder nach der
   Transitivität von Limites und der Definition der $\hat{F}(U_i)$.
@@ -224,45 +215,53 @@ Restriktionen wählen:
   F(U) $ gilt, handelt es sich tatsächlich um einen Quasi-Inversen.
 \end{proof}
 
+Damit können wir die Hauptaussage des Abschnitts beweisen.
 \begin{satz} \label{simp-comp-sheaf}
-  Der Funktor
+  Sei $\K$ ein Simplizialkomplex, $X$ ein topologischer Raum und $\B$
+  die Basis der Produkttopologie von $\K \times X$ aus
+  \autoref{eq:prod-base}.
+
+  Die Äquivalenz $[\K, \pEnsX] \qiso [\B\op, \Ens]$ aus
+  \autoref{eq:simp-comp-presheaf} schränkt ein zu einer Äquivalenz
+  voller Unterkategorien
   \[
-  [\mathcal{K}, \EnsX] \to \EnsB \qiso \Ens_{/\mathcal{K} \times X}
+    [\K, \EnsX] \qiso \EnsB
   \]
-  ist eine Äquivalenz von Kategorien.
+  Insbesondere liefert die Verknüpfung mit \ref{sheaf-on-basis} eine
+  Äquivalenz von Kategorien
+  \[ [\K, \EnsX] \qiso \Ens_{/\K \times X} . \]
 \end{satz}
 \begin{proof}
-  Wir haben schon den Isomorphismus auf den Prägarbenkategorien
-  \[ [\mathcal{K}, \pEnsX] \iso {[\B\op, \Ens]} \]
-  und müssen nur noch zeigen, dass $[\mathcal{K}\op, \EnsX]$ und
-  $\EnsB$ durch äquivalente Bedingungen definierte volle
-  Unterkategorien sind.
+  Wir müssen zeigen, dass $[\K, \EnsX]$ und $\EnsB$ durch äquivalente
+  Bedingungen definierte volle Unterkategorien von $[\K, \pEnsX]$
+  bzw. $[\B\op, \Ens]$ sind.
 
-  In $[\mathcal{K}\op, \pEnsX]$ wird die Untekategorie der
-  Simplizialkomplexe von Garben dadurch definiert, dass für festes
-  $\sigma \in \mathcal{K}$ die Garbenbedingung für die $U \open X$
-  erfüllt sein muss, während in $[\B\op, \Ens]$ die Garbenbedingung
-  für beliebige Basismengen $(\geq \sigma) \times U$ gefordert
-  wird. Tatsächlich sind aber beide äquivalent, da im Fall einer
-  Überdeckung $\mathcal{U}$ einer Basismenge $(\geq \sigma) \times U$
-  durch Basismengen $(\geq \tau_i) \times U_i$ eine Teilüberdeckung
-  $\mathcal{V} \subset \mathcal{U}$ aus Produktmengen mit $\tau_i =
-  \sigma$ gewählt werden kann. Ein verträgliches Tupel aus Schnitten
-  über Mengen aus $\mathcal{U}$ entspricht dann einem verträglichem
-  Tupel aus Schnitten über Mengen aus $\mathcal{V}$ und die
-  Garbenbedingung für Basismengen folgt aus der für festes
-  $\sigma \in \mathcal{K}$.
+  In $[\K, \pEnsX]$ wird die Untekategorie der Simplizialkomplexe von
+  Garben dadurch definiert, dass für festes $\sigma \in \K$ die
+  Garbenbedingung für die $U \open X$ erfüllt sein muss, während in
+  $[\B\op, \Ens]$ die Garbenbedingung für beliebige Basismengen $(\geq
+  \sigma) \times U$ gefordert wird. Tatsächlich sind aber beide
+  äquivalent, da im Fall einer Überdeckung $\mathcal{U}$ einer
+  Basismenge $(\geq \sigma) \times U$ durch Basismengen $(\geq \tau_i)
+  \times U_i$ eine Teilüberdeckung $\mathcal{V} \subset \mathcal{U}$
+  aus Produktmengen mit $\tau_i = \sigma$ gewählt werden kann. Ein
+  verträgliches Tupel aus Schnitten über Mengen aus $\mathcal{U}$
+  entspricht dann einem verträglichem Tupel aus Schnitten über Mengen
+  aus $\mathcal{V}$ und die Garbenbedingung für Basismengen folgt aus
+  der für festes $\sigma \in \K$.
 \end{proof}
-Wir geben die nicht-relative Version dieser Aussage an, mit einem
-Beweis, der die entscheidenden Schritte im vorangehenden Beweis noch
-einmal systematischer darstellt. Mit den Techniken aus Kapitel
-\ref{sec:gen-sheaves} folgt daraus umgekehrt auch die relative
-Version.
+Wir geben zum Abschluss die nicht-relative Version dieser Aussage an,
+mit einem Beweis, der das einfache Vorgehen des vorangehenden Beweis
+noch einmal systematischer darstellt. Mit den Techniken aus
+\autoref{sec:gen-sheaves} folgt daraus umgekehrt auch die relative
+Version und man mag bereits erkennen, wie das generelle Vorgehen zur
+``Relativierung'' solcher Aussagen ist.
 \begin{defn}
   Sei $(X, \leq)$ eine halbgeordnete Menge und $S \subset X$ eine
-  Teilmenge. Ein Element $I \in X$ heißt Infimum von $S$, falls es
-  eine größte untere Schranke von $S$ ist, d. h. $I \leq x$ für alle
-  $x \in S$ und falls $J \leq x$ für alle $x \in S$, dann $J \leq I$.
+  Teilmenge. Ein Element $m \in X$ heißt Infimum von $S$, falls es
+  eine größte untere Schranke von $S$ ist, d. h. $m \leq x$ für alle
+  $x \in S$ und falls $m' \leq x$ für alle $x \in S$, dann $m' \leq
+  m$.
 \end{defn}
 Infima sind Limites in der halbgeordneten Menge aufgefasst als
 Kategorie. Das Infimum einer Teilmenge $S \in X$ muss nicht
@@ -274,17 +273,16 @@ binären Infima ist schnittstabil, vergleiche Gleichung
 \begin{satz} \label{sheaf-order-top}
   Sei $\K \in \poset$ mit binären Infima. Dann ist der Funktor
   \[
-  [\mathcal{K}, \Ens] \to \EnsB \qiso \Ens_{/\Ord \mathcal{K}}
+  [\K, \Ens] \to \EnsB \qiso \Ens_{/\Ord \K}
   \]
   für $\B$ die Basis der Ordnungstopologie eine Äquivalenz von
   Kategorien.
 \end{satz}
 \begin{proof}
-   Da $\sigma \leq \tau$ die umgekehrte Inklusion $\Implies (\geq
-   \sigma) \supset (\geq \tau)$ imppliziert, gilt $\K \iso \B\op$. Die
+   Da $\sigma \leq \tau$ die umgekehrte Inklusion $(\geq \sigma)
+   \supset (\geq \tau)$ impliziert, gilt $\K \iso \B\op$. Die
    Garbenbedingung für $\B$ ist leer, denn jede Überdeckung von $(\geq
    \sigma)$ durch Basismengen enthält $(\geq \sigma)$, $(\geq \sigma)$
    ist also initial in einer solchen Überdeckung und die Limites über
    die beiden Systeme stimmen überein.
 \end{proof}
-
