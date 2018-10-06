@@ -3,82 +3,154 @@
 \section{Schwach konstruierbare Garben auf Simplizialkomplexen}
 \label{sec:simp-comp-sk}
 
-Ziel dieses Abschnitts ist es, eine geometrischere Charakterisierung
-von Garben auf einem Simplizialkomplex $\K$ zu geben. Wir werden
-sehen, dass sie sich als simplizial konstante Garben auf der
-geometrischen Realisierung von $\K$ auffassen lassen. Anschließend
-wollen wir die Ergebnisse auch auf die derivierte Kategorie der Garben
-auf $\K$ übertragen. Die Darstellung folgt im Wesentlichen \cite{KS}
-und \cite{WS}.
+Die Ordnungstopologie auf einem Simplizialkomplex $\K$ erlaubt es,
+sich Simplizialkomplexe von Garben als Garben auf einem Produktraum
+mit einem Simplizialkomplex vorzustellen. Nach wie vor ist der
+verwendete ordnungstopologische Simplizialkomplex allerdings ein eher
+kombinatorisches Objekt. Für unsere zu weiten Teilen auf
+Hausdorffräumen beruhende geometrische Vorstellung geben wir daher
+eine weitere geometrische Charakterisierung von Garben auf einem
+Simplizialkomplex $\K$ an. Wir werden sehen, dass sie sich als
+simplizial konstante Garben auf der geometrischen Realisierung von
+$\K$ auffassen lassen. Für die zugehörigen derivierten Kategorien kann
+diese Aussage noch verbessert werden: Simplizialkomplexe von Mengen
+entsprechen dann derivierten Garben, deren Kohomologien simplizial
+konstant sind. Die Darstellung folgt im Wesentlichen \cite{KS} und
+\cite{WS}. Der relative Fall ist Gegenstand des folgenden
+Abschnitts. Hier beschränken wir uns erst einmal auf
+Simplizialkomplexe von Mengen.
 
-% TODO: lokal-endlich streichen?
-% TODO: schwache Topologie
+% TODO: lokal-endlich?
 
-In diesem Abschnitt bezeichne $(V, \K)$ stets einen lokal-endlichen
-Simplizialkomplex mit Eckenmenge $V$. Für einen Simplex $\sigma \in
-\K$ definieren wir seine geometrische Realisierung $|\sigma| \subset
-\R^V = \Ens(V, \R)$:
-\[ |\sigma| = \{ x \in \R^V | x(v) = 0 \text{ für } v \notin \sigma,
-   x(v) > 0 \text{ für } v \in \sigma,
-   \sum_{v \in V} x(v) = 1 \}, \]
-sowie die geometrische Realisierung $|\K| \subset \R^V$ von $\K$
+In diesem Abschnitt bezeichne $\K$ stets einen Simplizialkomplex mit
+Eckenmenge $E$. Ist $\K$ ein endlicher Simplizialkomplex (d.~h. $E$
+endlich), so definieren wir seine geometrische Realisierung als die
+Vereinigung seiner offenen Simplizes. Setze für einen Simplex $\sigma
+\in \K$ seine Realisierung $|\sigma| \subset \R^V = \Ens(V, \R)$ zu
+\[ |\sigma| = \set{x \in \R^E}{x(e) = 0 \text{ für } e \notin \sigma,
+   x(e) > 0 \text{ für } e \in \sigma,
+   \sum_{e \in E} x(e) = 1 },
+\]
+sowie die geometrische Realisierung $|\K| \subset \R^E$ von $\K$
 \[ \bigcup_{\sigma \in \K} |\sigma|, \]
-jeweils versehen mit der induzierten Topologie von $\R^V$.
+jeweils versehen mit der induzierten Topologie von $\R^E$. Ein
+beliebiger Simplizialkomplex $\K$ kann als Vereinigung $\bigcup_i
+\K_i$ seiner endlichen Teilsimplizes geschrieben werden und wir
+definieren die geometrische Realisierung von $\K$ durch
+\[ |\K| = \bigcup_i |\K_i| \]
+mit den induzierten Inklusionen und der Kolimes-Topologie.
 
 Wir erhalten eine Abbildung
-\[ p: |\mathcal{K}| \to \mathcal{K}, \]
+\[ p: |\K| \to \K, \]
 genannt Simplexanzeiger oder Indikatorabbildung, der einem Punkt $x
-\in |\mathcal{K}|$ in der geometrischen Realisierung den eindeutigen
-Simplex $\sigma \in \mathcal{K}$ mit $x \in |\sigma|$ zuordnet.
+\in |\K|$ in der geometrischen Realisierung den eindeutigen Simplex
+$\sigma \in \K$ mit $x \in |\sigma|$ zuordnet.
 
 \begin{lemma}
-  Der Simplexanzeiger $p: |\K| \to \K$ ist stetig.
+  Der Simplexanzeiger $p: |\K| \to \K$ ist eine finale Surjektion mit
+  zusammenhängenden Fasern.
 \end{lemma}
 \begin{proof}
-  Das Urbild einer Basismenge $(\geq \sigma)$ ist
-  \[ p^{-1}((\geq \sigma)) = |\K| \cap \{x \in \R^V | x(v) > 0 \text{ für }
-  v \in \sigma \}, \]
-  der offene Stern um $\sigma$, den wir auch als $U(\sigma)$ notieren.
+  Die Abbildung lässt sich als die Identifikation der
+  (zusammenhängenden) offenen Inneren der Standardsimplizes $|\sigma|$
+  zu einem Punkt $\sigma$ beschreiben. Dies zeigt die Eigenschaft
+  einer mengentheoretischen Quotientenabbildung.
+  % TODO Quotiententopologie
+
+  Für einen endlichen Simplizialkomplex $\K$ ist das Urbild einer
+  Basismenge $(\geq \sigma)$ der ``offene Stern um $\sigma$''
+  \[ U(\sigma) := p^{-1}((\geq \sigma))
+  = |\K| \cap \set{x \in \R^E}{x(e) > 0 \text{ für } e \in \sigma }.
+  \]
+  Dies zeigt (auch im Kolimes) die Stetigkeit.
 \end{proof}
+\begin{lemma}[\cite{TG}, 4.3.22] \label{final-pullback}
+  Sei $p: X \to Y$ eine finale Surjektion mit zusammenhängenden
+  Fasern. Dann ist die Einheit der Adjunktion $\Id \Trafo p_* p^*$ auf
+  allen $G \in \Ens_{/Y}$ ein Isomorphismus.
+\end{lemma}
+\begin{proof}
+  Wir zeigen, dass die Einheit der Adjunktion Bijektionen auf allen
+  Schnitten über $U \open Y$ induziert. Ohne Einschränkung reicht der
+  Fall der globalen Schnitte $U = Y$, denn die Einschränkung von $p$
+  auf $p^{-1}(U) \to U$ erfüllt ebenfalls die Voraussetzungen des
+  Lemmas. Zu zeigen ist also, dass die Einheit der Adjunktion
+  Bijektionen $\Gamma G \iso \Gamma p_* p^* G = \Gamma p^* G$
+  induziert. Nach der universellen Eigenschaft des Rückzugs stehen im
+  Diagramm
+  \[ 
+  \begin{tikzcd}
+    X \arrow[ddr]{\id} \arrow[drr]{t} \arrow[dr]{s}
+    p^* G \rar \dar & G \dar \\
+    X \rar{p} & Y
+  \end{tikzcd}
+  \]
+  globale Schnitte $s: X \to p^* G$ von $p^* G \to X$ in Bijektion zu
+  Schnitten $t: X \to G$ von $G \to Y$ über $p$. Eine solche Abbildung
+  $t$ faktorisiert nun nach der Surjektivität von $p$ zunächst
+  mengentheoretisch über $p$. Diese Faktorisierung ist eindeutig, denn
+  $t$ ist konstant auf den Fasern $p^{-1}(y)$ von $y \in Y$ als
+  stetige Abbildung von einem zusammenhängenden Raum in den diskreten
+  Raum $G_y$. Die Stetigkeit dieser mengentheoretischen Abbildung
+  folgt nun aus der Finalität von $p$.
 
-% TODO Einheit ist Iso zeigen
-% TODO: wo benötigen wir lok endl?
-
+  Die umgekehrte Zuordnung schaltet einem globalen Schnitt von $G \to
+  Y$ über $\id_Y$ einen Schnitt über $p$ durch Vorschalten von $p$ zu.
+\end{proof}
+\begin{bem} \label{connected-fibers-subst}
+  Die Voraussetzung zusammenhängender Fasern kann fallen gelassen
+  werden, wenn stattdessen in $p^* G$ nur diejenigen Garbenschnitte
+  als Schnitte zugelassen werden, welche gewisse zu den Daten von $p^*
+  G$ gehörige Verträglichkeiten erfüllen müssen, die die Abbildung
+  $p^{-1}(y) \to G_y$ wieder konstant machen. Dies werden wir in
+  \ref{sheaf-col} benötigen und dort auch präzisieren.
+\end{bem}
+\begin{kor} \label{unit-iso}
+  Für $p: |\K| \to \K$ und eine Garbe $F \in \Ens_{/\K}$ ist die
+  Einheit der Adjunktion ein Isomorphismus
+  \[ F \iso p_* p^* F . \]
+\end{kor}
+Anders ausgedrückt können wegen
+\[ \Ens_{/\K}(F, G) \iso \Ens_{/\K}(F, p_* p^* G)
+\iso \Ens_{/|\K|}(p^* F, p^* G)
+\]
+die Garben auf $\K$ als äquivalent zu einer vollen Unterkategorie der
+Garben auf $|\K|$ aufgefasst werden. Wie können diese Garben im
+wesentlichen Bild des Rückzugs $p^*$ charakterisiert werden?
 \begin{defn}
-  Eine Garbe $F \in \AbKr$ heißt schwach $|\K|$-konstruierbar (oder
-  kurz: schwach konstruierbar), falls für alle $\sigma \in \K$, die
-  Einschränkungen $F|_{|\sigma|}$ konstante Garben sind. Wir
+  Eine Garbe $F \in \AbKr$ heißt \emph{schwach $\K$-konstruierbar}
+  (oder kurz: schwach konstruierbar), falls für alle $\sigma \in \K$,
+  die Einschränkungen $F|_{|\sigma|}$ konstante Garben sind. Wir
   bezeichnen die volle Unterkategorie der schwach konstruierbaren
-  Garben in $\AbKr$ mit $\sKonsK$.
+  Garben in $\AbKr$ mit $\AbKrsk$.
 
-  Eine derivierte Garbe $F \in \DerAbK$ heißt schwach
-  $|\K|$-konstruierbar, falls für alle $j \in \Z$ die
+  Eine derivierte Garbe $F \in \DerAbK$ heißt \emph{schwach
+    $\K$-konstruierbar}, falls für alle $j \in \Z$ die
   Kohomologiegarben $H^j(F)$ schwach konstruierbar sind. Wir
   bezeichnen die volle Unterkategorie der schwach konstruierbaren
   derivierten Garben in $\DerAbK$ mit $\DerskK$.
 \end{defn}
 
 Wir bemerken zunächst:
-
 \begin{lemma}[\cite{KS}, 8.1.3] \label{skons-abelian}
-  Die Kategorie $\sKonsK$ ist abelsch.
+  Die Kategorie $\AbKrsk$ ist abelsch.
 \end{lemma}
 \begin{proof}
-  Durch den offensichtlichen Isomorphismus zur Kategorie der abelschen
-  Gruppen (durch den Funktor der globalen Schnitte) ist die Kategorie
-  der konstanten abelschen Garben auf einem topologischen Raum $X$
-  eine abelsche Kategorie. Nun folgt die Aussage aus der Exaktheit und
-  Additivität des Pullbacks $i_{\sigma}^*$ entlang den Inklusionen
-  $i_{\sigma}: |\sigma| \xhookrightarrow{} |\K|$.
+  Zunächst ist die Kategorie der konstanten abelschen Garben auf einem
+  topologischen Raum $X$ eine abelsche Kategorie. Die Aussage folgt
+  dann aus der Exaktheit und Additivität des Pullbacks $i_{\sigma}^*$
+  entlang den Inklusionen $i_{\sigma}: |\sigma| \xhookrightarrow{}
+  |\K|$.
 \end{proof}
 
-Entscheidend ist die folgende Charakterisierung schwach
-$|\K|$-konstruierbarer Garben:
-
+Das wesentliche Bild des Rückzugs $p^*$ kann nun als die Kategorie der
+schwach $\K$-konstruierbaren Garben auf $|\K|$ charakterisiert
+werden. Dies ist der wesentliche topologische Schritt in unserer
+Argumentation.
 \begin{prop}[\cite{WS}, 8.4.6.3] \label{sk-char}
   Für $F \in \AbKr$ sind äquivalent:
   \begin{enumerate}[label=(\arabic*)]
-  \item \label{itm:sk-char-sk} $F$ ist schwach $|\K|$-konstruierbar
+  \item \label{itm:sk-char-sk} $F$ ist schwach $\K$-konstruierbar
   \item \label{itm:sk-char-counit} Die Koeinheit der Adjunktion ist
     auf $F$ ein Isomorphismus $p^*p_*F \iso F$.
   \item \label{itm:sk-char-essim} $F$ liegt im wesentlichen Bild des
@@ -94,7 +166,7 @@ $|\K|$-konstruierbarer Garben:
   Natur. Dabei ist $\ref{itm:sk-char-counit} \Implies
   \ref{itm:sk-char-essim}$ offensichtlich (nimm $p_* F$) und
   $\ref{itm:sk-char-essim} \Implies \ref{itm:sk-char-counit}$ folgt
-  aus den Dreiecksidentitäten.
+  aus den Dreiecksidentitäten und \ref{unit-iso}.
 
   Die Äquivalenz $\ref{itm:sk-char-counit} \Iff \ref{itm:sk-char-res}$
   folgt aus der Bestimmung der Halme von $p^*p_* F$. Zunächst bemerken
@@ -126,21 +198,24 @@ $|\K|$-konstruierbarer Garben:
   eine Umgebungsbasis von $x$, wir müssen also nur noch den Kolimes
   der Schnitte über diese Mengen bestimmen. Bezeichne $\pi: (0, 1]
   \times U(\sigma) \to U(\sigma)$ die Projektion auf den zweiten
-  Faktor. Nach der simplizialen Konstanz von $F$ und wegen $h(t,
-  y) \in |\tau| \Iff y \in |\tau|$ ist der Rückzug $h^* F$
-  konstant auf den Fasern von $\pi$ und lässt sich somit nach dem
-  zweiten nachgestellten Lemma schreiben als $\pi^* \pi_* h^* F
-  \iso h^* F$. Bezeichne $\iota_t: U(\sigma) \xhookrightarrow{}
-  (0, 1] \times U(\sigma)$ die Inklusion. Dann erhalten wir wie
-    gewünscht mit der Funktorialität des Rückzugs und $\pi \circ
-  \iota_t = \id_{U(\sigma)}$
+  Faktor. Nach der simplizialen Konstanz von $F$ und wegen
+  \[ h(t, y) \in |\tau| \Iff y \in |\tau| \]
+  ist der Rückzug $h^* F$ konstant auf den Fasern von $\pi$ und lässt
+  sich somit nach dem zweiten nachgestellten Lemma schreiben als
+  $\pi^* \pi_* h^* F \iso h^* F$. Bezeichne $\iota_t: U(\sigma)
+  \xhookrightarrow{} (0, 1] \times U(\sigma)$ die Inklusion in der
+    ersten Komponente. Dann erhalten wir wie gewünscht mit der
+    Funktorialität des Rückzugs und $\pi \circ \iota_t =
+    \id_{U(\sigma)}$
 
   \begin{align*}
      F_x &\iso \colf\limits_{t \in (0, 1]} F(h(\{t\} \times U(\sigma))) \\
-         &\iso \colf\limits_{t \in (0, 1]} \Gamma \iota_t^* h^* F \\
-         &\iso \colf\limits_{t \in (0, 1]} \Gamma \iota_t^* \pi^* \pi_* h^* F \\
-         &\iso \colf\limits_{t \in (0, 1]} \Gamma \iota_1^* \pi^* \pi_* h^* F \\
-         &\iso \Gamma \iota_1^* h^* F \\    
+         &\iso \colf\limits_{t \in (0, 1]} \Gamma \, \iota_t^* \, h^* \, F \\
+         &\iso \colf\limits_{t \in (0, 1]}
+           \Gamma \, \iota_t^* \, \pi^* \, \pi_* \, h^* \, F \\
+           &\iso \colf\limits_{t \in (0, 1]}
+             \Gamma \, \iota_1^* \, \pi^* \, \pi_* \, h^* \, F \\
+         &\iso \Gamma \, \iota_1^* \, h^* \, F \\    
          &\iso F(U(\sigma)).
   \end{align*}
 \end{proof}
@@ -151,8 +226,7 @@ $|\K|$-konstruierbarer Garben:
 \end{bem}
 
 Wir tragen die benötigten Lemmata nach.
-
-\begin{lemma}[\cite{TG}, 2.1.41] \label{const-stalk}
+\begin{lemma}[\cite{TG}, 2.1.41 (Var.)] \label{const-stalk}
   Sei $X$ ein topologischer Raum, $F \in \EnsX$ eine Garbe auf $X$,
   für die die Restriktion $\Gamma F \iso F_x$ für alle $x \in X$
   bijektiv ist. Dann ist $F$ eine konstante Garbe auf $X$ mit Halm
@@ -210,88 +284,53 @@ Wir tragen die benötigten Lemmata nach.
   Nun können wir die Aussage zeigen. Zunächst folgt sie für $I$
   kompakt sofort aus eigentlichem Basiswechsel über dem kartesischen
   Diagramm mit eigentlichen und separierten Vertikalen
+  % TODO korrigieren Basiswechsel
   \shorthandoff{"}
   \[ \begin{tikzcd}
-    (x, t) \arrow[r, hook] \arrow[d] \arrow[dr, phantom, "\lrcorner"]
-    & X \times I \arrow[d, "\pi"] \\
-    x \arrow[r, hook]
+    (x, t) \rar[hook] \dar \arrow[dr, phantom, "\lrcorner"]
+    & X \times I \dar["\pi"] \\
+    x \rar[hook]
     & X.
   \end{tikzcd} \]
   Ist nun $I \subset \R$ ein beliebiges Intervall, so können wir es
   als aufsteigende Vereinigung von Kompakta $I = \bigcup_j I_j$
-  schreiben und erhalten für die Schnitte ebenfalls
-  \begin{align*}
-    \Gamma(U \times I, F)
-     &= \Top(U \times I, \etalespace{F}) \\
-     &\iso \colf\limits_j \Top(U \times I_j, \etalespace{F})
-     = \colf\limits_j \Gamma(U \times I_j, F)
-     \iso \Gamma(U \times \{t\}, F).
-  \end{align*}
+  schreiben und erhalten durch das Verkleben von Schnitten ebenfalls
+  \[ \Gamma(U \times I, F)
+  \iso \colf_j \Gamma(U \times I_j, F)
+  \iso \Gamma(U \times \{t\}, F).
+  \]
 \end{proof}
 
 Wir bezeichnen den Funktor $p^*p_*: \AbKr \to \sKons(\K)$ kurz mit
-$\beta$. Es handelt sich um einen Koreflektor:
-\begin{lemma} \label{beta-adjoint}
-  Der Funktor $\beta: \AbKr \to \sKons(\K)$ ist ein Rechtsadjungierter
-  zur Inklusion $\iota: \sKons(\K) \to \AbKr$.
-\end{lemma}
+$\beta$. Es handelt sich in der später eingeführten Terminologie um
+einen Koreflektor (vgl. \ref{corefl}).
+\begin{prop} \label{beta-adjoint}
+  Der Funktor $\beta: \AbKr \to \AbKrsk$ ist ein Rechtsadjungierter
+  zur Inklusion $\iota: \AbKrsk \to \AbKr$.
+\end{prop}
 \begin{proof}
-  Für $S \in \sKons(\K)$ und $F \in \AbKr$ gilt:
+  Für $S \in \AbKrsk$ und $F \in \AbKr$ gilt:
   \begin{align*}
-    & \sKons(\K)(W, \beta F) \\
-    \iso & \sKons(\K)(\beta W, \beta F) \\
-    \iso & \AbKr(p_* W, p_* p^* p_* F) \\
-    \iso & \AbKr(p_* W, p_* F) \\
-    \iso & \AbKr(\beta W, F) \\
-    \iso & \AbKr(W, F).
+    & \AbKrsk(S, \beta F) \\
+    \iso & \AbKrsk(\beta S, \beta F) \\
+    \iso & \AbKr(p_* S, p_* p^* p_* F) \\
+    \iso & \AbKr(p_* S, p_* F) \\
+    \iso & \AbKr(\beta S, F) \\
+    \iso & \AbKr(S, F).
   \end{align*}
-  Dabei wurde die Adjunktion $(p^*, p_*)$ sowie im dritten Schritt das
-  Lemma ``finaler Rückzug mit zusammenhängenden Fasern''
-  (\ref{final-pullback}) benutzt.
+  Dabei wurden die Adjunktion $(p^*, p_*)$ und im dritten Schritt
+  \ref{unit-iso} benutzt.
 \end{proof}
-
-\begin{lemma}[\cite{TG}, 4.3.22] \label{final-pullback}
-  Sei $p: X \to Y$ eine finale Surjektion mit zusammenhängenden
-  Fasern. Dann ist die Einheit der Adjunktion $\Id \Trafo p_* p^*$ für
-  alle $G \in \Ens_{/Y}$ ein Isomorphismus.
-\end{lemma}
-\begin{proof}
-  Wir zeigen, dass die Einheit der Adjunktion Bijektionen auf allen
-  Schnitten über $U \open Y$ induziert. Ohne Einschränkung reicht der
-  Fall der globalen Schnitte $U = Y$, denn die Einschränkung von $p$
-  auf $p^{-1}(U) \to U$ erfüllt ebenfalls die Voraussetzungen des
-  Lemmas. Zu zeigen ist also, dass die Einheit der Adjunktion
-  Bijektionen $\Gamma G \iso \Gamma p_* p^* G = \Gamma p^* G$
-  induziert. Nach der universellen Eigenschaft des Rückzugs stehen
-  globale Schnitte $s: X \to p^* G$ von $p^* G \to X$ in Bijektion zu
-  Schnitten $t: X \to G$ von $G \to Y$ über $p$. Eine solche Abbildung
-  $t$ faktorisiert nun nach der Surjektivität von $p$ zunächst
-  mengentheoretisch über $p$. Diese Faktorisierung ist eindeutig, denn
-  $t$ ist konstant auf den Fasern $p^{-1}(y)$ von $y \in Y$ als
-  stetige Abbildung von einem zusammenhängenden Raum in den diskreten
-  Raum $G_y$. Die Stetigkeit dieser mengentheoretischen Faktorisierung
-  folgt nun aus der Finalität von $p$. Die Umkehrabbildung schaltet
-  einem Schnitt von $G \to Y$ über $\id_Y$ einen Schnitt über $p$
-  durch Vorschalten von $p$ zu.
-\end{proof}
-\begin{bem} \label{connected-fibers-subst}
-  Die Voraussetzung zusammenhängender Fasern kann fallen gelassen
-  werden, wenn stattdessen in $p^* G$ nur diejenigen Garbenschnitte
-  als Schnitte zugelassen werden, welche gewisse zu den Daten von $p^*
-  G$ gehörige Verträglichkeiten erfüllen müssen, die die Abbildung
-  $p^{-1}(y) \to G_y$ wieder konstant machen. Dies werden wir in
-  \ref{sheaf-col} benötigen und dort auch präzisieren.
-\end{bem}
 
 Als Komposition zweier linksexakter Funktoren ist $\beta$ wieder
 linksexakt. Der allgemeinen Terminologie folgend bezeichnen wir eine
-Garbe $F \in \AbKr$ $\beta$-azyklisch, falls ihre höheren Derivierten
-von $\beta$ verschwinden, also falls
-\[ R^k\beta F = 0 \text{ für alle } k > 0.  \]
+Garbe $F \in \AbKr$ als $\beta$-azyklisch, falls ihre höheren
+Derivierten von $\beta$ verschwinden, also falls
+\[ R^k\beta F = 0 \qquad \text{für alle } k > 0.  \]
 
 Später benötigen wir die folgende Charakterisierung
 $\beta$-azyklischer Garben:
-
+% TODO benötigt?
 \begin{prop}[\cite{KS}, 8.1.8] \label{sk-is-acyc}
   Sei $F \in \AbKr$. Dann gilt:
   \begin{enumerate}[label=(\roman*)]
@@ -300,7 +339,7 @@ $\beta$-azyklischer Garben:
   \item \label{itm:sk-is-acyc-beta} $F$ ist $\beta$-azyklisch genau dann,
     wenn $H^k(U(\sigma); F) = 0$ für alle $\sigma \in \K, k > 0$.
   \end{enumerate}
-  Insbesondere sind schwach $|\K|$-konstruierbare Garben und welke
+  Insbesondere sind schwach $\K$-konstruierbare Garben und welke
   Garben $\beta$-azyklisch.
 \end{prop}
 \begin{bem}
@@ -312,12 +351,12 @@ $\beta$-azyklischer Garben:
 \end{bem}
 \begin{proof}
   \ref{itm:sk-is-acyc-beta} folgt direkt aus \ref{itm:sk-is-acyc-comp} mit
-  $R^k\beta F \in \sKonsK$ (vgl. \ref{skons-abelian}) und unserer
+  $R^k\beta F \in \AbKrsk$ (vgl. \ref{skons-abelian}) und unserer
   Aussage über die Halme \ref{sk-char} \ref{itm:sk-char-res}.
   
   Mit der Exaktheit von Halmfunktoren $F \mapsto F_x$ und
   \ref{sk-char} \ref{itm:sk-char-res} sind die Funktoren
-  $\Gamma(U(\sigma), \cdot)$ auf schwach $|\K|$-konstruierbaren Garben
+  $\Gamma(U(\sigma), \cdot)$ auf schwach $\K$-konstruierbaren Garben
   exakt und vertauschen folglich bei einem Komplex mit der Bildung der
   Kohomologie. Wir erhalten für $F \inj I\cc$ eine injektive Auflösung
   somit
@@ -330,85 +369,46 @@ $\beta$-azyklischer Garben:
 \end{proof}
 
 Damit können wir uns nun den derivierten Kategorien zuwenden.
-
-\begin{prop}
-  Sei $F \in \Ket^+(\AbKr)$ ein gegen die Richtung der Pfeile
-  beschränkter Kettenkomplex aus $\beta$-azy\-klischen Garben mit
-  schwach $|\K|$-kon\-stru\-ier\-bar\-en Kohomologiegarben $H^q(F)$. Dann
-  ist $\beta F \to F$ ein Quasi-Iso\-mor\-phis\-mus.
-\end{prop}
-\begin{proof}
-  Wir schneiden aus dem Kettenkomplex $(F^n, d^n)$ kurze exakte
-  Sequenzen aus:
-  \begin{alignat*}{4}
-    H^0 = \ker d^0 \inj F^0 \surj &\im d^0 & & \\
-    &\im d^0& {} \inj {} &\ker d^1& {}\surj {} &H^1& \\
-    && &\ker d^1& {} \inj {} &F^1& {} \surj {} \im d^1 \\
-    \vdots
-  \end{alignat*}
-  
-  Sind in einer kurzen exakten Sequenz zwei der drei Objekte
-  azyklisch, so nach dem Fünferlemma auch das dritte. Da nach
-  Voraussetzung und \ref{sk-is-acyc} $F^q$ und $H^q$
-  $\beta$-azyklisch sind, sind alle oben betrachteten Objekte
-  $\beta$-azyklisch und die kurzen exakten Sequenzen bleiben exakt
-  nach Anwendung von $\beta$. Es folgt $H^q(\beta F) \iso \beta (H^q
-  F)$ und weiter $\beta (H^q F) \iso H^q F$ nach der schwachen
-  Konstruierbarkeit von $H^q F$.
-\end{proof}
-
-Wir haben soeben die anschauliche Variante für in eine Richtung
-beschränkte Komplexe bewiesen und versuchen uns nun an der
-unbeschränkten Aussage.
-
 \begin{satz} \label{beta-qi}
-  Sei $F \in \Ket(\AbKr)$ ein Kettenkomplex aus $\beta$-azy\-klischen
-  Garben mit schwach $|\K|$-kon\-stru\-ier\-bar\-en Kohomologiegarben
-  $H^q(F)$. Dann ist $\beta F \to F$ ein Quasi-Iso\-mor\-phis\-mus.
+  Sei $F \in \Ket(\AbKr)$ ein Kettenkomplex aus $\beta$-azyklischen
+  Garben mit schwach $\K$-konstruierbaren Kohomologiegarben
+  $H^q(F)$. Dann ist $\beta F \to F$ ein Quasi-Isomorphismus.
 \end{satz}
 \begin{proof}
-  %% benötigen wir F aus beta-azyklischen überhaupt?
-  %% benötigen \Gamma(U(\sigma), \cdot) exakt sogar nur auf \sKons(\K) ?
-
-  %% geht das so einfach??
-  
-  Für unseren Quasi-Isomorphismus $H^q(\beta F) \iso H^q(F)$ reicht es
-  nach dem Halmkriterium und \ref{sk-char} \ref{itm:sk-char-res}, dass
-  auf den Schnitten über $U(\sigma)$ Isomorphismen $H^q(\beta
-  F)(U(\sigma)) \iso H^q(F)(U(\sigma))$ induziert werden für alle
-  $\sigma \in \K$. Nun ist aber nach \ref{sk-is-acyc}
-  \ref{itm:sk-is-acyc-beta} der Funktor $\Gamma(U(\sigma), \cdot)$
-  exakt auf der vollen Unterkategorie der $\beta$-azyklischen Garben
-  auf $|\K|$ und vertauscht somit mit dem Bilden der Kohomologie. Wir
-  sind also fertig, falls $H^q(\Gamma(U(\sigma), \beta F)) \iso
-  H^q(\Gamma(U(\sigma), F))$, das ist aber gerade \ref{beta-sect}.
+  Wir müssen zeigen, dass $\beta F \to F$ Isomorphismen $\H^q(\beta F)
+  \iso H^q(F)$ auf den Kohomologien induziert. Da aber alle
+  beteiligten Garben $\beta$-azyklisch sind und die
+  $\beta$-azyklischen Garben eine abelsche Unterkategorie bilden, auf
+  der $\beta$ exakt ist, vertauscht $\beta$ mit dem Bilden der
+  Kohomologie und es folgt
+  \[ H^q(\beta F) \iso \beta (H^q F) \iso H^q F \]
+  wegen der schwachen Konstruierbarkeit der Kohomologiegarben $H^q F$.
 \end{proof}
 
 Damit ist der entscheidende Schritt für unser Ziel gezeigt. Wir
 erhalten:
-
 \begin{theorem} \label{dersk-eq}
-  Sei $\K$ ein Simplizialkomplex. Die oben definierten Funktoren
-  $\iota, \beta$ induzieren auf den derivierten Kategorien eine
+  Sei $\K$ ein Simplizialkomplex. Dann definieren die oben definierten
+  Funktoren $\iota, \beta$ auf den derivierten Kategorien eine
   Äquivalenz
-  \[ \Der(\sKons(\K))
+  \[ \Der(\AbKrsk)
   \mathrel{\mathop{\rightleftarrows}^{\iota}_{R \beta}}
   \DerskK. \]
 \end{theorem}
 \begin{proof}
   %% Die Funktoren $(\iota, \beta)$ bleiben eine Adjunktion nach
   %% Übergang zu den derivierten Kategorien nach \cite{TD}, 3.2.25.
+  % TODO adj. bleibt
 
   Mit \cite{TD}, 3.6.10, finden wir für $F \in \Ket(\AbKr)$ eine
   homotopieinjektive Auflösung $F \qiso I$ durch injektive Garben, die
   also entfaltet ist für $\beta$. Mit dem vorangegangenen Satz
-  \ref{beta-qi} und der $\beta$-Azyklizität injektiver Garben
-  \ref{sk-is-acyc} \ref{itm:sk-is-acyc-beta} erhalten wir für $F \in
-  \DerskK$:
+  \ref{beta-qi} und der $\beta$-Azyklizität injektiver Garben erhalten
+  wir für $F \in \DerskK$:
   \[R \beta F \iso \beta I \iso I \iso F. \]
-  Tatsächlich hat $R \beta$ Bild in $\Der(\sKons(\K))$ und unsere
-  obige Aussage beinhaltet die Isotransformationen $\Id \Isotrafo R
-  \beta \circ \iota$ und $\iota \circ R \beta \Isotrafo \Id$.
+  Tatsächlich hat $R \beta$ Bild in $\Der(\AbKrsk)$ und unsere obige
+  Aussage beinhaltet die Isotransformationen $\Id \Isotrafo R \beta
+  \circ \iota$ und $\iota \circ R \beta \Isotrafo \Id$.
 \end{proof}
 \begin{bem}
   Kashiwara und Schapira beschränken sich auf die Äquivalenz der
@@ -458,7 +458,7 @@ erhalten:
 
 \begin{proof}
   Sei $F \in \AbKr$. Dann ist $R^k \beta F$ schwach
-  $|\K|$-konstruierbar und wir bestimmen für $x \in |\sigma|$ die
+  $\K$-konstruierbar und wir bestimmen für $x \in |\sigma|$ die
   Halme mittels
   \[ (R^k \beta F)_x \iso (R^k \beta F)(U(\sigma)) \iso H^k(U(\sigma); F) \]
   unter Verwendung von \ref{sk-char} \ref{itm:sk-char-res} und
@@ -499,9 +499,8 @@ erhalten:
   Man beachte, dass der Beweis ab \ref{beta-adjoint} ausschließlich
   auf homologischer Algebra beruht, die konkreten topologischen
   Eigenschaften der Situation fließen im Wesentlichen in \ref{sk-char}
-  ein. Dies wird sich in Abschnitt \ref{sec:real-directed-cat} als
-  nützlich erweisen, um die Aussage für simpliziale Mengen zu
-  formulieren.
+  ein. Dies wird sich in \autoref{sec:real-directed-cat} als nützlich
+  erweisen, um die Aussage für simpliziale Mengen zu formulieren.
 \end{bem}
 Wir halten den allgemeinen Teil des Arguments fest:
 \begin{satz} \label{gen-sk}
@@ -519,9 +518,9 @@ Wir halten den allgemeinen Teil des Arguments fest:
   Kategorien
   \[ \Der(D^{\sk})
   \mathrel{\mathop{\rightleftarrows}^{\iota}_{R \beta}}
-  \Der_{\sk}(D),
+  \Der^{\sk}(D),
   \]
-  wobei $\Der_{\sk}(D)$ die volle Unterkategorie der derivierten
+  wobei $\Der^{\sk}(D)$ die volle Unterkategorie der derivierten
   Kategorie von $D$ mit schwach konstruierbarer Kohomologie
   bezeichnet.
 \end{satz}
