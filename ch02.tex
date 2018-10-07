@@ -20,8 +20,6 @@ konstant sind. Die Darstellung folgt im Wesentlichen \cite{KS} und
 Abschnitts. Hier beschränken wir uns erst einmal auf
 Simplizialkomplexe von Mengen.
 
-% TODO: lokal-endlich?
-
 In diesem Abschnitt bezeichne $\K$ stets einen Simplizialkomplex mit
 Eckenmenge $E$. Ist $\K$ ein endlicher Simplizialkomplex (d.~h. $E$
 endlich), so definieren wir seine geometrische Realisierung als die
@@ -78,11 +76,15 @@ $\sigma \in \K$ mit $x \in |\sigma|$ zuordnet.
   Bijektionen $\Gamma G \iso \Gamma p_* p^* G = \Gamma p^* G$
   induziert. Nach der universellen Eigenschaft des Rückzugs stehen im
   Diagramm
-  \[ 
+  \[
+  \shorthandoff{"}
   \begin{tikzcd}
-    X \arrow[ddr]{\id} \arrow[drr]{t} \arrow[dr]{s}
-    p^* G \rar \dar & G \dar \\
-    X \rar{p} & Y
+    X \arrow[ddr, bend right, "\id"]
+    \arrow[drr, bend left,"t"] \arrow[dr, "s"] & & \\
+    & p^* G \rar \dar \arrow[dr, phantom, "\lrcorner"]
+    & G \dar \\
+    & X \rar{p}
+    & Y
   \end{tikzcd}
   \]
   globale Schnitte $s: X \to p^* G$ von $p^* G \to X$ in Bijektion zu
@@ -191,8 +193,10 @@ Argumentation.
   $x \in |\sigma|$ die Zusammenziehung
   \begin{align*}
     h: (0, 1] \times U(\sigma) &\to U(\sigma), \\
-    (t, y) &\mapsto h(t, y) = t y + (1 - t) x.
+    (t, y) &\mapsto h(t, y) = t y + (1 - t) x,
   \end{align*}
+  formal zunächst auf endlichen Teilkomplexen und dann die induzierte
+  Abbildung auf dem Kolimes $|\K|$.
   
   Die Mengen $h(\{t\} \times U(\sigma))$ bilden für $t \in (0, 1]$
   eine Umgebungsbasis von $x$, wir müssen also nur noch den Kolimes
@@ -301,7 +305,7 @@ Wir tragen die benötigten Lemmata nach.
   \]
 \end{proof}
 
-Wir bezeichnen den Funktor $p^*p_*: \AbKr \to \sKons(\K)$ kurz mit
+Wir bezeichnen den Funktor $p^*p_*: \AbKr \to \AbKrsk$ kurz mit
 $\beta$. Es handelt sich in der später eingeführten Terminologie um
 einen Koreflektor (vgl. \ref{corefl}).
 \begin{prop} \label{beta-adjoint}
@@ -328,30 +332,33 @@ Garbe $F \in \AbKr$ als $\beta$-azyklisch, falls ihre höheren
 Derivierten von $\beta$ verschwinden, also falls
 \[ R^k\beta F = 0 \qquad \text{für alle } k > 0.  \]
 
-Später benötigen wir die folgende Charakterisierung
-$\beta$-azyklischer Garben:
-% TODO benötigt?
+Die folgende Charakterisierung $\beta$-azyklischer Garben ist für die
+Formulierung der Hauptaussage des Abschnitts ohne Rückgriff auf
+homotopieinjektive Auflösungen relevant
+(\ref{dersk-eq-bounded-dim}). In \ref{dersk-eq} wird sie nicht
+benötigt werden.
 \begin{prop}[\cite{KS}, 8.1.8] \label{sk-is-acyc}
   Sei $F \in \AbKr$. Dann gilt:
   \begin{enumerate}[label=(\roman*)]
   \item \label{itm:sk-is-acyc-comp} $\Gamma(U(\sigma), R^k\beta F)
     \iso H^k(U(\sigma); F)$ für alle $\sigma \in \K, k \geq 0$.
   \item \label{itm:sk-is-acyc-beta} $F$ ist $\beta$-azyklisch genau dann,
-    wenn $H^k(U(\sigma); F) = 0$ für alle $\sigma \in \K, k > 0$.
+    wenn
+    \[ H^k(U(\sigma); F) = 0 \qquad \text{für alle } \sigma \in \K, k > 0 . \]
   \end{enumerate}
   Insbesondere sind schwach $\K$-konstruierbare Garben und welke
   Garben $\beta$-azyklisch.
 \end{prop}
 \begin{bem}
-  Man beachte, dass Aussage \ref{itm:sk-is-acyc-beta} eine allgemeine
-  Verbesserung unserer allgemeinen Charakterisierung höherer direkter
-  Bilder als Garbifizierungen der Prägarben der Kohomologien der
-  Fasern ist für den Fall, dass die Schnittfunktoren
-  $\Gamma(\pi^{-1}(U), \cdot)$ exakt sind.
+  Man beachte, dass Aussage \ref{itm:sk-is-acyc-comp} ein Zusatz zur
+  allgemeinen Charakterisierung höherer direkter Bilder als
+  Garbifizierungen der Prägarben der Kohomologien der Urbilder
+  (\cite{TG}, 6.6.2) ist für den Fall, dass die Schnittfunktoren
+  $\Gamma(p^{-1}(U), \cdot)$ exakt sind.
 \end{bem}
 \begin{proof}
-  \ref{itm:sk-is-acyc-beta} folgt direkt aus \ref{itm:sk-is-acyc-comp} mit
-  $R^k\beta F \in \AbKrsk$ (vgl. \ref{skons-abelian}) und unserer
+  \ref{itm:sk-is-acyc-beta} folgt direkt aus \ref{itm:sk-is-acyc-comp}
+  mit $R^k\beta F \in \AbKrsk$ (nach \ref{skons-abelian}) und unserer
   Aussage über die Halme \ref{sk-char} \ref{itm:sk-char-res}.
   
   Mit der Exaktheit von Halmfunktoren $F \mapsto F_x$ und
@@ -360,11 +367,13 @@ $\beta$-azyklischer Garben:
   exakt und vertauschen folglich bei einem Komplex mit der Bildung der
   Kohomologie. Wir erhalten für $F \inj I\cc$ eine injektive Auflösung
   somit
-  \[ \Gamma(U(\sigma), R^k\beta F)
-  = \Gamma(U(\sigma), H^k(\beta I\cc))
-  \iso H^k(\Gamma(U(\sigma), \beta I\cc))
-  \iso H^k(\Gamma(U(\sigma), I\cc))
-  = H^k(U(\sigma), F), \]
+  \begin{align*}
+    \Gamma(U(\sigma), R^k\beta F)
+    &= \Gamma(U(\sigma), H^k(\beta I\cc)) \\
+    &\iso H^k(\Gamma(U(\sigma), \beta I\cc)) \\
+    &\iso H^k(\Gamma(U(\sigma), I\cc)) \\
+    &= H^k(U(\sigma); F),
+  \end{align*}
   wobei wir im dritten Schritt \ref{beta-sect} verwendet haben.
 \end{proof}
 
@@ -375,7 +384,7 @@ Damit können wir uns nun den derivierten Kategorien zuwenden.
   $H^q(F)$. Dann ist $\beta F \to F$ ein Quasi-Isomorphismus.
 \end{satz}
 \begin{proof}
-  Wir müssen zeigen, dass $\beta F \to F$ Isomorphismen $\H^q(\beta F)
+  Wir müssen zeigen, dass $\beta F \to F$ Isomorphismen $H^q(\beta F)
   \iso H^q(F)$ auf den Kohomologien induziert. Da aber alle
   beteiligten Garben $\beta$-azyklisch sind und die
   $\beta$-azyklischen Garben eine abelsche Unterkategorie bilden, auf
@@ -388,41 +397,46 @@ Damit können wir uns nun den derivierten Kategorien zuwenden.
 Damit ist der entscheidende Schritt für unser Ziel gezeigt. Wir
 erhalten:
 \begin{theorem} \label{dersk-eq}
-  Sei $\K$ ein Simplizialkomplex. Dann definieren die oben definierten
-  Funktoren $\iota, \beta$ auf den derivierten Kategorien eine
+  Sei $\K$ ein Simplizialkomplex. Dann definieren der Rechtsderivierte
+  von $\beta$ und die Inklusion auf den derivierten Kategorien eine
   Äquivalenz
   \[ \Der(\AbKrsk)
   \mathrel{\mathop{\rightleftarrows}^{\iota}_{R \beta}}
   \DerskK. \]
 \end{theorem}
 \begin{proof}
-  %% Die Funktoren $(\iota, \beta)$ bleiben eine Adjunktion nach
-  %% Übergang zu den derivierten Kategorien nach \cite{TD}, 3.2.25.
-  % TODO adj. bleibt
-
-  Mit \cite{TD}, 3.6.10, finden wir für $F \in \Ket(\AbKr)$ eine
-  homotopieinjektive Auflösung $F \qiso I$ durch injektive Garben, die
-  also entfaltet ist für $\beta$. Mit dem vorangegangenen Satz
-  \ref{beta-qi} und der $\beta$-Azyklizität injektiver Garben erhalten
-  wir für $F \in \DerskK$:
+  Beide Funktoren sind auf den gesamten derivierten Kategorien
+  definiert, $\iota$ als exakter Funktor und $R\beta$ nach dem Satz
+  über die Existenz homotopieinjektiver Auflösungen (\cite{TD}, 3.6.10
+  und 3.4.2). Die Adjunktion $(\iota, \beta)$ bleibt eine Adjunktion
+  nach Übergang zu den derivierten Kategorien (\cite{TD}, 3.2.25):
+  \[ \Der(\AbKrsk)
+  \mathrel{\mathop{\rightleftarrows}^{\iota}_{R \beta}}
+  \Der(\AbKr).
+  \]
+  Tatsächlich hat $\iota$ Bild in $\DerskK$ und wir erhalten die
+  Adjunktion aus der Formulierung des Theorems. Sei nun $F \in
+  \Ket(\AbKrsk)$ und $F \qiso I$ eine homotopieinjektive Auflösung von
+  $F$ durch injektive Garben. Diese ist entfaltet für $\beta$. Mit dem
+  vorangegangenen Satz \ref{beta-qi} und der $\beta$-Azyklizität
+  injektiver Garben erhalten wir für $F \in \DerskK$:
   \[R \beta F \iso \beta I \iso I \iso F. \]
-  Tatsächlich hat $R \beta$ Bild in $\Der(\AbKrsk)$ und unsere obige
-  Aussage beinhaltet die Isotransformationen $\Id \Isotrafo R \beta
-  \circ \iota$ und $\iota \circ R \beta \Isotrafo \Id$.
+  Diese Aussage beinhaltet die Isotransformationen $\Id \Isotrafo R
+  \beta \circ \iota$ und $\iota \circ R \beta \Isotrafo \Id$.
 \end{proof}
 \begin{bem}
   Kashiwara und Schapira beschränken sich auf die Äquivalenz der
   beschränkten derivierten Kategorien, allerdings mit der gleichen
   Argumentation. In \cite{KS} 1.7.12 wird eine allgemeine Aussage für
-  solche Situationen gezeigt, die hier aber m.E. nicht benötigt wird.
+  solche Situationen gezeigt, die hier aber nicht benötigt wird.
 \end{bem}
-\begin{bem}
+\begin{bem} \label{dersk-eq-bounded-dim}
   Ist $\K$ lokal-endlich und von beschränkter Dimension, so erhalten
   wir dasselbe Ergebnis mit deutlich weniger Technik, nämlich ohne
   Rückgriff auf homotopieinjektive Auflösungen. In der Tat können wir
   nach dem Satz über das unbeschränkte Derivieren homologisch
   endlicher Funktoren (\cite{TG}, 3.7.4) mit beliebigen Auflösungen
-  aus $\beta$-azyklischen Objekten arbeiten und dann einfach mit
+  aus $\beta$-azyklischen Objekten arbeiten und dann mit
   \ref{sk-is-acyc} \ref{itm:sk-is-acyc-beta} eine beliebige welke
   Auflösung wählen.
 
@@ -430,32 +444,12 @@ erhalten:
   und sich jede Garbe $F \in \AbKr$ in eine $\beta$-azyklische
   einbetten lässt. Letzteres folgt wieder aus \ref{sk-is-acyc}
   \ref{itm:sk-is-acyc-beta}, ersteres zeigen wir im folgenden Lemma.
-
-  %% In der Tat können wir die geometrische Realisierung eines solchen
-  %% Simplizes lokal (d. h. auf $U(\sigma)$-Mengen) in einen $\R^n$
-  %% einbetten. Nun kann ein Schnitt über $U(\sigma)$ (wieso?) auf
-  %% eindeutige Weise ausgedehnt werden zu einem Schnitt über
-  %% $\overline{U(\sigma)}$ und wir erhalten
-  %% \[ H^q(U(\sigma), F) \] \iso H^q_!(\overline{U(\sigma)}, F)
-  %% = 0 \quad \text{für } q > n \]
-
-  %% nach der kohomologischen Dimension von $n$-Mannigfaltigkeiten
-  %% \cite{TG} ??.
 \end{bem}
 \begin{lemma}
   Ist $\K$ ein lokal-endlicher Simplizialkomplex beschränkter
   Dimension, so ist $\beta: \AbKr \to \AbKr$ ein homologisch
   rechtsendlicher Funktor.
-
-  %% der homologischen Dimension kleiner oder gleich $\dim \K$.
-  %% stimmt das überhaupt?
 \end{lemma}
-
-%% Dabei definieren wir die Dimension eines nichtleeren
-%% Simplizialkomplexes $\K$ als
-%% \[ \dim \K := \sup_{\sigma \in \K} |\sigma| - 1 \]
-%% und $\dim \K := - \infty$, falls $\K$ leer ist.
-
 \begin{proof}
   Sei $F \in \AbKr$. Dann ist $R^k \beta F$ schwach
   $\K$-konstruierbar und wir bestimmen für $x \in |\sigma|$ die
@@ -468,32 +462,23 @@ erhalten:
   lokal-endlich von beschränkter Dimension ist $U(\sigma)$ eine offene
   Teilmenge eines endlichdimensionalen reellen Vektorraums $\R^n$.
 \end{proof}
-\begin{lemma}
+\begin{prop}
   Für $U \open \R^n$ und $F \in \Ab_{/U}$ gilt $H^q(U; F) = 0$ für
   alle $q > n$.
-\end{lemma}
+\end{prop}
 \begin{proof}
-  Zunächst können wir ohne Einschränkung $U = \R^n$ annehmen, indem
-  wir verwenden, dass die Fortsetzung durch Null entlang der
-  Einbettung $j: U \inj \R^n$ Isomorphismen
-  \[ H^q(U; F) \iso H^q(U; j_! F) \]
-  liefert.
-
-  Nach \cite{KS}, 3.2.2, gibt es für $F \in \Ab_{/\R^n}$ eine
-  $n$-Schritt Auflösung durch kompaktweiche Garben. Wir müssen also
-  zeigen, dass kompaktweiche Garben $\Gamma$-azyklisch sind
-  (\cite{TG}, 4.8 zeigt das nur für $\Gamma_!$). Mit dem
-  Azyklizitätskriterium \cite{TG}, 4.1.6, und den Aussagen für
+  Die Aussage folgt wie die bekannte Aussage für die kompakte
+  Kohomologie $H^q_!(U; F)$ aus der Existenz von $n$-Schritt
+  Auflösungen durch kompaktweiche Garben (\cite{KS}, 3.2.2). Wir
+  müssen zeigen, dass diese auch $\Gamma$-azyklisch sind. Mit dem
+  Azyklizitätskriterium \cite{TG}, 4.1.6, und der Aussage für
   $\Gamma_!$ bleibt nur noch zu zeigen, dass eine kurze exakte Sequenz
-  von Garben $F' \inj F \surj F''$ mit $F'$ kompaktweich exakt bleibt
-  nach Anwenden von $\Gamma$. Dies folgern wir allerdings sofort aus
-  der $\sigma$-Kompaktheit von $\R^n$ und den Aussagen für $\Gamma_!$:
-  Sei dazu $\R^n = \bigcup_i K_i$ eine kompakte Ausschöpfung mit $K_i$
-  kompakt und $K_i \subset \intr(K_{i+1})$. Dann gilt $\Gamma_!(K_i,
-  F) = \Gamma(K_i, F)$, $F|_{K_i}$ ist kompaktweich und unsere kurze
-  exakte Sequenz bleibt exakt nach Anwenden von $\Gamma(K_i, \cdot)$
-  und somit auch im filtrierenden Kolimes nach Anwenden von $\Gamma =
-  \colf_i \Gamma(K_i, \cdot)$.
+  von Garben $F' \inj F \surj F''$ mit kompaktweichem $F'$ exakt
+  bleibt nach Anwenden von $\Gamma$. Dies folgt allerdings sofort aus
+  der $\sigma$-Kompaktheit von $U \open \R^n$ und der Aussage für
+  $\Gamma_!$ aufgrund der Exaktheit filtrierender Kolimites und der
+  Darstellung $\Gamma = \colf_i \Gamma(K_i, \cdot)$ für $U = \bigcup_i
+  K_i$ eine kompakte Ausschöpfung von $U$.
 \end{proof}
 \begin{bem} \label{sk-homalg}
   Man beachte, dass der Beweis ab \ref{beta-adjoint} ausschließlich
@@ -513,8 +498,8 @@ Wir halten den allgemeinen Teil des Arguments fest:
   \emph{schwach konstruierbar}. Dann ist die volle Unterkategorie der
   schwach konstruierbaren Objekte $D^{\sk}$ von $D$ koreflektiv mit
   dem Koreflektor $\beta = p^* p_*$. Gibt es in $\Der(D)$ für
-  beliebige unbeschränkte Kettenkomplexe homotopieinjektive
-  Auflösungen durch injektive Objekte, so gibt es eine Äquivalenz von
+  beliebige unbeschränkte Kettenkomplexe Entfaltungen durch
+  $\beta$-azyklische Objekte, so gibt es eine Äquivalenz von
   Kategorien
   \[ \Der(D^{\sk})
   \mathrel{\mathop{\rightleftarrows}^{\iota}_{R \beta}}

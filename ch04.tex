@@ -3,12 +3,18 @@
 \chapter{Simpliziale Mengen}
 \label{ch:simp-sets}
 
-In diesem Kapitel beschäftigen wir uns mit simplizialen Objekten in
-der Kategorie der Garben auf einem topologischen Raum $X$. Während
-Simplizialkomplexe ungerichtete Graphen verallgemeinern,
-verallgemeinern simpliziale Mengen gerichtete Graphen, und werden uns
-so bei der geometrischen Realisierung von Objekten in
-Diagrammkategorien von Garben zur Verfügung stehen.
+Simpliziale Mengen sind eine Verallgemeinerung von
+Simplizialkomplexen, die näher an verwandten kategorientheoretischen
+Konzepten stehen. Sie erlauben das mehrfache Verwenden von Simplizes
+in der geometrischen Realisierung und statten Kanten und höhere
+Simplizes mit einer Orientierung aus. Während Simplizialkomplexe
+einfache ungerichtete Graphen auf höhere Dimensionen verallgemeinern,
+verallgemeinern simpliziale Mengen gerichtete Multigraphen. Die
+geometrische Realisierung simplizialer Mengen ermöglicht einen
+kombinatorischen Zugang zur Topologie und kann als Ausgangspunkt der
+Homotopietheorie gewählt werden (vgl. \cite{GJ}). In diesem Kapitel
+werden wir simpliziale Mengen, ihre geometrische Realisierung und
+deren elementare Eigenschaften einführen.
 
 \section{Definition simplizialer Mengen}
 
@@ -18,66 +24,59 @@ für ein $n \in \N$, welche wir kurz mit $[n]$ bezeichnen werden. Wir
 verstehen diese Mengen $[n]$ als angeordnete Mengen.
 
 \begin{defn} \label{def:delta}
-  Die Simplex-Kategorie $\Delta$ ist die Kategorie der endlichen
-  nichtleeren Ordinalzahlen versehen mit monotonen Abbildungen als
-  Morphismen.
+  Die \emph{Simplex-Kategorie} $\Delta$ ist die Kategorie der
+  endlichen nichtleeren Ordinalzahlen versehen mit monotonen
+  Abbildungen als Morphismen.
 
-  Ist $C$ eine Kategorie, so bezeichnen wir eine Prägarbe auf $\Delta$
-  mit Werten in $C$ (d. h. einen Funktor $\Delta\op \to C$) als
-  simpliziales Objekt in $C$.
+  Ist $C$ eine Kategorie, so heißt eine Prägarbe auf $\Delta$ mit
+  Werten in $C$ (d. h. ein Funktor $\Delta\op \to C$) ein
+  \emph{simpliziales Objekt} in $C$.
 \end{defn}
+Wir notieren die Funktorkategorien simplizialer Objekte in $C$ durch
+$\s C = [\Delta\op, C]$. Opponiert heißt ein Funktor $\Delta \to C$
+ein kosimpliziales Objekt in $C$.
 
-Unseren gewohnten Sprechweisen folgend nennen wir simpliziale Objekte
-in $C$ auch kurz ``simpliziale $C$'' und sprechen etwa von
-simplizialen Mengen und simplizialen Garben. Wir notieren die
-Funktorkategorien simplizialer Objekte in $C$ auch kurz mit $\s C =
-[\Delta\op, C]$. Opponiert bezeichnen wir einen Funktor $\Delta \to C$
-als kosimpliziales Objekt in $C$.
-
-Für $X \in \s C$ ein simpliziales Objekt notieren wir kurz $X_n =
+Für $X \in \s C$ ein simpliziales Objekt notieren wir kurz $X_n :=
 X([n])$ und für eine monotone Abbildung $f: [m] \to [n]$ auch $f^* =
 X(f)$.
 
 Die monotonen Abbildungen $[m] \to [n]$ werden von zwei besonders
 einfachen Klassen monotoner Abbildungen erzeugt: von den
-\emph{Randabbildungen}, den eindeutigen Injektionen $d_i^n: [n - 1] \to [n]$,
-die $i \in \{0, \dots, n\}$ nicht treffen, und den
-\emph{Degenerationsabbildungen}, den eindeutigen Surjektionen $s_i^n: [n +
-1] \to [n]$, für die $i \in \{0, \dots n\}$ zweielementiges Urbild
-hat.
-
-\begin{lemma}[\cite{GM}, I.2, ex. 1] \label{face-gen}
-
-  \begin{enumerate}[label=(\roman*)] \item \label{itm:face-gen-rel}
-  Die Rand- und Degenerationsabbildungen er\-fül\-len die Relationen
-  \begin{align*}
-    d_j^{n+1} d_i^n &= d_i^{n+1} d_{j-1}^n \quad \text{für} \quad i < j, \\
-    s_j^n s_i^{n+1} &= s_i^n s_{j+1}^{n+1} \quad \text{für} \quad i \leq j, \\
-    s_j^{n-1} d_i^n &=
-    \begin{cases}
-    d_i^{n-1} s_{j-1}^{n-2} \quad \text{für} \quad i < j, \\
-    \id_{[n-1]} \quad \text{für} \quad i = j \text{ oder } i = j+1, \\
-    d_{i-1}^{n-1} s_j^{n-2} \quad \text{für} \quad i > j + 1.
-    \end{cases}
-  \end{align*}
+\emph{Randabbildungen}, den eindeutigen Injektionen $d_i^n: [n - 1]
+\to [n]$, die $i \in \{0, \dots, n\}$ nicht treffen, und den
+\emph{Degenerationsabbildungen}, den eindeutigen Surjektionen $s_i^n:
+     [n + 1] \to [n]$, für die nur $i \in \{0, \dots n\}$ nicht genau
+     ein Urbild hat.
  
-  \item \label{itm:face-gen-form} Sei $f: [m] \to [n]$ monoton. Dann
-  hat $f$ eine eindeutige Darstellung
+\begin{lemma}[\cite{GM}, I.2, ex. 1] \label{face-gen}
+  \begin{enumerate}[label=(\roman*)] \item \label{itm:face-gen-rel}
+    Die Rand- und Degenerationsabbildungen er\-fül\-len die Relationen
+    \begin{alignat*}{2}
+      d_j^{n+1} d_i^n &= d_i^{n+1} d_{j-1}^n \qquad &&\text{für} \quad i < j, \\
+      s_j^n s_i^{n+1} &= s_i^n s_{j+1}^{n+1} &&\text{für} \quad i \leq j, \\
+      s_j^{n-1} d_i^n &=
+      \begin{cases}
+        d_i^{n-1} s_{j-1}^{n-2} & \text{für} \quad i < j, \\
+        \id_{[n-1]} & \text{für} \quad i = j \text{ oder } i = j+1, \\
+        d_{i-1}^{n-1} s_j^{n-2} & \text{für} \quad i > j + 1.
+    \end{cases}
+  \end{alignat*}
+   \item \label{itm:face-gen-form} Sei $f: [m] \to [n]$ monoton. Dann
+     hat $f$ eine eindeutige Darstellung
   \[ f = d_{i_1}^n \dots d_{i_s}^{n-s+1} s_{j_t}^{m-t} \dots s_{j_1}^{m-1} \]
   mit $n \geq i_1 > \dots > i_s \geq 0$, $m > j_1 > \dots > j_t \geq
   0$ und $n = m-t+s$.
-    
-  \item \label{itm:face-gen-cat} Die vom Köcher der endlichen
+\item \label{itm:face-gen-cat} Die vom Köcher der endlichen
   nichtleeren Ordinalzahlen mit den Rand- und Korandabbildungen und
   den angegebenen Relationen auf den Morphismenmengen erzeugte
   Pfadkategorie ist isomorph zu $\Delta$.
-\end{enumerate}
+  \end{enumerate}
 \end{lemma}
 \begin{proof}
   \begin{enumerate}[label=(\roman*)]
   \item Durch Bildchen Zeichnen oder explizites Nachrechnen: Wir
-  werten beide Abbildungen simultan auf allen Elementen aus und
-  erhalten zum Beispiel für die erste Aussage:
+    werten beide Abbildungen simultan auf allen Elementen aus und
+    erhalten zum Beispiel für die erste Aussage:
   \begin{align*}
   &(0, 1, \dots, i-1, i, i+1, \cdots, j-2, j-1, j, \cdots, n-1) \\
   \xmapsto{d_i^n} \quad
@@ -99,65 +98,48 @@ hat.
   von $(0, \cdots, m)$ in zusammenhängende Abschnitte mit demselben
   Funktionswert und die $i_k$ bestimmen die Funktionswerte selbst.
 
-  \item Jeden Morphismus in der Pfadkategorie, d. h. jedes Tupel
-  komponierbarer Rand- und Degenerationsabbildungen kann mit den
-  Relationen aus dem ersten Teil auf eine Form wie
-  in \ref{itm:face-gen-form} gebracht werden. Umgekehrt ist
-  nach \ref{itm:face-gen-form} jede monotone Abbildung aber auch als
-  ein solcher Pfad darstellbar. Den Isomorphismus definiert also der
-  Funktor, der auf Objekten durch die Identität und auf Morphismen
-  durch die offensichtliche Zuordnung der Erzeuger der Pfadkategorie
-  auf die jeweiligen Rand- und Degenerationsabbildungen gegeben ist.
+  \item Jeder Morphismus in der Pfadkategorie, d. h. jedes Tupel
+    komponierbarer Rand- und Degenerationsabbildungen kann mit den
+    Relationen aus dem ersten Teil auf eine Form wie in
+    \ref{itm:face-gen-form} gebracht werden. Umgekehrt ist nach
+    \ref{itm:face-gen-form} jede monotone Abbildung aber auch als ein
+    solcher Pfad darstellbar.
 \end{enumerate}
 \end{proof}
 
-Die einfachsten Beispiele nichttrivialer simplizialer Mengen sind die
-Standard-$n$-Simplizes:
+Die Yoneda-Einbettung liefert die einfachsten Beispiele nichttrivialer
+simplizialer Mengen:
 \begin{defn} \label{def:comb-standard-simplex}
   Die darstellbare simpliziale Menge $\Delta^n := \Delta(\cdot, [n])$
   heißt \emph{Standard-$n$-Simplex}.
 \end{defn}
-Wir erhalten den Funktor
-\begin{align*}
-  |\Delta|: \Delta\op &\to \s\Ens, \\
-  [n] &\mapsto \Delta^n = \Delta(\cdot, [n]),
-\end{align*}
-der auf Morphismen durch Vorschalten gegeben ist, welches wir mit
-$f \mapsto f^*$ notieren.
+Wir notieren die Yoneda-Einbettung auch durch $r: \Delta \to \s\Ens$.
 
-Ist $X \in \s\Ens$ eine simpliziale Menge, so bezeichnen wir $X_n :=
-X([n])$ als die Menge der $n$-Simplizes von $X$. Nun sind die
-$n$-Simplizes von $X$ gerade die ``Bilder des $n$-ten
-Standardsimplizes in $X$'' sind, präziser
+Ist $X \in \s\Ens$ eine simpliziale Menge, so bezeichnen wir $X_n =
+X([n])$ als die Menge der $n$-Simplizes von $X$. Nach dem Yoneda-Lemma
+sind die $n$-Simplizes von $X$ gegeben durch
 \begin{equation} \label{eq:simp-as-hom}
-X_n \iso \s\Ens(\Delta^n, X).
+  X_n \iso \s\Ens(\Delta^n, X).
 \end{equation}
-In der Tat besagt das Yoneda-Lemma, dass die Transformationen des
-freien Funktors $\Delta^n = \Delta(\cdot, [n])$ zum Funktor $X$ in
-natürlicher Bijektion stehen zu $X([n])$.
 
-Das anschließende Lemma zeigt, dass sich eine simpliziale Menge $X$
-vollständig durch ihre Simplizes $\Delta^n \to X$ verstehen
-lässt. Dazu erklären wir zunächst Slice-Kategorien, Kategorien von
-Objekten über einem gegebenen Objekt bzw. Spezialfälle von
-Komma-Kategorien.
+Eine simpliziale Menge $X$ lässt sich vollständig durch das System
+ihrer Simplizes $\Delta^n \to X$ verstehen. Dazu erklären wir
+Slice-Kategorien, einen Spezialfall von Komma-Kategorien.
 \begin{defn}
   Sei $r: C \to D$ ein Funktor und $X \in D$ ein Objekt. Dann
-  bezeichnet $\slicecat{C}{r}{X}$ die Slice-Kategorie der Objekte von
-  $C$ über $X$ mittels $r$, deren Objekte Objekte $Y \in C$ samt einem
-  Morphismus $\pi_Y: rY \to X$ sind und deren Morphismen Morphismen
-  $f: Y \to Z$ in $C$ sind, für die $rf$ ein Morphismus über $X$ ist,
-  d. h. $\pi_Y = \pi_Z \circ rf$ gilt.
+  bezeichnet $\slicecat{C}{r}{X}$ die \emph{Slice-Kategorie} der
+  Objekte von $C$ über $X$ mittels $r$, deren Objekte Morphismen
+  $\pi_c: r\,c \to X$ für $c \in C$ sind mit Morphismen den von $f: c
+  \to d$ induzierten Morphismen $r\,f$ mit $\pi_c = \pi_d \circ r\,f$.
 \end{defn}
-Es handelt sich gewissermaßen um den Schnitt des Bildes des Funktors
-$r$ mit der Über-Kategorie $C_X$.
+Es handelt sich also um die Kategorie $C$, die mittels $r$ über dem
+Objekt $X$ von $D$ aufgefasst wird.
 
-Wir bezeichnen die Slice-Kategorie $\slicecat{\Delta}{r}{X}$ als die
-Simplexkategorie von $X$. Konkret ist darin ein Objekt ein Morphismus
-$\Delta^n \to X$ und ein Morphismus ein von $[n] \to [m]$ induzierter
-Morphismus simplizialer Mengen $\Delta^n \to \Delta^m$ über $X$.
-
-\begin{lemma} \label{sset-col}
+Wir bezeichnen die Slice-Kategorie $\slicecat{\Delta}{r}{X}$ mit der
+Yoneda-Einbettung als die \emph{Simplexkategorie} von $X$. Konkret ist
+darin ein Objekt ein Morphismus $\Delta^n \to X$ und ein Morphismus
+ein Morphismus simplizialer Mengen $\Delta^n \to \Delta^m$ über $X$.
+\begin{lemma}[\cite{GJ}, I.2.1] \label{sset-col}
   Sei $X \in \s\Ens$ eine simpliziale Menge. Dann gilt
   \[ X \iso \col_{\Delta^n \to X} \Delta^n, \]
   mit dem Kolimes über die Simplexkategorie von $X$.
@@ -165,42 +147,34 @@ Morphismus simplizialer Mengen $\Delta^n \to \Delta^m$ über $X$.
 \begin{proof}
   Bezeichne $K$ obigen Kolimes. Das System, über das der Kolimes
   gebildet wird, sichert uns nach der universellen Eigenschaft des
-  Kolimes einen Morphismus $K \to X$. Wir müssen also zeigen, dass
-  dieser Bijektionen auf den $n$-Simplizes induziert. Tatsächlich
-  definiert ein $n$-Simplex $\Delta^n \to K$ durch Nachschalten von
-  $K \to X$ einen $n$-Simplex in $X$. Diese Zuordnung ist bijektiv,
-  denn wir erhalten eine Umkehrabbildung, wenn wir $\Delta^n \to X$
-  den zugehörigen Morphismus in den Kolimes $\Delta^n \to K$ zuordnen.
+  Kolimes einen Morphismus $K \to X$. Wir müssen zeigen, dass dieser
+  Bijektionen auf den $n$-Simplizes induziert. Tatsächlich definiert
+  ein $n$-Simplex $\Delta^n \to K$ durch Nachschalten von $K \to X$
+  einen $n$-Simplex in $X$. Umgekehrt hat jeder $n$-Simplex $\Delta^n
+  \to X$ eine natürliche Abbildung in den Kolimes. Diese Zuordnungen
+  sind zueinander invers.
 \end{proof}
-Der Beweis benötigte keine konkreten Eigenschaften der simplizialen
-Mengen. Wir halten mit wörtlich übertragenen Beweis allgemein fest:
-\begin{prop} \label{presheaf-colimit-representable}
-  Sei $F: C \to \Ens$ ein Funktor. Dann ist $F$ ein Kolimes über
-  darstellbare Funktoren $C(X, \cdot)$.
+Es handelt sich um ein reines ``\emph{abstract nonsense}''-Argument,
+dessen allgemeine Form wir ebenfalls festhalten. Der Beweis überträgt
+sich wörtlich, wieder mit der Slice-Kategorie über die
+Yoneda-Einbettung.
+\begin{prop}[\cite{GJ}, I.2.1] \label{presheaf-colimit-representable}
+  Sei $C$ eine kleine Kategorie und $F: C \to \Ens$ ein Funktor. Dann
+  ist $F$ ein Kolimes über darstellbare Funktoren $C(X, \cdot)$.
 \end{prop}
-\begin{proof}
-  Wir betrachten mittels des Funktors $r: C \to \Ens^C, X \mapsto
-  C(X, \cdot)$ die Slice-Kategorie $\slicecat{C}{r}{F}$ der
-  darstellbaren Funktoren über $F$ und dann das System in $\Ens^C$,
-  das daraus durch Vergessen der Transformationen nach $F$
-  hervorgeht. Wir bezeichnen wieder den Kolimes darüber mit $K$ und
-  erhalten mit der universellen Eigenschaft eine Tranformation
-  $K \Trafo F$. Diese ist eine Isotransformation, wenn sie auf allen
-  Objekten $X \in C$ Bijektionen $KX \iso FX$ induziert. Nach dem
-  Yoneda-Lemma entsprechen diese den Transformationen
-  $C(X, \cdot) \Trafo K$ bzw. $C(X, \cdot) \Trafo F$. Diese stehen
-  aber nach der universellen Eigenschaft des Kolimes und der
-  Definition der Kategorie $\slicecat{C}{r}{F}$ in Bijektion durch
-  Nachschalten von $K \Trafo F$.
-\end{proof}
 \begin{bem}
   Dies folgt später auch sofort aus der Dichteformel für Koenden
-  \ref{coend-density} und \ref{coend-col}.
+  \ref{coend-density}, der Beschreibung von Koenden als Kolimites
+  \ref{coend-col} und der Beschreibung von Produkten von Mengen als
+  Koprodukte \ref{ens-tensored}.
 \end{bem}
+Das Motto zur Arbeit mit simplizialen Mengen ist daher, Aussagen, die
+für die Standardsimplizes gelten, durch ``Kostetigkeit'' (Vertauschen
+mit Kolimites) auf simpliziale Mengen zu übertragen.
 
 \section{Der kosimpliziale Raum der Standardsimplizes}
 
-Die geometrsiche Realsierung einer simplizialen Menge soll sich mit
+Die geometrische Realisierung einer simplizialen Menge soll sich mit
 geeigneten Identifikationen aus den geometrischen Realisierungen von
 Standard-$n$-Simplizes zusammensetzen. Diese definieren wir als die
 abgeschlossenen geometrischen Standard-$n$-Simplizes
@@ -214,27 +188,33 @@ Notation.
 Ein Morphismus $f: [m] \to [n]$ induziert eine stetige Abbildung $|f|:
 |\Delta^m| \to |\Delta^n|$ auf den zugehörigen Simplizes. Nach
 \ref{face-gen} reicht es, diese für Rand- und Degenerationsabbildungen
-anzugeben. Für die Randabbildung $|d_i^n|: |\Delta^{n-1}| \to
-|\Delta^n|$ ($0 \leq i \leq n$) handelt es sich dabei um die Inklusion
-der $i$-ten Kante, d. h. in Koordinaten das Einfügen einer Null an der
-$i$-ten Stelle, für die Degenerationen $|s_i^n|: |\Delta^{n+1}| \to
-|\Delta^n|$ ($0 \leq i \leq n$) um den Kollaps der $i$-ten direkten
-Kante, d. h. in Koordinaten die Ersetzung der $i$-ten und ihrer
-darauffolgenden Koordinate durch ihre Summe. In Formeln:
-\begin{align*} \label{eq:cosimp-space}
+\begin{alignat*}{2}
+  |d_i^n|: |\Delta^{n-1}| &\to |\Delta^n| \qquad && \text{für } 0 \leq i \leq n, \\
+  |s_i^n|: |\Delta^{n+1}| &\to |\Delta^n| && \text{für } 0 \leq i \leq n
+\end{alignat*}
+anzugeben. Für die Randabbildungen $|d_i^n|$ handelt es sich dabei um
+die Inklusion der $i$-ten Kante, d. h. in Koordinaten das Einfügen
+einer Null an der $i$-ten Stelle, für die Degenerationen $s_i^n$ um
+den Kollaps der $i$-ten direkten Kante, d. h. in Koordinaten die
+Ersetzung der $i$-ten und ihrer darauffolgenden Koordinate durch ihre
+Summe. In Formeln:
+\begin{align} \label{eq:cosimp-space}
   |d_i^n|(x_0, \cdots, x_{n-1})
   &= (x_0, \cdots, x_{i-1}, 0, x_i, \cdots, x_{n-1}), \\
   |s_i^n|(x_0, \cdots, x_{n+1})
   &= (x_0, \cdots, x_{i-1}, x_i + x_{i+1}, x_{i+2}, \cdots, x_{n+1}).
+\end{align}
+Wir erhalten einen Funktor
+\begin{align*}
+  |\Delta|: \Delta &\to \Top, \\
+  [n] &\mapsto |\Delta^n|,
 \end{align*}
-Wir erhalten einen Funktor $|\Delta|: \Delta \to \Top, [n] \mapsto
-|\Delta^n|$, genannt der \emph{kosimpliziale Raum der
-  Standardsimplizes}.
+genannt der \emph{kosimpliziale Raum der Standardsimplizes}.
 
 \begin{bem}[\cite{Moer}, III.1.1] \label{gen-intervall}
   Eine alternative Darstellung der geometrischen
   Standard-$n$-Simplizes ist für $I = [0, 1]$ das Einheitsintervall
-  mit Endpunkten $0$, $1$ und Anordnung $\leq$:
+  mit Endpunkten $0$ und $1$ und der Anordnung $\leq$:
   \[ |\Delta^n| = \set{(x_1, \cdots, x_n) \in I^n}{x_1 \leq \cdots \leq x_n} \]
   mit den Inklusionen von Rändern $|d_i^n|: |\Delta^{n-1}| \to
   |\Delta^n|$, $0 \leq i \leq n$:
@@ -247,13 +227,13 @@ Wir erhalten einen Funktor $|\Delta|: \Delta \to \Top, [n] \mapsto
   und Kollapsen von Kanten $|s_i^n|: |\Delta^{n+1}| \to |\Delta^{n}|$,
   $0 \leq i \leq n$, durch Vergessen der $(i+1)$-ten Koordinate
   \[ |s_i^n|(x_1, \cdots x_{n+1}) =
-  (x_1, \cdots, x_i, x_{i+1}, \cdots, x_{n+1}).
+  (x_1, \cdots, x_i, x_{i+2}, \cdots, x_{n+1}).
   \]
   Man beachte, dass die Konstruktion nur einen angeordneten
   topologischen Raum mit Minimum $0$ und Maximum $1$ benötigt, und
   sich auf solche ``verallgemeinerten Intervalle'' überträgt. Der
   Sierpinski-Raum aus einem offenen dichten Punkt $1$ und einem
-  abgeschlossenen Punkt $0$ ist etwa solch ein verallgemeinertes
+  abgeschlossenen Punkt $0$ ist etwa ein solches verallgemeinertes
   Intervall.
 \end{bem}
 
@@ -262,61 +242,19 @@ Wir erhalten einen Funktor $|\Delta|: \Delta \to \Top, [n] \mapsto
   anschaulich-geometrischen Realisierung durch lokal reelle Räume auch
   noch eine kombinatorischere Realisierung analog zur
   Ordnungstopologie auf dem Simplizialkomplex finden. Nahe liegt es,
-  die Standard-$n$-Simplizialkomplexe mit ihrer Ordnungsgtopologie zu
+  die Standard-$n$-Simplizialkomplexe mit ihrer Ordnungstopologie zu
   verwenden. Wir konstruieren sie als Quotienten der reellen
   Standardsimplizes, werden aber später sehen, dass sie uns bei der
   kombinatorischen Beschreibung von Garben auf simplizialen Mengen
   nicht weiterhelfen.
 
-  Wir definieren die \emph{plumpen Standard-$n$-Simplizes
-    $\blacktriangle^n$} Quotienten induktiv konstruierter
-  Äquivalenzrelationen:
-  \[ \blacktriangle^0 := |\Delta^0| = \point \]
-  und
-  \[ \blacktriangle^n := |\Delta^n| / \sim \]
-  mit der Äquivalenzrelation
-  \begin{alignat*}{3}
-    x &\sim y && \qquad \text{für } x, y \in \intr |\Delta^n| \text{ und }  \\
-    |d_i| x &\sim |d_i| y && \qquad \text{für } x \sim y \in |\Delta^{n-1}|.
-  \end{alignat*}
-  Dabei steht $\intr |\Delta^n|$ für das offene Innere von $|\Delta^n|
-  \subset \R^{n+1}$. Anschaulich gesprochen wird also bei $|\Delta^n|
-  \to \blacktriangle^n$ das offene Innere zu einem Punkt identifiziert
-  und eine solche Identifikation auch auf allen Rändern
-  vorgenommen. Der offene Punkt im Inneren ist dicht, wir nennen ihn
-  auch den \emph{generischen Punkt} von $\blacktriangle^n$.
+  Bezeichne $\blacktriangle^n = \Ord \Delta^n$ den
+  Standard-$n$-Simplizialkomplex mit der Ordnungstopologie. Der
+  Simplexanzeiger $p: |\Delta^n| \to \blacktriangle^n$ ist dann ein
+  Morphismus kosimplizialer Räume vom kosimplizialen Raum der
+  Standardsimplizes in den \emph{kosimplizialen Raum der
+    ordnungstopologischen Standardsimplizes}.
 \end{bem}
-\begin{bsp}
-  Der plumpe Standard-$1$-Simplex ist ein dreipunktiger Raum mit einem
-  offenen dichten Punkt und zwei abgeschlossenen Punkten, eine
-  Variante des Sierpinski-Raums. Der plumpe Standard-$2$-Simplex ist
-  siebenpunktig.
-\end{bsp}
-\begin{lemma}
-  Die stetigen Abbildungen $|f|: |\Delta^m| \to |\Delta^n|$ für
-  monotones $f: [m] \to [n]$ induzieren stetige Abbildungen
-  $\overline{|f|}: \blacktriangle^m \to \blacktriangle^n$, sodass
-  \[ \begin{tikzcd}
-    \lvert \Delta^m \rvert \arrow{d} \arrow{r}{|f|}
-    & \lvert \Delta^n \rvert \arrow{d} \\
-    \blacktriangle^m \arrow{r}{\overline{|f|}}
-    & \blacktriangle^n
-  \end{tikzcd} \]
-  kommutiert.
-\end{lemma}
-\begin{proof}
-  Für die Randabbildungen $|d_i|$ folgt das sofort aus der Definition
-  der Äquivalenzrelation. Die Menge $\intr |\Delta^m|$ wird
-  beschrieben durch die Menge der Punkte $(x_0, \cdots, x_m)$, für die
-  alle Koordinaten echt positiv sind. Diese Beschreibung ist invariant
-  unter Addition mittlerer Koordinaten. Dies zeigt die
-  Wohldefiniertheit der induzierten Abbildung $\overline{|s_i|}:
-  \blacktriangle^m \to \blacktriangle^{m-1}$ für im Inneren
-  identifizierte Punkte. Genauso argumentiert man auf den Rändern.
-\end{proof}
-Diese Transformation liefert den kosimplizialen Raum $\blacktriangle:
-\Delta \to \Top, [n] \mapsto \blacktriangle^n$ der plumpen
-Standardsimplizes.
 
 \section{Geometrische Realisierung simplizialer Mengen}
 
@@ -336,17 +274,18 @@ Die geometrische Realisierung von Standard-$n$-Simplizes haben wir
 gerade gesehen. Nun fordern wir, dass sich die Realisierung mit
 Kolimites vertrage:
 \begin{equation} \label{eq:real-cocont}
-|\col_i X_i| \iso \col_i |X_i|.
+  |\col_i X_i| \iso \col_i |X_i|.
 \end{equation}
-Wenn dies der Fall sein soll, so müssen wir mit der Darstellung
-\[ X := \col_{\Delta^n \to X} \Delta^n \]
-aus \ref{sset-col} auf jeden Fall setzen
+Wenn dies der Fall sein soll, müssen wir die geometrische Realisierung
+wegen der Darstellung
+\[ X = \col_{\Delta^n \to X} \Delta^n \]
+aus \ref{sset-col} wie folgt definieren:
 \begin{equation} \label{eq:real-colim}
-|X| := \col_{\Delta^n \to X} |\Delta^n|.
+  |X| := \col_{\Delta^n \to X} |\Delta^n|.
 \end{equation}
 Debei wird der Kolimes wieder über die Simplexkategorie von $X$
-gebildet, nun allerdings mit den induzierten stetigen Abbildungen aus
-Gleichung \ref{eq:cosimp-space} als Systemmorphismen.
+gebildet, nun mit den induzierten stetigen Abbildungen aus Gleichung
+\ref{eq:cosimp-space} als Systemmorphismen.
 
 Ein Morphismus simplizialer Mengen $X \to Y$ induziert nun durch
 Nachschalten von $X \to Y$ einen Funktor auf den Simplexkategorien
@@ -355,7 +294,7 @@ Kolimites eine stetige Abbildung $|X| \to |Y|$. Wir erhalten also den
 Funktor der geometrischen Realisierung $| \cdot |: \s \Ens \to \Top$.
 
 Unsere Konstruktion erfüllt tatsächlich:
-\begin{prop}
+\begin{prop} \label{real-cocont}
   Der Funktor der geometrischen Realisierung simplizialer Mengen $|
   \cdot|$ vertauscht mit beliebigen Kolimites über kleine
   Indexkategorien.
@@ -370,32 +309,31 @@ Unsere Konstruktion erfüllt tatsächlich:
   Diese sind mit den Morphismen in $\Delta$ verträglich.
 \end{proof}
 
-Wie ganz allgemein können wir den Kolimes topologischer Räume auch
-explizit mittels Koprodukt und Koegalisator ausschreiben. Wir
-verstehen die Mengen $X_n$ als diskrete topologische Räume und
-erhalten:
-\[ |X| \iso (\coprod_n X_n \times |\Delta^n|) / \sim \]
-mit der Quotiententopologie, die durch die von
+Wir können den Kolimes topologischer Räume mittels Koprodukt und
+Koegalisator ausschreiben. Dazu verstehen wir die Mengen $X_n$ als
+diskrete topologische Räume und erhalten:
+\[ |X| \iso \bigg( \coprod_n X_n \times |\Delta^n| \bigg) \big/ \sim \]
+mit der Quotiententopologie nach der Äquivalenzrelation, die für alle
+monotonen $f: [m] \to [n]$ von 
 \[ (x, |f|(p)) \sim (f^* x, p) \]
-für alle monotonen $f: [m] \to [n]$ erzeugte Äquivalenzrelation
-gegeben ist.
+erzeugt ist.
 
 \section{Sparsame Realisierung durch nichtdegenerierte Simplizes}
 
 Während die Definition simplizialer Mengen und ihrer Realisierung mit
 Degenerationsabbildungen wie gesehen von einem formalen Standpunkt aus
-sehr elegant ist, ist für die konkrete Arbeit häufig eine explizitere
-Form der Realisierung praktischer, die ``unnötige Simplizes von
-vornherein weglässt''.
+einfach ist, ist für die konkrete Arbeit häufig eine explizitere Form
+der Realisierung praktischer, die ``unnötige Simplizes von vornherein
+weglässt''.
 \begin{defn}[\cite{GM}, I.2.9]
   Sei $X \in \s\Ens$ eine simpliziale Menge. Ein Simplex $x \in X_n$
-  heißt degeneriert, falls es einen Simplex $y \in X_m$ und eine
-  surjektive monotone Abbildung $s: [n] \to [m], n > m$ gibt mit $x =
-  s^* y$.
+  heißt \emph{degeneriert}, falls es einen Simplex $y \in X_m$ und
+  eine surjektive monotone Abbildung $s: [n] \to [m], n > m$ gibt mit
+  $x = s^* y$.
 \end{defn}
 Andernfalls heißt ein Simplex nichtdegeneriert. Für $X \in \s\Ens$
-bezeichne $NX_n$ die Menge der nichtdegenerierten $n$-Simplizes von
-$X$.
+bezeichne $NX_n \subset X_n$ die Menge der nichtdegenerierten
+$n$-Simplizes von $X$.
 \begin{lemma} \label{degen-repr}
   Sei $X \in \s\Ens$ eine simpliziale Menge und $x \in X_n$ ein
   $n$-Simplex. Dann gibt es eine eindeutige Darstellung $x = s^* y$
@@ -409,13 +347,13 @@ $X$.
   nach den Relationen aus \ref{face-gen}.
 \end{proof}
 Wir notieren für eine solche Darstellung $x = s^* y$ auch $y = N(x)$
-oder zur Bewahrung der Information über $s$ auch $y = N_s(x)$.
+oder zur Angabe von $s$ auch $y = N_s(x)$.
 
 Wir definieren nun die \emph{sparsame geometrsiche Realisierung} einer
 simplizialen Menge $X$ wie folgt:
-\[ \| X \| := \coprod_n NX_n \times |\Delta^n| / \sim_N ,\]
-wobei wie gehabt $NX_n$ die diskrete Topologie trägt und die
-Äquivalenzrelation erzeugt ist von
+\[ \| X \| := \bigg( \coprod_n NX_n \times |\Delta^n| \bigg) \big/ \sim_N ,\]
+wobei $NX_n$ die diskrete Topologie trägt und die Äquivalenzrelation
+erzeugt ist von
 \[ (x, |d_i|(p)) \sim_N (N_s(d_i^* x), |s|(p)), \]
 mit der eindeutigen Darstellung Degenerierter aus
 \ref{degen-repr}. Diese Äquivalenzrelation lässt sich interpretieren
@@ -439,53 +377,54 @@ mit $y = N_s(d_i^* x)$.
   durch das Bild ihres Urbilds $V$ in $\coprod_n NX_n \times
   |\Delta^n|$ unter
   \[ \coprod_n NX_n \times |\Delta^n|
-  \inj \coprod_n X_n \times |\Delta^n| \xrightarrow{q} |X|. \]
+  \xhookrightarrow{\qquad} \coprod_n X_n \times |\Delta^n|
+  \xrightarrow{\quad\scriptsize{q}\quad} |X|. \]
 
   Bezeichne $\overline{V}$ den Abschluss von $V \open \coprod_n X_n
   \times |\Delta^n|$ unter $\sim$-Äquivalenz. Es gilt $\overline{V} =
   q^{-1}(q(V))$ und wir müssen nach Definition der Quotiententopologie
-  zeigen, dass $\overline{V}$ offen ist. Bezeichne für $x$ einen
-  nichtdegenerierten Simplex von $X$ den Schnitt von $V$ mit dem zu
-  $x$ gehörigen geometrischen Simplex $|\Delta^n|$ mit $V_x$. Bei
+  zeigen, dass $\overline{V}$ offen ist. Bezeichne für $x \in NX_n$
+  einen nichtdegenerierten Simplex von $X$ den Schnitt von $V$ mit dem
+  zu $x$ gehörigen geometrischen Simplex $|\Delta^n|$ mit $V_x$. Bei
   Übergang von $V$ zu $\overline{V}$ kommen dann alle Punkte $(s^* x,
-  p)$ mit $(x, |s|(p)) \in U_x$ hinzu. Das Urbild der offenen Menge $U_x$
-  unter dem stetigen $s$-Kollaps $|s|$ ist dann natürlich wieder
-  offen.
+  p)$ mit $(x, |s|(p)) \in U_x$ hinzu. Das Urbild der offenen Menge
+  $U_x$ unter dem stetigen $s$-Kollaps $|s|$ ist dann offen.
 \end{proof}
-\begin{bsp} \label{ex:real-sphere}
-  Mit diesem Satz kann man sich geometrische Realisierungen sofort
-  veranschaulichen. Die Realisierung einer simplizialen Menge mit
-  einem nichtdegenerierten $n$-Simplex ($n \geq 1$) und einem
-  nichtdegenerierten $0$-Simplex ist etwa die $n$-Sphäre.
-\end{bsp}
+Mit diesem Satz kann man sich geometrische Realisierungen gut
+veranschaulichen, etwa die versprochenen Darstellungen von $n$-Sphären
+als Verklebung eines nichtdegenerierten $n$-Simplex mit einem
+nichtdegenerierten $0$-Simplex.
 \begin{bsp} \label{ex:clumsy-sphere}
-  Die geometrische Realisierung mittels plumper Simplizes dieser
-  Standard-Darstellung der $S^n$ als simpliziale Menge liefert den
-  Sierpinski-Raum bestehend aus einem offenen dichten und einem
-  abgeschlossenen Punkt. Dies zeigt, dass die plumpe Realisierung für
-  unsere Zwecke zu grob ist und sich in \ref{sec:simp-set-sk} nicht
-  für die Übertragung der Aussagen über schwach konstruierbare Garben
-  auf Simplizialkomplexen eignen wird.
+  Die geometrische Realisierung mittels ordnungstopologischer
+  Simplizes dieser Standard-Darstellung der $S^n$ als simpliziale
+  Menge liefert den Sierpinski-Raum bestehend aus einem offenen
+  dichten und einem abgeschlossenen Punkt. Dies zeigt, dass die
+  ordnungstopologische Realisierung für unsere Zwecke zu grob ist und
+  sich in \ref{sec:simp-set-sk} nicht für die Übertragung der Aussagen
+  über schwach konstruierbare Garben auf Simplizialkomplexen eignen
+  wird.
 \end{bsp}
 
-\section{Iterative Konstruktion der geometrischen Realisierung}
+\section{Iterative Konstruktion durch Pushouts}
 
-Wir geben eine weitere Interpretation der geometrischen Realisierung
-als iteratives Ankleben geometrischer Simplizes an ihre Ränder an und
-werden so insbesondere sehen, dass die geometrische Realisierung einen
-Hausdorffraum liefert (\cite{Moer}, III.1).
+Die geometrische Realisierung kann als iteratives Ankleben von
+Standardsimplizes an ihre Ränder verstanden werden. Wir zeigen, dass
+die geometrische Realisierung einer simplizialen Menge ein CW-Komplex
+und insbesondere ein Hausdorffraum ist (\cite{Moer}, III.1).
 
-Bezeichne dazu $\|X^{\leq k}\| = \coprod_{n = 0}^k NX_n \times
-|\Delta^n| / \sim_N $ die geometrische Realisierung durch
-nichtdegenerierte Simplizes der Dimension $\leq k$. Wir erhalten
-Einbettungen $\|X^{\leq k}\| \inj \|X\|$ sowie $\|X\| = \bigcup_k
-\|X^{\leq k}\|$, denn die Äquivalenzrelation von ganz $\|X\|$ fügt
-keine neuen Identifikationen auf den Teilmengen $\|X^{\leq k}\|
-\subset \|X\|$ hinzu.
+Bezeichne dazu
+\[ \|X^{\leq k}\| =
+\bigg( \coprod_{n = 0}^k NX_n \times |\Delta^n| \bigg) \big/ \sim_N \]
+die geometrische Realisierung durch nichtdegenerierte Simplizes der
+Dimension kleiner oder gleich $k$. Wir erhalten Einbettungen
+$\|X^{\leq k}\| \inj \|X^{\leq k+1}\|$ und im Kolimes
+\[ \|X\| = \bigcup_k \|X^{\leq k}\|, \]
+denn die Äquivalenzrelation von ganz $\|X\|$ führt zu keinen neuen
+Identifikationen auf den Teilmengen $\|X^{\leq k}\| \subset \|X\|$.
 
 Wir können die $\|X^{\leq k}\|$ iterativ konstruieren. Betrachte dazu
-die stetigen Abbildungen $\pi_k$, die uns den ``$k$-dimensionalen
-Teil'' von $\|X\|$ liefern:
+die stetigen Abbildungen $\pi_k$, die den $k$-dimensionalen Teil von
+$\|X\|$ liefern:
 \[ \pi_k: NX_k \times |\Delta^k|
   \inj \coprod_{n=0}^k NX_n \times |\Delta^n|
   \surj \|X^{\leq k}\|. \]
@@ -505,7 +444,7 @@ Teil'' von $\|X\|$ liefern:
   gegeben durch
   \begin{align*}
     NX_k \times |\Delta^{k-1}| &\to \|X^{\leq k-1}\| \\
-    (x, p) &\mapsto [(N_s(d_i^* x), |s|(p))].
+    (x, p) &\mapsto \big[ (N_s(d_i^* x), |s|(p)) \big].
   \end{align*}
 \end{prop}
 \begin{proof}
@@ -518,9 +457,10 @@ Teil'' von $\|X\|$ liefern:
   gewissen Äquivalenzrelationen. Bezeichne die Einschränkung von
   $\sim_N$ auf $\coprod_{n=0}^k NX_n \times |\Delta^n|$ mit
   $\sim_N^k$. Die erzeugenden Relationen für $\sim_N^k$ sind:
-  \[ (x, |d_i|(p)) \sim (N_s(d_i^* x), |s|(p))
-  \quad \text{für} x \in NX_n, n \leq k. \]
-  Das sind für $x \in NX_n$ und $n \leq k-1$ genau die erzeugenden
+  \[ \big( x, |d_i|(p) \big) \sim \big( N_s(d_i^* x), |s|(p) \big)
+  \qquad \text{für } x \in NX_n, n \leq k.
+  \]
+  Das sind für $x \in NX_n$ im Fall $n \leq k-1$ genau die erzeugenden
   Relationen von $\sim_N^{k-1}$ und für $n = k$ genau die Relationen
   aus der Definition des Pushouts.
 \end{proof}
@@ -532,27 +472,17 @@ Teil'' von $\|X\|$ liefern:
 \begin{proof}
   Die vorangegangene Proposition zeigt, dass es sich um einen
   CW-Komplex handelt. Die Pushouts sind dabei das Ankleben von
-  $k$-Zellen $D^k \cong |\Delta^k|$. Konkret zur
-  Hausdorff-Eigenschaft: Seien $p, q \in \|X\|$, $p \neq q$. Dann gibt
-  es ein $k$ mit $p, q \in \|X^{\leq k}\| \setminus \|X^{\leq
-    k-1}\|$. Somit liegt ohne Einschränkung $p$ im Inneren eines
-  $k$-Simplizes und kann ohne Probleme durch disjunkte offene
-  Umgebungen $U_k, V_k \open \|X^{\leq k}\|$ von Randpunkten dieses
-  Simplexes und Punkten in anderen Simplizes getrennt werden. Wir
-  erhalten daraus disjunkte offene Umgebungen $U$ und $V$ in ganz
-  $|X|$, indem wir sie ``baryzentrisch ergänzen'': Sei dazu zu jedem
-  geometrischen Standardsimplex $|\Delta^n|$ ein ausgezeichneter Punkt
-  $z_n$ in seinem offenen Inneren fest gewählt (etwa das
-  Baryzentrum). Wir setzen für $n \geq k$ induktiv
-  \begin{align*}
-    U_{n+1} = \big\{ \: [(y, r)] \in \|X^{\leq n+1}\| \quad \big| \quad
-    & y \in NX_{n+1}, \exists t \in (0, 1], w \in |\Delta^n|: \\
-    & (d_i^* y, w) \in U_n, r = t w + (1-t) z_y \: \big\},
-  \end{align*}
-  den konvexen Abschluss zu $z_y$ von $U_n$ in den an $U_n$
-  angrenzenden Simplizes $y$ und dann $U = \bigcup_{n \geq k} U_n$
-  sowie $V$ entsprechend. Diese Teilmengen sind nach Induktion
-  disjunkt, offen und enthalten $p$ bzw. $q$.
+  $k$-Zellen $D^k \cong |\Delta^k|$. Konkret zur Hausdorff-Eigenschaft
+  von CW-Komplexen: Es reicht zu zeigen, dass für jedes $k$ der
+  Teilraum $\|X^{\leq k}\|$ Hausdorffsch ist. Sind darin zwei
+  verschiedene Punkte $p$ und $q$ gegeben, so liegt ohne Einschränkung
+  $p$ im Inneren einer $k$-Zelle $|\Delta^k|$, denn andernfalls folgt
+  die Hausdorff-Eigenschaft induktiv aus der für $\|X^{\leq
+    k-1}\|$. Liegt $q$ in derselben Zelle, so können sie dort durch
+  offene Mengen getrennt werden. Andernfalls hat $p$ im Inneren seiner
+  $k$-Zelle eine abgeschlossene Umgebung, die eine offene Umgebung von
+  $p$ enthält und deren Komplement eine zugehörige offene Umgebung für
+  $q$ ist.
 \end{proof}
 \begin{bem} \label{cw-cells}
   Nach dem Korollar kann die geometrische Realisierung einer
@@ -562,28 +492,30 @@ Teil'' von $\|X\|$ liefern:
   Zelle der geometrischen Realisierung mit $|\sigma|$.
 \end{bem}
 
-\section{Kompakt erzeugte Hausdorffräume}
+\section{Exaktheitseigenschaften der geometrischen Realisierung}
 
-Die geometrischen Realisierungen simplizialer Mengen liegen
-tatsächlich sogar in einer in ihren kategoriellen Eigenschaften
-bequemen (engl. \emph{convenient}) Kategorie topologischer Räume, den
-kompakt erzeugten Hausdorffräumen.
+Die geometrische Realisierungen simplizialer Mengen liegt in einer in
+ihren kategoriellen Eigenschaften bequemen (engl. \emph{convenient})
+Kategorie topologischer Räume, den kompakt erzeugten
+Hausdorffräumen. Dies ermöglicht es uns, neben dem Vertauschen der
+geometrischen Realisierung mit Kolimites (\ref{real-cocont}) auch das
+Vertauschen mit endlichen Limites zu zeigen.
 
 \begin{defn}[\cite{Steenrod}] \label{def:cg}
-  Ein topologischer Raum $X$ heißt kompakt erzeugt, falls gilt: eine
-  Teilmenge $A \subset X$ ist abgeschlossen, falls $A \cap K$ in $K$
-  abgeschlossen ist für jedes Kompaktum $K \subset X$.
+  Ein topologischer Raum $X$ heißt \emph{kompakt erzeugt}, falls gilt:
+  eine Teilmenge $A \subset X$ ist abgeschlossen, falls $A \cap K$ in
+  $K$ abgeschlossen ist für jedes Kompaktum $K \subset X$.
 \end{defn}
 \begin{bem}
   Äquivalent dazu ist: eine Teilmenge $U \subset X$ ist offen, falls
   $U \cap K$ in $K$ offen ist für jedes Kompaktum $K \subset X$.
 \end{bem}
-Wir notieren volle Unterkategorie der kompakt erzeugten topologischen
-Räume in den topologischen Räumen mit $\CG$ und der kompakt erzeugten
-Hausdorffräume mit $\CGHaus$. Die kompakt erzeugten topologischen
-Räume umfassen eine sehr große Klasse an relevanten topologischen
-Räumen, etwa CW-Komplexe (nach dem nachfolgenden Lemma \ref{cg-crit})
-oder erstabzählbare Räume (\cite{Steenrod}, 2.2).
+Wir notieren die volle Unterkategorie der kompakt erzeugten
+topologischen Räume in den topologischen Räumen mit $\CG$ und der
+kompakt erzeugten Hausdorffräume mit $\CGHaus$. Die kompakt erzeugten
+topologischen Räume umfassen eine sehr große Klasse an relevanten
+topologischen Räumen, etwa CW-Komplexe (nach dem nachfolgenden Lemma
+\ref{cg-crit}) oder erstabzählbare Räume (\cite{Steenrod}, 2.2).
 
 Für uns relevant sind die folgenden Kriterien:
 \begin{lemma} \label{cg-crit}
@@ -591,17 +523,18 @@ Für uns relevant sind die folgenden Kriterien:
     \item \label{itm:cg-crit-lc} Ist $X$ ein lokal kompakter
       topologischer Raum, so ist $X$ kompakt erzeugt.
     \item \label{itm:cg-crit-quot} Ist $p: X \surj Y$ eine
-      Quotientenabbildung (d. h. $Y$ trägt die Finaltopologie
-      bezüglich $p$) und $X$ kompakt erzeugt, so ist auch $Y$ kompakt
-      erzeugt.
+      Quotientenabbildung und $X$ kompakt erzeugt, so ist auch $Y$
+      kompakt erzeugt.
      \item \label{itm:cg-crit-cw} Ist $X$ ein CW-Komplex, so ist $X$
        kompakt erzeugt.
   \end{enumerate}
 \end{lemma}
 Dabei heißt ein topologischer Raum \emph{lokal kompakt} (im schwachen
 Sinne), falls jeder Punkt eine kompakte Umgebung besitzt. Beachte den
-Unterschied zu \ref{def:loc-compact} und \ref{loc-compact-usage}.
+Unterschied zu \ref{def:loc-compact} und Bemerkung
+\ref{loc-compact-usage}.
 \begin{proof}
+  % TODO: cg-Beweis falsch!
   \begin{enumerate}[label=(\roman*)]
     \item \label{itm:cg-crit-proof-lc} Sei $U \subset X$ mit $U \cap
       K$ offen für alle $K \subset X$ kompakt. Mit der
@@ -618,11 +551,11 @@ Unterschied zu \ref{def:loc-compact} und \ref{loc-compact-usage}.
       ($p(\tilde{K}) \subset Y$ ist kompakt als stetiges Bild eines
       Kompaktums). Da $X$ kompakt erzeugt ist, folgt nun, dass
       $p^{-1}(A)$ abgeschlossen ist und somit auch $A \subset Y$.
-    \item Die $n$-Bälle $D^n$ und $n-1$-Sphären $S^{n-1}$ sind kompakt
-      erzeugt nach \ref{itm:cg-crit-proof-lc}. Disjunkte Vereinigungen
-      kompakt erzeugter Räume sind kompakt erzeugt. Quotienten kompakt
-      erzeugter Räume sind kompakt erzeugt nach
-      \ref{itm:cg-crit-proof-quot}. Da kompakte Teilmengen von
+    \item Die $n$-Bälle $D^n$ und $(n-1)$-Sphären $S^{n-1}$ sind
+      kompakt erzeugt nach \ref{itm:cg-crit-proof-lc}. Disjunkte
+      Vereinigungen kompakt erzeugter Räume sind kompakt
+      erzeugt. Quotienten kompakt erzeugter Räume sind kompakt erzeugt
+      nach \ref{itm:cg-crit-proof-quot}. Da kompakte Teilmengen von
       CW-Komplexen nur endlich viele offene Zellen treffen, ist auch
       die Vereinigung über alle $n$-Skelette kompakt erzeugt.
   \end{enumerate}
@@ -637,8 +570,9 @@ Mit diesen Kriterien folgt sofort unser Ziel.
   Es handelt sich um einen Hausdorffraum nach \ref{real-hd}. Nach
   \ref{cg-crit} \ref{itm:cg-crit-lc} ist $\coprod_n X_n \times
   |\Delta^n|$ kompakt erzeugt und mit \ref{cg-crit}
-  \ref{itm:cg-crit-quot} auch $|X|$. Das folgt auch aus \ref{real-hd}
-  und \ref{cg-crit} \ref{itm:cg-crit-cw}.
+  \ref{itm:cg-crit-quot} auch $|X|$. Das folgt alternativ aus
+  \ref{real-hd} und dem Kriterium für CW-Komplexe \ref{cg-crit}
+  \ref{itm:cg-crit-cw}.
 \end{proof}
 
 Der entscheidende Grund, in der Kategorie $\CGHaus$ statt in $\Top$ zu
@@ -648,8 +582,11 @@ arbeiten, ist die Existenz eines internen Hom.
   Die Kategorie $\CGHaus$ der kompakt erzeugten Hausdorffräume ist
   kartesisch abgeschlossen.
 \end{theorem}
-Aus der Adjunktion $(\times Y, Y \iHom)$ folgt auch die
-Rechtsexaktheit von Produkten in $\CGHaus$.
+\begin{proof}[Ohne Beweis.] \end{proof}
+
+Während wir die Adjunktion $(\times Y, Y \iHom)$ selbst nicht
+benötigen, ist die entscheidende Folge die Rechtsexaktheit von
+Produkten in $\CGHaus$.
 \begin{satz}[\cite{Gabriel-Zisman}, III, 3] \label{real-products}
   Die geometrische Realisierung $|\cdot|: \s\Ens \to \CGHaus$
   vertauscht mit endlichen Limites.
@@ -658,13 +595,13 @@ Rechtsexaktheit von Produkten in $\CGHaus$.
    Entscheidend ist, dass das Produkt in $\Top$ zweier kompakt
    erzeugter Hausdorffräume im Allgemeinen nicht wieder kompakt
    erzeugt ist. Das korrekte Produkt in $\CGHaus$ heißt auch
-   \emph{Kelley-Produkt} und wird notiert $X \times_{Ke} Y$. Es ist
-   gegeben durch Anwenden des Rechtsadjungierten der Inklusion $\CG
+   \emph{Kelley-Produkt} und wird $X \times_{Ke} Y$ notiert. Man
+   erhält es durch Anwenden des Rechtsadjungierten der Inklusion $\CG
    \to \Top$ auf das Produkt in $\Top$. Dieser Rechtsadjungierte $k:
    \Top \to \CG$ verfeinert die Topologie eines Raumes $X$ um alle
    Mengen $U \subset X$, deren Schnitte mit allen Kompakta $K \subset
    X$ in $K$ offen sind, also genau um die für kompakte Erzeugtheit
-   benötigten. Es gilt also:
+   benötigten. Der Satz besagt also:
    \[ |X \times Y| \iso k(|X| \times |Y|). \]
 \end{bem}
 \begin{proof}[Beweisskizze](\cite{Gabriel-Zisman}, III, 3)
@@ -693,8 +630,8 @@ Rechtsexaktheit von Produkten in $\CGHaus$.
 \begin{bsp}[\cite{Engelking}, 3.3.29] \label{ex:cg-products}
   Ein Produkt in $\Top$ zweier kompakt erzeugter Hausdorff-Räume ist
   im Allgemeinen nicht wieder kompakt erzeugt. Ein Beispiel ist das
-  Produkt $X \times Y$ mit $X = \R \setminus {1, \frac{1}{2},
-    \frac{1}{3}, \cdots }$ mit der Teilraumtopologie und $Y$ einem
+  Produkt $X \times Y$ mit $X = \R \setminus \{1, \frac{1}{2},
+  \frac{1}{3}, \cdots \}$ mit der Teilraumtopologie und $Y$ einem
   unendlichen Bouquet von Kreisen mit der Quotiententopologie von $\R
   \surj \R/\N = Y$.
 \end{bsp}
@@ -704,6 +641,7 @@ Rechtsexaktheit von Produkten in $\CGHaus$.
 
 \section{Geometrische Realisierung als Koende}
 
+% TODO stimmt der Ausblick?
 Die Sprache der Enden und Koenden ermöglicht uns eine allgemeinere
 Sicht auf die geometrische Realisierung und wird sich später als
 nützlich erweisen, um andere Formen der geometrischen Realisierung
@@ -711,9 +649,9 @@ einzuführen. Wir führen Koenden und ihre Eigenschaften ein, Enden sind
 dazu formal dual. Die Darstellung folgt \cite{Lore}.
 \begin{defn}[\cite{Lore}, 1.1 f.]
   Sei $F: C\op \times C \to D$ ein Funktor. Ein Objekt $K \in D$ mit
-  Morphismen $\iota_c: F(c, c) \to K$ für alle $c \in C$ heißt Kokeil
-  für $F$, falls für alle Morphismen $f: c \to d$ in $C$ das folgende
-  Diagramm kommutiert:
+  Morphismen $\iota_c: F(c, c) \to K$ für alle $c \in C$ heißt
+  \emph{Kokeil} für $F$, falls für alle Morphismen $f: c \to d$ in $C$
+  das folgende Diagramm kommutiert:
   \[ \begin{tikzcd}
     F(d, c) \arrow{r}{F(f, \id)} \arrow{d}{F(\id, f)}
     & F(c, c) \arrow{d}{\iota_c} \\
@@ -721,49 +659,154 @@ dazu formal dual. Die Darstellung folgt \cite{Lore}.
   \end{tikzcd} \]
   Die Kokeile für $F$ bilden eine Kategorie (Morphismen verträglich
   mit den $\iota_c$). Ein initiales Objekt in der Kategorie der
-  Kokeile für $F$ (ein universeller Kokeil) heißt das Koende von $F$.
+  Kokeile für $F$, d.~h. ein universeller Kokeil, heißt das
+  \emph{Koende} von $F$.
 \end{defn}
-Ein Kokeil für einen Funktor $F: C\op \times C \to D\op$ heißt
-entsprechend Keil für den assoziierten Funktor $F\op: C \times C\op
-\to D$ und ein universeller Keil das Ende des Funktors $F\op$. Wir
-notieren häufig das Koende von $F$ als Integral:
-\[ \int^{c \in C} F(c, c). \]
+Wie andere universelle Objekte müssen Koenden in einer beliebigen
+Kategorie $D$ nicht existieren, sind in diesem Fall aber eindeutig bis
+auf eindeutigen Isomorphismus.
 
-Wir können Koenden als Koegalisator von Koprodukten darstellen:
+Formal dual dazu ist ein \emph{Keil} für einen Funktor $F: C\op \times
+C \to D$ ein Kokeil für den Funktor $F\op \circ \tau$ mit dem
+opponierten Funktor $F\op: C \times C\op \to D\op$ und der
+Vertauschung $\tau: C\op \times C \iso C \times C\op$, und ein
+\emph{Ende} ein universeller Keil für $F$.
+
+Enden und Koenden werden als Integrale notiert, eine Konvention, die
+sich später aus analogen Umformungseigenschaften erklärt
+(vgl. \ref{coend-fubini}, \ref{coend-density}):
+\begin{alignat*}{2}
+  \int^C F &= \int^{c \in C} F(c, c)
+  \quad &&\text{für das Koende von } F: C\op \times C \to D, \\
+  \int_C F &= \int_{c \in C} F(c, c)
+  && \text{für das Ende von } F: C\op \times C \to D.
+\end{alignat*}
+
+Koenden lassen sich als Koegalisatoren von Koprodukten darstellen:
 \begin{lemma}[\cite{Lore}, 1.14] \label{coend-coeq}
-  Sei $F: C\op \times C \to D$ ein Funktor und $K$ sein Koende. Dann
-  ist das folgende Diagramm ein Koegalisator:
+  Sei $F: C\op \times C \to D$ ein Funktor. Dann ist das folgende
+  Diagramm ein Koegalisator:
   \[ \coprod_{f: c \to d} F(d, c)
-  \overset{F(f, \id}{\underset{F(\id, f)}{\rightrightarrows}}
-  \coprod_{c \in C} F(c, c) \to K. \]
+  \overset{F(f, \id)}{\underset{F(\id, f)}{\rightrightarrows}}
+  \coprod_{c \in C} F(c, c) \to \int^C F. \]
 \end{lemma}
 \begin{proof}
   Der Morphismus in das Koende ist von den $\iota_c: F(c, c) \to K$
-  induziert, die Morphismen des Egalisators durch die angegebenen
+  induziert, die Morphismen des Koegalisators durch die angegebenen
   Morphismen auf den Komponenten $F(d, c) \xrightarrow{F(f, \id)} F(c,
   c)$ und $F(d, c) \xrightarrow{F(\id, f)} F(d, d)$. Die universellen
   Eigenschaften, die den Koegalisator und das Koende definieren, sind
   dann identisch.
 \end{proof}
-Damit ist klar, dass Koenden Kolimites über eine geeignete Kategorie
-sind. Wir machen diese Aussage präzise:
+
+Sind $F: C\op \to D$ und $G: C \to D$ Funktoren und ist $(D, \otimes)$
+eine monoidale Kategorie (Schmelzkategorie mit universellen
+Verschmelzungen), so definieren sie einen Funktor
+\begin{alignat*}{4}
+  C\op \times C &\to D \times D &&\to D, \\
+  (a, b) &\mapsto (Fa, Gb) &&\mapsto Fa \otimes Gb.
+\end{alignat*}
+Das Koende über diesen Funktor heißt das \emph{Tensorprodukt} $F
+\otimes G$ von $F$ und $G$.
+
+Wir erinnern an die Darstellung der geometrischen Realisierung mit
+Koegalisator und Koprodukt:
+\[ |X| \iso \bigg( \coprod_n X_n \times |\Delta^n| \bigg) \big/ \sim \]
+mit dem Quotienten nach der von
+\[ (x, |f|(p)) \sim (f^* x, p) \]
+für monotones $f: [m] \to [n]$ erzeugten Äquivalenzrelation. Das ist
+gerade der Koegalisator
+ \[ \coprod_{f: [n] \to [m]} X_n \times |\Delta^m|
+ \overset{f^* \times \id}{\underset{\id \times
+     |f|}{\rightrightarrows}} \coprod_{[n]} X_n \times |\Delta^n| \to
+ |X| \] aus \ref{coend-coeq} und mithin, falls $\Top$ mit der
+ kartesischen Schmelzstruktur durch Produkte versehen ist, das
+ Tensorprodukt der Funktoren
+\begin{alignat*}{4}
+  X: &\Delta\op \to &&\Ens \to &&\Top \qquad &&\text{und} \\
+  |\Delta|: &\Delta &&\to &&\Top, && [n] \mapsto |\Delta^n|,
+\end{alignat*}
+wobei die Mengen $X_n$ als diskrete topologische Räume aufgefasst
+werden (\cite{Moer}, III.1):
+\[ |X| = X \otimes |\Delta|. \]
+
+\begin{bem} \label{coend-correct-real}
+  % TODO Koende vs Simplexkategorie
+  Rückblickend halten wir fest, dass während unsere durch die
+  ``Kostetigkeitseigenschaft'' für die Simplexkategorie
+  $\slicecat{\Delta}{r}{X}$ (Gl. \ref{eq:real-cocont},
+  \ref{eq:real-colim}) definierte geometrische Realisierung in dieser
+  Situation elegant ist, sie auf einer konkreten Eigenschaft der
+  Situation simplizialer \emph{Mengen} beruht, die wir bei
+  allgemeineren simplizialen Objekten nicht mehr gegeben
+  haben. Konkret werden wir im nächsten Abschnitt einen gewissen
+  Begriff einer Wirkung einer Kategorie auf einer anderen Kategorie
+  erklären (Koexponentiale, siehe \ref{def:copower}). Die Besonderheit
+  simplizialer Mengen beruht nun darauf, dass sich die Wirkung von
+  $\Ens$ auf $\Top$ $(X_n, |\Delta^n|) \mapsto \coprod_{X_n}
+  |\Delta^n|$ als von der Wirkung von $\Ens$ auf $\s\Ens$, $(X_n,
+  \Delta^n) \mapsto \coprod_{X_n} \Delta^n \cong \set{\Delta^n
+    \xrightarrow{x} X}{x \in X_n}$ induziert darstellen lässt, was uns
+  zum Begriff der Simplexkategorie von $X$ geführt hat. Bei Wirkungen
+  wie von $\Top$ auf $\Top$ durch das kartesische Produkt wird es
+  nicht mehr möglich sein, die $\Delta^n \to X$ aus der
+  Simplexkategorie als topologischen Raum aufzufassen. Unsere
+  Beschreibung der geometrischen Realisierung als Koende ist also die
+  für allgemeinere Kontexte richtige Beschreibung.
+\end{bem}
+\begin{bem} \label{real-model-natural}
+  Da eine Transformation $R \Trafo \overline{R}$ einen Morphismus der
+  Koenden $R \otimes X \to \overline{R} \otimes X$ induziert, erhalten
+  wir aus unserem Morphismus kosimplizialer Räume $|\Delta| \to
+  \blacktriangle$ stetige Abbildungen zwischen den geometrischen
+  Realisierungen $|X| \to \blacktriangle |X|$.
+\end{bem}
+
+\section{Der Koendenkalkül}
+\label{sec:coend-calc}
+
+Die Sprache der Enden und Koenden besitzt eine Reihe an
+Verträglichkeits- und Umformungseigenschaften, die sie zu einem
+mächtigen Werkzeug für eine Vielzahl formaler Rechnungen in
+Anwendungen der Kategorientheorie machen (für Beispiele siehe
+\cite{Lore}). Im folgenden werden einige Umformungsregeln dieses
+Kalküls \footnote{Bei der Übersetzung aus dem Englischen geht leider
+  die Analogie zu den Regeln der Differentiations- und
+  Integrationstheorie verloren.}  zusammengestellt.
+
+\begin{lemma}[Funktorialität, \cite{Lore}, 1.9]
+  Sind $F \xRightarrow{\eta} G \xRightarrow{\tau} H$ Transformationen
+  von Funktoren $F, G, H: C\op \times C \to D$, deren Koenden
+  existieren, so sind die auf den Koenden induzierten Morphismen
+  \[ \int (\tau \circ \eta), \int \tau \circ \int \eta:
+  \int^c F(c, c) \to \int^c H(c, c) \]
+  verträglich: $\int (\tau \circ \eta) = \int \tau \circ \int \eta$.
+\end{lemma}
+\begin{proof}
+  Dies folgt sofort aus der Eindeutigkeit dieses Morphismus in der
+  universellen Definition von Koenden.
+\end{proof}
+
+Mit der Beschreibung von Koenden als Koegalisatoren von Koprodukten
+\ref{coend-coeq} ist klar, dass Koenden Kolimites über eine geeignete
+Kategorie sind. Wir machen diese Aussage präzise:
 \begin{defn} \label{def:sub}
   Sei $C$ eine Kategorie. Die \emph{Unterteilungskategorie}
   (engl. \emph{subdivision category}) $\Sub(C)$ von $C$ besteht aus
-  Objekten $X^\S$ und $f^\S$ für alle Objekte $X \in C$ und Morphismen
-  $f: X \to Y$ in $C$. Die Morphismen von $\Sub(C)$ sind die
-  Identitäten sowie für $f: X \to Y$ Pfeile
-  \[ X^\S \from f^\S \to Y^\S. \]
+  Objekten $c^\S$ und $f^\S$ für alle Objekte $c \in C$ und Morphismen
+  $f: c \to d$ in $C$. Die Morphismen von $\Sub(C)$ sind die
+  Identitäten sowie für $f: c \to d$ in $C$ die Pfeile
+  \[ c^\S \from f^\S \to d^\S. \]
 \end{defn}
 \begin{prop}[\cite{ML}, IX.5.1, \cite{Lore}, 1.13] \label{coend-col}
-  Es gibt einen Funktor $[C\op \times C, D] \to [\Sub(C) \to D], F
-  \mapsto \hat{F}$, der eine Äquivalenz von Kategorien zwischen der
-  Kategorie der Kokeile für $F$ und der Kategorie der Kokegel für
-  $\hat{F}$ induziert. Insbesondere gilt
-  \[ \int^{c \in C} F(c, c) \iso \col \hat{F}. \]
+  Es gibt einen Funktor $[C\op \times C, D] \to [\Sub(C), D], F
+  \mapsto \widehat{F}$, der eine Äquivalenz von Kategorien zwischen
+  der Kategorie der Kokeile für $F$ und der Kategorie der Kokegel für
+  $\widehat{F}$ induziert. Insbesondere gilt
+  \[ \int^{c \in C} F(c, c) \iso \col \widehat{F}. \]
 \end{prop}
 \begin{proof}
-  Wir erhalten $\hat{F}$ durch die folgenden Zuordnungen für $f: c \to
+  Wir erhalten $\widehat{F}$ durch die folgenden Zuordnungen für $f: c \to
   d$ einen Morphismus in $C$ und $c, d$ Objekte in $C$:
   \[ \begin{tikzcd}
     \Sub(C) \arrow{d}
@@ -775,18 +818,20 @@ sind. Wir machen diese Aussage präzise:
     & \arrow{l}{F(f, \id)} F(d, c) \arrow{r}{F(\id, f)}
     & F(d, d).
   \end{tikzcd} \]
-  Diese Zuordnung $F \mapsto \hat{F}$ ist selbst funktoriell:
-  Transformationen $F \Trafo G$ induzieren Transformationen $\hat{F}
-  \Trafo \hat{G}$. Kokeile für $F$ und Kokegel für $\hat{F}$ bestehen
-  nun beide aus einem Objekt $K$ mit Morphismen $\iota_c: F(c, c) \to
-  K$ für $c \in C$ und $\iota_f: F(d, c) \to K$ für $f: c \to d$,
-  sodass die drei Morphismen $F(d, c) \to K$ übereinstimmen:
+  Diese Zuordnung $F \mapsto \widehat{F}$ ist funktoriell:
+  Transformationen $F \Trafo G$ induzieren Transformationen
+  $\widehat{F} \Trafo \widehat{G}$. Kokeile für $F$ und Kokegel für
+  $\widehat{F}$ bestehen nun beide aus einem Objekt $K$ mit Morphismen
+  $\iota_c: F(c, c) \to K$ für $c \in C$ und $\iota_f: F(d, c) \to K$
+  für $f: c \to d$, sodass die drei Morphismen $F(d, c) \to K$
+  übereinstimmen:
   \[ \iota_f = \iota_c \circ F(f, \id) = \iota_d \circ F(\id, f). \]
-  Ein Morphismus von Kokeilen für $F$ und von Kokegeln für $\hat{F}$
-  ist jeweils ein mit den angegebenen Inklusionen $\iota_c, \iota_f$
-  verträglicher Morphismus der Objekte $K \to K'$. Koenden für $F$ und
-  Kolimites für $\hat{F}$ sind die initialen Objekte der Kategorien
-  von Kokeilen für $F$ bzw. Kokegeln für $\hat{F}$.
+  Ein Morphismus von Kokeilen für $F$ und von Kokegeln für
+  $\widehat{F}$ ist jeweils ein mit den angegebenen Inklusionen
+  $\iota_c, \iota_f$ verträglicher Morphismus der Objekte $K \to
+  K'$. Koenden für $F$ und Kolimites für $\widehat{F}$ sind die
+  initialen Objekte der Kategorien von Kokeilen für $F$ bzw. Kokegeln
+  für $\widehat{F}$.
 \end{proof}
 \begin{bem}[\cite{Lore}, 1.12]
   Eine andere Beschreibung verwendet statt der Unterteilungskategorie
@@ -804,9 +849,11 @@ sind. Wir machen diese Aussage präzise:
   c'^\S$ kompatibel sein sollen. Die weiteren Kompatibilitäten für
   einen Kokegel über $F: \TW(C) \to D$, die von $f \to g$ gefordert
   werden, sind bereits automatisch erfüllt, denn mit den Bezeichnungen
-  wie im Diagramm gilt etwa, dass die Kompitibilität $f \to g \to
-  \id_d \to K = f \to id_{c'} \to K$ diejenige zu $k \circ g: d \to
-  c'$ ist. Der Morphismus $f \to g$ in $\TW(C)$ fordert
+  wie im Diagramm gilt etwa, dass die Kompitibilität $(f \to g \to
+  \id_d \to K) = (f \to id_{c'} \to K)$ diejenige zu $k \circ g: d \to
+  c'$ ist.
+
+  Insgesamt fordert der Morphismus $f \to g$ in $\TW(C)$
   Kompatibiltäten für die Inklusionen von $\id_c, \id_d, \id_{d'}$ und
   $\id_{c'}$ nach $K$. Diese entsprechen jeweils Kompatibilitäten zu
   den Kompositionen $g \circ h, k \circ g$ und $k \circ g \circ h$ im
@@ -836,99 +883,19 @@ sind. Wir machen diese Aussage präzise:
   ein Isomorphismus, wann immer eines der beiden Koenden existiert.
 \end{kor}
 \begin{proof}
-  Dies folgt wegen $\widehat{F \circ T} = F \circ \hat{T}$ aus der
+  Dies folgt wegen $\widehat{F \circ T} = F \circ \widehat{T}$ aus der
   Beschreibung von Koenden als Kolimites \ref{coend-col}.
 \end{proof}
 \begin{bem}
   Das wichtigste Beispiel für diesen Fall ist der $\Hom$-Funktor. Nach
   Definition von Limes und Kolimes sind $D(d, \cdot): D \to \Ens$ und
   $D(\cdot, d): D\op \to \Ens$ stetig. Wir erhalten für $F: C\op
-  \times C \to D$:
+  \times C \to D$ die Formeln:
   \begin{align*}
-    D(d, \int_c F(c, c)) & \iso \int_c D(d, F(c, c)) \\
-    D(\int^c F(c, c), d) &\iso \int_c D(F(c, c), d).
+    D \left( d, \int_c F(c, c) \right) & \iso \int_c D \left( d, F(c, c) \right) \\
+    D \left( \int^c F(c, c), d \right) &\iso \int_c D \left( F(c, c), d \right) .
   \end{align*}
 \end{bem}
-
-Sind $F: C\op \to D$ und $G: C \to D$ Funktoren und ist $D$ eine
-monoidale Kategorie (Schmelzkategorie mit universellen
-Verschmelzungen), so definieren sie einen Funktor
-\begin{alignat*}{4}
-  C\op \times C &\to D \times D &&\to D, \\
-  (a, b) &\mapsto (Fa, Gb) &&\mapsto Fa \otimes Gb.
-\end{alignat*}
-Das Koende über diesen Funktor heißt das \emph{Tensorprodukt} $F
-\otimes G$ von $F$ und $G$.
-
-Wir erinnern an die Darstellung der geometrischen Realisierung mit
-Koegalisator und Koprodukt:
-\[ |X| \iso (\coprod_n X_n \times |\Delta^n|) / \sim \]
-mit dem Quotienten nach der Äquivalenzrelation
-\[ (x, |f|(p)) \sim (f^* x, p) \]
-für alle monotonen $f: [m] \to [n]$. Das ist gerade der Koegalisator
- \[ \coprod_{f: [n] \to [m]} X_n \times |\Delta^m|
- \overset{f^* \times \id}{\underset{\id \times |f|)}{\rightrightarrows}}
- \coprod_{[n]} X_n \times |\Delta^n| \to |X| \]
-aus \ref{coend-coeq} und mithin, falls $\Top$ mit ihrer kartesischen
-Schmelzstruktur durch Produkte versehen ist, das Tensorprodukt der
-Funktoren
-\begin{alignat*}{4}
-  &X: \Delta\op \to &&\Ens \to &&\Top \qquad &&\text{und} \\
-  &|\Delta|: \Delta &&\to &&\Top, && [n] \mapsto |\Delta^n|,
-\end{alignat*}
-wobei die Mengen $X_n$ als diskrete topologische Räume aufgefasst
-werden (\cite{Moer}, III.1):
-\[ |X| = X \otimes |\Delta|. \]
-
-\begin{bem} \label{coend-correct-real}
-  Rückblickend halten wir fest, dass während unsere durch die
-  ``Kostetigkeitseigenschaft'' für die Simplexkategorie
-  $\slicecat{\Delta}{r}{X}$ (Gl. \ref{eq:real-colim},
-  \ref{eq:real-cocont}) definierte geometrische Realisierung in dieser
-  Situation elegant ist, sie auf einer konkreten Eigenschaft der
-  Situation simplizialer \emph{Mengen} beruht, die wir bei
-  allgemeineren simplizialen Objekten nicht mehr gegeben
-  haben. Konkret werden wir im nächsten Abschnitt einen gewissen
-  Begriff einer Wirkung einer Kategorie auf einer anderen Kategorie
-  erklären (Koexponentiale, siehe \ref{def:copower}). Die Besonderheit
-  simplizialer Mengen beruht nun darauf, dass sich die Wirkung von
-  $\Ens$ auf $\Top$ $(X_n, |\Delta^n|) \mapsto \coprod_{X_n}
-  |\Delta^n|$ als von der Wirkung von $\Ens$ auf $\s\Ens$, $(X_n,
-  \Delta^n) \mapsto \coprod_{X_n} \Delta^n \cong \set{\Delta^n
-    \xrightarrow{x} X}{x \in X_n}$ induziert darstellen lässt, was uns
-  zum Begriff der Simplexkategorie von $X$ geführt hat. Bei Wirkungen
-  wie von $\Top$ auf $\Top$ durch das kartesische Produkt wird es
-  nicht mehr möglich sein, die $\Delta^n \to X$ aus der
-  Simplexkategorie als topologischen Raum aufzufassen. Unsere
-  Beschreibung der geometrischen Realisierung als Koende ist also die
-  für allgemeinere Kontexte richtige Beschreibung.
-\end{bem}
-
-\section{Der Koendenkalkül}
-\label{sec:coend-calc}
-
-Die Sprache der Enden und Koenden besitzt eine Reihe an
-Verträglichkeits- und Umformungseigenschaften, die sie zu einem
-mächtigen Werkzeug für eine Vielzahl formaler Rechnungen in
-Anwendungen der Kategorientheorie machen (für Beispiele siehe
-\cite{Lore}). Im folgenden werden einige Umformungsregeln dieses
-Kalküls \footnote{Bei der Übersetzung aus dem Englischen geht leider
-  die Analogie zu den Regeln der Differentiations- und
-  Integrationstheorie verloren.}  zusammengestellt.
-
-\begin{lemma}[Funktorialität, \cite{Lore}]
-  Sind $F \xRightarrow{\eta} G \xRightarrow{\tau} H$ Transformationen
-  von Funktoren $F, G, H: C\op \times C \to D$, deren Koenden
-  existieren, so sind die auf den Koenden induzierten Morphismen
-  \[ \int (\tau \circ \eta), \int \tau \circ \int \eta:
-  \int^c F(c, c) \to \int^c H(c, c) \]
-  durch die Transformationen auf den Koenden gegeben und damit
-  verträglich: $\int (\tau \circ \eta), \int \tau \circ \int \eta$.
-\end{lemma}
-\begin{proof}
-  Dies folgt sofort aus der Eindetigkeit dieses Morphismus in der
-  universellen Definition von Koenden.
-\end{proof}
 
 \begin{lemma}[Fubini, \cite{Lore}, 1.9, \cite{ML}, IX.8]
   \label{coend-fubini}
@@ -957,15 +924,16 @@ Kalküls \footnote{Bei der Übersetzung aus dem Englischen geht leider
   Sei $K: D\op \times D \to E$ ein Kokeil für $F: C\op \times C \to
   [D\op \times D, E]$ in der Funktorkategorie $D\op \times D \to E$
   und $L(K)$ ein Kokeil für $K$. Auch solche iterierten Kokeile $L(K)$
-  bestehen aus Morphismen $F(c, c, d, d) \to L(K)$ für alle $c, d$ als
-  Komposition von $F(c, c, \cdot, \cdot) \Trafo K$ ausgewertet auf
-  $(d, d) \in D\op \times D$ mit $K(d, d) \to L(K)$. Sie erfüllen die
-  Kommutativitätseigenschaft von Kokeil-Quadraten für alle Morphismen
-  der Form $(f, \id_d)$ in $C \times D$ (die Transformation aus der
-  Kokeil-Eigenschaft von $K$ ausgewertet in $(d, d) \in D\op \times
-  D$) sowie $(\id_c, g)$ in $C \times D$ (durch Vorschalten der zur
-  Transformation $F(c, c, \cdot, \cdot) \Trafo K$ gehörigen
-  Morphismen vor das Kokeil-Quadrat von $L(K)$).
+  bestehen aus Morphismen $F(c, c, d, d) \to L(K)$ für alle Objekte
+  $c$ von $C$ und $d$ von $D$ als Komposition von $F(c, c, \cdot, -)
+  \Trafo K$ ausgewertet auf $(d, d) \in D\op \times D$ mit $K(d, d)
+  \to L(K)$. Sie erfüllen die Kommutativitätseigenschaft von
+  Kokeil-Quadraten für alle Morphismen der Form $(f, \id_d)$ in $C
+  \times D$ (die Transformation aus der Kokeil-Eigenschaft von $K$
+  ausgewertet in $(d, d) \in D\op \times D$) sowie $(\id_c, g)$ in $C
+  \times D$ (durch Vorschalten der zur Transformation $F(c, c, \cdot,
+  -) \Trafo K$ gehörigen Morphismen vor das Kokeil-Quadrat von
+  $L(K)$).
 
   Nach denselben Argumenten definiert ein Kokeil $M$ für $F: (C \times
   D)\op \times (C \times D)$ einen iterierten Kokeil: Mit der
@@ -981,9 +949,11 @@ Kalküls \footnote{Bei der Übersetzung aus dem Englischen geht leider
     F(c', c', d, d) \arrow{r} & M
   \end{tikzcd} \]
   ein $(d, d)$-Kokeil und dann durch Setzen der Inklusionen $F(c, c,
-  d', d) \to M$ als Komposition $F(c, c, d', d) \to F(c, c, d', d')
-  \to M = F(c, c, d', d) \to F(c, c, d, d) \to M$ wegen der
-  Kommutativität von
+  d', d) \to M$ als Komposition
+  \[ (F(c, c, d', d) \to F(c, c, d', d') \to M)
+  \: = \: (F(c, c, d', d) \to F(c, c, d, d) \to M)
+  \]
+  wegen der Kommutativität von
   \[ \begin{tikzcd}
     F(c', c, d', d) \arrow{rr} \arrow{dd} & & F(c, c, d', d) \arrow{d} \\
     & & F(c, c, d, d) \arrow{d} \\
@@ -1001,12 +971,12 @@ Kalküls \footnote{Bei der Übersetzung aus dem Englischen geht leider
  Kolimites aus \ref{coend-col}.
 \begin{proof}[Alternativer Beweis]
   Der Isomorphismus von Kategorien $\TW(C \times D) \iso \TW(C) \times
-  \TW(D)$ ist verträglich mit dem Funktor $F \to \hat{F}$ aus
-  \ref{coend-col}:
+  \TW(D)$ ist verträglich mit dem Funktor $F \to \widehat{F}$ aus
+  \ref{coend-col}. Es kommutiert
   \[ \begin{tikzcd}
     {[(C \times D)\op \times (C \times D), E]}
-    \arrow{d}{\sim} \arrow{r}{F \mapsto \hat{F}}
-    & {[\TW(C \times D), E]} \arrow{d}{\sim} \\
+    \arrow{d}{\approx} \arrow{r}{F \mapsto \widehat{F}}
+    & {[\TW(C \times D), E]} \arrow{d}{\approx} \\
     {[C\op \times C, [D\op \times D, E]]} \arrow{r}
     & {[\TW(C), [\TW(D), E]]},
   \end{tikzcd}
@@ -1018,9 +988,9 @@ Kalküls \footnote{Bei der Übersetzung aus dem Englischen geht leider
   Die Darstellung iterierter Koenden als Produkt-Koenden folgt dann
   direkt aus der Darstellung iterierter Kolimites als
   Produkt-Kolimites:
-  \[ \col_{I \times J} F \iso \col_I \col_J \tilde{F}, \]
+  \[ \col_{I \times J} F \iso \col_J \col_I \tilde{F}, \]
   falls $F \mapsto \tilde{F}$ unter dem Exponentialgesetz $[I \times
-    J, C] \iso {[I, [J, C]]}$.
+    J, C] \qiso {[I, [J, C]]}$.
 \end{proof}
 
 Koenden und Enden treten in kategorientheoretischen Rechnungen häufig
@@ -1062,7 +1032,7 @@ Koendenkalkül kommt der Yoneda-Einbettung die Rolle des Diracmaßes zu:
 \end{bem}
 \begin{proof}
   Dies folgt aus dem Yoneda-Lemma und unseren schon bekannten
-  Rechenregeln, wir zeigen die erste Aussage. Seien dazu $F, G: C \to
+  Rechenregeln. Wir zeigen die erste Aussage. Seien dazu $F, G: C \to
   \Ens$ Funktoren, dann gilt:
   \begin{align*}
     &[C, \Ens](\int^c F(c) \times C(c, \cdot), G) \\
@@ -1072,18 +1042,19 @@ Koendenkalkül kommt der Yoneda-Einbettung die Rolle des Diracmaßes zu:
     &\int_d \int_c \Ens(F(c) \times C(c, d), Gd) \\
     \iso[\ref{coend-fubini}] \quad
     &\int_c \int_d \Ens(F(c) \times C(c, d), Gd) \\
-    \iso[int. Hom] \quad
+    \iso[\text{int. Hom}] \quad
     &\int_c \int_d \Ens(C(c, d), Fc \iHom Gd) \\
     \iso[\ref{trans-end}] \quad
     &\int_c [C, \Ens](\Ens(C(c, \cdot), Fc \iHom G \cdot) \\
-    \iso[Yon.] \quad
+    \iso[\text{Yon.}] \quad
     &\int_c (Fc \iHom Gc) \\
     \iso \quad &\int_c \Ens(Fc, Gc) \\
     \iso[\ref{trans-end}] \quad
     &[C, \Ens](F, G),
   \end{align*}
   % TODO left / right setzen
-  was mit dem ``Yoneda-Lemma für $\Cat$'' die Aussage zeigt.
+  
+  was mit dem Yoneda-Lemma für Funktorkategorien die Aussage zeigt.
 \end{proof}
 \begin{bem}
   Wie weit die Analogie zwischen Integralen und (Ko-) Enden reicht,
@@ -1093,15 +1064,15 @@ Koendenkalkül kommt der Yoneda-Einbettung die Rolle des Diracmaßes zu:
   Riemann- bzw. Lebesguesummen in der Maßtheorie)
   inspiriert
   \footnote{Vergleiche hierzu die Diskussion in
-    \url{https://mathoverflow.net/questions/239326/why-do-we-denote-coends-with-integral-notation-beyond-fubinis-theorem}.}
-  Die Frage ist, inwiefern maßtheoretische Aussagen eine direkte
-  Übersetzung in die Sprache der (Ko-) Enden haben. Das folgende
-  Beispiel beleuchtet dies nur bedingt, ist aber eine schöne Anwendung
-  der Dichteformel.
+    \url{https://mathoverflow.net/questions/239326/why-do-we-denote-coends-with-integral-notation-beyond-fubinis-theorem}.}.
+  Die Frage ist, inwiefern maßtheoretische Aussagen eine Übersetzung
+  in die Sprache der (Ko-) Enden haben. Das folgende bei der Suche
+  nach einer solchen Aussage entstandene Beispiel beleuchtet dies zwar
+  nicht näher, ist aber eine schöne Anwendung der Dichteformel.
 \end{bem}
 \begin{bsp}
   Nach der Verträglichkeit des Integrals mit Verwandtschaft
-  (\cite{AN3}, 1.5.19) ist der Integraloperator $(f, \mu) \mapsto \int
+  (\cite{AN3}, 1.5.19) ist die Integralpaarung $(f, \mu) \mapsto \int
   f \, \mu$ auf einem Koende definiert. Bezeichne dazu $\mathcal{M}$
   die Kategorie der Messräume (Mengen mit $\sigma$-Algebra) und $M_X$
   die Menge der Maße auf einem Messraum $X$. Das Integral ist dann
@@ -1124,31 +1095,34 @@ In der ursprünglichen Definition einer Kategorie tragen die Morphismen
 $C(x, y)$ die Struktur einer Menge. Der Wunsch, Begriffe wie ``die
 Summe zweier Morphismen'' oder ``der Nullmorphismus'' aus der
 Kategorie der $R$-Moduln auch kategorientheoretisch zu erfassen,
-brachte uns zum Begriff der additiven Kategorien, bei denen
+führte zum Begriff der additiven Kategorien, bei denen
 Morphismenmengen abelsche Gruppen sind und Funktoren
-Gruppenhomomorphismen auf den Morphismengruppen induzieren. Diese
-Konstruktion möchten wir auch für Kategorien zur Verfügung stehen
-haben, bei denen die Morphismenmengen eine andere Struktur tragen
-(etwa die eines topologischen Raums) oder gar keine Mengen sind,
-sondern Objekte einer anderen Kategorie $V$. Solche Kategorien
-bezeichnet man als über $V$ angereicherte (engl. \emph{enriched})
-Kategorien. Wir imitieren die herkömmliche Definition von Kategorien:
+Gruppenhomomorphismen auf den Morphismengruppen induzieren. Dieser
+Gedankengang lässt sich auch auf Situationen übertragen, in denen die
+Morphismenmengen eine andere natürliche Struktur tragen (etwa die
+eines topologischen Raums) oder gar am besten als Objekte einer nicht
+notwendigerweise über den Mengen liegenden Kategorie $V$ aufzufassen
+sind. Solche Kategorien bezeichnet man als über $V$
+\emph{angereicherte} (engl. \emph{enriched}) Kategorien. Wir imitieren
+die herkömmliche Definition von Kategorien:
+% TODO quelle enriched
 \begin{defn}[Angereicherte Kategorie]
-  Sei $V$ eine monoidale Kategorie (Schmelzkategorie mit universellen
-  Verschmelzungen). Eine über $V$ angereicherte Kategorie $C$
-  ($V$-Kategorie) besteht aus:
+  Sei $(V, \otimes)$ eine monoidale Kategorie (Schmelzkategorie mit
+  universellen Verschmelzungen). Eine \emph{über $V$ angereicherte
+    Kategorie} $C$ ($V$-Kategorie) besteht aus:
   \begin{enumerate}
   \item einer Klasse von Objekten $\Ob(C)$
-  \item für jedes Paar von Objekten $(x, y)$ ein Objekt $C(x,y) \in V$
+  \item für jedes Paar von Objekten $(x, y)$ einem Objekt $C(x,y) \in
+    V$
   \item einer Komposition $C(x, y) \otimes C(y, z) \to C(x, z)$
-  \item für jedes Objekt $x \in \Ob(C)$ einem Morphismus in $V$
-    $\id_x: I \to C(x, x)$ für $I$ die universelle 0-Verschmelzung,
+  \item für jedes Objekt $x \in \Ob(C)$ einem Morphismus $\id_x: I \to
+    C(x, x)$ in $V$ für $I$ die universelle 0-Verschmelzung,
   \end{enumerate}
   sodass die Komposition assoziativ ist (bezüglich des eindeutigen
-  Morphismus $C(w,x) \otimes (C(x,y) \otimes C(y,z)) \iso (C(w,x)
+  Isomorphismus $C(w,x) \otimes (C(x,y) \otimes C(y,z)) \iso (C(w,x)
   \otimes C(x,y)) \otimes C(y,z)$) und verträglich mit den Identitäten
-  (bezüglich der eindeutigen Morphismen $C(x, y) \otimes I \iso C(x,
-  y)$ und $I \otimes C(x,y) \iso C(x,y)$).
+  (bezüglich der eindeutigen Isomorphismen $C(x, y) \otimes I \iso
+  C(x, y)$ und $I \otimes C(x,y) \iso C(x,y)$).
 
   Ein Funktor zwischen $V$-Kategorien $F: C \to D$ ist eine Zuordnung
   auf Objekten $F: c \mapsto Fc$ zusammen mit Morphismen $C(x, y) \to
@@ -1159,11 +1133,13 @@ Kategorien. Wir imitieren die herkömmliche Definition von Kategorien:
   bezüglich der kartesischen monoidalen Struktur auf $\Ens$. Eine
   Kategorie mit additiver Struktur ist eine über $\Ab$ angereicherte
   Kategorie bezüglich des Tensorprodukts auf $\Ab$. Jede monoidale
-  Kategorie mit adjungiertem internem Hom (monoidale geschlossene
-  Kategorie) $V$ ist eine $V$-Kategorie über sich selbst.
+  Kategorie mit zum Produkt $\otimes$ adjungiertem internen Hom $V$
+  ist eine $V$-Kategorie über sich selbst. Solche Kategorien heißen
+  \emph{monoidale abgeschlossene Kategorien}.
 \end{bsp}
 
-In einer monoidalen geschlossenen Kategorie $V$ haben wir die Adjunktion
+In einer monoidalen abgeschlossenen Kategorie $V$ haben wir die
+Adjunktion
 \[ V(a \otimes b, c) \iso V(a, V(b, c)) \]
 mit $V(b, c) = (b \iHom c)$ dem internen Hom-Objekt. Das Objekt $a
 \otimes b$ ist dann ein darstellendes Objekt für den Funktor $c
@@ -1178,36 +1154,29 @@ Situationen auf Koexponentiale in angereicherten Kategorien:
   natürlich in $b$, $c$ und $v$, so heißt $v \odot b$ das
   Koexponential von $v$ und $b$.
 \end{defn}
-In diesem Fall nennt man die Kategorie $C$ auch \emph{tensoriert über
+In diesem Fall heißt die Kategorie $C$ auch \emph{tensoriert über
   $V$}.
 \begin{bsp} \label{ens-tensored}
   Jede Kategorie mit beliebigen Koprodukten hat Koexponentiale über
-  $\Ens$. Mit $V \odot B = \coprod_V B$ gilt:
+  $\Ens$. Mit
+  \[ V \odot B = \coprod_V B \]
+  gilt
   \[ C(V \odot B, C) \iso \Ens(V, C(B, C)). \]
 \end{bsp}
 
 Wir können nun auch die geometrische Realisierung in der Sprache
 angereicherter Kategorien formulieren. Ist $C$ eine $V$-Kategorie mit
 Koexponentialen und sind Funktoren
-\begin{align*}
-  &R: \Delta &\to C \qquad{und} \\
-  &X: \Delta\op &\to V
-\end{align*}
+\begin{alignat*}{2}
+  R: &\Delta &&\to C \qquad{und} \\
+  X: &\Delta\op &&\to V
+\end{alignat*}
 gegeben, so erklären wir die geometrische Realisierung von $X$ als das
 Koende über den Funktor
 \begin{align*}
-  \Delta\op \times S &\to C, \\
-  [n], [m] &\mapsto X[n] \odot R[m].
+  \Delta\op \times \Delta &\to C, \\
+  ([n], [m]) &\mapsto X[n] \odot R[m].
 \end{align*}
 Der Fall simplizialer Mengen ist $C = \Top$ und $V = \Ens$ mit dem
 kanonischem Koexponential.
-
-\begin{bem} \label{real-model-natural}
-  In dieser Formulierung ist auch klar, dass eine Transformation $R
-  \Trafo \overline{R}$ einen Morphismus der Koenden $R \otimes X \to
-  \overline{R} \otimes X$ induziert. Konkret erhalten wir aus unserem
-  Morphismus kosimplizialer Räume $|\Delta| \to \blacktriangle$ also
-  stetige Abbildungen zwischen den geometrischen Realisierungen $|X|
-  \to \blacktriangle |X|$.
-\end{bem}
 
