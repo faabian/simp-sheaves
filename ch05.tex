@@ -1,7 +1,9 @@
 % Emacs mode: -*-latex-*-
 
-\chapter{Simpliziale Garben}
+\chapter{Simpliziale Garben über topologischen Räumen}
 \label{ch:simp-sheaves}
+
+% TODO einleitung ch05
 
 \section{Realisierung simplizialer Garben}
 \label{sec:simp-sheaves-real}
@@ -220,7 +222,7 @@ Wir erhalten die folgende \emph{kovariante Realisierung}:
   Limites (vgl. \ref{real-products}).
 \end{bem}
 
-\subsection{Die Dualität von Nerv und Realisierung}
+\section{Die Dualität von Nerv und Realisierung}
 
 Wir suchen Rechtsadjungierte für die geometrischen Realisierungen. Für
 die Realisierung simplizialer Mengen gelingt das einfach.
@@ -280,7 +282,7 @@ Koenden über Koexponentiale.
   \end{align*}
 \end{proof}
 
-\subsection{Die kartesisch abgeschlossene Struktur der Garben auf $X$}
+\section{Die kartesisch abgeschlossene Struktur der Garben auf $X$}
 \label{sec:ensx-cart-closed}
 
 Für die allgemeine Dualität von Nerv und Realisierung \ref{nerve}
@@ -404,7 +406,7 @@ Auch die Rolle von $\Ens$ kann verallgemeinert werden. Wir erhalten:
   Beweis oben auch für diesen Fall.
 \end{proof}
 
-\subsection{Kategorien von Garben über topologischen Räumen}
+\section{Produkte von Garben über topologischen Räumen}
 
 Wir betrachten die Kategorienfaserungen $\Ens_{/\Top} \to \Top$ mit
 Morphismen den stetigen Abbildungen zwischen den étalen Räumen über
@@ -492,7 +494,7 @@ Weiter ist $\EnsTop$ auch unter Pullbacks abgeschlossen.
   \ref{enstop-coequalizers} negativ beantwortet.
 \end{bem}
 
-\subsection{Kartesisch abgeschlossene koreflektive Kategorien topologischer Räume}
+\section{Kartesisch abgeschlossene koreflektive Kategorien topologischer Räume}
 
 Wir könnten erwarten, dass wie das Produkt auch das interne Hom von
 $\EnsX$ in die Situation variabler Basisräume übertragen werden
@@ -536,7 +538,7 @@ System der $K \to X$, $K$ kompakt, mitsamt den Morphismen über $X$
 Nun verallgemeinern wir (\cite{Vogt}, 1): Sei $\mathcal{I}$ eine
 nichtleere volle Unterkategorie von $\Top$ (für $\CG$ die kompakten
 Räume). Betrachte die Kategorie $\slicecat{\mathcal{I}}{}{X}$ und $kX
-:= \col_{\slicecat{mathcal{I}}{}{X}} X$. Bezeichne die volle
+:= \col_{\slicecat{\mathcal{I}}{}{X}} X$. Bezeichne die volle
 Unterkategorie der topologischen Räume $X$ mit $kX \cong X$ mit
 $\mathcal{K}$. Dann ist $k: \Top \to \mathcal{K}$ ein Funktor und
 rechtsadjungiert zur Inklusion $\mathcal{K} \to \Top$. Es gilt
@@ -549,7 +551,10 @@ $\mathcal{I} \subset \mathcal{K}$.
   koreflektive Unterkategorie $\mathcal{K} \subset \Top$ liefert,
   welche $\mathcal{I}$ umfasst, heißt auch Übergang zur
   \emph{koreflektiven Hülle}. Es handelt sich tatsächlich um eine
-  idempotente Operation (\cite{Vogt}, Prop. 1.5).
+  idempotente Operation (\cite{Vogt}, Prop. 1.5), der Ergänzung von
+  $\mathcal{I}$ um alle Kolimites von Objekten in $\mathcal{I}$
+  (\cite{Herrlich}).
+  % TODO korefl Hülle Herrlich
 \end{bem}
 Die koreflektive Hülle besitzt die folgenden Stabilitätseigenschaften:
 \begin{prop} \label{k-complete}
@@ -663,7 +668,7 @@ siehe etwa \cite{TM}, 1.12.12.
 \begin{kor}
   Die koreflektiven Hüllen von $\mathcal{I}_K$ und $\mathcal{I}_L$
   sind kartesisch abgeschlossen und enthalten mit jedem Objekt $X$
-  auch alle offenen und alle abgeschlossenen Unterräume $Y \subset X$.
+  auch alle offenen Unterräume $Y \open X$.
 \end{kor}
 
 Damit können wir die für uns entscheidende Eigenschaft zeigen:
@@ -675,7 +680,7 @@ Damit können wir die für uns entscheidende Eigenschaft zeigen:
 \begin{proof}
   Wir können den étalen Raum $F \to X$ als Kolimes mittels der
   Schnitte $F(U)$ über offene Mengen $U \open X$ darstellen:
-  \[ F \iso \coprod_{U \open X} F(U) \times U / \sim. \]
+  \[ F \iso \bigg( \coprod_{U \open X} F(U) \times U \bigg) \big/ \sim. \]
   Dabei läuft das Koprodukt über alle offenen Teilmengen von $X$ und
   ist die Äquivalenzrelation die Identifikation gleicher Keime, d. h.
   \[ (s, p) \sim (t, q) \Iff p = q \text{ und } s_p = t_p. \]
@@ -697,12 +702,12 @@ Damit können wir die für uns entscheidende Eigenschaft zeigen:
   $\OffX(\cdot, U)$ ist (\ref{presheaf-colimit-representable}).
 \end{bem}
 
-\subsection{Kartesischer Abschluss von Garben auf topologischen Räumen} 
+\section{Kartesischer Abschluss von Garben auf topologischen Räumen} 
 \label{sec:enstop-cart-closed}
 
 Wir können uns nun der Frage nach einer kartesisch abgeschlossenen
 Struktur auf $\EnsTop$ zuwenden. Ganz allgemein gilt:
-\begin{prop}
+\begin{prop} \label{coreflective-cart-closed}
   Ist $C \subset D$ eine koreflektive Unterkategorie einer kartesisch
   abgeschlossenen Kategorie $C$ und stimmen die Produkte in $C$ und
   $D$ überein, dann ist $D$ kartesisch abgeschlossen.
@@ -733,8 +738,19 @@ Damit können wir folgern:
 \end{proof}
 
 Da das einzige Problem die fehlende kartesisch abgeschlossene Struktur
-in der Basis war, schränken wir uns auf eine bequemere Kategorie $\K$
-ein. Zunächst betrachten wir den Fall von Paaren von $\K$-Räumen mit
+in der Basis war, schränken wir auf eine bequemere Kategorie $\K$
+ein. In diesem Abschnitt werden wir einen einschränkenden Grund für
+die Existenz eines internen Homs in der Kategorie $\Ens_{\K}$
+formulieren, für $\K$ im gesamten Abschnitt eine kartesisch
+abgeschlossene, koreflektive Kategorie topologischer Räume, die stabil
+ist unter dem Bilden offener Unterräume. Diese Bedingungen sind nicht
+sehr restriktiv. Die Koreflektivität ist nach \cite{Herrlich},
+Thm. 37.3, äquivalent dazu, dass $\K$ unter Kolimites in $\Top$
+abgeschlossen ist. Die Stabilität unter offenen Teilräumen ermöglicht
+uns, sinnvoll über Garben über $\K$-Räumen zu sprechen
+(vgl. \ref{k-etale-closed}).
+
+Zunächst betrachten wir den Fall von Paaren von $\K$-Räumen mit
 stetiger, aber nicht notwendigerweise étaler, Abbildung.
 \begin{lemma} \label{k-arrow-cart-closed}
   Sei $\K \subset \Top$ eine koreflektive, kartesisch abgeschlossene
@@ -750,19 +766,20 @@ stetiger, aber nicht notwendigerweise étaler, Abbildung.
   \]
   das die Menge der kommutativen Quadrate mit einer Topologie
   ausstattet, mit der Projektion auf den zweiten Faktor als
-  Abbildung. Die Adjunktion $\K^{[1]}((F \to X) \times (G \to Y), (H
-  \to Z)) \iso \K^{[1]}((F \to X), (G \to Y) \iHom (H \to Z))$ für
-  $(F \to X), (G \to Y), (H \to Z) \in \K^{[1]}$ ist dann die
+  Abbildung. Die Adjunktion
+  \[ \K^{[1]}((F \to X) \times (G \to Y), (H \to Z))
+  \iso \K^{[1]}((F \to X), (G \to Y) \iHom (H \to Z))
+  \]
+  für $(F \to X), (G \to Y), (H \to Z) \in \K^{[1]}$ ist dann die
   Bijektion von Faserprodukten
   \begin{align*}
-    &\K(F \times G, H) \times_{\K(F \times G, Z)} \K(X \times Y, Z) \\
-    \iso \quad &\K(F, \K(G, H) \times_{\K(G, Z)} \K(Y, Z))
-    \times_{\K(F, \K(Y, Z))} \K(X, \K(Y, Z)).
+    &\K\big( F \times G, H\big) \times_{\K(F \times G, Z)} \K\big( X \times Y, Z\big) \\
+    \iso \quad &\K\big( F, \K(G, H) \times_{\K(G, Z)} \K(Y, Z)\big)
+    \times_{\K(F, \K(Y, Z))} \K\big(X, \K(Y, Z)\big).
   \end{align*}
-  % TODO left/right setzen
 \end{proof}
-Im allgemeinen ist das interne Hom in $\K^{[1]}$ für $(F \to X)$ und $G
-\to Y)$ mit étalen Abbildungen nicht wieder étale. Wir können
+Im allgemeinen ist das interne Hom in $\K^{[1]}$ für $(F \to X)$ und
+$(G \to Y)$ mit étalen Abbildungen nicht wieder étale. Wir können
 versuchen, es zu ``étalisieren'':
 \begin{lemma}[\cite{TG}, 2.1.40]
   Für $X$ einen topologischen Raum ist die volle Unterkategorie
@@ -785,34 +802,23 @@ jedem Raum $X$ auch jeden étalen Raum über $X$ enthält (etwa wie in
 \ref{k-etale-closed}), so können wir die Kategorie der étalen Räume
 über $\K$ als volle Unterkategorie von $\K^{[1]}$ auffassen:
 \[ \et \K^{[1]} := \Ens_{/\K} \subset \K^{[1]}. \]
-Gäbe es nun einen Koreflektor $^+: \K^{[1]} \to \et \K^{[1]}$, so hätten wir
-für $F, G, H \in \et \K^{[1]}$:
-\begin{align*}
-  \et \K^{[1]}(F \times G, H)
-  &\iso \K^{[1]}(F \times G, H) \\
-  &\iso \K^{[1]}(F, G \iHom H) \\
-  &\iso \et \K^{[1]}(F, (G \iHom H)^+),
-\end{align*}
-mit der kartesisch abgeschlossenen Struktur aus
-\ref{k-arrow-cart-closed} im zweiten Schritt. Die Produkte in
-$\K^{[1]}$ und $\et \K^{[1]}$ stimmen dabei nach dem folgenden Lemma
-überein. Umgekehrt ist, falls ein internes Hom $(G \iHom H)^+$ in $\et
-\K^{[1]}$ existiert, die Zuordnung $(G \iHom H) \mapsto (G \iHom H)^+$
-ein partiell definierter Koreflektor. Unsere Aufgabe ist es nun zu
-zeigen, dass eine solche relative Form der Étalisierung nicht möglich
-ist.
-
+Gäbe es nun einen Koreflektor $^+: \K^{[1]} \to \et \K^{[1]}$, so
+hätten wir für $F, G, H \in \et \K^{[1]}$ mit
+\ref{coreflective-cart-closed}
+\[ \et \K^{[1]}(F \times G, H)
+  \iso \et \K^{[1]}(F, (G \iHom H)^+),
+\]
+mit dem internen Hom $(G \iHom H)$ aus \ref{k-arrow-cart-closed}. Die
+Produkte in $\K^{[1]}$ und $\et \K^{[1]}$ stimmen dabei nach dem
+folgenden Lemma überein. Umgekehrt ist, falls ein internes Hom $(G
+\iHom H)^+$ in $\et \K^{[1]}$ existiert, die Zuordnung $(G \iHom H)
+\mapsto (G \iHom H)^+$ ein partiell definierter Koreflektor. Unsere
+Aufgabe ist es nun, zu zeigen, dass eine solche relative Form der
+Étalisierung nicht möglich ist.
 \begin{lemma}
   Ist $k: \Top \to \K$ ein Koreflektor und $p: F \to X$ étale in
   $\Top$, so ist $kp: kF \to kX$ étale.
 \end{lemma}
-\begin{bem}
-  Die Bedingung, dass $\K$ koreflektiv sei, ist hier nur eine sehr
-  schwache Einschränkung, denn sie ist äquivalent dazu, dass $\K$
-  unter Kolimites in $\Top$ abgeschlossen ist (\cite{Herrlich},
-  Thm. 37.3).
-  % TODO benötigen wir col-Abschluss eh?
-\end{bem}
 \begin{proof}
   Dass $p$ étale ist, bedeutet, dass es für jedes $x \in F$ ein
   kommutatives Quadrat
@@ -823,11 +829,10 @@ ist.
   \end{tikzcd}
   \]
   gibt mit $U \open F$ und $p(U) \open X$. Anwendung von $k$ ergibt
-  das entsprechende Diagramm, in welchem $kU$ und $k(p(U))$ offen
-  sind, da der Koreflektor die Topologien höchstens verfeinert und die
-  Abbildungen injektiv bleiben, da $k$ die zugrundeliegenden
-  mengentheoretischen Abbildungen erhält. Da $k$ ein Funktor ist,
-  kommutiert das Quadrat und $kU \iso k(p(U)) = (kp)(KU)$ ist ein
+  das entsprechende Diagramm, in welchem $kU \subset kF$ und $k(p(U))
+  \subset kX$ offene Teilmengen sind, da $\mathcal{K}$ mit jedem Raum
+  auch seine offenen Unterräume enthält. Da $k$ ein Funktor ist,
+  kommutiert das Quadrat und $kU \iso k(p(U)) = (kp)(kU)$ ist ein
   Homöomorphismus.
 \end{proof}
 Das Übereinstimmen der Produkte in $\K^{[1]}$ und $\et \K^{[1]}$ ergibt sich
@@ -837,9 +842,9 @@ nach dem Lemma auch das Produkt $k(F \times G) \to k(X \times Y)$ in
 $\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
 
 \begin{satz} \label{enstop-missing-coreflector}
-  Sei $\K \subset \Top$ eine volle Unterkategorie. Der partiell
-  definierte Koreflektor $^+: \K^{[1]} \to \et \K^{[1]}$ ist nur auf
-  $\et \K^{[1]}$ definiert.
+  Sei $\K \subset \Top$ eine volle Unterkategorie. Dann ist der
+  partiell definierte Koreflektor $^+: \K^{[1]} \to \et \K^{[1]}$ nur
+  auf $\et \K^{[1]}$ definiert.
 \end{satz}
 \begin{proof}
   Dies liegt daran, dass die Testobjekte, mit denen wir Objekte in
@@ -848,7 +853,7 @@ $\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
   dem betreffenden Raum initiale bzw. terminale Garben:
   \begin{align*}
     \iota X := (\varnothing \to X), \\
-    \tau X := (X \xrightarrow{\id} X.
+    \tau X := (X \xrightarrow{\id} X).
   \end{align*}
   Gelte also
   \begin{equation} \label{eq:coreflection-adjunction}
@@ -856,19 +861,17 @@ $\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
   \end{equation}
   für alle étalen $F \to X$. Ein Objekt $(H \to Z) \in \K^{[1]}$ ist
   nach dem Yoneda-Lemma (bis auf eindeutigen Isomorphismus) eindeutig
-  festgelegt durch seine Yoneda-Einbettung $\K^{[1]}(\cdot, (H \to
-  Z))$. Wir behaupten, dass sogar die Funktoren $\K^{[1]}(\iota \cdot,
-  (H \to Z)) = \K(\cdot, Z)$ und $\K^{[1]}(\tau \cdot, (H \to Z)) =
-  \K(\cdot, H): \K \to \Ens$ und ihre aus $\iota \cdot \Trafo \tau
-  \cdot$ entstehende Transformation ausreichen, um $H \to Z$ eindeutig
-  festzulegen. In der Tat bestimmen die beiden Funktoren nach dem
-  Yoneda-Lemma bereits die beteiligten Räume $H$ und $Z$ eindeutig und
-  der Morphismus $H \to Z$ entspricht der Transformation. Nun sind
-  $\iota X, \tau X \in \et \K^{[1]}$ für alle $X \in \K$, was den
-  Beweis abschließt: dann müssen nämlich im Fall von
-  \ref{eq:coreflection-adjunction} $(G \to Y)$ und $(G \to Y)^+$
-  isomorph sein und die Koreflektion ist genau dann definiert, wenn
-  $(G \to Y)$ sowieso schon étale ist.
+  festgelegt durch die Funktoren $\K^{[1]}(\iota \cdot, (H \to Z)) =
+  \K(\cdot, Z)$ und $\K^{[1]}(\tau \cdot, (H \to Z)) = \K(\cdot, H):
+  \K \to \Ens$ und ihre aus $\iota \cdot \Trafo \tau \cdot$
+  entstehende Transformation. In der Tat bestimmen die beiden
+  Funktoren nach dem Yoneda-Lemma bereits die beteiligten Räume $H$
+  und $Z$ eindeutig und der Morphismus $H \to Z$ entspricht der
+  Transformation. Nun sind $\iota X, \tau X \in \et \K^{[1]}$ für alle
+  $X \in \K$, was den Beweis abschließt: dann müssen nämlich im Fall
+  von Gl. \ref{eq:coreflection-adjunction} $(G \to Y)$ und $(G \to
+  Y)^+$ isomorph sein und die Koreflektion ist genau dann definiert,
+  wenn $(G \to Y)$ sowieso schon étale ist.
 \end{proof}
 \begin{kor}
   Es gibt ein internes Hom für $F \to X$ und $G \to Y$ in $\et
@@ -889,9 +892,9 @@ $\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
   im Fall, dass $F$ unendlich ist, ein Widerspruch zum folgenden
   Lemma. Im Fall der koreflektiven Hüllen von $\K = \mathcal{I}_K$
   oder $\K = \mathcal{I}_L$ aus dem vorangegangenen Abschnitt gilt
-  allerdings $\K(F, G) = k(\Top_{co}(F, G))$. Mir ist nicht bekannt,
-  ob der Koreflektor die Topologien so sehr verfeinern kann, dass
-  $\K(F, G)$ auch bei unendlichem $F$ diskret wird.
+  allerdings $\K(F, G) = k(\Top_{co}(F, G))$. Die Frage ist, ob der
+  Koreflektor die Topologien so sehr verfeinern kann, dass $\K(F, G)$
+  auch bei unendlichem $F$ diskret wird.
 \end{bem}
 \begin{lemma} \label{compact-open-discrete}
   Ist $G$ diskret, so ist die kompakt-offen Topologie auf $\Top(F,
@@ -903,7 +906,7 @@ $\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
   stetige Abbildung $f: F \to G$ durch endlich viele Aussagen der Form
   $f(K) \subset U$ für $K \subset F$ kompakt und $U \open G$ eindeutig
   festgelegt ist. Ein Kompaktum $K \subset F$ trifft nur endlich viele
-  Zusammenhangskomponenten von $F$. Daher kann $f$ nicht eindeutig
+  Zusammenhangskomponenten von $F$. Daher kann $f$ so nicht eindeutig
   festgelegt werden, wenn $F$ unendlich viele Zusammenhangskomponenten
   hat. Umgekehrt ist $f$ als stetige Funktion in einen diskreten Raum
   konstant auf Zusammenhangskomponenten und kann durch die Angabe des
@@ -911,7 +914,7 @@ $\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
   Zusammenhangskomponente eindeutig festgelegt werden.
 \end{proof}
 
-\subsection{Vollständigkeitseigenschaften der Garben auf topologischen Räumen}
+\section{Vollständigkeitseigenschaften der Garben auf topologischen Räumen}
 
 Mit denselben Techniken können wir auch zeigen, dass die Kategorie
 $\EnsTop$ der Garben auf topologischen Räumen über die endlichen
@@ -920,19 +923,20 @@ hinaus weder vollständig noch kovollständig ist.
 
 \begin{prop} \label{enstop-not-complete}
   Die Kategorie $\EnsTop$ der Garben über topologischen Räumen besitzt
-  keine unendlichen Produkte.
+  nicht alle unendlichen Produkte.
 \end{prop}
 \begin{proof}
   Dies sieht man schon am Beispiel eines unendlichen Produkts von
-  Inklusionen $\iota: U \inj X$ einer echten offenen Teilmenge $U \neq
-  X$. Die Abbildung
-  \[ \prod_\N \iota: \prod_n U \to \prod_\N X \]
-  ist nicht étale, denn es gibt keine Schnitte $\prod_\N X \to
-  \prod_\N U$, weil eine Menge in der Basis der Produkttopologie von
-  $\prod_\N X$ in fast allen Faktoren $X$ die Projektion $X$ hat. Dies
-  wäre aber wegen des Fehlens eines Koreflektors
+  Inklusionen $\iota: U \inj X$ einer echten offenen Teilmenge $U
+  \subsetneq X$. Die Abbildung
+  \[ \prod_{\N} \iota: \prod_{\N} U \to \prod_{\N} X \]
+  ist nicht étale, denn es gibt keine Schnitte von $\prod_{\N} \iota$
+  über offene Teilmengen $V \open \prod_{\N} X$, weil eine offene
+  Menge in der Basis der Produkttopologie von $\prod_{\N} X$ in fast
+  allen Faktoren $X$ die Projektion $X$ hat. Die Abbildung ist also
+  nicht étale, was aber wegen des Fehlens eines Koreflektors
   (\ref{enstop-missing-coreflector}) für die Existenz von unendlichen
-  Produkten nötig.
+  Produkten nötig wäre.
 \end{proof}
 \begin{kor} \label{enstop-not-reflective}
   Die volle Unterkategorie $\EnsTop \subset \Top^{[1]}$ ist nicht
@@ -942,10 +946,10 @@ hinaus weder vollständig noch kovollständig ist.
   Gäbe es einen zur Inklusion Linksadjungierten, so wäre die Inklusion
   linksexakt, würde also Limites erhalten.
 \end{proof}
-Wir können sogar zeigen, dass es den Reflektor praktisch nicht
-gibt. Bezeichne dazu einen Punkt in einem Raum $F \in \Top_X$ als
-\emph{étale}, wenn er die lokale Homöomorphismus-Eigenschaft eines
-étalen Raums über $X$ erfüllt.
+Wir können sogar angeben, wann es den Reflektor gibt. Bezeichne dazu
+einen Punkt in einem Raum $F \in \Top_X$ als \emph{étale}, wenn er die
+lokale Homöomorphismus-Eigenschaft eines étalen Raums über $X$
+erfüllt.
 \begin{prop}
   Der partiell definierte Reflektor $\Top^{[1]} \to \EnsTop$ ist auf
   $F \in \Top_X$ genau dann definiert, wenn jeder nichtétale Punkt
@@ -959,12 +963,13 @@ gibt. Bezeichne dazu einen Punkt in einem Raum $F \in \Top_X$ als
   eines Schnitts in $G(V)$ für eine offene Umgebung $V$ des
   Basispunkts von $f(\sigma)$, deren Urbild $f^{-1}(V) \supset
   U(\sigma)$ die kleinste offene Umgebung von $\sigma$ enthält. Da
-  Übereinstimmungsmengen von Schnitten offen sind, enthält ihr Urbild
-  mit $\sigma$ auch $U(\sigma)$ und es lässt sich somit ein Morphismus
-  $F \to G$ eindeutig über den Reflektor $F \to F^+$ faktorisieren.
+  Übereinstimmungsmengen von Schnitten offen sind, enthält deren
+  Urbild mit $\sigma$ auch $U(\sigma)$ und es lässt sich somit ein
+  Morphismus $F \to G$ eindeutig über den Reflektor $F \to F^+$
+  faktorisieren.
   
   Sei umgekehrt der Reflektor $^+$ definiert auf einem Objekt $F \to
-  X$. Durch Testen mit Zielobjekten $\tau Y$, $Y \in \Top$ ist nach
+  X$. Durch Testen mit Zielobjekten $\tau Y$, $Y \in \Top$, ist nach
   dem Yoneda-Lemma die Basis von $(F \to X)^+$ wieder (bis auf
   eindeutigen Homöomorphismus) $X$ und die Einheit der Adjunktion
   $\kappa: F \to F^+$ liegt über der Identität auf $X$. Wegen der

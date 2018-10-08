@@ -1,19 +1,19 @@
 % Emacs mode: -*-latex-*-
 
-\section{Schwach konstruierbare Garben auf simplizialen Mengen}
-\label{sec:simp-set-sk}
+\chapter{Schwach konstruierbare Garben auf simplizialen Mengen}
+\label{ch:simp-set-sk}
 
-In diesem Abschnitt möchten wir die Aussagen aus
-\autoref{sec:simp-comp-ord} übertragen auf den Fall, dass es sich bei
-dem Basisraum um die Realisierung einer simplizialen Menge anstelle
-eines Simplizialkomplexes handelt. Simplizialkomplexe sind
-halbgeordnete Mengen und unsere Technik verwendete die
-Ordnungstopologie halbgeordneter Mengen. Simplizial konstante Garben
-auf simplizialen Mengen entsprechen hingegen Diagrammen von Mengen, in
-denen es auch mehrere Pfeile zwischen zwei zu nichtdegenerierten
-Simplizes gehörigen Punkten geben kann. Solche kategoriellen
-Realisierungen simplizialer Mengen werden wir in diesem Abschnitt
-konstruieren.
+In diesem Kapitel möchten wir die Aussagen aus
+\autoref{sec:simp-comp-ord} und \autoref{sec:simp-comp-sk} übertragen
+auf den Fall, dass es sich bei dem Basisraum um die Realisierung einer
+simplizialen Menge anstelle eines Simplizialkomplexes
+handelt. Simplizialkomplexe sind halbgeordnete Mengen und unsere
+Technik verwendete die Ordnungstopologie halbgeordneter
+Mengen. Simplizial konstante Garben auf simplizialen Mengen
+entsprechen hingegen Diagrammen von Mengen, in denen es auch mehrere
+Pfeile zwischen zwei zu nichtdegenerierten Simplizes gehörigen Punkten
+geben kann. Solche kategoriellen Realisierungen simplizialer Mengen
+werden wir in diesem Abschnitt konstruieren.
 
 Konkret ist für $X \in \s\Ens$ eine simpliziale Menge eine Kategorie
 $D_X$ gesucht, für die es eine Äquivalenz von Kategorien
@@ -25,15 +25,15 @@ konstant sind. Wir diskutieren die in Frage kommenden Kategorien $D_X$
 an einem einfachen Beispiel. Betrachte die Standarddarstellung von
 $S^1$ als simpliziale Menge $X$ mit einem nichtdegenerierten
 $1$-Simplex und einem nichtdegenerierten $0$-Simplex aus
-\ref{ex:real-sphere}. Als kategorielle Realisierung $D_X$ von $X$
-können folgende Diagramme in Frage kommen:
+\ref{real-sphere}. Als kategorielle Realisierung $D_X$ von $X$ können
+folgende Diagramme in Frage kommen:
 \begin{enumerate}
 \item Das Diagramm $D_X = (\bullet \to \bullet)$. Es handelt sich um
   das Diagramm der nichtdegenerierten Simplizes von $X$ mit der
   Angabe, welche Simplizes im Abschluss welcher Simplizes
   liegen. Dieses Diagramm ist zu grob, um simplizial konstanten Garben
   auf $S^1$ zu entsprechen, wie die Realisierung von $D_X$ mit der
-  Ordnungstopologie und dann die erste Garbenkohomologie zeigt. Im
+  Ordnungstopologie und dann die erste Garbenkohomologie zeigt. In
   \autoref{sec:real-poset} werden wir diese kategorielle Realisierung
   mit der geometrischen Realisierung durch ordnungstopologische
   Simplizes in Beziehung setzen.
@@ -77,8 +77,12 @@ haben wir gezeigt:
   \[ [\slicecat{\Delta}{r}{X}\op, \Ens] \qiso (\s\EnsssTop)_X. \]
 \end{prop}
 
-\subsection{Realisierung als gerichtete Kategorie}
-\label{sec:real-directed-cat}
+\section{Kategorielle Realisierungen}
+\label{sec:real-cat}
+
+In diesem Abschnitt geben wir die kategoriellen Realisierungen einer
+simplizialen Menge als gerichtete Kategorie bzw. als halbgeordnete
+Menge an.
 
 Wir benötigen die Begriffe für nichtdegenerierte Simplizes
 (vgl. \ref{def:delta}, \ref{def:comb-standard-simplex}).
@@ -143,6 +147,13 @@ Bildmengen. Dies zeigt die Funktorialität.
   ist ein Funktor $R: \Delta \to \Cat$, genannt die
   \emph{kosimpliziale Standard-Kategorie}.
 \end{prop}
+\begin{bem}
+  Es handelt sich um die opponierten Standard-$n$-Simplizialkomplexe
+  aufgefasst als Kategorien. Die Konstruktion über die
+  nichtdegenerierten Simplizes des Standard-Simplex liefert die
+  benötigten Rand- und Degenerationsabbildungen auf natürliche Weise
+  mit.
+\end{bem}
 \begin{proof}
   Wir müssen zeigen, dass für monotone $f: [m] \to [n]$ und $g: [l]
   \to [m]$ gilt
@@ -218,17 +229,142 @@ Bildmengen. Dies zeigt die Funktorialität.
 \begin{bsp} \label{ex:s1-diagram}
   Betrachte die Standarddarstellung von $S^1$ als simpliziale Menge
   $X$ mit einem nichtdegenerierten $1$-Simplex und einem
-  nichtdegenerierten $0$-Simplex aus \ref{ex:real-sphere}. Wie
+  nichtdegenerierten $0$-Simplex aus \ref{real-sphere}. Wie
   angekündigt ist die kategorielle Realisierung von $X$ das Diagramm
   \[ \bullet \rightrightarrows \bullet \]
   mit zwei Objekten und zwei parallelen Pfeilen dazwischen, sowie
   nicht eingezeichneten Identitäten.
 \end{bsp}
 
-Als zweite Zutat für unseren Satz, der simplizial konstante Garben auf
-$|X|$ mit Prägarben auf der kategoriellen Realisierung $X \otimes R$
-in Beziehung setzen soll, benötigen wir eine Beschreibung von Garben
-auf Kolimites. Die Argumentation ist recht einfach, sofern die
+Hieraus lässt sich in einem zweiten Schritt die andere diskutierte
+kategorielle Realisierung als halbgeordnete Menge konstruieren. Wir
+erhalten die kosimpliziale halbgeordnete Menge $P: \Delta \to \poset$
+aus $R: \Delta \to \Cat$ durch Anwenden eines Reflektors $\Cat \to
+\poset$.
+
+\begin{prop} \label{poset-cocomplete}
+  Die Kategorie $\poset$ der halbgeordneten Mengen ist kovollständig.
+\end{prop}
+\begin{proof}
+  Die halbgeordneten Mengen sind eine volle Unterkategorie $\poset
+  \subset \Cat$. Wir können daher \ref{refl-sub-complete} verwenden,
+  mit dem Reflektor $\Cat \to \poset$, der im folgenden Lemma
+  konstruiert wird.
+\end{proof}
+\begin{defn}
+  Eine Kategorie heißt \emph{dünn}, falls jede Morphismenmenge
+  höchs\-tens einelementig ist. Eine Kategorie heißt
+  \emph{Skelettkategorie}, falls in ihr jeder Isomorphismus eine
+  Identität ist.
+\end{defn}
+\begin{lemma} \label{poset-reflective}
+  Die vollen Unterkategorien $\mathrm{thinCat}, \mathrm{skelCat}
+  \subset \Cat$ der dünnen bzw. Skelettkategorien sind reflektiv. Der
+  Reflektor $\Cat \to \mathrm{skelCat}$ macht aus dünnen Kategorien
+  dünne Kategorien und liefert durch Komposition mit dem Reflektor
+  $\Cat \to \mathrm{thinCat}$ einen Reflektor $\pos: \Cat \to \poset$.
+\end{lemma}
+\begin{proof}
+  Der Linksadjungierte zu $\mathrm{thinCat} \inj \Cat$ ist gegeben
+  durch die Identifikation aller nichtleeren Morphismenmengen zu
+  einelementigen Morphismenmengen. Der Linksadjungierte zu
+  $\mathrm{skelCat} \inj \Cat$ ist die zu einer kleinen Kategorie mit
+  dem Auswahlaxiom konstruierte Unterkategorie, die Isomorphieklassen
+  von Objekten durch ein Objekt aus diesen ersetzt. Klar ist, dass
+  Funktoren $F: C \to D$ in eine dünne Kategorie $D$ Abbildungen auf
+  Objekten sind mit der Zusatzeigenschaft, dass es einen Morphismus
+  $Ff: Fx \to Fy$ in $D$ geben muss, wann immer es einen Morphismus
+  $f: x \to y$ in $C$ gibt. Das ist unerheblich davon, wie viele
+  Morphismen $x \to y$ es in $C$ gibt und zeigt die erste
+  Adjunktion. Ein Funktor in eine Skelettkategorie schickt isomorphe
+  Objekte auf dasselbe Objekt, wird also schon durch das Bild eines
+  Objekts jeder Isomorphieklasse eindeutig festgelegt. Dies zeigt die
+  zweite Adjunktion.
+
+  Der Reflektor $\Cat \to \mathrm{skelCat}$ ordnet einer Kategorie
+  eine Unterkategorie zu und erhält deshalb Dünnheit. Halbgeordnete
+  Mengen sind nach Definition dünne Skelettkategorien.
+\end{proof}
+
+Bezeichne nun $P = \pos R: \Delta \to \poset$ die kosimpliziale
+halbgeordnete Menge zur kosimplizialen gerichteten Kategorie $R$. Die
+halbgeordneten Mengen
+\[ P[n] = \pos \slicecat{\Delta^+}{r}{\Delta^{+n}}
+\]
+sind dann die opponierten Standard-$n$-Simplizialkomplexe.
+
+\section{Realisierung als halbgeordnete Menge}
+\label{sec:real-poset}
+
+Der kombinatorische topologische Raum $\blacktriangle X$ einer
+simplizialen Menge eignet sich \emph{nicht} für die Übertragung der
+Aussagen zu schwach konstruierbaren Garben auf Simplizialkomplexen auf
+die Situation simplizialer Mengen, denn diese geometrische
+Realisierung sieht nicht mehrfache Verklebungsabbildungen. Dies
+möchten wir präzise machen.
+
+\begin{prop} \label{clumsy-order-top}
+  Sei $X \in \s\Ens$ eine simpliziale Menge. Dann gibt es einen
+  Homöomorphismus $\blacktriangle X \iso \Ord((X \otimes P)\op)$.
+\end{prop}
+\begin{proof}
+  Der Funktor $\Ord: \poset \to \Top$ ist nach dem nachgestellten
+  Lemma kostetig. Daher reicht es mit \ref{coend-cocont} (und der
+  Kostetigkeit des Opponierens), einen Isomorphismus kosimplizialer
+  topologischer Räume $\blacktriangle \to \Ord P\op$ zu finden. Beide
+  bestehen aus einem Punkt pro nichtdegeneriertem Simplex
+  (\ref{cw-cells}) von $\Delta^n$ und haben als offene Mengen nach
+  oben abgeschlossene Mengen. Randabbildungen $d_i$ sind Inklusionen
+  in die Ränder, Degenerationen Kollapse von Kanten: nach Definition
+  schickt $Ps_i: P[n] \to P[n-1]$ einen nichtdegenerierten Simplex $f:
+  [m] \to [n]$ monoton und injektiv auf $N(s_i \circ f)$, den
+  nichtdegenerierten Simplex, der zum Kollaps von $i$ und $i+1$ in $f$
+  gehört.
+\end{proof}
+\begin{lemma}
+  Der Funktor $\Ord: \poset \to \Top$, der eine halbgeordneten Menge
+  mit der Ordnungstopologie versieht, ist kostetig.
+\end{lemma}
+\begin{proof}
+    Klar ist, dass $\Ord$ mit Koprodukten vertauscht. Sei nun $A
+    \mathrel{\mathop{\rightrightarrows}^{F}_{G}} B \to C$ ein
+    Koegalisator in den halbgeordneten Mengen. Dann ist nach
+    \ref{cat-cocomplete} und \ref{poset-reflective} die
+    zugrundeliegende mengentheoretische Abbildung von $q: B \to C$ der
+    mengentheoretische Koegalisator: nur der Reflektor $\Cat \to
+    \mathrm{skelCat}$ könnte die zugrundeliegende Menge ändern, wird
+    aber bereits auf eine Skelettkategorie angewandt, denn ein
+    Kategorienkolimes über halbgeordnete Mengen enthält keine
+    Morphismen in entgegengesetzte Richtungen. Wir müssen noch zeigen,
+    dass $\Ord(q): \Ord B \to \Ord C$ final ist. Ist $U \subset C$
+    eine Menge mit offenem Urbild $q^{-1}(C)$, so ist ein Morphismus
+    $x \to y$ in $C$ mit $x \in U$ ein Pfad $x = v_0 \to v_1 \sim w_1
+    \to w_2 \sim v_2 \to \cdots \to y$ bestehend aus Morphismen in
+    $B$, die sich nach den Identifaktionen durch $q$ verknüpfen
+    lassen. Induktiv liegen nun nach der Abgeschlossenheit nach oben
+    von $q^{-1}(U)$ alle $v_i$, $w_i$ in $q^{-1}(U)$ und somit auch
+    $y$. Es folgt die Offenheit von $U$.
+\end{proof}
+
+Mit \ref{sheaf-order-top} und \ref{clumsy-order-top} erhalten wir
+sofort die folgende kombinatorische Charakterisierung von Garben auf
+der ordnungstopologischen Realisierung:
+\begin{prop} \label{clumsy-comb}
+  Sei $X \in \s\Ens$ eine simpliziale Menge. Dann gibt es eine
+  Äquivalenz von Kategorien $\Ens_{/\blacktriangle X} \qiso [(X
+    \otimes P)\op, \Ens]$.
+\end{prop}
+
+\section{Realisierung als gerichtete Kategorie}
+\label{sec:real-directed-cat}
+
+Stattdessen lässt sich die Äquivalenz von simplizial konstanten Garben
+auf einer simplizialen Menge $X$ zu Diagrammen von Mengen für die
+kategorielle Realisierung $X \otimes R$ durch gerichtete Kategorien
+formulieren.
+
+Als zweite Zutat für diese Aussage benötigen wir eine Beschreibung von
+Garben auf Kolimites. Die Argumentation ist recht einfach, sofern die
 richtigen Begriffe von Limites und Kolimites von großen Kategorien zur
 Verfügung stehen. Problematisch dabei ist, dass wir selten
 tatsächliche Gleichheit von Funktoren und Isomorphismen von Kategorien
@@ -306,8 +442,8 @@ Nun können wir die Beschreibung von Garben auf Kolimites formulieren.
   über $X$ (mengentheoretisch) faktorisiert, also konstant ist in der
   Einschränkung auf die Faser $q^{-1}(x) \to F_x$. Ist nun $f(x) \sim
   g(x)$ eine Identifikation in der Faser, so stellt unsere
-  Konstruktion sicher, dass ein $q_*$-Schnitt derLimesgarbe $\kappa \,
-  F$ gerade die von $F_{q(f(x))} = F_{q(g(x))}$ herrührenden
+  Konstruktion sicher, dass ein $q_*$-Schnitt der Limesgarbe $\kappa
+  \, F$ gerade die von $F_{q(f(x))} = F_{q(g(x))}$ herrührenden
   Identifikationen berücksichtigen muss und wieder über $X$
   faktorisiert.
 
@@ -391,8 +527,8 @@ Unterkategorien simplizial konstanter Garben.
 \end{bem}
 
 Es schließt sich an diese Beschreibung simplizial konstanter Garben
-auf simplizialen Mengen eine Reihe an Fragen an, die hier nicht mehr
-abschließend beantwortet werden können:
+auf simplizialen Mengen eine Reihe an Fragen an, die hier nurmehr
+angerissen werden können.
 \begin{enumerate}
 \item Gibt es einen Rechtsadjungierten $p_*$ zur Verknüpfung
   \[p^*: [(X \otimes R)\op, \Ens] \qiso \Ens^{\sk}_{/|X|} \inj \Ens_{/|X|} \]
@@ -459,7 +595,7 @@ Wir können die Antworten nur kurz skizzieren:
   durch den simplizial konstanten Teil $p_* G$ von $G$ eindeutig
   festgelegt ist. Die Einheit der Adjunktion $\Id \Isotrafo p_* p^*$
   ist nach Konstruktion auf allen Objekten ein Isomorphismus.
-\item Die Aussage gilt und folgt aus dem Vorangegangenen Punkt und der
+\item Die Aussage gilt und folgt aus dem vorangegangenen Punkt und der
   Aussage zu allgemeiner schwacher Konstruierbarkeit \ref{gen-sk}.
 \item Einem Objekt $\sigma$ einer gerichteten Kategorie kann eine
   Kardinalzahl zugeordnet werden, die angibt, wie viele nichttriviale
@@ -522,116 +658,3 @@ Wir können die Antworten nur kurz skizzieren:
     \]
   konstant ist.
 \end{enumerate}
-
-\subsection{Realisierung als halbgeordnete Menge}
-\label{sec:real-poset}
-
-Der kombinatorische topologische Raum $\blacktriangle X$ einer
-simplizialen Menge eignet sich \emph{nicht} für die Übertragung der
-Aussagen zu schwach konstruierbaren Garben auf Simplizialkomplexen auf
-die Situation simplizialer Mengen, denn diese geometrische
-Realisierung sieht nicht mehrfache Verklebungsabbildungen. Dies
-möchten wir präzise machen. Wir definieren dazu eine Realisierung $X
-\otimes P$ von $X$ durch halbgeordnete Mengen. Die kosimpliziale
-halbgeordnete Menge $P: \Delta \to \poset$ erhalten wir dabei aus $R:
-\Delta \to \Cat$ durch Anwenden eines Reflektors $\Cat \to \poset$.
-
-\begin{prop} \label{poset-cocomplete}
-  Die Kategorie $\poset$ der halbgeordneten Mengen ist kovollständig.
-\end{prop}
-\begin{proof}
-  Die halbgeordneten Mengen sind eine volle Unterkategorie $\poset
-  \subset \Cat$. Wir können daher \ref{refl-sub-complete} verwenden,
-  mit dem Reflektor $\Cat \to \poset$, der im folgenden Lemma
-  konstruiert wird.
-\end{proof}
-\begin{defn}
-  Eine Kategorie heißt \emph{dünn}, falls jede Morphismenmenge
-  höchs\-tens einelementig ist. Eine Kategorie heißt
-  \emph{Skelettkategorie}, falls in ihr jeder Isomorphismus eine
-  Identität ist.
-\end{defn}
-\begin{lemma} \label{poset-reflective}
-  Die vollen Unterkategorien $\mathrm{thinCat}, \mathrm{skelCat}
-  \subset \Cat$ der dünnen bzw. Skelettkategorien sind reflektiv. Der
-  Reflektor $\Cat \to \mathrm{skelCat}$ macht aus dünnen Kategorien
-  dünne Kategorien und liefert durch Komposition mit dem Reflektor
-  $\Cat \to \mathrm{thinCat}$ einen Reflektor $\pos: \Cat \to \poset$.
-\end{lemma}
-\begin{proof}
-  Der Linksadjungierte zu $\mathrm{thinCat} \inj \Cat$ ist gegeben
-  durch die Identifikation aller nichtleeren Morphismenmengen zu
-  einelementigen Morphismenmengen. Der Linksadjungierte zu
-  $\mathrm{skelCat} \inj \Cat$ ist die zu einer kleinen Kategorie mit
-  dem Auswahlaxiom konstruierte Unterkategorie, die Isomorphieklassen
-  von Objekten durch ein Objekt aus diesen ersetzt. Klar ist, dass
-  Funktoren $F: C \to D$ in eine dünne Kategorie $D$ Abbildungen auf
-  Objekten sind mit der Zusatzeigenschaft, dass es einen Morphismus
-  $Ff: Fx \to Fy$ in $D$ geben muss, wann immer es einen Morphismus
-  $f: x \to y$ in $C$ gibt. Das ist unerheblich davon, wie viele
-  Morphismen $x \to y$ es in $C$ gibt und zeigt die erste
-  Adjunktion. Ein Funktor in eine Skelettkategorie schickt isomorphe
-  Objekte auf dasselbe Objekt, wird also schon durch das Bild eines
-  Objekts jeder Isomorphieklasse eindeutig festgelegt. Dies zeigt die
-  zweite Adjunktion.
-
-  Der Reflektor $\Cat \to \mathrm{skelCat}$ liefert eine
-  Unterkategorie und erhält deshalb Dünnheit. Halbgeordnete Mengen
-  sind nach Definition dünne Skelettkategorien.
-\end{proof}
-
-Bezeichne nun $P = \pos R: \Delta \to \poset$ die kosimpliziale
-halbgeordnete Menge zu unseren Standardkategorien. Die halbgeordneten
-Mengen $P[n] = \pos \slicecat{\Delta^+}{r}{\Delta^{+n}}$ sind dann die
-opponierten Standard-$n$-Simplizialkomplexe.
-\begin{prop} \label{clumsy-order-top}
-  Sei $X \in \s\Ens$ eine simpliziale Menge. Dann gibt es einen
-  Homöomorphismus $\blacktriangle X \iso \Ord((X \otimes P)\op)$.
-\end{prop}
-\begin{proof}
-  Der Funktor $\Ord: \poset \to \Top$ ist nach dem nachgestellten
-  Lemma kostetig. Daher reicht es mit \ref{coend-cocont} (und der
-  Kostetigkeit des Opponierens), einen Isomorphismus kosimplizialer
-  topologischer Räume $\blacktriangle \to \Ord P\op$ zu finden. Beide
-  bestehen aus einem Punkt pro nichtdegeneriertem Simplex
-  (\ref{cw-cells}) von $\Delta^n$ und haben als offene Mengen nach
-  oben abgeschlossene Mengen. Randabbildungen $d_i$ sind Inklusionen
-  in die Ränder, Degenerationen Kollapse von Kanten. Dies begründen
-  wir sorgfältiger: Unsere Definition von $Ps_i: P[n] \to P[n-1]$
-  schickt einen nichtdegenerierten Simplex $f: [m] \to [n]$ monoton
-  und injektiv auf $N(s_i \circ f)$, den nichtdegenerierten Simplex,
-  der zum Kollaps von $i$ und $i+1$ in $f$ gehört.
-\end{proof}
-\begin{lemma}
-  Der Funktor $\Ord: \poset \to \Top$, der eine halbgeordneten Menge
-  mit der Ordnungstopologie versieht, ist kostetig.
-\end{lemma}
-\begin{proof}
-    Klar ist, dass $\Ord$ mit Koprodukten vertauscht. Sei nun $A
-    \mathrel{\mathop{\rightrightarrows}^{F}_{G}} B \to C$ ein
-    Koegalisator in den halbgeordneten Mengen. Dann ist nach
-    \ref{cat-cocomplete} und \ref{poset-reflective} die
-    zugrundeliegende mengentheoretische Abbildung von $q: B \to C$ der
-    mengentheoretische Koegalisator: nur der Reflektor $\Cat \to
-    \mathrm{skelCat}$ könnte die zugrundeliegende Menge ändern, wird
-    aber bereits auf eine Skelettkategorie angewandt, denn ein
-    Kategorienkolimes über halbgeordnete Mengen enthält keine
-    Morphismen in entgegengesetzte Richtungen. Wir müssen noch zeigen,
-    dass $\Ord(q): \Ord B \to \Ord C$ final ist. Ist $U \subset C$
-    eine Menge mit offenem Urbild $q^{-1}(C)$, so ist ein Morphismus
-    $x \to y$ in $C$ mit $x \in U$ ein Pfad $x = v_0 \to v_1 \sim w_1
-    \to w_2 \sim v_2 \to \cdots \to y$ bestehend aus Morphismen in
-    $B$, die sich nach den Identifaktionen durch $q$ verknüpfen
-    lassen. Induktiv liegen nun nach der Abgeschlossenheit nach oben
-    von $q^{-1}(U)$ alle $v_i$, $w_i$ in $q^{-1}(U)$ und somit auch
-    $y$. Es folgt die Offenheit von $U$.
-\end{proof}
-
-Mit \ref{sheaf-order-top} und \ref{clumsy-order-top} erhalten wir
-sofort die folgende kombinatorische Charakterisierung von Garben auf
-der ordnungstopologischen Realisierung:
-\begin{prop} \label{clumsy-comb}
-  Sei $X \in \s\Ens$ eine simpliziale Menge. Dann gibt es eine
-  Äquivalenz von Kategorien $\Ens_{/\blacktriangle X} \qiso [(X
-    \otimes P)\op, \Ens]$.
-\end{prop}

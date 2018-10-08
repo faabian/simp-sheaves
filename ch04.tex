@@ -390,19 +390,21 @@ mit $y = N_s(d_i^* x)$.
   p)$ mit $(x, |s|(p)) \in U_x$ hinzu. Das Urbild der offenen Menge
   $U_x$ unter dem stetigen $s$-Kollaps $|s|$ ist dann offen.
 \end{proof}
-Mit diesem Satz kann man sich geometrische Realisierungen gut
-veranschaulichen, etwa die versprochenen Darstellungen von $n$-Sphären
-als Verklebung eines nichtdegenerierten $n$-Simplex mit einem
-nichtdegenerierten $0$-Simplex.
+\begin{bem} \label{real-sphere}
+  Mit diesem Satz kann man sich geometrische Realisierungen gut
+  veranschaulichen, etwa die versprochenen Darstellungen von
+  $n$-Sphären als Verklebung eines nichtdegenerierten $n$-Simplex mit
+  einem nichtdegenerierten $0$-Simplex.
+\end{bem}
 \begin{bsp} \label{ex:clumsy-sphere}
   Die geometrische Realisierung mittels ordnungstopologischer
   Simplizes dieser Standard-Darstellung der $S^n$ als simpliziale
   Menge liefert den Sierpinski-Raum bestehend aus einem offenen
   dichten und einem abgeschlossenen Punkt. Dies zeigt, dass die
   ordnungstopologische Realisierung für unsere Zwecke zu grob ist und
-  sich in \ref{sec:simp-set-sk} nicht für die Übertragung der Aussagen
-  über schwach konstruierbare Garben auf Simplizialkomplexen eignen
-  wird.
+  sich in \autoref{ch:simp-set-sk} nicht für die Übertragung der
+  Aussagen über schwach konstruierbare Garben auf Simplizialkomplexen
+  eignen wird.
 \end{bsp}
 
 \section{Iterative Konstruktion durch Pushouts}
@@ -539,8 +541,10 @@ Unterschied zu \ref{def:loc-compact} und Bemerkung
     \item \label{itm:cg-crit-proof-lc} Sei $U \subset X$ mit $U \cap
       K$ offen für alle $K \subset X$ kompakt. Mit der
       Lokalkompaktheit von $X$ wählen wir zu jedem $x \in X$ eine
-      kompakte Umgebung $K_x$ und erhalten, dass $U = \bigcup_{x \in
-        X} U \cap K_x$ offen ist als Vereinigung offener Mengen.
+      kompakte Umgebung $K_x$ und darin eine offene Umgebung $U_x$. Es
+      ist $U \cap K_x$ in $K_x$ offen und somit $U \cap U_x$ in $X$
+      offen und wir erhalten, dass $U = \bigcup_{x \in X} U \cap U_x$
+      offen ist als Vereinigung offener Mengen.
     \item \label{itm:cg-crit-proof-quot} Sei $A \subset Y$ mit $A \cap
       K$ abgeschlossen für alle $K \subset Y$ kompakt. Mit der
       Finaltopologie auf $Y$ gilt, dass $A \subset Y$ genau dann
@@ -643,7 +647,7 @@ Produkten in $\CGHaus$.
 
 % TODO stimmt der Ausblick?
 Die Sprache der Enden und Koenden ermöglicht uns eine allgemeinere
-Sicht auf die geometrische Realisierung und wird sich später als
+Sicht auf die geometrische Realisierung und könnte sich später als
 nützlich erweisen, um andere Formen der geometrischen Realisierung
 einzuführen. Wir führen Koenden und ihre Eigenschaften ein, Enden sind
 dazu formal dual. Die Darstellung folgt \cite{Lore}.
@@ -730,29 +734,15 @@ wobei die Mengen $X_n$ als diskrete topologische Räume aufgefasst
 werden (\cite{Moer}, III.1):
 \[ |X| = X \otimes |\Delta|. \]
 
-\begin{bem} \label{coend-correct-real}
-  % TODO Koende vs Simplexkategorie
-  Rückblickend halten wir fest, dass während unsere durch die
-  ``Kostetigkeitseigenschaft'' für die Simplexkategorie
-  $\slicecat{\Delta}{r}{X}$ (Gl. \ref{eq:real-cocont},
-  \ref{eq:real-colim}) definierte geometrische Realisierung in dieser
-  Situation elegant ist, sie auf einer konkreten Eigenschaft der
-  Situation simplizialer \emph{Mengen} beruht, die wir bei
-  allgemeineren simplizialen Objekten nicht mehr gegeben
-  haben. Konkret werden wir im nächsten Abschnitt einen gewissen
-  Begriff einer Wirkung einer Kategorie auf einer anderen Kategorie
-  erklären (Koexponentiale, siehe \ref{def:copower}). Die Besonderheit
-  simplizialer Mengen beruht nun darauf, dass sich die Wirkung von
-  $\Ens$ auf $\Top$ $(X_n, |\Delta^n|) \mapsto \coprod_{X_n}
-  |\Delta^n|$ als von der Wirkung von $\Ens$ auf $\s\Ens$, $(X_n,
-  \Delta^n) \mapsto \coprod_{X_n} \Delta^n \cong \set{\Delta^n
-    \xrightarrow{x} X}{x \in X_n}$ induziert darstellen lässt, was uns
-  zum Begriff der Simplexkategorie von $X$ geführt hat. Bei Wirkungen
-  wie von $\Top$ auf $\Top$ durch das kartesische Produkt wird es
-  nicht mehr möglich sein, die $\Delta^n \to X$ aus der
-  Simplexkategorie als topologischen Raum aufzufassen. Unsere
-  Beschreibung der geometrischen Realisierung als Koende ist also die
-  für allgemeinere Kontexte richtige Beschreibung.
+\begin{bem}
+  Koenden für die $\Ens$-tensorierte Struktur sind also dasselbe wie
+  die Konstruktion der Slice-Kategorie bei der Definition der
+  geometrischen Realisierung über Kostetigkeit
+  (Gl. \ref{eq:real-colim}), da diese die $\Ens$-tensorierte Struktur
+  von $\Cat$ verwenden. Bei komplizierteren ``Wirkungen'' als der von
+  $\Ens$ auf $\Top$ durch Produktbilden mit einem diskreten Raum,
+  können die Aussagen nicht mehr mit der Slice-Konstruktion in $\Cat$
+  formuliert werden.
 \end{bem}
 \begin{bem} \label{real-model-natural}
   Da eine Transformation $R \Trafo \overline{R}$ einen Morphismus der
@@ -1090,7 +1080,8 @@ Koendenkalkül kommt der Yoneda-Einbettung die Rolle des Diracmaßes zu:
   $\R$ integrieren zu können.
 \end{bsp}
 
-\subsection{Angereicherte Kategorien}
+\section{Angereicherte Kategorien}
+\label{sec:enriched}
 
 In der ursprünglichen Definition einer Kategorie tragen die Morphismen
 $C(x, y)$ die Struktur einer Menge. Der Wunsch, Begriffe wie ``die
