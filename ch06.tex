@@ -1,19 +1,20 @@
 % Emacs mode: -*-latex-*-
 
 \chapter{Schwach konstruierbare Garben auf simplizialen Mengen}
+\chaptermark{Schwach konstruierbare Garben}
 \label{ch:simp-set-sk}
 
 In diesem Kapitel möchten wir die Aussagen aus
-\autoref{sec:simp-comp-ord} und \autoref{sec:simp-comp-sk} übertragen
-auf den Fall, dass es sich bei dem Basisraum um die Realisierung einer
-simplizialen Menge anstelle eines Simplizialkomplexes
-handelt. Simplizialkomplexe sind halbgeordnete Mengen und unsere
-Technik verwendete die Ordnungstopologie halbgeordneter
-Mengen. Simplizial konstante Garben auf simplizialen Mengen
-entsprechen hingegen Diagrammen von Mengen, in denen es auch mehrere
-Pfeile zwischen zwei zu nichtdegenerierten Simplizes gehörigen Punkten
-geben kann. Solche kategoriellen Realisierungen simplizialer Mengen
-werden wir in diesem Abschnitt konstruieren.
+\autoref{sec:simp-comp-sheaf} und \autoref{sec:simp-comp-sk}
+übertragen auf den Fall, dass es sich bei dem Basisraum um die
+Realisierung einer simplizialen Menge anstelle eines
+Simplizialkomplexes handelt. Simplizialkomplexe sind halbgeordnete
+Mengen und unsere Technik verwendete die Ordnungstopologie
+halbgeordneter Mengen. Simplizial konstante Garben auf simplizialen
+Mengen entsprechen hingegen Diagrammen von Mengen, in denen es auch
+mehrere Pfeile zwischen zwei zu nichtdegenerierten Simplizes gehörigen
+Punkten geben kann. Solche kategoriellen Realisierungen simplizialer
+Mengen werden wir in diesem Abschnitt konstruieren.
 
 Konkret ist für $X \in \s\Ens$ eine simpliziale Menge eine Kategorie
 $D_X$ gesucht, für die es eine Äquivalenz von Kategorien
@@ -42,9 +43,9 @@ folgende Diagramme in Frage kommen:
   Degenerationen. Diese Diagramm ist zu fein, um von einer simplizial
   konstanten Garbe auf $S^1$ eindeutig bestimmt zu werden, denn diese
   trägt keine Informationen über die degenerierten Simplizes. Gleich
-  im Anschluss werden wir diese kategorielle Realisierung mit den
-  simplizialen Objekten in $\EnsssTop$ mit diskreten Basisräumen $X$
-  in Beziehung setzen.
+  im Anschluss werden wir diese kategorielle Realisierung mit den noch
+  nicht realisierten simplizialen Objekten in $\EnsssTop$ mit
+  diskreten Basisräumen $X$ in Beziehung setzen.
 \item Das Diagramm $D_X = (\bullet \rightrightarrows \bullet)$. Dieses
   Diagramm würden wir anschaulich erwarten. Es handelt sich um die
   nichtdegenerierten Simplizes von $X$ mit der Angabe von Rändern,
@@ -103,8 +104,9 @@ Diese Zuordnung liefert einen Funktor $r: \Delta^+ \to [{\Delta^+}\op,
 gewünschte kosimpliziale Kategorie durch den Funktor der
 nichtdegenerierten Simplizes des nichtdegenerierten
 Standard-$n$-Simplex. Bezeichne dazu $\iota: \Delta^+ \inj \Delta$ den
-Inklusionsfunktor und $\iota^*: [\Delta\op, \Ens] \to [{\Delta^+}\op,
-  \Ens]$ den Rückzugsfunktor auf Prägarben.
+Inklusionsfunktor und
+\[ \iota^*: [\Delta\op, \Ens] \to [{\Delta^+}\op, \Ens] \]
+den Rückzugsfunktor auf Prägarben.
 \begin{defn}
   Der \emph{Stufenfunktor} ist der Funktor
   \[N: \slicecat{\Delta^+}{r}{\iota^* \Delta^n}
@@ -148,7 +150,7 @@ Bildmengen. Dies zeigt die Funktorialität.
   \emph{kosimpliziale Standard-Kategorie}.
 \end{prop}
 \begin{bem}
-  Es handelt sich um die opponierten Standard-$n$-Simplizialkomplexe
+  Es handelt sich um die opponierten Standard"=$n$"=Simplizialkomplexe
   aufgefasst als Kategorien. Die Konstruktion über die
   nichtdegenerierten Simplizes des Standard-Simplex liefert die
   benötigten Rand- und Degenerationsabbildungen auf natürliche Weise
@@ -157,7 +159,7 @@ Bildmengen. Dies zeigt die Funktorialität.
 \begin{proof}
   Wir müssen zeigen, dass für monotone $f: [m] \to [n]$ und $g: [l]
   \to [m]$ gilt
-  \[ N ((f \circ g)\circ) = N (f \circ) N (g \circ) \]
+  \[ N ((f \circ g)\circ) = N (f \circ) \: N (g \circ) \]
   für $(f \circ)$ den Nachschaltefunktor und $N$ den
   Stufenfunktor. Das folgt aber daraus, dass beide Funktoren eine
   monotone Injektion $h: [k] \to [l]$ auf die Injektion auf $\im (f
@@ -220,9 +222,9 @@ Bildmengen. Dies zeigt die Funktorialität.
   Pfadkategorien abweichen.
 \end{bem}
 \begin{defn}
-  Die \emph{kategorielle Realisierung} einer simplizialen Menge $X \in
-  \s\Ens$ ist definiert als das Tensorprodukt von Funktoren $X \otimes
-  R \in \Cat$ für $R$ die kosimpliziale Standard-Kategorie und die
+  Die \emph{kategorielle Realisierung} einer simplizialen Menge $X$
+  ist definiert als das Tensorprodukt von Funktoren $X \otimes R \in
+  \Cat$ für $R$ die kosimpliziale Standard-Kategorie und die
   natürliche $\Ens$-tensorierte Struktur auf $\Cat$
   (\ref{ens-tensored}).
 \end{defn}
@@ -338,12 +340,12 @@ möchten wir präzise machen.
     Morphismen in entgegengesetzte Richtungen. Wir müssen noch zeigen,
     dass $\Ord(q): \Ord B \to \Ord C$ final ist. Ist $U \subset C$
     eine Menge mit offenem Urbild $q^{-1}(C)$, so ist ein Morphismus
-    $x \to y$ in $C$ mit $x \in U$ ein Pfad $x = v_0 \to v_1 \sim w_1
-    \to w_2 \sim v_2 \to \cdots \to y$ bestehend aus Morphismen in
-    $B$, die sich nach den Identifaktionen durch $q$ verknüpfen
-    lassen. Induktiv liegen nun nach der Abgeschlossenheit nach oben
-    von $q^{-1}(U)$ alle $v_i$, $w_i$ in $q^{-1}(U)$ und somit auch
-    $y$. Es folgt die Offenheit von $U$.
+    $x \to y$ in $C$ mit $x \in U$ ein Pfad
+    \[ x = v_0 \to v_1 \sim w_1 \to w_2 \sim v_2 \to \cdots \to y \]
+    bestehend aus Morphismen in $B$, die sich nach den Identifaktionen
+    durch $q$ verknüpfen lassen. Induktiv liegen nun nach der
+    Abgeschlossenheit nach oben von $q^{-1}(U)$ alle $v_i$, $w_i$ in
+    $q^{-1}(U)$ und somit auch $y$. Es folgt die Offenheit von $U$.
 \end{proof}
 
 Mit \ref{sheaf-order-top} und \ref{clumsy-order-top} erhalten wir
@@ -416,8 +418,8 @@ Nun können wir die Beschreibung von Garben auf Kolimites formulieren.
   \Ens_{/X_i}$ ist dicht und die Äquivalenz ist die bekannte Aussage
   $\EnsX \qiso \prod_i \Ens_{/X_i}$.
 
-  Im Fall eines Koegalisators $Z
-  \overset{f}{\underset{g}{\rightrightarrows}} Y \xrightarrow{q} X$
+  Im Fall eines Koegalisators
+  \[ Z \overset{f}{\underset{g}{\rightrightarrows}} Y \xrightarrow{q} X \]
   besteht eine Garbe $G$ in der Limeskategorie aus einer Garbe $G$ auf
   $Y$, einem Isomorphismus $G \iso q^* F$ für $F$ eine Garbe auf $X$
   und einem Isomorphismus $\tau: f^* G \iso g^* G$ von Garben auf
@@ -478,7 +480,8 @@ Unterkategorien simplizial konstanter Garben.
 \end{theorem}
 \begin{proof}
   Wir nutzen, dass nach \ref{sheaf-col-sk} beide Seiten mit dem
-  Kolimes $|X| = \col_{\slicecat{\Delta}{r}{X}} |\Delta^n|$
+  Kolimes
+  \[ |X| \iso \col_{\slicecat{\Delta}{r}{X}} |\Delta^n| \]
   vertauschen:
   \begin{align*}
     [(X \otimes R)\op, \Ens]

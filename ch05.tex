@@ -1,36 +1,46 @@
 % Emacs mode: -*-latex-*-
 
 \chapter{Simpliziale Garben über topologischen Räumen}
+\chaptermark{Simpliziale Garben}
 \label{ch:simp-sheaves}
 
-% TODO einleitung ch05
+Die allgemeine Formulierung der geometrischen Realisierung als Koende
+aus \autoref{sec:coend-real} und die Dualität von Nerv und
+Realisierung aus \autoref{sec:nerve} verleiten zu der Hoffnung,
+simpliziale Objekte in einer Garbenkategorie über einem festen
+topologischen Raum $X$ oder variablen Basisräumen auf eine ähnliche
+Weise geometrisch realisieren zu können und dann mittels des
+adjungierten Nerv-Funktors eine Äquivalenz bestimmter Unterkategorien
+zu finden. Diese Hoffnung wird sich als verfrüht herausstellen, wir
+werden allerdings im folgenden Abschnitt eine andere Variante der
+geometrischen Realisierung vorstellen und im weiteren Verlauf die
+Vollständigkeits- und Abschlusseigenschaften der angesprochenen
+Garbenkategorien diskutieren.
 
 \section{Realisierung simplizialer Garben}
 \label{sec:simp-sheaves-real}
 
 Die Beschreibung der geometrischen Realisierung als Tensorprodukt von
-Funktoren eröffnet uns eine Reihe weiterer geometrischer
-Realisierungen, die diejenige simplizialer Mengen verallgemeinern.
-
-Zunächst stellen wir fest, dass wir in unserer Konstruktion
-simpliziale Mengen immer als diskrete simpliziale topologische Räume
-betrachtet haben, und die Diskretheit genauso gut auch fallen lassen
-können. Wir erhalten die geometrische Realisierung $|X| = X \otimes R$
-eines simplizialen topologischen Raums $X: \Delta\op \to \Top$.
+Funktoren eröffnet zunächst auch eine geometrische Realisierung
+simplizialer topologischer Räume. Bei der geometrischen Realisierung
+simplizialer Mengen haben wir die Simplexmengen $X_n$ als diskrete
+topologische Räume betrachtet, die Konstruktion funktioniert aber
+genauso für beliebige topologische Räume $X_n$. Wir erhalten die
+geometrische Realisierung $|X| = X \otimes R$ eines simplizialen
+topologischen Raums $X: \Delta\op \to \Top$.
 \begin{bsp}
-  Wir betrachten den simplizialen topologischen Raum $X: \Delta\op \to
-  \Top$, den wir aus dem (kombinatorischen) Standard-1-Simplex
-  $\Delta^1$ erhalten, indem wir disjunkte Vereinigungen von Punkten
-  durch disjunkte Vereinigungen von Intervallen $I = [0, 1]$ mit von
-  den Identitäten induzierten Abbildungen ersetzen. Offenbar ist die
-  geometrische Realiserung das Produnkt $I \times
-  |\Delta^1|$. Ersetzen wir $X_0$ wieder durch zwei Punkte ${0, 1}$
-  mit beliebigen Degenerationen, so erhalten wir eine zu einer
-  Kreisscheibe verdickte Linie zwischen den beiden Punkten als
-  Realisierung. Ersetzen wir die höheren $X_n, n \geq 2$ ebenfalls
-  wieder durch Punkte mit beliebigen Randabbildungen, so sorgen deren
-  Identifikationen dafür, dass die geometrische Realisierung wieder
-  $|\Delta^1|$ wird.
+  Wir betrachten den simplizialen topologischen Raum $X$, den wir aus
+  dem (kombinatorischen) Standard-1-Simplex $\Delta^1$ erhalten, indem
+  wir disjunkte Vereinigungen von Punkten durch disjunkte
+  Vereinigungen von Intervallen $I = [0, 1]$ mit von den Identitäten
+  induzierten Abbildungen ersetzen. Offenbar ist die geometrische
+  Realiserung das Produnkt $I \times |\Delta^1|$. Ersetzen wir $X_0$
+  wieder durch zwei Punkte ${0, 1}$ mit beliebigen Degenerationen, so
+  erhalten wir eine zu einer Kreisscheibe verdickte Linie zwischen den
+  beiden Punkten als Realisierung. Ersetzen wir die höheren $X_n, n
+  \geq 2$ ebenfalls wieder durch Punkte mit beliebigen
+  Randabbildungen, so sorgen deren Identifikationen dafür, dass die
+  geometrische Realisierung wieder $|\Delta^1|$ wird.
 
   Interessanter ist vielleicht der simpliziale topologische Raum, der
   in Grad 0 aus den Simplizes $S^1 \sqcup \point$ und in Grad 1 aus
@@ -42,19 +52,17 @@ eines simplizialen topologischen Raums $X: \Delta\op \to \Top$.
   keine weiteren Identifikationen verursachen. Wir erhalten so den
   zweidimensionalen reell-projektiven Raum.
 \end{bsp}
-
-Weiter verallgemeinert die Konstruktion auch auf
-Diagrammkategorien. Ist $I$ eine kleine Kategorie und $X: \Delta\op
-\to \Top^I$ ein simpliziales $I$-System topologischer Räume, so
-erhalten wir eine geometrische Realisierung $|X| = X \otimes R$ von
-$X$, wenn wir $R: \Delta \to \Top \to \Top^I$ mittels des Funktors der
-konstanten Darstellung auf die Diagrammkategorie
-fortsetzen. Insbesondere erhalten wir eine geometrische Realisierung
-für die Kategorie der Paare topologischer Räume mit stetiger
-Abbildung, d. h. die Diagrammkategorie $\Top^{[1]}$ für $[1]$ die
-Kategorie des Ordinals $[1] \in \Delta$, die Pfeilkategorie $\{
-\bullet \to \bullet \}$. Eine Realisierung für Garben über
-topologischen Räumen erhalten wir so aber nicht: Sind in einem
+Diese Konstruktion verallgemeinert auch auf Diagrammkategorien. Ist
+$I$ eine kleine Kategorie und $X: \Delta\op \to \Top^I$ ein
+simpliziales $I$-System topologischer Räume, so erhalten wir eine
+geometrische Realisierung $|X| = X \otimes R$ von $X$, wenn wir $R:
+\Delta \to \Top \to \Top^I$ mittels des Funktors der konstanten
+Darstellung auf die Diagrammkategorie fortsetzen. Insbesondere
+erhalten wir eine geometrische Realisierung für die Kategorie der
+Paare topologischer Räume mit stetiger Abbildung, d. h. die
+Diagrammkategorie $\Top^{[1]}$ für $[1] = (\bullet \to \bullet)$ die
+Kategorie des Ordinals $[1] \in \Delta$. Eine Realisierung für Garben
+über topologischen Räumen erhalten wir so aber nicht: Sind in einem
 simplizialen $\Top^{[1]}$ alle Abbildungen étale, bedeutet das noch
 nicht, dass auch die induzierte Abbildung in der geometrischen
 Realisierung étale ist. Sind etwa alle Basisräume $X_n$ einpunktig, so
@@ -62,54 +70,33 @@ ist die Realisierung $|X|$ ebenfalls einpunktig. Étale Räume $F_n \to
 X_n$ sind diskret, d. h. die geometrische Realisierung $|F|$ ist die
 einer simplizialen Menge, also im Allgemeinen ein höherdimensionaler
 CW-Komplex. Ein solcher ist nicht diskret, also nicht étale über
-$|X|$. Wir erhalten die korrekte Realisierung für $\Ens_{/\Top}$,
-indem wir den Kolimes in der Garbenkategorie statt in den
-topologischen Räumen bilden.
-\begin{prop}
-  Sei $F \in [\Delta\op, \Ens_{/\Top}]$ eine simpliziale Garbe über
-  topologischen Räumen mit Morphismen und $R: \Delta \to \Ens_{/\Top}$
-  eine kosimpliziale Garbe über topologischen Räumen. Dann ist die
-  Realisierung $F \otimes R \in \Ens_{/\Top}$ eine Garbe über der
-  geometrischen Realisierung der Basisräume.
-\end{prop}
-\begin{proof} \label{real-enstop}
-  Die Existenz der Realisierung folgt direkt aus der Beschreibung von
-  Koenden als Kolimites \ref{coend-col} und der Kovollständigkeit von
-  $\Ens_{/\Top}$ nach \ref{enstop-complete}. Dort wird auch der
-  Basisraum des Kolimites zum Kolimes der Basisräume bestimmt.
-\end{proof}
-% TODO stimmt nicht
-\begin{bem} \label{real-ensx}
-  Diese geometrische Realisierung simplizialer Garben auf
-  topologischen Räumen spezialisiert zu einer geometrischen
-  Realisierung simplizialer Garben auf $X$: Ist
-  $F: \Delta\op \to \EnsX$ eine simpliziale Garbe auf $X$, so ist ihre
-  geometrische Realisierung aus \ref{real-enstop} eine Garbe
-  $|F| \in \EnsX$, da die geometrische Realisierung des konstanten
-  simplizialen topologischen Raums $X: [n] \mapsto X$ selbst $X$ ist.
-\end{bem}
+$|X|$. Wir können versuchen, den Kolimes des Koendes nicht in der
+Kategorie der Paare topologischer Räume, sondern in der richtigen
+Kategorie $\EnsTop$ zu bilden. Später werden wir jedoch sehen, dass
+die beiden in ``nicht-kombinatorischen'' Fällen übereinstimmen müssen
+und der benötigte Kolimes in $\EnsTop$ in den für uns relevanten
+Fällen nicht existiert (\ref{enstop-coequalizers}).
 
-Ziel unserer Überlegungen wird es sein, die Aussagen zu simplizial
-konstanten Garben auf der geometrischen Realisierung eines
-Simplizialkomplexes $\K$ als Garben auf dem topologischen Raum $\K$
-auf die Situation simplizialer Mengen zu übertragen. Die
-angesprochenen Realisierungen in \ref{real-enstop} und \ref{real-ensx}
-sind dafür nicht geeignet. Das liegt daran, dass wir, um aus Garben
-auf der Realisierung wieder ein Diagramm von Garben zu erhalten,
-generisierende Randabbildungen benötigen. Im Fall einer simplizialen
-Garbe $\Delta\op \to \Ens_{/\Top}$ sind die Randabbildungen im
-Garbensystem dagegen gegenläufig zu den generisierenden Einbettungen
-$|d_i|: |\Delta^{n-1}| \inj |\Delta^n|$ der Basisräume.
+Dass dieser naive Ansatz zur geometrischen Realisierung simplizialer
+Garben nicht funktioniert, liegt daran, dass die Randabbildungen der
+simplizialen Garben gegenläufig sind zu den Einbettungen der
+Ränder. Um Garben geeignet verkleben zu können, benötigen wir aber
+generisierende Randabbildungen, die in derselben Richtung verlaufen.
 
 Wir erklären eine neue Realisierung, die diesem Anspruch gerecht wird.
-Sei dazu $R: \Delta \to \Top$ eine kosimplizialer topologischer Raum
-und $F: \Delta\op \to \Ens_{\sslash\Top}, [n] \mapsto F_n \in
-Ens_{/X_n}$ eine simpliziale Garbe über topologischen Räumen mit
-Komorphismen. Für $f: [n] \to [m]$ monoton gibt es also eine stetige
-Abbildung $Ff: X_m \to X_n$ und einen Morphismus von Garben über
-$X_m$: $Ff^* F_n \to F_m$. Wir erhalten einen Funktor $K$ von der
-Unterteilungskategorie $\Sub(\Delta)$ von $\Delta$ in die Kategorie
-der Garben über topologischen Räumen
+Sei dazu $R: \Delta \to \Top$ ein kosimplizialer topologischer Raum
+und
+\begin{align*}
+  F: \Delta\op &\to \EnsssTop, \\
+  [n] &\mapsto F_n \in Ens_{/X_n}
+   \end{align*}
+eine simpliziale Garbe über topologischen Räumen mit Komorphismen. Für
+$f: [n] \to [m]$ monoton gibt es also eine stetige Abbildung $Ff: X_m
+\to X_n$ und einen Morphismus von Garben über $X_m$:
+\[ Ff^* F_n \to F_m .\]
+Wir erhalten einen Funktor $K$ von der Unterteilungskategorie
+$\Sub(\Delta)$ von $\Delta$ in die Kategorie der Garben über
+topologischen Räumen
 \begin{equation} \label{dg:cov-real}
   \begin{tikzcd}
     \Sub(\Delta) \arrow{dd}
@@ -141,15 +128,62 @@ in $\Ens_{/\Top}$, denn es kommutiert
   & X_m \times R[n] \rar
   & X_m \times R[m].
 \end{tikzcd} \]
-Wir erhalten die folgende \emph{kovariante Realisierung}:
-\begin{prop} \label{real-enstop-cov}
-  Sei $F \in [\Delta\op, \Ens_{\sslash \Top}]$ eine simpliziale Garbe
-  über topologischen Räumen mit Komorphismen und $R: \Delta \to \Top$
-  ein kosimplizialer topologischer Raum. Dann ist der Kolimes $|F|$
-  über den oben definierten zugehörigen Funktor $K: \Sub(\Delta) \to
-  \Ens_{/\Top}$ eine Garbe über der geometrischen Realisierung $X
-  \otimes R$ der Basisräume.
-\end{prop}
+Wir erhalten die Vorform der \emph{kovarianten Realisierung}, den
+Kolimes in $\EnsTop$ über den oben definierten $F$ zugeordneten
+Funktor $K: \Sub(\Delta) \to \EnsTop$.
+
+Wann existiert dieser Kolimes in $\EnsTop$? Schon im einfachsten Fall
+diskreter Basisräume ist das im Allgemeinen nicht zu
+erwarten. Betrachte etwa die simpliziale Menge aus zwei
+nichtdegenerierten $1$-Simplizes $\sigma$ und $\tau$, die an einem
+gemeinsamen $0$-Simplex $x$ zusammengeklebt sind. In der kovarianten
+Realisierung einer Garbe $F$ über diesem Raum besteht (wegen
+\ref{enstop-coequalizers} der Halm über dem Verklebungspunkt $x$ aus
+der Vereinigung der Halme von $F_\sigma$, $F_\tau$ und $F_x$ mit den
+durch die Verklebungen $F_x \to F_\sigma$ und $F_x \to F_\tau$
+induzierten Identifikationen. Nur wenn diese beiden Abbildungen
+surjektiv sind, ist tatsächlich jedes Element des Halms in beide
+Richtungen fortsetzbar und die kovariante Realisierung eine Garbe.
+
+Wir reparieren dieses Problem von Hand. Bezeichne dazu einen Punkt in
+einem Raum $F \in \Top_X$ mit $p: F \to X$ als \emph{étale}, wenn er
+eine offene Umgebung $U$ besitzt, für die $p(U) \subset X$ offen und
+$p|_U: U \to p(U)$ ein Homöomorphismus ist.
+\begin{satz} \label{real-enstop-cov}
+  Sei $F \in [\Delta\op, \EnsssTop]$ eine simpliziale Garbe über
+  topologischen Räumen mit Komorphismen und $R: \Delta \to \Top$ ein
+  kosimplizialer topologischer Raum. Dann heißt die Menge der étalen
+  Punkte des Kolimes über den oben definierten zugehörigen Funktor $K:
+  \Sub(\Delta) \to \EnsTop \to \Top^{[1]}$ die \emph{kovariante
+    Realisierung} $|F|$ von $F$ und ist eine Garbe über der
+  geometrischen Realisierung $X \otimes R$ der Basisräume.
+\end{satz}
+\begin{proof}
+  Nichtétale Punkte liegen nach Definition nicht in den étalen
+  Umgebungen anderer Punkte, können also nach ihrem Vergessen nicht
+  für deren étale Umgebungen fehlen.
+\end{proof}
+\begin{bem}
+  Diese Konstruktion ist zunächst unbefriedigend, da das Vergessen
+  nichtétaler Punkte keine guten Eigenschaften besitzt. Es ist besser
+  sich die kovariante Realisierung als andere Formulierung der
+  folgenden Konstruktion vorzustellen. Für eine Garbe $F \in
+  \s\EnsssTop$ über Basisräumen $X \in \s\Top$ und $R$ den
+  kosimplizialen Raum der Standardsimplizes betrachte das Diagramm von
+  oben, in dem
+  \[ F_n \times |\Delta^n| \to X_n \times |\Delta^n| \]
+  durch
+  \[ F_n \times \intr |\Delta^n| \to X_n \times |\Delta^n| \]
+  ersetzt wird. Degenerierte Teile des Diagramms sollen mit denselben
+  Abbildungen ``wegidentifiziert'' werden. Randabbildungen können
+  hingegen nicht mehr als Identifikationen beschrieben werden, sondern
+  bestehen darin, dass in der disjunkten Vereinigung (wie bei der
+  Definition der Garbifizierung) Mengen offen gemacht werden, die
+  Schnitte (also Verklebungen) repräsentieren sollen. Da in der
+  ursprünglichen Formulierung nichtétale Punkte nur auf den
+  Verklebungsrändern auftreten, sind diese gerade die Punkte, die in
+  dieser Formulierung von vornherein nicht vorkommen.
+\end{bem}
 \begin{bem} \label{real-ensx-cov}
   Diese geometrische Realisierung simplizialer Garben auf
   topologischen Räumen mit Komorphismen spezialisiert zu einer
@@ -185,104 +219,37 @@ Wir erhalten die folgende \emph{kovariante Realisierung}:
     X \times R[n] \rar
     & X \times R[m]
   \end{tikzcd} \]
-  schickt.
+  schickt, wieder mit dem Vergessen nichtétaler Punkte.
 
   Sind alle $X_n$ diskret, so bestimmt für $\sigma \in X_m$ der Halm
   $(F_m)_\sigma$ die konstante Garbe $(F_m)_\sigma \times R[m] \to
   \{\sigma\} \times R[m]$ und wir erhalten für monotones $f: [n] \to
   [m]$ Abbildungen $(F_n)_{f(\sigma)} \to (F_m)_\sigma$, die diese
-  konstanten Garben verkleben. Insbesondere sind für Randabbildungen
-  $d_i$ die Verklebungen Generisierungen, die angeben, wie ein Element
-  des Halms am Rand eines Simplex einen Schnitt über eine Umgebung
-  dieses Punkts (auch im Inneren des Simplex) definiert. Wir werden
-  diese Beobachtungen in \ref{real-simplex-cat} präzisieren.
-
-  Für die relative Version betrachten wir Basisräume $X_n = X \times
-  D_n$ mit diskreten $D_n$ und von $D_m \to D_n$ induzierten
-  Abbildungen. Zu $\sigma \in D_n$ gehört dann eine Garbe $F_\sigma :=
-  F_n|_{\sigma \times X} \in \EnsX$ und wir erhalten für monotones $f:
-  [n] \to [m]$ Garbenmorphismen $F_{f(\sigma)} \to F_\sigma$, die
-  diese Garben verkleben. Wieder sind diese generisierend, erlauben
-  also die Ausweitung eines $U$-Schnitts von einem Randpunkt auf einen
-  $U$-Schnitt im Inneren.
+  konstanten Garben verkleben. Wir werden diese Beobachtungen in
+  \ref{real-simplex-cat} präzisieren.
 \end{bem}
 \begin{bem}
   Eine weitere Idee zur geometrischen Realisierung simplizialer Garben
   ist die folgende: Ist $F$ eine Prägarbe auf $I$ mit Werten in $C$
-  und $G: C \to D$ ein Funktor, so ist $GF: I\op \to D$ eine Prägarbe
-  mit Werten in $D$. Nach dem Exponentialgesetz von Funktoren ist eine
-  simpliziale Prägarbe über $X$ dasselbe wie eine Prägarbe mit Werten
-  in den simplizialen Mengen und wir können die geometrische
-  Realisierung $|\cdot|: \s\Ens \to \CGHaus$ nachschalten. Dies
-  liefert eine Prägarbe topologischer Räume auf $X$. Allerdings
-  schränkt diese Konstruktion nicht auf die vollen Unterkategorien der
-  Garben ein: die Garbenbedingung ist als Limes über ein im
-  Allgemeinen unendliches System formuliert, die geometrische
-  Realisierung vertauscht aber im Allgemeinen nicht mit beliebigen
-  Limites (vgl. \ref{real-products}).
+  und ein Funktor $G: C \to D$ gegeben, so ist $GF: I\op \to D$ eine
+  Prägarbe mit Werten in $D$. Nach dem Exponentialgesetz von Funktoren
+  ist eine simpliziale Prägarbe über $X$ dasselbe wie eine Prägarbe
+  mit Werten in den simplizialen Mengen und wir können die
+  geometrische Realisierung $|\cdot|: \s\Ens \to \CGHaus$
+  nachschalten. Dies liefert eine Prägarbe topologischer Räume auf
+  $X$. Allerdings schränkt diese Konstruktion nicht auf die vollen
+  Unterkategorien der Garben ein: die Garbenbedingung ist als Limes
+  über ein im Allgemeinen unendliches System formuliert, die
+  geometrische Realisierung vertauscht aber im Allgemeinen nicht mit
+  beliebigen Limites (vgl. \ref{real-products}).
 \end{bem}
 
-\section{Die Dualität von Nerv und Realisierung}
-
-Wir suchen Rechtsadjungierte für die geometrischen Realisierungen. Für
-die Realisierung simplizialer Mengen gelingt das einfach.
-\begin{satz}
-  Der Funktor der singulären Ketten $S: \Top \to \s\Ens$ mit
-  \[ SY  = \Top(R \, \cdot, Y): \quad [n] \mapsto \Top(|\Delta^n|, Y)
-  \]
-  ist rechtsadjungiert zur geometrischen Realisierung $|\cdot|: \s\Ens
-  \to \Top$.
-\end{satz}
-\begin{proof}
-  Die Rand- und Degenerationsabbildungen von $SY$ sind für $f: [n] \to
-  [m]$ gegeben durch Vorschalten von $|f|: |\Delta^n| \to
-  |\Delta^m|$. Wir berechnen
-  \begin{align*}
-    \Top(|X|, Y)
-    & = \Top(\col_{\slicecat{\Delta}{r}{X}} |\Delta^n|, Y) \\
-    & \iso \col_{\slicecat{\Delta}{r}{X}} \Top(|\Delta^n|, Y) \\
-    & \iso \col_{\slicecat{\Delta}{r}{X}} \s\Ens(\Delta^n, \Top(R \, \cdot, Y)) \\
-    & \iso \s\Ens(\col_{\slicecat{\Delta}{r}{X}} \Delta^n, \Top(R \, \cdot, Y)) \\
-    & \iso \s\Ens(X, SY)
-  \end{align*}  
-  mit der Definition der geometrischen Realisierung im ersten Schritt
-  (Gl. \ref{eq:real-colim}), der Verträglichkeit von $\Hom: C\op
-  \times C \to \Ens$ mit Limites im zweiten und vierten Schritt,
-  unserer Bestimmung der $n$-Simplizes als Morphismenmenge
-  (Gl. \ref{eq:simp-as-hom}) im dritten Schritt und unserer
-  Beschreibung einer simplizialen Menge als Kolimes über ihre
-  Simplexkategorie (\ref{sset-col}) im letzten Schritt.
-\end{proof}
-Das Argument verallgemeinert durch Ersetzen der Simplexkategorie durch
-Koenden über Koexponentiale.
-\begin{theorem} [Allgemeine Nerv-Realisierungs-Dualität, \cite{Lore}, 3.2]
-  \label{nerve}
-  Seien $C$ eine $V$-Kategorie mit Koexponentialen $\odot$ und ein
-  Funktor $R: S \to C$ gegeben. Dann gibt es eine Adjunktion
-  $(|\cdot|, N)$
-  \[ C \xtofrom[N]{|\cdot|} [S\op, V] \]
-  mit
-  \begin{alignat*}{2}
-    |\cdot|: & X &&\mapsto \int^{s \in S} X(s) \odot R(s) \qquad \text{und} \\
-    N: & Y &&\mapsto C(R \, \cdot, Y).
-  \end{alignat*}
-\end{theorem}
-\begin{proof}
-  In wörtlicher Verallgemeinerung des Vorangegangenen:
-  \begin{align*}
-     C(|X|, Y)
-     &= C \left( \int^s X(s) \odot R(s), Y \right) \\
-     & \iso[\ref{coend-cocont}]
-       \int_s C \big( X(s) \odot R(s), Y \big) \\
-     & \iso[\ref{def:copower}]
-       \int_s V \big( X(s), C(R(s), Y) \big) \\
-     & \iso[\ref{trans-end}]
-       [S\op, V] \big( X, C(R \, \cdot, Y) \big) \\
-     &= [S\op, V] (X, NY).
-  \end{align*}
-\end{proof}
-
-\section{Die kartesisch abgeschlossene Struktur der Garben auf $X$}
+\section[Die kartesisch abgeschlossene Struktur der Garben auf
+  \texorpdfstring{$X$}{X}]
+  {Die kartesisch abgeschlossene Struktur der Garben auf
+  \texorpdfstring{$X$}{X}
+  \sectionmark{Kartesischer Abschluss über $X$}}
+\sectionmark{Kartesischer Abschluss über $X$}
 \label{sec:ensx-cart-closed}
 
 Für die allgemeine Dualität von Nerv und Realisierung \ref{nerve}
@@ -321,13 +288,15 @@ gibt, also eine in allen Variablen natürliche Bijektion
   \[ F(U) \times G(U) \to H(U) \quad \text{bzw.} \quad
   F(U) \to \Ens(G(U), H(U)),
   \]
-  rechts restriktionsverträgliche Systeme $F(U) \to \Ens_{/U}(G|_U,
-  H|_U)$. Wir erhalten eine Abbildung von rechts nach links durch den
-  globalen Teil $G(U) \to H(U)$ des Garbenmorphismus $G|_U \to H|_U$
-  und das Exponentialgesetz in $\Ens$ und von links nach rechts durch
-  Ergänzen des globalen Teils $G(U) \to H(U)$ durch verträgliche $G(V)
-  \to H(V)$ als die Bilder unter $F(U) \to F(V) \to \Ens(G(V),
-  H(V))$. Diese Abbildungen sind zueinander invers.
+  rechts restriktionsverträgliche Systeme
+  \[ F(U) \to \Ens_{/U}(G|_U, H|_U) . \]
+  Wir erhalten eine Abbildung von rechts nach links durch den globalen
+  Teil $G(U) \to H(U)$ des Garbenmorphismus $G|_U \to H|_U$ und das
+  Exponentialgesetz in $\Ens$ und von links nach rechts durch Ergänzen
+  des globalen Teils des Morphismus $G(U) \to H(U)$ durch verträgliche
+  $G(V) \to H(V)$ als die Bilder unter
+  \[ F(U) \to F(V) \to \Ens(G(V), H(V)). \]
+  Diese Abbildungen sind zueinander invers.
 
   Für den étalen Raum des Produkts erhalten wir nach der universellen
   Eigenschaft des Faserprodukts eine stetige Abbildung über $X$
@@ -340,13 +309,13 @@ gibt, also eine in allen Variablen natürliche Bijektion
 \end{proof}
 Diese Struktur einer kartesisch abgeschlossenen Kategorie macht
 $\EnsX$ insbesondere zu einer über sich selbst tensorierten Kategorie
-im Sinne von \ref{def:copower}. Wir erhalten einen Nerv-Funktor für
-die geometrische Realisierung simplizialer Garben auf $X$ aus
-\ref{nerve}.
+im Sinne von \ref{def:copower}. Gäbe es eine geometrische Realisierung
+simplizialer Garben durch Koenden, hätten wir so mit \ref{nerve} einen
+adjungierten Nerv-Funktor gefunden.
 
 Den obigen konkreten Beweis für das interne Hom der Prägarbenkategorie
-$\pEnsX = [\OffX\op, \Ens]$ können wir mit einer Rechnung im
-Koendenkalkül auf beliebige Prägarbenkategorien ausweiten.
+auf den offenen Mengen eines topologischen Raums können wir mit einer
+Rechnung im Koendenkalkül auf beliebige Prägarbenkategorien ausweiten.
 \begin{prop}
   Ist $C$ eine kleine Kategorie, so ist die Prägarbenkategorie
   $\Ens^{C\op}$ kartesisch abgeschlossen.
@@ -365,22 +334,21 @@ Koendenkalkül auf beliebige Prägarbenkategorien ausweiten.
   \in \Ens^{C\op}$:
   \begin{align*}
     \Ens^{C\op}(F, G \iHom H)
-    &\iso[Def.] \Ens^{C\op}(F, \Ens^{C\op}(F \times C(\cdot, -), G)) \\
+    &\iso[Def.] \Ens^{C\op} (F, \Ens^{C\op}(F \times C(\cdot, -), G)) \\
     &\iso[\ref{trans-end}]
-     \int_c \Ens(F(c), \int_d \Ens(G(d) \times C(d, c), H(d))) \\
+     \int_c \Ens \left( F(c), \int_d \Ens(G(d) \times C(d, c), H(d)) \right) \\
     &\iso[\ref{coend-cocont}]
      \int_c \int_d \Ens(F(c), \Ens(G(d) \times C(d, c), H(d))) \\
     &\iso[\ref{coend-fubini}]
      \int_d \int_c \Ens(F(c), \Ens(G(d) \times  C(d, c), H(d))) \\
     &\iso[Adj.] \int_d \int_c \Ens(F(c) \times G(d) \times C(d, c), H(d)) \\
     &\iso[\ref{coend-cocont}]
-     \int_d \Ens( \int^c F(c) \times G(d) \times C(d, c), H(d)) \\
+     \int_d \Ens \left( \int^c F(c) \times G(d) \times C(d, c), H(d) \right) \\
     &\iso[\ref{coend-density}]
      \int_d \Ens( F(d) \times G(d), H(d)) \\
     &\iso[\ref{trans-end}]
      \Ens^{C\op}(F \times G, H).
   \end{align*}
-  % TODO left und right setzen für bessere Klammern
 \end{proof}
 Die obere Aussage über Prägarben auf topologischen Räumen ergibt sich
 daraus durch die Beobachtung, dass $F|_U = F \times \OffX(\cdot, U)$
@@ -406,25 +374,21 @@ Auch die Rolle von $\Ens$ kann verallgemeinert werden. Wir erhalten:
   Beweis oben auch für diesen Fall.
 \end{proof}
 
-\section{Produkte von Garben über topologischen Räumen}
+\section[Produkte von Garben über topologischen Räumen]
+        {Produkte von Garben über topologischen Räumen
+          \sectionmark{Produkte von Garben}}
+\sectionmark{Produkte von Garben}
 
-Wir betrachten die Kategorienfaserungen $\Ens_{/\Top} \to \Top$ mit
+Wir betrachten die Kategorienfaserung $\EnsTop \to \Top$ mit
 Morphismen den stetigen Abbildungen zwischen den étalen Räumen über
-der stetigen Abbildung in der Basis sowie $\Ens{\sslash \Top} \to
-\Top$ mit Opkomorphismen als Morphismen, d. h. für $F \in \EnsX$ und
-$G \in \Ens_{/Y}$:
-\[ \Ens_{\sslash \Top}(F, G) = \coprod_{f: X \to Y} \EnsX(f^* G, F). \]
+der stetigen Abbildung in der Basis. Diese Kategorie von Garben über
+variabler Basis besitzt endliche Produkte, aber vermutlich kein
+internes Hom. Ersteres zeigen wir in diesem Abschnitt, letzteres wird
+uns bis zum Ende des Kapitels beschäftigen.
 
-Wir möchten einen Nerv-Funktor nicht nur für die Realisierung
-simplizialer Garben über $X$ finden, sondern auch für simpliziale
-Garben über variablen topologischen Räumen, also für simpliziale
-Objekte in $\Ens_{/\Top}$ und $\Ens_{\sslash \Top}$. Dafür benötigen
-wir wieder eine monoidal abgeschlossene Struktur auf diesen
-Kategorien.
-
-Die Kategorie $\Ens_{/\Top}$ besitzt endliche Produkte, die
-algebraisch gegeben sind durch Rückzug und Produkt und topologisch
-durch Bilden der Produkträume. Konkret:
+Die Produkte von $\EnsTop$ können algebraisch als Rückzug und Produkt
+und topologisch als das Bilden des Produktraums beschrieben
+werden. Konkret:
 \begin{prop} \label{enstop-prod}
   Seien $F_{1,2} \in \Ens_{/X_{1,2}}$ Garben über topologischen Räumen
   $X_1$ und $X_2$. Dann ist die Garbe
@@ -465,8 +429,9 @@ durch Bilden der Produkträume. Konkret:
   $(s, t) \in F_1(U_1) \times F_2( U_2)$ der Schnitt $s \times t: U_1
   \times U_2 \to \etalespace{F_1} \times \etalespace{F_2}$ zugeordnet
   wird. Dieser Morphismus induziert auf den Halmen die Bijektion
-  $(F_1)_x \times (F_2)_y \iso (F_1 \times F_2)_{x, y}$ aus dem
-  Vertauschen von endlichen Produkten mit filtrierenden Kolimites.
+  \[ (F_1)_x \times (F_2)_y \iso (F_1 \times F_2)_{x, y} \]
+  aus dem Vertauschen von endlichen Produkten mit filtrierenden
+  Kolimites.
 \end{proof}
 \begin{bem}
   Auf ähnliche Weise kann man auch für $\Ens_{\sslash \Top}$ endliche
@@ -494,7 +459,10 @@ Weiter ist $\EnsTop$ auch unter Pullbacks abgeschlossen.
   \ref{enstop-coequalizers} negativ beantwortet.
 \end{bem}
 
-\section{Kartesisch abgeschlossene koreflektive Kategorien topologischer Räume}
+\section[Kartesisch abgeschlossene Kategorien topologischer Räume]
+        {Kartesisch abgeschlossene Kategorien topologischer Räume
+        \sectionmark{Kartesisch abgeschlossene Kategorien}}
+\sectionmark{Kartesisch abgeschlossene Kategorien}
 
 Wir könnten erwarten, dass wie das Produkt auch das interne Hom von
 $\EnsX$ in die Situation variabler Basisräume übertragen werden
@@ -551,10 +519,9 @@ $\mathcal{I} \subset \mathcal{K}$.
   koreflektive Unterkategorie $\mathcal{K} \subset \Top$ liefert,
   welche $\mathcal{I}$ umfasst, heißt auch Übergang zur
   \emph{koreflektiven Hülle}. Es handelt sich tatsächlich um eine
-  idempotente Operation (\cite{Vogt}, Prop. 1.5), der Ergänzung von
+  idempotente Operation (\cite{Vogt}, Prop. 1.5), die Ergänzung von
   $\mathcal{I}$ um alle Kolimites von Objekten in $\mathcal{I}$
-  (\cite{Herrlich}).
-  % TODO korefl Hülle Herrlich
+  (\cite{Herrlich}, 37).
 \end{bem}
 Die koreflektive Hülle besitzt die folgenden Stabilitätseigenschaften:
 \begin{prop} \label{k-complete}
@@ -702,7 +669,8 @@ Damit können wir die für uns entscheidende Eigenschaft zeigen:
   $\OffX(\cdot, U)$ ist (\ref{presheaf-colimit-representable}).
 \end{bem}
 
-\section{Kartesischer Abschluss von Garben auf topologischen Räumen} 
+\section{Kartesischer Abschluss der Garben auf topologischen Räumen}
+\sectionmark{Kartesischer Abschluss}
 \label{sec:enstop-cart-closed}
 
 Wir können uns nun der Frage nach einer kartesisch abgeschlossenen
@@ -803,7 +771,7 @@ jedem Raum $X$ auch jeden étalen Raum über $X$ enthält (etwa wie in
 über $\K$ als volle Unterkategorie von $\K^{[1]}$ auffassen:
 \[ \et \K^{[1]} := \Ens_{/\K} \subset \K^{[1]}. \]
 Gäbe es nun einen Koreflektor $^+: \K^{[1]} \to \et \K^{[1]}$, so
-hätten wir für $F, G, H \in \et \K^{[1]}$ mit
+hätten wir für Objekte $F, G, H \in \et \K^{[1]}$ mit
 \ref{coreflective-cart-closed}
 \[ \et \K^{[1]}(F \times G, H)
   \iso \et \K^{[1]}(F, (G \iHom H)^+),
@@ -811,10 +779,11 @@ hätten wir für $F, G, H \in \et \K^{[1]}$ mit
 mit dem internen Hom $(G \iHom H)$ aus \ref{k-arrow-cart-closed}. Die
 Produkte in $\K^{[1]}$ und $\et \K^{[1]}$ stimmen dabei nach dem
 folgenden Lemma überein. Umgekehrt ist, falls ein internes Hom $(G
-\iHom H)^+$ in $\et \K^{[1]}$ existiert, die Zuordnung $(G \iHom H)
-\mapsto (G \iHom H)^+$ ein partiell definierter Koreflektor. Unsere
-Aufgabe ist es nun, zu zeigen, dass eine solche relative Form der
-Étalisierung nicht möglich ist.
+\iHom H)^+$ in $\et \K^{[1]}$ existiert, die Zuordnung
+\[ (G \iHom H) \mapsto (G \iHom H)^+ \]
+ein partiell definierter Koreflektor. Unsere Aufgabe ist es nun, zu
+zeigen, dass eine solche relative Form der Étalisierung nicht möglich
+ist.
 \begin{lemma}
   Ist $k: \Top \to \K$ ein Koreflektor und $p: F \to X$ étale in
   $\Top$, so ist $kp: kF \to kX$ étale.
@@ -837,9 +806,12 @@ Aufgabe ist es nun, zu zeigen, dass eine solche relative Form der
 \end{proof}
 Das Übereinstimmen der Produkte in $\K^{[1]}$ und $\et \K^{[1]}$ ergibt sich
 nun daraus, dass für $(F \to X), (G \to Y) \in \et \K^{[1]}$ zunächst das
-Produkt $(F \times G \to X \times Y)$ in $\Top$ étale ist, und dann
-nach dem Lemma auch das Produkt $k(F \times G) \to k(X \times Y)$ in
-$\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
+Produkt
+\[ F \times G \to X \times Y \]
+in der Kategorie der topologischen Räume étale ist, und dann nach dem
+Lemma auch das Produkt
+\[ k(F \times G) \to k(X \times Y) \]
+in $\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
 
 \begin{satz} \label{enstop-missing-coreflector}
   Sei $\K \subset \Top$ eine volle Unterkategorie. Dann ist der
@@ -861,17 +833,16 @@ $\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
   \end{equation}
   für alle étalen $F \to X$. Ein Objekt $(H \to Z) \in \K^{[1]}$ ist
   nach dem Yoneda-Lemma (bis auf eindeutigen Isomorphismus) eindeutig
-  festgelegt durch die Funktoren $\K^{[1]}(\iota \cdot, (H \to Z)) =
-  \K(\cdot, Z)$ und $\K^{[1]}(\tau \cdot, (H \to Z)) = \K(\cdot, H):
-  \K \to \Ens$ und ihre aus $\iota \cdot \Trafo \tau \cdot$
-  entstehende Transformation. In der Tat bestimmen die beiden
-  Funktoren nach dem Yoneda-Lemma bereits die beteiligten Räume $H$
-  und $Z$ eindeutig und der Morphismus $H \to Z$ entspricht der
-  Transformation. Nun sind $\iota X, \tau X \in \et \K^{[1]}$ für alle
-  $X \in \K$, was den Beweis abschließt: dann müssen nämlich im Fall
-  von Gl. \ref{eq:coreflection-adjunction} $(G \to Y)$ und $(G \to
-  Y)^+$ isomorph sein und die Koreflektion ist genau dann definiert,
-  wenn $(G \to Y)$ sowieso schon étale ist.
+  festgelegt durch die Funktoren
+  \[ \K^{[1]}(\iota \cdot, (H \to Z)) = \K(\cdot, Z) \qquad \text{und} \\
+  \K^{[1]}(\tau \cdot, (H \to Z)) = \K(\cdot, H)
+  \]
+  und ihre aus $\iota \cdot \Trafo \tau \cdot$ entstehende
+  Transformation, die dem Morphismus $H \to Z$ entspricht. Nun sind
+  $\iota X, \tau X \in \et \K^{[1]}$ für alle $X \in \K$ und es folgt,
+  dass im Fall von Gl. \ref{eq:coreflection-adjunction} $(G \to Y)$
+  und $(G \to Y)^+$ isomorph sind und die Koreflektion genau dann
+  definiert ist, wenn $(G \to Y)$ sowieso schon étale ist.
 \end{proof}
 \begin{kor}
   Es gibt ein internes Hom für $F \to X$ und $G \to Y$ in $\et
@@ -886,15 +857,16 @@ $\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
 \begin{bem}
   Wenn $\K(F, G)$ die kompakt-offen Topologie trägt, erhielten wir
   folgendes Gegenbeispiel zum kartesischen Abschluss von $\et
-  \K^{[1]}$: Für $X = Y = \point$ sind étale Räume $F \to X$ und $G
-  \to Y$ diskret. Das interne Hom von $F \iHom G$ lautet $\K(F, G) \to
-  \K(X, Y) = \point$ und muss folglich selbst diskret sein. Dies ist
-  im Fall, dass $F$ unendlich ist, ein Widerspruch zum folgenden
-  Lemma. Im Fall der koreflektiven Hüllen von $\K = \mathcal{I}_K$
-  oder $\K = \mathcal{I}_L$ aus dem vorangegangenen Abschnitt gilt
-  allerdings $\K(F, G) = k(\Top_{co}(F, G))$. Die Frage ist, ob der
-  Koreflektor die Topologien so sehr verfeinern kann, dass $\K(F, G)$
-  auch bei unendlichem $F$ diskret wird.
+  \K^{[1]}$: Für $X$ und $Y$ den einpunkzigen Raum sind étale Räume $F
+  \to X$ und $G \to Y$ diskret. Das interne Hom von $F \iHom G$ lautet
+  \[ \K(F, G) \to \K(X, Y) = \point \]
+  und muss folglich selbst diskret sein. Dies ist im Fall, dass $F$
+  unendlich ist, ein Widerspruch zum folgenden Lemma. Im Fall der
+  koreflektiven Hüllen von $\K = \mathcal{I}_K$ oder $\K =
+  \mathcal{I}_L$ aus dem vorangegangenen Abschnitt gilt allerdings
+  \[ \K(F, G) = k(\Top_{co}(F, G)) . \]
+  Die Frage ist, ob der Koreflektor die Topologien so sehr verfeinern
+  kann, dass $\K(F, G)$ auch bei unendlichem $F$ diskret wird.
 \end{bem}
 \begin{lemma} \label{compact-open-discrete}
   Ist $G$ diskret, so ist die kompakt-offen Topologie auf $\Top(F,
@@ -914,7 +886,11 @@ $\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
   Zusammenhangskomponente eindeutig festgelegt werden.
 \end{proof}
 
-\section{Vollständigkeitseigenschaften der Garben auf topologischen Räumen}
+\section[Vollständigkeit der Garben auf topologischen Räumen]
+        {Vollständigkeit der Garben auf topologischen Räumen
+        \sectionmark{Vollständigkeit}}
+        \sectionmark{Vollständigkeit}
+        \label{sec:enstop-completeness}
 
 Mit denselben Techniken können wir auch zeigen, dass die Kategorie
 $\EnsTop$ der Garben auf topologischen Räumen über die endlichen
@@ -946,10 +922,10 @@ hinaus weder vollständig noch kovollständig ist.
   Gäbe es einen zur Inklusion Linksadjungierten, so wäre die Inklusion
   linksexakt, würde also Limites erhalten.
 \end{proof}
-Wir können sogar angeben, wann es den Reflektor gibt. Bezeichne dazu
-einen Punkt in einem Raum $F \in \Top_X$ als \emph{étale}, wenn er die
-lokale Homöomorphismus-Eigenschaft eines étalen Raums über $X$
-erfüllt.
+Wir können sogar angeben, wann es den Reflektor gibt. Wir erinnern
+daran, dass wir einen Punkt eines topologischen Raums über $X$
+\emph{étale} nennen, wenn er eine Umgebung für die lokale
+Homöomorphismus-Eigenschaft einer Garbe über $X$ besitzt.
 \begin{prop}
   Der partiell definierte Reflektor $\Top^{[1]} \to \EnsTop$ ist auf
   $F \in \Top_X$ genau dann definiert, wenn jeder nichtétale Punkt
@@ -1004,10 +980,4 @@ erfüllt.
   dem Quotienten $[0, 1]$ der Basis mit einem globalen Schnitt und
   einem weiteren, nichtétalen Punkt über $0$.
 \end{bsp}
-
-% TODO Notationen vereinheitlichen in den Beweisen zum fehlenden
-% kart. Abschluss
-
-%% TODO: keine Einheit/Koeinheits-Isos zu erwarten, aber auf
-%% Homotopie: Quillen-Äq. von Modellkategorien
 

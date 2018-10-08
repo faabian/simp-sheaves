@@ -1,6 +1,7 @@
 % Emacs mode: -*-latex-*-
 
 \section{Schwach konstruierbare Garben auf Simplizialkomplexen}
+\sectionmark{Schwach konstruierbare Garben}
 \label{sec:simp-comp-sk}
 
 Die Ordnungstopologie auf einem Simplizialkomplex $\K$ erlaubt es,
@@ -46,21 +47,23 @@ $\sigma \in \K$ mit $x \in |\sigma|$ zuordnet.
 
 \begin{lemma}
   Der Simplexanzeiger $p: |\K| \to \K$ ist eine finale Surjektion mit
-  zusammenhängenden Fasern.
+  zu\-sam\-men\-hän\-gen\-den Fasern.
 \end{lemma}
 \begin{proof}
   Die Abbildung lässt sich als die Identifikation der
   (zusammenhängenden) offenen Inneren der Standardsimplizes $|\sigma|$
   zu einem Punkt $\sigma$ beschreiben. Dies zeigt die Eigenschaft
   einer mengentheoretischen Quotientenabbildung.
-  % TODO Quotiententopologie
 
   Für einen endlichen Simplizialkomplex $\K$ ist das Urbild einer
   Basismenge $(\geq \sigma)$ der ``offene Stern um $\sigma$''
   \[ U(\sigma) := p^{-1}((\geq \sigma))
   = |\K| \cap \set{x \in \R^E}{x(e) > 0 \text{ für } e \in \sigma }.
   \]
-  Dies zeigt (auch im Kolimes) die Stetigkeit.
+  Dies zeigt (auch im Kolimes) die Stetigkeit. Dass $\K$ auch die
+  Quotiententopologie trägt, ist im Fall eines endlichen
+  Simplizialkomplexes anschaulich und folgt dann auch für die
+  Kolimites.
 \end{proof}
 \begin{lemma}[\cite{TG}, 4.3.22] \label{final-pullback}
   Sei $p: X \to Y$ eine finale Surjektion mit zusammenhängenden
@@ -141,7 +144,7 @@ Wir bemerken zunächst:
   Zunächst ist die Kategorie der konstanten abelschen Garben auf einem
   topologischen Raum $X$ eine abelsche Kategorie. Die Aussage folgt
   dann aus der Exaktheit und Additivität des Pullbacks $i_{\sigma}^*$
-  entlang den Inklusionen $i_{\sigma}: |\sigma| \xhookrightarrow{}
+  längs den Inklusionen $i_{\sigma}: |\sigma| \xhookrightarrow{}
   |\K|$.
 \end{proof}
 
@@ -180,7 +183,7 @@ Argumentation.
   \end{equation}  
   Dabei wurde die Beschreibung der Halme des Rückzugs (mit $p(x) =
   \sigma$), obige Darstellung der Halme auf $\K$ und die Definition
-  des Vorschubs (mit $p^{-1}((\geq \sigma)) = U(\sigma)$) verwendet.
+  des Vorschubs verwendet.
 
   Die Implikation $\ref{itm:sk-char-res} \Implies
   \ref{itm:sk-char-sk}$ folgt direkt aus dem nachgestellten Lemma,
@@ -225,16 +228,16 @@ Argumentation.
 \end{proof}
 \begin{bem} \label{beta-sect}
   Aus Gleichung \ref{eq:counit-sect} und \ref{itm:sk-char-res} folgt
-  insbesondere auch $(p^* p_* F)(U(\sigma)) \iso F(U(\sigma))$ für
-  alle $F \in \AbKr$ und alle $\sigma \in \K$.
+  insbesondere auch
+  \[(p^* p_* F)(U(\sigma)) \iso F(U(\sigma)) \]
+  für alle $F \in \AbKr$ und alle $\sigma \in \K$.
 \end{bem}
 
 Wir tragen die benötigten Lemmata nach.
 \begin{lemma}[\cite{TG}, 2.1.41 (Var.)] \label{const-stalk}
-  Sei $X$ ein topologischer Raum, $F \in \EnsX$ eine Garbe auf $X$,
-  für die die Restriktion $\Gamma F \iso F_x$ für alle $x \in X$
-  bijektiv ist. Dann ist $F$ eine konstante Garbe auf $X$ mit Halm
-  $\Gamma F$.
+  Sei $X$ ein topologischer Raum und $F$ eine Garbe auf $X$, für die
+  die Restriktion $\Gamma F \iso F_x$ für alle $x \in X$ bijektiv
+  ist. Dann ist $F$ eine konstante Garbe auf $X$ mit Halm $\Gamma F$.
 \end{lemma}
 \begin{proof}
   Bezeichne $c: X \to \mathrm{top}$ die konstante Abbildung. Die
@@ -285,17 +288,27 @@ Wir tragen die benötigten Lemmata nach.
   stetige Fortsetzung eindeutig ist nach der Konstantheit der
   Einschränkungen von $F$ auf die Fasern von $\pi$.
 
-  Nun können wir die Aussage zeigen. Zunächst folgt sie für $I$
-  kompakt sofort aus eigentlichem Basiswechsel über dem kartesischen
-  Diagramm mit eigentlichen und separierten Vertikalen
-  % TODO korrigieren Basiswechsel
-  \shorthandoff{"}
+  Nun können wir die Aussage zeigen. Betrachte zunächst für $I$
+  kompakt das kartesische Diagramm mit eigentlichen und separierten
+  Vertikalen \shorthandoff{"}
   \[ \begin{tikzcd}
-    (x, t) \rar[hook] \dar \arrow[dr, phantom, "\lrcorner"]
+    \{x\} \times I \rar[hook] \dar \arrow[dr, phantom, "\lrcorner"]
     & X \times I \dar["\pi"] \\
-    x \rar[hook]
+    \{x\} \rar[hook]
     & X.
   \end{tikzcd} \]
+  Nach eigentlichem Basiswechsel (\cite{TG}, 6.4.14) ist der
+  natürliche Morphismus
+  \[ (\pi_* F)_x \iso \Gamma F|_{\{x\} \times I} \]
+  ein Isomorphismus. Nach Voraussetzung ist $F|_{\{x\} \times I}$
+  konstant, also induziert die Einschränkung für jedes $t \in I$
+  Bijektionen
+  \[ F|_{\{x\} \times I} \iso F_{(x, t)}. \]
+  Die Komposition sind gerade die Halme der Koeinheit
+  \[ (\pi^* \pi_* F)_{(x, t)} \iso (\pi_* F)_x
+  \iso \Gamma F|_{\{x\} \times I} \iso F_{(x, t)}.
+  \]
+
   Ist nun $I \subset \R$ ein beliebiges Intervall, so können wir es
   als aufsteigende Vereinigung von Kompakta $I = \bigcup_j I_j$
   schreiben und erhalten durch das Verkleben von Schnitten ebenfalls
@@ -342,7 +355,7 @@ benötigt werden.
   \begin{enumerate}[label=(\roman*)]
   \item \label{itm:sk-is-acyc-comp} $\Gamma(U(\sigma), R^k\beta F)
     \iso H^k(U(\sigma); F)$ für alle $\sigma \in \K, k \geq 0$.
-  \item \label{itm:sk-is-acyc-beta} $F$ ist $\beta$-azyklisch genau dann,
+  \item \label{itm:sk-is-acyc-beta} $F$ ist $\beta$"=azyklisch genau dann,
     wenn
     \[ H^k(U(\sigma); F) = 0 \qquad \text{für alle } \sigma \in \K, k > 0 . \]
   \end{enumerate}
@@ -421,8 +434,11 @@ erhalten:
   vorangegangenen Satz \ref{beta-qi} und der $\beta$-Azyklizität
   injektiver Garben erhalten wir für $F \in \DerskK$:
   \[R \beta F \iso \beta I \iso I \iso F. \]
-  Diese Aussage beinhaltet die Isotransformationen $\Id \Isotrafo R
-  \beta \circ \iota$ und $\iota \circ R \beta \Isotrafo \Id$.
+  Diese Aussage beinhaltet die Isotransformationen
+  \[ \Id \Isotrafo R \beta \circ \iota
+  \qquad \text{und} \qquad
+  \iota \circ R \beta \Isotrafo \Id .
+  \]
 \end{proof}
 \begin{bem}
   Kashiwara und Schapira beschränken sich auf die Äquivalenz der

@@ -22,9 +22,9 @@ vorgestellt. Uns interessieren auch die relativen Aussagen, inwiefern
 Diagramme von Garben auf einem topologischen Raum $X$ von der Form
 eines Simplizialkomplexes eine Garbe auf dem topologischen Produkt von
 $X$ mit dem ordungstopologischen Simplizialkomplex beschreiben. Dies
-wird in \autoref{sec:simp-comp-ord} explizit vorgeführt. Der folgende
-Abschnitt liefert eine geometrische Charakterisierung dieser Diagramme
-als die simplizial konstanten Garben auf der geometrischen
+wird in \autoref{sec:simp-comp-sheaf} explizit vorgeführt. Der
+folgende Abschnitt liefert eine geometrische Charakterisierung dieser
+Diagramme als die simplizial konstanten Garben auf der geometrischen
 Realisierung des Simplizialkomplexes. Im Fall der zugehörigen
 derivierten Kategorien verbessert sich die Aussage zu einer Äquivalenz
 zu den derivierten Garben auf der geometrischen Realisierung mit
@@ -52,27 +52,32 @@ Koenden, der Koendenkalkül aus \autoref{sec:coend-calc} wird sich im
 folgenden Kapitel als wichtiges Hilfsmittel für \emph{``abstract
   nonsense''}-Beweise erweisen.
 
-% TODO stimmt das?
 In \autoref{ch:simp-sheaves} wird der Faden der Diagrammkategorien
-wiederaufgenommen. Gesucht wird zunächst ein Adjungierter zur
-geometrischen Realisierung simplizialer Garben aus
-\autoref{sec:simp-sheaves-real}. Dies gelingt über die allgemeine
-Dualität zwischen Nerv und Realisierung, wenn die beteiligte
-Garbenkategorie kartesisch abgeschlossen ist.  Für die Kategorie der
-Garben auf einem topologischen Raum $X$ wird dies in
+wiederaufgenommen. Gesucht wird eine geometrische Realisierung
+simplizialer Garben und ein zu dieser adjungierter Funktor. Dies würde
+über die Realisierung durch Koenden und die allgemeine Dualität
+zwischen Nerv und Realisierung aus \autoref{sec:nerve} gelingen, wenn
+die Kategorie der Garben über topologischen Räumen kovollständig und
+kartesisch abgeschlossen ist. Für die Kategorie der Garben auf einem
+topologischen Raum $X$ stimmt dies wie in
 \autoref{sec:ensx-cart-closed} gezeigt, für die Kategorie von Garben
 über variablen Basisräumen wird in \autoref{sec:enstop-cart-closed}
-ein einschränkender Grund formuliert, wieso vermutlich keine solche
-Struktur zu erwarten ist. Für die korrekte Übertragung der Aussagen
-über Diagrammkategorien von Simplizialkomplexen ist die angesprochene
-Adjunktion allerdings nicht relevant. Vielmehr muss der Begriff des
-einer simplizialen Menge zugeordneten Diagramms geklärt werden, was in
-\autoref{sec:simp-set-sk} geschieht. Die Verallgemeinerung der
-Aussagen über Diagrammkategorien kann dann für den Fall gerichteter
-Kategorien vom Typ einer simplizialen Menge mittels 2-Limites von
-Kategorien bewiesen werden. Die Arbeit schließt mit Notizen zur
-Übertragung der Ergebnisse über die derivierten Kategorien sowie zur
-geometrischen Interpretation beliebiger Diagrammkategorien.
+ein einschränkender Grund für die Existenz eines kartesischen
+Abschlusses formuliert. Weiter gibt \autoref{sec:enstop-completeness}
+ein Kriterium für die Existenz von Kolimites. Es stellt sich also
+heraus, dass die angesprochene Adjunktion von Nerv und Realisierung
+nicht geeignet ist für die korrekte Übertragung der Aussagen aus
+\autoref{ch:simp-comp} über Diagrammkategorien von
+Simplizialkomplexen.
+
+Vielmehr muss der Begriff des einer simplizialen Menge zugeordneten
+Diagramms geklärt werden, was in \autoref{ch:simp-set-sk}
+geschieht. Die Verallgemeinerung der Aussagen über Diagrammkategorien
+kann dann für den Fall gerichteter Kategorien vom Typ einer
+simplizialen Menge mittels 2-Limites von Kategorien bewiesen
+werden. Die Arbeit schließt mit Notizen zur Übertragung der Ergebnisse
+über die derivierten Kategorien sowie zur geometrischen Interpretation
+beliebiger Diagrammkategorien.
 
 In der Notation folgt die Arbeit im Wesentlichen den Notationen aus
 \cite{TG}. Insbesondere steht der französischen Tradition folgend
@@ -87,7 +92,7 @@ Simplizialkomplexen folgt \cite{KS} und \cite{WS}, die zu simplizialen
 Mengen \cite{GJ} und \cite{GM}. Das Kapitel zu Koenden ist stark an
 \cite{Lore} angelehnt. Nicht mit Verweisen auf Literatur markierte
 Aussagen sind eigenständig erarbeitet. Dies trifft insbesondere auf
-weite Teile von\autoref{sec:simp-comp-ord}, \autoref{sec:gen-sheaves}
+weite Teile von \autoref{sec:simp-comp-sheaf}, \autoref{sec:gen-sheaves}
 und \autoref{ch:simp-sheaves} zu. Beim Finden von Aussagen und
 Gegenbeispielen und dem generellen Vertrautwerden mit dem Gebiet bin
 ich dennoch der Autorschaft der Online-Enzyklopädie \emph{nLab} und

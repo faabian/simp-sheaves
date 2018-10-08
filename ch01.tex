@@ -4,7 +4,7 @@
 \label{ch:simp-comp}
 
 \section{Simplizialkomplexe von Garben}
-\label{sec:simp-comp-ord}
+\label{sec:simp-comp-sheaf}
 
 Bei Simplizialkomplexen handelt es sich um eine kombinatorisch
 einfache und geometrisch zugängliche Klasse von
@@ -138,10 +138,10 @@ auffassen. Bezeichne nun $\B$ die Basis der Produkttopologie von $\K
 \times X$ bestehend aus Produktmengen der Form $(\geq \sigma) \times
 U$ mit $\sigma \in \K$, $U \open X$ als halbgeordnete Menge mit
 Inklusionen als Morphismen. Der Funktor
-\begin{align*} \label{eq:prod-base}
+\begin{align} \label{eq:prod-base}
   \K\op \times \OffX &\to \B, \\
   (\sigma, U) &\mapsto (\geq \sigma) \times U
-\end{align*}
+\end{align}
 ist dann ein Isomorphismus von Kategorien, denn ein Umkehrfunktor
 projiziert eine Produktmenge auf die beiden Faktoren und wählt im
 ersten Faktor das eindeutige minimale Element. Die Inklusion ist in
@@ -183,13 +183,13 @@ Oder äquivalent, falls wir für $(V_i)_{i \in I}$ eine gesättigte
 
 \begin{satz} \label{sheaf-on-basis}
   Sei $X$ ein topologischer Raum mit Basis $\B$. Dann gibt es eine
-  Äquivalenz von Kategorien
+  Äqui\-va\-lenz von Kategorien
   \[ \EnsX \qiso \EnsB , \]
   gegeben durch die Einschränkung auf $\B \subset \OffX$.
 \end{satz}
 \begin{proof}
-  Wir konstruieren einen Quasi-Inversen: Sei dazu $F \in \EnsB$ und $U
-  = \bigcup_{i \in I} U_i$ eine gesättigte Überdeckung von $U \open X$
+  Wir konstruieren einen Quasi-Inversen: Sei $F \in \EnsB$ und $U =
+  \bigcup_{i \in I} U_i$ eine gesättigte Überdeckung von $U \open X$
   durch Basismengen $U_i \in \B$. Wir setzen $\hat{F}(U) = \lim
   F(U_i)$ und prüfen die Wohldefiniertheit. Sei $U = \bigcup_{j \in J}
   V_j$ eine weitere solche Überdeckung von $U$ durch Basismengen $V_j

@@ -9,14 +9,14 @@ Garben auf einem Simplizialkomplex $\K$ nichts anderes als ein
 Simplizialkomplex von Garben über dem einpunktigen Raum, und ein
 Simplizialkomplex von Garben über einem topologischen Raum $X$
 entspricht einer Garbe auf dem Produkt $\K \times X$. In Abschnitt
-\autoref{sec:sk-pt} haben wir Simplizialkomplexe $\K$ von Mengen
-geometrisch charakterisiert als die simplizial konstanten Garben auf
-der geometrischen Realisierung $|\K|$ von $\K$. Wir erwarten daher
-auch eine relative Version dieser Aussage über einem beliebigen
-topologischen Raum $X$, die die Simplizialkomplexe von Garben auf $X$
-alias Garben auf $\K \times X$ geometrisch beschreibt. Wir werden
-sehen, dass es ein allgemeines Verfahren zur Relativierung solcher
-Aussagen gibt.
+\autoref{sec:simp-comp-sk} haben wir Simplizialkomplexe $\K$ von
+Mengen geometrisch charakterisiert als die simplizial konstanten
+Garben auf der geometrischen Realisierung $|\K|$ von $\K$. Wir
+erwarten daher auch eine relative Version dieser Aussage über einem
+beliebigen topologischen Raum $X$, die die Simplizialkomplexe von
+Garben auf $X$ alias Garben auf $\K \times X$ geometrisch
+beschreibt. Wir werden sehen, dass es ein allgemeines Verfahren zur
+Relativierung solcher Aussagen gibt.
 
 Unser Zugang benötigt den Begriff von Garben auf einem topologischen
 Raum $X$ mit Werten in einer beliebigen Kategorien $C$. Die
@@ -60,49 +60,39 @@ Kategorien existieren.
   filtrierende System aller gesättigten Überdeckungen $\mathcal{U}$
   von $U$. Die Konstruktion ist funktoriell.
 
-  % TODO umformulieren
   Für die Garbeneigenschaft konstruieren wir für eine gesättigte
   offene Überdeckung $U = \bigcup U_i$ inverse Morphismen
   \[ \colf\limits_{\mathcal{U}/U} \lim_{V \in \mathcal{U}} F(V)
   \rightleftarrows
-  \lim_i \colf\limits_{\mathcal{U}_i/U_i} \lim_{V \in \mathcal{U}_i} F(V). \]
-  Diese erhalten wir einerseits aus den natürlichen Projektionen des
-  Limes und Inklusionen des Kolimes und andererseits aus der
-  Konstruktion verträglicher Familien von Abbildungen, deren
-  Verträglichkeit sich jeweils sofort aus der Eindeutigkeit der
-  Restriktionen ergibt. Dabei werden einer Überdeckung in
-  $\mathcal{U}/U$ die Überdeckungen in $\mathcal{U}_i/U_i$ zugeordnet,
-  die sich durch Schneiden mit $U_i$ ergeben, und umgekehrt Familien
-  von Überdeckungen der $U_i$ die ihrer Vereinigung zugeordnete
-  gesättigte Überdeckung von $U$. Dass beide Morphismen invers
-  zueinander sind, ergibt sich erneut aus der Eindeutigkeit der
-  Restriktionen.
+  \lim_i \colf\limits_{\mathcal{U}_i/U_i} \lim_{V \in \mathcal{U}_i} F(V).
+  \]
+  Dabei werden einer Überdeckung in $\mathcal{U}/U$ die Überdeckungen
+  in $\mathcal{U}_i/U_i$ zugeordnet, die sich durch Schneiden mit
+  $U_i$ ergeben, und umgekehrt Familien von Überdeckungen der $U_i$
+  die ihrer Vereinigung zugeordnete gesättigte Überdeckung von $U$
+  zugeordnet.
 
+  Wir müssen uns keine Gedanken über das Kommutieren gewisser Dreiecke
+  machen, denn alle vorkommenden Morphismen sind eindeutige
+  Restriktionen. Die Abbildungen erhält man somit aus den natürlichen
+  Projektionen und Inklusionen des Limes und Kolimes. Bei den beiden
+  Kompositionen der Morphismen werden die Überdeckungen unter
+  Umständen verfeinert mittels der Restriktionsabbildungen. Da
+  kompatible Systeme von Schnitten und kompatible Systeme von
+  verfeinerten Schnitten im Kolimes gleich sind, folgt, dass die
+  Morphismen zueinander invers sind.
+  
   Auch für die Adjunktionseigenschaft gehen wir wie bei mengenwertigen
-  Garben vor und erhalten zunächst den natürlichen Prägarbenmorphismus
-  $F \to F^+$, der zur einelementigen Überdeckung von $U$ gehört. Wir
-  möchten nun zeigen, dass jeder Prägarbenmorphismus $F \to G$ in eine
-  Garbe $G$ eindeutig über unseren natürlichen Morphismus $F \to F^+$
-  faktorisiert. Die Morphismen unseres Prägarbenmorphismus $F(V) \to
-  G(V)$ induzieren nun nach der Restriktionsverträglichkeit Morphismen
-  auf den Limites, und somit auch im Kolimes Morphismen in
-  \[ C(F^+(U), G(U) =
-     C(\colf\limits_{\mathcal{U}/U} \lim_{V \in \mathcal{U}} F(V),
-     \lim_{V \in \mathcal{U}} G(V)) \iso
-     \colf\limits_{\mathcal{U}/U}
-     C(\lim_{V \in \mathcal{U}} F(V), \lim_{V \in \mathcal{U}} G(V)), \]
-  für alle $U \open X$, die ebenfalls mit den Restriktionen kompatibel
-  sind.
-
-  Dass $F \to G$ nun mittels dieses Morphismus $F^+ \to G$ über $F \to
-  F^+$ faktorisiert, folgt nun aber direkt, da der Morphismus für
-  einelementige Überdeckungen der aus dem Prägarbenmorpismus ist.
-
-  Zur Eindeutigkeit dieser Faktorisierung halten wir fest, dass der
-  Morphismus $F^+ \to G$ auf einelementigen Überdeckungen schon
-  aufgrund der Faktorisierungseigenschaft und dann auf größeren
-  Überdeckung durch die Garbeneigenschaften von $F^+$ und $G$
-  eindeutig festgelegt ist.
+  Garben vor. Wir erhalten zunächst den natürlichen
+  Prägarbenmorphismus $F \to F^+$, der auf $U$ die Inklusion in den
+  Kolimes von der einelementigen Überdeckung von $U$ ist. Jeder
+  Prägarbenmorphismus $F \to G$ in eine Garbe $G$ faktorisiert
+  eindeutig über diese Garbifizierung $F \to F^+$, denn wieder sind
+  die Morphismen $F(U) \to G(U) = \colf_{\mathcal{U}/U} \lim_{V \in
+    \mathcal{U}} G(V)$ auf $U$ die Inklusionen in den Kolimes
+  bezüglich der einelementigen Überdeckung. Auf feineren Überdeckungen
+  von $U$ ist $F^+ \to G$ dann durch die Garbeneigenschaften von $F^+$
+  und $G$ eindeutig festgelegt.
 \end{proof}
 
 Wir prüfen, dass wir so insbesondere eine Garbifizierung zu
@@ -200,8 +190,8 @@ als Morphismen.
   erfüllt, wenn sie für die ursprüngliche Überdeckung erfüllt ist.
 \end{proof}
 \begin{bem}
-  Für abelsche Garben erhalten wir die analoge Aussage $(\AbX)_{/Y}
-  \qiso \Ab_{/X \times Y}$.
+  Für abelsche Garben erhalten wir die analoge Aussage
+  \[ (\AbX)_{/Y} \qiso \Ab_{/X \times Y} . \]
 \end{bem}
 
 \subsection{Exkurs: Überlagerungen von Produkträumen}
@@ -258,7 +248,7 @@ Kardinalitäten haben.
   konstant wegen des einfachen Zusammenhangs von $Y$.
 \end{proof}
 
-\subsection{Anwendung auf relative schwach konstruierbare Garben} 
+\subsection{Anwendung auf den relativen Fall}
 
 Wir formulieren nun die relative Form schwacher Konstruierbarkeit und
 erklären, wie man mit dem Begriff ``garbenwertiger Garben'' die
