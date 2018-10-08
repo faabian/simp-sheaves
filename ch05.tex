@@ -85,15 +85,6 @@ topologischen Räumen bilden.
   geometrische Realisierung aus \ref{real-enstop} eine Garbe
   $|F| \in \EnsX$, da die geometrische Realisierung des konstanten
   simplizialen topologischen Raums $X: [n] \mapsto X$ selbst $X$ ist.
-
-  Für Garben $E_n$ auf diskreten Räumen $D_n$ handelt es sich um die
-  geometrische Realisierung eines Pfeils simplizialer Mengen. Die
-  relative Version über $X$ hiervon ist die folgende: für Garben $E_n$
-  auf $X \times D_n$ für diskrete $D_n$ und zu für $f: [m] \to [n]$
-  monoton von $D_n \to D_m$ induzierten Basen $D_n \times X \to
-  D_m \times X$ der Garbenmorphismen ist die geometrische Realisierung
-  eine Garbe über $X \times |D|$, für $|D|$ die Realisierung der
-  simplizialen Menge $[n] \mapsto D_n$.
 \end{bem}
 
 Ziel unserer Überlegungen wird es sein, die Aussagen zu simplizial
@@ -109,14 +100,14 @@ Garbensystem dagegen gegenläufig zu den generisierenden Einbettungen
 $|d_i|: |\Delta^{n-1}| \inj |\Delta^n|$ der Basisräume.
 
 Wir erklären eine neue Realisierung, die diesem Anspruch gerecht wird.
-Sei dazu $R: \Delta \to \Ens_{/\Top}$ eine kosimplizialer
-topologischer Raum und $F: \Delta\op \to \Ens_{\sslash\Top}, [n]
-\mapsto F_n \in Ens_{/X_n}$ eine simpliziale Garbe über topologischen
-Räumen mit Komorphismen. Für $f: [n] \to [m]$ monoton gibt es also
-eine stetige Abbildung $Ff: X_m \to X_n$ und einen Morphismus von
-Garben über $X_m$: $Ff^* F_n \to F_m$. Wir erhalten einen Funktor $K$
-von der Unterteilungskategorie $\Sub(\Delta)$ von $\Delta$ in die
-Garben über topologischen Räumen
+Sei dazu $R: \Delta \to \Top$ eine kosimplizialer topologischer Raum
+und $F: \Delta\op \to \Ens_{\sslash\Top}, [n] \mapsto F_n \in
+Ens_{/X_n}$ eine simpliziale Garbe über topologischen Räumen mit
+Komorphismen. Für $f: [n] \to [m]$ monoton gibt es also eine stetige
+Abbildung $Ff: X_m \to X_n$ und einen Morphismus von Garben über
+$X_m$: $Ff^* F_n \to F_m$. Wir erhalten einen Funktor $K$ von der
+Unterteilungskategorie $\Sub(\Delta)$ von $\Delta$ in die Kategorie
+der Garben über topologischen Räumen
 \begin{equation} \label{dg:cov-real}
   \begin{tikzcd}
     \Sub(\Delta) \arrow{dd}
@@ -136,10 +127,10 @@ Garben über topologischen Räumen
   \end{tikzcd}
 \end{equation}
 der für $f: [n] \to [m]$ in $\Delta$ auf Morphismen $f^\S \to [n]^\S$
-vom universellen Morphismus $Ff^* F_n \to F_n$ über $Ff$ induziert ist
-und auf Morphismen $f^\S \to [m]^\S$ durch die Morphismen $Ff^* F_n
-\to F_m$ in $\Ens_{/X_m}$ sowie $Rf$. Letzterer ist tatsächlich ein
-Morphismus in $\Ens_{/\Top}$, denn es kommutiert
+vom Rückzug $Ff^* F_n \to F_n$ über $Ff$ induziert ist und auf
+Morphismen $f^\S \to [m]^\S$ durch die Morphismen $Ff^* F_n \to F_m$
+in $\Ens_{/X_m}$ sowie $Rf$. Letzterer ist tatsächlich ein Morphismus
+in $\Ens_{/\Top}$, denn es kommutiert
 \[ \begin{tikzcd}
   Ff^* F_n \times R[n] \dar \rar
   & F_m \times R[n] \dar \rar
@@ -164,7 +155,7 @@ Wir erhalten die folgende \emph{kovariante Realisierung}:
   \Delta\op \to \Ens_{\sslash X}$ eine simpliziale Garbe auf
   topologischen Räumen mit Komorphismen und konstantem Basisraum $X$
   alias eine kosimpliziale Garbe $F\op: \Delta \to \EnsX$, so
-  vereinfacht das Diagramm \ref{dg:cov-real} zu
+  vereinfacht Diagramm \ref{dg:cov-real} zu
   \[
   \begin{tikzcd}
     \Sub(\Delta) \arrow{dd}
@@ -194,17 +185,15 @@ Wir erhalten die folgende \emph{kovariante Realisierung}:
   \end{tikzcd} \]
   schickt.
 
-  Sind alle $X_n$ diskret, so bestimmt für $\sigma \in X_n$ der Halm
-  $(F_m)_\sigma$ die konstante Garbe $(F_m)_\sigma \times R[n] \to
-  {\sigma} \times R[n]$ und wir erhalten für monotones $f: [n] \to
+  Sind alle $X_n$ diskret, so bestimmt für $\sigma \in X_m$ der Halm
+  $(F_m)_\sigma$ die konstante Garbe $(F_m)_\sigma \times R[m] \to
+  \{\sigma\} \times R[m]$ und wir erhalten für monotones $f: [n] \to
   [m]$ Abbildungen $(F_n)_{f(\sigma)} \to (F_m)_\sigma$, die diese
   konstanten Garben verkleben. Insbesondere sind für Randabbildungen
   $d_i$ die Verklebungen Generisierungen, die angeben, wie ein Element
   des Halms am Rand eines Simplex einen Schnitt über eine Umgebung
   dieses Punkts (auch im Inneren des Simplex) definiert. Wir werden
-  diese Beobachtungen in \ref{real-enstop-cov-equiv} präzisieren und
-  die zunächst seltsam anmutende Konstruktion als natürlich
-  wahrnehmen.
+  diese Beobachtungen in \ref{real-simplex-cat} präzisieren.
 
   Für die relative Version betrachten wir Basisräume $X_n = X \times
   D_n$ mit diskreten $D_n$ und von $D_m \to D_n$ induzierten
@@ -228,19 +217,19 @@ Wir erhalten die folgende \emph{kovariante Realisierung}:
   Garben ein: die Garbenbedingung ist als Limes über ein im
   Allgemeinen unendliches System formuliert, die geometrische
   Realisierung vertauscht aber im Allgemeinen nicht mit beliebigen
-  Limites.
+  Limites (vgl. \ref{real-products}).
 \end{bem}
 
 \subsection{Die Dualität von Nerv und Realisierung}
 
-Wir suchen Rechtsadjungierte für unsere geometrischen
-Realisierungen. Für die Realisierung simplizialer Mengen gelingt uns
-das einfach.
+Wir suchen Rechtsadjungierte für die geometrischen Realisierungen. Für
+die Realisierung simplizialer Mengen gelingt das einfach.
 \begin{satz}
-  Der Funktor der singulären Ketten $S: \Top \to \s\Ens$, $SY
-  = \Top(R \, \cdot, Y): [n] \mapsto \Top(|\Delta^n|, Y)$ ist
-  rechtsadjungiert zur geometrischen Realisierung
-  $|\cdot|: \s\Ens \to \Top$.
+  Der Funktor der singulären Ketten $S: \Top \to \s\Ens$ mit
+  \[ SY  = \Top(R \, \cdot, Y): \quad [n] \mapsto \Top(|\Delta^n|, Y)
+  \]
+  ist rechtsadjungiert zur geometrischen Realisierung $|\cdot|: \s\Ens
+  \to \Top$.
 \end{satz}
 \begin{proof}
   Die Rand- und Degenerationsabbildungen von $SY$ sind für $f: [n] \to
@@ -262,27 +251,8 @@ das einfach.
   Beschreibung einer simplizialen Menge als Kolimes über ihre
   Simplexkategorie (\ref{sset-col}) im letzten Schritt.
 \end{proof}
-Während dieses Argument wieder ein sehr anschauliches ist, möchten wir
-wie in \ref{coend-correct-real} erklärt, unser Argument mit den
-Begriffen und Techniken von Koenden führen, um es automatisch
-verallgemeinern zu können. Wir geben hier noch einmal die direkte
-Übersetzung obigen Beweises in die Sprache der Koenden an, und dann
-sofort die Verallgemeinerung.
-\begin{proof} (\cite{Lore}, 3.2)
-  Wir berechnen mit den Regeln des Koenden-Kalküls:
-  \begin{align*}
-     \Top(|X|, Y)
-     &= \Top \left( \int^{[n]} X[n] \times R[n], Y \right) \\
-     & \iso[\ref{coend-cocont}]
-       \int_{[n]} \Top \big( X[n] \times R[n], Y \big) \\
-     & \iso[\ref{def:copower}]
-       \int_{[n]} \Ens \big( X[n], \Top(R[n], Y) \big) \\
-     & \iso[\ref{trans-end}]
-       [\Delta\op, \Ens] \big( X, \Top(R \, \cdot, Y) \big) \\
-     &= \s\Ens(X, SY).
-  \end{align*}
-\end{proof}
-
+Das Argument verallgemeinert durch Ersetzen der Simplexkategorie durch
+Koenden über Koexponentiale.
 \begin{theorem} [Allgemeine Nerv-Realisierungs-Dualität, \cite{Lore}, 3.2]
   \label{nerve}
   Seien $C$ eine $V$-Kategorie mit Koexponentialen $\odot$ und ein
@@ -290,9 +260,9 @@ sofort die Verallgemeinerung.
   $(|\cdot|, N)$
   \[ C \xtofrom[N]{|\cdot|} [S\op, V] \]
   mit
-  \begin{alignat*}{3}
-    &|\cdot|: && X &&\mapsto \int^{s \in S} X(s) \odot R(s) \qquad \text{und} \\
-    &N: && Y &&\mapsto C(R \, \cdot, Y).
+  \begin{alignat*}{2}
+    |\cdot|: & X &&\mapsto \int^{s \in S} X(s) \odot R(s) \qquad \text{und} \\
+    N: & Y &&\mapsto C(R \, \cdot, Y).
   \end{alignat*}
 \end{theorem}
 \begin{proof}
@@ -313,10 +283,10 @@ sofort die Verallgemeinerung.
 \subsection{Die kartesisch abgeschlossene Struktur der Garben auf $X$}
 \label{sec:ensx-cart-closed}
 
-Für unsere allgemeine Dualität von Nerv und Realisierung \ref{nerve}
-benötigen wir also eine bessere $V$-angereichterte Struktur auf
-$C$. Wenn wir uns auf $\EnsX$ beschränken, erhalten wir sogar die
-Struktur einer kartesisch abgeschlossenen Kategorie.
+Für die allgemeine Dualität von Nerv und Realisierung \ref{nerve}
+benötigen wir also eine $V$-angereichterte Struktur auf $C$. Wenn wir
+uns auf $\EnsX$ beschränken, erhalten wir sogar die Struktur einer
+kartesisch abgeschlossenen Kategorie.
 \begin{defn}
   Eine Kategorie $C$ mit endlichen Produkten heißt \emph{kartesisch
     abgeschlossen}, falls es ein internes Hom für die kartesische
@@ -332,22 +302,24 @@ gibt, also eine in allen Variablen natürliche Bijektion
   und internem Hom
   \[ (F \iHom G)(U) = \Ens_{/U}(F|_U, G|_U) \]
   jeweils mit den von den Restriktionen von $F$ und $G$ induzierten
-  Restriktionen. Der étale Raum des Produkts ist gegeben durch das
-  Faserprodukt über $X$:
+  Restriktionen. Der étale Raum des Produkts ist das Faserprodukt über
+  $X$
   \[ \etalespace{F \times G}
      \iso \etalespace{F} \times_X \etalespace{G}. \]
 \end{prop}
 \begin{proof}
-  Das Produkt erfüllt offenbar die universelle Eigenschaft in $\pEnsX$
-  und ist eine Garbe, da Produkte mit dem Limes der Garbeneigenschaft
+  Das Produkt erfüllt die universelle Eigenschaft in $\pEnsX$ und ist
+  eine Garbe, da Produkte mit dem Limes der Garbeneigenschaft
   vertauschen (Spezialfall von \ref{ensx-complete}). Das interne Hom
   besteht aus stetigen Abbildungen über $U$ und erfüllt somit die
   Garbenbedingung, die ja sogar nach der Verklebbarkeit stetiger
   Abbildungen modelliert war. Für die Adjunktion müssen wir zeigen
   \[ \EnsX(F \times G, H) \iso \EnsX(F, G \iHom H). \]
-  Links stehen restriktionsverträgliche Systeme $F(U) \times G(U) \to
-  H(U)$ alias $F(U) \to \Ens(G(U), H(U))$, rechts
-  restriktionsverträgliche Systeme $F(U) \to \Ens_{/U}(G|_U,
+  Links stehen restriktionsverträgliche Systeme
+  \[ F(U) \times G(U) \to H(U) \quad \text{bzw.} \quad
+  F(U) \to \Ens(G(U), H(U)),
+  \]
+  rechts restriktionsverträgliche Systeme $F(U) \to \Ens_{/U}(G|_U,
   H|_U)$. Wir erhalten eine Abbildung von rechts nach links durch den
   globalen Teil $G(U) \to H(U)$ des Garbenmorphismus $G|_U \to H|_U$
   und das Exponentialgesetz in $\Ens$ und von links nach rechts durch
@@ -380,21 +352,18 @@ Koendenkalkül auf beliebige Prägarbenkategorien ausweiten.
 \begin{proof}
   Nach der objektweisen Berechnung von Limites in Funktorkategorien
   ist das Prägarbenprodukt gegeben durch $(F \times G)(c) = F(c)
-  \times G(c)$ für $F, G \in \Ens^{C\op}$ und $c \in C$. Wir
-  behaupten, dass das interne Hom in der Prägarbenkategorie die
-  Prägarbe
+  \times G(c)$ für $F, G \in \Ens^{C\op}$ und $c \in C$. Testen mit
+  darstellbaren Prägarben motiviert die Definition
   \[ (F \iHom G)(c) := \Ens^{C\op}(F \times C(\cdot, c), G), \]
-  ist, die auf Morphismen $f: c \to d$ durch Vorschalten von
-  Transformationen $\id_F \times (\circ f)$ gegeben ist, mit $(\circ
-  f): C(\cdot, c) \to C(\cdot, d)$ dem Nachschalten von $f$. Mit
-  \ref{trans-end} sind Morphismen in $\Ens^{C\op}$ darstellbar als
+  mit vom Nachschalten von $f: c \to d$ induzierten Restriktionen.
+  Mit \ref{trans-end} sind Morphismen in $\Ens^{C\op}$ darstellbar als
   Ende
   \[ \Ens^{C\op}(F, G) = \int_c \Ens(F(c), G(c)) \]
   und wir berechnen mit den Regeln des (Ko-) Endenkalküls für $F, G, H
   \in \Ens^{C\op}$:
   \begin{align*}
     \Ens^{C\op}(F, G \iHom H)
-    &\iso[Def.] \Ens^{C\op}(F, \Ens^{C\op}(F \times C(\cdot, \bullet), G)) \\
+    &\iso[Def.] \Ens^{C\op}(F, \Ens^{C\op}(F \times C(\cdot, -), G)) \\
     &\iso[\ref{trans-end}]
      \int_c \Ens(F(c), \int_d \Ens(G(d) \times C(d, c), H(d))) \\
     &\iso[\ref{coend-cocont}]
@@ -477,27 +446,25 @@ durch Bilden der Produkträume. Konkret:
     \times \Top(\etalespace{G}, \etalespace{F_2})
     &\times_{\Top(\etalespace{G}, X_2)} \Top(Y, X_2),
   \end{align*}
-  dies zeigt die Aussage über den étalen Raum des Produkts. Die
+  was die Aussage über den étalen Raum des Produkts zeigt. Die
   Abbildung $\etalespace{F_1} \times \etalespace{F_2} \to X_1 \times
   X_2$ ist étale und konkret ein Homöomorphismus auf der Produktmenge
   der Umgebungen, auf denen $\etalespace{F_{1,2}} \to X_{1,2}$
   Homöomorphismen sind.
   
-  Für die algebraische Beschreibung erhalten wir mit der Offenheit der
-  Projektionen $\pr_{1,2}$ und \ref{ensx-cart-closed} für die Schnitte
-  über Basismengen $U_1 \times U_2$:
-  \begin{align*}
-    (F_1 \times F_2)(U_1 \times U_2)
-    &\iso (\pr_1^* F_1)(U_1 \times U_2) \times (\pr_2^* F_2)(U_1 \times U_2) \\
-    &\iso F_1(U_1) \times F_2(U_2).
-  \end{align*}
+  Für die algebraische Beschreibung prüft man unter Verwendung der
+  Offenheit der Projektionen, dass die Prägarbenrückzüge Garben sind,
+  und erhält mit \ref{ensx-cart-closed} für die Schnitte über
+  Basismengen $U_1 \times U_2$:
+  \[ (F_1 \times F_2)(U_1 \times U_2) \iso F_1(U_1) \times F_2(U_2).
+  \]
   Wir erhalten also einen Garbenmorphismus über $X_1 \times X_2$ von
   der algeraischen zur topologischen Beschreibung, indem einem Paar
-  $(s, t) \in F_1(U_1) \times F_2 \times U_2$ der Schnitt $s \times t:
-  U_1 \times U_2 \to \etalespace{F_1} \times \etalespace{F_2}$
-  zugeordnet wird. Dieser Morphismus induziert auf den Halmen die
-  Bijektion $(F_1 \times F_2)_{x, y} \iso (F_1)_x \times (F_2)_y$ aus
-  dem Vertauschen von endlichen Produkten mit filtrierenden Kolimites.
+  $(s, t) \in F_1(U_1) \times F_2( U_2)$ der Schnitt $s \times t: U_1
+  \times U_2 \to \etalespace{F_1} \times \etalespace{F_2}$ zugeordnet
+  wird. Dieser Morphismus induziert auf den Halmen die Bijektion
+  $(F_1)_x \times (F_2)_y \iso (F_1 \times F_2)_{x, y}$ aus dem
+  Vertauschen von endlichen Produkten mit filtrierenden Kolimites.
 \end{proof}
 \begin{bem}
   Auf ähnliche Weise kann man auch für $\Ens_{\sslash \Top}$ endliche
@@ -505,8 +472,7 @@ durch Bilden der Produkträume. Konkret:
   Fasern) um das \emph{Ko}produkt der mit den Projektionen auf den
   Produktraum zurückgezogenen Garben.
 \end{bem}
-Auch dieses Verfahren können wir für beliebige Limites und Kolimites
-durchführen und so \ref{ensx-complete} übertragen:
+Weiter ist $\EnsTop$ auch unter Pullbacks abgeschlossen.
 \begin{satz} \label{enstop-fin-complete}
   Die Kategorie der Garben auf topologischen Räumen mit Morphismen
   $\Ens_{/\Top}$ besitzt endliche Limites.
@@ -516,52 +482,49 @@ durchführen und so \ref{ensx-complete} übertragen:
   zeigen. Seien dazu $(F \to X) \rightrightarrows (G \to Y)$ zwei
   Morphismen. Wir zeigen, dass der Egalisator $E \to W$ aus
   $\Top^{[1]}$ eine Garbe ist. Sei $f$ die (übereinstimmende)
-  Verknüpfung $W \to X \rightrightarrows Y$. Nun ist $E$ insbesondere
-  ein Egalisator von Garben über $W \subset X$: $E \to F|_W
+  Verknüpfung $W \to X \rightrightarrows Y$. Dann ist $E$ auch ein
+  Egalisator von Garben über $W \subset X$: $E \to F|_W
   \rightrightarrows f^* G$ und somit eine Garbe.
 \end{proof}
 \begin{bem}
   Die verbleibenden Fragen zur Vollständigkeit und Kovollständigkeit
   von $\EnsTop$ werden in \ref{enstop-not-complete} und
-  \ref{enstop-no-coequalizers} negativ beantwortet.
+  \ref{enstop-coequalizers} negativ beantwortet.
 \end{bem}
 
 \subsection{Kartesisch abgeschlossene koreflektive Kategorien topologischer Räume}
 
 Wir könnten erwarten, dass wie das Produkt auch das interne Hom von
-$\EnsX$ in unsere relative Situation übertragen werden kann. Dies
-gelingt tatsächlich aber im Allgemeinen nicht, denn in diesem Fall
+$\EnsX$ in die Situation variabler Basisräume übertragen werden
+kann. Dies gelingt aber im Allgemeinen nicht, denn in diesem Fall
 erhielten wir durch Einschränken auf die Basis ein zum kartesischen
 Produkt adjungiertes internes Hom in der Kategorie der topologischen
-Räume (\ref{full-enstop-not-cart-closed}), was bekanntermaßen in
-dieser Allgemeinheit nicht möglich ist (\cite{Borceux},
-Prop. 7.1.2). Wir müssen uns also wieder auf eine bequeme Kategorie
-topologischer Räume mit internem Hom einschränken.
+Räume (\ref{full-enstop-not-cart-closed}), welches bekanntermaßen
+nicht existiert (\cite{Borceux}, Prop. 7.1.2). Wir müssen uns also
+wieder auf eine bequeme Kategorie topologischer Räume mit internem Hom
+einschränken.
 
 Die häufige Wahl $\CGHaus$ ist für uns ungeeignet, denn der étale Raum
 einer Garbe über einem kompakt erzeugten Hausdorffraum ist im
 Allgemeinen kein Hausdorffraum mehr (betrachte etwa die Garbe der
-stetigen Funktionen nach $\R$). Abhilfe schafft uns eine Konstruktion
-aus \cite{Vogt}, die die den kompakt erzeugten Räumen
-zugrundeliegenden Gedanken verallgemeinert. Wir geben hier nur die
-Ergebnisse an.
+stetigen Funktionen nach $\R$). Abhilfe schafft die Konstruktion
+gewisser koreflektiver Hüllen aus \cite{Vogt}, die die den kompakt
+erzeugten Räumen zugrundeliegenden Gedanken verallgemeinert. Wir geben
+hier nur die Ergebnisse an.
 
-Äquivalent zu unserer (der \emph{point-set-}Topologie entspringenden)
+Äquivalent zur (der \emph{point-set-}Topologie entspringenden)
 Definition kompakt erzeugter Räume ist die folgende Charakterisierung:
 \begin{lemma}[\ref{def:cg}, Variante]
-  Ein topologischer Raum $X$ ist kompakt erzeugt genau dann, wenn
-  gilt: Eine Teilmenge $U \subset X$ ist offen genau dann, wenn ihr
-  Urbild unter allen stetigen Abbildungen $K \to X$, $K$ kompakt,
-  offen ist.
+  Ein topologischer Raum $X$ ist kompakt erzeugt genau dann, wenn er
+  die Finaltopologie bezüglich des Systems aller Abbildungen $K \to X$
+  von kompakten Räumen $K$ nach $X$ trägt.
 \end{lemma}
 \begin{proof}
-  Unsere Bedingung besagt, dass $X$ die Finaltopologie bezüglich des
-  Systems der $K \to X$, $K$ kompakt tragen soll. Die Bedingung aus
-  der ursprünglichen Definition ist dieselbe für das System der
-  Inklusionen kompakter Mengen $K \subset X$. Da jede stetige Abbilung
-  $K \to X$, $K$ kompakt, über die Inklusion ihres kompakten Bilds
-  faktorisiert, ist letzteres System in ersterem konfinal und die
-  Finaltopologien stimmen überein.
+  Die Bedingung aus der ursprünglichen Definition ist dieselbe für das
+  System der Inklusionen kompakter Mengen $K \subset X$. Da jede
+  stetige Abbilung $K \to X$ mit $K$ kompakt über die Inklusion ihres
+  kompakten Bilds faktorisiert, ist letzteres System in ersterem
+  konfinal und die Finaltopologien stimmen überein.
 \end{proof}
 Der in \ref{real-products} angesprochene zur Inklusion
 Rechtsadjungierte $k: \Top \to \CG$ lässt sich nun auch beschreiben
