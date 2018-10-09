@@ -246,9 +246,11 @@ $p|_U: U \to p(U)$ ein Homöomorphismus ist.
 
 \section[Die kartesisch abgeschlossene Struktur der Garben auf
   \texorpdfstring{$X$}{X}]
-  {Die kartesisch abgeschlossene Struktur der Garben auf
-  \texorpdfstring{$X$}{X}
-  \sectionmark{Kartesischer Abschluss über $X$}}
+        {\texorpdfstring{Die kartesisch abgeschlossene Struktur\\
+            der Garben auf $X$}
+          {Die kartesisch abgeschlossene Struktur
+            der Garben auf X}
+            \sectionmark{Kartesischer Abschluss über $X$}}
 \sectionmark{Kartesischer Abschluss über $X$}
 \label{sec:ensx-cart-closed}
 
@@ -375,7 +377,8 @@ Auch die Rolle von $\Ens$ kann verallgemeinert werden. Wir erhalten:
 \end{proof}
 
 \section[Produkte von Garben über topologischen Räumen]
-        {Produkte von Garben über topologischen Räumen
+        {\texorpdfstring{Produkte von Garben\\ über topologischen Räumen}
+          {Produkte von Garben über topologischen Räumen}
           \sectionmark{Produkte von Garben}}
 \sectionmark{Produkte von Garben}
 
@@ -404,14 +407,15 @@ werden. Konkret:
 \begin{proof}
   Für ein Testobjekt $G \in \Ens_{/Y}$ prüft man leicht die Bijektion
   von Faserprodukten
-  \begin{align*}
+  \begin{gather*}
     \Top(\etalespace{G}, \etalespace{F_1} \times \etalespace{F_2})
-    &\times_{\Top(\etalespace{G}, X_1 \times X_2)} \Top(Y, X_1 \times X_2) \\
-    \unalign{\iso} \Top(\etalespace{G}, \etalespace{F_1})
-    &\times_{\Top(\etalespace{G}, X_1)} \Top(Y, X_1) \\
+    \times_{\Top(\etalespace{G}, X_1 \times X_2)} \Top(Y, X_1 \times X_2) \\
+    \iso
+    \Top(\etalespace{G}, \etalespace{F_1})
+    \times_{\Top(\etalespace{G}, X_1)} \Top(Y, X_1)
     \times \Top(\etalespace{G}, \etalespace{F_2})
-    &\times_{\Top(\etalespace{G}, X_2)} \Top(Y, X_2),
-  \end{align*}
+    \times_{\Top(\etalespace{G}, X_2)} \Top(Y, X_2),
+  \end{gather*}
   was die Aussage über den étalen Raum des Produkts zeigt. Die
   Abbildung $\etalespace{F_1} \times \etalespace{F_2} \to X_1 \times
   X_2$ ist étale und konkret ein Homöomorphismus auf der Produktmenge
@@ -460,8 +464,10 @@ Weiter ist $\EnsTop$ auch unter Pullbacks abgeschlossen.
 \end{bem}
 
 \section[Kartesisch abgeschlossene Kategorien topologischer Räume]
-        {Kartesisch abgeschlossene Kategorien topologischer Räume
-        \sectionmark{Kartesisch abgeschlossene Kategorien}}
+        {\texorpdfstring
+          {Kartesisch abgeschlossene Kategorien\\ topologischer Räume}
+          {Kartesisch abgeschlossene Kategorien topologischer Räume}
+          \sectionmark{Kartesisch abgeschlossene Kategorien}}
 \sectionmark{Kartesisch abgeschlossene Kategorien}
 
 Wir könnten erwarten, dass wie das Produkt auch das interne Hom von
@@ -669,7 +675,10 @@ Damit können wir die für uns entscheidende Eigenschaft zeigen:
   $\OffX(\cdot, U)$ ist (\ref{presheaf-colimit-representable}).
 \end{bem}
 
-\section{Kartesischer Abschluss der Garben auf topologischen Räumen}
+\section[Kartesischer Abschluss der Garben auf topologischen Räumen]
+        {\texorpdfstring
+          {Kartesischer Abschluss der Garben\\ auf topologischen Räumen}
+          {Kartesischer Abschluss der Garben auf topologischen Räumen}}
 \sectionmark{Kartesischer Abschluss}
 \label{sec:enstop-cart-closed}
 
@@ -824,8 +833,8 @@ in $\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
   dazu die Einbettungen $\iota, \tau: \K \to \et \K^{[1]}$ durch über
   dem betreffenden Raum initiale bzw. terminale Garben:
   \begin{align*}
-    \iota X := (\varnothing \to X), \\
-    \tau X := (X \xrightarrow{\id} X).
+    \iota X &:= (\varnothing \to X), \\
+    \tau X &:= (X \xrightarrow{\id} X).
   \end{align*}
   Gelte also
   \begin{equation} \label{eq:coreflection-adjunction}
@@ -834,9 +843,9 @@ in $\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
   für alle étalen $F \to X$. Ein Objekt $(H \to Z) \in \K^{[1]}$ ist
   nach dem Yoneda-Lemma (bis auf eindeutigen Isomorphismus) eindeutig
   festgelegt durch die Funktoren
-  \[ \K^{[1]}(\iota \cdot, (H \to Z)) = \K(\cdot, Z) \qquad \text{und} \\
-  \K^{[1]}(\tau \cdot, (H \to Z)) = \K(\cdot, H)
-  \]
+  \[ \K^{[1]}(\iota \cdot, (H \to Z)) = \K(\cdot, Z) \]
+  und
+  \[ \K^{[1]}(\tau \cdot, (H \to Z)) = \K(\cdot, H) \]
   und ihre aus $\iota \cdot \Trafo \tau \cdot$ entstehende
   Transformation, die dem Morphismus $H \to Z$ entspricht. Nun sind
   $\iota X, \tau X \in \et \K^{[1]}$ für alle $X \in \K$ und es folgt,
@@ -887,10 +896,12 @@ in $\K^{[1]}$ étale und somit in $\et \K^{[1]}$ ist.
 \end{proof}
 
 \section[Vollständigkeit der Garben auf topologischen Räumen]
-        {Vollständigkeit der Garben auf topologischen Räumen
-        \sectionmark{Vollständigkeit}}
-        \sectionmark{Vollständigkeit}
-        \label{sec:enstop-completeness}
+        {\texorpdfstring
+          {Vollständigkeit der Garben\\auf topologischen Räumen}
+          {Vollständigkeit der Garben auf topologischen Räumen}
+          \sectionmark{Vollständigkeit}}
+\sectionmark{Vollständigkeit}
+\label{sec:enstop-completeness}
 
 Mit denselben Techniken können wir auch zeigen, dass die Kategorie
 $\EnsTop$ der Garben auf topologischen Räumen über die endlichen

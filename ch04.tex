@@ -75,9 +75,9 @@ einfachen Klassen monotoner Abbildungen erzeugt: von den
 \end{lemma}
 \begin{proof}
   \begin{enumerate}[label=(\roman*)]
-  \item Durch Bildchen Zeichnen oder explizites Nachrechnen: Wir
-    werten beide Abbildungen simultan auf allen Elementen aus und
-    erhalten zum Beispiel für die erste Aussage:
+  \item Durch Bildchenzeichnen oder explizites Nachrechnen: Wir werten
+    beide Abbildungen simultan auf allen Elementen aus und erhalten
+    zum Beispiel für die erste Aussage:
   \begin{align*}
   &(0, 1, \dots, i-1, i, i+1, \cdots, j-2, j-1, j, \cdots, n-1) \\
   \xmapsto{d_i^n} \quad
@@ -173,7 +173,9 @@ Das Motto zur Arbeit mit simplizialen Mengen ist daher, Aussagen, die
 für die Standardsimplizes gelten, durch ``Kostetigkeit'' (Vertauschen
 mit Kolimites) auf simpliziale Mengen zu übertragen.
 
-\section{Der kosimpliziale Raum der Standardsimplizes}
+\section[Der kosimpliziale Raum der Standardsimplizes]
+  {\texorpdfstring{Der kosimpliziale Raum der\\Standardsimplizes}
+    {Der kosimpliziale Raum der Standardsimplizes}}
 
 Die geometrische Realisierung einer simplizialen Menge soll sich mit
 geeigneten Identifikationen aus den geometrischen Realisierungen von
@@ -259,8 +261,9 @@ genannt der \emph{kosimpliziale Raum der Standardsimplizes}.
 \end{bem}
 
 \section[Geometrische Realisierung simplizialer Mengen]
-        {Geometrische Realisierung simplizialer Mengen
-        \sectionmark{Geometrische Realisierung}}
+        {\texorpdfstring{Geometrische Realisierung\\simplizialer Mengen}
+          {Geometrische Realisierung simplizialer Mengen}
+          \sectionmark{Geometrische Realisierung}}
 \sectionmark{Geometrische Realisierung}
 
 Wir erklären nun die geometrische Realisierung simplizialer
@@ -323,8 +326,11 @@ monotonen $f: [m] \to [n]$ von
 \[ (x, |f|(p)) \sim (f^* x, p) \]
 erzeugt ist.
 
-\section{Sparsame Realisierung durch nichtdegenerierte Simplizes}
-\sectionmark{Sparsame Realisierung}
+\section[Sparsame Realisierung durch nichtdegenerierte Simplizes]
+        {\texorpdfstring{Sparsame Realisierung\\durch
+            nichtdegenerierte Simplizes}
+          {Sparsame Realisierung durch nichtdegenerierte Simplizes}}
+        \sectionmark{Sparsame Realisierung}
 
 Während die Definition simplizialer Mengen und ihrer Realisierung mit
 Degenerationsabbildungen wie gesehen von einem formalen Standpunkt aus
@@ -502,7 +508,9 @@ $\|X\|$ liefern:
 \end{bem}
 
 \section[Exaktheitseigenschaften der geometrischen Realisierung]
-        {Exaktheitseigenschaften der geometrischen Realisierung
+        {\texorpdfstring{Exaktheitseigenschaften der geometrischen\\
+            Realisierung}
+          {Exaktheitseigenschaften der geometrischen Realisierung}
         \sectionmark{Exaktheit der Realisierung}}
 \sectionmark{Exaktheit der Realisierung}
 
@@ -1140,10 +1148,9 @@ die herkömmliche Definition von Kategorien:
   \]
   und verträglich mit den Identitäten bezüglich der eindeutigen
   Isomorphismen
-  \begin{align*}
-    C(x, y) \otimes I &\iso C(x, y) \qquad \text{und} \\
-    I \otimes C(x,y) &\iso C(x, y).
-  \end{align*}
+  \[ C(x, y) \otimes I \iso C(x, y) \]
+  und
+  \[ I \otimes C(x,y) \iso C(x, y). \]
   Ein Funktor zwischen $V$-Kategorien $F: C \to D$ ist eine Zuordnung
   auf Objekten $F: c \mapsto Fc$ zusammen mit Morphismen $C(x, y) \to
   D(Fx, Fy)$ in $V$.
@@ -1244,7 +1251,7 @@ Koenden über Koexponentiale.
   \[ C \xtofrom[N]{|\cdot|} [S\op, V] \]
   mit
   \begin{alignat*}{2}
-    |\cdot|: & X &&\mapsto \int^{s \in S} X(s) \odot R(s) \qquad \text{und} \\
+    |\cdot|: & X &&\mapsto \int^{s \in S} X(s) \odot R(s) , \\
     N: & Y &&\mapsto C(R \, \cdot, Y).
   \end{alignat*}
 \end{theorem}
